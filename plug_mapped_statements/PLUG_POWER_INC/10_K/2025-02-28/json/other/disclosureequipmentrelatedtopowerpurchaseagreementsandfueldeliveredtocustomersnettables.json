@@ -1,0 +1,60 @@
+{
+  "role_uri": "http://www.plugpoweinc.com/role/DisclosureEquipmentRelatedToPowerPurchaseAgreementsAndFuelDeliveredToCustomersNetTables",
+  "role_definition": null,
+  "statement_type": "BALANCE_SHEET",
+  "classification": {
+    "category": "TABLE",
+    "statement_type": "BALANCE_SHEET",
+    "is_primary": false,
+    "confidence": "LOW",
+    "matched_patterns": [
+      "Tables",
+      "Equipment"
+    ],
+    "structural_signals": {},
+    "source": "structural_analysis",
+    "taxonomy_source": "fallback_pattern",
+    "fallback_used": true
+  },
+  "hierarchy": {
+    "roots": [
+      "us-gaap_LessorDisclosureAbstract"
+    ],
+    "children": {
+      "us-gaap_LessorDisclosureAbstract": [
+        "plug_LeasedPropertyAndEquipmentTableTextBlock"
+      ]
+    },
+    "parents": {
+      "plug_LeasedPropertyAndEquipmentTableTextBlock": "us-gaap_LessorDisclosureAbstract"
+    },
+    "order": {
+      "plug_LeasedPropertyAndEquipmentTableTextBlock": "1"
+    }
+  },
+  "facts": [
+    {
+      "concept": "plug_LeasedPropertyAndEquipmentTableTextBlock",
+      "value": "",
+      "context_ref": "Duration_1_1_2024_To_12_31_2024_HuIXPDtafEu4SnZWVFbSRQ",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 1,
+      "order": "1",
+      "parent_concept": "us-gaap_LessorDisclosureAbstract",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Tb_dIcv37I8w0y--_LSkNEBLQ",
+      "display_value": null,
+      "formatted_value": null,
+      "scaling_factor": null
+    }
+  ]
+}

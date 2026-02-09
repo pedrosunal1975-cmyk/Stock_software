@@ -1,0 +1,137 @@
+{
+  "role_uri": "http://www.plugpoweinc.com/role/DisclosureOperatingAndFinanceLeaseLiabilitiesTables",
+  "role_definition": null,
+  "statement_type": "OTHER",
+  "classification": {
+    "category": "TABLE",
+    "statement_type": "OTHER",
+    "is_primary": false,
+    "confidence": "LOW",
+    "matched_patterns": [
+      "Tables"
+    ],
+    "structural_signals": {},
+    "source": "structural_analysis",
+    "taxonomy_source": "fallback_pattern",
+    "fallback_used": true
+  },
+  "hierarchy": {
+    "roots": [
+      "us-gaap_LeasesAbstract"
+    ],
+    "children": {
+      "us-gaap_LeasesAbstract": [
+        "us-gaap_LesseeOperatingLeaseLiabilityMaturityTableTextBlock",
+        "us-gaap_FinanceLeaseLiabilityMaturityTableTextBlock",
+        "plug_ScheduleOfOperatingLeasesOtherInformationTableTextBlock",
+        "plug_ScheduleOfFinanceLeasesOtherInformationTableTextBlock"
+      ]
+    },
+    "parents": {
+      "us-gaap_LesseeOperatingLeaseLiabilityMaturityTableTextBlock": "us-gaap_LeasesAbstract",
+      "us-gaap_FinanceLeaseLiabilityMaturityTableTextBlock": "us-gaap_LeasesAbstract",
+      "plug_ScheduleOfOperatingLeasesOtherInformationTableTextBlock": "us-gaap_LeasesAbstract",
+      "plug_ScheduleOfFinanceLeasesOtherInformationTableTextBlock": "us-gaap_LeasesAbstract"
+    },
+    "order": {
+      "us-gaap_LesseeOperatingLeaseLiabilityMaturityTableTextBlock": "1",
+      "us-gaap_FinanceLeaseLiabilityMaturityTableTextBlock": "2",
+      "plug_ScheduleOfOperatingLeasesOtherInformationTableTextBlock": "3",
+      "plug_ScheduleOfFinanceLeasesOtherInformationTableTextBlock": "4"
+    }
+  },
+  "facts": [
+    {
+      "concept": "us-gaap_LesseeOperatingLeaseLiabilityMaturityTableTextBlock",
+      "value": "",
+      "context_ref": "Duration_1_1_2024_To_12_31_2024_HuIXPDtafEu4SnZWVFbSRQ",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 1,
+      "order": "1",
+      "parent_concept": "us-gaap_LeasesAbstract",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Tb_keEsp5JPUEaYNnTCUGd1vw",
+      "display_value": null,
+      "formatted_value": null,
+      "scaling_factor": null
+    },
+    {
+      "concept": "us-gaap_FinanceLeaseLiabilityMaturityTableTextBlock",
+      "value": "",
+      "context_ref": "Duration_1_1_2024_To_12_31_2024_HuIXPDtafEu4SnZWVFbSRQ",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 1,
+      "order": "2",
+      "parent_concept": "us-gaap_LeasesAbstract",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Group_fL-XFUxWlk2AF_VfXECbPA",
+      "display_value": null,
+      "formatted_value": null,
+      "scaling_factor": null
+    },
+    {
+      "concept": "plug_ScheduleOfOperatingLeasesOtherInformationTableTextBlock",
+      "value": "",
+      "context_ref": "Duration_1_1_2024_To_12_31_2024_HuIXPDtafEu4SnZWVFbSRQ",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 1,
+      "order": "3",
+      "parent_concept": "us-gaap_LeasesAbstract",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Tb_8nm0D4Sk20yjqa18YyoJEw",
+      "display_value": null,
+      "formatted_value": null,
+      "scaling_factor": null
+    },
+    {
+      "concept": "plug_ScheduleOfFinanceLeasesOtherInformationTableTextBlock",
+      "value": "",
+      "context_ref": "Duration_1_1_2024_To_12_31_2024_HuIXPDtafEu4SnZWVFbSRQ",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 1,
+      "order": "4",
+      "parent_concept": "us-gaap_LeasesAbstract",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Tb_nOx9FphyoUq8HnxlFX-4Jg",
+      "display_value": null,
+      "formatted_value": null,
+      "scaling_factor": null
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "role_uri": "http://www.plugpoweinc.com/role/DisclosureSummaryOfSignificantAccountingPoliciesTables",
+  "role_definition": null,
+  "statement_type": "OTHER",
+  "classification": {
+    "category": "TABLE",
+    "statement_type": "OTHER",
+    "is_primary": false,
+    "confidence": "LOW",
+    "matched_patterns": [
+      "Tables"
+    ],
+    "structural_signals": {},
+    "source": "structural_analysis",
+    "taxonomy_source": "fallback_pattern",
+    "fallback_used": true
+  },
+  "hierarchy": {
+    "roots": [
+      "us-gaap_AccountingPoliciesAbstract"
+    ],
+    "children": {
+      "us-gaap_AccountingPoliciesAbstract": [
+        "plug_ScheduleOfPropertyPlantAndEquipmentUsefulLivesTableTextBlock"
+      ]
+    },
+    "parents": {
+      "plug_ScheduleOfPropertyPlantAndEquipmentUsefulLivesTableTextBlock": "us-gaap_AccountingPoliciesAbstract"
+    },
+    "order": {
+      "plug_ScheduleOfPropertyPlantAndEquipmentUsefulLivesTableTextBlock": "1"
+    }
+  },
+  "facts": [
+    {
+      "concept": "plug_ScheduleOfPropertyPlantAndEquipmentUsefulLivesTableTextBlock",
+      "value": "",
+      "context_ref": "Duration_1_1_2024_To_12_31_2024_HuIXPDtafEu4SnZWVFbSRQ",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 1,
+      "order": "1",
+      "parent_concept": "us-gaap_AccountingPoliciesAbstract",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Tb_uOAxOI7I0kCzRTy7qgAJIQ",
+      "display_value": null,
+      "formatted_value": null,
+      "scaling_factor": null
+    }
+  ]
+}

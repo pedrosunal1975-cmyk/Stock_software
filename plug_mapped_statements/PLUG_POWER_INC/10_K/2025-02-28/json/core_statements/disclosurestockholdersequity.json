@@ -1,0 +1,67 @@
+{
+  "role_uri": "http://www.plugpoweinc.com/role/DisclosureStockholdersEquity",
+  "role_definition": null,
+  "statement_type": "EQUITY",
+  "classification": {
+    "category": "CORE_STATEMENT",
+    "statement_type": "EQUITY",
+    "is_primary": true,
+    "confidence": "LOW",
+    "matched_patterns": [
+      "Equity"
+    ],
+    "structural_signals": {
+      "fact_count": 1,
+      "fact_count_pass": false,
+      "max_depth": 2,
+      "depth_pass": true,
+      "root_count": 1,
+      "root_count_pass": true,
+      "structure_score": "2/3"
+    },
+    "source": "structural_analysis",
+    "taxonomy_source": "fallback_pattern",
+    "fallback_used": true
+  },
+  "hierarchy": {
+    "roots": [
+      "us-gaap_EquityAbstract"
+    ],
+    "children": {
+      "us-gaap_EquityAbstract": [
+        "us-gaap_StockholdersEquityNoteDisclosureTextBlock"
+      ]
+    },
+    "parents": {
+      "us-gaap_StockholdersEquityNoteDisclosureTextBlock": "us-gaap_EquityAbstract"
+    },
+    "order": {
+      "us-gaap_StockholdersEquityNoteDisclosureTextBlock": "1"
+    }
+  },
+  "facts": [
+    {
+      "concept": "us-gaap_StockholdersEquityNoteDisclosureTextBlock",
+      "value": "",
+      "context_ref": "Duration_1_1_2024_To_12_31_2024_HuIXPDtafEu4SnZWVFbSRQ",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 1,
+      "order": "1",
+      "parent_concept": "us-gaap_EquityAbstract",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Tb_U4jA03UtGkuQHxgtGbQkNA",
+      "display_value": null,
+      "formatted_value": null,
+      "scaling_factor": null
+    }
+  ]
+}

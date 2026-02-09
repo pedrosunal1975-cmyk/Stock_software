@@ -1,0 +1,221 @@
+{
+  "role_uri": "http://www.plugpoweinc.com/role/DisclosureConvertibleSeniorNotesTables",
+  "role_definition": null,
+  "statement_type": "OTHER",
+  "classification": {
+    "category": "TABLE",
+    "statement_type": "OTHER",
+    "is_primary": false,
+    "confidence": "LOW",
+    "matched_patterns": [
+      "Tables"
+    ],
+    "structural_signals": {},
+    "source": "structural_analysis",
+    "taxonomy_source": "fallback_pattern",
+    "fallback_used": true
+  },
+  "hierarchy": {
+    "roots": [
+      "plug_ConvertibleSeniorNotesAbstract"
+    ],
+    "children": {
+      "plug_ConvertibleSeniorNotesAbstract": [
+        "us-gaap_DebtInstrumentTable"
+      ],
+      "us-gaap_DebtInstrumentTable": [
+        "us-gaap_DebtInstrumentAxis",
+        "us-gaap_DebtInstrumentLineItems"
+      ],
+      "us-gaap_DebtInstrumentAxis": [
+        "us-gaap_DebtInstrumentNameDomain"
+      ],
+      "us-gaap_DebtInstrumentNameDomain": [
+        "plug_SixPercentConvertibleDebentureMember",
+        "plug_SevenPercentConvertibleSeniorNotesMember",
+        "plug_ThreePointSevenFivePercentOfConvertibleSeniorNotesMember"
+      ],
+      "us-gaap_DebtInstrumentLineItems": [
+        "plug_ScheduleOfChangeInCarryingAmountOfConvertibleDebtTableTextBlock",
+        "us-gaap_ConvertibleDebtTableTextBlock",
+        "us-gaap_ScheduleOfDebtTableTextBlock"
+      ]
+    },
+    "parents": {
+      "us-gaap_DebtInstrumentTable": "plug_ConvertibleSeniorNotesAbstract",
+      "us-gaap_DebtInstrumentAxis": "us-gaap_DebtInstrumentTable",
+      "us-gaap_DebtInstrumentNameDomain": "us-gaap_DebtInstrumentAxis",
+      "plug_SixPercentConvertibleDebentureMember": "us-gaap_DebtInstrumentNameDomain",
+      "plug_SevenPercentConvertibleSeniorNotesMember": "us-gaap_DebtInstrumentNameDomain",
+      "plug_ThreePointSevenFivePercentOfConvertibleSeniorNotesMember": "us-gaap_DebtInstrumentNameDomain",
+      "us-gaap_DebtInstrumentLineItems": "us-gaap_DebtInstrumentTable",
+      "plug_ScheduleOfChangeInCarryingAmountOfConvertibleDebtTableTextBlock": "us-gaap_DebtInstrumentLineItems",
+      "us-gaap_ConvertibleDebtTableTextBlock": "us-gaap_DebtInstrumentLineItems",
+      "us-gaap_ScheduleOfDebtTableTextBlock": "us-gaap_DebtInstrumentLineItems"
+    },
+    "order": {
+      "us-gaap_DebtInstrumentTable": "1",
+      "us-gaap_DebtInstrumentAxis": "1",
+      "us-gaap_DebtInstrumentNameDomain": "1",
+      "plug_SixPercentConvertibleDebentureMember": "1",
+      "plug_SevenPercentConvertibleSeniorNotesMember": "2",
+      "plug_ThreePointSevenFivePercentOfConvertibleSeniorNotesMember": "3",
+      "us-gaap_DebtInstrumentLineItems": "2",
+      "plug_ScheduleOfChangeInCarryingAmountOfConvertibleDebtTableTextBlock": "1",
+      "us-gaap_ConvertibleDebtTableTextBlock": "2",
+      "us-gaap_ScheduleOfDebtTableTextBlock": "3"
+    }
+  },
+  "facts": [
+    {
+      "concept": "plug_ScheduleOfChangeInCarryingAmountOfConvertibleDebtTableTextBlock",
+      "value": "",
+      "context_ref": "Duration_1_1_2024_To_12_31_2024_us-gaap_DebtInstrumentAxis_plug_SixPercentConvertibleDebentureMember_pBciBD90BkSEZhlxoLtavg",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 3,
+      "order": "1",
+      "parent_concept": "us-gaap_DebtInstrumentLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {
+        "us-gaap:DebtInstrumentAxis": "plug:SixPercentConvertibleDebentureMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Tb_sA_SnC2DyEOBM27h4pRnEA",
+      "display_value": null,
+      "formatted_value": null,
+      "scaling_factor": null
+    },
+    {
+      "concept": "us-gaap_ConvertibleDebtTableTextBlock",
+      "value": "",
+      "context_ref": "Duration_1_1_2024_To_12_31_2024_us-gaap_DebtInstrumentAxis_plug_SevenPercentConvertibleSeniorNotesMember_gJQ4TQK35EOVwYr6IjwNEw",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 3,
+      "order": "2",
+      "parent_concept": "us-gaap_DebtInstrumentLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {
+        "us-gaap:DebtInstrumentAxis": "plug:SevenPercentConvertibleSeniorNotesMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Tb_7iyHdGWuIEewWEbXPwxXxw",
+      "display_value": null,
+      "formatted_value": null,
+      "scaling_factor": null
+    },
+    {
+      "concept": "us-gaap_ConvertibleDebtTableTextBlock",
+      "value": "",
+      "context_ref": "Duration_1_1_2024_To_12_31_2024_us-gaap_DebtInstrumentAxis_plug_ThreePointSevenFivePercentOfConvertibleSeniorNotesMember_3QbbdA4uwEudJ5MkOiy_3Q",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 3,
+      "order": "2",
+      "parent_concept": "us-gaap_DebtInstrumentLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {
+        "us-gaap:DebtInstrumentAxis": "plug:ThreePointSevenFivePercentOfConvertibleSeniorNotesMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Tb_hIkhBZSvLEqHRGO0nXTriQ",
+      "display_value": null,
+      "formatted_value": null,
+      "scaling_factor": null
+    },
+    {
+      "concept": "us-gaap_ScheduleOfDebtTableTextBlock",
+      "value": "",
+      "context_ref": "Duration_1_1_2024_To_12_31_2024_us-gaap_DebtInstrumentAxis_plug_SixPercentConvertibleDebentureMember_pBciBD90BkSEZhlxoLtavg",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 3,
+      "order": "3",
+      "parent_concept": "us-gaap_DebtInstrumentLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {
+        "us-gaap:DebtInstrumentAxis": "plug:SixPercentConvertibleDebentureMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Tb_IdZ2dYQlc0-YTSnYaTqzjA",
+      "display_value": null,
+      "formatted_value": null,
+      "scaling_factor": null
+    },
+    {
+      "concept": "us-gaap_ScheduleOfDebtTableTextBlock",
+      "value": "",
+      "context_ref": "Duration_1_1_2024_To_12_31_2024_us-gaap_DebtInstrumentAxis_plug_SevenPercentConvertibleSeniorNotesMember_gJQ4TQK35EOVwYr6IjwNEw",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 3,
+      "order": "3",
+      "parent_concept": "us-gaap_DebtInstrumentLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {
+        "us-gaap:DebtInstrumentAxis": "plug:SevenPercentConvertibleSeniorNotesMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Tb_Pce5-w6IjEW2-J1b5rmQcw",
+      "display_value": null,
+      "formatted_value": null,
+      "scaling_factor": null
+    },
+    {
+      "concept": "us-gaap_ScheduleOfDebtTableTextBlock",
+      "value": "",
+      "context_ref": "Duration_1_1_2024_To_12_31_2024_us-gaap_DebtInstrumentAxis_plug_ThreePointSevenFivePercentOfConvertibleSeniorNotesMember_3QbbdA4uwEudJ5MkOiy_3Q",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 3,
+      "order": "3",
+      "parent_concept": "us-gaap_DebtInstrumentLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {
+        "us-gaap:DebtInstrumentAxis": "plug:ThreePointSevenFivePercentOfConvertibleSeniorNotesMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Tb_uASD3CzfO0GUhIT5vrOHWA",
+      "display_value": null,
+      "formatted_value": null,
+      "scaling_factor": null
+    }
+  ]
+}

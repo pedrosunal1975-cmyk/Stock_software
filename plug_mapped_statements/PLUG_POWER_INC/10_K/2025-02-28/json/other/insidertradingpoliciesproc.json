@@ -1,0 +1,25 @@
+{
+  "role_uri": "http://xbrl.sec.gov/ecd/role/InsiderTradingPoliciesProc",
+  "role_definition": null,
+  "statement_type": "OTHER",
+  "classification": {
+    "category": "POLICY",
+    "statement_type": "OTHER",
+    "is_primary": false,
+    "confidence": "LOW",
+    "matched_patterns": [
+      "Policies"
+    ],
+    "structural_signals": {},
+    "source": "structural_analysis",
+    "taxonomy_source": "fallback_pattern",
+    "fallback_used": true
+  },
+  "hierarchy": {
+    "roots": [],
+    "children": {},
+    "parents": {},
+    "order": {}
+  },
+  "facts": []
+}

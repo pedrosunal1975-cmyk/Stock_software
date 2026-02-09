@@ -1,0 +1,217 @@
+{
+  "role_uri": "http://www.plugpoweinc.com/role/DisclosureEmployeeBenefitPlansTables",
+  "role_definition": null,
+  "statement_type": "OTHER",
+  "classification": {
+    "category": "TABLE",
+    "statement_type": "OTHER",
+    "is_primary": false,
+    "confidence": "LOW",
+    "matched_patterns": [
+      "Tables"
+    ],
+    "structural_signals": {},
+    "source": "structural_analysis",
+    "taxonomy_source": "fallback_pattern",
+    "fallback_used": true
+  },
+  "hierarchy": {
+    "roots": [
+      "us-gaap_CompensationAndRetirementDisclosureAbstract"
+    ],
+    "children": {
+      "us-gaap_CompensationAndRetirementDisclosureAbstract": [
+        "us-gaap_StatementTable"
+      ],
+      "us-gaap_StatementTable": [
+        "us-gaap_AwardTypeAxis",
+        "us-gaap_StatementLineItems"
+      ],
+      "us-gaap_AwardTypeAxis": [
+        "us-gaap_ShareBasedCompensationArrangementsByShareBasedPaymentAwardAwardTypeAndPlanNameDomain"
+      ],
+      "us-gaap_ShareBasedCompensationArrangementsByShareBasedPaymentAwardAwardTypeAndPlanNameDomain": [
+        "plug_StockOptionsVestingBasedOnServiceMember",
+        "plug_StockOptionsVestingBasedOnMarketConditionMember"
+      ],
+      "us-gaap_StatementLineItems": [
+        "us-gaap_ScheduleOfEmployeeServiceShareBasedCompensationAllocationOfRecognizedPeriodCostsTextBlock",
+        "us-gaap_ScheduleOfAssumptionsUsedTableTextBlock",
+        "us-gaap_ScheduleOfShareBasedCompensationStockOptionsActivityTableTextBlock",
+        "us-gaap_NonvestedRestrictedStockSharesActivityTableTextBlock"
+      ]
+    },
+    "parents": {
+      "us-gaap_StatementTable": "us-gaap_CompensationAndRetirementDisclosureAbstract",
+      "us-gaap_AwardTypeAxis": "us-gaap_StatementTable",
+      "us-gaap_ShareBasedCompensationArrangementsByShareBasedPaymentAwardAwardTypeAndPlanNameDomain": "us-gaap_AwardTypeAxis",
+      "plug_StockOptionsVestingBasedOnServiceMember": "us-gaap_ShareBasedCompensationArrangementsByShareBasedPaymentAwardAwardTypeAndPlanNameDomain",
+      "plug_StockOptionsVestingBasedOnMarketConditionMember": "us-gaap_ShareBasedCompensationArrangementsByShareBasedPaymentAwardAwardTypeAndPlanNameDomain",
+      "us-gaap_StatementLineItems": "us-gaap_StatementTable",
+      "us-gaap_ScheduleOfEmployeeServiceShareBasedCompensationAllocationOfRecognizedPeriodCostsTextBlock": "us-gaap_StatementLineItems",
+      "us-gaap_ScheduleOfAssumptionsUsedTableTextBlock": "us-gaap_StatementLineItems",
+      "us-gaap_ScheduleOfShareBasedCompensationStockOptionsActivityTableTextBlock": "us-gaap_StatementLineItems",
+      "us-gaap_NonvestedRestrictedStockSharesActivityTableTextBlock": "us-gaap_StatementLineItems"
+    },
+    "order": {
+      "us-gaap_StatementTable": "1",
+      "us-gaap_AwardTypeAxis": "1",
+      "us-gaap_ShareBasedCompensationArrangementsByShareBasedPaymentAwardAwardTypeAndPlanNameDomain": "1",
+      "plug_StockOptionsVestingBasedOnServiceMember": "1",
+      "plug_StockOptionsVestingBasedOnMarketConditionMember": "2",
+      "us-gaap_StatementLineItems": "2",
+      "us-gaap_ScheduleOfEmployeeServiceShareBasedCompensationAllocationOfRecognizedPeriodCostsTextBlock": "1",
+      "us-gaap_ScheduleOfAssumptionsUsedTableTextBlock": "2",
+      "us-gaap_ScheduleOfShareBasedCompensationStockOptionsActivityTableTextBlock": "3",
+      "us-gaap_NonvestedRestrictedStockSharesActivityTableTextBlock": "4"
+    }
+  },
+  "facts": [
+    {
+      "concept": "us-gaap_ScheduleOfEmployeeServiceShareBasedCompensationAllocationOfRecognizedPeriodCostsTextBlock",
+      "value": "",
+      "context_ref": "Duration_1_1_2024_To_12_31_2024_HuIXPDtafEu4SnZWVFbSRQ",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 3,
+      "order": "1",
+      "parent_concept": "us-gaap_StatementLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Tb_65uafZABw0KUc2mUgJlGTA",
+      "display_value": null,
+      "formatted_value": null,
+      "scaling_factor": null
+    },
+    {
+      "concept": "us-gaap_ScheduleOfAssumptionsUsedTableTextBlock",
+      "value": "",
+      "context_ref": "Duration_1_1_2024_To_12_31_2024_us-gaap_AwardTypeAxis_plug_StockOptionsVestingBasedOnServiceMember_ZsQW0K7UbkuBc-14dGgiOQ",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 3,
+      "order": "2",
+      "parent_concept": "us-gaap_StatementLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {
+        "us-gaap:AwardTypeAxis": "plug:StockOptionsVestingBasedOnServiceMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Tb_KU3yi_CbDkW_tkLifoxcfg",
+      "display_value": null,
+      "formatted_value": null,
+      "scaling_factor": null
+    },
+    {
+      "concept": "us-gaap_ScheduleOfAssumptionsUsedTableTextBlock",
+      "value": "",
+      "context_ref": "Duration_1_1_2024_To_12_31_2024_us-gaap_AwardTypeAxis_plug_StockOptionsVestingBasedOnMarketConditionMember_42Gmg3U1XUCkGVg78Gx2KA",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 3,
+      "order": "2",
+      "parent_concept": "us-gaap_StatementLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {
+        "us-gaap:AwardTypeAxis": "plug:StockOptionsVestingBasedOnMarketConditionMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Tb_1Kk85B73-EyxSIhUZ_Rk5Q",
+      "display_value": null,
+      "formatted_value": null,
+      "scaling_factor": null
+    },
+    {
+      "concept": "us-gaap_ScheduleOfShareBasedCompensationStockOptionsActivityTableTextBlock",
+      "value": "",
+      "context_ref": "Duration_1_1_2024_To_12_31_2024_us-gaap_AwardTypeAxis_plug_StockOptionsVestingBasedOnServiceMember_ZsQW0K7UbkuBc-14dGgiOQ",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 3,
+      "order": "3",
+      "parent_concept": "us-gaap_StatementLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {
+        "us-gaap:AwardTypeAxis": "plug:StockOptionsVestingBasedOnServiceMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Tb_CWNPKlSArkGQmWBpXEqrgA",
+      "display_value": null,
+      "formatted_value": null,
+      "scaling_factor": null
+    },
+    {
+      "concept": "us-gaap_ScheduleOfShareBasedCompensationStockOptionsActivityTableTextBlock",
+      "value": "",
+      "context_ref": "Duration_1_1_2024_To_12_31_2024_us-gaap_AwardTypeAxis_plug_StockOptionsVestingBasedOnMarketConditionMember_42Gmg3U1XUCkGVg78Gx2KA",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 3,
+      "order": "3",
+      "parent_concept": "us-gaap_StatementLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {
+        "us-gaap:AwardTypeAxis": "plug:StockOptionsVestingBasedOnMarketConditionMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Tb_-QO95HUn_k-KLz5ou0WhJQ",
+      "display_value": null,
+      "formatted_value": null,
+      "scaling_factor": null
+    },
+    {
+      "concept": "us-gaap_NonvestedRestrictedStockSharesActivityTableTextBlock",
+      "value": "",
+      "context_ref": "Duration_1_1_2024_To_12_31_2024_HuIXPDtafEu4SnZWVFbSRQ",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 3,
+      "order": "4",
+      "parent_concept": "us-gaap_StatementLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Tb_ETgFtY_xekKQfjOhywjDCg",
+      "display_value": null,
+      "formatted_value": null,
+      "scaling_factor": null
+    }
+  ]
+}
