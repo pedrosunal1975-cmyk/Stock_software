@@ -1,0 +1,67 @@
+{
+  "role_uri": "http://www.albertsons.com/role/STOCKHOLDERSEQUITYANDCONVERTIBLEPREFERREDSTOCK",
+  "role_definition": null,
+  "statement_type": "EQUITY",
+  "classification": {
+    "category": "CORE_STATEMENT",
+    "statement_type": "EQUITY",
+    "is_primary": true,
+    "confidence": "LOW",
+    "matched_patterns": [
+      "Equity"
+    ],
+    "structural_signals": {
+      "fact_count": 1,
+      "fact_count_pass": false,
+      "max_depth": 2,
+      "depth_pass": true,
+      "root_count": 1,
+      "root_count_pass": true,
+      "structure_score": "2/3"
+    },
+    "source": "structural_analysis",
+    "taxonomy_source": "fallback_pattern",
+    "fallback_used": true
+  },
+  "hierarchy": {
+    "roots": [
+      "us-gaap_EquityAbstract"
+    ],
+    "children": {
+      "us-gaap_EquityAbstract": [
+        "us-gaap_StockholdersEquityNoteDisclosureTextBlock"
+      ]
+    },
+    "parents": {
+      "us-gaap_StockholdersEquityNoteDisclosureTextBlock": "us-gaap_EquityAbstract"
+    },
+    "order": {
+      "us-gaap_StockholdersEquityNoteDisclosureTextBlock": "1"
+    }
+  },
+  "facts": [
+    {
+      "concept": "us-gaap_StockholdersEquityNoteDisclosureTextBlock",
+      "value": "STOCKHOLDERS' EQUITY AND CONVERTIBLE PREFERRED STOCK",
+      "context_ref": "c-1",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 1,
+      "order": "1",
+      "parent_concept": "us-gaap_EquityAbstract",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-02-25",
+      "period_end": "2025-02-22",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-942",
+      "display_value": "STOCKHOLDERS' EQUITY AND CONVERTIBLE PREFERRED STOCK",
+      "formatted_value": "STOCKHOLDERS' EQUITY AND CONVERTIBLE PREFERRED STOCK",
+      "scaling_factor": 1
+    }
+  ]
+}

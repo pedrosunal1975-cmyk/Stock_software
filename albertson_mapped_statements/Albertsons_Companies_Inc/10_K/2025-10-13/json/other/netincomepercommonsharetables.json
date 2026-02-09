@@ -1,0 +1,60 @@
+{
+  "role_uri": "http://www.albertsons.com/role/NETINCOMEPERCOMMONSHARETables",
+  "role_definition": null,
+  "statement_type": "INCOME_STATEMENT",
+  "classification": {
+    "category": "TABLE",
+    "statement_type": "INCOME_STATEMENT",
+    "is_primary": false,
+    "confidence": "LOW",
+    "matched_patterns": [
+      "Tables",
+      "Income"
+    ],
+    "structural_signals": {},
+    "source": "structural_analysis",
+    "taxonomy_source": "fallback_pattern",
+    "fallback_used": true
+  },
+  "hierarchy": {
+    "roots": [
+      "us-gaap_EarningsPerShareAbstract"
+    ],
+    "children": {
+      "us-gaap_EarningsPerShareAbstract": [
+        "us-gaap_ScheduleOfEarningsPerShareBasicAndDilutedTableTextBlock"
+      ]
+    },
+    "parents": {
+      "us-gaap_ScheduleOfEarningsPerShareBasicAndDilutedTableTextBlock": "us-gaap_EarningsPerShareAbstract"
+    },
+    "order": {
+      "us-gaap_ScheduleOfEarningsPerShareBasicAndDilutedTableTextBlock": "1"
+    }
+  },
+  "facts": [
+    {
+      "concept": "us-gaap_ScheduleOfEarningsPerShareBasicAndDilutedTableTextBlock",
+      "value": "",
+      "context_ref": "c-1",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 1,
+      "order": "1",
+      "parent_concept": "us-gaap_EarningsPerShareAbstract",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-02-25",
+      "period_end": "2025-02-22",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-1796",
+      "display_value": null,
+      "formatted_value": null,
+      "scaling_factor": null
+    }
+  ]
+}

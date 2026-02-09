@@ -1,0 +1,67 @@
+{
+  "role_uri": "http://www.albertsons.com/role/EQUITYBASEDCOMPENSATION",
+  "role_definition": null,
+  "statement_type": "EQUITY",
+  "classification": {
+    "category": "CORE_STATEMENT",
+    "statement_type": "EQUITY",
+    "is_primary": true,
+    "confidence": "LOW",
+    "matched_patterns": [
+      "Equity"
+    ],
+    "structural_signals": {
+      "fact_count": 1,
+      "fact_count_pass": false,
+      "max_depth": 2,
+      "depth_pass": true,
+      "root_count": 1,
+      "root_count_pass": true,
+      "structure_score": "2/3"
+    },
+    "source": "structural_analysis",
+    "taxonomy_source": "fallback_pattern",
+    "fallback_used": true
+  },
+  "hierarchy": {
+    "roots": [
+      "us-gaap_DisclosureOfCompensationRelatedCostsSharebasedPaymentsAbstract"
+    ],
+    "children": {
+      "us-gaap_DisclosureOfCompensationRelatedCostsSharebasedPaymentsAbstract": [
+        "us-gaap_DisclosureOfCompensationRelatedCostsShareBasedPaymentsTextBlock"
+      ]
+    },
+    "parents": {
+      "us-gaap_DisclosureOfCompensationRelatedCostsShareBasedPaymentsTextBlock": "us-gaap_DisclosureOfCompensationRelatedCostsSharebasedPaymentsAbstract"
+    },
+    "order": {
+      "us-gaap_DisclosureOfCompensationRelatedCostsShareBasedPaymentsTextBlock": "1"
+    }
+  },
+  "facts": [
+    {
+      "concept": "us-gaap_DisclosureOfCompensationRelatedCostsShareBasedPaymentsTextBlock",
+      "value": "EQUITY-BASED COMPENSATION",
+      "context_ref": "c-1",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 1,
+      "order": "1",
+      "parent_concept": "us-gaap_DisclosureOfCompensationRelatedCostsSharebasedPaymentsAbstract",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-02-25",
+      "period_end": "2025-02-22",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-997",
+      "display_value": "EQUITY-BASED COMPENSATION",
+      "formatted_value": "EQUITY-BASED COMPENSATION",
+      "scaling_factor": 1
+    }
+  ]
+}

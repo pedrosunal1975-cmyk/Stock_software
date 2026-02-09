@@ -1,0 +1,154 @@
+{
+  "role_uri": "http://www.albertsons.com/role/ConsolidatedStatementsofStockholdersEquityParenthetical",
+  "role_definition": null,
+  "statement_type": "EQUITY",
+  "classification": {
+    "category": "PARENTHETICAL",
+    "statement_type": "EQUITY",
+    "is_primary": false,
+    "confidence": "LOW",
+    "matched_patterns": [
+      "Parenthetical",
+      "Equity"
+    ],
+    "structural_signals": {},
+    "source": "structural_analysis",
+    "taxonomy_source": "fallback_pattern",
+    "fallback_used": true
+  },
+  "hierarchy": {
+    "roots": [
+      "us-gaap_StatementOfStockholdersEquityAbstract"
+    ],
+    "children": {
+      "us-gaap_StatementOfStockholdersEquityAbstract": [
+        "us-gaap_StatementTable"
+      ],
+      "us-gaap_StatementTable": [
+        "us-gaap_StatementClassOfStockAxis",
+        "us-gaap_StatementLineItems"
+      ],
+      "us-gaap_StatementClassOfStockAxis": [
+        "us-gaap_ClassOfStockDomain"
+      ],
+      "us-gaap_ClassOfStockDomain": [
+        "us-gaap_CommonClassAMember"
+      ],
+      "us-gaap_StatementLineItems": [
+        "us-gaap_CommonStockDividendsPerShareDeclared"
+      ]
+    },
+    "parents": {
+      "us-gaap_StatementTable": "us-gaap_StatementOfStockholdersEquityAbstract",
+      "us-gaap_StatementClassOfStockAxis": "us-gaap_StatementTable",
+      "us-gaap_ClassOfStockDomain": "us-gaap_StatementClassOfStockAxis",
+      "us-gaap_CommonClassAMember": "us-gaap_ClassOfStockDomain",
+      "us-gaap_StatementLineItems": "us-gaap_StatementTable",
+      "us-gaap_CommonStockDividendsPerShareDeclared": "us-gaap_StatementLineItems"
+    },
+    "order": {
+      "us-gaap_StatementTable": "1",
+      "us-gaap_StatementClassOfStockAxis": "1",
+      "us-gaap_ClassOfStockDomain": "1",
+      "us-gaap_CommonClassAMember": "1",
+      "us-gaap_StatementLineItems": "2",
+      "us-gaap_CommonStockDividendsPerShareDeclared": "1"
+    }
+  },
+  "facts": [
+    {
+      "concept": "us-gaap_CommonStockDividendsPerShareDeclared",
+      "value": "6.85",
+      "context_ref": "c-29",
+      "unit_ref": "usdPerShare",
+      "decimals": "INF",
+      "level": 3,
+      "order": "1",
+      "parent_concept": "us-gaap_StatementLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2022-02-27",
+      "period_end": "2023-02-25",
+      "dimensions": {
+        "us-gaap:StatementClassOfStockAxis": "us-gaap:CommonClassAMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-367",
+      "display_value": "6.85",
+      "formatted_value": "$7",
+      "scaling_factor": 1.0
+    },
+    {
+      "concept": "us-gaap_CommonStockDividendsPerShareDeclared",
+      "value": "0.48",
+      "context_ref": "c-17",
+      "unit_ref": "usdPerShare",
+      "decimals": "INF",
+      "level": 3,
+      "order": "1",
+      "parent_concept": "us-gaap_StatementLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2022-02-27",
+      "period_end": "2023-02-25",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-371",
+      "display_value": "0.48",
+      "formatted_value": "$0",
+      "scaling_factor": 1.0
+    },
+    {
+      "concept": "us-gaap_CommonStockDividendsPerShareDeclared",
+      "value": "0.48",
+      "context_ref": "c-16",
+      "unit_ref": "usdPerShare",
+      "decimals": "INF",
+      "level": 3,
+      "order": "1",
+      "parent_concept": "us-gaap_StatementLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2023-02-26",
+      "period_end": "2024-02-24",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-400",
+      "display_value": "0.48",
+      "formatted_value": "$0",
+      "scaling_factor": 1.0
+    },
+    {
+      "concept": "us-gaap_CommonStockDividendsPerShareDeclared",
+      "value": "0.51",
+      "context_ref": "c-1",
+      "unit_ref": "usdPerShare",
+      "decimals": "INF",
+      "level": 3,
+      "order": "1",
+      "parent_concept": "us-gaap_StatementLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-02-25",
+      "period_end": "2025-02-22",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-429",
+      "display_value": "0.51",
+      "formatted_value": "$1",
+      "scaling_factor": 1.0
+    }
+  ]
+}

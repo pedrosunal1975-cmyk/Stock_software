@@ -1,0 +1,468 @@
+{
+  "role_uri": "http://www.albertsons.com/role/COMMITMENTSANDCONTINGENCIESANDOFFBALANCESHEETARRANGEMENTSLegalContingenciesDetails",
+  "role_definition": null,
+  "statement_type": "BALANCE_SHEET",
+  "classification": {
+    "category": "DETAIL",
+    "statement_type": "BALANCE_SHEET",
+    "is_primary": false,
+    "confidence": "LOW",
+    "matched_patterns": [
+      "Details",
+      "BalanceSheet"
+    ],
+    "structural_signals": {},
+    "source": "structural_analysis",
+    "taxonomy_source": "fallback_pattern",
+    "fallback_used": true
+  },
+  "hierarchy": {
+    "roots": [
+      "us-gaap_CommitmentsAndContingenciesDisclosureAbstract"
+    ],
+    "children": {
+      "us-gaap_CommitmentsAndContingenciesDisclosureAbstract": [
+        "us-gaap_LossContingenciesTable"
+      ],
+      "us-gaap_LossContingenciesTable": [
+        "srt_LitigationCaseAxis",
+        "us-gaap_LitigationStatusAxis",
+        "srt_RangeAxis",
+        "srt_CounterpartyNameAxis",
+        "us-gaap_LossContingenciesLineItems"
+      ],
+      "srt_LitigationCaseAxis": [
+        "srt_LitigationCaseTypeDomain"
+      ],
+      "srt_LitigationCaseTypeDomain": [
+        "aci_QuiTamLawsuitsMember",
+        "aci_UnitedStatesExRelSchutteAndYarberryVSuperValuNewAlbertsonsIncEtAlMember",
+        "aci_PharmacyBenefitManagerPBMLitigationMember",
+        "aci_ConsolidatedCasesForMultidistrictLitigationMember"
+      ],
+      "us-gaap_LitigationStatusAxis": [
+        "us-gaap_LitigationStatusDomain"
+      ],
+      "us-gaap_LitigationStatusDomain": [
+        "us-gaap_PendingLitigationMember",
+        "us-gaap_ThreatenedLitigationMember"
+      ],
+      "srt_RangeAxis": [
+        "srt_RangeMember"
+      ],
+      "srt_RangeMember": [
+        "srt_MinimumMember"
+      ],
+      "srt_CounterpartyNameAxis": [
+        "srt_RepurchaseAgreementCounterpartyNameDomain"
+      ],
+      "srt_RepurchaseAgreementCounterpartyNameDomain": [
+        "aci_BlackfeetTribeMember",
+        "aci_TarrantCountyTexasTownOfHullMassachusettsAndMontereyCountyCaliforniaMember",
+        "aci_NewMexicoCountiesMember"
+      ],
+      "us-gaap_LossContingenciesLineItems": [
+        "us-gaap_LossContingencyPendingClaimsNumber",
+        "us-gaap_LossContingencyDamagesSoughtValue",
+        "us-gaap_LossContingencyNewClaimsFiledNumber",
+        "aci_LossContingencyAdditionalClaimsNumber",
+        "us-gaap_LossContingencyClaimsSettledNumber",
+        "us-gaap_LossContingencyAccrualAtCarryingValue"
+      ]
+    },
+    "parents": {
+      "us-gaap_LossContingenciesTable": "us-gaap_CommitmentsAndContingenciesDisclosureAbstract",
+      "srt_LitigationCaseAxis": "us-gaap_LossContingenciesTable",
+      "srt_LitigationCaseTypeDomain": "srt_LitigationCaseAxis",
+      "aci_QuiTamLawsuitsMember": "srt_LitigationCaseTypeDomain",
+      "aci_UnitedStatesExRelSchutteAndYarberryVSuperValuNewAlbertsonsIncEtAlMember": "srt_LitigationCaseTypeDomain",
+      "aci_PharmacyBenefitManagerPBMLitigationMember": "srt_LitigationCaseTypeDomain",
+      "aci_ConsolidatedCasesForMultidistrictLitigationMember": "srt_LitigationCaseTypeDomain",
+      "us-gaap_LitigationStatusAxis": "us-gaap_LossContingenciesTable",
+      "us-gaap_LitigationStatusDomain": "us-gaap_LitigationStatusAxis",
+      "us-gaap_PendingLitigationMember": "us-gaap_LitigationStatusDomain",
+      "us-gaap_ThreatenedLitigationMember": "us-gaap_LitigationStatusDomain",
+      "srt_RangeAxis": "us-gaap_LossContingenciesTable",
+      "srt_RangeMember": "srt_RangeAxis",
+      "srt_MinimumMember": "srt_RangeMember",
+      "srt_CounterpartyNameAxis": "us-gaap_LossContingenciesTable",
+      "srt_RepurchaseAgreementCounterpartyNameDomain": "srt_CounterpartyNameAxis",
+      "aci_BlackfeetTribeMember": "srt_RepurchaseAgreementCounterpartyNameDomain",
+      "aci_TarrantCountyTexasTownOfHullMassachusettsAndMontereyCountyCaliforniaMember": "srt_RepurchaseAgreementCounterpartyNameDomain",
+      "aci_NewMexicoCountiesMember": "srt_RepurchaseAgreementCounterpartyNameDomain",
+      "us-gaap_LossContingenciesLineItems": "us-gaap_LossContingenciesTable",
+      "us-gaap_LossContingencyPendingClaimsNumber": "us-gaap_LossContingenciesLineItems",
+      "us-gaap_LossContingencyDamagesSoughtValue": "us-gaap_LossContingenciesLineItems",
+      "us-gaap_LossContingencyNewClaimsFiledNumber": "us-gaap_LossContingenciesLineItems",
+      "aci_LossContingencyAdditionalClaimsNumber": "us-gaap_LossContingenciesLineItems",
+      "us-gaap_LossContingencyClaimsSettledNumber": "us-gaap_LossContingenciesLineItems",
+      "us-gaap_LossContingencyAccrualAtCarryingValue": "us-gaap_LossContingenciesLineItems"
+    },
+    "order": {
+      "us-gaap_LossContingenciesTable": "1",
+      "srt_LitigationCaseAxis": "1",
+      "srt_LitigationCaseTypeDomain": "1",
+      "aci_QuiTamLawsuitsMember": "1",
+      "aci_UnitedStatesExRelSchutteAndYarberryVSuperValuNewAlbertsonsIncEtAlMember": "2",
+      "aci_PharmacyBenefitManagerPBMLitigationMember": "3",
+      "aci_ConsolidatedCasesForMultidistrictLitigationMember": "4",
+      "us-gaap_LitigationStatusAxis": "2",
+      "us-gaap_LitigationStatusDomain": "1",
+      "us-gaap_PendingLitigationMember": "1",
+      "us-gaap_ThreatenedLitigationMember": "2",
+      "srt_RangeAxis": "3",
+      "srt_RangeMember": "1",
+      "srt_MinimumMember": "1",
+      "srt_CounterpartyNameAxis": "4",
+      "srt_RepurchaseAgreementCounterpartyNameDomain": "1",
+      "aci_BlackfeetTribeMember": "1",
+      "aci_TarrantCountyTexasTownOfHullMassachusettsAndMontereyCountyCaliforniaMember": "2",
+      "aci_NewMexicoCountiesMember": "3",
+      "us-gaap_LossContingenciesLineItems": "5",
+      "us-gaap_LossContingencyPendingClaimsNumber": "1",
+      "us-gaap_LossContingencyDamagesSoughtValue": "2",
+      "us-gaap_LossContingencyNewClaimsFiledNumber": "3",
+      "aci_LossContingencyAdditionalClaimsNumber": "4",
+      "us-gaap_LossContingencyClaimsSettledNumber": "5",
+      "us-gaap_LossContingencyAccrualAtCarryingValue": "6"
+    }
+  },
+  "facts": [
+    {
+      "concept": "us-gaap_LossContingencyPendingClaimsNumber",
+      "value": "Two",
+      "context_ref": "c-430",
+      "unit_ref": "lawsuit",
+      "decimals": "INF",
+      "level": 3,
+      "order": "1",
+      "parent_concept": "us-gaap_LossContingenciesLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2025-02-22",
+      "dimensions": {
+        "srt:LitigationCaseAxis": "aci:QuiTamLawsuitsMember",
+        "us-gaap:LitigationStatusAxis": "us-gaap:PendingLitigationMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-1674",
+      "display_value": "Two",
+      "formatted_value": "Two",
+      "scaling_factor": 1.0
+    },
+    {
+      "concept": "us-gaap_LossContingencyPendingClaimsNumber",
+      "value": "two",
+      "context_ref": "c-431",
+      "unit_ref": "case",
+      "decimals": "INF",
+      "level": 3,
+      "order": "1",
+      "parent_concept": "us-gaap_LossContingenciesLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2023-04-18",
+      "dimensions": {
+        "srt:LitigationCaseAxis": "aci:UnitedStatesExRelSchutteAndYarberryVSuperValuNewAlbertsonsIncEtAlMember",
+        "us-gaap:LitigationStatusAxis": "us-gaap:PendingLitigationMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-1675",
+      "display_value": "two",
+      "formatted_value": "two",
+      "scaling_factor": 1.0
+    },
+    {
+      "concept": "us-gaap_LossContingencyPendingClaimsNumber",
+      "value": "17",
+      "context_ref": "c-433",
+      "unit_ref": "count",
+      "decimals": "INF",
+      "level": 3,
+      "order": "1",
+      "parent_concept": "us-gaap_LossContingenciesLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2023-08-09",
+      "dimensions": {
+        "srt:LitigationCaseAxis": "aci:PharmacyBenefitManagerPBMLitigationMember",
+        "us-gaap:LitigationStatusAxis": "us-gaap:PendingLitigationMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-1677",
+      "display_value": "17",
+      "formatted_value": "17",
+      "scaling_factor": 1.0
+    },
+    {
+      "concept": "us-gaap_LossContingencyPendingClaimsNumber",
+      "value": "2000",
+      "context_ref": "c-435",
+      "unit_ref": "case",
+      "decimals": "-3",
+      "level": 3,
+      "order": "1",
+      "parent_concept": "us-gaap_LossContingenciesLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2025-02-22",
+      "dimensions": {
+        "srt:LitigationCaseAxis": "aci:ConsolidatedCasesForMultidistrictLitigationMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-1679",
+      "display_value": "2000000",
+      "formatted_value": "2,000,000",
+      "scaling_factor": 1000
+    },
+    {
+      "concept": "us-gaap_LossContingencyPendingClaimsNumber",
+      "value": "two",
+      "context_ref": "c-436",
+      "unit_ref": "claim",
+      "decimals": "INF",
+      "level": 3,
+      "order": "1",
+      "parent_concept": "us-gaap_LossContingenciesLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2025-02-22",
+      "dimensions": {
+        "us-gaap:LitigationStatusAxis": "us-gaap:ThreatenedLitigationMember",
+        "srt:LitigationCaseAxis": "aci:ConsolidatedCasesForMultidistrictLitigationMember",
+        "srt:CounterpartyNameAxis": "aci:TarrantCountyTexasTownOfHullMassachusettsAndMontereyCountyCaliforniaMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-1680",
+      "display_value": "two",
+      "formatted_value": "two",
+      "scaling_factor": 1.0
+    },
+    {
+      "concept": "us-gaap_LossContingencyPendingClaimsNumber",
+      "value": "three",
+      "context_ref": "c-440",
+      "unit_ref": "claim",
+      "decimals": "INF",
+      "level": 3,
+      "order": "1",
+      "parent_concept": "us-gaap_LossContingenciesLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2022-09-06",
+      "dimensions": {
+        "srt:LitigationCaseAxis": "aci:ConsolidatedCasesForMultidistrictLitigationMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-1684",
+      "display_value": "three",
+      "formatted_value": "three",
+      "scaling_factor": 1.0
+    },
+    {
+      "concept": "us-gaap_LossContingencyPendingClaimsNumber",
+      "value": "three",
+      "context_ref": "c-435",
+      "unit_ref": "claim",
+      "decimals": "INF",
+      "level": 3,
+      "order": "1",
+      "parent_concept": "us-gaap_LossContingenciesLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2025-02-22",
+      "dimensions": {
+        "srt:LitigationCaseAxis": "aci:ConsolidatedCasesForMultidistrictLitigationMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-1686",
+      "display_value": "three",
+      "formatted_value": "three",
+      "scaling_factor": 1.0
+    },
+    {
+      "concept": "us-gaap_LossContingencyDamagesSoughtValue",
+      "value": "100",
+      "context_ref": "c-432",
+      "unit_ref": "usd",
+      "decimals": "-6",
+      "level": 3,
+      "order": "2",
+      "parent_concept": "us-gaap_LossContingenciesLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-02-25",
+      "period_end": "2025-02-22",
+      "dimensions": {
+        "us-gaap:LitigationStatusAxis": "us-gaap:PendingLitigationMember",
+        "srt:LitigationCaseAxis": "aci:QuiTamLawsuitsMember",
+        "srt:RangeAxis": "srt:MinimumMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-1676",
+      "display_value": "100000000",
+      "formatted_value": "$100,000,000",
+      "scaling_factor": 1000000
+    },
+    {
+      "concept": "us-gaap_LossContingencyNewClaimsFiledNumber",
+      "value": "81",
+      "context_ref": "c-434",
+      "unit_ref": "lawsuit",
+      "decimals": "0",
+      "level": 3,
+      "order": "3",
+      "parent_concept": "us-gaap_LossContingenciesLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-02-25",
+      "period_end": "2025-02-22",
+      "dimensions": {
+        "us-gaap:LitigationStatusAxis": "us-gaap:ThreatenedLitigationMember",
+        "srt:LitigationCaseAxis": "aci:ConsolidatedCasesForMultidistrictLitigationMember",
+        "srt:CounterpartyNameAxis": "aci:BlackfeetTribeMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-1678",
+      "display_value": "81",
+      "formatted_value": "81",
+      "scaling_factor": 1
+    },
+    {
+      "concept": "aci_LossContingencyAdditionalClaimsNumber",
+      "value": "150",
+      "context_ref": "c-437",
+      "unit_ref": "lawsuit",
+      "decimals": "-1",
+      "level": 3,
+      "order": "4",
+      "parent_concept": "us-gaap_LossContingenciesLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-07-30",
+      "period_end": "2024-07-30",
+      "dimensions": {
+        "srt:LitigationCaseAxis": "aci:ConsolidatedCasesForMultidistrictLitigationMember",
+        "us-gaap:LitigationStatusAxis": "us-gaap:ThreatenedLitigationMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-1681",
+      "display_value": "1500",
+      "formatted_value": "1,500",
+      "scaling_factor": 10
+    },
+    {
+      "concept": "aci_LossContingencyAdditionalClaimsNumber",
+      "value": "14",
+      "context_ref": "c-438",
+      "unit_ref": "lawsuit",
+      "decimals": "INF",
+      "level": 3,
+      "order": "4",
+      "parent_concept": "us-gaap_LossContingenciesLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2022-09-06",
+      "period_end": "2022-09-06",
+      "dimensions": {
+        "srt:LitigationCaseAxis": "aci:ConsolidatedCasesForMultidistrictLitigationMember",
+        "srt:CounterpartyNameAxis": "aci:NewMexicoCountiesMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-1682",
+      "display_value": "14",
+      "formatted_value": "14",
+      "scaling_factor": 1.0
+    },
+    {
+      "concept": "us-gaap_LossContingencyClaimsSettledNumber",
+      "value": "15",
+      "context_ref": "c-439",
+      "unit_ref": "case",
+      "decimals": "INF",
+      "level": 3,
+      "order": "5",
+      "parent_concept": "us-gaap_LossContingenciesLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2022-09-06",
+      "period_end": "2022-09-06",
+      "dimensions": {
+        "srt:LitigationCaseAxis": "aci:ConsolidatedCasesForMultidistrictLitigationMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-1683",
+      "display_value": "15",
+      "formatted_value": "15",
+      "scaling_factor": 1.0
+    },
+    {
+      "concept": "us-gaap_LossContingencyAccrualAtCarryingValue",
+      "value": "21.5",
+      "context_ref": "c-441",
+      "unit_ref": "usd",
+      "decimals": "-5",
+      "level": 3,
+      "order": "6",
+      "parent_concept": "us-gaap_LossContingenciesLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2023-02-25",
+      "dimensions": {
+        "srt:LitigationCaseAxis": "aci:ConsolidatedCasesForMultidistrictLitigationMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-1685",
+      "display_value": "2150000.0",
+      "formatted_value": "$2,150,000",
+      "scaling_factor": 100000
+    }
+  ]
+}

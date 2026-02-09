@@ -1,0 +1,60 @@
+{
+  "role_uri": "http://www.albertsons.com/role/PROPERTYANDEQUIPMENTTables",
+  "role_definition": null,
+  "statement_type": "BALANCE_SHEET",
+  "classification": {
+    "category": "TABLE",
+    "statement_type": "BALANCE_SHEET",
+    "is_primary": false,
+    "confidence": "LOW",
+    "matched_patterns": [
+      "Tables",
+      "Property"
+    ],
+    "structural_signals": {},
+    "source": "structural_analysis",
+    "taxonomy_source": "fallback_pattern",
+    "fallback_used": true
+  },
+  "hierarchy": {
+    "roots": [
+      "us-gaap_PropertyPlantAndEquipmentAbstract"
+    ],
+    "children": {
+      "us-gaap_PropertyPlantAndEquipmentAbstract": [
+        "us-gaap_PropertyPlantAndEquipmentTextBlock"
+      ]
+    },
+    "parents": {
+      "us-gaap_PropertyPlantAndEquipmentTextBlock": "us-gaap_PropertyPlantAndEquipmentAbstract"
+    },
+    "order": {
+      "us-gaap_PropertyPlantAndEquipmentTextBlock": "1"
+    }
+  },
+  "facts": [
+    {
+      "concept": "us-gaap_PropertyPlantAndEquipmentTextBlock",
+      "value": "",
+      "context_ref": "c-1",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 1,
+      "order": "1",
+      "parent_concept": "us-gaap_PropertyPlantAndEquipmentAbstract",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-02-25",
+      "period_end": "2025-02-22",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-604",
+      "display_value": null,
+      "formatted_value": null,
+      "scaling_factor": null
+    }
+  ]
+}

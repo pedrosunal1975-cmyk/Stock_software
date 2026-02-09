@@ -1,0 +1,329 @@
+{
+  "role_uri": "http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESCompanyOwnedLifeInsuranceandSelfInsuranceLiabilitiesDetails",
+  "role_definition": null,
+  "statement_type": "OTHER",
+  "classification": {
+    "category": "DETAIL",
+    "statement_type": "OTHER",
+    "is_primary": false,
+    "confidence": "LOW",
+    "matched_patterns": [
+      "Details"
+    ],
+    "structural_signals": {},
+    "source": "structural_analysis",
+    "taxonomy_source": "fallback_pattern",
+    "fallback_used": true
+  },
+  "hierarchy": {
+    "roots": [
+      "us-gaap_OrganizationConsolidationAndPresentationOfFinancialStatementsAbstract"
+    ],
+    "children": {
+      "us-gaap_OrganizationConsolidationAndPresentationOfFinancialStatementsAbstract": [
+        "aci_ScheduleOfSelfInsuranceLiabilityTable"
+      ],
+      "aci_ScheduleOfSelfInsuranceLiabilityTable": [
+        "us-gaap_BalanceSheetLocationAxis",
+        "srt_RangeAxis",
+        "aci_ScheduleOfChangesInSelfInsuranceLiabilityLineItems"
+      ],
+      "us-gaap_BalanceSheetLocationAxis": [
+        "us-gaap_BalanceSheetLocationDomain"
+      ],
+      "us-gaap_BalanceSheetLocationDomain": [
+        "aci_ReceivablesNetCurrentMember",
+        "us-gaap_OtherAssetsMember"
+      ],
+      "srt_RangeAxis": [
+        "srt_RangeMember"
+      ],
+      "srt_RangeMember": [
+        "srt_MinimumMember",
+        "srt_MaximumMember"
+      ],
+      "aci_ScheduleOfChangesInSelfInsuranceLiabilityLineItems": [
+        "us-gaap_CashSurrenderValueOfLifeInsurance",
+        "us-gaap_LifeInsuranceCorporateOrBankOwnedAmount",
+        "aci_LifeInsuranceCorporateOrBankOwnedStopLossThresholdPerClaim",
+        "us-gaap_ReinsuranceRecoverables"
+      ]
+    },
+    "parents": {
+      "aci_ScheduleOfSelfInsuranceLiabilityTable": "us-gaap_OrganizationConsolidationAndPresentationOfFinancialStatementsAbstract",
+      "us-gaap_BalanceSheetLocationAxis": "aci_ScheduleOfSelfInsuranceLiabilityTable",
+      "us-gaap_BalanceSheetLocationDomain": "us-gaap_BalanceSheetLocationAxis",
+      "aci_ReceivablesNetCurrentMember": "us-gaap_BalanceSheetLocationDomain",
+      "us-gaap_OtherAssetsMember": "us-gaap_BalanceSheetLocationDomain",
+      "srt_RangeAxis": "aci_ScheduleOfSelfInsuranceLiabilityTable",
+      "srt_RangeMember": "srt_RangeAxis",
+      "srt_MinimumMember": "srt_RangeMember",
+      "srt_MaximumMember": "srt_RangeMember",
+      "aci_ScheduleOfChangesInSelfInsuranceLiabilityLineItems": "aci_ScheduleOfSelfInsuranceLiabilityTable",
+      "us-gaap_CashSurrenderValueOfLifeInsurance": "aci_ScheduleOfChangesInSelfInsuranceLiabilityLineItems",
+      "us-gaap_LifeInsuranceCorporateOrBankOwnedAmount": "aci_ScheduleOfChangesInSelfInsuranceLiabilityLineItems",
+      "aci_LifeInsuranceCorporateOrBankOwnedStopLossThresholdPerClaim": "aci_ScheduleOfChangesInSelfInsuranceLiabilityLineItems",
+      "us-gaap_ReinsuranceRecoverables": "aci_ScheduleOfChangesInSelfInsuranceLiabilityLineItems"
+    },
+    "order": {
+      "aci_ScheduleOfSelfInsuranceLiabilityTable": "1",
+      "us-gaap_BalanceSheetLocationAxis": "1",
+      "us-gaap_BalanceSheetLocationDomain": "1",
+      "aci_ReceivablesNetCurrentMember": "1",
+      "us-gaap_OtherAssetsMember": "2",
+      "srt_RangeAxis": "2",
+      "srt_RangeMember": "1",
+      "srt_MinimumMember": "1",
+      "srt_MaximumMember": "2",
+      "aci_ScheduleOfChangesInSelfInsuranceLiabilityLineItems": "3",
+      "us-gaap_CashSurrenderValueOfLifeInsurance": "1",
+      "us-gaap_LifeInsuranceCorporateOrBankOwnedAmount": "2",
+      "aci_LifeInsuranceCorporateOrBankOwnedStopLossThresholdPerClaim": "3",
+      "us-gaap_ReinsuranceRecoverables": "4"
+    }
+  },
+  "facts": [
+    {
+      "concept": "us-gaap_CashSurrenderValueOfLifeInsurance",
+      "value": "138.1",
+      "context_ref": "c-4",
+      "unit_ref": "usd",
+      "decimals": "-5",
+      "level": 3,
+      "order": "1",
+      "parent_concept": "aci_ScheduleOfChangesInSelfInsuranceLiabilityLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2025-02-22",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-514",
+      "display_value": "13810000.0",
+      "formatted_value": "$13,810,000",
+      "scaling_factor": 100000
+    },
+    {
+      "concept": "us-gaap_CashSurrenderValueOfLifeInsurance",
+      "value": "136.2",
+      "context_ref": "c-5",
+      "unit_ref": "usd",
+      "decimals": "-5",
+      "level": 3,
+      "order": "1",
+      "parent_concept": "aci_ScheduleOfChangesInSelfInsuranceLiabilityLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2024-02-24",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-515",
+      "display_value": "13620000.0",
+      "formatted_value": "$13,620,000",
+      "scaling_factor": 100000
+    },
+    {
+      "concept": "us-gaap_LifeInsuranceCorporateOrBankOwnedAmount",
+      "value": "83.1",
+      "context_ref": "c-4",
+      "unit_ref": "usd",
+      "decimals": "-5",
+      "level": 3,
+      "order": "2",
+      "parent_concept": "aci_ScheduleOfChangesInSelfInsuranceLiabilityLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2025-02-22",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-516",
+      "display_value": "8310000.0",
+      "formatted_value": "$8,310,000",
+      "scaling_factor": 100000
+    },
+    {
+      "concept": "us-gaap_LifeInsuranceCorporateOrBankOwnedAmount",
+      "value": "82.3",
+      "context_ref": "c-5",
+      "unit_ref": "usd",
+      "decimals": "-5",
+      "level": 3,
+      "order": "2",
+      "parent_concept": "aci_ScheduleOfChangesInSelfInsuranceLiabilityLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2024-02-24",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-517",
+      "display_value": "8230000.0",
+      "formatted_value": "$8,230,000",
+      "scaling_factor": 100000
+    },
+    {
+      "concept": "aci_LifeInsuranceCorporateOrBankOwnedStopLossThresholdPerClaim",
+      "value": "0.25",
+      "context_ref": "c-73",
+      "unit_ref": "usd",
+      "decimals": "-4",
+      "level": 3,
+      "order": "3",
+      "parent_concept": "aci_ScheduleOfChangesInSelfInsuranceLiabilityLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-02-25",
+      "period_end": "2025-02-22",
+      "dimensions": {
+        "srt:RangeAxis": "srt:MinimumMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-520",
+      "display_value": "2500.00",
+      "formatted_value": "$2,500",
+      "scaling_factor": 10000
+    },
+    {
+      "concept": "aci_LifeInsuranceCorporateOrBankOwnedStopLossThresholdPerClaim",
+      "value": "10.0",
+      "context_ref": "c-74",
+      "unit_ref": "usd",
+      "decimals": "-5",
+      "level": 3,
+      "order": "3",
+      "parent_concept": "aci_ScheduleOfChangesInSelfInsuranceLiabilityLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-02-25",
+      "period_end": "2025-02-22",
+      "dimensions": {
+        "srt:RangeAxis": "srt:MaximumMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-521",
+      "display_value": "1000000.0",
+      "formatted_value": "$1,000,000",
+      "scaling_factor": 100000
+    },
+    {
+      "concept": "us-gaap_ReinsuranceRecoverables",
+      "value": "19.1",
+      "context_ref": "c-75",
+      "unit_ref": "usd",
+      "decimals": "-5",
+      "level": 3,
+      "order": "4",
+      "parent_concept": "aci_ScheduleOfChangesInSelfInsuranceLiabilityLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2025-02-22",
+      "dimensions": {
+        "us-gaap:BalanceSheetLocationAxis": "aci:ReceivablesNetCurrentMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-522",
+      "display_value": "1910000.0",
+      "formatted_value": "$1,910,000",
+      "scaling_factor": 100000
+    },
+    {
+      "concept": "us-gaap_ReinsuranceRecoverables",
+      "value": "21.2",
+      "context_ref": "c-76",
+      "unit_ref": "usd",
+      "decimals": "-5",
+      "level": 3,
+      "order": "4",
+      "parent_concept": "aci_ScheduleOfChangesInSelfInsuranceLiabilityLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2024-02-24",
+      "dimensions": {
+        "us-gaap:BalanceSheetLocationAxis": "aci:ReceivablesNetCurrentMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-523",
+      "display_value": "2120000.0",
+      "formatted_value": "$2,120,000",
+      "scaling_factor": 100000
+    },
+    {
+      "concept": "us-gaap_ReinsuranceRecoverables",
+      "value": "38.2",
+      "context_ref": "c-71",
+      "unit_ref": "usd",
+      "decimals": "-5",
+      "level": 3,
+      "order": "4",
+      "parent_concept": "aci_ScheduleOfChangesInSelfInsuranceLiabilityLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2025-02-22",
+      "dimensions": {
+        "us-gaap:BalanceSheetLocationAxis": "us-gaap:OtherAssetsMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-524",
+      "display_value": "3820000.0",
+      "formatted_value": "$3,820,000",
+      "scaling_factor": 100000
+    },
+    {
+      "concept": "us-gaap_ReinsuranceRecoverables",
+      "value": "53.5",
+      "context_ref": "c-77",
+      "unit_ref": "usd",
+      "decimals": "-5",
+      "level": 3,
+      "order": "4",
+      "parent_concept": "aci_ScheduleOfChangesInSelfInsuranceLiabilityLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2024-02-24",
+      "dimensions": {
+        "us-gaap:BalanceSheetLocationAxis": "us-gaap:OtherAssetsMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-525",
+      "display_value": "5350000.0",
+      "formatted_value": "$5,350,000",
+      "scaling_factor": 100000
+    }
+  ]
+}

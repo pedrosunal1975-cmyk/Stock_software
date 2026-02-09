@@ -1,0 +1,131 @@
+{
+  "role_uri": "http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESCashandCashEquivalentsDetails",
+  "role_definition": null,
+  "statement_type": "OTHER",
+  "classification": {
+    "category": "DETAIL",
+    "statement_type": "OTHER",
+    "is_primary": false,
+    "confidence": "LOW",
+    "matched_patterns": [
+      "Details"
+    ],
+    "structural_signals": {},
+    "source": "structural_analysis",
+    "taxonomy_source": "fallback_pattern",
+    "fallback_used": true
+  },
+  "hierarchy": {
+    "roots": [
+      "us-gaap_OrganizationConsolidationAndPresentationOfFinancialStatementsAbstract"
+    ],
+    "children": {
+      "us-gaap_OrganizationConsolidationAndPresentationOfFinancialStatementsAbstract": [
+        "us-gaap_CreditAndDebitCardReceivablesAtCarryingValue",
+        "us-gaap_RestrictedCash"
+      ]
+    },
+    "parents": {
+      "us-gaap_CreditAndDebitCardReceivablesAtCarryingValue": "us-gaap_OrganizationConsolidationAndPresentationOfFinancialStatementsAbstract",
+      "us-gaap_RestrictedCash": "us-gaap_OrganizationConsolidationAndPresentationOfFinancialStatementsAbstract"
+    },
+    "order": {
+      "us-gaap_CreditAndDebitCardReceivablesAtCarryingValue": "1",
+      "us-gaap_RestrictedCash": "2"
+    }
+  },
+  "facts": [
+    {
+      "concept": "us-gaap_CreditAndDebitCardReceivablesAtCarryingValue",
+      "value": "570.8",
+      "context_ref": "c-4",
+      "unit_ref": "usd",
+      "decimals": "-5",
+      "level": 1,
+      "order": "1",
+      "parent_concept": "us-gaap_OrganizationConsolidationAndPresentationOfFinancialStatementsAbstract",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2025-02-22",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-457",
+      "display_value": "57080000.0",
+      "formatted_value": "$57,080,000",
+      "scaling_factor": 100000
+    },
+    {
+      "concept": "us-gaap_CreditAndDebitCardReceivablesAtCarryingValue",
+      "value": "558.9",
+      "context_ref": "c-5",
+      "unit_ref": "usd",
+      "decimals": "-5",
+      "level": 1,
+      "order": "1",
+      "parent_concept": "us-gaap_OrganizationConsolidationAndPresentationOfFinancialStatementsAbstract",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2024-02-24",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-458",
+      "display_value": "55890000.0",
+      "formatted_value": "$55,890,000",
+      "scaling_factor": 100000
+    },
+    {
+      "concept": "us-gaap_RestrictedCash",
+      "value": "4.3",
+      "context_ref": "c-4",
+      "unit_ref": "usd",
+      "decimals": "-5",
+      "level": 1,
+      "order": "2",
+      "parent_concept": "us-gaap_OrganizationConsolidationAndPresentationOfFinancialStatementsAbstract",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2025-02-22",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-460",
+      "display_value": "430000.0",
+      "formatted_value": "$430,000",
+      "scaling_factor": 100000
+    },
+    {
+      "concept": "us-gaap_RestrictedCash",
+      "value": "4.5",
+      "context_ref": "c-5",
+      "unit_ref": "usd",
+      "decimals": "-5",
+      "level": 1,
+      "order": "2",
+      "parent_concept": "us-gaap_OrganizationConsolidationAndPresentationOfFinancialStatementsAbstract",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2024-02-24",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-461",
+      "display_value": "450000.0",
+      "formatted_value": "$450,000",
+      "scaling_factor": 100000
+    }
+  ]
+}
