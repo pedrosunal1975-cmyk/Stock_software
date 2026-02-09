@@ -1,0 +1,756 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--XBRL Document Created with the Workiva Platform-->
+<!--Copyright 2025 Workiva-->
+<!--r:07e20abb-4cbe-43c9-b5f4-51d0b43ec48f,g:9f957f75-b969-4b0c-ad43-31c9234040ff-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:aci="http://www.albertsons.com/20250222" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:dtr-types1="http://www.xbrl.org/dtr/type/2020-01-21" xmlns:dtr-types="http://www.xbrl.org/dtr/type/2022-03-31" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.albertsons.com/20250222">
+  <xs:import namespace="http://fasb.org/srt/2024" schemaLocation="https://xbrl.fasb.org/srt/2024/elts/srt-2024.xsd"/>
+  <xs:import namespace="http://fasb.org/us-gaap/2024" schemaLocation="https://xbrl.fasb.org/us-gaap/2024/elts/us-gaap-2024.xsd"/>
+  <xs:import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
+  <xs:import namespace="http://www.xbrl.org/2003/linkbase" schemaLocation="http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd"/>
+  <xs:import namespace="http://www.xbrl.org/dtr/type/2020-01-21" schemaLocation="https://www.xbrl.org/dtr/type/2020-01-21/types.xsd"/>
+  <xs:import namespace="http://www.xbrl.org/dtr/type/2022-03-31" schemaLocation="https://www.xbrl.org/dtr/type/2022-03-31/types.xsd"/>
+  <xs:import namespace="http://xbrl.org/2005/xbrldt" schemaLocation="http://www.xbrl.org/2005/xbrldt-2005.xsd"/>
+  <xs:import namespace="http://xbrl.sec.gov/cyd-af-sub/2024" schemaLocation="https://xbrl.sec.gov/cyd/2024/cyd-af-sub-2024.xsd"/>
+  <xs:import namespace="http://xbrl.sec.gov/dei/2024" schemaLocation="https://xbrl.sec.gov/dei/2024/dei-2024.xsd"/>
+  <xs:import namespace="http://xbrl.sec.gov/ecd/2024" schemaLocation="https://xbrl.sec.gov/ecd/2024/ecd-2024.xsd"/>
+  <xs:annotation>
+    <xs:appinfo>
+      <link:linkbaseRef xmlns:xlink="http://www.w3.org/1999/xlink" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="aci-20250222_pre.xml" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef" xlink:type="simple"/>
+      <link:linkbaseRef xmlns:xlink="http://www.w3.org/1999/xlink" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="aci-20250222_def.xml" xlink:role="http://www.xbrl.org/2003/role/definitionLinkbaseRef" xlink:type="simple"/>
+      <link:linkbaseRef xmlns:xlink="http://www.w3.org/1999/xlink" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="aci-20250222_lab.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:type="simple"/>
+      <link:linkbaseRef xmlns:xlink="http://www.w3.org/1999/xlink" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="aci-20250222_cal.xml" xlink:role="http://www.xbrl.org/2003/role/calculationLinkbaseRef" xlink:type="simple"/>
+      <link:roleType id="Coverpage" roleURI="http://www.albertsons.com/role/Coverpage">
+        <link:definition>0000001 - Document - Cover page</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="AuditInformation" roleURI="http://www.albertsons.com/role/AuditInformation">
+        <link:definition>0000002 - Document - Audit Information</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ConsolidatedBalanceSheets" roleURI="http://www.albertsons.com/role/ConsolidatedBalanceSheets">
+        <link:definition>9952151 - Statement - Consolidated Balance Sheets</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ConsolidatedBalanceSheetsParenthetical" roleURI="http://www.albertsons.com/role/ConsolidatedBalanceSheetsParenthetical">
+        <link:definition>9952152 - Statement - Consolidated Balance Sheets (Parenthetical)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ConsolidatedStatementsofOperationsandComprehensiveIncome" roleURI="http://www.albertsons.com/role/ConsolidatedStatementsofOperationsandComprehensiveIncome">
+        <link:definition>9952153 - Statement - Consolidated Statements of Operations and Comprehensive Income</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ConsolidatedStatementsofCashFlows" roleURI="http://www.albertsons.com/role/ConsolidatedStatementsofCashFlows">
+        <link:definition>9952154 - Statement - Consolidated Statements of Cash Flows</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ConsolidatedStatementsofStockholdersEquity" roleURI="http://www.albertsons.com/role/ConsolidatedStatementsofStockholdersEquity">
+        <link:definition>9952155 - Statement - Consolidated Statements of Stockholders' Equity</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ConsolidatedStatementsofStockholdersEquityParenthetical" roleURI="http://www.albertsons.com/role/ConsolidatedStatementsofStockholdersEquityParenthetical">
+        <link:definition>9952156 - Statement - Consolidated Statements of Stockholders' Equity (Parenthetical)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIES" roleURI="http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIES">
+        <link:definition>9952157 - Disclosure - DESCRIPTION OF BUSINESS, BASIS OF PRESENTATION AND SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="TERMINATIONOFTHEMERGERAGREEMENT" roleURI="http://www.albertsons.com/role/TERMINATIONOFTHEMERGERAGREEMENT">
+        <link:definition>9952158 - Disclosure - TERMINATION OF THE MERGER AGREEMENT</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="PROPERTYANDEQUIPMENT" roleURI="http://www.albertsons.com/role/PROPERTYANDEQUIPMENT">
+        <link:definition>9952159 - Disclosure - PROPERTY AND EQUIPMENT</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="INTANGIBLEASSETS" roleURI="http://www.albertsons.com/role/INTANGIBLEASSETS">
+        <link:definition>9952160 - Disclosure - INTANGIBLE ASSETS</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="FAIRVALUEMEASUREMENTS" roleURI="http://www.albertsons.com/role/FAIRVALUEMEASUREMENTS">
+        <link:definition>9952161 - Disclosure - FAIR VALUE MEASUREMENTS</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="LONGTERMDEBTANDFINANCELEASEOBLIGATIONS" roleURI="http://www.albertsons.com/role/LONGTERMDEBTANDFINANCELEASEOBLIGATIONS">
+        <link:definition>9952162 - Disclosure - LONG-TERM DEBT AND FINANCE LEASE OBLIGATIONS</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="LEASES" roleURI="http://www.albertsons.com/role/LEASES">
+        <link:definition>9952163 - Disclosure - LEASES</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="STOCKHOLDERSEQUITYANDCONVERTIBLEPREFERREDSTOCK" roleURI="http://www.albertsons.com/role/STOCKHOLDERSEQUITYANDCONVERTIBLEPREFERREDSTOCK">
+        <link:definition>9952164 - Disclosure - STOCKHOLDERS' EQUITY AND CONVERTIBLE PREFERRED STOCK</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="EQUITYBASEDCOMPENSATION" roleURI="http://www.albertsons.com/role/EQUITYBASEDCOMPENSATION">
+        <link:definition>9952165 - Disclosure - EQUITY-BASED COMPENSATION</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="INCOMETAXES" roleURI="http://www.albertsons.com/role/INCOMETAXES">
+        <link:definition>9952166 - Disclosure - INCOME TAXES</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTS" roleURI="http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTS">
+        <link:definition>9952167 - Disclosure - EMPLOYEE BENEFIT PLANS AND COLLECTIVE BARGAINING AGREEMENTS</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="RELATEDPARTIES" roleURI="http://www.albertsons.com/role/RELATEDPARTIES">
+        <link:definition>9952168 - Disclosure - RELATED PARTIES</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="COMMITMENTSANDCONTINGENCIESANDOFFBALANCESHEETARRANGEMENTS" roleURI="http://www.albertsons.com/role/COMMITMENTSANDCONTINGENCIESANDOFFBALANCESHEETARRANGEMENTS">
+        <link:definition>9952169 - Disclosure - COMMITMENTS AND CONTINGENCIES AND OFF BALANCE SHEET ARRANGEMENTS</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="OTHERCOMPREHENSIVEINCOMEORLOSS" roleURI="http://www.albertsons.com/role/OTHERCOMPREHENSIVEINCOMEORLOSS">
+        <link:definition>9952170 - Disclosure - OTHER COMPREHENSIVE INCOME OR LOSS</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="SEGMENTINFORMATION" roleURI="http://www.albertsons.com/role/SEGMENTINFORMATION">
+        <link:definition>9952171 - Disclosure - SEGMENT INFORMATION</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="NETINCOMEPERCOMMONSHARE" roleURI="http://www.albertsons.com/role/NETINCOMEPERCOMMONSHARE">
+        <link:definition>9952172 - Disclosure - NET INCOME PER COMMON SHARE</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESPolicies" roleURI="http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESPolicies">
+        <link:definition>9955511 - Disclosure - DESCRIPTION OF BUSINESS, BASIS OF PRESENTATION AND SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES (Policies)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESTables" roleURI="http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESTables">
+        <link:definition>9955512 - Disclosure - DESCRIPTION OF BUSINESS, BASIS OF PRESENTATION AND SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="PROPERTYANDEQUIPMENTTables" roleURI="http://www.albertsons.com/role/PROPERTYANDEQUIPMENTTables">
+        <link:definition>9955513 - Disclosure - PROPERTY AND EQUIPMENT (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="INTANGIBLEASSETSTables" roleURI="http://www.albertsons.com/role/INTANGIBLEASSETSTables">
+        <link:definition>9955514 - Disclosure - INTANGIBLE ASSETS (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="FAIRVALUEMEASUREMENTSTables" roleURI="http://www.albertsons.com/role/FAIRVALUEMEASUREMENTSTables">
+        <link:definition>9955515 - Disclosure - FAIR VALUE MEASUREMENTS (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="LONGTERMDEBTANDFINANCELEASEOBLIGATIONSTables" roleURI="http://www.albertsons.com/role/LONGTERMDEBTANDFINANCELEASEOBLIGATIONSTables">
+        <link:definition>9955516 - Disclosure - LONG-TERM DEBT AND FINANCE LEASE OBLIGATIONS (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="LEASESTables" roleURI="http://www.albertsons.com/role/LEASESTables">
+        <link:definition>9955517 - Disclosure - LEASES (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="EQUITYBASEDCOMPENSATIONTables" roleURI="http://www.albertsons.com/role/EQUITYBASEDCOMPENSATIONTables">
+        <link:definition>9955518 - Disclosure - EQUITY-BASED COMPENSATION (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="INCOMETAXESTables" roleURI="http://www.albertsons.com/role/INCOMETAXESTables">
+        <link:definition>9955519 - Disclosure - INCOME TAXES (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSTables" roleURI="http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSTables">
+        <link:definition>9955520 - Disclosure - EMPLOYEE BENEFIT PLANS AND COLLECTIVE BARGAINING AGREEMENTS (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="OTHERCOMPREHENSIVEINCOMEORLOSSTables" roleURI="http://www.albertsons.com/role/OTHERCOMPREHENSIVEINCOMEORLOSSTables">
+        <link:definition>9955521 - Disclosure - OTHER COMPREHENSIVE INCOME OR LOSS (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="SEGMENTINFORMATIONTables" roleURI="http://www.albertsons.com/role/SEGMENTINFORMATIONTables">
+        <link:definition>9955522 - Disclosure - SEGMENT INFORMATION (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="NETINCOMEPERCOMMONSHARETables" roleURI="http://www.albertsons.com/role/NETINCOMEPERCOMMONSHARETables">
+        <link:definition>9955523 - Disclosure - NET INCOME PER COMMON SHARE (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESDescriptionofBusinessDetails" roleURI="http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESDescriptionofBusinessDetails">
+        <link:definition>9955524 - Disclosure - DESCRIPTION OF BUSINESS, BASIS OF PRESENTATION AND SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES - Description of Business (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESCashandCashEquivalentsDetails" roleURI="http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESCashandCashEquivalentsDetails">
+        <link:definition>9955525 - Disclosure - DESCRIPTION OF BUSINESS, BASIS OF PRESENTATION AND SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES - Cash and Cash Equivalents (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESInventoriesDetails" roleURI="http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESInventoriesDetails">
+        <link:definition>9955526 - Disclosure - DESCRIPTION OF BUSINESS, BASIS OF PRESENTATION AND SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES - Inventories (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESPropertyandEquipmentIntangibleAssetsandCloudComputingArrangementsDetails" roleURI="http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESPropertyandEquipmentIntangibleAssetsandCloudComputingArrangementsDetails">
+        <link:definition>9955527 - Disclosure - DESCRIPTION OF BUSINESS, BASIS OF PRESENTATION AND SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES - Property and Equipment, Intangible Assets and Cloud Computing Arrangements (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESLeasesDetails" roleURI="http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESLeasesDetails">
+        <link:definition>9955528 - Disclosure - DESCRIPTION OF BUSINESS, BASIS OF PRESENTATION AND SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES - Leases (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESInvestmentsDetails" roleURI="http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESInvestmentsDetails">
+        <link:definition>9955529 - Disclosure - DESCRIPTION OF BUSINESS, BASIS OF PRESENTATION AND SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES - Investments (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESCompanyOwnedLifeInsuranceandSelfInsuranceLiabilitiesDetails" roleURI="http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESCompanyOwnedLifeInsuranceandSelfInsuranceLiabilitiesDetails">
+        <link:definition>9955530 - Disclosure - DESCRIPTION OF BUSINESS, BASIS OF PRESENTATION AND SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES - Company-Owned Life Insurance and Self-Insurance Liabilities (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESScheduleofSelfInsuranceLiabilitiesDetails" roleURI="http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESScheduleofSelfInsuranceLiabilitiesDetails">
+        <link:definition>9955531 - Disclosure - DESCRIPTION OF BUSINESS, BASIS OF PRESENTATION AND SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES - Schedule of Self-Insurance Liabilities (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESEquityBasedCompensationDetails" roleURI="http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESEquityBasedCompensationDetails">
+        <link:definition>9955532 - Disclosure - DESCRIPTION OF BUSINESS, BASIS OF PRESENTATION AND SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES - Equity-Based Compensation (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESRevenueRecognitionandCostsofSalesandVendorAllowancesDetails" roleURI="http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESRevenueRecognitionandCostsofSalesandVendorAllowancesDetails">
+        <link:definition>9955533 - Disclosure - DESCRIPTION OF BUSINESS, BASIS OF PRESENTATION AND SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES - Revenue Recognition and Costs of Sales and Vendor Allowances (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESScheduleofSalesRevenuebyProductTypeDetails" roleURI="http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESScheduleofSalesRevenuebyProductTypeDetails">
+        <link:definition>9955534 - Disclosure - DESCRIPTION OF BUSINESS, BASIS OF PRESENTATION AND SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES - Schedule of Sales Revenue by Product Type (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="TERMINATIONOFTHEMERGERAGREEMENTNarrativeDetails" roleURI="http://www.albertsons.com/role/TERMINATIONOFTHEMERGERAGREEMENTNarrativeDetails">
+        <link:definition>9955535 - Disclosure - TERMINATION OF THE MERGER AGREEMENT - Narrative (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="PROPERTYANDEQUIPMENTScheduleofPropertyandEquipmentDetails" roleURI="http://www.albertsons.com/role/PROPERTYANDEQUIPMENTScheduleofPropertyandEquipmentDetails">
+        <link:definition>9955536 - Disclosure - PROPERTY AND EQUIPMENT - Schedule of Property and Equipment (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="PROPERTYANDEQUIPMENTNarrativeDetails" roleURI="http://www.albertsons.com/role/PROPERTYANDEQUIPMENTNarrativeDetails">
+        <link:definition>9955537 - Disclosure - PROPERTY AND EQUIPMENT - Narrative (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="INTANGIBLEASSETSScheduleofIntangibleAssetsDetails" roleURI="http://www.albertsons.com/role/INTANGIBLEASSETSScheduleofIntangibleAssetsDetails">
+        <link:definition>9955538 - Disclosure - INTANGIBLE ASSETS - Schedule of Intangible Assets (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="INTANGIBLEASSETSScheduleofIntangibleAssetsDetails_1" roleURI="http://www.albertsons.com/role/INTANGIBLEASSETSScheduleofIntangibleAssetsDetails_1">
+        <link:definition>9955538 - Disclosure - INTANGIBLE ASSETS - Schedule of Intangible Assets (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="INTANGIBLEASSETSNarrativeDetails" roleURI="http://www.albertsons.com/role/INTANGIBLEASSETSNarrativeDetails">
+        <link:definition>9955539 - Disclosure - INTANGIBLE ASSETS - Narrative (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="INTANGIBLEASSETSScheduleFutureAmortizationExpenseDetails" roleURI="http://www.albertsons.com/role/INTANGIBLEASSETSScheduleFutureAmortizationExpenseDetails">
+        <link:definition>9955540 - Disclosure - INTANGIBLE ASSETS - Schedule Future Amortization Expense (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="FAIRVALUEMEASUREMENTSScheduleofAssetsandLiabilitiesMeasuredatFairValueDetails" roleURI="http://www.albertsons.com/role/FAIRVALUEMEASUREMENTSScheduleofAssetsandLiabilitiesMeasuredatFairValueDetails">
+        <link:definition>9955541 - Disclosure - FAIR VALUE MEASUREMENTS - Schedule of Assets and Liabilities Measured at Fair Value (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="FAIRVALUEMEASUREMENTSNarrativeDetails" roleURI="http://www.albertsons.com/role/FAIRVALUEMEASUREMENTSNarrativeDetails">
+        <link:definition>9955542 - Disclosure - FAIR VALUE MEASUREMENTS - Narrative (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="LONGTERMDEBTANDFINANCELEASEOBLIGATIONSScheduleofLongtermDebtDetails" roleURI="http://www.albertsons.com/role/LONGTERMDEBTANDFINANCELEASEOBLIGATIONSScheduleofLongtermDebtDetails">
+        <link:definition>9955543 - Disclosure - LONG-TERM DEBT AND FINANCE LEASE OBLIGATIONS - Schedule of Long-term Debt (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="LONGTERMDEBTANDFINANCELEASEOBLIGATIONSScheduleofFutureMaturitiesofLongtermDebtDetails" roleURI="http://www.albertsons.com/role/LONGTERMDEBTANDFINANCELEASEOBLIGATIONSScheduleofFutureMaturitiesofLongtermDebtDetails">
+        <link:definition>9955544 - Disclosure - LONG-TERM DEBT AND FINANCE LEASE OBLIGATIONS - Schedule of Future Maturities of Long-term Debt (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="LONGTERMDEBTANDFINANCELEASEOBLIGATIONSAssetBasedLoanFacilitiesDetails" roleURI="http://www.albertsons.com/role/LONGTERMDEBTANDFINANCELEASEOBLIGATIONSAssetBasedLoanFacilitiesDetails">
+        <link:definition>9955545 - Disclosure - LONG-TERM DEBT AND FINANCE LEASE OBLIGATIONS - Asset-Based Loan Facilities (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="LONGTERMDEBTANDFINANCELEASEOBLIGATIONSSeniorUnsecuredNotesDetails" roleURI="http://www.albertsons.com/role/LONGTERMDEBTANDFINANCELEASEOBLIGATIONSSeniorUnsecuredNotesDetails">
+        <link:definition>9955546 - Disclosure - LONG-TERM DEBT AND FINANCE LEASE OBLIGATIONS - Senior Unsecured Notes (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="LONGTERMDEBTANDFINANCELEASEOBLIGATIONSDeferredFinancingCostsandInterestExpenseNetDetails" roleURI="http://www.albertsons.com/role/LONGTERMDEBTANDFINANCELEASEOBLIGATIONSDeferredFinancingCostsandInterestExpenseNetDetails">
+        <link:definition>9955547 - Disclosure - LONG-TERM DEBT AND FINANCE LEASE OBLIGATIONS - Deferred Financing Costs and Interest Expense, Net (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="LONGTERMDEBTANDFINANCELEASEOBLIGATIONSScheduleofInterestExpenseDetails" roleURI="http://www.albertsons.com/role/LONGTERMDEBTANDFINANCELEASEOBLIGATIONSScheduleofInterestExpenseDetails">
+        <link:definition>9955548 - Disclosure - LONG-TERM DEBT AND FINANCE LEASE OBLIGATIONS - Schedule of Interest Expense (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="LEASESScheduleofComponentsofLeaseExpenseDetails" roleURI="http://www.albertsons.com/role/LEASESScheduleofComponentsofLeaseExpenseDetails">
+        <link:definition>9955549 - Disclosure - LEASES - Schedule of Components of Lease Expense (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="LEASESScheduleofBalanceSheetInformationDetails" roleURI="http://www.albertsons.com/role/LEASESScheduleofBalanceSheetInformationDetails">
+        <link:definition>9955550 - Disclosure - LEASES - Schedule of Balance Sheet Information (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="LEASESSupplementalCashFlowInformationDetails" roleURI="http://www.albertsons.com/role/LEASESSupplementalCashFlowInformationDetails">
+        <link:definition>9955551 - Disclosure - LEASES - Supplemental Cash Flow Information (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="LEASESScheduleofFutureMinimumLeasePaymentstobeMadeDetails" roleURI="http://www.albertsons.com/role/LEASESScheduleofFutureMinimumLeasePaymentstobeMadeDetails">
+        <link:definition>9955552 - Disclosure - LEASES - Schedule of Future Minimum Lease Payments to be Made (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="LEASESScheduleofFutureMinimumLeasePaymentstobeMadeDetails_1" roleURI="http://www.albertsons.com/role/LEASESScheduleofFutureMinimumLeasePaymentstobeMadeDetails_1">
+        <link:definition>9955552 - Disclosure - LEASES - Schedule of Future Minimum Lease Payments to be Made (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="LEASESNarrativeDetails" roleURI="http://www.albertsons.com/role/LEASESNarrativeDetails">
+        <link:definition>9955553 - Disclosure - LEASES - Narrative (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="STOCKHOLDERSEQUITYANDCONVERTIBLEPREFERREDSTOCKDetails" roleURI="http://www.albertsons.com/role/STOCKHOLDERSEQUITYANDCONVERTIBLEPREFERREDSTOCKDetails">
+        <link:definition>9955554 - Disclosure - STOCKHOLDERS' EQUITY AND CONVERTIBLE PREFERRED STOCK (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="EQUITYBASEDCOMPENSATIONNarrativeDetails" roleURI="http://www.albertsons.com/role/EQUITYBASEDCOMPENSATIONNarrativeDetails">
+        <link:definition>9955555 - Disclosure - EQUITY-BASED COMPENSATION - Narrative (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="EQUITYBASEDCOMPENSATIONScheduleofEquitybasedCompensationExpenseDetails" roleURI="http://www.albertsons.com/role/EQUITYBASEDCOMPENSATIONScheduleofEquitybasedCompensationExpenseDetails">
+        <link:definition>9955556 - Disclosure - EQUITY-BASED COMPENSATION - Schedule of Equity-based Compensation Expense (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="EQUITYBASEDCOMPENSATIONScheduleofRSUandRSAActivityDetails" roleURI="http://www.albertsons.com/role/EQUITYBASEDCOMPENSATIONScheduleofRSUandRSAActivityDetails">
+        <link:definition>9955557 - Disclosure - EQUITY-BASED COMPENSATION - Schedule of RSU and RSA Activity (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="INCOMETAXESScheduleofComponentsofIncomeTaxExpenseDetails" roleURI="http://www.albertsons.com/role/INCOMETAXESScheduleofComponentsofIncomeTaxExpenseDetails">
+        <link:definition>9955558 - Disclosure - INCOME TAXES - Schedule of Components of Income Tax Expense (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="INCOMETAXESScheduleofEffectiveIncomeTaxRateReconciliationDetails" roleURI="http://www.albertsons.com/role/INCOMETAXESScheduleofEffectiveIncomeTaxRateReconciliationDetails">
+        <link:definition>9955559 - Disclosure - INCOME TAXES - Schedule of Effective Income Tax Rate Reconciliation (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="INCOMETAXESScheduleofDeferredTaxAssetsandLiabilitiesDetails" roleURI="http://www.albertsons.com/role/INCOMETAXESScheduleofDeferredTaxAssetsandLiabilitiesDetails">
+        <link:definition>9955560 - Disclosure - INCOME TAXES - Schedule of Deferred Tax Assets and Liabilities (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="INCOMETAXESSummaryofValuationAllowanceActivityDetails" roleURI="http://www.albertsons.com/role/INCOMETAXESSummaryofValuationAllowanceActivityDetails">
+        <link:definition>9955561 - Disclosure - INCOME TAXES - Summary of Valuation Allowance Activity (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="INCOMETAXESNarrativeDetails" roleURI="http://www.albertsons.com/role/INCOMETAXESNarrativeDetails">
+        <link:definition>9955562 - Disclosure - INCOME TAXES - Narrative (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="INCOMETAXESScheduleofUnrecognizedTaxBenefitsDetails" roleURI="http://www.albertsons.com/role/INCOMETAXESScheduleofUnrecognizedTaxBenefitsDetails">
+        <link:definition>9955563 - Disclosure - INCOME TAXES - Schedule of Unrecognized Tax Benefits (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofChangesinRetirementPlansBenefitObligationandFairValueofPlanAssetsDetails" roleURI="http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofChangesinRetirementPlansBenefitObligationandFairValueofPlanAssetsDetails">
+        <link:definition>9955564 - Disclosure - EMPLOYEE BENEFIT PLANS AND COLLECTIVE BARGAINING AGREEMENTS - Schedule of Changes in Retirement Plan's Benefit Obligation and Fair Value of Plan Assets (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofAmountsRecognizedinAccumulatedOtherComprehensiveIncomeLossDetails" roleURI="http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofAmountsRecognizedinAccumulatedOtherComprehensiveIncomeLossDetails">
+        <link:definition>9955565 - Disclosure - EMPLOYEE BENEFIT PLANS AND COLLECTIVE BARGAINING AGREEMENTS - Schedule of Amounts Recognized in Accumulated Other Comprehensive Income (Loss) (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofAccumulatedBenefitObligationinExcessofPlanAssetsDetails" roleURI="http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofAccumulatedBenefitObligationinExcessofPlanAssetsDetails">
+        <link:definition>9955566 - Disclosure - EMPLOYEE BENEFIT PLANS AND COLLECTIVE BARGAINING AGREEMENTS - Schedule of Accumulated Benefit Obligation in Excess of Plan Assets (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofComponentsofNetPensionandPostretirementExpenseDetails" roleURI="http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofComponentsofNetPensionandPostretirementExpenseDetails">
+        <link:definition>9955567 - Disclosure - EMPLOYEE BENEFIT PLANS AND COLLECTIVE BARGAINING AGREEMENTS - Schedule of Components of Net Pension and Post-retirement Expense (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSNarrativeDetails" roleURI="http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSNarrativeDetails">
+        <link:definition>9955568 - Disclosure - EMPLOYEE BENEFIT PLANS AND COLLECTIVE BARGAINING AGREEMENTS - Narrative (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofAssumptionsUsedDetails" roleURI="http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofAssumptionsUsedDetails">
+        <link:definition>9955569 - Disclosure - EMPLOYEE BENEFIT PLANS AND COLLECTIVE BARGAINING AGREEMENTS - Schedule of Assumptions Used (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofPlanAssetsAllocationDetails" roleURI="http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofPlanAssetsAllocationDetails">
+        <link:definition>9955570 - Disclosure - EMPLOYEE BENEFIT PLANS AND COLLECTIVE BARGAINING AGREEMENTS - Schedule of Plan Assets Allocation (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofFairValueofPlanAssetsDetails" roleURI="http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofFairValueofPlanAssetsDetails">
+        <link:definition>9955571 - Disclosure - EMPLOYEE BENEFIT PLANS AND COLLECTIVE BARGAINING AGREEMENTS - Schedule of Fair Value of Plan Assets (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofExpectedFutureBenefitPaymentsDetails" roleURI="http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofExpectedFutureBenefitPaymentsDetails">
+        <link:definition>9955572 - Disclosure - EMPLOYEE BENEFIT PLANS AND COLLECTIVE BARGAINING AGREEMENTS - Schedule of Expected Future Benefit Payments (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofMultiemployerPlanDetails" roleURI="http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofMultiemployerPlanDetails">
+        <link:definition>9955573 - Disclosure - EMPLOYEE BENEFIT PLANS AND COLLECTIVE BARGAINING AGREEMENTS - Schedule of Multiemployer Plan (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="RELATEDPARTIESDetails" roleURI="http://www.albertsons.com/role/RELATEDPARTIESDetails">
+        <link:definition>9955574 - Disclosure - RELATED PARTIES (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="COMMITMENTSANDCONTINGENCIESANDOFFBALANCESHEETARRANGEMENTSLegalContingenciesDetails" roleURI="http://www.albertsons.com/role/COMMITMENTSANDCONTINGENCIESANDOFFBALANCESHEETARRANGEMENTSLegalContingenciesDetails">
+        <link:definition>9955575 - Disclosure - COMMITMENTS AND CONTINGENCIES AND OFF BALANCE SHEET ARRANGEMENTS - Legal Contingencies (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="OTHERCOMPREHENSIVEINCOMEORLOSSDetails" roleURI="http://www.albertsons.com/role/OTHERCOMPREHENSIVEINCOMEORLOSSDetails">
+        <link:definition>9955576 - Disclosure - OTHER COMPREHENSIVE INCOME OR LOSS (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="SEGMENTINFORMATIONNarrativeDetails" roleURI="http://www.albertsons.com/role/SEGMENTINFORMATIONNarrativeDetails">
+        <link:definition>9955577 - Disclosure - SEGMENT INFORMATION - Narrative (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="SEGMENTINFORMATIONSegmentReportingInformationbySegmentDetails" roleURI="http://www.albertsons.com/role/SEGMENTINFORMATIONSegmentReportingInformationbySegmentDetails">
+        <link:definition>9955578 - Disclosure - SEGMENT INFORMATION - Segment Reporting Information, by Segment (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="NETINCOMEPERCOMMONSHARENarrativeDetails" roleURI="http://www.albertsons.com/role/NETINCOMEPERCOMMONSHARENarrativeDetails">
+        <link:definition>9955579 - Disclosure - NET INCOME PER COMMON SHARE - Narrative (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="NETINCOMEPERCOMMONSHAREScheduleofComputationofBasicandDilutedNetIncomePerShareDetails" roleURI="http://www.albertsons.com/role/NETINCOMEPERCOMMONSHAREScheduleofComputationofBasicandDilutedNetIncomePerShareDetails">
+        <link:definition>9955580 - Disclosure - NET INCOME PER COMMON SHARE - Schedule of Computation of Basic and Diluted Net Income Per Share (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element id="aci_AuditInformationAbstract" abstract="true" name="AuditInformationAbstract" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="xbrli:stringItemType"/>
+  <xs:element id="aci_SeriesA1ConvertiblePreferredStockMember" abstract="true" name="SeriesA1ConvertiblePreferredStockMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_UndesignatedPreferredStockMember" abstract="true" name="UndesignatedPreferredStockMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_CommonClassA1ConvertibleMember" abstract="true" name="CommonClassA1ConvertibleMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_GainLossOnPropertyDispositionsAssetImpairmentAndExitCosts" abstract="false" name="GainLossOnPropertyDispositionsAssetImpairmentAndExitCosts" nillable="true" xbrli:periodType="duration" xbrli:balance="credit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="aci_AmortizationOfDebtIssuanceCostsAndWriteOffOfDeferredDebtIssuanceCost" abstract="false" name="AmortizationOfDebtIssuanceCostsAndWriteOffOfDeferredDebtIssuanceCost" nillable="true" xbrli:periodType="duration" xbrli:balance="debit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="aci_PaymentsOfSpecialDividends" abstract="false" name="PaymentsOfSpecialDividends" nillable="true" xbrli:periodType="duration" xbrli:balance="credit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="aci_ReconciliationOfCapitalExpendituresAbstract" abstract="true" name="ReconciliationOfCapitalExpendituresAbstract" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="xbrli:stringItemType"/>
+  <xs:element id="aci_PaymentsForProceedsFromFromLeaseBuyouts" abstract="false" name="PaymentsForProceedsFromFromLeaseBuyouts" nillable="true" xbrli:periodType="duration" xbrli:balance="credit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="aci_PaymentsToAcquirePropertyPlantAndEquipmentExcludingPaymentsForLeaseBuyouts" abstract="false" name="PaymentsToAcquirePropertyPlantAndEquipmentExcludingPaymentsForLeaseBuyouts" nillable="true" xbrli:periodType="duration" xbrli:balance="credit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="aci_CloudComputingArrangementsServiceContractsPolicyTextBlock" abstract="false" name="CloudComputingArrangementsServiceContractsPolicyTextBlock" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:textBlockItemType"/>
+  <xs:element id="aci_CompanyOwnedLifeInsurancePolicyTextBlock" abstract="false" name="CompanyOwnedLifeInsurancePolicyTextBlock" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:textBlockItemType"/>
+  <xs:element id="aci_ScheduleOfChangesInSelfInsuranceLiabilityTableTextBlock" abstract="false" name="ScheduleOfChangesInSelfInsuranceLiabilityTableTextBlock" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:textBlockItemType"/>
+  <xs:element id="aci_AssetsAndLiabilitiesLesseeTableTextBlock" abstract="false" name="AssetsAndLiabilitiesLesseeTableTextBlock" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:textBlockItemType"/>
+  <xs:element id="aci_FuelCentersMember" abstract="true" name="FuelCentersMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_DistributionCentersMember" abstract="true" name="DistributionCentersMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_ManufacturingFacilitiesMember" abstract="true" name="ManufacturingFacilitiesMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_NumberofFacilities" abstract="false" name="NumberofFacilities" nillable="true" xbrli:periodType="instant" substitutionGroup="xbrli:item" type="xbrli:integerItemType"/>
+  <xs:element id="aci_HostingArrangementServiceContractImplementationCostImpairmentAndDisposalLosses" abstract="false" name="HostingArrangementServiceContractImplementationCostImpairmentAndDisposalLosses" nillable="true" xbrli:periodType="duration" xbrli:balance="debit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="aci_MexicoFoodsParentLLCAndLaFabricaParentLLCMember" abstract="true" name="MexicoFoodsParentLLCAndLaFabricaParentLLCMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types:domainItemType"/>
+  <xs:element id="aci_ScheduleOfSelfInsuranceLiabilityTable" abstract="true" name="ScheduleOfSelfInsuranceLiabilityTable" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrldt:hypercubeItem" type="xbrli:stringItemType"/>
+  <xs:element id="aci_ReceivablesNetCurrentMember" abstract="true" name="ReceivablesNetCurrentMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_ScheduleOfChangesInSelfInsuranceLiabilityLineItems" abstract="true" name="ScheduleOfChangesInSelfInsuranceLiabilityLineItems" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="xbrli:stringItemType"/>
+  <xs:element id="aci_LifeInsuranceCorporateOrBankOwnedStopLossThresholdPerClaim" abstract="false" name="LifeInsuranceCorporateOrBankOwnedStopLossThresholdPerClaim" nillable="true" xbrli:periodType="duration" xbrli:balance="debit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="aci_SelfInsuranceReserveExpense" abstract="false" name="SelfInsuranceReserveExpense" nillable="true" xbrli:periodType="duration" xbrli:balance="credit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="aci_SelfInsuranceReserveClaimPayments" abstract="false" name="SelfInsuranceReserveClaimPayments" nillable="true" xbrli:periodType="duration" xbrli:balance="debit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="aci_PharmacyMember" abstract="true" name="PharmacyMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_InventoryVendorAllowances" abstract="false" name="InventoryVendorAllowances" nillable="true" xbrli:periodType="instant" xbrli:balance="credit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="aci_NonPerishablesMember" abstract="true" name="NonPerishablesMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_FreshMember" abstract="true" name="FreshMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_OtherProductsandServicesMember" abstract="true" name="OtherProductsandServicesMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_MergerAgreementMember" abstract="true" name="MergerAgreementMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_BusinessAcquisitionAdjustedExpectedSharePrice" abstract="false" name="BusinessAcquisitionAdjustedExpectedSharePrice" nillable="true" xbrli:periodType="instant" substitutionGroup="xbrli:item" type="dtr-types:perShareItemType"/>
+  <xs:element id="aci_BusinessCombinationTerminationFee" abstract="false" name="BusinessCombinationTerminationFee" nillable="true" xbrli:periodType="instant" xbrli:balance="credit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="aci_FinanceLeaseMember" abstract="true" name="FinanceLeaseMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_RetailStoresMember" abstract="true" name="RetailStoresMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types:domainItemType"/>
+  <xs:element id="aci_MicroFulfillmentCentersMember" abstract="true" name="MicroFulfillmentCentersMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types:domainItemType"/>
+  <xs:element id="aci_ImpairmentAndDisposalLossesOfIntangibleAssetsExcludingGoodwill" abstract="false" name="ImpairmentAndDisposalLossesOfIntangibleAssetsExcludingGoodwill" nillable="true" xbrli:periodType="duration" xbrli:balance="debit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="aci_ShortTermInvestmentsFairValueDisclosure" abstract="false" name="ShortTermInvestmentsFairValueDisclosure" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="aci_InvestmentsNoncurrentFairValueDisclosure" abstract="false" name="InvestmentsNoncurrentFairValueDisclosure" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="aci_SeniorUnsecuredNotesMaturity202420252026And2028Member" abstract="true" name="SeniorUnsecuredNotesMaturity202420252026And2028Member" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_NALPNotesMaturity2026To2031Member" abstract="true" name="NALPNotesMaturity2026To2031Member" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_SafewayNotesMaturity2027To2031Member" abstract="true" name="SafewayNotesMaturity2027To2031Member" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types:domainItemType"/>
+  <xs:element id="aci_ABLFacilityMember" abstract="true" name="ABLFacilityMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_UnsecuredNotesPayableMember" abstract="true" name="UnsecuredNotesPayableMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_AssetBasedLoanFacilityMember" abstract="true" name="AssetBasedLoanFacilityMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_LetterOfCreditSubFacilityMember" abstract="true" name="LetterOfCreditSubFacilityMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_DebtInstrumentCovenantTriggerMaximumExcessAvailabilityPercentageOfBorrowing" abstract="false" name="DebtInstrumentCovenantTriggerMaximumExcessAvailabilityPercentageOfBorrowing" nillable="true" xbrli:periodType="instant" substitutionGroup="xbrli:item" type="dtr-types1:percentItemType"/>
+  <xs:element id="aci_DebtInstrumentCovenantTriggerMaximumExcessAvailabilityAmount" abstract="false" name="DebtInstrumentCovenantTriggerMaximumExcessAvailabilityAmount" nillable="true" xbrli:periodType="instant" xbrli:balance="credit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="aci_DebtInstrumentCovenantFixedChargeCoverageRatio" abstract="false" name="DebtInstrumentCovenantFixedChargeCoverageRatio" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="xbrli:pureItemType"/>
+  <xs:element id="aci_SeniorUnsecuredNotesMaturity2033Member" abstract="true" name="SeniorUnsecuredNotesMaturity2033Member" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types:domainItemType"/>
+  <xs:element id="aci_SeniorUnsecuredNotesMaturity2026Member" abstract="true" name="SeniorUnsecuredNotesMaturity2026Member" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_SeniorUnsecuredNotesMaturity2028Member" abstract="true" name="SeniorUnsecuredNotesMaturity2028Member" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_SeniorUnsecuredNotesMaturity2023Member" abstract="true" name="SeniorUnsecuredNotesMaturity2023Member" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_RepaymentsOfSeniorDebtCashOnHand" abstract="false" name="RepaymentsOfSeniorDebtCashOnHand" nillable="true" xbrli:periodType="duration" xbrli:balance="credit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="aci_InterestExpenseIncomeOther" abstract="false" name="InterestExpenseIncomeOther" nillable="true" xbrli:periodType="duration" xbrli:balance="debit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="aci_OperatingAndFinanceLeaseAssetsLesseeAbstract" abstract="true" name="OperatingAndFinanceLeaseAssetsLesseeAbstract" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="xbrli:stringItemType"/>
+  <xs:element id="aci_OperatingAndFinanceLeaseRightOfUseAsset" abstract="false" name="OperatingAndFinanceLeaseRightOfUseAsset" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="aci_OperatingAndFinanceLeaseLiabilitiesLesseeAbstract" abstract="true" name="OperatingAndFinanceLeaseLiabilitiesLesseeAbstract" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="xbrli:stringItemType"/>
+  <xs:element id="aci_OperatingAndFinanceLeaseLiabilitiesLesseeCurrentAbstract" abstract="true" name="OperatingAndFinanceLeaseLiabilitiesLesseeCurrentAbstract" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="xbrli:stringItemType"/>
+  <xs:element id="aci_OperatingAndFinanceLeaseLiabilitiesLesseeNoncurrentAbstract" abstract="true" name="OperatingAndFinanceLeaseLiabilitiesLesseeNoncurrentAbstract" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="xbrli:stringItemType"/>
+  <xs:element id="aci_OperatingAndFinancingLeaseLiability" abstract="false" name="OperatingAndFinancingLeaseLiability" nillable="true" xbrli:periodType="instant" xbrli:balance="credit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="aci_CashFlowLesseeAbstract" abstract="true" name="CashFlowLesseeAbstract" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="xbrli:stringItemType"/>
+  <xs:element id="aci_CommonStockNumberOfVotes" abstract="false" name="CommonStockNumberOfVotes" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="xbrli:sharesItemType"/>
+  <xs:element id="aci_ConvertiblePreferredStockShareIssuableInConversion" abstract="false" name="ConvertiblePreferredStockShareIssuableInConversion" nillable="true" xbrli:periodType="instant" substitutionGroup="xbrli:item" type="xbrli:pureItemType"/>
+  <xs:element id="aci_CommonStockDividendsIncreasePercentage" abstract="false" name="CommonStockDividendsIncreasePercentage" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types:percentItemType"/>
+  <xs:element id="aci_ConvertiblePreferredStockOutstandingPercentage" abstract="false" name="ConvertiblePreferredStockOutstandingPercentage" nillable="true" xbrli:periodType="instant" substitutionGroup="xbrli:item" type="dtr-types1:percentItemType"/>
+  <xs:element id="aci_PreferredStockParticipationInCashDividendsOverDividendsToCommonStock" abstract="false" name="PreferredStockParticipationInCashDividendsOverDividendsToCommonStock" nillable="true" xbrli:periodType="duration" xbrli:balance="credit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="aci_PresidentandChiefExecutiveOfficerMember" abstract="true" name="PresidentandChiefExecutiveOfficerMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_PhantomShareUnitsPSUBasedOnServicePeriodMember" abstract="true" name="PhantomShareUnitsPSUBasedOnServicePeriodMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_PhantomShareUnitsTimeBasedMember" abstract="true" name="PhantomShareUnitsTimeBasedMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_PhantomSharesUnitsPerformanceBasedMember" abstract="true" name="PhantomSharesUnitsPerformanceBasedMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_RestrictedStockUnitsRSUDeemedNotGrantedMember" abstract="true" name="RestrictedStockUnitsRSUDeemedNotGrantedMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_RestrictedStockUnitsRSUPerformanceBasedDeemedGrantedMember" abstract="true" name="RestrictedStockUnitsRSUPerformanceBasedDeemedGrantedMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_RestrictedStockUnitsRSUTimeBasedDeemedGrantedMember" abstract="true" name="RestrictedStockUnitsRSUTimeBasedDeemedGrantedMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_PerformanceBasedRestrictedStockUnitsAndRestrictedStockAwardsDeemedGrantedMember" abstract="true" name="PerformanceBasedRestrictedStockUnitsAndRestrictedStockAwardsDeemedGrantedMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_PerformanceBasedRestrictedStockAwardsDeemedGrantedMember" abstract="true" name="PerformanceBasedRestrictedStockAwardsDeemedGrantedMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsPerformanceAdjustment" abstract="false" name="ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsPerformanceAdjustment" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="xbrli:sharesItemType"/>
+  <xs:element id="aci_ShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsPerformanceAdjustmentWeightedAverageGrantDateFairValue" abstract="false" name="ShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsPerformanceAdjustmentWeightedAverageGrantDateFairValue" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:perShareItemType"/>
+  <xs:element id="aci_ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsGrantInPeriodBasedOnActualPerformance" abstract="false" name="ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsGrantInPeriodBasedOnActualPerformance" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="xbrli:sharesItemType"/>
+  <xs:element id="aci_NetOperatingLossMember" abstract="true" name="NetOperatingLossMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_NoncurrentDeferredTaxLiabilityMember" abstract="true" name="NoncurrentDeferredTaxLiabilityMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_DeferredTaxAssetsLeaseObligations" abstract="false" name="DeferredTaxAssetsLeaseObligations" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="aci_DeferredTaxAssetsValuationAllowanceAdditionsForChargesToCostAndExpense" abstract="false" name="DeferredTaxAssetsValuationAllowanceAdditionsForChargesToCostAndExpense" nillable="true" xbrli:periodType="duration" xbrli:balance="credit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="aci_DeferredTaxAssetsValuationAllowanceReductionsForChargesToCostAndExpense" abstract="false" name="DeferredTaxAssetsValuationAllowanceReductionsForChargesToCostAndExpense" nillable="true" xbrli:periodType="duration" xbrli:balance="debit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="aci_DeferredTaxAssetsValuationAllowanceIncreaseDecreaseToOtherComprehensiveIncomeLoss" abstract="false" name="DeferredTaxAssetsValuationAllowanceIncreaseDecreaseToOtherComprehensiveIncomeLoss" nillable="true" xbrli:periodType="duration" xbrli:balance="debit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="aci_OtherComprehensiveIncomeLossDefinedBenefitPlanSettlementGainLossBeforeTax" abstract="false" name="OtherComprehensiveIncomeLossDefinedBenefitPlanSettlementGainLossBeforeTax" nillable="true" xbrli:periodType="duration" xbrli:balance="credit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="aci_CombinedPlanMember" abstract="true" name="CombinedPlanMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_MAPAndFELRAMember" abstract="true" name="MAPAndFELRAMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_MultiemployerHealthAndWelfarePlansMember" abstract="true" name="MultiemployerHealthAndWelfarePlansMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_SafewayRetirementBenefitsPlanMember" abstract="true" name="SafewayRetirementBenefitsPlanMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_ShawsRetirementBenefitsPlanMember" abstract="true" name="ShawsRetirementBenefitsPlanMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_SafewayVariableAnnuityPensionPlanMember" abstract="true" name="SafewayVariableAnnuityPensionPlanMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_PayablesDueToAgents" abstract="false" name="PayablesDueToAgents" nillable="true" xbrli:periodType="instant" xbrli:balance="credit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="aci_MultiemployerPlanNumberOfPlans" abstract="false" name="MultiemployerPlanNumberOfPlans" nillable="true" xbrli:periodType="instant" substitutionGroup="xbrli:item" type="xbrli:integerItemType"/>
+  <xs:element id="aci_DefinedContributionRequiredAnnualContribution" abstract="false" name="DefinedContributionRequiredAnnualContribution" nillable="true" xbrli:periodType="duration" xbrli:balance="debit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="aci_DefinedContributionPlanTerm" abstract="false" name="DefinedContributionPlanTerm" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="xbrli:durationItemType"/>
+  <xs:element id="aci_DefinedBenefitPlanExpectedFutureEmployerContributions" abstract="false" name="DefinedBenefitPlanExpectedFutureEmployerContributions" nillable="true" xbrli:periodType="duration" xbrli:balance="debit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="aci_DefinedBenefitPlanExpectedFutureEmployerContributionsAfterTax" abstract="false" name="DefinedBenefitPlanExpectedFutureEmployerContributionsAfterTax" nillable="true" xbrli:periodType="duration" xbrli:balance="debit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="aci_MultiemployerPlanPensionAdditionalFunding" abstract="false" name="MultiemployerPlanPensionAdditionalFunding" nillable="true" xbrli:periodType="duration" xbrli:balance="debit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="aci_NumberOfTotalCompanyEmployees" abstract="false" name="NumberOfTotalCompanyEmployees" nillable="true" xbrli:periodType="instant" substitutionGroup="xbrli:item" type="xbrli:integerItemType"/>
+  <xs:element id="aci_MultiemployerPlansCollectiveBargainingArrangementNumberOfParticipants" abstract="false" name="MultiemployerPlansCollectiveBargainingArrangementNumberOfParticipants" nillable="true" xbrli:periodType="instant" substitutionGroup="xbrli:item" type="xbrli:integerItemType"/>
+  <xs:element id="aci_MultiemployerPlansCollectiveBargainingArrangementNumberOfParticipantsRenegotiated" abstract="false" name="MultiemployerPlansCollectiveBargainingArrangementNumberOfParticipantsRenegotiated" nillable="true" xbrli:periodType="instant" substitutionGroup="xbrli:item" type="xbrli:integerItemType"/>
+  <xs:element id="aci_MultiemployerPlansCollectiveBargainingArrangementNumberOfParticipantsScheduledToExpire" abstract="false" name="MultiemployerPlansCollectiveBargainingArrangementNumberOfParticipantsScheduledToExpire" nillable="true" xbrli:periodType="instant" substitutionGroup="xbrli:item" type="xbrli:integerItemType"/>
+  <xs:element id="aci_ShareBasedCompensationArrangementByShareBasedPaymentAwardAggregateRetentionProgramAmount" abstract="false" name="ShareBasedCompensationArrangementByShareBasedPaymentAwardAggregateRetentionProgramAmount" nillable="true" xbrli:periodType="duration" xbrli:balance="credit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="aci_ShareBasedCompensationArrangementByShareBasedPaymentAwardBusinessCombinationTerminationAwardVestingRightsPercentage" abstract="false" name="ShareBasedCompensationArrangementByShareBasedPaymentAwardBusinessCombinationTerminationAwardVestingRightsPercentage" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:percentItemType"/>
+  <xs:element id="aci_AccruedRetentionBonusExpense" abstract="false" name="AccruedRetentionBonusExpense" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="aci_ReturnSeekingMember" abstract="true" name="ReturnSeekingMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types:domainItemType"/>
+  <xs:element id="aci_LiabilityHedgingMember" abstract="true" name="LiabilityHedgingMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types:domainItemType"/>
+  <xs:element id="aci_TrustFundsMember" abstract="true" name="TrustFundsMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_DefinedBenefitPlanFairValueOfPlanAssetsExcludingPayableDueToAgents" abstract="false" name="DefinedBenefitPlanFairValueOfPlanAssetsExcludingPayableDueToAgents" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="aci_DefinedBenefitPlanAlternativeInvestmentsFairValueOfPlanAssets" abstract="false" name="DefinedBenefitPlanAlternativeInvestmentsFairValueOfPlanAssets" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="aci_UFCWNorthernCaliforniaEmployersJointPensionTrustFundMember" abstract="true" name="UFCWNorthernCaliforniaEmployersJointPensionTrustFundMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_WesternConferenceOfTeamstersPensionPlanMember" abstract="true" name="WesternConferenceOfTeamstersPensionPlanMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_SouthernCaliforniaUnitedFoodAndCommercialWorkersUnionsAndFoodEmployersJointPensionPlanMember" abstract="true" name="SouthernCaliforniaUnitedFoodAndCommercialWorkersUnionsAndFoodEmployersJointPensionPlanMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_SoundRetirementTrustMember" abstract="true" name="SoundRetirementTrustMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_BakeryAndConfectioneryUnionAndIndustryInternationalPensionFundMember" abstract="true" name="BakeryAndConfectioneryUnionAndIndustryInternationalPensionFundMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_UFCWUnionAndParticipatingFoodIndustryEmployersTriStatePensionFundMember" abstract="true" name="UFCWUnionAndParticipatingFoodIndustryEmployersTriStatePensionFundMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_RockyMountainUFCWUnionsAndEmployersPensionPlanMember" abstract="true" name="RockyMountainUFCWUnionsAndEmployersPensionPlanMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_UFCWLocal152RetailMeatPensionFundMember" abstract="true" name="UFCWLocal152RetailMeatPensionFundMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_DesertStatesEmployersAndUFCWUnionsPensionPlanMember" abstract="true" name="DesertStatesEmployersAndUFCWUnionsPensionPlanMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_UFCWIntlUnionAlbertsonsVariableAnnuityPensionFundMember" abstract="true" name="UFCWIntlUnionAlbertsonsVariableAnnuityPensionFundMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types:domainItemType"/>
+  <xs:element id="aci_RetailFoodEmployersAndUFCWLocal711PensionTrustFundMember" abstract="true" name="RetailFoodEmployersAndUFCWLocal711PensionTrustFundMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_OregonRetailEmployeesPensionTrustMember" abstract="true" name="OregonRetailEmployeesPensionTrustMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_IntermountainRetailstoreEmployeesPensionTrustMember" abstract="true" name="IntermountainRetailstoreEmployeesPensionTrustMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_UFCWLocal1245LaborManagementPensionPlanMember" abstract="true" name="UFCWLocal1245LaborManagementPensionPlanMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_OtherFundsMember" abstract="true" name="OtherFundsMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_MultiemployerPlansCollectiveBargainingArrangementNumberOfAgreements" abstract="false" name="MultiemployerPlansCollectiveBargainingArrangementNumberOfAgreements" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="xbrli:integerItemType"/>
+  <xs:element id="aci_MultiemployerPlansCollectiveBargainingArrangementNumberOfSignificantAgreements" abstract="false" name="MultiemployerPlansCollectiveBargainingArrangementNumberOfSignificantAgreements" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="xbrli:integerItemType"/>
+  <xs:element id="aci_ConsultingServicesFeeMember" abstract="true" name="ConsultingServicesFeeMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types:domainItemType"/>
+  <xs:element id="aci_AdvisoryAndImplementationServicesFeeMember" abstract="true" name="AdvisoryAndImplementationServicesFeeMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types:domainItemType"/>
+  <xs:element id="aci_CerberusOperationsAndAdvisoryCompanyLLCCOACMember" abstract="true" name="CerberusOperationsAndAdvisoryCompanyLLCCOACMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_CerberusTechnologySolutionsCTSMember" abstract="true" name="CerberusTechnologySolutionsCTSMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_QuiTamLawsuitsMember" abstract="true" name="QuiTamLawsuitsMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_UnitedStatesExRelSchutteAndYarberryVSuperValuNewAlbertsonsIncEtAlMember" abstract="true" name="UnitedStatesExRelSchutteAndYarberryVSuperValuNewAlbertsonsIncEtAlMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types:domainItemType"/>
+  <xs:element id="aci_PharmacyBenefitManagerPBMLitigationMember" abstract="true" name="PharmacyBenefitManagerPBMLitigationMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types:domainItemType"/>
+  <xs:element id="aci_ConsolidatedCasesForMultidistrictLitigationMember" abstract="true" name="ConsolidatedCasesForMultidistrictLitigationMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_BlackfeetTribeMember" abstract="true" name="BlackfeetTribeMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_TarrantCountyTexasTownOfHullMassachusettsAndMontereyCountyCaliforniaMember" abstract="true" name="TarrantCountyTexasTownOfHullMassachusettsAndMontereyCountyCaliforniaMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types:domainItemType"/>
+  <xs:element id="aci_NewMexicoCountiesMember" abstract="true" name="NewMexicoCountiesMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types:domainItemType"/>
+  <xs:element id="aci_LossContingencyAdditionalClaimsNumber" abstract="false" name="LossContingencyAdditionalClaimsNumber" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="xbrli:integerItemType"/>
+  <xs:element id="aci_AccumulatedOtherComprehensiveIncomeOtherAttributabletoParentMember" abstract="true" name="AccumulatedOtherComprehensiveIncomeOtherAttributabletoParentMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:domainItemType"/>
+  <xs:element id="aci_NumberOfStoreFormat" abstract="false" name="NumberOfStoreFormat" nillable="true" xbrli:periodType="instant" substitutionGroup="xbrli:item" type="xbrli:integerItemType"/>
+  <xs:element id="aci_ReportableSegmentMember" abstract="true" name="ReportableSegmentMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types:domainItemType"/>
+  <xs:element id="aci_RetailSalesMember" abstract="true" name="RetailSalesMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types:domainItemType"/>
+  <xs:element id="aci_ThirdPartySalesAndOtherMiscellaneousRevenueMember" abstract="true" name="ThirdPartySalesAndOtherMiscellaneousRevenueMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types:domainItemType"/>
+  <xs:element id="aci_LessRetailSegmentEBITDAAbstract" abstract="true" name="LessRetailSegmentEBITDAAbstract" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="xbrli:stringItemType"/>
+  <xs:element id="aci_MerchandiseCostIncludingAdvertisingDistributionAndFreightExpense" abstract="false" name="MerchandiseCostIncludingAdvertisingDistributionAndFreightExpense" nillable="true" xbrli:periodType="duration" xbrli:balance="debit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="aci_RetailSegmentEBITDA" abstract="false" name="RetailSegmentEBITDA" nillable="true" xbrli:periodType="duration" xbrli:balance="credit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="aci_AdjustmentsToReconcileRetailSegmentEBITDAToIncomeBeforeIncomeTaxesAbstract" abstract="true" name="AdjustmentsToReconcileRetailSegmentEBITDAToIncomeBeforeIncomeTaxesAbstract" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="xbrli:stringItemType"/>
+  <xs:element id="aci_CorporateAdjustedEBITDA" abstract="false" name="CorporateAdjustedEBITDA" nillable="true" xbrli:periodType="duration" xbrli:balance="credit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="aci_BusinessTransformationCost" abstract="false" name="BusinessTransformationCost" nillable="true" xbrli:periodType="duration" xbrli:balance="debit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="aci_GovernmentMandatedIncrementalCOVID19PandemicRelatedPay" abstract="false" name="GovernmentMandatedIncrementalCOVID19PandemicRelatedPay" nillable="true" xbrli:periodType="duration" xbrli:balance="debit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="aci_GainLossOnNonOperatingInvestmentsAndLeaseAdjustments" abstract="false" name="GainLossOnNonOperatingInvestmentsAndLeaseAdjustments" nillable="true" xbrli:periodType="duration" xbrli:balance="credit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="aci_TemporaryEquityConvertibleOutstandingPercentage" abstract="false" name="TemporaryEquityConvertibleOutstandingPercentage" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types1:percentItemType"/>
+</xs:schema>
