@@ -1,0 +1,325 @@
+{
+  "role_uri": "http://www.plugpoweinc.com/role/DisclosureAcquisitionsNarrativesDetails",
+  "role_definition": null,
+  "statement_type": "OTHER",
+  "classification": {
+    "category": "DETAIL",
+    "statement_type": "OTHER",
+    "is_primary": false,
+    "confidence": "LOW",
+    "matched_patterns": [
+      "Details"
+    ],
+    "structural_signals": {},
+    "source": "structural_analysis",
+    "taxonomy_source": "fallback_pattern",
+    "fallback_used": true
+  },
+  "hierarchy": {
+    "roots": [
+      "us-gaap_BusinessCombinationsAbstract"
+    ],
+    "children": {
+      "us-gaap_BusinessCombinationsAbstract": [
+        "us-gaap_StatementTable"
+      ],
+      "us-gaap_StatementTable": [
+        "us-gaap_BusinessAcquisitionAxis",
+        "srt_CounterpartyNameAxis",
+        "srt_StatementScenarioAxis",
+        "us-gaap_StatementLineItems"
+      ],
+      "us-gaap_BusinessAcquisitionAxis": [
+        "us-gaap_BusinessAcquisitionAcquireeDomain"
+      ],
+      "us-gaap_BusinessAcquisitionAcquireeDomain": [
+        "plug_AlloyCustomProductsLlcAndWesmorCryogenicsLlcMember",
+        "plug_JouleProcessingLlcMember"
+      ],
+      "srt_CounterpartyNameAxis": [
+        "srt_RepurchaseAgreementCounterpartyNameDomain"
+      ],
+      "srt_RepurchaseAgreementCounterpartyNameDomain": [
+        "plug_CyrogenicIndustrialSolutionsLlcAlloyCustomProductsLlcAndWesmorCryogenicsLlcMember"
+      ],
+      "srt_StatementScenarioAxis": [
+        "srt_ScenarioUnspecifiedDomain"
+      ],
+      "srt_ScenarioUnspecifiedDomain": [
+        "srt_ProFormaMember"
+      ],
+      "us-gaap_StatementLineItems": [
+        "plug_NumberOfSubsidiaries",
+        "us-gaap_BusinessCombinationProFormaInformationRevenueOfAcquireeSinceAcquisitionDateActual",
+        "us-gaap_BusinessCombinationProFormaInformationEarningsOrLossOfAcquireeSinceAcquisitionDateActual"
+      ]
+    },
+    "parents": {
+      "us-gaap_StatementTable": "us-gaap_BusinessCombinationsAbstract",
+      "us-gaap_BusinessAcquisitionAxis": "us-gaap_StatementTable",
+      "us-gaap_BusinessAcquisitionAcquireeDomain": "us-gaap_BusinessAcquisitionAxis",
+      "plug_AlloyCustomProductsLlcAndWesmorCryogenicsLlcMember": "us-gaap_BusinessAcquisitionAcquireeDomain",
+      "plug_JouleProcessingLlcMember": "us-gaap_BusinessAcquisitionAcquireeDomain",
+      "srt_CounterpartyNameAxis": "us-gaap_StatementTable",
+      "srt_RepurchaseAgreementCounterpartyNameDomain": "srt_CounterpartyNameAxis",
+      "plug_CyrogenicIndustrialSolutionsLlcAlloyCustomProductsLlcAndWesmorCryogenicsLlcMember": "srt_RepurchaseAgreementCounterpartyNameDomain",
+      "srt_StatementScenarioAxis": "us-gaap_StatementTable",
+      "srt_ScenarioUnspecifiedDomain": "srt_StatementScenarioAxis",
+      "srt_ProFormaMember": "srt_ScenarioUnspecifiedDomain",
+      "us-gaap_StatementLineItems": "us-gaap_StatementTable",
+      "plug_NumberOfSubsidiaries": "us-gaap_StatementLineItems",
+      "us-gaap_BusinessCombinationProFormaInformationRevenueOfAcquireeSinceAcquisitionDateActual": "us-gaap_StatementLineItems",
+      "us-gaap_BusinessCombinationProFormaInformationEarningsOrLossOfAcquireeSinceAcquisitionDateActual": "us-gaap_StatementLineItems"
+    },
+    "order": {
+      "us-gaap_StatementTable": "1",
+      "us-gaap_BusinessAcquisitionAxis": "1",
+      "us-gaap_BusinessAcquisitionAcquireeDomain": "1",
+      "plug_AlloyCustomProductsLlcAndWesmorCryogenicsLlcMember": "1",
+      "plug_JouleProcessingLlcMember": "2",
+      "srt_CounterpartyNameAxis": "2",
+      "srt_RepurchaseAgreementCounterpartyNameDomain": "1",
+      "plug_CyrogenicIndustrialSolutionsLlcAlloyCustomProductsLlcAndWesmorCryogenicsLlcMember": "1",
+      "srt_StatementScenarioAxis": "3",
+      "srt_ScenarioUnspecifiedDomain": "1",
+      "srt_ProFormaMember": "1",
+      "us-gaap_StatementLineItems": "4",
+      "plug_NumberOfSubsidiaries": "1",
+      "us-gaap_BusinessCombinationProFormaInformationRevenueOfAcquireeSinceAcquisitionDateActual": "2",
+      "us-gaap_BusinessCombinationProFormaInformationEarningsOrLossOfAcquireeSinceAcquisitionDateActual": "3"
+    }
+  },
+  "facts": [
+    {
+      "concept": "plug_NumberOfSubsidiaries",
+      "value": "two",
+      "context_ref": "Duration_12_5_2022_To_12_5_2022_srt_CounterpartyNameAxis_plug_CyrogenicIndustrialSolutionsLlcAlloyCustomProductsLlcAndWesmorCryogenicsLlcMember_us-gaap_BusinessAcquisitionAxis_plug_AlloyCustomProductsLlcAndWesmorCryogenicsLlcMember_Ltubs-w-dEelxvgI8l52KQ",
+      "unit_ref": "Unit_Standard_subsidiary_ZRPhRGUhlUat6higeavcng",
+      "decimals": "INF",
+      "level": 3,
+      "order": "1",
+      "parent_concept": "us-gaap_StatementLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2022-12-05",
+      "period_end": "2022-12-05",
+      "dimensions": {
+        "srt:CounterpartyNameAxis": "plug:CyrogenicIndustrialSolutionsLlcAlloyCustomProductsLlcAndWesmorCryogenicsLlcMember",
+        "us-gaap:BusinessAcquisitionAxis": "plug:AlloyCustomProductsLlcAndWesmorCryogenicsLlcMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Narr_acGewkHNxEWp-0_o6E4KeQ",
+      "display_value": "two",
+      "formatted_value": "two",
+      "scaling_factor": 1.0
+    },
+    {
+      "concept": "us-gaap_BusinessCombinationProFormaInformationRevenueOfAcquireeSinceAcquisitionDateActual",
+      "value": "46.5",
+      "context_ref": "Duration_1_1_2024_To_12_31_2024_srt_CounterpartyNameAxis_plug_CyrogenicIndustrialSolutionsLlcAlloyCustomProductsLlcAndWesmorCryogenicsLlcMember_us-gaap_BusinessAcquisitionAxis_plug_AlloyCustomProductsLlcAndWesmorCryogenicsLlcMember_d--3JKGUMkuJMyGTOffikg",
+      "unit_ref": "Unit_Standard_USD_30_8zKpuk0ir6NRWu3dU3Q",
+      "decimals": "-5",
+      "level": 3,
+      "order": "2",
+      "parent_concept": "us-gaap_StatementLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {
+        "srt:CounterpartyNameAxis": "plug:CyrogenicIndustrialSolutionsLlcAlloyCustomProductsLlcAndWesmorCryogenicsLlcMember",
+        "us-gaap:BusinessAcquisitionAxis": "plug:AlloyCustomProductsLlcAndWesmorCryogenicsLlcMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Narr_xzpUFXJtzUKoMqKlILTEoQ",
+      "display_value": "4650000.0",
+      "formatted_value": "$4,650,000",
+      "scaling_factor": 100000
+    },
+    {
+      "concept": "us-gaap_BusinessCombinationProFormaInformationRevenueOfAcquireeSinceAcquisitionDateActual",
+      "value": "47.7",
+      "context_ref": "Duration_1_1_2023_To_12_31_2023_srt_CounterpartyNameAxis_plug_CyrogenicIndustrialSolutionsLlcAlloyCustomProductsLlcAndWesmorCryogenicsLlcMember_us-gaap_BusinessAcquisitionAxis_plug_AlloyCustomProductsLlcAndWesmorCryogenicsLlcMember_ytM__bp0QkOsuCv_7wh3BA",
+      "unit_ref": "Unit_Standard_USD_30_8zKpuk0ir6NRWu3dU3Q",
+      "decimals": "-5",
+      "level": 3,
+      "order": "2",
+      "parent_concept": "us-gaap_StatementLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2023-01-01",
+      "period_end": "2023-12-31",
+      "dimensions": {
+        "srt:CounterpartyNameAxis": "plug:CyrogenicIndustrialSolutionsLlcAlloyCustomProductsLlcAndWesmorCryogenicsLlcMember",
+        "us-gaap:BusinessAcquisitionAxis": "plug:AlloyCustomProductsLlcAndWesmorCryogenicsLlcMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Narr_l8F3lx3kxUyRlYTe-Qj00w",
+      "display_value": "4770000.0",
+      "formatted_value": "$4,770,000",
+      "scaling_factor": 100000
+    },
+    {
+      "concept": "us-gaap_BusinessCombinationProFormaInformationRevenueOfAcquireeSinceAcquisitionDateActual",
+      "value": "3.7",
+      "context_ref": "Duration_1_1_2022_To_12_31_2022_srt_CounterpartyNameAxis_plug_CyrogenicIndustrialSolutionsLlcAlloyCustomProductsLlcAndWesmorCryogenicsLlcMember_us-gaap_BusinessAcquisitionAxis_plug_AlloyCustomProductsLlcAndWesmorCryogenicsLlcMember_l0UzZHIfrkqlwFejzLAasg",
+      "unit_ref": "Unit_Standard_USD_30_8zKpuk0ir6NRWu3dU3Q",
+      "decimals": "-5",
+      "level": 3,
+      "order": "2",
+      "parent_concept": "us-gaap_StatementLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2022-01-01",
+      "period_end": "2022-12-31",
+      "dimensions": {
+        "srt:CounterpartyNameAxis": "plug:CyrogenicIndustrialSolutionsLlcAlloyCustomProductsLlcAndWesmorCryogenicsLlcMember",
+        "us-gaap:BusinessAcquisitionAxis": "plug:AlloyCustomProductsLlcAndWesmorCryogenicsLlcMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Narr_F1RzkAYr5k6cJBvqhByZ-Q",
+      "display_value": "370000.0",
+      "formatted_value": "$370,000",
+      "scaling_factor": 100000
+    },
+    {
+      "concept": "us-gaap_BusinessCombinationProFormaInformationRevenueOfAcquireeSinceAcquisitionDateActual",
+      "value": "9.5",
+      "context_ref": "Duration_1_1_2024_To_12_31_2024_us-gaap_BusinessAcquisitionAxis_plug_JouleProcessingLlcMember_fnpXhKZNO0eBwH0ayW8jhQ",
+      "unit_ref": "Unit_Standard_USD_30_8zKpuk0ir6NRWu3dU3Q",
+      "decimals": "-5",
+      "level": 3,
+      "order": "2",
+      "parent_concept": "us-gaap_StatementLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {
+        "us-gaap:BusinessAcquisitionAxis": "plug:JouleProcessingLlcMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Narr_Lh3kI69MsUuD5VmWWhdAqA",
+      "display_value": "950000.0",
+      "formatted_value": "$950,000",
+      "scaling_factor": 100000
+    },
+    {
+      "concept": "us-gaap_BusinessCombinationProFormaInformationRevenueOfAcquireeSinceAcquisitionDateActual",
+      "value": "85.2",
+      "context_ref": "Duration_1_1_2023_To_12_31_2023_us-gaap_BusinessAcquisitionAxis_plug_JouleProcessingLlcMember_4L5riBgxuUezoJMhCCmQ7g",
+      "unit_ref": "Unit_Standard_USD_30_8zKpuk0ir6NRWu3dU3Q",
+      "decimals": "-5",
+      "level": 3,
+      "order": "2",
+      "parent_concept": "us-gaap_StatementLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2023-01-01",
+      "period_end": "2023-12-31",
+      "dimensions": {
+        "us-gaap:BusinessAcquisitionAxis": "plug:JouleProcessingLlcMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Narr_zA0uFSHotkqlEeO59UV2Qw",
+      "display_value": "8520000.0",
+      "formatted_value": "$8,520,000",
+      "scaling_factor": 100000
+    },
+    {
+      "concept": "us-gaap_BusinessCombinationProFormaInformationRevenueOfAcquireeSinceAcquisitionDateActual",
+      "value": "36.5",
+      "context_ref": "Duration_1_1_2022_To_12_31_2022_us-gaap_BusinessAcquisitionAxis_plug_JouleProcessingLlcMember_Phf0Hq5CckGKqaFHstiLnA",
+      "unit_ref": "Unit_Standard_USD_30_8zKpuk0ir6NRWu3dU3Q",
+      "decimals": "-5",
+      "level": 3,
+      "order": "2",
+      "parent_concept": "us-gaap_StatementLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2022-01-01",
+      "period_end": "2022-12-31",
+      "dimensions": {
+        "us-gaap:BusinessAcquisitionAxis": "plug:JouleProcessingLlcMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Narr_iFyo1x6vTkyVwohgczbxfQ",
+      "display_value": "3650000.0",
+      "formatted_value": "$3,650,000",
+      "scaling_factor": 100000
+    },
+    {
+      "concept": "us-gaap_BusinessCombinationProFormaInformationRevenueOfAcquireeSinceAcquisitionDateActual",
+      "value": "36.8",
+      "context_ref": "Duration_1_1_2022_To_12_31_2022_srt_StatementScenarioAxis_srt_ProFormaMember_us-gaap_BusinessAcquisitionAxis_plug_JouleProcessingLlcMember_Kztyk9_4nE2AUKsaXefDEA",
+      "unit_ref": "Unit_Standard_USD_30_8zKpuk0ir6NRWu3dU3Q",
+      "decimals": "-5",
+      "level": 3,
+      "order": "2",
+      "parent_concept": "us-gaap_StatementLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2022-01-01",
+      "period_end": "2022-12-31",
+      "dimensions": {
+        "srt:StatementScenarioAxis": "srt:ProFormaMember",
+        "us-gaap:BusinessAcquisitionAxis": "plug:JouleProcessingLlcMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Narr_UqLuxxft2E2mNakRdoXZWw",
+      "display_value": "3680000.0",
+      "formatted_value": "$3,680,000",
+      "scaling_factor": 100000
+    },
+    {
+      "concept": "us-gaap_BusinessCombinationProFormaInformationEarningsOrLossOfAcquireeSinceAcquisitionDateActual",
+      "value": "3.6",
+      "context_ref": "Duration_1_1_2022_To_12_31_2022_srt_StatementScenarioAxis_srt_ProFormaMember_us-gaap_BusinessAcquisitionAxis_plug_JouleProcessingLlcMember_Kztyk9_4nE2AUKsaXefDEA",
+      "unit_ref": "Unit_Standard_USD_30_8zKpuk0ir6NRWu3dU3Q",
+      "decimals": "-5",
+      "level": 3,
+      "order": "3",
+      "parent_concept": "us-gaap_StatementLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2022-01-01",
+      "period_end": "2022-12-31",
+      "dimensions": {
+        "srt:StatementScenarioAxis": "srt:ProFormaMember",
+        "us-gaap:BusinessAcquisitionAxis": "plug:JouleProcessingLlcMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Narr_Z3bVIlfIcUux-03maPYH1A",
+      "display_value": "360000.0",
+      "formatted_value": "$360,000",
+      "scaling_factor": 100000
+    }
+  ]
+}

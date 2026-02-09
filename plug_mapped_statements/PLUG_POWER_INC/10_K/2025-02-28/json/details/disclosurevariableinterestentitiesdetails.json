@@ -1,0 +1,155 @@
+{
+  "role_uri": "http://www.plugpoweinc.com/role/DisclosureVariableInterestEntitiesDetails",
+  "role_definition": null,
+  "statement_type": "OTHER",
+  "classification": {
+    "category": "DETAIL",
+    "statement_type": "OTHER",
+    "is_primary": false,
+    "confidence": "LOW",
+    "matched_patterns": [
+      "Details"
+    ],
+    "structural_signals": {},
+    "source": "structural_analysis",
+    "taxonomy_source": "fallback_pattern",
+    "fallback_used": true
+  },
+  "hierarchy": {
+    "roots": [
+      "plug_VariableInterestEntitiesAbstract"
+    ],
+    "children": {
+      "plug_VariableInterestEntitiesAbstract": [
+        "us-gaap_ScheduleOfVariableInterestEntitiesTable"
+      ],
+      "us-gaap_ScheduleOfVariableInterestEntitiesTable": [
+        "srt_OwnershipAxis",
+        "srt_ConsolidatedEntitiesAxis",
+        "us-gaap_VariableInterestEntityLineItems"
+      ],
+      "srt_OwnershipAxis": [
+        "srt_OwnershipDomain"
+      ],
+      "srt_OwnershipDomain": [
+        "plug_HidrogeniiMember"
+      ],
+      "srt_ConsolidatedEntitiesAxis": [
+        "srt_ConsolidatedEntitiesDomain"
+      ],
+      "srt_ConsolidatedEntitiesDomain": [
+        "plug_PlugPowerLaJvLlcMember",
+        "plug_NilocoHydrogenHoldingsLlcMember"
+      ],
+      "us-gaap_VariableInterestEntityLineItems": [
+        "plug_ConstructionCapacityPerDay",
+        "us-gaap_VariableInterestEntityOwnershipPercentage"
+      ]
+    },
+    "parents": {
+      "us-gaap_ScheduleOfVariableInterestEntitiesTable": "plug_VariableInterestEntitiesAbstract",
+      "srt_OwnershipAxis": "us-gaap_ScheduleOfVariableInterestEntitiesTable",
+      "srt_OwnershipDomain": "srt_OwnershipAxis",
+      "plug_HidrogeniiMember": "srt_OwnershipDomain",
+      "srt_ConsolidatedEntitiesAxis": "us-gaap_ScheduleOfVariableInterestEntitiesTable",
+      "srt_ConsolidatedEntitiesDomain": "srt_ConsolidatedEntitiesAxis",
+      "plug_PlugPowerLaJvLlcMember": "srt_ConsolidatedEntitiesDomain",
+      "plug_NilocoHydrogenHoldingsLlcMember": "srt_ConsolidatedEntitiesDomain",
+      "us-gaap_VariableInterestEntityLineItems": "us-gaap_ScheduleOfVariableInterestEntitiesTable",
+      "plug_ConstructionCapacityPerDay": "us-gaap_VariableInterestEntityLineItems",
+      "us-gaap_VariableInterestEntityOwnershipPercentage": "us-gaap_VariableInterestEntityLineItems"
+    },
+    "order": {
+      "us-gaap_ScheduleOfVariableInterestEntitiesTable": "1",
+      "srt_OwnershipAxis": "1",
+      "srt_OwnershipDomain": "1",
+      "plug_HidrogeniiMember": "1",
+      "srt_ConsolidatedEntitiesAxis": "2",
+      "srt_ConsolidatedEntitiesDomain": "1",
+      "plug_PlugPowerLaJvLlcMember": "1",
+      "plug_NilocoHydrogenHoldingsLlcMember": "2",
+      "us-gaap_VariableInterestEntityLineItems": "3",
+      "plug_ConstructionCapacityPerDay": "1",
+      "us-gaap_VariableInterestEntityOwnershipPercentage": "2"
+    }
+  },
+  "facts": [
+    {
+      "concept": "plug_ConstructionCapacityPerDay",
+      "value": "15",
+      "context_ref": "Duration_1_1_2024_To_12_31_2024_srt_OwnershipAxis_plug_HidrogeniMember_yVMl941xa0ujitc4oB9Nkw",
+      "unit_ref": "Unit_Standard_T_tjamGZgKIEWCsxloJ8ZrXw",
+      "decimals": "INF",
+      "level": 3,
+      "order": "1",
+      "parent_concept": "us-gaap_VariableInterestEntityLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {
+        "srt:OwnershipAxis": "plug:HidrogeniMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Narr_qgc96hrwX0GmdMjngiHn2g",
+      "display_value": "15",
+      "formatted_value": "15",
+      "scaling_factor": 1.0
+    },
+    {
+      "concept": "us-gaap_VariableInterestEntityOwnershipPercentage",
+      "value": "50",
+      "context_ref": "Duration_1_1_2024_To_12_31_2024_srt_ConsolidatedEntitiesAxis_plug_PlugPowerLaJvLlcMember_srt_OwnershipAxis_plug_HidrogeniiMember_P60sMcb1A0m5XmltDxo00A",
+      "unit_ref": "Unit_Standard_pure_kxMxKRhnWEqqwEr9FQBpgg",
+      "decimals": "2",
+      "level": 3,
+      "order": "2",
+      "parent_concept": "us-gaap_VariableInterestEntityLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {
+        "srt:ConsolidatedEntitiesAxis": "plug:PlugPowerLaJvLlcMember",
+        "srt:OwnershipAxis": "plug:HidrogeniiMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Narr_3nfAhVEXEEuG0msmEaEnYg",
+      "display_value": "0.50",
+      "formatted_value": "0",
+      "scaling_factor": 0.01
+    },
+    {
+      "concept": "us-gaap_VariableInterestEntityOwnershipPercentage",
+      "value": "50",
+      "context_ref": "Duration_1_1_2024_To_12_31_2024_srt_ConsolidatedEntitiesAxis_plug_NilocoHydrogenHoldingsLlcMember_srt_OwnershipAxis_plug_HidrogeniiMember_l8KFukQ93EapkFZzkiATXA",
+      "unit_ref": "Unit_Standard_pure_kxMxKRhnWEqqwEr9FQBpgg",
+      "decimals": "2",
+      "level": 3,
+      "order": "2",
+      "parent_concept": "us-gaap_VariableInterestEntityLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {
+        "srt:ConsolidatedEntitiesAxis": "plug:NilocoHydrogenHoldingsLlcMember",
+        "srt:OwnershipAxis": "plug:HidrogeniiMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Narr_iM1i08auXU2ZD5MuflScYw",
+      "display_value": "0.50",
+      "formatted_value": "0",
+      "scaling_factor": 0.01
+    }
+  ]
+}
