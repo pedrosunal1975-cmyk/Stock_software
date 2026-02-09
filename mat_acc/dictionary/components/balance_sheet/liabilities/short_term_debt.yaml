@@ -1,0 +1,117 @@
+# Component Definition: Short-Term Debt
+# Current portion of interest-bearing debt
+
+component_id: short_term_debt
+display_name: "Short-Term Debt"
+description: "Current portion of interest-bearing debt including short-term borrowings and current maturities of long-term debt"
+
+category: balance_sheet
+subcategory: liabilities
+
+characteristics:
+  balance_type: credit
+  period_type: instant
+  is_monetary: true
+  is_abstract: false
+  data_type: monetary
+
+matching_rules:
+  label_rules:
+    # Highest priority: Exact matches
+    - patterns:
+        - "Short-term Debt"
+        - "Short-Term Debt"
+        - "Short-term Borrowings"
+        - "Current Debt"
+        - "Debt, Current"
+        - "Short-Term Borrowings"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+
+    # Current maturities patterns
+    - patterns:
+        - "Current Portion of Long-term Debt"
+        - "Current Maturities of Long-term Debt"
+        - "Long-term Debt, Current Maturities"
+      match_type: exact
+      case_sensitive: false
+      weight: 18
+
+    # High weight for contains patterns
+    - patterns:
+        - "short-term debt"
+        - "short term debt"
+        - "current portion"
+        - "current maturities"
+        - "short-term borrowings"
+        - "debt, current"
+      match_type: contains
+      case_sensitive: false
+      weight: 12
+
+  hierarchy_rules:
+    # Should be under Current Liabilities
+    - rule_type: parent_matches
+      pattern: "*CurrentLiabilities*"
+      weight: 6
+
+    - rule_type: parent_matches
+      pattern: "*LiabilitiesCurrent*"
+      weight: 6
+
+  calculation_rules:
+    # Should contribute to Current Liabilities
+    - rule_type: contributes_to
+      pattern: "*LiabilitiesCurrent*"
+      weight: 8
+
+  definition_rules:
+    - keywords:
+        - "short-term"
+        - "current"
+        - "borrowing"
+        - "debt"
+        - "within one year"
+        - "due within"
+      all_required: false
+      weight: 4
+
+scoring:
+  min_score: 16
+  confidence_levels:
+    high: 30
+    medium: 22
+    low: 16
+  tiebreaker: highest_in_hierarchy
+  reject_if:
+    - condition: "Is abstract concept"
+      pattern: "abstract=true"
+    - condition: "Is long-term"
+      pattern: "name~longterm"
+    - condition: "Is noncurrent"
+      pattern: "name~noncurrent"
+    - condition: "Is accounts payable"
+      pattern: "name~accountspayable"
+    - condition: "Is trade payable"
+      pattern: "name~tradepayable"
+
+    # Reject disclosure items
+    - condition: "Is text block"
+      pattern: "name~textblock"
+    - condition: "Is schedule"
+      pattern: "name~schedule"
+    - condition: "Is fair value"
+      pattern: "name~fairvalue"
+
+composition:
+  is_composite: false
+
+validation:
+  expected_sign: positive
+  relationships:
+    - other: current_liabilities
+      relation: less_than
+  required_for:
+    - total_debt
+    - short_term_debt_ratio

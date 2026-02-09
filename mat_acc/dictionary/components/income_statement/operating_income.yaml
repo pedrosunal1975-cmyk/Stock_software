@@ -1,0 +1,125 @@
+# Component Definition: Operating Income
+# EBIT - Earnings Before Interest and Taxes
+
+component_id: operating_income
+display_name: "Operating Income"
+description: "Earnings before interest and taxes (EBIT). Gross profit minus operating expenses."
+
+category: income_statement
+subcategory: profitability
+
+characteristics:
+  balance_type: credit
+  period_type: duration
+  is_monetary: true
+  is_abstract: false
+  data_type: monetary
+
+matching_rules:
+  label_rules:
+    # Highest priority: Exact matches
+    - patterns:
+        - "Operating Income"
+        - "Operating Income (Loss)"
+        - "Operating Profit"
+        - "Operating Profit (Loss)"
+        - "Income from Operations"
+        - "Income (Loss) from Operations"
+        - "Earnings from Operations"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+
+    # EBIT terminology
+    - patterns:
+        - "EBIT"
+        - "Earnings Before Interest and Taxes"
+      match_type: exact
+      case_sensitive: false
+      weight: 18
+
+    # High weight for contains patterns
+    - patterns:
+        - "operating income"
+        - "operating profit"
+        - "income from operations"
+        - "operating earnings"
+      match_type: contains
+      case_sensitive: false
+      weight: 12
+
+  hierarchy_rules:
+    # Should be between gross profit and net income
+    - rule_type: depth_level
+      pattern: "3-5"
+      weight: 4
+
+  calculation_rules:
+    # Should have operating expenses as children/siblings
+    - rule_type: has_children
+      patterns:
+        - "*OperatingExpenses*"
+        - "*SG&A*"
+        - "*SellingGeneral*"
+        - "*Research*"
+      min_matches: 0
+      weight: 5
+
+    # Should contribute to Income Before Tax
+    - rule_type: contributes_to
+      pattern: "*IncomeBeforeTax*"
+      weight: 6
+
+  definition_rules:
+    - keywords:
+        - "operating"
+        - "before interest"
+        - "before tax"
+        - "core operations"
+        - "business operations"
+      all_required: false
+      weight: 4
+
+scoring:
+  min_score: 18
+  confidence_levels:
+    high: 32
+    medium: 25
+    low: 18
+  tiebreaker: highest_in_hierarchy
+  reject_if:
+    - condition: "Is abstract concept"
+      pattern: "abstract=true"
+    - condition: "Is net income"
+      pattern: "name~netincome"
+    - condition: "Is gross profit"
+      pattern: "name~grossprofit"
+    - condition: "Is non-operating"
+      pattern: "name~nonoperating"
+    - condition: "Is segment"
+      pattern: "name~segment"
+    - condition: "Is per share"
+      pattern: "name~pershare"
+    - condition: "Is other income"
+      pattern: "name~otherincome"
+
+    # Reject disclosure items
+    - condition: "Is text block"
+      pattern: "name~textblock"
+    - condition: "Is schedule"
+      pattern: "name~schedule"
+    - condition: "Is table"
+      pattern: "name~table"
+
+composition:
+  is_composite: false
+
+validation:
+  expected_sign: either
+  relationships:
+    - other: gross_profit
+      relation: less_than
+  required_for:
+    - operating_margin
+    - interest_coverage
+    - ebit_margin

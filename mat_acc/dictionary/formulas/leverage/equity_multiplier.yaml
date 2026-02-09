@@ -1,0 +1,56 @@
+# Ratio Formula: Equity Multiplier
+# Financial leverage component of DuPont analysis
+
+ratio_id: equity_multiplier
+display_name: "Equity Multiplier"
+description: "Measures assets per dollar of equity. Key component of DuPont ROE decomposition."
+alternate_names:
+  - "Financial Leverage Ratio"
+  - "Assets to Equity"
+  - "Leverage Factor"
+
+category: leverage
+importance: fundamental
+
+# The formula using component IDs
+formula:
+  expression: "total_assets / total_equity"
+  components:
+    - total_assets
+    - total_equity
+
+# What values indicate
+interpretation:
+  healthy_range:
+    min: 1.5
+    max: 3.0
+  warning_below: null
+  warning_above: 5.0
+  direction: context_dependent
+  context: "Higher multiplier amplifies both returns and risks. Minimum value is 1.0 (no debt)."
+
+# When this ratio applies
+applicability:
+  statement_type: balance_sheet
+  industry_specific: true
+  notes: "Essential component of DuPont analysis. Shows financial leverage contribution to ROE."
+
+# Related ratios
+relationships:
+  related_to:
+    - debt_to_equity
+    - return_on_equity
+    - dupont_analysis
+  component_of: dupont_roe
+
+# DuPont relationship
+dupont:
+  roe_formula: "profit_margin * asset_turnover * equity_multiplier"
+  position: leverage_component
+
+# References
+references:
+  - source: "DuPont Analysis"
+    note: "Leverage component of ROE decomposition"
+  - source: "Financial Statement Analysis"
+    note: "Shows how much leverage amplifies returns"

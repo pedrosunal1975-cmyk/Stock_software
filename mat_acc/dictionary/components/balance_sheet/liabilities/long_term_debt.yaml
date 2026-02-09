@@ -1,0 +1,127 @@
+# Component Definition: Long-Term Debt
+# Non-current portion of interest-bearing debt
+
+component_id: long_term_debt
+display_name: "Long-Term Debt"
+description: "Non-current portion of interest-bearing debt, excluding current maturities"
+
+category: balance_sheet
+subcategory: liabilities
+
+characteristics:
+  balance_type: credit
+  period_type: instant
+  is_monetary: true
+  is_abstract: false
+  data_type: monetary
+
+matching_rules:
+  label_rules:
+    # Highest priority: Exact matches
+    - patterns:
+        - "Long-term Debt"
+        - "Long-Term Debt"
+        - "Long-term Debt, Excluding Current Maturities"
+        - "Long Term Debt"
+        - "Noncurrent Debt"
+        - "Long-term Borrowings"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+
+    # High weight for contains patterns
+    - patterns:
+        - "long-term debt"
+        - "long term debt"
+        - "noncurrent debt"
+        - "long-term borrowings"
+        - "noncurrent borrowings"
+        - "long term borrowings"
+      match_type: contains
+      case_sensitive: false
+      weight: 12
+
+    # IFRS terminology
+    - patterns:
+        - "non-current borrowings"
+        - "borrowings, noncurrent"
+      match_type: contains
+      weight: 10
+
+  hierarchy_rules:
+    # Should be under Noncurrent Liabilities
+    - rule_type: parent_matches
+      pattern: "*NoncurrentLiabilities*"
+      weight: 6
+
+    - rule_type: parent_matches
+      pattern: "*LiabilitiesNoncurrent*"
+      weight: 6
+
+  calculation_rules:
+    # Should contribute to Noncurrent Liabilities
+    - rule_type: contributes_to
+      pattern: "*LiabilitiesNoncurrent*"
+      weight: 8
+
+    # May have children (notes, bonds, etc.)
+    - rule_type: has_children
+      patterns:
+        - "*Notes*"
+        - "*Bonds*"
+        - "*Senior*"
+        - "*Convertible*"
+      min_matches: 0
+      weight: 4
+
+  definition_rules:
+    - keywords:
+        - "long-term"
+        - "noncurrent"
+        - "borrowing"
+        - "debt"
+        - "beyond one year"
+      all_required: false
+      weight: 4
+
+scoring:
+  min_score: 18
+  confidence_levels:
+    high: 32
+    medium: 25
+    low: 18
+  tiebreaker: highest_in_hierarchy
+  reject_if:
+    - condition: "Is abstract concept"
+      pattern: "abstract=true"
+    - condition: "Is current portion"
+      pattern: "name~currentportion"
+    - condition: "Is current maturities"
+      pattern: "name~currentmaturities"
+    - condition: "Is short-term"
+      pattern: "name~shortterm"
+    - condition: "Is operating lease"
+      pattern: "name~operatinglease"
+    - condition: "Is finance lease only"
+      pattern: "name~financeleaseliabiility"
+
+    # Reject disclosure items
+    - condition: "Is text block"
+      pattern: "name~textblock"
+    - condition: "Is schedule"
+      pattern: "name~schedule"
+    - condition: "Is fair value"
+      pattern: "name~fairvalue"
+
+composition:
+  is_composite: false
+
+validation:
+  expected_sign: positive
+  relationships:
+    - other: total_liabilities
+      relation: less_than
+  required_for:
+    - total_debt
+    - long_term_debt_to_capital
+    - debt_structure_ratio

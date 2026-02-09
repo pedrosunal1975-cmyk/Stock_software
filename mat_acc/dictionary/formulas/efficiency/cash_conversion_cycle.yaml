@@ -1,0 +1,67 @@
+# Ratio Formula: Cash Conversion Cycle (CCC)
+# Measures working capital efficiency
+
+ratio_id: cash_conversion_cycle
+display_name: "Cash Conversion Cycle"
+description: "Measures days between paying suppliers and receiving cash from customers. Lower (even negative) is better."
+alternate_names:
+  - "CCC"
+  - "Operating Cycle"
+  - "Net Operating Cycle"
+  - "Cash-to-Cash Cycle"
+
+category: efficiency
+importance: fundamental
+
+# The formula using component IDs
+formula:
+  expression: "days_sales_outstanding + days_inventory_outstanding - days_payable_outstanding"
+  components:
+    - days_sales_outstanding
+    - days_inventory_outstanding
+    - days_payable_outstanding
+  alternative_expression: "DSO + DIO - DPO"
+
+# What values indicate
+interpretation:
+  healthy_range:
+    min: 0
+    max: 60
+  warning_below: null
+  warning_above: 90
+  direction: lower_is_better
+  context: "Negative CCC means company gets paid before paying suppliers (ideal). High CCC ties up working capital."
+
+# When this ratio applies
+applicability:
+  statement_type: both
+  industry_specific: true
+  negative_ccc_examples:
+    - amazon: "Collects before paying suppliers"
+    - dell: "Build-to-order model"
+    - grocery: "Quick inventory turnover"
+  notes: "Critical for working capital optimization. Tech giants often have negative CCC."
+
+# Related ratios
+relationships:
+  related_to:
+    - days_sales_outstanding
+    - days_inventory_outstanding
+    - days_payable_outstanding
+    - working_capital_ratio
+  composed_of:
+    - days_sales_outstanding
+    - days_inventory_outstanding
+    - days_payable_outstanding
+
+# Working capital impact
+working_capital:
+  interpretation: "Each day of CCC requires working capital funding"
+  optimization: "Reduce DSO, reduce DIO, increase DPO"
+
+# References
+references:
+  - source: "Working Capital Management"
+    note: "Ultimate working capital efficiency metric"
+  - source: "Supply Chain Finance"
+    note: "Key metric for supply chain optimization"

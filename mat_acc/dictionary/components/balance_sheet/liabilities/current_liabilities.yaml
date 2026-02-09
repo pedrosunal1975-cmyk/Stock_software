@@ -1,0 +1,117 @@
+# Component Definition: Current Liabilities
+# Short-term obligations due within one year
+
+component_id: current_liabilities
+display_name: "Current Liabilities"
+description: "Obligations expected to be settled within one year or operating cycle"
+
+category: balance_sheet
+subcategory: liabilities
+
+characteristics:
+  balance_type: credit
+  period_type: instant
+  is_monetary: true
+  is_abstract: false
+  data_type: monetary
+
+matching_rules:
+  label_rules:
+    # Highest priority: Exact matches
+    - patterns:
+        - "Liabilities, Current"
+        - "Current Liabilities"
+        - "Total Current Liabilities"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+
+    # High weight for contains patterns
+    - patterns:
+        - "current liabilities"
+        - "liabilities, current"
+        - "total current liabilities"
+      match_type: contains
+      case_sensitive: false
+      weight: 12
+
+  hierarchy_rules:
+    - rule_type: parent_matches
+      pattern: "*Liabilities*Abstract*"
+      weight: 6
+
+    - rule_type: has_siblings
+      pattern: "*Noncurrent*"
+      weight: 4
+
+  calculation_rules:
+    - rule_type: has_children
+      patterns:
+        - "*Payable*"
+        - "*Accrued*"
+        - "*Deferred*"
+        - "*ShortTerm*"
+      min_matches: 2
+      weight: 10
+
+    - rule_type: contributes_to
+      pattern: "*Liabilities"
+      weight: 5
+
+  definition_rules:
+    - keywords:
+        - "one year"
+        - "operating cycle"
+        - "current"
+        - "short-term"
+      all_required: false
+      weight: 4
+
+scoring:
+  min_score: 20
+  confidence_levels:
+    high: 35
+    medium: 27
+    low: 20
+  tiebreaker: highest_in_hierarchy
+  reject_if:
+    - condition: "Is abstract concept"
+      pattern: "abstract=true"
+    - condition: "Is noncurrent"
+      pattern: "name~noncurrent"
+
+    # Reject specific liability types (children, not the total)
+    - condition: "Is accounts payable"
+      pattern: "name~accountspayable"
+    - condition: "Is accrued item"
+      pattern: "name~accrued"
+    - condition: "Is deferred item"
+      pattern: "name~deferred"
+    - condition: "Is short term debt"
+      pattern: "name~shortterm"
+    - condition: "Is notes payable"
+      pattern: "name~notespayable"
+    - condition: "Is tax payable"
+      pattern: "name~taxpayable"
+    - condition: "Is dividend payable"
+      pattern: "name~dividend"
+    - condition: "Is unearned"
+      pattern: "name~unearned"
+
+    # Reject disclosure items
+    - condition: "Is text block"
+      pattern: "name~textblock"
+    - condition: "Is schedule"
+      pattern: "name~schedule"
+    - condition: "Is table"
+      pattern: "name~table"
+
+composition:
+  is_composite: false
+
+validation:
+  expected_sign: positive
+  required_for:
+    - current_ratio
+    - quick_ratio
+    - cash_ratio

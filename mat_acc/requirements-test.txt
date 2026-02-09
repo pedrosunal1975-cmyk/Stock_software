@@ -1,0 +1,15 @@
+# mat_acc Test Dependencies
+
+# Testing framework
+pytest>=7.4.0
+pytest-cov>=4.1.0
+pytest-mock>=3.11.0
+
+# Code coverage
+coverage>=7.3.0
+
+# Mocking
+unittest-mock>=1.4.0
+
+# For async tests (if needed later)
+pytest-asyncio>=0.21.0

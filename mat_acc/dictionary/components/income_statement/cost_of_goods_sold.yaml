@@ -1,0 +1,119 @@
+# Component Definition: Cost of Goods Sold
+# Direct costs of producing goods/services sold
+
+component_id: cost_of_goods_sold
+display_name: "Cost of Goods Sold"
+description: "Direct costs attributable to production of goods or services sold. Includes materials, labor, and manufacturing overhead."
+
+category: income_statement
+subcategory: expense
+
+characteristics:
+  balance_type: debit
+  period_type: duration
+  is_monetary: true
+  is_abstract: false
+  data_type: monetary
+
+matching_rules:
+  label_rules:
+    # Highest priority: Exact matches
+    - patterns:
+        - "Cost of Goods Sold"
+        - "Cost of Revenue"
+        - "Cost of Sales"
+        - "Cost of Products Sold"
+        - "Cost of Services"
+        - "Cost of Goods and Services Sold"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+
+    # High weight for contains patterns
+    - patterns:
+        - "cost of goods sold"
+        - "cost of revenue"
+        - "cost of sales"
+        - "cost of products"
+        - "cost of services"
+        - "costs of revenue"
+      match_type: contains
+      case_sensitive: false
+      weight: 12
+
+    # IFRS terminology
+    - patterns:
+        - "cost of sales"
+        - "costs of sales"
+      match_type: contains
+      weight: 10
+
+  hierarchy_rules:
+    # Should be right after revenue
+    - rule_type: position_ordinal
+      pattern: "2"
+      weight: 5
+
+    # Should be sibling of revenue
+    - rule_type: has_siblings
+      pattern: "*Revenue*"
+      weight: 4
+
+  calculation_rules:
+    # COGS contributes to Gross Profit calculation
+    - rule_type: contributes_to
+      pattern: "*GrossProfit*"
+      weight: 6
+
+  definition_rules:
+    - keywords:
+        - "cost"
+        - "production"
+        - "direct"
+        - "goods sold"
+        - "services"
+        - "manufacturing"
+      all_required: false
+      weight: 4
+
+scoring:
+  min_score: 18
+  confidence_levels:
+    high: 32
+    medium: 25
+    low: 18
+  tiebreaker: highest_in_hierarchy
+  reject_if:
+    - condition: "Is abstract concept"
+      pattern: "abstract=true"
+    - condition: "Is operating expense"
+      pattern: "name~operatingexpense"
+    - condition: "Is SG&A"
+      pattern: "name~sellinggeneral"
+    - condition: "Is R&D"
+      pattern: "name~research"
+    - condition: "Is depreciation only"
+      pattern: "name~depreciation"
+    - condition: "Is labor only"
+      pattern: "name~laborcost"
+
+    # Reject disclosure items
+    - condition: "Is text block"
+      pattern: "name~textblock"
+    - condition: "Is schedule"
+      pattern: "name~schedule"
+    - condition: "Is table"
+      pattern: "name~table"
+
+composition:
+  is_composite: false
+
+validation:
+  expected_sign: positive
+  relationships:
+    - other: revenue
+      relation: less_than
+  required_for:
+    - gross_margin
+    - inventory_turnover
+    - cost_ratio

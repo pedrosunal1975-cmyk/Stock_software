@@ -1,0 +1,121 @@
+# Component Definition: Inventory
+# Current assets held for sale or production
+
+component_id: inventory
+display_name: "Inventory"
+description: "Assets held for sale in the ordinary course of business or for use in production"
+
+category: balance_sheet
+subcategory: assets
+
+characteristics:
+  balance_type: debit
+  period_type: instant
+  is_monetary: true
+  is_abstract: false
+  data_type: monetary
+
+matching_rules:
+  label_rules:
+    # Highest priority: Exact matches
+    - patterns:
+        - "Inventories"
+        - "Inventory"
+        - "Inventories, Net"
+        - "Inventory, Net"
+        - "Total Inventories"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+
+    # High weight for contains patterns
+    - patterns:
+        - "inventories"
+        - "inventory"
+        - "total inventory"
+      match_type: contains
+      case_sensitive: false
+      weight: 12
+
+  local_name_rules:
+    # Match the standard concept local names
+    - patterns:
+        - "InventoryNet"
+        - "Inventories"
+      match_type: exact
+      weight: 5
+
+  hierarchy_rules:
+    - rule_type: parent_matches
+      pattern: "*AssetsCurrent*"
+      weight: 8
+
+    - rule_type: has_siblings
+      pattern: "*Receivable*"
+      weight: 4
+
+  calculation_rules:
+    - rule_type: has_children
+      patterns:
+        - "*RawMaterial*"
+        - "*WorkInProcess*"
+        - "*FinishedGoods*"
+        - "*Merchandise*"
+      min_matches: 1
+      weight: 8
+
+    - rule_type: contributes_to
+      pattern: "*AssetsCurrent*"
+      weight: 6
+
+  definition_rules:
+    - keywords:
+        - "inventory"
+        - "held for sale"
+        - "raw materials"
+        - "finished goods"
+        - "work in process"
+        - "merchandise"
+      all_required: false
+      weight: 4
+
+scoring:
+  min_score: 18
+  confidence_levels:
+    high: 32
+    medium: 25
+    low: 18
+  tiebreaker: highest_in_hierarchy
+  reject_if:
+    - condition: "Is abstract concept"
+      pattern: "abstract=true"
+
+    # Reject inventory components (children, not the total)
+    - condition: "Is raw materials"
+      pattern: "name~rawmaterial"
+    - condition: "Is work in process"
+      pattern: "name~workinprocess"
+    - condition: "Is finished goods"
+      pattern: "name~finishedgoods"
+    - condition: "Is supplies"
+      pattern: "name~supplies"
+
+    # Reject disclosure items
+    - condition: "Is text block"
+      pattern: "name~textblock"
+    - condition: "Is schedule"
+      pattern: "name~schedule"
+    - condition: "Is table"
+      pattern: "name~table"
+    - condition: "Is policy"
+      pattern: "name~policy"
+
+composition:
+  is_composite: false
+
+validation:
+  expected_sign: positive
+  required_for:
+    - quick_ratio
+    - inventory_turnover
+    - days_inventory_outstanding

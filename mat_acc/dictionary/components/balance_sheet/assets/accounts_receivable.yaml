@@ -1,0 +1,131 @@
+# Component Definition: Accounts Receivable
+# Trade receivables from customers
+
+component_id: accounts_receivable
+display_name: "Accounts Receivable"
+description: "Amounts owed by customers for goods or services delivered on credit, net of allowances for doubtful accounts"
+
+category: balance_sheet
+subcategory: assets
+
+characteristics:
+  balance_type: debit
+  period_type: instant
+  is_monetary: true
+  is_abstract: false
+  data_type: monetary
+
+matching_rules:
+  label_rules:
+    # Highest priority: Exact matches
+    - patterns:
+        - "Accounts Receivable"
+        - "Accounts Receivable, Net"
+        - "Trade Receivables"
+        - "Receivables"
+        - "Accounts Receivable, after Allowance for Credit Loss"
+        - "Trade Accounts Receivable"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+
+    # High weight for contains patterns
+    - patterns:
+        - "accounts receivable"
+        - "trade receivable"
+        - "receivables, net"
+        - "receivables net"
+        - "receivables from customers"
+      match_type: contains
+      case_sensitive: false
+      weight: 12
+
+    # IFRS terminology
+    - patterns:
+        - "trade and other receivables"
+        - "trade debtors"
+      match_type: contains
+      weight: 10
+
+  hierarchy_rules:
+    # Should be under Current Assets
+    - rule_type: parent_matches
+      pattern: "*CurrentAssets*"
+      weight: 6
+
+    # Should be sibling of inventory
+    - rule_type: has_siblings
+      pattern: "*Inventory*"
+      weight: 4
+
+  calculation_rules:
+    # Should contribute to Current Assets
+    - rule_type: contributes_to
+      pattern: "*AssetsCurrent*"
+      weight: 8
+
+    # May have allowance as child or modifier
+    - rule_type: has_children
+      patterns:
+        - "*Allowance*"
+        - "*DoubtfulAccounts*"
+        - "*CreditLoss*"
+      min_matches: 0
+      weight: 3
+
+  definition_rules:
+    - keywords:
+        - "receivable"
+        - "customer"
+        - "trade"
+        - "credit"
+        - "owed"
+        - "amounts due"
+      all_required: false
+      weight: 4
+
+scoring:
+  min_score: 18
+  confidence_levels:
+    high: 32
+    medium: 25
+    low: 18
+  tiebreaker: highest_in_hierarchy
+  reject_if:
+    - condition: "Is abstract concept"
+      pattern: "abstract=true"
+    - condition: "Is allowance only"
+      pattern: "name~allowance"
+    - condition: "Is noncurrent"
+      pattern: "name~noncurrent"
+    - condition: "Is related party"
+      pattern: "name~relatedparty"
+    - condition: "Is notes receivable"
+      pattern: "name~notesreceivable"
+    - condition: "Is finance lease"
+      pattern: "name~financelease"
+    - condition: "Is other receivable"
+      pattern: "name~otherreceivable"
+
+    # Reject disclosure items
+    - condition: "Is text block"
+      pattern: "name~textblock"
+    - condition: "Is schedule"
+      pattern: "name~schedule"
+    - condition: "Is table"
+      pattern: "name~table"
+    - condition: "Is gross amount"
+      pattern: "name~gross"
+
+composition:
+  is_composite: false
+
+validation:
+  expected_sign: positive
+  relationships:
+    - other: current_assets
+      relation: less_than
+  required_for:
+    - receivables_turnover
+    - days_sales_outstanding
+    - quick_ratio

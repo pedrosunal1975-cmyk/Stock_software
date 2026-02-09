@@ -1,0 +1,70 @@
+# Ratio Formula: Days Inventory Outstanding (DIO)
+# Average days to sell inventory
+
+ratio_id: days_inventory_outstanding
+display_name: "Days Inventory Outstanding"
+description: "Average number of days inventory is held before being sold. Lower is better for cash flow."
+alternate_names:
+  - "DIO"
+  - "Days Inventory"
+  - "Inventory Days"
+  - "Days of Inventory on Hand"
+
+category: efficiency
+importance: fundamental
+
+# The formula using component IDs
+formula:
+  expression: "365 / inventory_turnover"
+  components:
+    - inventory_turnover
+  alternative_expression: "(inventory / cost_of_goods_sold) * 365"
+  alternative_components:
+    - inventory
+    - cost_of_goods_sold
+
+# What values indicate
+interpretation:
+  healthy_range:
+    min: 30
+    max: 90
+  warning_below: null
+  warning_above: 120
+  direction: lower_is_better
+  context: "High DIO may indicate slow-moving inventory or obsolescence risk. Very low may indicate stockout risk."
+
+# When this ratio applies
+applicability:
+  statement_type: both
+  industry_specific: true
+  fast_inventory_industries:
+    - grocery
+    - fashion
+    - perishables
+  slow_inventory_industries:
+    - aerospace
+    - heavy_equipment
+    - jewelry
+  notes: "Not applicable to service companies. Varies widely by industry."
+
+# Related ratios
+relationships:
+  related_to:
+    - inventory_turnover
+    - days_sales_outstanding
+    - days_payable_outstanding
+    - cash_conversion_cycle
+  inverse_of: inventory_turnover
+
+# Cash Conversion Cycle component
+cash_conversion_cycle:
+  formula: "DSO + DIO - DPO"
+  component: "DIO"
+  contribution: positive
+
+# References
+references:
+  - source: "Working Capital Management"
+    note: "Key inventory timing metric"
+  - source: "Supply Chain Management"
+    note: "Indicates inventory efficiency"

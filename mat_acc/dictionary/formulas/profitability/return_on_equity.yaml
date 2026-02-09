@@ -1,0 +1,62 @@
+# Ratio Formula: Return on Equity (ROE)
+# Ultimate shareholder return metric
+
+ratio_id: return_on_equity
+display_name: "Return on Equity"
+description: "Measures return generated on shareholders' equity. The ultimate profitability metric for shareholders."
+alternate_names:
+  - "ROE"
+  - "Return on Shareholders' Equity"
+  - "Return on Net Worth"
+
+category: profitability
+importance: fundamental
+
+# The formula using component IDs
+formula:
+  expression: "net_income / total_equity"
+  components:
+    - net_income
+    - total_equity
+  alternative_expression: "net_income / average_total_equity"
+  note: "For more accuracy, use average of beginning and ending equity"
+
+# What values indicate
+interpretation:
+  healthy_range:
+    min: 0.10
+    max: 0.25
+  warning_below: 0.05
+  warning_above: 0.40
+  direction: higher_is_better
+  context: "Very high ROE may indicate excessive leverage risk. Compare to cost of equity and industry peers."
+
+# When this ratio applies
+applicability:
+  statement_type: both
+  industry_specific: true
+  notes: "Influenced by capital structure. High leverage amplifies ROE. Must consider alongside D/E ratio."
+
+# Related ratios
+relationships:
+  related_to:
+    - return_on_assets
+    - debt_to_equity
+    - equity_multiplier
+  decomposed_by: dupont_analysis
+
+# DuPont relationship
+dupont:
+  three_factor: "net_margin * asset_turnover * equity_multiplier"
+  five_factor: "tax_burden * interest_burden * operating_margin * asset_turnover * equity_multiplier"
+  decomposition:
+    - net_margin: "Net Income / Revenue"
+    - asset_turnover: "Revenue / Total Assets"
+    - equity_multiplier: "Total Assets / Total Equity"
+
+# References
+references:
+  - source: "DuPont Analysis"
+    note: "ROE = ROA x Equity Multiplier"
+  - source: "Valuation"
+    note: "Key driver of sustainable growth rate"

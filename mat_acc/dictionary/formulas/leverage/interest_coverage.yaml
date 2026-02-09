@@ -1,0 +1,60 @@
+# Ratio Formula: Interest Coverage Ratio
+# Measures ability to pay interest obligations
+
+ratio_id: interest_coverage
+display_name: "Interest Coverage Ratio"
+description: "Measures ability to pay interest expenses from operating income. Key solvency metric for creditors."
+alternate_names:
+  - "Times Interest Earned"
+  - "TIE Ratio"
+  - "Interest Coverage"
+
+category: leverage
+importance: fundamental
+
+# The formula using component IDs
+formula:
+  expression: "operating_income / interest_expense"
+  components:
+    - operating_income
+    - interest_expense
+  alternative_expression: "ebitda / interest_expense"
+  alternative_components:
+    - ebitda
+    - interest_expense
+
+# What values indicate
+interpretation:
+  healthy_range:
+    min: 3.0
+    max: 10.0
+  warning_below: 1.5
+  warning_above: null
+  direction: higher_is_better
+  context: "A ratio below 1.0 means the company cannot cover interest from operations. Lenders typically require minimum 2.5-3.0."
+
+# When this ratio applies
+applicability:
+  statement_type: income_statement
+  industry_specific: false
+  notes: "Critical for companies with significant debt. Often a loan covenant requirement."
+
+# Related ratios
+relationships:
+  related_to:
+    - debt_to_equity
+    - debt_service_coverage
+    - fixed_charge_coverage
+
+# Covenant thresholds
+covenant_guidance:
+  investment_grade: 5.0
+  speculative_grade: 2.0
+  distressed: 1.0
+
+# References
+references:
+  - source: "Credit Analysis"
+    note: "Primary debt servicing capacity metric"
+  - source: "Bond Covenants"
+    note: "Common covenant requirement"

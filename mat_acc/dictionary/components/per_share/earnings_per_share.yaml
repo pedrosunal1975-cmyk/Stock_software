@@ -1,0 +1,121 @@
+# Component Definition: Earnings Per Share
+# Net income per common share
+
+component_id: earnings_per_share
+display_name: "Earnings Per Share"
+description: "Net income attributable to common shareholders divided by weighted average shares outstanding."
+
+category: per_share
+subcategory: profitability
+
+characteristics:
+  balance_type: none
+  period_type: duration
+  is_monetary: false
+  is_abstract: false
+  data_type: per_share
+
+matching_rules:
+  label_rules:
+    # Highest priority: Exact matches
+    - patterns:
+        - "Earnings Per Share"
+        - "Earnings Per Share, Basic"
+        - "Basic Earnings Per Share"
+        - "EPS"
+        - "Net Income Per Share"
+        - "Basic Net Income Per Share"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+
+    # Diluted EPS
+    - patterns:
+        - "Earnings Per Share, Diluted"
+        - "Diluted Earnings Per Share"
+        - "Diluted EPS"
+        - "Diluted Net Income Per Share"
+      match_type: exact
+      case_sensitive: false
+      weight: 18
+
+    # High weight for contains patterns
+    - patterns:
+        - "earnings per share"
+        - "eps"
+        - "net income per share"
+        - "profit per share"
+      match_type: contains
+      case_sensitive: false
+      weight: 12
+
+    # IFRS terminology
+    - patterns:
+        - "profit per share"
+        - "basic profit per share"
+      match_type: contains
+      weight: 10
+
+  hierarchy_rules:
+    # Should be near net income
+    - rule_type: has_siblings
+      pattern: "*NetIncome*"
+      weight: 5
+
+  calculation_rules:
+    # Should have net income as numerator
+    - rule_type: contributes_to
+      pattern: "*NetIncome*"
+      weight: 4
+
+  definition_rules:
+    - keywords:
+        - "per share"
+        - "earnings"
+        - "net income"
+        - "common"
+        - "diluted"
+        - "basic"
+      all_required: false
+      weight: 4
+
+scoring:
+  min_score: 18
+  confidence_levels:
+    high: 32
+    medium: 25
+    low: 18
+  tiebreaker: highest_in_hierarchy
+  reject_if:
+    - condition: "Is abstract concept"
+      pattern: "abstract=true"
+    - condition: "Is discontinued operations"
+      pattern: "name~discontinued"
+    - condition: "Is comprehensive income"
+      pattern: "name~comprehensive"
+    - condition: "Is attributable to parent"
+      pattern: "name~attributable"
+    - condition: "Is segment"
+      pattern: "name~segment"
+
+    # Reject disclosure items
+    - condition: "Is text block"
+      pattern: "name~textblock"
+    - condition: "Is schedule"
+      pattern: "name~schedule"
+    - condition: "Is table"
+      pattern: "name~table"
+
+composition:
+  is_composite: true
+  components:
+    - net_income
+    - shares_outstanding
+  formula: "net_income / shares_outstanding"
+
+validation:
+  expected_sign: either
+  required_for:
+    - pe_ratio
+    - eps_growth
+    - peg_ratio

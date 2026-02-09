@@ -1,0 +1,47 @@
+# Ratio Formula: Debt Ratio
+# Measures proportion of assets financed by debt
+
+ratio_id: debt_ratio
+display_name: "Debt Ratio"
+description: "Measures proportion of total assets financed by creditors. Shows overall indebtedness of the company."
+alternate_names:
+  - "Debt to Assets Ratio"
+  - "Total Debt Ratio"
+
+category: leverage
+importance: fundamental
+
+# The formula using component IDs
+formula:
+  expression: "total_liabilities / total_assets"
+  components:
+    - total_liabilities
+    - total_assets
+
+# What values indicate
+interpretation:
+  healthy_range:
+    min: 0.3
+    max: 0.6
+  warning_below: null
+  warning_above: 0.7
+  direction: lower_is_better
+  context: "A ratio above 0.5 means more than half of assets are financed by debt. Very high ratios indicate higher bankruptcy risk."
+
+# When this ratio applies
+applicability:
+  statement_type: balance_sheet
+  industry_specific: true
+  notes: "Capital-intensive industries often have higher debt ratios. Should be compared to industry peers."
+
+# Related ratios
+relationships:
+  related_to:
+    - debt_to_equity
+    - equity_ratio
+  complement_of: equity_ratio
+
+# References
+references:
+  - source: "Financial Statement Analysis"
+    note: "Shows percentage of assets financed by creditors"

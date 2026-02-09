@@ -1,0 +1,65 @@
+# Ratio Formula: Inventory Turnover
+# Measures inventory management efficiency
+
+ratio_id: inventory_turnover
+display_name: "Inventory Turnover"
+description: "Measures how many times inventory is sold and replaced during a period. Indicates inventory management efficiency."
+alternate_names:
+  - "Inventory Turnover Ratio"
+  - "Stock Turnover"
+
+category: efficiency
+importance: fundamental
+
+# The formula using component IDs
+formula:
+  expression: "cost_of_goods_sold / inventory"
+  components:
+    - cost_of_goods_sold
+    - inventory
+  alternative_expression: "cost_of_goods_sold / average_inventory"
+  note: "For more accuracy, use average of beginning and ending inventory"
+
+# What values indicate
+interpretation:
+  healthy_range:
+    min: 4.0
+    max: 12.0
+  warning_below: 2.0
+  warning_above: null
+  direction: higher_is_better
+  context: "Higher turnover indicates efficient inventory management. Too high may indicate stockouts risk."
+
+# When this ratio applies
+applicability:
+  statement_type: both
+  industry_specific: true
+  high_turnover_industries:
+    - grocery
+    - fast_fashion
+    - perishables
+  low_turnover_industries:
+    - jewelry
+    - furniture
+    - heavy_equipment
+  notes: "Not applicable to service companies. Compare to industry peers."
+
+# Related ratios
+relationships:
+  related_to:
+    - days_inventory_outstanding
+    - asset_turnover
+    - cash_conversion_cycle
+  converts_to: days_inventory_outstanding
+
+# Conversion
+conversion:
+  to_days: "365 / inventory_turnover"
+  result: days_inventory_outstanding
+
+# References
+references:
+  - source: "Working Capital Management"
+    note: "Key inventory efficiency metric"
+  - source: "Supply Chain Analysis"
+    note: "Indicates inventory velocity"

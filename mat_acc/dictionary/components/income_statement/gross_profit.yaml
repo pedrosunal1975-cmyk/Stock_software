@@ -1,0 +1,112 @@
+# Component Definition: Gross Profit
+# Revenue minus cost of goods sold
+
+component_id: gross_profit
+display_name: "Gross Profit"
+description: "Revenue minus cost of goods sold (COGS). Represents profit before operating expenses."
+
+category: income_statement
+subcategory: profitability
+
+characteristics:
+  balance_type: credit
+  period_type: duration
+  is_monetary: true
+  is_abstract: false
+  data_type: monetary
+
+matching_rules:
+  label_rules:
+    # Highest priority: Exact matches
+    - patterns:
+        - "Gross Profit"
+        - "Gross Margin"
+        - "Gross Profit (Loss)"
+        - "Gross Income"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+
+    # High weight for contains patterns
+    - patterns:
+        - "gross profit"
+        - "gross margin"
+        - "gross income"
+      match_type: contains
+      case_sensitive: false
+      weight: 12
+
+  hierarchy_rules:
+    # Should be after revenue and COGS
+    - rule_type: depth_level
+      pattern: "2-3"
+      weight: 4
+
+  calculation_rules:
+    # Gross Profit = Revenue - COGS
+    - rule_type: has_children
+      patterns:
+        - "*Revenue*"
+        - "*CostOfGoods*"
+        - "*CostOfSales*"
+      min_matches: 0
+      weight: 5
+
+    # Should contribute to Operating Income
+    - rule_type: contributes_to
+      pattern: "*OperatingIncome*"
+      weight: 6
+
+  definition_rules:
+    - keywords:
+        - "gross"
+        - "revenue minus cost"
+        - "sales minus cost"
+        - "before operating"
+      all_required: false
+      weight: 4
+
+scoring:
+  min_score: 18
+  confidence_levels:
+    high: 32
+    medium: 25
+    low: 18
+  tiebreaker: highest_in_hierarchy
+  reject_if:
+    - condition: "Is abstract concept"
+      pattern: "abstract=true"
+    - condition: "Is net income"
+      pattern: "name~netincome"
+    - condition: "Is operating income"
+      pattern: "name~operatingincome"
+    - condition: "Is revenue"
+      pattern: "name~revenue"
+    - condition: "Is cost of goods"
+      pattern: "name~costofgoods"
+    - condition: "Is per share"
+      pattern: "name~pershare"
+
+    # Reject disclosure items
+    - condition: "Is text block"
+      pattern: "name~textblock"
+    - condition: "Is schedule"
+      pattern: "name~schedule"
+    - condition: "Is table"
+      pattern: "name~table"
+
+composition:
+  is_composite: true
+  components:
+    - revenue
+    - cost_of_goods_sold
+  formula: "revenue - cost_of_goods_sold"
+
+validation:
+  expected_sign: either
+  relationships:
+    - other: revenue
+      relation: less_than
+  required_for:
+    - gross_margin
+    - gross_profit_growth

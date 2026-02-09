@@ -1,0 +1,110 @@
+# Component Definition: Capital Expenditures
+# Cash spent on property, plant, and equipment
+
+component_id: capital_expenditures
+display_name: "Capital Expenditures"
+description: "Cash spent on purchases of property, plant, and equipment. Key component for free cash flow calculation."
+
+category: cash_flow
+subcategory: investing
+
+characteristics:
+  balance_type: debit
+  period_type: duration
+  is_monetary: true
+  is_abstract: false
+  data_type: monetary
+
+matching_rules:
+  label_rules:
+    # Highest priority: Exact matches
+    - patterns:
+        - "Capital Expenditures"
+        - "Payments for Property, Plant and Equipment"
+        - "Purchases of Property, Plant and Equipment"
+        - "Payments to Acquire Property, Plant, and Equipment"
+        - "Purchase of Fixed Assets"
+        - "Capital Spending"
+        - "CapEx"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+
+    # High weight for contains patterns
+    - patterns:
+        - "capital expenditure"
+        - "purchase of property"
+        - "payments for property"
+        - "acquire property plant"
+        - "fixed assets"
+        - "capex"
+      match_type: contains
+      case_sensitive: false
+      weight: 12
+
+    # IFRS terminology
+    - patterns:
+        - "additions to property"
+        - "acquisition of property"
+      match_type: contains
+      weight: 10
+
+  hierarchy_rules:
+    # Should be in investing activities section
+    - rule_type: parent_matches
+      pattern: "*InvestingActivities*"
+      weight: 6
+
+  calculation_rules:
+    # Should contribute to investing cash flow
+    - rule_type: contributes_to
+      pattern: "*CashFlowInvesting*"
+      weight: 6
+
+  definition_rules:
+    - keywords:
+        - "capital"
+        - "property"
+        - "plant"
+        - "equipment"
+        - "fixed assets"
+        - "investment"
+      all_required: false
+      weight: 4
+
+scoring:
+  min_score: 16
+  confidence_levels:
+    high: 30
+    medium: 22
+    low: 16
+  tiebreaker: highest_in_hierarchy
+  reject_if:
+    - condition: "Is abstract concept"
+      pattern: "abstract=true"
+    - condition: "Is acquisition"
+      pattern: "name~businessacquisition"
+    - condition: "Is intangible assets"
+      pattern: "name~intangible"
+    - condition: "Is proceeds from sale"
+      pattern: "name~proceeds"
+    - condition: "Is depreciation"
+      pattern: "name~depreciation"
+
+    # Reject disclosure items
+    - condition: "Is text block"
+      pattern: "name~textblock"
+    - condition: "Is schedule"
+      pattern: "name~schedule"
+    - condition: "Is table"
+      pattern: "name~table"
+
+composition:
+  is_composite: false
+
+validation:
+  expected_sign: positive  # Usually reported as positive outflow
+  required_for:
+    - free_cash_flow
+    - capex_ratio
+    - capex_to_revenue

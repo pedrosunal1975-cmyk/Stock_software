@@ -1,0 +1,146 @@
+# Component Definition: Total Assets
+# The fundamental balance sheet total
+
+component_id: total_assets
+display_name: "Total Assets"
+description: "Sum of all assets - current and non-current. Must equal Total Liabilities + Total Equity."
+
+category: balance_sheet
+subcategory: assets
+
+characteristics:
+  balance_type: debit
+  period_type: instant
+  is_monetary: true
+  is_abstract: false
+  data_type: monetary
+
+matching_rules:
+  label_rules:
+    # Highest priority: Exact match for "Total Assets" or just "Assets"
+    - patterns:
+        - "Total Assets"
+        - "Assets"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+
+    # High priority: Contains "total assets" specifically
+    - patterns:
+        - "total assets"
+        - "assets, total"
+        - "assets total"
+      match_type: contains
+      case_sensitive: false
+      weight: 12
+
+    # Lower priority: Just contains "assets" (too broad, many false positives)
+    # Only gives minimal score - hierarchy/calculation rules must also match
+    - patterns:
+        - "assets"
+      match_type: contains
+      case_sensitive: false
+      weight: 5
+
+  hierarchy_rules:
+    # Should be at or near root level
+    - rule_type: depth_level
+      pattern: "1"
+      weight: 6
+
+    # Should be child of root
+    - rule_type: child_of_root
+      weight: 4
+
+  calculation_rules:
+    # Should be parent of Current Assets
+    - rule_type: parent_of
+      patterns:
+        - "*AssetsCurrent*"
+        - "*CurrentAssets*"
+      weight: 8
+
+    # Should have current and noncurrent as children
+    - rule_type: has_children
+      patterns:
+        - "*Current*"
+        - "*Noncurrent*"
+        - "*Property*"
+        - "*Intangible*"
+      min_matches: 2
+      weight: 8
+
+  definition_rules:
+    - keywords:
+        - "sum"
+        - "total"
+        - "all assets"
+        - "resources"
+      all_required: false
+      weight: 3
+
+scoring:
+  min_score: 22
+  confidence_levels:
+    high: 38
+    medium: 30
+    low: 22
+  tiebreaker: highest_in_hierarchy
+  reject_if:
+    # Basic rejections
+    - condition: "Is abstract concept"
+      pattern: "abstract=true"
+
+    # Reject sub-categories of assets (these are NOT Total Assets)
+    - condition: "Is current assets only"
+      pattern: "name~current"
+    - condition: "Is noncurrent assets only"
+      pattern: "name~noncurrent"
+    - condition: "Is deferred item"
+      pattern: "name~deferred"
+    - condition: "Is tax related"
+      pattern: "name~tax"
+    - condition: "Is receivables"
+      pattern: "name~receivable"
+    - condition: "Is inventory"
+      pattern: "name~inventory"
+    - condition: "Is cash item"
+      pattern: "name~cash"
+    - condition: "Is property item"
+      pattern: "name~property"
+    - condition: "Is intangible item"
+      pattern: "name~intangible"
+    - condition: "Is goodwill"
+      pattern: "name~goodwill"
+    - condition: "Is fixed assets"
+      pattern: "name~fixed"
+    - condition: "Is prepaid item"
+      pattern: "name~prepaid"
+    - condition: "Is investment item"
+      pattern: "name~investment"
+    - condition: "Is derivative"
+      pattern: "name~derivative"
+    - condition: "Is fair value"
+      pattern: "name~fairvalue"
+    - condition: "Is schedule or text block"
+      pattern: "name~schedule"
+    - condition: "Is text block"
+      pattern: "name~textblock"
+    - condition: "Is table"
+      pattern: "name~table"
+    - condition: "Is acquired assets"
+      pattern: "name~acquired"
+
+composition:
+  is_composite: false
+
+validation:
+  expected_sign: positive
+  relationships:
+    - other: current_assets
+      relation: greater_than
+  required_for:
+    - debt_to_assets
+    - equity_ratio
+    - roa
+    - asset_turnover

@@ -1,0 +1,47 @@
+# Ratio Formula: Working Capital Ratio
+# Measures working capital relative to assets
+
+ratio_id: working_capital_ratio
+display_name: "Working Capital Ratio"
+description: "Measures working capital as a percentage of total assets. Shows liquidity buffer relative to company size."
+alternate_names:
+  - "Net Working Capital Ratio"
+  - "Working Capital to Assets"
+
+category: liquidity
+importance: supplementary
+
+# The formula using component IDs
+formula:
+  expression: "(current_assets - current_liabilities) / total_assets"
+  components:
+    - current_assets
+    - current_liabilities
+    - total_assets
+
+# What values indicate
+interpretation:
+  healthy_range:
+    min: 0.1
+    max: 0.3
+  warning_below: 0.0
+  warning_above: 0.5
+  direction: higher_is_better
+  context: "Negative ratio indicates working capital deficit. Too high may indicate excess idle assets."
+
+# When this ratio applies
+applicability:
+  statement_type: balance_sheet
+  industry_specific: true
+  notes: "Varies significantly by industry. Capital-intensive industries typically have lower ratios."
+
+# Related ratios
+relationships:
+  related_to:
+    - current_ratio
+    - quick_ratio
+
+# References
+references:
+  - source: "Financial Statement Analysis"
+    note: "Measures relative liquidity buffer"

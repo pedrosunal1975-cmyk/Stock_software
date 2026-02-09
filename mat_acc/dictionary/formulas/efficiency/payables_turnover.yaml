@@ -1,0 +1,58 @@
+# Ratio Formula: Payables Turnover
+# Measures payment speed to suppliers
+
+ratio_id: payables_turnover
+display_name: "Payables Turnover"
+description: "Measures how many times payables are paid during a period. Indicates payment practices."
+alternate_names:
+  - "Accounts Payable Turnover"
+  - "AP Turnover"
+  - "Creditor Turnover"
+
+category: efficiency
+importance: supplementary
+
+# The formula using component IDs
+formula:
+  expression: "cost_of_goods_sold / accounts_payable"
+  components:
+    - cost_of_goods_sold
+    - accounts_payable
+  alternative_expression: "purchases / average_accounts_payable"
+  note: "COGS is proxy for purchases if purchases not available"
+
+# What values indicate
+interpretation:
+  healthy_range:
+    min: 6.0
+    max: 12.0
+  warning_below: 4.0
+  warning_above: 20.0
+  direction: context_dependent
+  context: "Lower turnover (slower payment) preserves cash but may strain supplier relations. Higher turnover may indicate cash concerns or early payment discounts."
+
+# When this ratio applies
+applicability:
+  statement_type: both
+  industry_specific: true
+  notes: "Reflects negotiating power with suppliers and cash management strategy."
+
+# Related ratios
+relationships:
+  related_to:
+    - days_payable_outstanding
+    - cash_conversion_cycle
+    - receivables_turnover
+  converts_to: days_payable_outstanding
+
+# Conversion
+conversion:
+  to_days: "365 / payables_turnover"
+  result: days_payable_outstanding
+
+# References
+references:
+  - source: "Working Capital Management"
+    note: "Key payment efficiency metric"
+  - source: "Supply Chain Finance"
+    note: "Affects supplier relationships"

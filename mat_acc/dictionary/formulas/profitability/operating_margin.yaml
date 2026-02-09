@@ -1,0 +1,57 @@
+# Ratio Formula: Operating Margin
+# Measures profitability from core operations
+
+ratio_id: operating_margin
+display_name: "Operating Margin"
+description: "Measures percentage of revenue remaining after all operating expenses. Indicates operational efficiency."
+alternate_names:
+  - "Operating Profit Margin"
+  - "EBIT Margin"
+  - "Operating Income Margin"
+
+category: profitability
+importance: fundamental
+
+# The formula using component IDs
+formula:
+  expression: "operating_income / revenue"
+  components:
+    - operating_income
+    - revenue
+
+# What values indicate
+interpretation:
+  healthy_range:
+    min: 0.10
+    max: 0.30
+  warning_below: 0.05
+  warning_above: null
+  direction: higher_is_better
+  context: "Shows how efficiently the company converts revenue to operating profit. Critical for assessing core business health."
+
+# When this ratio applies
+applicability:
+  statement_type: income_statement
+  industry_specific: true
+  notes: "More comparable across companies than net margin since it excludes financing and tax effects."
+
+# Related ratios
+relationships:
+  related_to:
+    - gross_margin
+    - net_margin
+    - ebitda_margin
+  uses: gross_profit
+  feeds_into: net_margin
+
+# DuPont relationship
+dupont:
+  component_of: profit_margin
+  note: "Operating efficiency component"
+
+# References
+references:
+  - source: "Financial Statement Analysis"
+    note: "Core profitability metric"
+  - source: "DuPont Analysis"
+    note: "Component of return on assets"

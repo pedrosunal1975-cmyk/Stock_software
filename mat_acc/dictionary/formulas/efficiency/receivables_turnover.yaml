@@ -1,0 +1,58 @@
+# Ratio Formula: Receivables Turnover
+# Measures collection efficiency
+
+ratio_id: receivables_turnover
+display_name: "Receivables Turnover"
+description: "Measures how many times receivables are collected during a period. Indicates collection efficiency."
+alternate_names:
+  - "Accounts Receivable Turnover"
+  - "AR Turnover"
+  - "Debtor Turnover"
+
+category: efficiency
+importance: fundamental
+
+# The formula using component IDs
+formula:
+  expression: "revenue / accounts_receivable"
+  components:
+    - revenue
+    - accounts_receivable
+  alternative_expression: "revenue / average_accounts_receivable"
+  note: "For more accuracy, use average of beginning and ending receivables"
+
+# What values indicate
+interpretation:
+  healthy_range:
+    min: 8.0
+    max: 15.0
+  warning_below: 5.0
+  warning_above: null
+  direction: higher_is_better
+  context: "Higher turnover indicates faster collection. Too high may indicate overly strict credit terms."
+
+# When this ratio applies
+applicability:
+  statement_type: both
+  industry_specific: true
+  notes: "Affected by credit terms and collection practices. Compare to industry norms and payment terms."
+
+# Related ratios
+relationships:
+  related_to:
+    - days_sales_outstanding
+    - cash_conversion_cycle
+    - asset_turnover
+  converts_to: days_sales_outstanding
+
+# Conversion
+conversion:
+  to_days: "365 / receivables_turnover"
+  result: days_sales_outstanding
+
+# References
+references:
+  - source: "Working Capital Management"
+    note: "Key collection efficiency metric"
+  - source: "Credit Analysis"
+    note: "Indicates credit quality and collection effectiveness"

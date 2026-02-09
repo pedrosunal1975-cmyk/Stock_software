@@ -1,0 +1,117 @@
+# Component Definition: Net Income
+# Bottom line profit after all expenses
+
+component_id: net_income
+display_name: "Net Income"
+description: "Bottom line profit after all expenses, interest, and taxes"
+
+category: income_statement
+subcategory: profitability
+
+characteristics:
+  balance_type: credit
+  period_type: duration
+  is_monetary: true
+  is_abstract: false
+  data_type: monetary
+
+matching_rules:
+  label_rules:
+    # Highest priority: Exact matches
+    - patterns:
+        - "Net Income"
+        - "Net Income (Loss)"
+        - "Net Earnings"
+        - "Net Profit"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+
+    # High weight for contains patterns
+    - patterns:
+        - "net income"
+        - "net earnings"
+        - "net profit"
+        - "net income (loss)"
+        - "net earnings (loss)"
+      match_type: contains
+      case_sensitive: false
+      weight: 12
+
+    # IFRS terminology
+    - patterns:
+        - "profit for the period"
+        - "profit for the year"
+        - "profit attributable"
+      match_type: contains
+      weight: 12
+
+  hierarchy_rules:
+    # Should be near bottom of income statement
+    - rule_type: depth_level
+      pattern: "bottom"
+      weight: 5
+
+  calculation_rules:
+    # Should be parent of EPS
+    - rule_type: parent_of
+      patterns:
+        - "*EarningsPerShare*"
+        - "*EPS*"
+      weight: 8
+
+    # Should contribute to retained earnings
+    - rule_type: contributes_to
+      pattern: "*RetainedEarnings*"
+      weight: 6
+
+  definition_rules:
+    - keywords:
+        - "net"
+        - "bottom line"
+        - "after tax"
+        - "profit"
+      all_required: false
+      weight: 4
+
+scoring:
+  min_score: 20
+  confidence_levels:
+    high: 35
+    medium: 28
+    low: 20
+  tiebreaker: highest_in_hierarchy
+  reject_if:
+    - condition: "Is abstract concept"
+      pattern: "abstract=true"
+    - condition: "Is comprehensive income"
+      pattern: "name~comprehensive"
+    - condition: "Is per share item"
+      pattern: "name~pershare"
+    - condition: "Is operating income only"
+      pattern: "name~operating"
+    - condition: "Is gross profit only"
+      pattern: "name~gross"
+    - condition: "Is segment income"
+      pattern: "name~segment"
+    - condition: "Is non-controlling"
+      pattern: "name~noncontrolling"
+    - condition: "Is minority interest"
+      pattern: "name~minority"
+    - condition: "Is text block"
+      pattern: "name~textblock"
+    - condition: "Is schedule"
+      pattern: "name~schedule"
+    - condition: "Is table"
+      pattern: "name~table"
+
+composition:
+  is_composite: false
+
+validation:
+  expected_sign: either  # Can be loss
+  required_for:
+    - net_margin
+    - roa
+    - roe
+    - eps

@@ -1,0 +1,122 @@
+# Component Definition: Total Liabilities
+# All obligations of the entity
+
+component_id: total_liabilities
+display_name: "Total Liabilities"
+description: "Total of all liabilities, current and noncurrent"
+
+category: balance_sheet
+subcategory: liabilities
+
+characteristics:
+  balance_type: credit
+  period_type: instant
+  is_monetary: true
+  is_abstract: false
+  data_type: monetary
+
+matching_rules:
+  label_rules:
+    # Highest priority: Exact matches
+    - patterns:
+        - "Liabilities"
+        - "Total Liabilities"
+        - "Liabilities, Total"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+
+    # High weight for contains patterns
+    - patterns:
+        - "total liabilities"
+        - "liabilities"
+      match_type: contains
+      case_sensitive: false
+      weight: 12
+
+  local_name_rules:
+    # Match the standard concept local name (exact match preferred)
+    - patterns:
+        - "Liabilities"
+      match_type: exact
+      weight: 5
+
+  hierarchy_rules:
+    - rule_type: parent_matches
+      pattern: "*LiabilitiesAndStockholdersEquity*"
+      weight: 8
+
+    - rule_type: has_siblings
+      pattern: "*Equity*"
+      weight: 6
+
+  calculation_rules:
+    - rule_type: has_children
+      patterns:
+        - "*Current*"
+        - "*Noncurrent*"
+        - "*LongTerm*"
+      min_matches: 1
+      weight: 8
+
+    - rule_type: contributes_to
+      pattern: "*LiabilitiesAndStockholdersEquity*"
+      weight: 6
+
+  definition_rules:
+    - keywords:
+        - "obligation"
+        - "liability"
+        - "debt"
+        - "owed"
+      all_required: false
+      weight: 4
+
+scoring:
+  min_score: 18
+  confidence_levels:
+    high: 32
+    medium: 25
+    low: 18
+  tiebreaker: highest_in_hierarchy
+  reject_if:
+    - condition: "Is abstract concept"
+      pattern: "abstract=true"
+    - condition: "Is combined liabilities and equity (L+SE total)"
+      pattern: "name~liabilitiesandstockholdersequity"
+    - condition: "Is combined liabilities and equity (L&SE)"
+      pattern: "name~liabilitiesandequity"
+    - condition: "Is current liabilities only"
+      pattern: "name~liabilitiescurrent"
+    - condition: "Is noncurrent liabilities only"
+      pattern: "name~liabilitiesnoncurrent"
+
+    # Reject specific liability types (children, not the total)
+    - condition: "Is accounts payable"
+      pattern: "name~accountspayable"
+    - condition: "Is accrued item"
+      pattern: "name~accrued"
+    - condition: "Is deferred item"
+      pattern: "name~deferred"
+    - condition: "Is debt item"
+      pattern: "name~debt"
+    - condition: "Is notes payable"
+      pattern: "name~notespayable"
+
+    # Reject disclosure items
+    - condition: "Is text block"
+      pattern: "name~textblock"
+    - condition: "Is schedule"
+      pattern: "name~schedule"
+    - condition: "Is table"
+      pattern: "name~table"
+
+composition:
+  is_composite: false
+
+validation:
+  expected_sign: positive
+  required_for:
+    - debt_to_equity
+    - debt_ratio
+    - leverage_ratio

@@ -1,0 +1,60 @@
+# Ratio Formula: Gross Margin
+# Measures profitability after direct costs
+
+ratio_id: gross_margin
+display_name: "Gross Margin"
+description: "Measures percentage of revenue remaining after cost of goods sold. Indicates pricing power and production efficiency."
+alternate_names:
+  - "Gross Profit Margin"
+  - "Gross Profit Percentage"
+
+category: profitability
+importance: fundamental
+
+# The formula using component IDs
+formula:
+  expression: "gross_profit / revenue"
+  components:
+    - gross_profit
+    - revenue
+  alternative_expression: "(revenue - cost_of_goods_sold) / revenue"
+  alternative_components:
+    - revenue
+    - cost_of_goods_sold
+
+# What values indicate
+interpretation:
+  healthy_range:
+    min: 0.30
+    max: 0.60
+  warning_below: 0.15
+  warning_above: null
+  direction: higher_is_better
+  context: "Higher margins indicate better pricing power or lower production costs. Varies significantly by industry."
+
+# When this ratio applies
+applicability:
+  statement_type: income_statement
+  industry_specific: true
+  high_margin_industries:
+    - software
+    - pharmaceuticals
+    - luxury_goods
+  low_margin_industries:
+    - retail
+    - grocery
+    - commodities
+  notes: "Compare to industry peers. Software companies often have 80%+ gross margins."
+
+# Related ratios
+relationships:
+  related_to:
+    - operating_margin
+    - net_margin
+    - ebitda_margin
+  feeds_into: operating_margin
+
+# References
+references:
+  - source: "Financial Statement Analysis"
+    note: "First-level profitability metric"

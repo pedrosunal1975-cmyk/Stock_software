@@ -1,0 +1,99 @@
+# Component Definition: Revenue
+# Top line income from operations
+
+component_id: revenue
+display_name: "Revenue"
+description: "Income from ordinary business activities - sale of goods and services"
+
+category: income_statement
+subcategory: revenue
+
+characteristics:
+  balance_type: credit
+  period_type: duration
+  is_monetary: true
+  is_abstract: false
+  data_type: monetary
+
+matching_rules:
+  label_rules:
+    - patterns:
+        - "revenue"
+        - "revenues"
+        - "net revenue"
+        - "total revenue"
+        - "net sales"
+        - "total net revenue"
+      match_type: contains
+      case_sensitive: false
+      weight: 15
+
+    - patterns:
+        - "Revenue"
+        - "Revenues"
+        - "Net Sales"
+      match_type: exact
+      weight: 8
+
+    # Alternative names
+    - patterns:
+        - "sales"
+        - "net operating revenue"
+      match_type: contains
+      weight: 10
+
+  hierarchy_rules:
+    # Should be near top of income statement
+    - rule_type: depth_level
+      pattern: "1"
+      weight: 6
+
+    - rule_type: position_ordinal
+      pattern: "first"
+      weight: 5
+
+  calculation_rules:
+    # Should be parent of cost/gross profit chain
+    - rule_type: parent_of
+      patterns:
+        - "*GrossProfit*"
+        - "*CostOf*"
+      weight: 6
+
+  definition_rules:
+    - keywords:
+        - "revenue"
+        - "income"
+        - "sales"
+        - "ordinary"
+        - "operations"
+      all_required: false
+      weight: 4
+
+scoring:
+  min_score: 22
+  confidence_levels:
+    high: 38
+    medium: 30
+    low: 22
+  tiebreaker: first_in_presentation
+  reject_if:
+    - condition: "Is abstract concept"
+      pattern: "abstract=true"
+    - condition: "Is interest revenue only"
+      pattern: "label~interest revenue"
+    - condition: "Is other revenue only"
+      pattern: "label~other revenue"
+
+composition:
+  is_composite: false
+
+validation:
+  expected_sign: positive
+  required_for:
+    - gross_margin
+    - operating_margin
+    - ebitda_margin
+    - net_margin
+    - asset_turnover
+    - receivables_turnover

@@ -1,0 +1,118 @@
+# Component Definition: Accounts Payable
+# Trade payables to suppliers
+
+component_id: accounts_payable
+display_name: "Accounts Payable"
+description: "Amounts owed to suppliers for goods or services received on credit"
+
+category: balance_sheet
+subcategory: liabilities
+
+characteristics:
+  balance_type: credit
+  period_type: instant
+  is_monetary: true
+  is_abstract: false
+  data_type: monetary
+
+matching_rules:
+  label_rules:
+    # Highest priority: Exact matches
+    - patterns:
+        - "Accounts Payable"
+        - "Trade Payables"
+        - "Accounts Payable, Trade"
+        - "Trade Accounts Payable"
+        - "Payables"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+
+    # High weight for contains patterns
+    - patterns:
+        - "accounts payable"
+        - "trade payable"
+        - "trade and other payables"
+        - "payables to suppliers"
+      match_type: contains
+      case_sensitive: false
+      weight: 12
+
+    # IFRS terminology
+    - patterns:
+        - "trade creditors"
+        - "trade and other payables"
+      match_type: contains
+      weight: 10
+
+  hierarchy_rules:
+    # Should be under Current Liabilities
+    - rule_type: parent_matches
+      pattern: "*CurrentLiabilities*"
+      weight: 6
+
+    # Should be sibling of accrued expenses
+    - rule_type: has_siblings
+      pattern: "*Accrued*"
+      weight: 4
+
+  calculation_rules:
+    # Should contribute to Current Liabilities
+    - rule_type: contributes_to
+      pattern: "*LiabilitiesCurrent*"
+      weight: 8
+
+  definition_rules:
+    - keywords:
+        - "payable"
+        - "supplier"
+        - "vendor"
+        - "trade"
+        - "creditor"
+        - "amounts owed"
+      all_required: false
+      weight: 4
+
+scoring:
+  min_score: 18
+  confidence_levels:
+    high: 32
+    medium: 25
+    low: 18
+  tiebreaker: highest_in_hierarchy
+  reject_if:
+    - condition: "Is abstract concept"
+      pattern: "abstract=true"
+    - condition: "Is noncurrent"
+      pattern: "name~noncurrent"
+    - condition: "Is related party"
+      pattern: "name~relatedparty"
+    - condition: "Is accrued expense"
+      pattern: "name~accrued"
+    - condition: "Is notes payable"
+      pattern: "name~notespayable"
+    - condition: "Is other payable"
+      pattern: "name~otherpayable"
+    - condition: "Is taxes payable"
+      pattern: "name~taxespayable"
+
+    # Reject disclosure items
+    - condition: "Is text block"
+      pattern: "name~textblock"
+    - condition: "Is schedule"
+      pattern: "name~schedule"
+    - condition: "Is table"
+      pattern: "name~table"
+
+composition:
+  is_composite: false
+
+validation:
+  expected_sign: positive
+  relationships:
+    - other: current_liabilities
+      relation: less_than
+  required_for:
+    - payables_turnover
+    - days_payable_outstanding
+    - cash_conversion_cycle

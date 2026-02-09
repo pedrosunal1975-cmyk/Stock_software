@@ -1,0 +1,124 @@
+# Component Definition: Income Tax Expense
+# Tax provision for the period
+
+component_id: income_tax_expense
+display_name: "Income Tax Expense"
+description: "Total income tax expense (benefit) for the period, including current and deferred taxes."
+
+category: income_statement
+subcategory: expense
+
+characteristics:
+  balance_type: debit
+  period_type: duration
+  is_monetary: true
+  is_abstract: false
+  data_type: monetary
+
+matching_rules:
+  label_rules:
+    # Highest priority: Exact matches
+    - patterns:
+        - "Income Tax Expense"
+        - "Income Tax Expense (Benefit)"
+        - "Provision for Income Taxes"
+        - "Tax Expense"
+        - "Income Taxes"
+        - "Tax Provision"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+
+    # High weight for contains patterns
+    - patterns:
+        - "income tax expense"
+        - "provision for income tax"
+        - "income tax provision"
+        - "tax expense"
+        - "tax provision"
+      match_type: contains
+      case_sensitive: false
+      weight: 12
+
+    # IFRS terminology
+    - patterns:
+        - "income tax"
+        - "tax on profit"
+        - "tax charge"
+      match_type: contains
+      weight: 10
+
+  hierarchy_rules:
+    # Should be between pretax income and net income
+    - rule_type: depth_level
+      pattern: "6-8"
+      weight: 4
+
+    # Should be sibling of pretax income
+    - rule_type: has_siblings
+      pattern: "*BeforeTax*"
+      weight: 5
+
+  calculation_rules:
+    # Reduces pretax income to get net income
+    - rule_type: contributes_to
+      pattern: "*NetIncome*"
+      weight: 6
+
+    # May have current and deferred children
+    - rule_type: has_children
+      patterns:
+        - "*Current*"
+        - "*Deferred*"
+      min_matches: 0
+      weight: 4
+
+  definition_rules:
+    - keywords:
+        - "tax"
+        - "income tax"
+        - "provision"
+        - "federal"
+        - "state"
+      all_required: false
+      weight: 4
+
+scoring:
+  min_score: 18
+  confidence_levels:
+    high: 32
+    medium: 25
+    low: 18
+  tiebreaker: highest_in_hierarchy
+  reject_if:
+    - condition: "Is abstract concept"
+      pattern: "abstract=true"
+    - condition: "Is deferred tax only"
+      pattern: "name~deferredtax"
+    - condition: "Is current tax only"
+      pattern: "name~currenttax"
+    - condition: "Is tax payable"
+      pattern: "name~taxpayable"
+    - condition: "Is tax receivable"
+      pattern: "name~taxreceivable"
+    - condition: "Is sales tax"
+      pattern: "name~salestax"
+
+    # Reject disclosure items
+    - condition: "Is text block"
+      pattern: "name~textblock"
+    - condition: "Is schedule"
+      pattern: "name~schedule"
+    - condition: "Is table"
+      pattern: "name~table"
+    - condition: "Is reconciliation"
+      pattern: "name~reconciliation"
+
+composition:
+  is_composite: false
+
+validation:
+  expected_sign: either  # Can be benefit (negative)
+  required_for:
+    - effective_tax_rate
+    - after_tax_calculations

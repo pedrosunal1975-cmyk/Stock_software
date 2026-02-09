@@ -1,0 +1,62 @@
+# Ratio Formula: Days Payable Outstanding (DPO)
+# Average days to pay suppliers
+
+ratio_id: days_payable_outstanding
+display_name: "Days Payable Outstanding"
+description: "Average number of days to pay suppliers. Higher means better cash preservation but may affect supplier relations."
+alternate_names:
+  - "DPO"
+  - "Days Payable"
+  - "Payables Days"
+  - "Creditor Days"
+
+category: efficiency
+importance: fundamental
+
+# The formula using component IDs
+formula:
+  expression: "365 / payables_turnover"
+  components:
+    - payables_turnover
+  alternative_expression: "(accounts_payable / cost_of_goods_sold) * 365"
+  alternative_components:
+    - accounts_payable
+    - cost_of_goods_sold
+
+# What values indicate
+interpretation:
+  healthy_range:
+    min: 30
+    max: 60
+  warning_below: 20
+  warning_above: 90
+  direction: context_dependent
+  context: "Longer DPO preserves cash but may harm supplier relationships. Very short DPO may indicate poor negotiating power or early payment discounts."
+
+# When this ratio applies
+applicability:
+  statement_type: both
+  industry_specific: true
+  notes: "Compare to supplier payment terms. DPO > terms may strain relationships."
+
+# Related ratios
+relationships:
+  related_to:
+    - payables_turnover
+    - days_sales_outstanding
+    - days_inventory_outstanding
+    - cash_conversion_cycle
+  inverse_of: payables_turnover
+
+# Cash Conversion Cycle component
+cash_conversion_cycle:
+  formula: "DSO + DIO - DPO"
+  component: "DPO"
+  contribution: negative
+
+# References
+references:
+  - source: "Working Capital Management"
+    note: "Key payment timing metric"
+  - source: "Supply Chain Finance"
+    note: "Reflects supplier relationship strategy"

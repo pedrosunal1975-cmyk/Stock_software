@@ -1,0 +1,122 @@
+# Component Definition: Current Assets
+# The heart of mat_acc - dynamic concept matching
+
+component_id: current_assets
+display_name: "Current Assets"
+description: "Assets expected to be converted to cash or consumed within one year or operating cycle"
+
+category: balance_sheet
+subcategory: assets
+
+characteristics:
+  balance_type: debit
+  period_type: instant
+  is_monetary: true
+  is_abstract: false
+  data_type: monetary
+
+matching_rules:
+  label_rules:
+    # Highest priority: Exact match for standard labels
+    - patterns:
+        - "Assets, Current"
+        - "Current Assets"
+        - "Total Current Assets"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+
+    # High weight for contains patterns
+    - patterns:
+        - "current assets"
+        - "assets, current"
+        - "total current assets"
+      match_type: contains
+      case_sensitive: false
+      weight: 12
+
+  hierarchy_rules:
+    # Should be under Assets (abstract)
+    - rule_type: parent_matches
+      pattern: "*Assets*Abstract*"
+      weight: 6
+
+    # Should have noncurrent sibling
+    - rule_type: has_siblings
+      pattern: "*Noncurrent*"
+      weight: 4
+
+  calculation_rules:
+    # Should have typical current asset children
+    - rule_type: has_children
+      patterns:
+        - "*Cash*"
+        - "*Receivable*"
+        - "*Inventory*"
+        - "*Prepaid*"
+      min_matches: 2
+      weight: 10
+
+    # Should contribute to Total Assets
+    - rule_type: contributes_to
+      pattern: "*Assets"
+      weight: 5
+
+  definition_rules:
+    - keywords:
+        - "one year"
+        - "operating cycle"
+        - "current"
+        - "liquid"
+      all_required: false
+      weight: 4
+
+scoring:
+  min_score: 20
+  confidence_levels:
+    high: 35
+    medium: 27
+    low: 20
+  tiebreaker: highest_in_hierarchy
+  reject_if:
+    # Basic rejections
+    - condition: "Is abstract concept"
+      pattern: "abstract=true"
+    - condition: "Is noncurrent"
+      pattern: "name~noncurrent"
+
+    # Reject specific asset types (these are children, not the total)
+    - condition: "Is cash item"
+      pattern: "name~cash"
+    - condition: "Is receivables"
+      pattern: "name~receivable"
+    - condition: "Is inventory"
+      pattern: "name~inventory"
+    - condition: "Is prepaid"
+      pattern: "name~prepaid"
+    - condition: "Is deferred"
+      pattern: "name~deferred"
+    - condition: "Is tax related"
+      pattern: "name~tax"
+    - condition: "Is restricted"
+      pattern: "name~restricted"
+
+    # Reject disclosure items
+    - condition: "Is text block"
+      pattern: "name~textblock"
+    - condition: "Is schedule"
+      pattern: "name~schedule"
+    - condition: "Is table"
+      pattern: "name~table"
+
+composition:
+  is_composite: false
+
+validation:
+  expected_sign: positive
+  relationships:
+    - other: total_assets
+      relation: less_than
+  required_for:
+    - current_ratio
+    - quick_ratio

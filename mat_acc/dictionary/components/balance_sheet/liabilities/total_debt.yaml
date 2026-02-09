@@ -1,0 +1,122 @@
+# Component Definition: Total Debt
+# All interest-bearing debt (short-term + long-term)
+
+component_id: total_debt
+display_name: "Total Debt"
+description: "Total interest-bearing debt including short-term borrowings, current portion of long-term debt, and long-term debt"
+
+category: balance_sheet
+subcategory: liabilities
+
+characteristics:
+  balance_type: credit
+  period_type: instant
+  is_monetary: true
+  is_abstract: false
+  data_type: monetary
+
+matching_rules:
+  label_rules:
+    # Highest priority: Exact matches
+    - patterns:
+        - "Total Debt"
+        - "Debt"
+        - "Total Borrowings"
+        - "Borrowings"
+        - "Debt, Total"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+
+    # High weight for contains patterns
+    - patterns:
+        - "total debt"
+        - "total borrowings"
+        - "debt and borrowings"
+        - "financial liabilities"
+      match_type: contains
+      case_sensitive: false
+      weight: 12
+
+  hierarchy_rules:
+    # May be standalone or under liabilities
+    - rule_type: parent_matches
+      pattern: "*Liabilities*"
+      weight: 5
+
+  calculation_rules:
+    # Should have current and noncurrent children
+    - rule_type: has_children
+      patterns:
+        - "*Current*"
+        - "*ShortTerm*"
+        - "*LongTerm*"
+        - "*Noncurrent*"
+      min_matches: 1
+      weight: 10
+
+    # Should contribute to Total Liabilities
+    - rule_type: contributes_to
+      pattern: "*Liabilities*"
+      weight: 6
+
+  definition_rules:
+    - keywords:
+        - "debt"
+        - "borrowing"
+        - "loan"
+        - "financing"
+        - "interest-bearing"
+      all_required: false
+      weight: 4
+
+scoring:
+  min_score: 16
+  confidence_levels:
+    high: 30
+    medium: 22
+    low: 16
+  tiebreaker: highest_in_hierarchy
+  reject_if:
+    - condition: "Is abstract concept"
+      pattern: "abstract=true"
+    - condition: "Is accounts payable"
+      pattern: "name~accountspayable"
+    - condition: "Is trade payable"
+      pattern: "name~tradepayable"
+    - condition: "Is accrued"
+      pattern: "name~accrued"
+    - condition: "Is deferred"
+      pattern: "name~deferred"
+
+    # Reject disclosure items
+    - condition: "Is text block"
+      pattern: "name~textblock"
+    - condition: "Is schedule"
+      pattern: "name~schedule"
+    - condition: "Is fair value"
+      pattern: "name~fairvalue"
+
+composition:
+  # Total debt can be computed if not found directly
+  is_composite: true
+  components:
+    - short_term_debt
+    - long_term_debt
+  formula: "short_term_debt + long_term_debt"
+  alternatives:
+    - formula: "current_portion_long_term_debt + long_term_debt + short_term_borrowings"
+      components:
+        - current_portion_long_term_debt
+        - long_term_debt
+        - short_term_borrowings
+
+validation:
+  expected_sign: positive
+  relationships:
+    - other: total_liabilities
+      relation: less_than
+  required_for:
+    - debt_to_capital
+    - debt_to_ebitda
+    - net_debt

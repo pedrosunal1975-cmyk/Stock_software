@@ -1,0 +1,36 @@
+# Ratio Formula: Current Ratio
+# The most basic liquidity ratio
+
+ratio_id: current_ratio
+display_name: "Current Ratio"
+description: "Measures ability to pay short-term obligations. Higher is better."
+
+category: liquidity
+importance: fundamental
+
+# The formula using component IDs
+formula:
+  expression: "current_assets / current_liabilities"
+  components:
+    - current_assets
+    - current_liabilities
+
+# What values indicate
+interpretation:
+  healthy_range:
+    min: 1.5
+    max: 3.0
+  warning_below: 1.0
+  warning_above: 4.0
+  direction: higher_is_better
+
+# When this ratio applies
+applicability:
+  statement_type: balance_sheet
+  industry_specific: false
+  notes: "Very low values indicate liquidity risk. Very high values may indicate inefficient use of assets."
+
+# References
+references:
+  - source: "Financial Statement Analysis"
+    note: "Standard liquidity metric"

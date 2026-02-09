@@ -1,0 +1,96 @@
+# Component Definition: EBITDA
+# Earnings Before Interest, Taxes, Depreciation, and Amortization
+
+component_id: ebitda
+display_name: "EBITDA"
+description: "Earnings Before Interest, Taxes, Depreciation, and Amortization. Proxy for operating cash generation."
+
+category: income_statement
+subcategory: profitability
+
+characteristics:
+  balance_type: credit
+  period_type: duration
+  is_monetary: true
+  is_abstract: false
+  data_type: monetary
+
+matching_rules:
+  label_rules:
+    # Highest priority: Exact matches
+    - patterns:
+        - "EBITDA"
+        - "Earnings Before Interest, Taxes, Depreciation and Amortization"
+        - "Adjusted EBITDA"
+        - "Operating EBITDA"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+
+    # High weight for contains patterns
+    - patterns:
+        - "ebitda"
+        - "earnings before interest, taxes, depreciation"
+      match_type: contains
+      case_sensitive: false
+      weight: 12
+
+  hierarchy_rules:
+    # May be disclosed separately
+    - rule_type: depth_level
+      pattern: "any"
+      weight: 2
+
+  definition_rules:
+    - keywords:
+        - "ebitda"
+        - "before interest"
+        - "before tax"
+        - "before depreciation"
+        - "before amortization"
+      all_required: false
+      weight: 4
+
+scoring:
+  min_score: 14
+  confidence_levels:
+    high: 28
+    medium: 20
+    low: 14
+  tiebreaker: highest_in_hierarchy
+  reject_if:
+    - condition: "Is abstract concept"
+      pattern: "abstract=true"
+    - condition: "Is segment EBITDA"
+      pattern: "name~segment"
+    - condition: "Is per share"
+      pattern: "name~pershare"
+
+    # Reject disclosure items
+    - condition: "Is text block"
+      pattern: "name~textblock"
+
+composition:
+  # EBITDA typically computed from other components
+  is_composite: true
+  components:
+    - operating_income
+    - depreciation_amortization
+  formula: "operating_income + depreciation_amortization"
+  alternatives:
+    - formula: "net_income + income_tax_expense + interest_expense + depreciation_amortization"
+      components:
+        - net_income
+        - income_tax_expense
+        - interest_expense
+        - depreciation_amortization
+
+validation:
+  expected_sign: either
+  relationships:
+    - other: operating_income
+      relation: greater_than
+  required_for:
+    - ebitda_margin
+    - debt_to_ebitda
+    - enterprise_value_to_ebitda

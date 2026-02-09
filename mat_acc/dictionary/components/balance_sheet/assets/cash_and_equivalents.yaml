@@ -1,0 +1,126 @@
+# Component Definition: Cash and Cash Equivalents
+# Most liquid asset, foundation for cash ratio
+
+component_id: cash_and_equivalents
+display_name: "Cash and Cash Equivalents"
+description: "Highly liquid assets including cash on hand, bank deposits, and short-term investments with maturities of 3 months or less"
+
+category: balance_sheet
+subcategory: assets
+
+characteristics:
+  balance_type: debit
+  period_type: instant
+  is_monetary: true
+  is_abstract: false
+  data_type: monetary
+
+matching_rules:
+  label_rules:
+    # Highest priority: Exact matches
+    - patterns:
+        - "Cash and Cash Equivalents"
+        - "Cash And Cash Equivalents"
+        - "Cash and Cash Equivalents, at Carrying Value"
+        - "Cash"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+
+    # High weight for contains patterns
+    - patterns:
+        - "cash and cash equivalents"
+        - "cash & cash equivalents"
+        - "cash at end of period"
+        - "cash at end of year"
+      match_type: contains
+      case_sensitive: false
+      weight: 12
+
+    # IFRS terminology
+    - patterns:
+        - "cash and bank"
+        - "cash at bank"
+        - "cash on hand"
+      match_type: contains
+      weight: 10
+
+  hierarchy_rules:
+    # Should be under Current Assets
+    - rule_type: parent_matches
+      pattern: "*CurrentAssets*"
+      weight: 6
+
+    # Should be first child of current assets (most liquid)
+    - rule_type: position_ordinal
+      pattern: "first"
+      weight: 4
+
+  calculation_rules:
+    # Should contribute to Current Assets
+    - rule_type: contributes_to
+      pattern: "*AssetsCurrent*"
+      weight: 8
+
+    # May have children (restricted cash, short-term investments)
+    - rule_type: has_children
+      patterns:
+        - "*Restricted*"
+        - "*ShortTerm*"
+        - "*MarketableSecurities*"
+      min_matches: 0
+      weight: 3
+
+  definition_rules:
+    - keywords:
+        - "cash"
+        - "liquid"
+        - "equivalents"
+        - "demand deposits"
+        - "three months"
+        - "90 days"
+      all_required: false
+      weight: 4
+
+scoring:
+  min_score: 18
+  confidence_levels:
+    high: 32
+    medium: 24
+    low: 18
+  tiebreaker: highest_in_hierarchy
+  reject_if:
+    - condition: "Is abstract concept"
+      pattern: "abstract=true"
+    - condition: "Is restricted cash only"
+      pattern: "name~restrictedcash"
+    - condition: "Is cash flow statement item"
+      pattern: "name~cashflow"
+    - condition: "Is change in cash"
+      pattern: "name~changein"
+    - condition: "Is beginning balance"
+      pattern: "name~beginning"
+    - condition: "Is noncurrent"
+      pattern: "name~noncurrent"
+
+    # Reject disclosure items
+    - condition: "Is text block"
+      pattern: "name~textblock"
+    - condition: "Is schedule"
+      pattern: "name~schedule"
+    - condition: "Is table"
+      pattern: "name~table"
+    - condition: "Is policy"
+      pattern: "name~policy"
+
+composition:
+  is_composite: false
+
+validation:
+  expected_sign: positive
+  relationships:
+    - other: current_assets
+      relation: less_than
+  required_for:
+    - cash_ratio
+    - quick_ratio

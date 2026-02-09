@@ -1,0 +1,68 @@
+# Ratio Formula: Return on Assets (ROA)
+# Measures profitability relative to total assets
+
+ratio_id: return_on_assets
+display_name: "Return on Assets"
+description: "Measures how efficiently a company uses its assets to generate profit. Independent of capital structure."
+alternate_names:
+  - "ROA"
+  - "Return on Total Assets"
+  - "Asset Return"
+
+category: profitability
+importance: fundamental
+
+# The formula using component IDs
+formula:
+  expression: "net_income / total_assets"
+  components:
+    - net_income
+    - total_assets
+  alternative_expression: "net_income / average_total_assets"
+  note: "For more accuracy, use average of beginning and ending total assets"
+
+# What values indicate
+interpretation:
+  healthy_range:
+    min: 0.05
+    max: 0.15
+  warning_below: 0.02
+  warning_above: null
+  direction: higher_is_better
+  context: "Higher ROA indicates more efficient use of assets. Asset-light businesses typically have higher ROA."
+
+# When this ratio applies
+applicability:
+  statement_type: both
+  industry_specific: true
+  high_roa_industries:
+    - software
+    - consulting
+    - services
+  low_roa_industries:
+    - utilities
+    - banking
+    - manufacturing
+  notes: "Capital-intensive industries typically have lower ROA. Compare to industry peers."
+
+# Related ratios
+relationships:
+  related_to:
+    - return_on_equity
+    - asset_turnover
+    - net_margin
+  component_of: dupont_analysis
+
+# DuPont relationship
+dupont:
+  formula: "net_margin * asset_turnover"
+  decomposition:
+    - net_margin
+    - asset_turnover
+
+# References
+references:
+  - source: "DuPont Analysis"
+    note: "ROA = Profit Margin x Asset Turnover"
+  - source: "Financial Statement Analysis"
+    note: "Measures asset efficiency"

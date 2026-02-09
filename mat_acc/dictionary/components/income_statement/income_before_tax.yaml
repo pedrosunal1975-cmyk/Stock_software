@@ -1,0 +1,128 @@
+# Component Definition: Income Before Tax
+# Pre-tax income / EBT
+
+component_id: income_before_tax
+display_name: "Income Before Tax"
+description: "Earnings before income tax expense (EBT). Operating income plus/minus non-operating items."
+
+category: income_statement
+subcategory: profitability
+
+characteristics:
+  balance_type: credit
+  period_type: duration
+  is_monetary: true
+  is_abstract: false
+  data_type: monetary
+
+matching_rules:
+  label_rules:
+    # Highest priority: Exact matches
+    - patterns:
+        - "Income Before Tax"
+        - "Income (Loss) Before Tax"
+        - "Income Before Income Taxes"
+        - "Income (Loss) Before Income Taxes"
+        - "Earnings Before Tax"
+        - "Pretax Income"
+        - "Pre-tax Income"
+        - "Income Before Provision for Income Taxes"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+
+    # EBT terminology
+    - patterns:
+        - "EBT"
+        - "Earnings Before Taxes"
+      match_type: exact
+      case_sensitive: false
+      weight: 18
+
+    # High weight for contains patterns
+    - patterns:
+        - "income before tax"
+        - "income before income tax"
+        - "pretax income"
+        - "pre-tax income"
+        - "earnings before tax"
+        - "profit before tax"
+      match_type: contains
+      case_sensitive: false
+      weight: 12
+
+    # IFRS terminology
+    - patterns:
+        - "profit before tax"
+        - "profit before income tax"
+      match_type: contains
+      weight: 10
+
+  hierarchy_rules:
+    # Should be just before net income
+    - rule_type: depth_level
+      pattern: "5-7"
+      weight: 4
+
+    # Should have tax expense as sibling
+    - rule_type: has_siblings
+      pattern: "*Tax*"
+      weight: 5
+
+  calculation_rules:
+    # Should contribute to Net Income
+    - rule_type: contributes_to
+      pattern: "*NetIncome*"
+      weight: 6
+
+  definition_rules:
+    - keywords:
+        - "before tax"
+        - "pretax"
+        - "pre-tax"
+        - "prior to tax"
+      all_required: false
+      weight: 4
+
+scoring:
+  min_score: 18
+  confidence_levels:
+    high: 32
+    medium: 25
+    low: 18
+  tiebreaker: highest_in_hierarchy
+  reject_if:
+    - condition: "Is abstract concept"
+      pattern: "abstract=true"
+    - condition: "Is net income"
+      pattern: "name~netincome"
+    - condition: "Is operating income"
+      pattern: "name~operatingincome"
+    - condition: "Is tax expense"
+      pattern: "name~taxexpense"
+    - condition: "Is segment"
+      pattern: "name~segment"
+    - condition: "Is per share"
+      pattern: "name~pershare"
+    - condition: "Is discontinued"
+      pattern: "name~discontinued"
+
+    # Reject disclosure items
+    - condition: "Is text block"
+      pattern: "name~textblock"
+    - condition: "Is schedule"
+      pattern: "name~schedule"
+    - condition: "Is table"
+      pattern: "name~table"
+
+composition:
+  is_composite: false
+
+validation:
+  expected_sign: either
+  relationships:
+    - other: operating_income
+      relation: approximately_equal
+  required_for:
+    - effective_tax_rate
+    - pretax_margin

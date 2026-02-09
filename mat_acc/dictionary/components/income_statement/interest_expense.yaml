@@ -1,0 +1,106 @@
+# Component Definition: Interest Expense
+# Cost of borrowing money
+
+component_id: interest_expense
+display_name: "Interest Expense"
+description: "Cost incurred for borrowed funds. Key component for interest coverage ratio."
+
+category: income_statement
+subcategory: expense
+
+characteristics:
+  balance_type: debit
+  period_type: duration
+  is_monetary: true
+  is_abstract: false
+  data_type: monetary
+
+matching_rules:
+  label_rules:
+    # Highest priority: Exact matches
+    - patterns:
+        - "Interest Expense"
+        - "Interest Expense, Net"
+        - "Interest Costs"
+        - "Finance Costs"
+        - "Interest Paid"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+
+    # High weight for contains patterns
+    - patterns:
+        - "interest expense"
+        - "interest cost"
+        - "finance cost"
+        - "borrowing cost"
+        - "interest on debt"
+      match_type: contains
+      case_sensitive: false
+      weight: 12
+
+    # IFRS terminology
+    - patterns:
+        - "finance costs"
+        - "financial expenses"
+      match_type: contains
+      weight: 10
+
+  hierarchy_rules:
+    # Should be in non-operating section
+    - rule_type: depth_level
+      pattern: "4-6"
+      weight: 4
+
+  calculation_rules:
+    # Typically reduces income before tax
+    - rule_type: contributes_to
+      pattern: "*IncomeLossBeforeTax*"
+      weight: 6
+
+  definition_rules:
+    - keywords:
+        - "interest"
+        - "borrowing"
+        - "debt"
+        - "finance"
+        - "loan"
+      all_required: false
+      weight: 4
+
+scoring:
+  min_score: 18
+  confidence_levels:
+    high: 32
+    medium: 25
+    low: 18
+  tiebreaker: highest_in_hierarchy
+  reject_if:
+    - condition: "Is abstract concept"
+      pattern: "abstract=true"
+    - condition: "Is interest income"
+      pattern: "name~interestincome"
+    - condition: "Is interest receivable"
+      pattern: "name~interestreceivable"
+    - condition: "Is capitalized interest"
+      pattern: "name~capitalizedinterest"
+    - condition: "Is net interest (combined)"
+      pattern: "name~interestnet"
+
+    # Reject disclosure items
+    - condition: "Is text block"
+      pattern: "name~textblock"
+    - condition: "Is schedule"
+      pattern: "name~schedule"
+    - condition: "Is table"
+      pattern: "name~table"
+
+composition:
+  is_composite: false
+
+validation:
+  expected_sign: positive
+  required_for:
+    - interest_coverage
+    - times_interest_earned
+    - ebitda_calculation

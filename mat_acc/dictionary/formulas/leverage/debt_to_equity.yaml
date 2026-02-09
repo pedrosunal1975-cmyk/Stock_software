@@ -1,0 +1,59 @@
+# Ratio Formula: Debt to Equity Ratio
+# Measures financial leverage
+
+ratio_id: debt_to_equity
+display_name: "Debt to Equity Ratio"
+description: "Measures total liabilities relative to shareholders' equity. Key indicator of financial leverage and capital structure."
+alternate_names:
+  - "D/E Ratio"
+  - "Leverage Ratio"
+  - "Gearing Ratio"
+
+category: leverage
+importance: fundamental
+
+# The formula using component IDs
+formula:
+  expression: "total_liabilities / total_equity"
+  components:
+    - total_liabilities
+    - total_equity
+  alternative_expression: "total_debt / total_equity"
+  alternative_components:
+    - total_debt
+    - total_equity
+
+# What values indicate
+interpretation:
+  healthy_range:
+    min: 0.5
+    max: 2.0
+  warning_below: null
+  warning_above: 3.0
+  direction: lower_is_better
+  context: "Higher ratios indicate greater financial risk. Optimal levels vary by industry."
+
+# When this ratio applies
+applicability:
+  statement_type: balance_sheet
+  industry_specific: true
+  high_leverage_industries:
+    - banking
+    - utilities
+    - real_estate
+  notes: "Banks and utilities typically operate with higher leverage. Tech companies often have lower leverage."
+
+# Related ratios
+relationships:
+  related_to:
+    - debt_ratio
+    - equity_multiplier
+    - interest_coverage
+  inverse_of: equity_to_debt
+
+# References
+references:
+  - source: "Financial Statement Analysis"
+    note: "Primary capital structure metric"
+  - source: "CFA Institute"
+    note: "Key solvency indicator"

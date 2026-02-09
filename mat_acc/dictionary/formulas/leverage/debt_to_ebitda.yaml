@@ -1,0 +1,62 @@
+# Ratio Formula: Debt to EBITDA
+# Measures debt relative to cash generation capacity
+
+ratio_id: debt_to_ebitda
+display_name: "Debt to EBITDA"
+description: "Measures total debt relative to earnings before interest, taxes, depreciation and amortization. Key leverage metric for credit analysis."
+alternate_names:
+  - "Total Debt / EBITDA"
+  - "Net Debt / EBITDA"
+  - "Leverage Multiple"
+
+category: leverage
+importance: fundamental
+
+# The formula using component IDs
+formula:
+  expression: "total_debt / ebitda"
+  components:
+    - total_debt
+    - ebitda
+  alternative_expression: "total_liabilities / ebitda"
+  alternative_components:
+    - total_liabilities
+    - ebitda
+
+# What values indicate
+interpretation:
+  healthy_range:
+    min: 1.0
+    max: 3.0
+  warning_below: null
+  warning_above: 4.0
+  direction: lower_is_better
+  context: "Represents approximate years to repay debt from EBITDA. Higher ratios indicate greater default risk."
+
+# When this ratio applies
+applicability:
+  statement_type: both
+  industry_specific: true
+  notes: "Widely used in private equity and leveraged finance. Critical for LBO analysis."
+
+# Related ratios
+relationships:
+  related_to:
+    - interest_coverage
+    - debt_to_equity
+    - free_cash_flow_to_debt
+
+# Credit rating guidance
+credit_guidance:
+  aaa_aa: "< 1.0"
+  a: "1.0 - 2.0"
+  bbb: "2.0 - 3.0"
+  bb: "3.0 - 4.0"
+  b_or_lower: "> 4.0"
+
+# References
+references:
+  - source: "Leveraged Finance"
+    note: "Primary leverage metric for LBOs"
+  - source: "Credit Rating Agencies"
+    note: "Key factor in credit ratings"

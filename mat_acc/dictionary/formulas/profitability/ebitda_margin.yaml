@@ -1,0 +1,54 @@
+# Ratio Formula: EBITDA Margin
+# Cash-based profitability measure
+
+ratio_id: ebitda_margin
+display_name: "EBITDA Margin"
+description: "Measures EBITDA as percentage of revenue. Proxy for cash-generating ability from operations."
+alternate_names:
+  - "EBITDA Profit Margin"
+  - "Cash Operating Margin"
+
+category: profitability
+importance: supplementary
+
+# The formula using component IDs
+formula:
+  expression: "ebitda / revenue"
+  components:
+    - ebitda
+    - revenue
+  alternative_expression: "(operating_income + depreciation_amortization) / revenue"
+  alternative_components:
+    - operating_income
+    - depreciation_amortization
+    - revenue
+
+# What values indicate
+interpretation:
+  healthy_range:
+    min: 0.15
+    max: 0.35
+  warning_below: 0.10
+  warning_above: null
+  direction: higher_is_better
+  context: "Higher margin indicates better cash-generating ability. Useful for comparing companies with different depreciation policies."
+
+# When this ratio applies
+applicability:
+  statement_type: income_statement
+  industry_specific: true
+  notes: "Removes impact of depreciation and amortization for better comparability. Popular in private equity and M&A."
+
+# Related ratios
+relationships:
+  related_to:
+    - operating_margin
+    - debt_to_ebitda
+    - enterprise_value_to_ebitda
+
+# References
+references:
+  - source: "Private Equity"
+    note: "Key metric for LBO analysis"
+  - source: "M&A Valuation"
+    note: "Used with EV/EBITDA multiple"

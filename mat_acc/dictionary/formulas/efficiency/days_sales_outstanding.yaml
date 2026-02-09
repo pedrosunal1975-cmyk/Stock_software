@@ -1,0 +1,62 @@
+# Ratio Formula: Days Sales Outstanding (DSO)
+# Average days to collect receivables
+
+ratio_id: days_sales_outstanding
+display_name: "Days Sales Outstanding"
+description: "Average number of days to collect payment after a sale. Lower is better for cash flow."
+alternate_names:
+  - "DSO"
+  - "Average Collection Period"
+  - "Receivables Days"
+  - "Debtor Days"
+
+category: efficiency
+importance: fundamental
+
+# The formula using component IDs
+formula:
+  expression: "365 / receivables_turnover"
+  components:
+    - receivables_turnover
+  alternative_expression: "(accounts_receivable / revenue) * 365"
+  alternative_components:
+    - accounts_receivable
+    - revenue
+
+# What values indicate
+interpretation:
+  healthy_range:
+    min: 25
+    max: 45
+  warning_below: null
+  warning_above: 60
+  direction: lower_is_better
+  context: "Compare to payment terms. DSO > terms indicates collection problems. Very low DSO may indicate overly aggressive collection."
+
+# When this ratio applies
+applicability:
+  statement_type: both
+  industry_specific: true
+  notes: "Should be compared to industry norms and company's stated credit terms."
+
+# Related ratios
+relationships:
+  related_to:
+    - receivables_turnover
+    - days_inventory_outstanding
+    - days_payable_outstanding
+    - cash_conversion_cycle
+  inverse_of: receivables_turnover
+
+# Cash Conversion Cycle component
+cash_conversion_cycle:
+  formula: "DSO + DIO - DPO"
+  component: "DSO"
+  contribution: positive
+
+# References
+references:
+  - source: "Working Capital Management"
+    note: "Key cash flow timing metric"
+  - source: "Credit Management"
+    note: "Indicates collection effectiveness"

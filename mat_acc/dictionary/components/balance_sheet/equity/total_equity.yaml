@@ -1,0 +1,113 @@
+# Component Definition: Total Equity
+# Stockholders' equity / shareholders' equity
+
+component_id: total_equity
+display_name: "Total Equity"
+description: "Residual interest in assets after deducting liabilities. Net worth of the company."
+
+category: balance_sheet
+subcategory: equity
+
+characteristics:
+  balance_type: credit
+  period_type: instant
+  is_monetary: true
+  is_abstract: false
+  data_type: monetary
+
+matching_rules:
+  label_rules:
+    # Highest priority: Exact matches
+    - patterns:
+        - "Stockholders' Equity"
+        - "Total Equity"
+        - "Total Stockholders' Equity"
+        - "Shareholders' Equity"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+
+    # High weight for contains patterns
+    - patterns:
+        - "total equity"
+        - "stockholders' equity"
+        - "shareholders' equity"
+        - "total stockholders' equity"
+        - "equity, total"
+      match_type: contains
+      case_sensitive: false
+      weight: 12
+
+    # IFRS terminology
+    - patterns:
+        - "equity attributable"
+        - "total equity and liabilities"
+      match_type: contains
+      weight: 8
+
+  hierarchy_rules:
+    - rule_type: depth_level
+      pattern: "1"
+      weight: 5
+
+  calculation_rules:
+    - rule_type: has_children
+      patterns:
+        - "*CommonStock*"
+        - "*RetainedEarnings*"
+        - "*AdditionalPaidIn*"
+        - "*Treasury*"
+      min_matches: 2
+      weight: 10
+
+  definition_rules:
+    - keywords:
+        - "residual"
+        - "stockholders"
+        - "shareholders"
+        - "net worth"
+        - "equity"
+      all_required: false
+      weight: 4
+
+scoring:
+  min_score: 20
+  confidence_levels:
+    high: 35
+    medium: 27
+    low: 20
+  tiebreaker: highest_in_hierarchy
+  reject_if:
+    - condition: "Is abstract concept"
+      pattern: "abstract=true"
+    - condition: "Is non-controlling interest only"
+      pattern: "name~noncontrolling"
+    - condition: "Is minority interest"
+      pattern: "name~minority"
+    - condition: "Is common stock only"
+      pattern: "name~commonstock"
+    - condition: "Is retained earnings only"
+      pattern: "name~retainedearnings"
+    - condition: "Is additional paid-in"
+      pattern: "name~additionalpaidin"
+    - condition: "Is treasury stock"
+      pattern: "name~treasury"
+    - condition: "Is accumulated OCI"
+      pattern: "name~accumulatedother"
+    - condition: "Is text block"
+      pattern: "name~textblock"
+    - condition: "Is schedule"
+      pattern: "name~schedule"
+    - condition: "Is table"
+      pattern: "name~table"
+
+composition:
+  is_composite: false
+
+validation:
+  expected_sign: positive  # Usually positive, can be negative for troubled companies
+  required_for:
+    - debt_to_equity
+    - equity_ratio
+    - roe
+    - book_value_per_share

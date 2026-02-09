@@ -1,0 +1,44 @@
+# Ratio Formula: Cash Ratio
+# Most conservative liquidity measure
+
+ratio_id: cash_ratio
+display_name: "Cash Ratio"
+description: "Most conservative liquidity measure. Shows ability to pay current liabilities with cash only."
+
+category: liquidity
+importance: supplementary
+
+# The formula using component IDs
+formula:
+  expression: "cash_and_equivalents / current_liabilities"
+  components:
+    - cash_and_equivalents
+    - current_liabilities
+
+# What values indicate
+interpretation:
+  healthy_range:
+    min: 0.2
+    max: 0.5
+  warning_below: 0.1
+  warning_above: 1.0
+  direction: higher_is_better
+  context: "Very high cash ratio may indicate inefficient use of cash. Very low may indicate liquidity risk."
+
+# When this ratio applies
+applicability:
+  statement_type: balance_sheet
+  industry_specific: false
+  notes: "Most conservative liquidity test. Banks and lenders may use this for credit decisions."
+
+# Related ratios
+relationships:
+  related_to:
+    - current_ratio
+    - quick_ratio
+  more_conservative_than: quick_ratio
+
+# References
+references:
+  - source: "Financial Statement Analysis"
+    note: "Ultimate liquidity test"

@@ -1,0 +1,57 @@
+# Ratio Formula: Net Margin
+# Bottom-line profitability measure
+
+ratio_id: net_margin
+display_name: "Net Margin"
+description: "Measures percentage of revenue remaining as net income. The ultimate profitability measure after all expenses."
+alternate_names:
+  - "Net Profit Margin"
+  - "Profit Margin"
+  - "Net Income Margin"
+
+category: profitability
+importance: fundamental
+
+# The formula using component IDs
+formula:
+  expression: "net_income / revenue"
+  components:
+    - net_income
+    - revenue
+
+# What values indicate
+interpretation:
+  healthy_range:
+    min: 0.05
+    max: 0.20
+  warning_below: 0.02
+  warning_above: null
+  direction: higher_is_better
+  context: "Shows how much of each revenue dollar becomes profit. Can be volatile due to non-operating items."
+
+# When this ratio applies
+applicability:
+  statement_type: income_statement
+  industry_specific: true
+  notes: "Includes all expenses, interest, and taxes. Can be affected by one-time items."
+
+# Related ratios
+relationships:
+  related_to:
+    - gross_margin
+    - operating_margin
+    - return_on_assets
+    - return_on_equity
+  component_of: dupont_roe
+
+# DuPont relationship
+dupont:
+  roe_formula: "net_margin * asset_turnover * equity_multiplier"
+  position: profitability_component
+
+# References
+references:
+  - source: "DuPont Analysis"
+    note: "Profitability component of ROE"
+  - source: "Financial Statement Analysis"
+    note: "Ultimate profitability metric"

@@ -1,0 +1,103 @@
+# Component Definition: Depreciation and Amortization
+# Non-cash expenses added back for EBITDA
+
+component_id: depreciation_amortization
+display_name: "Depreciation and Amortization"
+description: "Non-cash charges for depreciation of tangible assets and amortization of intangible assets. Key add-back for EBITDA."
+
+category: cash_flow
+subcategory: adjustments
+
+characteristics:
+  balance_type: debit
+  period_type: duration
+  is_monetary: true
+  is_abstract: false
+  data_type: monetary
+
+matching_rules:
+  label_rules:
+    # Highest priority: Exact matches
+    - patterns:
+        - "Depreciation and Amortization"
+        - "Depreciation & Amortization"
+        - "Depreciation, Depletion and Amortization"
+        - "D&A"
+        - "Depreciation"
+        - "Amortization"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+
+    # High weight for contains patterns
+    - patterns:
+        - "depreciation and amortization"
+        - "depreciation & amortization"
+        - "depreciation, amortization"
+        - "total depreciation"
+      match_type: contains
+      case_sensitive: false
+      weight: 12
+
+  hierarchy_rules:
+    # Often in operating activities section of cash flow
+    - rule_type: parent_matches
+      pattern: "*OperatingActivities*"
+      weight: 5
+
+    # Also in income statement as expense
+    - rule_type: parent_matches
+      pattern: "*OperatingExpenses*"
+      weight: 4
+
+  calculation_rules:
+    # Added back to net income in cash flow
+    - rule_type: contributes_to
+      pattern: "*CashFlowOperating*"
+      weight: 6
+
+  definition_rules:
+    - keywords:
+        - "depreciation"
+        - "amortization"
+        - "non-cash"
+        - "useful life"
+        - "tangible"
+        - "intangible"
+      all_required: false
+      weight: 4
+
+scoring:
+  min_score: 16
+  confidence_levels:
+    high: 30
+    medium: 22
+    low: 16
+  tiebreaker: highest_in_hierarchy
+  reject_if:
+    - condition: "Is abstract concept"
+      pattern: "abstract=true"
+    - condition: "Is accumulated depreciation"
+      pattern: "name~accumulateddepreciation"
+    - condition: "Is policy"
+      pattern: "name~policy"
+    - condition: "Is asset item"
+      pattern: "name~propertyplant"
+
+    # Reject disclosure items
+    - condition: "Is text block"
+      pattern: "name~textblock"
+    - condition: "Is schedule"
+      pattern: "name~schedule"
+    - condition: "Is table"
+      pattern: "name~table"
+
+composition:
+  is_composite: false
+
+validation:
+  expected_sign: positive
+  required_for:
+    - ebitda
+    - free_cash_flow
+    - depreciation_ratio

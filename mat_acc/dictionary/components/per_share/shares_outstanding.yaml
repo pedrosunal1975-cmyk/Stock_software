@@ -1,0 +1,108 @@
+# Component Definition: Shares Outstanding
+# Total number of shares for per-share calculations
+
+component_id: shares_outstanding
+display_name: "Shares Outstanding"
+description: "Weighted average or period-end common shares outstanding, used for per-share calculations."
+
+category: per_share
+subcategory: shares
+
+characteristics:
+  balance_type: none
+  period_type: duration  # Weighted average for income statement metrics
+  is_monetary: false
+  is_abstract: false
+  data_type: shares
+
+matching_rules:
+  label_rules:
+    # Highest priority: Exact matches
+    - patterns:
+        - "Shares Outstanding"
+        - "Common Shares Outstanding"
+        - "Weighted Average Shares Outstanding"
+        - "Weighted Average Number of Shares Outstanding"
+        - "Average Shares Outstanding"
+        - "Common Stock Shares Outstanding"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+
+    # Diluted shares
+    - patterns:
+        - "Weighted Average Shares Outstanding, Diluted"
+        - "Diluted Shares Outstanding"
+        - "Diluted Average Shares"
+      match_type: exact
+      case_sensitive: false
+      weight: 18
+
+    # High weight for contains patterns
+    - patterns:
+        - "shares outstanding"
+        - "weighted average shares"
+        - "average shares"
+        - "common shares"
+      match_type: contains
+      case_sensitive: false
+      weight: 12
+
+  hierarchy_rules:
+    # Often near EPS section
+    - rule_type: has_siblings
+      pattern: "*EarningsPerShare*"
+      weight: 6
+
+  calculation_rules:
+    # Used in EPS calculation
+    - rule_type: contributes_to
+      pattern: "*EarningsPerShare*"
+      weight: 6
+
+  definition_rules:
+    - keywords:
+        - "shares"
+        - "outstanding"
+        - "weighted"
+        - "average"
+        - "common"
+      all_required: false
+      weight: 4
+
+scoring:
+  min_score: 16
+  confidence_levels:
+    high: 30
+    medium: 22
+    low: 16
+  tiebreaker: highest_in_hierarchy
+  reject_if:
+    - condition: "Is abstract concept"
+      pattern: "abstract=true"
+    - condition: "Is shares issued"
+      pattern: "name~sharesissued"
+    - condition: "Is treasury shares"
+      pattern: "name~treasuryshares"
+    - condition: "Is stock options"
+      pattern: "name~stockoption"
+    - condition: "Is preferred shares"
+      pattern: "name~preferred"
+    - condition: "Is authorized shares"
+      pattern: "name~authorizedshares"
+
+    # Reject disclosure items
+    - condition: "Is text block"
+      pattern: "name~textblock"
+    - condition: "Is schedule"
+      pattern: "name~schedule"
+
+composition:
+  is_composite: false
+
+validation:
+  expected_sign: positive
+  required_for:
+    - earnings_per_share
+    - book_value_per_share
+    - revenue_per_share
