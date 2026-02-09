@@ -1,0 +1,4 @@
+core
+loaders
+output
+xbrl_parser
