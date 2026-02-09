@@ -1,0 +1,112 @@
+{
+  "role_uri": "http://www.albertsons.com/role/INTANGIBLEASSETSTables",
+  "role_definition": null,
+  "statement_type": "BALANCE_SHEET",
+  "classification": {
+    "category": "TABLE",
+    "statement_type": "BALANCE_SHEET",
+    "is_primary": false,
+    "confidence": "LOW",
+    "matched_patterns": [
+      "Tables",
+      "Asset"
+    ],
+    "structural_signals": {},
+    "source": "structural_analysis",
+    "taxonomy_source": "fallback_pattern",
+    "fallback_used": true
+  },
+  "hierarchy": {
+    "roots": [
+      "us-gaap_GoodwillAndIntangibleAssetsDisclosureAbstract"
+    ],
+    "children": {
+      "us-gaap_GoodwillAndIntangibleAssetsDisclosureAbstract": [
+        "us-gaap_ScheduleOfFiniteLivedIntangibleAssetsTableTextBlock",
+        "us-gaap_ScheduleOfIndefiniteLivedIntangibleAssetsTableTextBlock",
+        "us-gaap_ScheduleofFiniteLivedIntangibleAssetsFutureAmortizationExpenseTableTextBlock"
+      ]
+    },
+    "parents": {
+      "us-gaap_ScheduleOfFiniteLivedIntangibleAssetsTableTextBlock": "us-gaap_GoodwillAndIntangibleAssetsDisclosureAbstract",
+      "us-gaap_ScheduleOfIndefiniteLivedIntangibleAssetsTableTextBlock": "us-gaap_GoodwillAndIntangibleAssetsDisclosureAbstract",
+      "us-gaap_ScheduleofFiniteLivedIntangibleAssetsFutureAmortizationExpenseTableTextBlock": "us-gaap_GoodwillAndIntangibleAssetsDisclosureAbstract"
+    },
+    "order": {
+      "us-gaap_ScheduleOfFiniteLivedIntangibleAssetsTableTextBlock": "1",
+      "us-gaap_ScheduleOfIndefiniteLivedIntangibleAssetsTableTextBlock": "2",
+      "us-gaap_ScheduleofFiniteLivedIntangibleAssetsFutureAmortizationExpenseTableTextBlock": "3"
+    }
+  },
+  "facts": [
+    {
+      "concept": "us-gaap_ScheduleOfFiniteLivedIntangibleAssetsTableTextBlock",
+      "value": "",
+      "context_ref": "c-1",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 1,
+      "order": "1",
+      "parent_concept": "us-gaap_GoodwillAndIntangibleAssetsDisclosureAbstract",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-02-25",
+      "period_end": "2025-02-22",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-638",
+      "display_value": null,
+      "formatted_value": null,
+      "scaling_factor": null
+    },
+    {
+      "concept": "us-gaap_ScheduleOfIndefiniteLivedIntangibleAssetsTableTextBlock",
+      "value": "",
+      "context_ref": "c-1",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 1,
+      "order": "2",
+      "parent_concept": "us-gaap_GoodwillAndIntangibleAssetsDisclosureAbstract",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-02-25",
+      "period_end": "2025-02-22",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-637",
+      "display_value": null,
+      "formatted_value": null,
+      "scaling_factor": null
+    },
+    {
+      "concept": "us-gaap_ScheduleofFiniteLivedIntangibleAssetsFutureAmortizationExpenseTableTextBlock",
+      "value": "Estimated future amortization expense associated with the net carrying amount of intangibles with finite lives is as follows (in millions):",
+      "context_ref": "c-1",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 1,
+      "order": "3",
+      "parent_concept": "us-gaap_GoodwillAndIntangibleAssetsDisclosureAbstract",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-02-25",
+      "period_end": "2025-02-22",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-688",
+      "display_value": "Estimated future amortization expense associated with the net carrying amount of intangibles with finite lives is as follows (in millions):",
+      "formatted_value": "Estimated future amortization expense associated with the net carrying amount of intangibles with finite lives is as follows (in millions):",
+      "scaling_factor": 1
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "role_uri": "http://www.albertsons.com/role/FAIRVALUEMEASUREMENTS",
+  "role_definition": null,
+  "statement_type": "OTHER",
+  "classification": {
+    "category": "CORE_STATEMENT",
+    "statement_type": "OTHER",
+    "is_primary": true,
+    "confidence": "LOW",
+    "matched_patterns": [],
+    "structural_signals": {
+      "fact_count": 1,
+      "fact_count_pass": false,
+      "max_depth": 2,
+      "depth_pass": true,
+      "root_count": 1,
+      "root_count_pass": true,
+      "structure_score": "2/3"
+    },
+    "source": "structural_analysis",
+    "taxonomy_source": "fallback_pattern",
+    "fallback_used": true
+  },
+  "hierarchy": {
+    "roots": [
+      "us-gaap_FairValueDisclosuresAbstract"
+    ],
+    "children": {
+      "us-gaap_FairValueDisclosuresAbstract": [
+        "us-gaap_FairValueDisclosuresTextBlock"
+      ]
+    },
+    "parents": {
+      "us-gaap_FairValueDisclosuresTextBlock": "us-gaap_FairValueDisclosuresAbstract"
+    },
+    "order": {
+      "us-gaap_FairValueDisclosuresTextBlock": "1"
+    }
+  },
+  "facts": [
+    {
+      "concept": "us-gaap_FairValueDisclosuresTextBlock",
+      "value": "FAIR VALUE MEASUREMENTS",
+      "context_ref": "c-1",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 1,
+      "order": "1",
+      "parent_concept": "us-gaap_FairValueDisclosuresAbstract",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-02-25",
+      "period_end": "2025-02-22",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-699",
+      "display_value": "FAIR VALUE MEASUREMENTS",
+      "formatted_value": "FAIR VALUE MEASUREMENTS",
+      "scaling_factor": 1
+    }
+  ]
+}

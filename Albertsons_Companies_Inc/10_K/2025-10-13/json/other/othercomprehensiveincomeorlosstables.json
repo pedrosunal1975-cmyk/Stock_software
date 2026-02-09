@@ -1,0 +1,60 @@
+{
+  "role_uri": "http://www.albertsons.com/role/OTHERCOMPREHENSIVEINCOMEORLOSSTables",
+  "role_definition": null,
+  "statement_type": "INCOME_STATEMENT",
+  "classification": {
+    "category": "TABLE",
+    "statement_type": "INCOME_STATEMENT",
+    "is_primary": false,
+    "confidence": "LOW",
+    "matched_patterns": [
+      "Tables",
+      "Income"
+    ],
+    "structural_signals": {},
+    "source": "structural_analysis",
+    "taxonomy_source": "fallback_pattern",
+    "fallback_used": true
+  },
+  "hierarchy": {
+    "roots": [
+      "us-gaap_StockholdersEquityNoteAbstract"
+    ],
+    "children": {
+      "us-gaap_StockholdersEquityNoteAbstract": [
+        "us-gaap_ScheduleOfAccumulatedOtherComprehensiveIncomeLossTableTextBlock"
+      ]
+    },
+    "parents": {
+      "us-gaap_ScheduleOfAccumulatedOtherComprehensiveIncomeLossTableTextBlock": "us-gaap_StockholdersEquityNoteAbstract"
+    },
+    "order": {
+      "us-gaap_ScheduleOfAccumulatedOtherComprehensiveIncomeLossTableTextBlock": "1"
+    }
+  },
+  "facts": [
+    {
+      "concept": "us-gaap_ScheduleOfAccumulatedOtherComprehensiveIncomeLossTableTextBlock",
+      "value": "Changes in the AOCI balance by component are shown below (in millions):",
+      "context_ref": "c-1",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 1,
+      "order": "1",
+      "parent_concept": "us-gaap_StockholdersEquityNoteAbstract",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-02-25",
+      "period_end": "2025-02-22",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-1688",
+      "display_value": "Changes in the AOCI balance by component are shown below (in millions):",
+      "formatted_value": "Changes in the AOCI balance by component are shown below (in millions):",
+      "scaling_factor": 1
+    }
+  ]
+}

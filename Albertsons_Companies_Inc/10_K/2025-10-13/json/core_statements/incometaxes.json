@@ -1,0 +1,67 @@
+{
+  "role_uri": "http://www.albertsons.com/role/INCOMETAXES",
+  "role_definition": null,
+  "statement_type": "INCOME_STATEMENT",
+  "classification": {
+    "category": "CORE_STATEMENT",
+    "statement_type": "INCOME_STATEMENT",
+    "is_primary": true,
+    "confidence": "LOW",
+    "matched_patterns": [
+      "Income"
+    ],
+    "structural_signals": {
+      "fact_count": 1,
+      "fact_count_pass": false,
+      "max_depth": 2,
+      "depth_pass": true,
+      "root_count": 1,
+      "root_count_pass": true,
+      "structure_score": "2/3"
+    },
+    "source": "structural_analysis",
+    "taxonomy_source": "fallback_pattern",
+    "fallback_used": true
+  },
+  "hierarchy": {
+    "roots": [
+      "us-gaap_IncomeTaxDisclosureAbstract"
+    ],
+    "children": {
+      "us-gaap_IncomeTaxDisclosureAbstract": [
+        "us-gaap_IncomeTaxDisclosureTextBlock"
+      ]
+    },
+    "parents": {
+      "us-gaap_IncomeTaxDisclosureTextBlock": "us-gaap_IncomeTaxDisclosureAbstract"
+    },
+    "order": {
+      "us-gaap_IncomeTaxDisclosureTextBlock": "1"
+    }
+  },
+  "facts": [
+    {
+      "concept": "us-gaap_IncomeTaxDisclosureTextBlock",
+      "value": "INCOME TAXES",
+      "context_ref": "c-1",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 1,
+      "order": "1",
+      "parent_concept": "us-gaap_IncomeTaxDisclosureAbstract",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-02-25",
+      "period_end": "2025-02-22",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-1066",
+      "display_value": "INCOME TAXES",
+      "formatted_value": "INCOME TAXES",
+      "scaling_factor": 1
+    }
+  ]
+}

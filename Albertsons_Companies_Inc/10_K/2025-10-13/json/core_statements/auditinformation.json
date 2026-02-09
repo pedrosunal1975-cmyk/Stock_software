@@ -1,0 +1,117 @@
+{
+  "role_uri": "http://www.albertsons.com/role/AuditInformation",
+  "role_definition": null,
+  "statement_type": "OTHER",
+  "classification": {
+    "category": "CORE_STATEMENT",
+    "statement_type": "OTHER",
+    "is_primary": true,
+    "confidence": "LOW",
+    "matched_patterns": [],
+    "structural_signals": {
+      "fact_count": 3,
+      "fact_count_pass": false,
+      "max_depth": 2,
+      "depth_pass": true,
+      "root_count": 1,
+      "root_count_pass": true,
+      "structure_score": "2/3"
+    },
+    "source": "structural_analysis",
+    "taxonomy_source": "fallback_pattern",
+    "fallback_used": true
+  },
+  "hierarchy": {
+    "roots": [
+      "aci_AuditInformationAbstract"
+    ],
+    "children": {
+      "aci_AuditInformationAbstract": [
+        "dei_AuditorName",
+        "dei_AuditorLocation",
+        "dei_AuditorFirmId"
+      ]
+    },
+    "parents": {
+      "dei_AuditorName": "aci_AuditInformationAbstract",
+      "dei_AuditorLocation": "aci_AuditInformationAbstract",
+      "dei_AuditorFirmId": "aci_AuditInformationAbstract"
+    },
+    "order": {
+      "dei_AuditorName": "1",
+      "dei_AuditorLocation": "2",
+      "dei_AuditorFirmId": "3"
+    }
+  },
+  "facts": [
+    {
+      "concept": "dei_AuditorName",
+      "value": "Deloitte & Touche LLP",
+      "context_ref": "c-1",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 1,
+      "order": "1",
+      "parent_concept": "aci_AuditInformationAbstract",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-02-25",
+      "period_end": "2025-02-22",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-51",
+      "display_value": "Deloitte & Touche LLP",
+      "formatted_value": "Deloitte & Touche LLP",
+      "scaling_factor": 1
+    },
+    {
+      "concept": "dei_AuditorLocation",
+      "value": "Boise, Idaho",
+      "context_ref": "c-1",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 1,
+      "order": "2",
+      "parent_concept": "aci_AuditInformationAbstract",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-02-25",
+      "period_end": "2025-02-22",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-52",
+      "display_value": "Boise, Idaho",
+      "formatted_value": "Boise, Idaho",
+      "scaling_factor": 1
+    },
+    {
+      "concept": "dei_AuditorFirmId",
+      "value": "34",
+      "context_ref": "c-1",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 1,
+      "order": "3",
+      "parent_concept": "aci_AuditInformationAbstract",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-02-25",
+      "period_end": "2025-02-22",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-1854",
+      "display_value": "34",
+      "formatted_value": "34",
+      "scaling_factor": 1
+    }
+  ]
+}

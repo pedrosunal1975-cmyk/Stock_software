@@ -1,0 +1,369 @@
+{
+  "role_uri": "http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofAmountsRecognizedinAccumulatedOtherComprehensiveIncomeLossDetails",
+  "role_definition": null,
+  "statement_type": "INCOME_STATEMENT",
+  "classification": {
+    "category": "DETAIL",
+    "statement_type": "INCOME_STATEMENT",
+    "is_primary": false,
+    "confidence": "LOW",
+    "matched_patterns": [
+      "Details",
+      "Income"
+    ],
+    "structural_signals": {},
+    "source": "structural_analysis",
+    "taxonomy_source": "fallback_pattern",
+    "fallback_used": true
+  },
+  "hierarchy": {
+    "roots": [
+      "us-gaap_CompensationAndRetirementDisclosureAbstract"
+    ],
+    "children": {
+      "us-gaap_CompensationAndRetirementDisclosureAbstract": [
+        "us-gaap_DefinedBenefitPlansAndOtherPostretirementBenefitPlansDisclosuresTable"
+      ],
+      "us-gaap_DefinedBenefitPlansAndOtherPostretirementBenefitPlansDisclosuresTable": [
+        "us-gaap_RetirementPlanTypeAxis",
+        "us-gaap_DefinedBenefitPlansAndOtherPostretirementBenefitPlansTableTextBlockLineItems"
+      ],
+      "us-gaap_RetirementPlanTypeAxis": [
+        "us-gaap_RetirementPlanTypeDomain"
+      ],
+      "us-gaap_RetirementPlanTypeDomain": [
+        "us-gaap_PensionPlansDefinedBenefitMember",
+        "us-gaap_OtherPostretirementBenefitPlansDefinedBenefitMember"
+      ],
+      "us-gaap_DefinedBenefitPlansAndOtherPostretirementBenefitPlansTableTextBlockLineItems": [
+        "us-gaap_DefinedBenefitPlanAccumulatedOtherComprehensiveIncomeNetGainsLossesBeforeTax",
+        "us-gaap_DefinedBenefitPlanAccumulatedOtherComprehensiveIncomeNetPriorServiceCostCreditBeforeTax",
+        "us-gaap_DefinedBenefitPlanAccumulatedOtherComprehensiveIncomeBeforeTax"
+      ]
+    },
+    "parents": {
+      "us-gaap_DefinedBenefitPlansAndOtherPostretirementBenefitPlansDisclosuresTable": "us-gaap_CompensationAndRetirementDisclosureAbstract",
+      "us-gaap_RetirementPlanTypeAxis": "us-gaap_DefinedBenefitPlansAndOtherPostretirementBenefitPlansDisclosuresTable",
+      "us-gaap_RetirementPlanTypeDomain": "us-gaap_RetirementPlanTypeAxis",
+      "us-gaap_PensionPlansDefinedBenefitMember": "us-gaap_RetirementPlanTypeDomain",
+      "us-gaap_OtherPostretirementBenefitPlansDefinedBenefitMember": "us-gaap_RetirementPlanTypeDomain",
+      "us-gaap_DefinedBenefitPlansAndOtherPostretirementBenefitPlansTableTextBlockLineItems": "us-gaap_DefinedBenefitPlansAndOtherPostretirementBenefitPlansDisclosuresTable",
+      "us-gaap_DefinedBenefitPlanAccumulatedOtherComprehensiveIncomeNetGainsLossesBeforeTax": "us-gaap_DefinedBenefitPlansAndOtherPostretirementBenefitPlansTableTextBlockLineItems",
+      "us-gaap_DefinedBenefitPlanAccumulatedOtherComprehensiveIncomeNetPriorServiceCostCreditBeforeTax": "us-gaap_DefinedBenefitPlansAndOtherPostretirementBenefitPlansTableTextBlockLineItems",
+      "us-gaap_DefinedBenefitPlanAccumulatedOtherComprehensiveIncomeBeforeTax": "us-gaap_DefinedBenefitPlansAndOtherPostretirementBenefitPlansTableTextBlockLineItems"
+    },
+    "order": {
+      "us-gaap_DefinedBenefitPlansAndOtherPostretirementBenefitPlansDisclosuresTable": "1",
+      "us-gaap_RetirementPlanTypeAxis": "1",
+      "us-gaap_RetirementPlanTypeDomain": "1",
+      "us-gaap_PensionPlansDefinedBenefitMember": "1",
+      "us-gaap_OtherPostretirementBenefitPlansDefinedBenefitMember": "2",
+      "us-gaap_DefinedBenefitPlansAndOtherPostretirementBenefitPlansTableTextBlockLineItems": "2",
+      "us-gaap_DefinedBenefitPlanAccumulatedOtherComprehensiveIncomeNetGainsLossesBeforeTax": "1",
+      "us-gaap_DefinedBenefitPlanAccumulatedOtherComprehensiveIncomeNetPriorServiceCostCreditBeforeTax": "2",
+      "us-gaap_DefinedBenefitPlanAccumulatedOtherComprehensiveIncomeBeforeTax": "3"
+    }
+  },
+  "facts": [
+    {
+      "concept": "us-gaap_DefinedBenefitPlanAccumulatedOtherComprehensiveIncomeNetGainsLossesBeforeTax",
+      "value": "116.2",
+      "context_ref": "c-255",
+      "unit_ref": "usd",
+      "decimals": "-5",
+      "level": 3,
+      "order": "1",
+      "parent_concept": "us-gaap_DefinedBenefitPlansAndOtherPostretirementBenefitPlansTableTextBlockLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2025-02-22",
+      "dimensions": {
+        "us-gaap:RetirementPlanTypeAxis": "us-gaap:PensionPlansDefinedBenefitMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-1276",
+      "display_value": "11620000.0",
+      "formatted_value": "$11,620,000",
+      "scaling_factor": 100000
+    },
+    {
+      "concept": "us-gaap_DefinedBenefitPlanAccumulatedOtherComprehensiveIncomeNetGainsLossesBeforeTax",
+      "value": "108.0",
+      "context_ref": "c-247",
+      "unit_ref": "usd",
+      "decimals": "-5",
+      "level": 3,
+      "order": "1",
+      "parent_concept": "us-gaap_DefinedBenefitPlansAndOtherPostretirementBenefitPlansTableTextBlockLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2024-02-24",
+      "dimensions": {
+        "us-gaap:RetirementPlanTypeAxis": "us-gaap:PensionPlansDefinedBenefitMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-1277",
+      "display_value": "10800000.0",
+      "formatted_value": "$10,800,000",
+      "scaling_factor": 100000
+    },
+    {
+      "concept": "us-gaap_DefinedBenefitPlanAccumulatedOtherComprehensiveIncomeNetGainsLossesBeforeTax",
+      "value": "9.7",
+      "context_ref": "c-256",
+      "unit_ref": "usd",
+      "decimals": "-5",
+      "level": 3,
+      "order": "1",
+      "parent_concept": "us-gaap_DefinedBenefitPlansAndOtherPostretirementBenefitPlansTableTextBlockLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2025-02-22",
+      "dimensions": {
+        "us-gaap:RetirementPlanTypeAxis": "us-gaap:OtherPostretirementBenefitPlansDefinedBenefitMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-1278",
+      "display_value": "970000.0",
+      "formatted_value": "$970,000",
+      "scaling_factor": 100000
+    },
+    {
+      "concept": "us-gaap_DefinedBenefitPlanAccumulatedOtherComprehensiveIncomeNetGainsLossesBeforeTax",
+      "value": "11.5",
+      "context_ref": "c-249",
+      "unit_ref": "usd",
+      "decimals": "-5",
+      "level": 3,
+      "order": "1",
+      "parent_concept": "us-gaap_DefinedBenefitPlansAndOtherPostretirementBenefitPlansTableTextBlockLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2024-02-24",
+      "dimensions": {
+        "us-gaap:RetirementPlanTypeAxis": "us-gaap:OtherPostretirementBenefitPlansDefinedBenefitMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-1279",
+      "display_value": "1150000.0",
+      "formatted_value": "$1,150,000",
+      "scaling_factor": 100000
+    },
+    {
+      "concept": "us-gaap_DefinedBenefitPlanAccumulatedOtherComprehensiveIncomeNetPriorServiceCostCreditBeforeTax",
+      "value": "1.2",
+      "context_ref": "c-255",
+      "unit_ref": "usd",
+      "decimals": "-5",
+      "level": 3,
+      "order": "2",
+      "parent_concept": "us-gaap_DefinedBenefitPlansAndOtherPostretirementBenefitPlansTableTextBlockLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2025-02-22",
+      "dimensions": {
+        "us-gaap:RetirementPlanTypeAxis": "us-gaap:PensionPlansDefinedBenefitMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-1280",
+      "display_value": "120000.0",
+      "formatted_value": "$120,000",
+      "scaling_factor": 100000
+    },
+    {
+      "concept": "us-gaap_DefinedBenefitPlanAccumulatedOtherComprehensiveIncomeNetPriorServiceCostCreditBeforeTax",
+      "value": "1.4",
+      "context_ref": "c-247",
+      "unit_ref": "usd",
+      "decimals": "-5",
+      "level": 3,
+      "order": "2",
+      "parent_concept": "us-gaap_DefinedBenefitPlansAndOtherPostretirementBenefitPlansTableTextBlockLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2024-02-24",
+      "dimensions": {
+        "us-gaap:RetirementPlanTypeAxis": "us-gaap:PensionPlansDefinedBenefitMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-1281",
+      "display_value": "140000.0",
+      "formatted_value": "$140,000",
+      "scaling_factor": 100000
+    },
+    {
+      "concept": "us-gaap_DefinedBenefitPlanAccumulatedOtherComprehensiveIncomeNetPriorServiceCostCreditBeforeTax",
+      "value": "—",
+      "context_ref": "c-256",
+      "unit_ref": "usd",
+      "decimals": "-5",
+      "level": 3,
+      "order": "2",
+      "parent_concept": "us-gaap_DefinedBenefitPlansAndOtherPostretirementBenefitPlansTableTextBlockLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2025-02-22",
+      "dimensions": {
+        "us-gaap:RetirementPlanTypeAxis": "us-gaap:OtherPostretirementBenefitPlansDefinedBenefitMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-1282",
+      "display_value": "—",
+      "formatted_value": "—",
+      "scaling_factor": 100000
+    },
+    {
+      "concept": "us-gaap_DefinedBenefitPlanAccumulatedOtherComprehensiveIncomeNetPriorServiceCostCreditBeforeTax",
+      "value": "—",
+      "context_ref": "c-249",
+      "unit_ref": "usd",
+      "decimals": "-5",
+      "level": 3,
+      "order": "2",
+      "parent_concept": "us-gaap_DefinedBenefitPlansAndOtherPostretirementBenefitPlansTableTextBlockLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2024-02-24",
+      "dimensions": {
+        "us-gaap:RetirementPlanTypeAxis": "us-gaap:OtherPostretirementBenefitPlansDefinedBenefitMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-1283",
+      "display_value": "—",
+      "formatted_value": "—",
+      "scaling_factor": 100000
+    },
+    {
+      "concept": "us-gaap_DefinedBenefitPlanAccumulatedOtherComprehensiveIncomeBeforeTax",
+      "value": "115.0",
+      "context_ref": "c-255",
+      "unit_ref": "usd",
+      "decimals": "-5",
+      "level": 3,
+      "order": "3",
+      "parent_concept": "us-gaap_DefinedBenefitPlansAndOtherPostretirementBenefitPlansTableTextBlockLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2025-02-22",
+      "dimensions": {
+        "us-gaap:RetirementPlanTypeAxis": "us-gaap:PensionPlansDefinedBenefitMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-1284",
+      "display_value": "11500000.0",
+      "formatted_value": "$11,500,000",
+      "scaling_factor": 100000
+    },
+    {
+      "concept": "us-gaap_DefinedBenefitPlanAccumulatedOtherComprehensiveIncomeBeforeTax",
+      "value": "106.6",
+      "context_ref": "c-247",
+      "unit_ref": "usd",
+      "decimals": "-5",
+      "level": 3,
+      "order": "3",
+      "parent_concept": "us-gaap_DefinedBenefitPlansAndOtherPostretirementBenefitPlansTableTextBlockLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2024-02-24",
+      "dimensions": {
+        "us-gaap:RetirementPlanTypeAxis": "us-gaap:PensionPlansDefinedBenefitMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-1285",
+      "display_value": "10660000.0",
+      "formatted_value": "$10,660,000",
+      "scaling_factor": 100000
+    },
+    {
+      "concept": "us-gaap_DefinedBenefitPlanAccumulatedOtherComprehensiveIncomeBeforeTax",
+      "value": "9.7",
+      "context_ref": "c-256",
+      "unit_ref": "usd",
+      "decimals": "-5",
+      "level": 3,
+      "order": "3",
+      "parent_concept": "us-gaap_DefinedBenefitPlansAndOtherPostretirementBenefitPlansTableTextBlockLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2025-02-22",
+      "dimensions": {
+        "us-gaap:RetirementPlanTypeAxis": "us-gaap:OtherPostretirementBenefitPlansDefinedBenefitMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-1286",
+      "display_value": "970000.0",
+      "formatted_value": "$970,000",
+      "scaling_factor": 100000
+    },
+    {
+      "concept": "us-gaap_DefinedBenefitPlanAccumulatedOtherComprehensiveIncomeBeforeTax",
+      "value": "11.5",
+      "context_ref": "c-249",
+      "unit_ref": "usd",
+      "decimals": "-5",
+      "level": 3,
+      "order": "3",
+      "parent_concept": "us-gaap_DefinedBenefitPlansAndOtherPostretirementBenefitPlansTableTextBlockLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2024-02-24",
+      "dimensions": {
+        "us-gaap:RetirementPlanTypeAxis": "us-gaap:OtherPostretirementBenefitPlansDefinedBenefitMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-1287",
+      "display_value": "1150000.0",
+      "formatted_value": "$1,150,000",
+      "scaling_factor": 100000
+    }
+  ]
+}

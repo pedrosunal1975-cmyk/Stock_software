@@ -1,0 +1,166 @@
+{
+  "role_uri": "http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESDescriptionofBusinessDetails",
+  "role_definition": null,
+  "statement_type": "OTHER",
+  "classification": {
+    "category": "DETAIL",
+    "statement_type": "OTHER",
+    "is_primary": false,
+    "confidence": "LOW",
+    "matched_patterns": [
+      "Details"
+    ],
+    "structural_signals": {},
+    "source": "structural_analysis",
+    "taxonomy_source": "fallback_pattern",
+    "fallback_used": true
+  },
+  "hierarchy": {
+    "roots": [
+      "us-gaap_OrganizationConsolidationAndPresentationOfFinancialStatementsAbstract"
+    ],
+    "children": {
+      "us-gaap_OrganizationConsolidationAndPresentationOfFinancialStatementsAbstract": [
+        "us-gaap_ScheduleOfPropertyPlantAndEquipmentTable"
+      ],
+      "us-gaap_ScheduleOfPropertyPlantAndEquipmentTable": [
+        "us-gaap_PropertyPlantAndEquipmentByTypeAxis",
+        "us-gaap_PropertyPlantAndEquipmentLineItems"
+      ],
+      "us-gaap_PropertyPlantAndEquipmentByTypeAxis": [
+        "us-gaap_PropertyPlantAndEquipmentTypeDomain"
+      ],
+      "us-gaap_PropertyPlantAndEquipmentTypeDomain": [
+        "aci_FuelCentersMember",
+        "aci_DistributionCentersMember",
+        "aci_ManufacturingFacilitiesMember"
+      ],
+      "us-gaap_PropertyPlantAndEquipmentLineItems": [
+        "us-gaap_NumberOfStores",
+        "aci_NumberofFacilities"
+      ]
+    },
+    "parents": {
+      "us-gaap_ScheduleOfPropertyPlantAndEquipmentTable": "us-gaap_OrganizationConsolidationAndPresentationOfFinancialStatementsAbstract",
+      "us-gaap_PropertyPlantAndEquipmentByTypeAxis": "us-gaap_ScheduleOfPropertyPlantAndEquipmentTable",
+      "us-gaap_PropertyPlantAndEquipmentTypeDomain": "us-gaap_PropertyPlantAndEquipmentByTypeAxis",
+      "aci_FuelCentersMember": "us-gaap_PropertyPlantAndEquipmentTypeDomain",
+      "aci_DistributionCentersMember": "us-gaap_PropertyPlantAndEquipmentTypeDomain",
+      "aci_ManufacturingFacilitiesMember": "us-gaap_PropertyPlantAndEquipmentTypeDomain",
+      "us-gaap_PropertyPlantAndEquipmentLineItems": "us-gaap_ScheduleOfPropertyPlantAndEquipmentTable",
+      "us-gaap_NumberOfStores": "us-gaap_PropertyPlantAndEquipmentLineItems",
+      "aci_NumberofFacilities": "us-gaap_PropertyPlantAndEquipmentLineItems"
+    },
+    "order": {
+      "us-gaap_ScheduleOfPropertyPlantAndEquipmentTable": "1",
+      "us-gaap_PropertyPlantAndEquipmentByTypeAxis": "1",
+      "us-gaap_PropertyPlantAndEquipmentTypeDomain": "1",
+      "aci_FuelCentersMember": "1",
+      "aci_DistributionCentersMember": "2",
+      "aci_ManufacturingFacilitiesMember": "3",
+      "us-gaap_PropertyPlantAndEquipmentLineItems": "2",
+      "us-gaap_NumberOfStores": "1",
+      "aci_NumberofFacilities": "2"
+    }
+  },
+  "facts": [
+    {
+      "concept": "us-gaap_NumberOfStores",
+      "value": "2270",
+      "context_ref": "c-4",
+      "unit_ref": "store",
+      "decimals": "INF",
+      "level": 3,
+      "order": "1",
+      "parent_concept": "us-gaap_PropertyPlantAndEquipmentLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2025-02-22",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-450",
+      "display_value": "2270",
+      "formatted_value": "2,270",
+      "scaling_factor": 1.0
+    },
+    {
+      "concept": "aci_NumberofFacilities",
+      "value": "405",
+      "context_ref": "c-56",
+      "unit_ref": "facility",
+      "decimals": "INF",
+      "level": 3,
+      "order": "2",
+      "parent_concept": "us-gaap_PropertyPlantAndEquipmentLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2025-02-22",
+      "dimensions": {
+        "us-gaap:PropertyPlantAndEquipmentByTypeAxis": "aci:FuelCentersMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-451",
+      "display_value": "405",
+      "formatted_value": "405",
+      "scaling_factor": 1.0
+    },
+    {
+      "concept": "aci_NumberofFacilities",
+      "value": "22",
+      "context_ref": "c-57",
+      "unit_ref": "facility",
+      "decimals": "INF",
+      "level": 3,
+      "order": "2",
+      "parent_concept": "us-gaap_PropertyPlantAndEquipmentLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2025-02-22",
+      "dimensions": {
+        "us-gaap:PropertyPlantAndEquipmentByTypeAxis": "aci:DistributionCentersMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-452",
+      "display_value": "22",
+      "formatted_value": "22",
+      "scaling_factor": 1.0
+    },
+    {
+      "concept": "aci_NumberofFacilities",
+      "value": "19",
+      "context_ref": "c-58",
+      "unit_ref": "facility",
+      "decimals": "INF",
+      "level": 3,
+      "order": "2",
+      "parent_concept": "us-gaap_PropertyPlantAndEquipmentLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2025-02-22",
+      "dimensions": {
+        "us-gaap:PropertyPlantAndEquipmentByTypeAxis": "aci:ManufacturingFacilitiesMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-453",
+      "display_value": "19",
+      "formatted_value": "19",
+      "scaling_factor": 1.0
+    }
+  ]
+}

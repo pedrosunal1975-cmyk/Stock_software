@@ -1,0 +1,62 @@
+{
+  "role_uri": "http://xbrl.sec.gov/ecd/role/InsiderTradingPoliciesProc",
+  "role_definition": null,
+  "statement_type": "OTHER",
+  "classification": {
+    "category": "POLICY",
+    "statement_type": "OTHER",
+    "is_primary": false,
+    "confidence": "LOW",
+    "matched_patterns": [
+      "Policies"
+    ],
+    "structural_signals": {},
+    "source": "structural_analysis",
+    "taxonomy_source": "fallback_pattern",
+    "fallback_used": true
+  },
+  "hierarchy": {
+    "roots": [
+      "ecd_InsiderTradingPoliciesProcLineItems"
+    ],
+    "children": {
+      "ecd_InsiderTradingPoliciesProcLineItems": [
+        "ecd_InsiderTrdPoliciesProcAdoptedFlag",
+        "ecd_InsiderTrdPoliciesProcNotAdoptedTextBlock"
+      ]
+    },
+    "parents": {
+      "ecd_InsiderTrdPoliciesProcAdoptedFlag": "ecd_InsiderTradingPoliciesProcLineItems",
+      "ecd_InsiderTrdPoliciesProcNotAdoptedTextBlock": "ecd_InsiderTradingPoliciesProcLineItems"
+    },
+    "order": {
+      "ecd_InsiderTrdPoliciesProcAdoptedFlag": "1",
+      "ecd_InsiderTrdPoliciesProcNotAdoptedTextBlock": "2"
+    }
+  },
+  "facts": [
+    {
+      "concept": "ecd_InsiderTrdPoliciesProcAdoptedFlag",
+      "value": "Insider Trading Policies and Procedures",
+      "context_ref": "c-1",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 1,
+      "order": "1",
+      "parent_concept": "ecd_InsiderTradingPoliciesProcLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-02-25",
+      "period_end": "2025-02-22",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "f-1855",
+      "display_value": "Insider Trading Policies and Procedures",
+      "formatted_value": "Insider Trading Policies and Procedures",
+      "scaling_factor": 1
+    }
+  ]
+}
