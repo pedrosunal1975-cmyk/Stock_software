@@ -1,0 +1,2385 @@
+{
+  "generated_at": "2026-02-09T21:11:36.280999",
+  "filing_info": {
+    "entity_name": "Unknown",
+    "filing_type": "10-K",
+    "period_end": null
+  },
+  "summary": {
+    "total_networks": 99,
+    "core_statements": 24,
+    "detail_schedules": 57,
+    "tables": 12,
+    "policies": 3,
+    "documents": 1,
+    "other": 0,
+    "by_category": {
+      "DOCUMENT": 1,
+      "CORE_STATEMENT": 24,
+      "PARENTHETICAL": 2,
+      "POLICY": 3,
+      "TABLE": 12,
+      "DETAIL": 57
+    },
+    "by_statement_type": {
+      "OTHER": 37,
+      "BALANCE_SHEET": 30,
+      "INCOME_STATEMENT": 21,
+      "CASH_FLOW": 2,
+      "EQUITY": 9
+    },
+    "by_confidence": {
+      "LOW": 99
+    }
+  },
+  "core_statements": [
+    {
+      "filename": "core_statements/consolidatedbalancesheets.json",
+      "role_uri": "http://www.albertsons.com/role/ConsolidatedBalanceSheets",
+      "role_definition": null,
+      "statement_type": "BALANCE_SHEET",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/propertyandequipment.json",
+      "role_uri": "http://www.albertsons.com/role/PROPERTYANDEQUIPMENT",
+      "role_definition": null,
+      "statement_type": "BALANCE_SHEET",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/intangibleassets.json",
+      "role_uri": "http://www.albertsons.com/role/INTANGIBLEASSETS",
+      "role_definition": null,
+      "statement_type": "BALANCE_SHEET",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/longtermdebtandfinanceleaseobligations.json",
+      "role_uri": "http://www.albertsons.com/role/LONGTERMDEBTANDFINANCELEASEOBLIGATIONS",
+      "role_definition": null,
+      "statement_type": "BALANCE_SHEET",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/commitmentsandcontingenciesandoffbalancesheetarrangements.json",
+      "role_uri": "http://www.albertsons.com/role/COMMITMENTSANDCONTINGENCIESANDOFFBALANCESHEETARRANGEMENTS",
+      "role_definition": null,
+      "statement_type": "BALANCE_SHEET",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/consolidatedstatementsofoperationsandcomprehensiveincome.json",
+      "role_uri": "http://www.albertsons.com/role/ConsolidatedStatementsofOperationsandComprehensiveIncome",
+      "role_definition": null,
+      "statement_type": "INCOME_STATEMENT",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/incometaxes.json",
+      "role_uri": "http://www.albertsons.com/role/INCOMETAXES",
+      "role_definition": null,
+      "statement_type": "INCOME_STATEMENT",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/othercomprehensiveincomeorloss.json",
+      "role_uri": "http://www.albertsons.com/role/OTHERCOMPREHENSIVEINCOMEORLOSS",
+      "role_definition": null,
+      "statement_type": "INCOME_STATEMENT",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/netincomepercommonshare.json",
+      "role_uri": "http://www.albertsons.com/role/NETINCOMEPERCOMMONSHARE",
+      "role_definition": null,
+      "statement_type": "INCOME_STATEMENT",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/consolidatedstatementsofcashflows.json",
+      "role_uri": "http://www.albertsons.com/role/ConsolidatedStatementsofCashFlows",
+      "role_definition": null,
+      "statement_type": "CASH_FLOW",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/consolidatedstatementsofstockholdersequity.json",
+      "role_uri": "http://www.albertsons.com/role/ConsolidatedStatementsofStockholdersEquity",
+      "role_definition": null,
+      "statement_type": "EQUITY",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/stockholdersequityandconvertiblepreferredstock.json",
+      "role_uri": "http://www.albertsons.com/role/STOCKHOLDERSEQUITYANDCONVERTIBLEPREFERREDSTOCK",
+      "role_definition": null,
+      "statement_type": "EQUITY",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/equitybasedcompensation.json",
+      "role_uri": "http://www.albertsons.com/role/EQUITYBASEDCOMPENSATION",
+      "role_definition": null,
+      "statement_type": "EQUITY",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/auditinformation.json",
+      "role_uri": "http://www.albertsons.com/role/AuditInformation",
+      "role_definition": null,
+      "statement_type": "OTHER",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/terminationofthemergeragreement.json",
+      "role_uri": "http://www.albertsons.com/role/TERMINATIONOFTHEMERGERAGREEMENT",
+      "role_definition": null,
+      "statement_type": "OTHER",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/fairvaluemeasurements.json",
+      "role_uri": "http://www.albertsons.com/role/FAIRVALUEMEASUREMENTS",
+      "role_definition": null,
+      "statement_type": "OTHER",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/leases.json",
+      "role_uri": "http://www.albertsons.com/role/LEASES",
+      "role_definition": null,
+      "statement_type": "OTHER",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/employeebenefitplansandcollectivebargainingagreements.json",
+      "role_uri": "http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTS",
+      "role_definition": null,
+      "statement_type": "OTHER",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/relatedparties.json",
+      "role_uri": "http://www.albertsons.com/role/RELATEDPARTIES",
+      "role_definition": null,
+      "statement_type": "OTHER",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/segmentinformation.json",
+      "role_uri": "http://www.albertsons.com/role/SEGMENTINFORMATION",
+      "role_definition": null,
+      "statement_type": "OTHER",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/awardtimingdisclosure.json",
+      "role_uri": "http://xbrl.sec.gov/ecd/role/AwardTimingDisclosure",
+      "role_definition": null,
+      "statement_type": "OTHER",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/errcompdisclosure.json",
+      "role_uri": "http://xbrl.sec.gov/ecd/role/ErrCompDisclosure",
+      "role_definition": null,
+      "statement_type": "OTHER",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/pvpdisclosure.json",
+      "role_uri": "http://xbrl.sec.gov/ecd/role/PvpDisclosure",
+      "role_definition": null,
+      "statement_type": "OTHER",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/insidertradingarrangements.json",
+      "role_uri": "http://xbrl.sec.gov/ecd/role/InsiderTradingArrangements",
+      "role_definition": null,
+      "statement_type": "OTHER",
+      "confidence": "LOW"
+    }
+  ],
+  "details_by_type": {
+    "BALANCE_SHEET": [
+      {
+        "filename": "details/commitmentsandcontingenciesandoffbalancesheetarrangementslegalcontingenciesdetails.json",
+        "role_uri": "http://www.albertsons.com/role/COMMITMENTSANDCONTINGENCIESANDOFFBALANCESHEETARRANGEMENTSLegalContingenciesDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/descriptionofbusinessbasisofpresentationandsummaryofsignificantaccountingpoliciesinvestmentsdetails.json",
+        "role_uri": "http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESInvestmentsDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/descriptionofbusinessbasisofpresentationandsummaryofsignificantaccountingpoliciespropertyandequipmentintangibleassetsandcloudcomputingarrangementsdeta.json",
+        "role_uri": "http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESPropertyandEquipmentIntangibleAssetsandCloudComputingArrangementsDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/employeebenefitplansandcollectivebargainingagreementsscheduleofaccumulatedbenefitobligationinexcessofplanassetsdetails.json",
+        "role_uri": "http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofAccumulatedBenefitObligationinExcessofPlanAssetsDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/employeebenefitplansandcollectivebargainingagreementsscheduleofchangesinretirementplansbenefitobligationandfairvalueofplanassetsdetails.json",
+        "role_uri": "http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofChangesinRetirementPlansBenefitObligationandFairValueofPlanAssetsDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/employeebenefitplansandcollectivebargainingagreementsscheduleoffairvalueofplanassetsdetails.json",
+        "role_uri": "http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofFairValueofPlanAssetsDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/employeebenefitplansandcollectivebargainingagreementsscheduleofplanassetsallocationdetails.json",
+        "role_uri": "http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofPlanAssetsAllocationDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/fairvaluemeasurementsscheduleofassetsandliabilitiesmeasuredatfairvaluedetails.json",
+        "role_uri": "http://www.albertsons.com/role/FAIRVALUEMEASUREMENTSScheduleofAssetsandLiabilitiesMeasuredatFairValueDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/incometaxesscheduleofdeferredtaxassetsandliabilitiesdetails.json",
+        "role_uri": "http://www.albertsons.com/role/INCOMETAXESScheduleofDeferredTaxAssetsandLiabilitiesDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/intangibleassetsnarrativedetails.json",
+        "role_uri": "http://www.albertsons.com/role/INTANGIBLEASSETSNarrativeDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/intangibleassetsschedulefutureamortizationexpensedetails.json",
+        "role_uri": "http://www.albertsons.com/role/INTANGIBLEASSETSScheduleFutureAmortizationExpenseDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/intangibleassetsscheduleofintangibleassetsdetails.json",
+        "role_uri": "http://www.albertsons.com/role/INTANGIBLEASSETSScheduleofIntangibleAssetsDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/leasesscheduleofbalancesheetinformationdetails.json",
+        "role_uri": "http://www.albertsons.com/role/LEASESScheduleofBalanceSheetInformationDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/longtermdebtandfinanceleaseobligationsassetbasedloanfacilitiesdetails.json",
+        "role_uri": "http://www.albertsons.com/role/LONGTERMDEBTANDFINANCELEASEOBLIGATIONSAssetBasedLoanFacilitiesDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/longtermdebtandfinanceleaseobligationsdeferredfinancingcostsandinterestexpensenetdetails.json",
+        "role_uri": "http://www.albertsons.com/role/LONGTERMDEBTANDFINANCELEASEOBLIGATIONSDeferredFinancingCostsandInterestExpenseNetDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/longtermdebtandfinanceleaseobligationsscheduleoffuturematuritiesoflongtermdebtdetails.json",
+        "role_uri": "http://www.albertsons.com/role/LONGTERMDEBTANDFINANCELEASEOBLIGATIONSScheduleofFutureMaturitiesofLongtermDebtDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/longtermdebtandfinanceleaseobligationsscheduleofinterestexpensedetails.json",
+        "role_uri": "http://www.albertsons.com/role/LONGTERMDEBTANDFINANCELEASEOBLIGATIONSScheduleofInterestExpenseDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/longtermdebtandfinanceleaseobligationsscheduleoflongtermdebtdetails.json",
+        "role_uri": "http://www.albertsons.com/role/LONGTERMDEBTANDFINANCELEASEOBLIGATIONSScheduleofLongtermDebtDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/longtermdebtandfinanceleaseobligationsseniorunsecurednotesdetails.json",
+        "role_uri": "http://www.albertsons.com/role/LONGTERMDEBTANDFINANCELEASEOBLIGATIONSSeniorUnsecuredNotesDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/propertyandequipmentnarrativedetails.json",
+        "role_uri": "http://www.albertsons.com/role/PROPERTYANDEQUIPMENTNarrativeDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/propertyandequipmentscheduleofpropertyandequipmentdetails.json",
+        "role_uri": "http://www.albertsons.com/role/PROPERTYANDEQUIPMENTScheduleofPropertyandEquipmentDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      }
+    ],
+    "INCOME_STATEMENT": [
+      {
+        "filename": "details/descriptionofbusinessbasisofpresentationandsummaryofsignificantaccountingpoliciesrevenuerecognitionandcostsofsalesandvendorallowancesdetails.json",
+        "role_uri": "http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESRevenueRecognitionandCostsofSalesandVendorAllowancesDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/descriptionofbusinessbasisofpresentationandsummaryofsignificantaccountingpoliciesscheduleofsalesrevenuebyproducttypedetails.json",
+        "role_uri": "http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESScheduleofSalesRevenuebyProductTypeDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/employeebenefitplansandcollectivebargainingagreementsscheduleofamountsrecognizedinaccumulatedothercomprehensiveincomelossdetails.json",
+        "role_uri": "http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofAmountsRecognizedinAccumulatedOtherComprehensiveIncomeLossDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/employeebenefitplansandcollectivebargainingagreementsscheduleofcomponentsofnetpensionandpostretirementexpensedetails.json",
+        "role_uri": "http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofComponentsofNetPensionandPostretirementExpenseDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/equitybasedcompensationscheduleofequitybasedcompensationexpensedetails.json",
+        "role_uri": "http://www.albertsons.com/role/EQUITYBASEDCOMPENSATIONScheduleofEquitybasedCompensationExpenseDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/incometaxesnarrativedetails.json",
+        "role_uri": "http://www.albertsons.com/role/INCOMETAXESNarrativeDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/incometaxesscheduleofcomponentsofincometaxexpensedetails.json",
+        "role_uri": "http://www.albertsons.com/role/INCOMETAXESScheduleofComponentsofIncomeTaxExpenseDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/incometaxesscheduleofeffectiveincometaxratereconciliationdetails.json",
+        "role_uri": "http://www.albertsons.com/role/INCOMETAXESScheduleofEffectiveIncomeTaxRateReconciliationDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/incometaxesscheduleofunrecognizedtaxbenefitsdetails.json",
+        "role_uri": "http://www.albertsons.com/role/INCOMETAXESScheduleofUnrecognizedTaxBenefitsDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/incometaxessummaryofvaluationallowanceactivitydetails.json",
+        "role_uri": "http://www.albertsons.com/role/INCOMETAXESSummaryofValuationAllowanceActivityDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/leasesscheduleofcomponentsofleaseexpensedetails.json",
+        "role_uri": "http://www.albertsons.com/role/LEASESScheduleofComponentsofLeaseExpenseDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/netincomepercommonsharenarrativedetails.json",
+        "role_uri": "http://www.albertsons.com/role/NETINCOMEPERCOMMONSHARENarrativeDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/netincomepercommonsharescheduleofcomputationofbasicanddilutednetincomepersharedetails.json",
+        "role_uri": "http://www.albertsons.com/role/NETINCOMEPERCOMMONSHAREScheduleofComputationofBasicandDilutedNetIncomePerShareDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/othercomprehensiveincomeorlossdetails.json",
+        "role_uri": "http://www.albertsons.com/role/OTHERCOMPREHENSIVEINCOMEORLOSSDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      }
+    ],
+    "CASH_FLOW": [
+      {
+        "filename": "details/leasessupplementalcashflowinformationdetails.json",
+        "role_uri": "http://www.albertsons.com/role/LEASESSupplementalCashFlowInformationDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      }
+    ],
+    "EQUITY": [
+      {
+        "filename": "details/descriptionofbusinessbasisofpresentationandsummaryofsignificantaccountingpoliciesequitybasedcompensationdetails.json",
+        "role_uri": "http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESEquityBasedCompensationDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/equitybasedcompensationnarrativedetails.json",
+        "role_uri": "http://www.albertsons.com/role/EQUITYBASEDCOMPENSATIONNarrativeDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/equitybasedcompensationscheduleofrsuandrsaactivitydetails.json",
+        "role_uri": "http://www.albertsons.com/role/EQUITYBASEDCOMPENSATIONScheduleofRSUandRSAActivityDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/stockholdersequityandconvertiblepreferredstockdetails.json",
+        "role_uri": "http://www.albertsons.com/role/STOCKHOLDERSEQUITYANDCONVERTIBLEPREFERREDSTOCKDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      }
+    ],
+    "OTHER": [
+      {
+        "filename": "details/descriptionofbusinessbasisofpresentationandsummaryofsignificantaccountingpoliciescashandcashequivalentsdetails.json",
+        "role_uri": "http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESCashandCashEquivalentsDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/descriptionofbusinessbasisofpresentationandsummaryofsignificantaccountingpoliciescompanyownedlifeinsuranceandselfinsuranceliabilitiesdetails.json",
+        "role_uri": "http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESCompanyOwnedLifeInsuranceandSelfInsuranceLiabilitiesDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/descriptionofbusinessbasisofpresentationandsummaryofsignificantaccountingpoliciesdescriptionofbusinessdetails.json",
+        "role_uri": "http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESDescriptionofBusinessDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/descriptionofbusinessbasisofpresentationandsummaryofsignificantaccountingpoliciesinventoriesdetails.json",
+        "role_uri": "http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESInventoriesDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/descriptionofbusinessbasisofpresentationandsummaryofsignificantaccountingpoliciesleasesdetails.json",
+        "role_uri": "http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESLeasesDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/descriptionofbusinessbasisofpresentationandsummaryofsignificantaccountingpoliciesscheduleofselfinsuranceliabilitiesdetails.json",
+        "role_uri": "http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESScheduleofSelfInsuranceLiabilitiesDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/employeebenefitplansandcollectivebargainingagreementsnarrativedetails.json",
+        "role_uri": "http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSNarrativeDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/employeebenefitplansandcollectivebargainingagreementsscheduleofassumptionsuseddetails.json",
+        "role_uri": "http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofAssumptionsUsedDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/employeebenefitplansandcollectivebargainingagreementsscheduleofexpectedfuturebenefitpaymentsdetails.json",
+        "role_uri": "http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofExpectedFutureBenefitPaymentsDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/employeebenefitplansandcollectivebargainingagreementsscheduleofmultiemployerplandetails.json",
+        "role_uri": "http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofMultiemployerPlanDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/fairvaluemeasurementsnarrativedetails.json",
+        "role_uri": "http://www.albertsons.com/role/FAIRVALUEMEASUREMENTSNarrativeDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/leasesnarrativedetails.json",
+        "role_uri": "http://www.albertsons.com/role/LEASESNarrativeDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/leasesscheduleoffutureminimumleasepaymentstobemadedetails.json",
+        "role_uri": "http://www.albertsons.com/role/LEASESScheduleofFutureMinimumLeasePaymentstobeMadeDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/relatedpartiesdetails.json",
+        "role_uri": "http://www.albertsons.com/role/RELATEDPARTIESDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/segmentinformationnarrativedetails.json",
+        "role_uri": "http://www.albertsons.com/role/SEGMENTINFORMATIONNarrativeDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/segmentinformationsegmentreportinginformationbysegmentdetails.json",
+        "role_uri": "http://www.albertsons.com/role/SEGMENTINFORMATIONSegmentReportingInformationbySegmentDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/terminationofthemergeragreementnarrativedetails.json",
+        "role_uri": "http://www.albertsons.com/role/TERMINATIONOFTHEMERGERAGREEMENTNarrativeDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      }
+    ]
+  },
+  "all_networks_by_category": {
+    "CORE_STATEMENT": [
+      {
+        "filename": "core_statements/auditinformation.json",
+        "role_uri": "http://www.albertsons.com/role/AuditInformation",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/consolidatedbalancesheets.json",
+        "role_uri": "http://www.albertsons.com/role/ConsolidatedBalanceSheets",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/consolidatedstatementsofoperationsandcomprehensiveincome.json",
+        "role_uri": "http://www.albertsons.com/role/ConsolidatedStatementsofOperationsandComprehensiveIncome",
+        "role_definition": null,
+        "statement_type": "INCOME_STATEMENT",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/consolidatedstatementsofcashflows.json",
+        "role_uri": "http://www.albertsons.com/role/ConsolidatedStatementsofCashFlows",
+        "role_definition": null,
+        "statement_type": "CASH_FLOW",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/consolidatedstatementsofstockholdersequity.json",
+        "role_uri": "http://www.albertsons.com/role/ConsolidatedStatementsofStockholdersEquity",
+        "role_definition": null,
+        "statement_type": "EQUITY",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/terminationofthemergeragreement.json",
+        "role_uri": "http://www.albertsons.com/role/TERMINATIONOFTHEMERGERAGREEMENT",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/propertyandequipment.json",
+        "role_uri": "http://www.albertsons.com/role/PROPERTYANDEQUIPMENT",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/intangibleassets.json",
+        "role_uri": "http://www.albertsons.com/role/INTANGIBLEASSETS",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/fairvaluemeasurements.json",
+        "role_uri": "http://www.albertsons.com/role/FAIRVALUEMEASUREMENTS",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/longtermdebtandfinanceleaseobligations.json",
+        "role_uri": "http://www.albertsons.com/role/LONGTERMDEBTANDFINANCELEASEOBLIGATIONS",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/leases.json",
+        "role_uri": "http://www.albertsons.com/role/LEASES",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/stockholdersequityandconvertiblepreferredstock.json",
+        "role_uri": "http://www.albertsons.com/role/STOCKHOLDERSEQUITYANDCONVERTIBLEPREFERREDSTOCK",
+        "role_definition": null,
+        "statement_type": "EQUITY",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/equitybasedcompensation.json",
+        "role_uri": "http://www.albertsons.com/role/EQUITYBASEDCOMPENSATION",
+        "role_definition": null,
+        "statement_type": "EQUITY",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/incometaxes.json",
+        "role_uri": "http://www.albertsons.com/role/INCOMETAXES",
+        "role_definition": null,
+        "statement_type": "INCOME_STATEMENT",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/employeebenefitplansandcollectivebargainingagreements.json",
+        "role_uri": "http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTS",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/relatedparties.json",
+        "role_uri": "http://www.albertsons.com/role/RELATEDPARTIES",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/commitmentsandcontingenciesandoffbalancesheetarrangements.json",
+        "role_uri": "http://www.albertsons.com/role/COMMITMENTSANDCONTINGENCIESANDOFFBALANCESHEETARRANGEMENTS",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/othercomprehensiveincomeorloss.json",
+        "role_uri": "http://www.albertsons.com/role/OTHERCOMPREHENSIVEINCOMEORLOSS",
+        "role_definition": null,
+        "statement_type": "INCOME_STATEMENT",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/segmentinformation.json",
+        "role_uri": "http://www.albertsons.com/role/SEGMENTINFORMATION",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/netincomepercommonshare.json",
+        "role_uri": "http://www.albertsons.com/role/NETINCOMEPERCOMMONSHARE",
+        "role_definition": null,
+        "statement_type": "INCOME_STATEMENT",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/awardtimingdisclosure.json",
+        "role_uri": "http://xbrl.sec.gov/ecd/role/AwardTimingDisclosure",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/errcompdisclosure.json",
+        "role_uri": "http://xbrl.sec.gov/ecd/role/ErrCompDisclosure",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/pvpdisclosure.json",
+        "role_uri": "http://xbrl.sec.gov/ecd/role/PvpDisclosure",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/insidertradingarrangements.json",
+        "role_uri": "http://xbrl.sec.gov/ecd/role/InsiderTradingArrangements",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      }
+    ],
+    "DETAIL": [
+      {
+        "filename": "details/descriptionofbusinessbasisofpresentationandsummaryofsignificantaccountingpoliciesdescriptionofbusinessdetails.json",
+        "role_uri": "http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESDescriptionofBusinessDetails",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/descriptionofbusinessbasisofpresentationandsummaryofsignificantaccountingpoliciescashandcashequivalentsdetails.json",
+        "role_uri": "http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESCashandCashEquivalentsDetails",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/descriptionofbusinessbasisofpresentationandsummaryofsignificantaccountingpoliciesinventoriesdetails.json",
+        "role_uri": "http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESInventoriesDetails",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/descriptionofbusinessbasisofpresentationandsummaryofsignificantaccountingpoliciespropertyandequipmentintangibleassetsandcloudcomputingarrangementsdeta.json",
+        "role_uri": "http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESPropertyandEquipmentIntangibleAssetsandCloudComputingArrangementsDetails",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/descriptionofbusinessbasisofpresentationandsummaryofsignificantaccountingpoliciesleasesdetails.json",
+        "role_uri": "http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESLeasesDetails",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/descriptionofbusinessbasisofpresentationandsummaryofsignificantaccountingpoliciesinvestmentsdetails.json",
+        "role_uri": "http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESInvestmentsDetails",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/descriptionofbusinessbasisofpresentationandsummaryofsignificantaccountingpoliciescompanyownedlifeinsuranceandselfinsuranceliabilitiesdetails.json",
+        "role_uri": "http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESCompanyOwnedLifeInsuranceandSelfInsuranceLiabilitiesDetails",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/descriptionofbusinessbasisofpresentationandsummaryofsignificantaccountingpoliciesscheduleofselfinsuranceliabilitiesdetails.json",
+        "role_uri": "http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESScheduleofSelfInsuranceLiabilitiesDetails",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/descriptionofbusinessbasisofpresentationandsummaryofsignificantaccountingpoliciesequitybasedcompensationdetails.json",
+        "role_uri": "http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESEquityBasedCompensationDetails",
+        "role_definition": null,
+        "statement_type": "EQUITY",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/descriptionofbusinessbasisofpresentationandsummaryofsignificantaccountingpoliciesrevenuerecognitionandcostsofsalesandvendorallowancesdetails.json",
+        "role_uri": "http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESRevenueRecognitionandCostsofSalesandVendorAllowancesDetails",
+        "role_definition": null,
+        "statement_type": "INCOME_STATEMENT",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/descriptionofbusinessbasisofpresentationandsummaryofsignificantaccountingpoliciesscheduleofsalesrevenuebyproducttypedetails.json",
+        "role_uri": "http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESScheduleofSalesRevenuebyProductTypeDetails",
+        "role_definition": null,
+        "statement_type": "INCOME_STATEMENT",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/terminationofthemergeragreementnarrativedetails.json",
+        "role_uri": "http://www.albertsons.com/role/TERMINATIONOFTHEMERGERAGREEMENTNarrativeDetails",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/propertyandequipmentscheduleofpropertyandequipmentdetails.json",
+        "role_uri": "http://www.albertsons.com/role/PROPERTYANDEQUIPMENTScheduleofPropertyandEquipmentDetails",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/propertyandequipmentnarrativedetails.json",
+        "role_uri": "http://www.albertsons.com/role/PROPERTYANDEQUIPMENTNarrativeDetails",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/intangibleassetsscheduleofintangibleassetsdetails.json",
+        "role_uri": "http://www.albertsons.com/role/INTANGIBLEASSETSScheduleofIntangibleAssetsDetails",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/intangibleassetsnarrativedetails.json",
+        "role_uri": "http://www.albertsons.com/role/INTANGIBLEASSETSNarrativeDetails",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/intangibleassetsschedulefutureamortizationexpensedetails.json",
+        "role_uri": "http://www.albertsons.com/role/INTANGIBLEASSETSScheduleFutureAmortizationExpenseDetails",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/fairvaluemeasurementsscheduleofassetsandliabilitiesmeasuredatfairvaluedetails.json",
+        "role_uri": "http://www.albertsons.com/role/FAIRVALUEMEASUREMENTSScheduleofAssetsandLiabilitiesMeasuredatFairValueDetails",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/fairvaluemeasurementsnarrativedetails.json",
+        "role_uri": "http://www.albertsons.com/role/FAIRVALUEMEASUREMENTSNarrativeDetails",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/longtermdebtandfinanceleaseobligationsscheduleoflongtermdebtdetails.json",
+        "role_uri": "http://www.albertsons.com/role/LONGTERMDEBTANDFINANCELEASEOBLIGATIONSScheduleofLongtermDebtDetails",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/longtermdebtandfinanceleaseobligationsscheduleoffuturematuritiesoflongtermdebtdetails.json",
+        "role_uri": "http://www.albertsons.com/role/LONGTERMDEBTANDFINANCELEASEOBLIGATIONSScheduleofFutureMaturitiesofLongtermDebtDetails",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/longtermdebtandfinanceleaseobligationsassetbasedloanfacilitiesdetails.json",
+        "role_uri": "http://www.albertsons.com/role/LONGTERMDEBTANDFINANCELEASEOBLIGATIONSAssetBasedLoanFacilitiesDetails",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/longtermdebtandfinanceleaseobligationsseniorunsecurednotesdetails.json",
+        "role_uri": "http://www.albertsons.com/role/LONGTERMDEBTANDFINANCELEASEOBLIGATIONSSeniorUnsecuredNotesDetails",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/longtermdebtandfinanceleaseobligationsdeferredfinancingcostsandinterestexpensenetdetails.json",
+        "role_uri": "http://www.albertsons.com/role/LONGTERMDEBTANDFINANCELEASEOBLIGATIONSDeferredFinancingCostsandInterestExpenseNetDetails",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/longtermdebtandfinanceleaseobligationsscheduleofinterestexpensedetails.json",
+        "role_uri": "http://www.albertsons.com/role/LONGTERMDEBTANDFINANCELEASEOBLIGATIONSScheduleofInterestExpenseDetails",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/leasesscheduleofcomponentsofleaseexpensedetails.json",
+        "role_uri": "http://www.albertsons.com/role/LEASESScheduleofComponentsofLeaseExpenseDetails",
+        "role_definition": null,
+        "statement_type": "INCOME_STATEMENT",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/leasesscheduleofbalancesheetinformationdetails.json",
+        "role_uri": "http://www.albertsons.com/role/LEASESScheduleofBalanceSheetInformationDetails",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/leasessupplementalcashflowinformationdetails.json",
+        "role_uri": "http://www.albertsons.com/role/LEASESSupplementalCashFlowInformationDetails",
+        "role_definition": null,
+        "statement_type": "CASH_FLOW",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/leasesscheduleoffutureminimumleasepaymentstobemadedetails.json",
+        "role_uri": "http://www.albertsons.com/role/LEASESScheduleofFutureMinimumLeasePaymentstobeMadeDetails",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/leasesnarrativedetails.json",
+        "role_uri": "http://www.albertsons.com/role/LEASESNarrativeDetails",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/stockholdersequityandconvertiblepreferredstockdetails.json",
+        "role_uri": "http://www.albertsons.com/role/STOCKHOLDERSEQUITYANDCONVERTIBLEPREFERREDSTOCKDetails",
+        "role_definition": null,
+        "statement_type": "EQUITY",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/equitybasedcompensationnarrativedetails.json",
+        "role_uri": "http://www.albertsons.com/role/EQUITYBASEDCOMPENSATIONNarrativeDetails",
+        "role_definition": null,
+        "statement_type": "EQUITY",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/equitybasedcompensationscheduleofequitybasedcompensationexpensedetails.json",
+        "role_uri": "http://www.albertsons.com/role/EQUITYBASEDCOMPENSATIONScheduleofEquitybasedCompensationExpenseDetails",
+        "role_definition": null,
+        "statement_type": "INCOME_STATEMENT",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/equitybasedcompensationscheduleofrsuandrsaactivitydetails.json",
+        "role_uri": "http://www.albertsons.com/role/EQUITYBASEDCOMPENSATIONScheduleofRSUandRSAActivityDetails",
+        "role_definition": null,
+        "statement_type": "EQUITY",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/incometaxesscheduleofcomponentsofincometaxexpensedetails.json",
+        "role_uri": "http://www.albertsons.com/role/INCOMETAXESScheduleofComponentsofIncomeTaxExpenseDetails",
+        "role_definition": null,
+        "statement_type": "INCOME_STATEMENT",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/incometaxesscheduleofeffectiveincometaxratereconciliationdetails.json",
+        "role_uri": "http://www.albertsons.com/role/INCOMETAXESScheduleofEffectiveIncomeTaxRateReconciliationDetails",
+        "role_definition": null,
+        "statement_type": "INCOME_STATEMENT",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/incometaxesscheduleofdeferredtaxassetsandliabilitiesdetails.json",
+        "role_uri": "http://www.albertsons.com/role/INCOMETAXESScheduleofDeferredTaxAssetsandLiabilitiesDetails",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/incometaxessummaryofvaluationallowanceactivitydetails.json",
+        "role_uri": "http://www.albertsons.com/role/INCOMETAXESSummaryofValuationAllowanceActivityDetails",
+        "role_definition": null,
+        "statement_type": "INCOME_STATEMENT",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/incometaxesnarrativedetails.json",
+        "role_uri": "http://www.albertsons.com/role/INCOMETAXESNarrativeDetails",
+        "role_definition": null,
+        "statement_type": "INCOME_STATEMENT",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/incometaxesscheduleofunrecognizedtaxbenefitsdetails.json",
+        "role_uri": "http://www.albertsons.com/role/INCOMETAXESScheduleofUnrecognizedTaxBenefitsDetails",
+        "role_definition": null,
+        "statement_type": "INCOME_STATEMENT",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/employeebenefitplansandcollectivebargainingagreementsscheduleofchangesinretirementplansbenefitobligationandfairvalueofplanassetsdetails.json",
+        "role_uri": "http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofChangesinRetirementPlansBenefitObligationandFairValueofPlanAssetsDetails",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/employeebenefitplansandcollectivebargainingagreementsscheduleofamountsrecognizedinaccumulatedothercomprehensiveincomelossdetails.json",
+        "role_uri": "http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofAmountsRecognizedinAccumulatedOtherComprehensiveIncomeLossDetails",
+        "role_definition": null,
+        "statement_type": "INCOME_STATEMENT",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/employeebenefitplansandcollectivebargainingagreementsscheduleofaccumulatedbenefitobligationinexcessofplanassetsdetails.json",
+        "role_uri": "http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofAccumulatedBenefitObligationinExcessofPlanAssetsDetails",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/employeebenefitplansandcollectivebargainingagreementsscheduleofcomponentsofnetpensionandpostretirementexpensedetails.json",
+        "role_uri": "http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofComponentsofNetPensionandPostretirementExpenseDetails",
+        "role_definition": null,
+        "statement_type": "INCOME_STATEMENT",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/employeebenefitplansandcollectivebargainingagreementsnarrativedetails.json",
+        "role_uri": "http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSNarrativeDetails",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/employeebenefitplansandcollectivebargainingagreementsscheduleofassumptionsuseddetails.json",
+        "role_uri": "http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofAssumptionsUsedDetails",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/employeebenefitplansandcollectivebargainingagreementsscheduleofplanassetsallocationdetails.json",
+        "role_uri": "http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofPlanAssetsAllocationDetails",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/employeebenefitplansandcollectivebargainingagreementsscheduleoffairvalueofplanassetsdetails.json",
+        "role_uri": "http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofFairValueofPlanAssetsDetails",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/employeebenefitplansandcollectivebargainingagreementsscheduleofexpectedfuturebenefitpaymentsdetails.json",
+        "role_uri": "http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofExpectedFutureBenefitPaymentsDetails",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/employeebenefitplansandcollectivebargainingagreementsscheduleofmultiemployerplandetails.json",
+        "role_uri": "http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofMultiemployerPlanDetails",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/relatedpartiesdetails.json",
+        "role_uri": "http://www.albertsons.com/role/RELATEDPARTIESDetails",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/commitmentsandcontingenciesandoffbalancesheetarrangementslegalcontingenciesdetails.json",
+        "role_uri": "http://www.albertsons.com/role/COMMITMENTSANDCONTINGENCIESANDOFFBALANCESHEETARRANGEMENTSLegalContingenciesDetails",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/othercomprehensiveincomeorlossdetails.json",
+        "role_uri": "http://www.albertsons.com/role/OTHERCOMPREHENSIVEINCOMEORLOSSDetails",
+        "role_definition": null,
+        "statement_type": "INCOME_STATEMENT",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/segmentinformationnarrativedetails.json",
+        "role_uri": "http://www.albertsons.com/role/SEGMENTINFORMATIONNarrativeDetails",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/segmentinformationsegmentreportinginformationbysegmentdetails.json",
+        "role_uri": "http://www.albertsons.com/role/SEGMENTINFORMATIONSegmentReportingInformationbySegmentDetails",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/netincomepercommonsharenarrativedetails.json",
+        "role_uri": "http://www.albertsons.com/role/NETINCOMEPERCOMMONSHARENarrativeDetails",
+        "role_definition": null,
+        "statement_type": "INCOME_STATEMENT",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/netincomepercommonsharescheduleofcomputationofbasicanddilutednetincomepersharedetails.json",
+        "role_uri": "http://www.albertsons.com/role/NETINCOMEPERCOMMONSHAREScheduleofComputationofBasicandDilutedNetIncomePerShareDetails",
+        "role_definition": null,
+        "statement_type": "INCOME_STATEMENT",
+        "confidence": "LOW"
+      }
+    ],
+    "TABLE": [
+      {
+        "filename": "other/descriptionofbusinessbasisofpresentationandsummaryofsignificantaccountingpoliciestables.json",
+        "role_uri": "http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESTables",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "other/propertyandequipmenttables.json",
+        "role_uri": "http://www.albertsons.com/role/PROPERTYANDEQUIPMENTTables",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "other/intangibleassetstables.json",
+        "role_uri": "http://www.albertsons.com/role/INTANGIBLEASSETSTables",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "other/fairvaluemeasurementstables.json",
+        "role_uri": "http://www.albertsons.com/role/FAIRVALUEMEASUREMENTSTables",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "other/longtermdebtandfinanceleaseobligationstables.json",
+        "role_uri": "http://www.albertsons.com/role/LONGTERMDEBTANDFINANCELEASEOBLIGATIONSTables",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "other/leasestables.json",
+        "role_uri": "http://www.albertsons.com/role/LEASESTables",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "other/equitybasedcompensationtables.json",
+        "role_uri": "http://www.albertsons.com/role/EQUITYBASEDCOMPENSATIONTables",
+        "role_definition": null,
+        "statement_type": "EQUITY",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "other/incometaxestables.json",
+        "role_uri": "http://www.albertsons.com/role/INCOMETAXESTables",
+        "role_definition": null,
+        "statement_type": "INCOME_STATEMENT",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "other/employeebenefitplansandcollectivebargainingagreementstables.json",
+        "role_uri": "http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSTables",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "other/othercomprehensiveincomeorlosstables.json",
+        "role_uri": "http://www.albertsons.com/role/OTHERCOMPREHENSIVEINCOMEORLOSSTables",
+        "role_definition": null,
+        "statement_type": "INCOME_STATEMENT",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "other/segmentinformationtables.json",
+        "role_uri": "http://www.albertsons.com/role/SEGMENTINFORMATIONTables",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "other/netincomepercommonsharetables.json",
+        "role_uri": "http://www.albertsons.com/role/NETINCOMEPERCOMMONSHARETables",
+        "role_definition": null,
+        "statement_type": "INCOME_STATEMENT",
+        "confidence": "LOW"
+      }
+    ],
+    "POLICY": [
+      {
+        "filename": "other/descriptionofbusinessbasisofpresentationandsummaryofsignificantaccountingpolicies.json",
+        "role_uri": "http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIES",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "other/descriptionofbusinessbasisofpresentationandsummaryofsignificantaccountingpoliciespolicies.json",
+        "role_uri": "http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESPolicies",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "other/insidertradingpoliciesproc.json",
+        "role_uri": "http://xbrl.sec.gov/ecd/role/InsiderTradingPoliciesProc",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      }
+    ],
+    "PARENTHETICAL": [
+      {
+        "filename": "other/consolidatedbalancesheetsparenthetical.json",
+        "role_uri": "http://www.albertsons.com/role/ConsolidatedBalanceSheetsParenthetical",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "other/consolidatedstatementsofstockholdersequityparenthetical.json",
+        "role_uri": "http://www.albertsons.com/role/ConsolidatedStatementsofStockholdersEquityParenthetical",
+        "role_definition": null,
+        "statement_type": "EQUITY",
+        "confidence": "LOW"
+      }
+    ],
+    "DOCUMENT": [
+      {
+        "filename": "other/coverpage.json",
+        "role_uri": "http://www.albertsons.com/role/Coverpage",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      }
+    ],
+    "UNKNOWN": []
+  },
+  "network_index": {
+    "other/coverpage.json": {
+      "role_uri": "http://www.albertsons.com/role/Coverpage",
+      "role_definition": null,
+      "category": "DOCUMENT",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "CoverPage"
+      ]
+    },
+    "core_statements/auditinformation.json": {
+      "role_uri": "http://www.albertsons.com/role/AuditInformation",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "OTHER",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": []
+    },
+    "core_statements/consolidatedbalancesheets.json": {
+      "role_uri": "http://www.albertsons.com/role/ConsolidatedBalanceSheets",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "BalanceSheet"
+      ]
+    },
+    "other/consolidatedbalancesheetsparenthetical.json": {
+      "role_uri": "http://www.albertsons.com/role/ConsolidatedBalanceSheetsParenthetical",
+      "role_definition": null,
+      "category": "PARENTHETICAL",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Parenthetical",
+        "BalanceSheet"
+      ]
+    },
+    "core_statements/consolidatedstatementsofoperationsandcomprehensiveincome.json": {
+      "role_uri": "http://www.albertsons.com/role/ConsolidatedStatementsofOperationsandComprehensiveIncome",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "INCOME_STATEMENT",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Income"
+      ]
+    },
+    "core_statements/consolidatedstatementsofcashflows.json": {
+      "role_uri": "http://www.albertsons.com/role/ConsolidatedStatementsofCashFlows",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "CASH_FLOW",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "CashFlow"
+      ]
+    },
+    "core_statements/consolidatedstatementsofstockholdersequity.json": {
+      "role_uri": "http://www.albertsons.com/role/ConsolidatedStatementsofStockholdersEquity",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "EQUITY",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Equity"
+      ]
+    },
+    "other/consolidatedstatementsofstockholdersequityparenthetical.json": {
+      "role_uri": "http://www.albertsons.com/role/ConsolidatedStatementsofStockholdersEquityParenthetical",
+      "role_definition": null,
+      "category": "PARENTHETICAL",
+      "statement_type": "EQUITY",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Parenthetical",
+        "Equity"
+      ]
+    },
+    "other/descriptionofbusinessbasisofpresentationandsummaryofsignificantaccountingpolicies.json": {
+      "role_uri": "http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIES",
+      "role_definition": null,
+      "category": "POLICY",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Policies"
+      ]
+    },
+    "core_statements/terminationofthemergeragreement.json": {
+      "role_uri": "http://www.albertsons.com/role/TERMINATIONOFTHEMERGERAGREEMENT",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "OTHER",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": []
+    },
+    "core_statements/propertyandequipment.json": {
+      "role_uri": "http://www.albertsons.com/role/PROPERTYANDEQUIPMENT",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Property"
+      ]
+    },
+    "core_statements/intangibleassets.json": {
+      "role_uri": "http://www.albertsons.com/role/INTANGIBLEASSETS",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Asset"
+      ]
+    },
+    "core_statements/fairvaluemeasurements.json": {
+      "role_uri": "http://www.albertsons.com/role/FAIRVALUEMEASUREMENTS",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "OTHER",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": []
+    },
+    "core_statements/longtermdebtandfinanceleaseobligations.json": {
+      "role_uri": "http://www.albertsons.com/role/LONGTERMDEBTANDFINANCELEASEOBLIGATIONS",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Debt"
+      ]
+    },
+    "core_statements/leases.json": {
+      "role_uri": "http://www.albertsons.com/role/LEASES",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "OTHER",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": []
+    },
+    "core_statements/stockholdersequityandconvertiblepreferredstock.json": {
+      "role_uri": "http://www.albertsons.com/role/STOCKHOLDERSEQUITYANDCONVERTIBLEPREFERREDSTOCK",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "EQUITY",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Equity"
+      ]
+    },
+    "core_statements/equitybasedcompensation.json": {
+      "role_uri": "http://www.albertsons.com/role/EQUITYBASEDCOMPENSATION",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "EQUITY",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Equity"
+      ]
+    },
+    "core_statements/incometaxes.json": {
+      "role_uri": "http://www.albertsons.com/role/INCOMETAXES",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "INCOME_STATEMENT",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Income"
+      ]
+    },
+    "core_statements/employeebenefitplansandcollectivebargainingagreements.json": {
+      "role_uri": "http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTS",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "OTHER",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": []
+    },
+    "core_statements/relatedparties.json": {
+      "role_uri": "http://www.albertsons.com/role/RELATEDPARTIES",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "OTHER",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": []
+    },
+    "core_statements/commitmentsandcontingenciesandoffbalancesheetarrangements.json": {
+      "role_uri": "http://www.albertsons.com/role/COMMITMENTSANDCONTINGENCIESANDOFFBALANCESHEETARRANGEMENTS",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "BalanceSheet"
+      ]
+    },
+    "core_statements/othercomprehensiveincomeorloss.json": {
+      "role_uri": "http://www.albertsons.com/role/OTHERCOMPREHENSIVEINCOMEORLOSS",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "INCOME_STATEMENT",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Income"
+      ]
+    },
+    "core_statements/segmentinformation.json": {
+      "role_uri": "http://www.albertsons.com/role/SEGMENTINFORMATION",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "OTHER",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": []
+    },
+    "core_statements/netincomepercommonshare.json": {
+      "role_uri": "http://www.albertsons.com/role/NETINCOMEPERCOMMONSHARE",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "INCOME_STATEMENT",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Income"
+      ]
+    },
+    "other/descriptionofbusinessbasisofpresentationandsummaryofsignificantaccountingpoliciespolicies.json": {
+      "role_uri": "http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESPolicies",
+      "role_definition": null,
+      "category": "POLICY",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Policies"
+      ]
+    },
+    "other/descriptionofbusinessbasisofpresentationandsummaryofsignificantaccountingpoliciestables.json": {
+      "role_uri": "http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESTables",
+      "role_definition": null,
+      "category": "TABLE",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Tables"
+      ]
+    },
+    "other/propertyandequipmenttables.json": {
+      "role_uri": "http://www.albertsons.com/role/PROPERTYANDEQUIPMENTTables",
+      "role_definition": null,
+      "category": "TABLE",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Tables",
+        "Property"
+      ]
+    },
+    "other/intangibleassetstables.json": {
+      "role_uri": "http://www.albertsons.com/role/INTANGIBLEASSETSTables",
+      "role_definition": null,
+      "category": "TABLE",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Tables",
+        "Asset"
+      ]
+    },
+    "other/fairvaluemeasurementstables.json": {
+      "role_uri": "http://www.albertsons.com/role/FAIRVALUEMEASUREMENTSTables",
+      "role_definition": null,
+      "category": "TABLE",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Tables"
+      ]
+    },
+    "other/longtermdebtandfinanceleaseobligationstables.json": {
+      "role_uri": "http://www.albertsons.com/role/LONGTERMDEBTANDFINANCELEASEOBLIGATIONSTables",
+      "role_definition": null,
+      "category": "TABLE",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Tables",
+        "Debt"
+      ]
+    },
+    "other/leasestables.json": {
+      "role_uri": "http://www.albertsons.com/role/LEASESTables",
+      "role_definition": null,
+      "category": "TABLE",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Tables"
+      ]
+    },
+    "other/equitybasedcompensationtables.json": {
+      "role_uri": "http://www.albertsons.com/role/EQUITYBASEDCOMPENSATIONTables",
+      "role_definition": null,
+      "category": "TABLE",
+      "statement_type": "EQUITY",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Tables",
+        "Equity"
+      ]
+    },
+    "other/incometaxestables.json": {
+      "role_uri": "http://www.albertsons.com/role/INCOMETAXESTables",
+      "role_definition": null,
+      "category": "TABLE",
+      "statement_type": "INCOME_STATEMENT",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Tables",
+        "Income"
+      ]
+    },
+    "other/employeebenefitplansandcollectivebargainingagreementstables.json": {
+      "role_uri": "http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSTables",
+      "role_definition": null,
+      "category": "TABLE",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Tables"
+      ]
+    },
+    "other/othercomprehensiveincomeorlosstables.json": {
+      "role_uri": "http://www.albertsons.com/role/OTHERCOMPREHENSIVEINCOMEORLOSSTables",
+      "role_definition": null,
+      "category": "TABLE",
+      "statement_type": "INCOME_STATEMENT",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Tables",
+        "Income"
+      ]
+    },
+    "other/segmentinformationtables.json": {
+      "role_uri": "http://www.albertsons.com/role/SEGMENTINFORMATIONTables",
+      "role_definition": null,
+      "category": "TABLE",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Tables"
+      ]
+    },
+    "other/netincomepercommonsharetables.json": {
+      "role_uri": "http://www.albertsons.com/role/NETINCOMEPERCOMMONSHARETables",
+      "role_definition": null,
+      "category": "TABLE",
+      "statement_type": "INCOME_STATEMENT",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Tables",
+        "Income"
+      ]
+    },
+    "details/descriptionofbusinessbasisofpresentationandsummaryofsignificantaccountingpoliciesdescriptionofbusinessdetails.json": {
+      "role_uri": "http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESDescriptionofBusinessDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details"
+      ]
+    },
+    "details/descriptionofbusinessbasisofpresentationandsummaryofsignificantaccountingpoliciescashandcashequivalentsdetails.json": {
+      "role_uri": "http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESCashandCashEquivalentsDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details"
+      ]
+    },
+    "details/descriptionofbusinessbasisofpresentationandsummaryofsignificantaccountingpoliciesinventoriesdetails.json": {
+      "role_uri": "http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESInventoriesDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details"
+      ]
+    },
+    "details/descriptionofbusinessbasisofpresentationandsummaryofsignificantaccountingpoliciespropertyandequipmentintangibleassetsandcloudcomputingarrangementsdeta.json": {
+      "role_uri": "http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESPropertyandEquipmentIntangibleAssetsandCloudComputingArrangementsDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Property"
+      ]
+    },
+    "details/descriptionofbusinessbasisofpresentationandsummaryofsignificantaccountingpoliciesleasesdetails.json": {
+      "role_uri": "http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESLeasesDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details"
+      ]
+    },
+    "details/descriptionofbusinessbasisofpresentationandsummaryofsignificantaccountingpoliciesinvestmentsdetails.json": {
+      "role_uri": "http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESInvestmentsDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Investment"
+      ]
+    },
+    "details/descriptionofbusinessbasisofpresentationandsummaryofsignificantaccountingpoliciescompanyownedlifeinsuranceandselfinsuranceliabilitiesdetails.json": {
+      "role_uri": "http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESCompanyOwnedLifeInsuranceandSelfInsuranceLiabilitiesDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details"
+      ]
+    },
+    "details/descriptionofbusinessbasisofpresentationandsummaryofsignificantaccountingpoliciesscheduleofselfinsuranceliabilitiesdetails.json": {
+      "role_uri": "http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESScheduleofSelfInsuranceLiabilitiesDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details"
+      ]
+    },
+    "details/descriptionofbusinessbasisofpresentationandsummaryofsignificantaccountingpoliciesequitybasedcompensationdetails.json": {
+      "role_uri": "http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESEquityBasedCompensationDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "EQUITY",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Equity"
+      ]
+    },
+    "details/descriptionofbusinessbasisofpresentationandsummaryofsignificantaccountingpoliciesrevenuerecognitionandcostsofsalesandvendorallowancesdetails.json": {
+      "role_uri": "http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESRevenueRecognitionandCostsofSalesandVendorAllowancesDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "INCOME_STATEMENT",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Revenue"
+      ]
+    },
+    "details/descriptionofbusinessbasisofpresentationandsummaryofsignificantaccountingpoliciesscheduleofsalesrevenuebyproducttypedetails.json": {
+      "role_uri": "http://www.albertsons.com/role/DESCRIPTIONOFBUSINESSBASISOFPRESENTATIONANDSUMMARYOFSIGNIFICANTACCOUNTINGPOLICIESScheduleofSalesRevenuebyProductTypeDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "INCOME_STATEMENT",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Revenue"
+      ]
+    },
+    "details/terminationofthemergeragreementnarrativedetails.json": {
+      "role_uri": "http://www.albertsons.com/role/TERMINATIONOFTHEMERGERAGREEMENTNarrativeDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details"
+      ]
+    },
+    "details/propertyandequipmentscheduleofpropertyandequipmentdetails.json": {
+      "role_uri": "http://www.albertsons.com/role/PROPERTYANDEQUIPMENTScheduleofPropertyandEquipmentDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Property"
+      ]
+    },
+    "details/propertyandequipmentnarrativedetails.json": {
+      "role_uri": "http://www.albertsons.com/role/PROPERTYANDEQUIPMENTNarrativeDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Property"
+      ]
+    },
+    "details/intangibleassetsscheduleofintangibleassetsdetails.json": {
+      "role_uri": "http://www.albertsons.com/role/INTANGIBLEASSETSScheduleofIntangibleAssetsDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Asset"
+      ]
+    },
+    "details/intangibleassetsnarrativedetails.json": {
+      "role_uri": "http://www.albertsons.com/role/INTANGIBLEASSETSNarrativeDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Asset"
+      ]
+    },
+    "details/intangibleassetsschedulefutureamortizationexpensedetails.json": {
+      "role_uri": "http://www.albertsons.com/role/INTANGIBLEASSETSScheduleFutureAmortizationExpenseDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Asset"
+      ]
+    },
+    "details/fairvaluemeasurementsscheduleofassetsandliabilitiesmeasuredatfairvaluedetails.json": {
+      "role_uri": "http://www.albertsons.com/role/FAIRVALUEMEASUREMENTSScheduleofAssetsandLiabilitiesMeasuredatFairValueDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Asset"
+      ]
+    },
+    "details/fairvaluemeasurementsnarrativedetails.json": {
+      "role_uri": "http://www.albertsons.com/role/FAIRVALUEMEASUREMENTSNarrativeDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details"
+      ]
+    },
+    "details/longtermdebtandfinanceleaseobligationsscheduleoflongtermdebtdetails.json": {
+      "role_uri": "http://www.albertsons.com/role/LONGTERMDEBTANDFINANCELEASEOBLIGATIONSScheduleofLongtermDebtDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Debt"
+      ]
+    },
+    "details/longtermdebtandfinanceleaseobligationsscheduleoffuturematuritiesoflongtermdebtdetails.json": {
+      "role_uri": "http://www.albertsons.com/role/LONGTERMDEBTANDFINANCELEASEOBLIGATIONSScheduleofFutureMaturitiesofLongtermDebtDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Debt"
+      ]
+    },
+    "details/longtermdebtandfinanceleaseobligationsassetbasedloanfacilitiesdetails.json": {
+      "role_uri": "http://www.albertsons.com/role/LONGTERMDEBTANDFINANCELEASEOBLIGATIONSAssetBasedLoanFacilitiesDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Asset"
+      ]
+    },
+    "details/longtermdebtandfinanceleaseobligationsseniorunsecurednotesdetails.json": {
+      "role_uri": "http://www.albertsons.com/role/LONGTERMDEBTANDFINANCELEASEOBLIGATIONSSeniorUnsecuredNotesDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Debt"
+      ]
+    },
+    "details/longtermdebtandfinanceleaseobligationsdeferredfinancingcostsandinterestexpensenetdetails.json": {
+      "role_uri": "http://www.albertsons.com/role/LONGTERMDEBTANDFINANCELEASEOBLIGATIONSDeferredFinancingCostsandInterestExpenseNetDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Debt"
+      ]
+    },
+    "details/longtermdebtandfinanceleaseobligationsscheduleofinterestexpensedetails.json": {
+      "role_uri": "http://www.albertsons.com/role/LONGTERMDEBTANDFINANCELEASEOBLIGATIONSScheduleofInterestExpenseDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Debt"
+      ]
+    },
+    "details/leasesscheduleofcomponentsofleaseexpensedetails.json": {
+      "role_uri": "http://www.albertsons.com/role/LEASESScheduleofComponentsofLeaseExpenseDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "INCOME_STATEMENT",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Expense"
+      ]
+    },
+    "details/leasesscheduleofbalancesheetinformationdetails.json": {
+      "role_uri": "http://www.albertsons.com/role/LEASESScheduleofBalanceSheetInformationDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "BalanceSheet"
+      ]
+    },
+    "details/leasessupplementalcashflowinformationdetails.json": {
+      "role_uri": "http://www.albertsons.com/role/LEASESSupplementalCashFlowInformationDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "CASH_FLOW",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "CashFlow"
+      ]
+    },
+    "details/leasesscheduleoffutureminimumleasepaymentstobemadedetails.json": {
+      "role_uri": "http://www.albertsons.com/role/LEASESScheduleofFutureMinimumLeasePaymentstobeMadeDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details"
+      ]
+    },
+    "details/leasesnarrativedetails.json": {
+      "role_uri": "http://www.albertsons.com/role/LEASESNarrativeDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details"
+      ]
+    },
+    "details/stockholdersequityandconvertiblepreferredstockdetails.json": {
+      "role_uri": "http://www.albertsons.com/role/STOCKHOLDERSEQUITYANDCONVERTIBLEPREFERREDSTOCKDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "EQUITY",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Equity"
+      ]
+    },
+    "details/equitybasedcompensationnarrativedetails.json": {
+      "role_uri": "http://www.albertsons.com/role/EQUITYBASEDCOMPENSATIONNarrativeDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "EQUITY",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Equity"
+      ]
+    },
+    "details/equitybasedcompensationscheduleofequitybasedcompensationexpensedetails.json": {
+      "role_uri": "http://www.albertsons.com/role/EQUITYBASEDCOMPENSATIONScheduleofEquitybasedCompensationExpenseDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "INCOME_STATEMENT",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Expense"
+      ]
+    },
+    "details/equitybasedcompensationscheduleofrsuandrsaactivitydetails.json": {
+      "role_uri": "http://www.albertsons.com/role/EQUITYBASEDCOMPENSATIONScheduleofRSUandRSAActivityDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "EQUITY",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Equity"
+      ]
+    },
+    "details/incometaxesscheduleofcomponentsofincometaxexpensedetails.json": {
+      "role_uri": "http://www.albertsons.com/role/INCOMETAXESScheduleofComponentsofIncomeTaxExpenseDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "INCOME_STATEMENT",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Income"
+      ]
+    },
+    "details/incometaxesscheduleofeffectiveincometaxratereconciliationdetails.json": {
+      "role_uri": "http://www.albertsons.com/role/INCOMETAXESScheduleofEffectiveIncomeTaxRateReconciliationDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "INCOME_STATEMENT",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Income"
+      ]
+    },
+    "details/incometaxesscheduleofdeferredtaxassetsandliabilitiesdetails.json": {
+      "role_uri": "http://www.albertsons.com/role/INCOMETAXESScheduleofDeferredTaxAssetsandLiabilitiesDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Asset"
+      ]
+    },
+    "details/incometaxessummaryofvaluationallowanceactivitydetails.json": {
+      "role_uri": "http://www.albertsons.com/role/INCOMETAXESSummaryofValuationAllowanceActivityDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "INCOME_STATEMENT",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Income"
+      ]
+    },
+    "details/incometaxesnarrativedetails.json": {
+      "role_uri": "http://www.albertsons.com/role/INCOMETAXESNarrativeDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "INCOME_STATEMENT",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Income"
+      ]
+    },
+    "details/incometaxesscheduleofunrecognizedtaxbenefitsdetails.json": {
+      "role_uri": "http://www.albertsons.com/role/INCOMETAXESScheduleofUnrecognizedTaxBenefitsDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "INCOME_STATEMENT",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Income"
+      ]
+    },
+    "details/employeebenefitplansandcollectivebargainingagreementsscheduleofchangesinretirementplansbenefitobligationandfairvalueofplanassetsdetails.json": {
+      "role_uri": "http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofChangesinRetirementPlansBenefitObligationandFairValueofPlanAssetsDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Asset"
+      ]
+    },
+    "details/employeebenefitplansandcollectivebargainingagreementsscheduleofamountsrecognizedinaccumulatedothercomprehensiveincomelossdetails.json": {
+      "role_uri": "http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofAmountsRecognizedinAccumulatedOtherComprehensiveIncomeLossDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "INCOME_STATEMENT",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Income"
+      ]
+    },
+    "details/employeebenefitplansandcollectivebargainingagreementsscheduleofaccumulatedbenefitobligationinexcessofplanassetsdetails.json": {
+      "role_uri": "http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofAccumulatedBenefitObligationinExcessofPlanAssetsDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Asset"
+      ]
+    },
+    "details/employeebenefitplansandcollectivebargainingagreementsscheduleofcomponentsofnetpensionandpostretirementexpensedetails.json": {
+      "role_uri": "http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofComponentsofNetPensionandPostretirementExpenseDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "INCOME_STATEMENT",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Expense"
+      ]
+    },
+    "details/employeebenefitplansandcollectivebargainingagreementsnarrativedetails.json": {
+      "role_uri": "http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSNarrativeDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details"
+      ]
+    },
+    "details/employeebenefitplansandcollectivebargainingagreementsscheduleofassumptionsuseddetails.json": {
+      "role_uri": "http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofAssumptionsUsedDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details"
+      ]
+    },
+    "details/employeebenefitplansandcollectivebargainingagreementsscheduleofplanassetsallocationdetails.json": {
+      "role_uri": "http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofPlanAssetsAllocationDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Asset"
+      ]
+    },
+    "details/employeebenefitplansandcollectivebargainingagreementsscheduleoffairvalueofplanassetsdetails.json": {
+      "role_uri": "http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofFairValueofPlanAssetsDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Asset"
+      ]
+    },
+    "details/employeebenefitplansandcollectivebargainingagreementsscheduleofexpectedfuturebenefitpaymentsdetails.json": {
+      "role_uri": "http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofExpectedFutureBenefitPaymentsDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details"
+      ]
+    },
+    "details/employeebenefitplansandcollectivebargainingagreementsscheduleofmultiemployerplandetails.json": {
+      "role_uri": "http://www.albertsons.com/role/EMPLOYEEBENEFITPLANSANDCOLLECTIVEBARGAININGAGREEMENTSScheduleofMultiemployerPlanDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details"
+      ]
+    },
+    "details/relatedpartiesdetails.json": {
+      "role_uri": "http://www.albertsons.com/role/RELATEDPARTIESDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details"
+      ]
+    },
+    "details/commitmentsandcontingenciesandoffbalancesheetarrangementslegalcontingenciesdetails.json": {
+      "role_uri": "http://www.albertsons.com/role/COMMITMENTSANDCONTINGENCIESANDOFFBALANCESHEETARRANGEMENTSLegalContingenciesDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "BalanceSheet"
+      ]
+    },
+    "details/othercomprehensiveincomeorlossdetails.json": {
+      "role_uri": "http://www.albertsons.com/role/OTHERCOMPREHENSIVEINCOMEORLOSSDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "INCOME_STATEMENT",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Income"
+      ]
+    },
+    "details/segmentinformationnarrativedetails.json": {
+      "role_uri": "http://www.albertsons.com/role/SEGMENTINFORMATIONNarrativeDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details"
+      ]
+    },
+    "details/segmentinformationsegmentreportinginformationbysegmentdetails.json": {
+      "role_uri": "http://www.albertsons.com/role/SEGMENTINFORMATIONSegmentReportingInformationbySegmentDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details"
+      ]
+    },
+    "details/netincomepercommonsharenarrativedetails.json": {
+      "role_uri": "http://www.albertsons.com/role/NETINCOMEPERCOMMONSHARENarrativeDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "INCOME_STATEMENT",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Income"
+      ]
+    },
+    "details/netincomepercommonsharescheduleofcomputationofbasicanddilutednetincomepersharedetails.json": {
+      "role_uri": "http://www.albertsons.com/role/NETINCOMEPERCOMMONSHAREScheduleofComputationofBasicandDilutedNetIncomePerShareDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "INCOME_STATEMENT",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Income"
+      ]
+    },
+    "core_statements/awardtimingdisclosure.json": {
+      "role_uri": "http://xbrl.sec.gov/ecd/role/AwardTimingDisclosure",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "OTHER",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": []
+    },
+    "core_statements/errcompdisclosure.json": {
+      "role_uri": "http://xbrl.sec.gov/ecd/role/ErrCompDisclosure",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "OTHER",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": []
+    },
+    "core_statements/pvpdisclosure.json": {
+      "role_uri": "http://xbrl.sec.gov/ecd/role/PvpDisclosure",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "OTHER",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": []
+    },
+    "core_statements/insidertradingarrangements.json": {
+      "role_uri": "http://xbrl.sec.gov/ecd/role/InsiderTradingArrangements",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "OTHER",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": []
+    },
+    "other/insidertradingpoliciesproc.json": {
+      "role_uri": "http://xbrl.sec.gov/ecd/role/InsiderTradingPoliciesProc",
+      "role_definition": null,
+      "category": "POLICY",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Policies"
+      ]
+    }
+  }
+}
