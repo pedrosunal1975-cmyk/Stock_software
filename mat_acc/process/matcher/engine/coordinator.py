@@ -478,11 +478,21 @@ class MatchingCoordinator:
             max_candidates=100
         )
 
-        # Convert to concept metadata objects
+        # Convert to concept metadata objects and apply universal filters
+        # These patterns indicate non-value concepts (text blocks, disclosures)
+        # that should never match monetary components
+        universal_exclude = [
+            'textblock', 'table', 'schedule',
+            'explanatory', 'disclosure', 'policy',
+        ]
+
         candidates = []
         for qname in candidate_qnames:
             concept = concept_index.get_concept(qname)
             if concept:
+                local_lower = concept.local_name.lower()
+                if any(excl in local_lower for excl in universal_exclude):
+                    continue
                 candidates.append(concept)
 
         return candidates

@@ -43,6 +43,7 @@ matching_rules:
         - "profit for the period"
         - "profit for the year"
         - "profit attributable"
+        - "profit loss"
       match_type: contains
       weight: 12
 
@@ -77,6 +78,7 @@ matching_rules:
         - "NetIncome"
         - "NetEarnings"
         - "ProfitLoss"
+        - "ProfitLossAttributableToOwnersOfParent"
       match_type: contains
       weight: 8
 

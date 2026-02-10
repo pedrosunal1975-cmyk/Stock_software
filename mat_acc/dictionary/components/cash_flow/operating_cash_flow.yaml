@@ -43,6 +43,7 @@ matching_rules:
   local_name_rules:
     - patterns:
         - "NetCashProvidedByUsedInOperatingActivities"
+        - "CashFlowsFromUsedInOperatingActivities"
       match_type: exact
       weight: 15
 
@@ -51,6 +52,7 @@ matching_rules:
         - "CashFromOperating"
         - "OperatingActivities"
         - "NetCashGeneratedFromOperations"
+        - "CashFlowsFromUsedInOperating"
       match_type: contains
       weight: 10
 

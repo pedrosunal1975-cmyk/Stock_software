@@ -673,17 +673,25 @@ class ConceptBuilder:
         """
         Infer balance type from concept name.
 
-        Uses heuristics based on common patterns.
-
-        For compound names like "NetIncomeLoss", primary accounting concept
-        indicators (income, revenue) take precedence over secondary
-        qualifiers (loss).
+        Uses heuristics based on common XBRL naming patterns.
+        Priority order prevents misclassification of compound names:
+        - "IncomeTaxExpenseBenefit" -> debit (expense overrides income)
+        - "NetIncomeLoss" -> credit (income is primary concept)
+        - "CostOfGoodsSold" -> debit (cost is primary concept)
         """
         local_lower = local_name.lower()
 
-        # Credit indicators - check FIRST as they are primary accounting concepts
-        # Income, revenue, equity are fundamental classifications that should
-        # take precedence over qualifiers like "loss" in "NetIncomeLoss"
+        # Strong debit indicators - checked FIRST because they override
+        # generic credit keywords in compound names like "IncomeTaxExpense"
+        strong_debit = [
+            'expense', 'cost', 'purchase', 'payment',
+            'depreciation', 'amortization', 'prepaid',
+        ]
+        for pattern in strong_debit:
+            if pattern in local_lower:
+                return 'debit'
+
+        # Credit indicators - primary accounting concepts
         credit_patterns = [
             'liabilities', 'liability', 'revenue', 'income', 'gain',
             'payable', 'equity', 'capital', 'retained', 'earnings',
@@ -693,11 +701,11 @@ class ConceptBuilder:
             if pattern in local_lower:
                 return 'credit'
 
-        # Debit indicators - secondary check
+        # Remaining debit indicators
         debit_patterns = [
-            'assets', 'expense', 'loss', 'cost', 'receivable',
-            'inventory', 'equipment', 'property', 'prepaid',
-            'dividend', 'purchase', 'depreciation', 'amortization',
+            'assets', 'loss', 'receivable',
+            'inventory', 'equipment', 'property',
+            'dividend',
         ]
         for pattern in debit_patterns:
             if pattern in local_lower:

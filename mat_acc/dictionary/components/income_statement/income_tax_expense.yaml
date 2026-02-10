@@ -51,6 +51,7 @@ matching_rules:
   local_name_rules:
     - patterns:
         - "IncomeTaxExpenseBenefit"
+        - "IncomeTaxExpenseContinuingOperations"
       match_type: exact
       weight: 15
 
@@ -58,6 +59,7 @@ matching_rules:
         - "IncomeTaxExpense"
         - "TaxExpenseBenefit"
         - "IncomeTaxesPaidNet"
+        - "TaxExpenseContinuing"
       match_type: contains
       weight: 10
 

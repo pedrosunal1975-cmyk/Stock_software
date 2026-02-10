@@ -62,6 +62,7 @@ matching_rules:
         - "PurchaseOfPropertyPlant"
         - "PaymentsToAcquireProductiveAssets"
         - "AdditionsToPropertyPlant"
+        - "PurchasesOfPropertyPlantAndEquipment"
       match_type: contains
       weight: 10
 

@@ -51,6 +51,8 @@ matching_rules:
         - "InterestExpense"
         - "InterestExpenseDebt"
         - "InterestIncomeExpenseNet"
+        - "InterestExpenseNonoperating"
+        - "FinanceCosts"
       match_type: exact
       weight: 15
 
@@ -59,6 +61,8 @@ matching_rules:
         - "FinanceCosts"
         - "InterestAndDebtExpense"
         - "InterestCostsIncurred"
+        - "FinanceExpense"
+        - "BorrowingCosts"
       match_type: contains
       weight: 10
 

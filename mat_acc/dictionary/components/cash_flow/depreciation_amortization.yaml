@@ -43,6 +43,7 @@ matching_rules:
     - patterns:
         - "DepreciationAndAmortization"
         - "DepreciationDepletionAndAmortization"
+        - "DepreciationAndAmortisationExpense"
       match_type: exact
       weight: 15
 
@@ -50,6 +51,8 @@ matching_rules:
         - "DepreciationAndAmortization"
         - "DepreciationAmortization"
         - "DepreciationDepletion"
+        - "DepreciationAndAmortisation"
+        - "DepreciationExpense"
       match_type: contains
       weight: 10
 

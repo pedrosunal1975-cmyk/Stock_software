@@ -59,6 +59,7 @@ matching_rules:
         - "OperatingProfit"
         - "IncomeFromOperations"
         - "IncomeLossFromOperations"
+        - "ProfitLossFromOperatingActivities"
       match_type: contains
       weight: 10
 

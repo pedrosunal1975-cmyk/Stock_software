@@ -40,8 +40,15 @@ matching_rules:
 
     # IFRS terminology
     - patterns:
+        - "Equity"
+        - "Total Equity"
+        - "Equity Attributable to Owners"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+
+    - patterns:
         - "equity attributable"
-        - "total equity and liabilities"
       match_type: contains
       weight: 8
 
@@ -49,6 +56,8 @@ matching_rules:
     - patterns:
         - "StockholdersEquity"
         - "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest"
+        - "Equity"
+        - "EquityAttributableToOwnersOfParent"
       match_type: exact
       weight: 15
 

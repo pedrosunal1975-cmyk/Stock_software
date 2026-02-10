@@ -53,6 +53,7 @@ matching_rules:
         - "CostOfGoodsAndServicesSold"
         - "CostOfGoodsSold"
         - "CostOfRevenue"
+        - "CostOfSales"
       match_type: exact
       weight: 15
 
