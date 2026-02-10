@@ -68,6 +68,19 @@ matching_rules:
       pattern: "*NetIncome*"
       weight: 4
 
+  local_name_rules:
+    - patterns:
+        - "EarningsPerShareBasic"
+        - "EarningsPerShareDiluted"
+      match_type: exact
+      weight: 15
+
+    - patterns:
+        - "EarningsPerShare"
+        - "BasicEarningsLossPerShare"
+      match_type: contains
+      weight: 10
+
   definition_rules:
     - keywords:
         - "per share"

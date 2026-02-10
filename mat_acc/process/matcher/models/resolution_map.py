@@ -142,6 +142,10 @@ class ResolutionMap:
                 score=100,  # Composites have perfect score if resolved
                 is_composite=True,
             )
+            # Clean up: remove from unresolved if atomic match failed
+            # but composite fallback succeeded
+            if component_id in self.unresolved:
+                self.unresolved.remove(component_id)
         else:
             if component_id not in self.unresolved:
                 self.unresolved.append(component_id)

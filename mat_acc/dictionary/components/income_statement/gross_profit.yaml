@@ -57,6 +57,18 @@ matching_rules:
       pattern: "*OperatingIncome*"
       weight: 6
 
+  local_name_rules:
+    - patterns:
+        - "GrossProfit"
+      match_type: exact
+      weight: 15
+
+    - patterns:
+        - "GrossProfit"
+        - "GrossMargin"
+      match_type: contains
+      weight: 10
+
   definition_rules:
     - keywords:
         - "gross"

@@ -145,20 +145,32 @@ class MatchingCoordinator:
             f"Resolving {len(components_to_resolve)} components for {filing_id}"
         )
 
-        # First pass: resolve atomic components
+        # Phase 1: Try atomic matching for ALL components with rules
+        # This includes composites - they may match directly (e.g.,
+        # us-gaap:GrossProfit) which is more reliable than computing
         for component_id, component in components_to_resolve.items():
-            if component.is_composite:
+            has_rules = (
+                component.matching_rules.label_rules
+                or component.matching_rules.local_name_rules
+            )
+            if not has_rules:
                 continue
 
             result = self._match_component(component, concept_index)
             resolution.add_match(component_id, result)
 
-        # Second pass: resolve composite components
+        # Phase 2: Formula computation for unresolved components
+        # Any component with a formula (composite or atomic with
+        # fallback) gets a chance at computation from resolved parts
         for component_id, component in components_to_resolve.items():
-            if not component.is_composite:
+            if not component.composition.formula:
                 continue
+            if resolution.is_resolved(component_id):
+                continue  # Already matched atomically
 
-            composite_result = self._resolve_composite(component, resolution)
+            composite_result = self._resolve_composite(
+                component, resolution
+            )
             resolution.add_composite(component_id, composite_result)
 
         # Log summary

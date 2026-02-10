@@ -121,6 +121,12 @@ scoring:
 
 composition:
   is_composite: false
+  # Fallback: accounting identity L = A - E (universal)
+  # Used when no direct "Liabilities" concept exists in filing
+  components:
+    - total_assets
+    - total_equity
+  formula: "total_assets - total_equity"
 
 validation:
   expected_sign: positive
