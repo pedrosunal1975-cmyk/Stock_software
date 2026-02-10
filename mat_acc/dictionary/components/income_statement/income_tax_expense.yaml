@@ -48,6 +48,19 @@ matching_rules:
       match_type: contains
       weight: 10
 
+  local_name_rules:
+    - patterns:
+        - "IncomeTaxExpenseBenefit"
+      match_type: exact
+      weight: 15
+
+    - patterns:
+        - "IncomeTaxExpense"
+        - "TaxExpenseBenefit"
+        - "IncomeTaxesPaidNet"
+      match_type: contains
+      weight: 10
+
   hierarchy_rules:
     # Should be between pretax income and net income
     - rule_type: depth_level

@@ -60,6 +60,23 @@ matching_rules:
         - "*CostOf*"
       weight: 6
 
+  local_name_rules:
+    - patterns:
+        - "Revenues"
+        - "Revenue"
+        - "SalesRevenueNet"
+        - "SalesRevenueGoodsNet"
+        - "SalesRevenueServicesNet"
+        - "RevenueFromContractWithCustomer"
+      match_type: contains
+      weight: 10
+
+    - patterns:
+        - "Revenues"
+        - "Revenue"
+      match_type: exact
+      weight: 15
+
   definition_rules:
     - keywords:
         - "revenue"

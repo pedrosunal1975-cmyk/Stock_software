@@ -49,6 +49,22 @@ matching_rules:
       match_type: contains
       weight: 10
 
+  local_name_rules:
+    - patterns:
+        - "PaymentsToAcquirePropertyPlantAndEquipment"
+        - "CapitalExpendituresIncurredButNotYetPaid"
+      match_type: exact
+      weight: 15
+
+    - patterns:
+        - "PaymentsToAcquireProperty"
+        - "CapitalExpenditure"
+        - "PurchaseOfPropertyPlant"
+        - "PaymentsToAcquireProductiveAssets"
+        - "AdditionsToPropertyPlant"
+      match_type: contains
+      weight: 10
+
   hierarchy_rules:
     # Should be in investing activities section
     - rule_type: parent_matches

@@ -46,6 +46,22 @@ matching_rules:
       match_type: contains
       weight: 10
 
+  local_name_rules:
+    - patterns:
+        - "InterestExpense"
+        - "InterestExpenseDebt"
+        - "InterestIncomeExpenseNet"
+      match_type: exact
+      weight: 15
+
+    - patterns:
+        - "InterestExpense"
+        - "FinanceCosts"
+        - "InterestAndDebtExpense"
+        - "InterestCostsIncurred"
+      match_type: contains
+      weight: 10
+
   hierarchy_rules:
     # Should be in non-operating section
     - rule_type: depth_level

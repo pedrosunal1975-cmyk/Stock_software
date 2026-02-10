@@ -185,7 +185,7 @@ class ReferenceRule(BaseModel):
 
 
 class LocalNameRule(BaseModel):
-    """Rule for matching against concept local name (fallback)."""
+    """Rule for matching against concept local name."""
     patterns: list[str] = Field(
         description="Patterns for local name matching"
     )
@@ -193,9 +193,13 @@ class LocalNameRule(BaseModel):
         default=MatchType.CONTAINS,
         description="How to match patterns"
     )
+    case_sensitive: bool = Field(
+        default=False,
+        description="Whether matching is case-sensitive"
+    )
     weight: int = Field(
-        ge=1, le=5,
-        description="Score contribution if matched (1-5, low weight)"
+        ge=1, le=15,
+        description="Score contribution if matched (1-15)"
     )
 
 

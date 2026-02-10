@@ -35,6 +35,18 @@ matching_rules:
       case_sensitive: false
       weight: 12
 
+  local_name_rules:
+    - patterns:
+        - "LiabilitiesCurrent"
+      match_type: exact
+      weight: 15
+
+    - patterns:
+        - "CurrentLiabilities"
+        - "LiabilitiesCurrent"
+      match_type: contains
+      weight: 10
+
   hierarchy_rules:
     - rule_type: parent_matches
       pattern: "*Liabilities*Abstract*"

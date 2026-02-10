@@ -42,6 +42,18 @@ matching_rules:
       case_sensitive: false
       weight: 5
 
+  local_name_rules:
+    - patterns:
+        - "Assets"
+      match_type: exact
+      weight: 15
+
+    - patterns:
+        - "TotalAssets"
+        - "AssetsTotal"
+      match_type: contains
+      weight: 10
+
   hierarchy_rules:
     # Should be at or near root level
     - rule_type: depth_level

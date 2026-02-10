@@ -38,12 +38,17 @@ matching_rules:
       weight: 12
 
   local_name_rules:
-    # Match the standard concept local names
     - patterns:
         - "InventoryNet"
         - "Inventories"
       match_type: exact
-      weight: 5
+      weight: 15
+
+    - patterns:
+        - "Inventory"
+        - "Inventories"
+      match_type: contains
+      weight: 10
 
   hierarchy_rules:
     - rule_type: parent_matches

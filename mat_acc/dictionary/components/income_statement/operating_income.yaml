@@ -48,6 +48,20 @@ matching_rules:
       case_sensitive: false
       weight: 12
 
+  local_name_rules:
+    - patterns:
+        - "OperatingIncomeLoss"
+      match_type: exact
+      weight: 15
+
+    - patterns:
+        - "OperatingIncome"
+        - "OperatingProfit"
+        - "IncomeFromOperations"
+        - "IncomeLossFromOperations"
+      match_type: contains
+      weight: 10
+
   hierarchy_rules:
     # Should be between gross profit and net income
     - rule_type: depth_level

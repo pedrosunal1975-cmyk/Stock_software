@@ -39,6 +39,20 @@ matching_rules:
       case_sensitive: false
       weight: 12
 
+  local_name_rules:
+    - patterns:
+        - "DepreciationAndAmortization"
+        - "DepreciationDepletionAndAmortization"
+      match_type: exact
+      weight: 15
+
+    - patterns:
+        - "DepreciationAndAmortization"
+        - "DepreciationAmortization"
+        - "DepreciationDepletion"
+      match_type: contains
+      weight: 10
+
   hierarchy_rules:
     # Often in operating activities section of cash flow
     - rule_type: parent_matches

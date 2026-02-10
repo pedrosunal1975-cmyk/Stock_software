@@ -65,6 +65,21 @@ matching_rules:
       pattern: "*RetainedEarnings*"
       weight: 6
 
+  local_name_rules:
+    - patterns:
+        - "NetIncomeLoss"
+        - "ProfitLoss"
+        - "NetIncomeLossAvailableToCommonStockholders"
+      match_type: exact
+      weight: 15
+
+    - patterns:
+        - "NetIncome"
+        - "NetEarnings"
+        - "ProfitLoss"
+      match_type: contains
+      weight: 8
+
   definition_rules:
     - keywords:
         - "net"

@@ -40,6 +40,20 @@ matching_rules:
       case_sensitive: false
       weight: 12
 
+  local_name_rules:
+    - patterns:
+        - "NetCashProvidedByUsedInOperatingActivities"
+      match_type: exact
+      weight: 15
+
+    - patterns:
+        - "CashProvidedByOperating"
+        - "CashFromOperating"
+        - "OperatingActivities"
+        - "NetCashGeneratedFromOperations"
+      match_type: contains
+      weight: 10
+
   hierarchy_rules:
     # Should be summary line of operating section
     - rule_type: depth_level

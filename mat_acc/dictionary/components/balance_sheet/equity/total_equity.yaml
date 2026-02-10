@@ -45,6 +45,20 @@ matching_rules:
       match_type: contains
       weight: 8
 
+  local_name_rules:
+    - patterns:
+        - "StockholdersEquity"
+        - "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest"
+      match_type: exact
+      weight: 15
+
+    - patterns:
+        - "StockholdersEquity"
+        - "ShareholdersEquity"
+        - "Equity"
+      match_type: contains
+      weight: 10
+
   hierarchy_rules:
     - rule_type: depth_level
       pattern: "1"

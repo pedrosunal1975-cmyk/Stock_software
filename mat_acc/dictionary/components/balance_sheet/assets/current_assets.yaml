@@ -35,6 +35,18 @@ matching_rules:
       case_sensitive: false
       weight: 12
 
+  local_name_rules:
+    - patterns:
+        - "AssetsCurrent"
+      match_type: exact
+      weight: 15
+
+    - patterns:
+        - "CurrentAssets"
+        - "AssetsCurrent"
+      match_type: contains
+      weight: 10
+
   hierarchy_rules:
     # Should be under Assets (abstract)
     - rule_type: parent_matches

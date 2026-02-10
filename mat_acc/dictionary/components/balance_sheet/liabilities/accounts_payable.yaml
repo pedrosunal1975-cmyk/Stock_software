@@ -45,6 +45,20 @@ matching_rules:
       match_type: contains
       weight: 10
 
+  local_name_rules:
+    - patterns:
+        - "AccountsPayableCurrent"
+        - "AccountsPayableTradeCurrent"
+      match_type: exact
+      weight: 15
+
+    - patterns:
+        - "AccountsPayable"
+        - "TradePayables"
+        - "TradeAndOtherPayables"
+      match_type: contains
+      weight: 10
+
   hierarchy_rules:
     # Should be under Current Liabilities
     - rule_type: parent_matches

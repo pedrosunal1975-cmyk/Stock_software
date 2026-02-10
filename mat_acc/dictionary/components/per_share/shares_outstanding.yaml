@@ -48,6 +48,21 @@ matching_rules:
       case_sensitive: false
       weight: 12
 
+  local_name_rules:
+    - patterns:
+        - "WeightedAverageNumberOfSharesOutstandingBasic"
+        - "WeightedAverageNumberOfDilutedSharesOutstanding"
+        - "CommonStockSharesOutstanding"
+      match_type: exact
+      weight: 15
+
+    - patterns:
+        - "SharesOutstanding"
+        - "WeightedAverageNumberOfShares"
+        - "CommonStockShares"
+      match_type: contains
+      weight: 10
+
   hierarchy_rules:
     # Often near EPS section
     - rule_type: has_siblings

@@ -48,6 +48,23 @@ matching_rules:
       match_type: contains
       weight: 10
 
+  local_name_rules:
+    - patterns:
+        - "CostOfGoodsAndServicesSold"
+        - "CostOfGoodsSold"
+        - "CostOfRevenue"
+      match_type: exact
+      weight: 15
+
+    - patterns:
+        - "CostOfGoods"
+        - "CostOfRevenue"
+        - "CostOfSales"
+        - "CostOfServices"
+        - "CostOfProducts"
+      match_type: contains
+      weight: 10
+
   hierarchy_rules:
     # Should be right after revenue
     - rule_type: position_ordinal

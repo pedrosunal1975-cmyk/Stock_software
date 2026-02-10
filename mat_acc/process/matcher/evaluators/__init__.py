@@ -10,7 +10,6 @@ Evaluators:
 - HierarchyEvaluator: Match based on hierarchy position
 - CalculationEvaluator: Match based on calculation relationships
 - DefinitionEvaluator: Match against definition text
-- ReferenceEvaluator: Match against accounting standard references
 - LocalNameEvaluator: Match against concept local name
 """
 
@@ -19,6 +18,7 @@ from .label_evaluator import LabelEvaluator
 from .hierarchy_evaluator import HierarchyEvaluator
 from .calculation_evaluator import CalculationEvaluator
 from .definition_evaluator import DefinitionEvaluator
+from .local_name_evaluator import LocalNameEvaluator
 
 __all__ = [
     'BaseEvaluator',
@@ -27,4 +27,5 @@ __all__ = [
     'HierarchyEvaluator',
     'CalculationEvaluator',
     'DefinitionEvaluator',
+    'LocalNameEvaluator',
 ]

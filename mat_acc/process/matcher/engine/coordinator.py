@@ -23,6 +23,7 @@ from ..evaluators import (
     HierarchyEvaluator,
     CalculationEvaluator,
     DefinitionEvaluator,
+    LocalNameEvaluator,
 )
 from ..scoring import ScoreAggregator, Tiebreaker
 
@@ -79,6 +80,7 @@ class MatchingCoordinator:
         # Initialize evaluators
         self.evaluators = {
             'label': LabelEvaluator(),
+            'local_name': LocalNameEvaluator(),
             'hierarchy': HierarchyEvaluator(),
             'calculation': CalculationEvaluator(),
             'definition': DefinitionEvaluator(),
@@ -297,6 +299,14 @@ class MatchingCoordinator:
                     rules=component.matching_rules.label_rules
                 )
                 evaluation_results['label'] = result
+
+            # Local name rules
+            if component.matching_rules.local_name_rules:
+                result = self.evaluators['local_name'].evaluate(
+                    concept=concept,
+                    rules=component.matching_rules.local_name_rules
+                )
+                evaluation_results['local_name'] = result
 
             # Hierarchy rules
             if component.matching_rules.hierarchy_rules:

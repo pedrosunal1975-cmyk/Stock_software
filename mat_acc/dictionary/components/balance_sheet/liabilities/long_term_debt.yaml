@@ -48,6 +48,22 @@ matching_rules:
       match_type: contains
       weight: 10
 
+  local_name_rules:
+    - patterns:
+        - "LongTermDebtNoncurrent"
+        - "LongTermDebt"
+        - "LongTermLineOfCredit"
+      match_type: exact
+      weight: 15
+
+    - patterns:
+        - "LongTermDebt"
+        - "LongTermBorrowings"
+        - "NoncurrentDebt"
+        - "DebtNoncurrent"
+      match_type: contains
+      weight: 10
+
   hierarchy_rules:
     # Should be under Noncurrent Liabilities
     - rule_type: parent_matches
