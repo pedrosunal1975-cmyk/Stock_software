@@ -353,36 +353,94 @@ class RatioCalculator:
         """
         Populate values for matched components from source files.
 
-        This is the CRITICAL step that connects matching to actual values.
+        Two passes: atomic values from source files, then composite
+        values computed from already-populated atomic values.
 
         Args:
             matches: List of ComponentMatch with matched_concept set
             value_lookup: FactValueLookup with loaded values
         """
+        match_lookup = {m.component_name: m for m in matches}
+
+        # Pass 1: populate atomic values from source files
         for match in matches:
             if not match.matched or not match.matched_concept:
                 continue
+            if match.matched_concept.startswith('COMPOSITE:'):
+                continue
 
-            # Look up value for the matched concept
             value = value_lookup.get_value(match.matched_concept)
-
             if value is not None:
                 match.value = value
-                self.logger.debug(
-                    f"Value for {match.component_name}: "
-                    f"{match.matched_concept} = {value:,.2f}"
-                )
+
+        # Pass 2: compute composite values from atomic values
+        for match in matches:
+            if not match.matched or not match.matched_concept:
+                continue
+            if not match.matched_concept.startswith('COMPOSITE:'):
+                continue
+
+            formula = match.matched_concept.replace('COMPOSITE:', '')
+            match.value = self._evaluate_formula(
+                formula, match_lookup
+            )
+
+    def _evaluate_formula(
+        self,
+        formula: str,
+        match_lookup: Dict[str, 'ComponentMatch'],
+    ) -> Optional[float]:
+        """
+        Evaluate a simple arithmetic formula using component values.
+
+        Handles: a + b, a - b, a / b, a + b + c + d
+
+        Args:
+            formula: Formula string (e.g., "total_assets - total_equity")
+            match_lookup: Component name to ComponentMatch mapping
+
+        Returns:
+            Computed value or None if any component missing
+        """
+        tokens = formula.replace('+', ' + ').replace(
+            '-', ' - '
+        ).replace('/', ' / ').split()
+
+        result = None
+        operator = '+'
+
+        for token in tokens:
+            if token in ('+', '-', '/'):
+                operator = token
+                continue
+
+            component = match_lookup.get(token)
+            if not component or component.value is None:
+                return None
+
+            val = component.value
+            if result is None:
+                result = val if operator == '+' else -val
+            elif operator == '+':
+                result += val
+            elif operator == '-':
+                result -= val
+            elif operator == '/' and val != 0:
+                result /= val
             else:
-                self.logger.debug(
-                    f"No value found for {match.component_name}: {match.matched_concept}"
-                )
+                return None
+
+        return result
 
     def match_components(
         self,
         concept_index: ConceptIndex,
     ) -> List[ComponentMatch]:
         """
-        Match all components against concepts.
+        Match all components against concepts using hybrid resolution.
+
+        Uses resolve_all() which tries atomic matching first for ALL
+        components, then formula computation for unresolved composites.
 
         Args:
             concept_index: Index of concepts to match against
@@ -395,15 +453,53 @@ class RatioCalculator:
 
         # Get all component definitions from coordinator
         components = coordinator.get_all_components()
-        self.logger.info(f"Matching {len(components)} components against {len(concept_index)} concepts")
+        self.logger.info(
+            f"Matching {len(components)} components "
+            f"against {len(concept_index)} concepts"
+        )
 
+        # Use resolve_all for hybrid resolution (atomic + composite)
+        resolution = coordinator.resolve_all(
+            concept_index=concept_index,
+            filing_id="current",
+        )
+
+        # Convert resolution map to ComponentMatch list
         for component_id in components:
-            match = self._match_single_component(coordinator, component_id, concept_index)
+            match = ComponentMatch(component_name=component_id)
+
+            if resolution.is_resolved(component_id):
+                resolved = resolution.resolved[component_id]
+                match.matched = True
+
+                if resolved.is_composite:
+                    # Composite: store formula as concept marker
+                    match.matched_concept = resolved.concept
+                    match.confidence = float(resolved.score)
+                    match.label = resolved.concept.replace(
+                        'COMPOSITE:', ''
+                    )
+                else:
+                    # Atomic: store matched concept
+                    match.matched_concept = resolved.concept
+                    match.confidence = float(resolved.score)
+                    # Get label from concept index
+                    concept = concept_index.get_concept(
+                        resolved.concept
+                    )
+                    if concept:
+                        match.label = (
+                            concept.get_label('standard')
+                            or concept.get_label('taxonomy')
+                        )
+
             matches.append(match)
 
         # Log summary
         matched_count = sum(1 for m in matches if m.matched)
-        self.logger.info(f"Matched {matched_count}/{len(matches)} components")
+        self.logger.info(
+            f"Matched {matched_count}/{len(matches)} components"
+        )
 
         # Print diagnostics summary if enabled
         if self.diagnostics:
