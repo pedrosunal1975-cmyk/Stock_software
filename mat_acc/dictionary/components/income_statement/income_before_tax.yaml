@@ -48,6 +48,8 @@ matching_rules:
         - "earnings before tax"
         - "profit before tax"
       match_type: contains
+      case_sensitive: false
+      weight: 12
 
   local_name_rules:
     - patterns:
@@ -62,7 +64,6 @@ matching_rules:
         - "ProfitLossBeforeTax"
         - "IncomeLossFromContinuingOperationsBefore"
       match_type: contains
-      weight: 10
       case_sensitive: false
       weight: 12
 

@@ -452,6 +452,12 @@ class MatchingCoordinator:
         for rule in component.matching_rules.label_rules:
             label_patterns.extend(rule.patterns)
 
+        # Extract local name patterns for candidate search
+        local_name_patterns = []
+        if component.matching_rules.local_name_rules:
+            for rule in component.matching_rules.local_name_rules:
+                local_name_patterns.extend(rule.patterns)
+
         # Get characteristic filters
         balance_type = None
         period_type = None
@@ -462,9 +468,10 @@ class MatchingCoordinator:
         if component.characteristics.period_type:
             period_type = component.characteristics.period_type.value
 
-        # Query index
+        # Query index (labels + local names)
         candidate_qnames = concept_index.get_candidates(
             label_patterns=label_patterns,
+            local_name_patterns=local_name_patterns,
             balance_type=balance_type,
             period_type=period_type,
             exclude_abstract=not component.characteristics.is_abstract,

@@ -283,6 +283,7 @@ class ConceptIndex:
     def get_candidates(
         self,
         label_patterns: list[str],
+        local_name_patterns: Optional[list[str]] = None,
         balance_type: Optional[str] = None,
         period_type: Optional[str] = None,
         exclude_abstract: bool = True,
@@ -301,6 +302,7 @@ class ConceptIndex:
 
         Args:
             label_patterns: Patterns to search for in labels
+            local_name_patterns: Patterns to search for in local names
             balance_type: Preferred balance type (None = no preference)
             period_type: Preferred period type (None = no preference)
             exclude_abstract: Whether to exclude abstract concepts
@@ -320,7 +322,14 @@ class ConceptIndex:
         for word in all_words:
             label_matches.update(self._by_label_word.get(word, set()))
 
-        # If no label matches, try local name patterns
+        # Also search by local name patterns (catches company extensions)
+        if local_name_patterns:
+            for pattern in local_name_patterns:
+                label_matches.update(
+                    self.find_by_local_name(f"*{pattern}*")
+                )
+
+        # If still no matches, try label patterns as local names
         if not label_matches:
             for pattern in label_patterns:
                 label_matches.update(self.find_by_local_name(f"*{pattern}*"))
