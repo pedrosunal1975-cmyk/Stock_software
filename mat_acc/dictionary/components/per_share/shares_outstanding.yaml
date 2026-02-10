@@ -44,6 +44,8 @@ matching_rules:
         - "weighted average shares"
         - "average shares"
         - "common shares"
+        - "ordinary shares"
+        - "issued capital"
       match_type: contains
       case_sensitive: false
       weight: 12
@@ -53,6 +55,7 @@ matching_rules:
         - "WeightedAverageNumberOfSharesOutstandingBasic"
         - "WeightedAverageNumberOfDilutedSharesOutstanding"
         - "CommonStockSharesOutstanding"
+        - "WeightedAverageShares"
       match_type: exact
       weight: 15
 
@@ -60,6 +63,10 @@ matching_rules:
         - "SharesOutstanding"
         - "WeightedAverageNumberOfShares"
         - "CommonStockShares"
+        - "WeightedAverageShares"
+        - "IssuedCapital"
+        - "OrdinarySharesIssued"
+        - "NumberOfSharesIssued"
       match_type: contains
       weight: 10
 

@@ -32,13 +32,16 @@ matching_rules:
         - "Revenue"
         - "Revenues"
         - "Net Sales"
+        - "Turnover"
+        - "Sales"
       match_type: exact
       weight: 8
 
-    # Alternative names
+    # Alternative names and IFRS/UK terminology
     - patterns:
         - "sales"
         - "net operating revenue"
+        - "turnover"
       match_type: contains
       weight: 10
 
@@ -68,12 +71,14 @@ matching_rules:
         - "SalesRevenueGoodsNet"
         - "SalesRevenueServicesNet"
         - "RevenueFromContractWithCustomer"
+        - "Turnover"
       match_type: contains
       weight: 10
 
     - patterns:
         - "Revenues"
         - "Revenue"
+        - "Turnover"
       match_type: exact
       weight: 15
 
@@ -88,11 +93,11 @@ matching_rules:
       weight: 4
 
 scoring:
-  min_score: 22
+  min_score: 18
   confidence_levels:
     high: 38
     medium: 30
-    low: 22
+    low: 18
   tiebreaker: first_in_presentation
   reject_if:
     - condition: "Is abstract concept"

@@ -92,11 +92,11 @@ matching_rules:
       weight: 3
 
 scoring:
-  min_score: 22
+  min_score: 16
   confidence_levels:
     high: 38
     medium: 30
-    low: 22
+    low: 16
   tiebreaker: highest_in_hierarchy
   reject_if:
     # Basic rejections

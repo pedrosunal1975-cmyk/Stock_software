@@ -46,6 +46,8 @@ matching_rules:
     - patterns:
         - "additions to property"
         - "acquisition of property"
+        - "purchase of property"
+        - "expenditure on property"
       match_type: contains
       weight: 10
 
@@ -53,6 +55,7 @@ matching_rules:
     - patterns:
         - "PaymentsToAcquirePropertyPlantAndEquipment"
         - "CapitalExpendituresIncurredButNotYetPaid"
+        - "PurchaseOfPropertyPlantAndEquipment"
       match_type: exact
       weight: 15
 
@@ -63,6 +66,8 @@ matching_rules:
         - "PaymentsToAcquireProductiveAssets"
         - "AdditionsToPropertyPlant"
         - "PurchasesOfPropertyPlantAndEquipment"
+        - "AcquisitionOfPropertyPlant"
+        - "ExpenditureOnPropertyPlant"
       match_type: contains
       weight: 10
 

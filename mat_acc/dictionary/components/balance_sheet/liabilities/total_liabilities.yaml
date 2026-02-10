@@ -30,6 +30,7 @@ matching_rules:
     - patterns:
         - "total liabilities"
         - "liabilities"
+        - "total creditors"
       match_type: contains
       case_sensitive: false
       weight: 12
@@ -95,6 +96,8 @@ scoring:
       pattern: "name~liabilitiescurrent"
     - condition: "Is noncurrent liabilities only"
       pattern: "name~liabilitiesnoncurrent"
+    - condition: "Is noncurrent liabilities (IFRS naming)"
+      pattern: "name~noncurrentliabilit"
 
     # Reject specific liability types (children, not the total)
     - condition: "Is accounts payable"

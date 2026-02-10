@@ -49,6 +49,7 @@ matching_rules:
     - patterns:
         - "AccountsPayableCurrent"
         - "AccountsPayableTradeCurrent"
+        - "TradeAndOtherCurrentPayables"
       match_type: exact
       weight: 15
 
@@ -56,6 +57,7 @@ matching_rules:
         - "AccountsPayable"
         - "TradePayables"
         - "TradeAndOtherPayables"
+        - "CurrentTradePayables"
       match_type: contains
       weight: 10
 

@@ -23,6 +23,9 @@ matching_rules:
         - "Net Income (Loss)"
         - "Net Earnings"
         - "Net Profit"
+        - "Profit (Loss)"
+        - "Profit for the Period"
+        - "Profit for the Year"
       match_type: exact
       case_sensitive: false
       weight: 20

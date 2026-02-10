@@ -26,6 +26,8 @@ matching_rules:
         - "Income from Operations"
         - "Income (Loss) from Operations"
         - "Earnings from Operations"
+        - "Profit from Operating Activities"
+        - "Results from Operating Activities"
       match_type: exact
       case_sensitive: false
       weight: 20
@@ -44,6 +46,8 @@ matching_rules:
         - "operating profit"
         - "income from operations"
         - "operating earnings"
+        - "profit from operating"
+        - "results from operating"
       match_type: contains
       case_sensitive: false
       weight: 12

@@ -31,6 +31,7 @@ matching_rules:
         - "current liabilities"
         - "liabilities, current"
         - "total current liabilities"
+        - "creditors amounts falling due within"
       match_type: contains
       case_sensitive: false
       weight: 12
@@ -38,6 +39,7 @@ matching_rules:
   local_name_rules:
     - patterns:
         - "LiabilitiesCurrent"
+        - "CurrentLiabilities"
       match_type: exact
       weight: 15
 
@@ -91,6 +93,12 @@ scoring:
       pattern: "abstract=true"
     - condition: "Is noncurrent"
       pattern: "name~noncurrent"
+    - condition: "Is disposal group item"
+      pattern: "name~disposalgroup"
+    - condition: "Is held for sale item"
+      pattern: "name~heldforsale"
+    - condition: "Is overly specific (other than)"
+      pattern: "name~otherthan"
 
     # Reject specific liability types (children, not the total)
     - condition: "Is accounts payable"

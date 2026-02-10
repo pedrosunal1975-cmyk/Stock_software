@@ -60,6 +60,7 @@ matching_rules:
         - "TaxExpenseBenefit"
         - "IncomeTaxesPaidNet"
         - "TaxExpenseContinuing"
+        - "TaxExpenseIncome"
       match_type: contains
       weight: 10
 

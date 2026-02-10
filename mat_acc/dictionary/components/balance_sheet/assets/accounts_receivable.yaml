@@ -52,6 +52,7 @@ matching_rules:
         - "AccountsReceivableNetCurrent"
         - "AccountsReceivableNet"
         - "ReceivablesNetCurrent"
+        - "TradeAndOtherCurrentReceivables"
       match_type: exact
       weight: 15
 
@@ -60,6 +61,8 @@ matching_rules:
         - "TradeReceivable"
         - "ReceivablesNet"
         - "TradeAndOtherReceivables"
+        - "TradeReceivablesAndContract"
+        - "CurrentTradeReceivables"
       match_type: contains
       weight: 10
 

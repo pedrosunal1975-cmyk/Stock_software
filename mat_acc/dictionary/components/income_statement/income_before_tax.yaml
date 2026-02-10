@@ -27,6 +27,9 @@ matching_rules:
         - "Pretax Income"
         - "Pre-tax Income"
         - "Income Before Provision for Income Taxes"
+        - "Profit Before Tax"
+        - "Profit (Loss) Before Tax"
+        - "Profit Before Income Tax"
       match_type: exact
       case_sensitive: false
       weight: 20

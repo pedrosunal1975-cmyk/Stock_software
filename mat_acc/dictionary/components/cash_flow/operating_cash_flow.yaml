@@ -36,6 +36,8 @@ matching_rules:
         - "operating activities"
         - "cash flows from operations"
         - "net cash operating"
+        - "cash generated from operations"
+        - "cash flows from used in operating"
       match_type: contains
       case_sensitive: false
       weight: 12

@@ -35,6 +35,8 @@ matching_rules:
         - "depreciation & amortization"
         - "depreciation, amortization"
         - "total depreciation"
+        - "depreciation and amortisation"
+        - "depreciation & amortisation"
       match_type: contains
       case_sensitive: false
       weight: 12
