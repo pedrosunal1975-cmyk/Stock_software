@@ -104,12 +104,6 @@ composition:
     - short_term_debt
     - long_term_debt
   formula: "short_term_debt + long_term_debt"
-  alternatives:
-    - formula: "current_portion_long_term_debt + long_term_debt + short_term_borrowings"
-      components:
-        - current_portion_long_term_debt
-        - long_term_debt
-        - short_term_borrowings
 
 validation:
   expected_sign: positive

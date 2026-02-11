@@ -496,6 +496,7 @@ class MatchingCoordinator:
         universal_exclude = [
             'textblock', 'table', 'schedule',
             'explanatory', 'disclosure', 'policy',
+            'axis', 'member', 'domain',
         ]
 
         candidates = []
@@ -531,18 +532,14 @@ class MatchingCoordinator:
         sample = [c.qname for c in candidates[:5]]
         self.logger.info(f"  [CANDIDATES SAMPLE] {sample}")
 
-        # Expected concept patterns based on component_id
-        expected_map = {
-            'current_assets': ['AssetsCurrent'],
-            'total_assets': ['Assets'],
-            'current_liabilities': ['LiabilitiesCurrent'],
-            'total_liabilities': ['Liabilities'],
-            'total_equity': ['StockholdersEquity', 'Equity'],
-            'net_income': ['NetIncomeLoss', 'ProfitLoss'],
-            'revenue': ['Revenues', 'Revenue', 'SalesRevenueNet'],
-        }
-
-        expected_patterns = expected_map.get(component_id, [])
+        # Build expected patterns from component's own local_name rules
+        # instead of hardcoding US-GAAP names
+        expected_patterns = []
+        component = self.components.get(component_id)
+        if component and component.matching_rules.local_name_rules:
+            for rule in component.matching_rules.local_name_rules:
+                if rule.match_type == 'exact':
+                    expected_patterns.extend(rule.patterns[:3])
         candidate_qnames = {c.qname for c in candidates}
         all_concepts = concept_index.get_all_concepts()
 

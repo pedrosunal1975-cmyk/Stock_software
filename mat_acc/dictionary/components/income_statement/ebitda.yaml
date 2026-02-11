@@ -52,11 +52,11 @@ matching_rules:
       weight: 4
 
 scoring:
-  min_score: 14
+  min_score: 18
   confidence_levels:
     high: 28
-    medium: 20
-    low: 14
+    medium: 22
+    low: 18
   tiebreaker: highest_in_hierarchy
   reject_if:
     - condition: "Is abstract concept"
@@ -71,18 +71,18 @@ scoring:
       pattern: "name~textblock"
 
 composition:
-  # EBITDA typically computed from other components
+  # Primary formula uses all atomics - no chain dependency
   is_composite: true
   components:
-    - operating_income
+    - net_income
+    - income_tax_expense
+    - interest_expense
     - depreciation_amortization
-  formula: "operating_income + depreciation_amortization"
+  formula: "net_income + income_tax_expense + interest_expense + depreciation_amortization"
   alternatives:
-    - formula: "net_income + income_tax_expense + interest_expense + depreciation_amortization"
+    - formula: "operating_income + depreciation_amortization"
       components:
-        - net_income
-        - income_tax_expense
-        - interest_expense
+        - operating_income
         - depreciation_amortization
 
 validation:

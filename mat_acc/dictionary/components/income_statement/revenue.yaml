@@ -17,6 +17,20 @@ characteristics:
 
 matching_rules:
   label_rules:
+    # Highest priority: Exact matches
+    - patterns:
+        - "Revenue"
+        - "Revenues"
+        - "Net Revenue"
+        - "Total Revenue"
+        - "Net Sales"
+        - "Turnover"
+        - "Sales"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+
+    # Contains patterns for partial label matching
     - patterns:
         - "revenue"
         - "revenues"
@@ -26,16 +40,7 @@ matching_rules:
         - "total net revenue"
       match_type: contains
       case_sensitive: false
-      weight: 15
-
-    - patterns:
-        - "Revenue"
-        - "Revenues"
-        - "Net Sales"
-        - "Turnover"
-        - "Sales"
-      match_type: exact
-      weight: 8
+      weight: 12
 
     # Alternative names and IFRS/UK terminology
     - patterns:
