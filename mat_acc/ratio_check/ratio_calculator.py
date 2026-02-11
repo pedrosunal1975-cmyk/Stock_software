@@ -62,6 +62,7 @@ class ComponentMatch:
     value: Optional[float] = None
     label: Optional[str] = None
     rule_breakdown: Dict[str, float] = field(default_factory=dict)
+    fallback_formula: Optional[str] = None
 
 
 @dataclass
@@ -385,6 +386,21 @@ class RatioCalculator:
                 formula, match_lookup
             )
 
+        # Pass 3: fallback formula for atomic matches with no value
+        # If atomic match found a concept but no value exists for it,
+        # try computing from the component's composite formula instead
+        for match in matches:
+            if match.value is not None:
+                continue
+            if not match.matched or not match.fallback_formula:
+                continue
+
+            computed = self._evaluate_formula(
+                match.fallback_formula, match_lookup
+            )
+            if computed is not None:
+                match.value = computed
+
     def _evaluate_formula(
         self,
         formula: str,
@@ -492,6 +508,11 @@ class RatioCalculator:
                             concept.get_label('standard')
                             or concept.get_label('taxonomy')
                         )
+
+            # Store fallback formula for composite-capable components
+            comp_def = components.get(component_id)
+            if comp_def and comp_def.composition.formula:
+                match.fallback_formula = comp_def.composition.formula
 
             matches.append(match)
 

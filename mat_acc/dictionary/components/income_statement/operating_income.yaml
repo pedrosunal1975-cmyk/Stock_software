@@ -131,7 +131,13 @@ scoring:
       pattern: "name~table"
 
 composition:
-  is_composite: false
+  # Operating Income = Income Before Tax + Interest Expense
+  # Accounting identity: EBIT = EBT + Net Interest
+  is_composite: true
+  components:
+    - income_before_tax
+    - interest_expense
+  formula: "income_before_tax + interest_expense"
 
 validation:
   expected_sign: either

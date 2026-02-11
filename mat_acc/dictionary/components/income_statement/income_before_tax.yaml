@@ -126,6 +126,12 @@ scoring:
     - condition: "Is discontinued"
       pattern: "name~discontinued"
 
+    # Reject geographic splits (want total, not Foreign/Domestic)
+    - condition: "Is foreign only"
+      pattern: "name~foreign"
+    - condition: "Is domestic only"
+      pattern: "name~domestic"
+
     # Reject disclosure items
     - condition: "Is text block"
       pattern: "name~textblock"

@@ -722,8 +722,22 @@ class ConceptBuilder:
         Infer period type from concept name.
 
         Uses heuristics based on common patterns.
+        Priority order prevents misclassification:
+        - "PaymentsToAcquirePropertyPlantAndEquipment" -> duration
+          (cash flow action word overrides balance sheet noun)
         """
         local_lower = local_name.lower()
+
+        # Strong duration indicators - checked FIRST because cash flow
+        # action words override balance sheet nouns in compound names
+        # like "PaymentsToAcquirePropertyPlantAndEquipment"
+        strong_duration = [
+            'payment', 'proceeds', 'purchase', 'repayment',
+            'issuance', 'acquisition',
+        ]
+        for pattern in strong_duration:
+            if pattern in local_lower:
+                return 'duration'
 
         # Instant indicators (balance sheet items)
         instant_patterns = [
