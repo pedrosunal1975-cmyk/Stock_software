@@ -354,11 +354,19 @@ class FactValueLookup:
             Numeric value or None if not found
         """
         values = self._value_index.get(concept)
+
         if not values:
-            # Try without prefix
-            local_name = concept.split(':')[-1] if ':' in concept else concept
+            # Try alternate qname format (colon <-> underscore)
+            alt_key = self._alternate_qname(concept)
+            if alt_key:
+                values = self._value_index.get(alt_key)
+
+        if not values:
+            # Fallback: search by local name only
+            local_name = self._extract_local_name(concept)
             for key in self._value_index:
-                if key.endswith(':' + local_name) or key == local_name:
+                key_local = self._extract_local_name(key)
+                if key_local == local_name:
                     values = self._value_index[key]
                     break
 
@@ -382,6 +390,26 @@ class FactValueLookup:
         if values:
             return values[0].value
 
+        return None
+
+    def _extract_local_name(self, qname: str) -> str:
+        """Extract local name from any qname format."""
+        if ':' in qname:
+            return qname.split(':')[-1]
+        if '_' in qname:
+            parts = qname.rsplit('_', 1)
+            if len(parts) == 2 and parts[1] and parts[1][0].isupper():
+                return parts[1]
+        return qname
+
+    def _alternate_qname(self, qname: str) -> Optional[str]:
+        """Try alternate qname format (colon <-> underscore)."""
+        if ':' in qname:
+            return qname.replace(':', '_', 1)
+        if '_' in qname:
+            parts = qname.rsplit('_', 1)
+            if len(parts) == 2 and parts[1] and parts[1][0].isupper():
+                return parts[0] + ':' + parts[1]
         return None
 
     def get_all_values(self, concept: str) -> List[FactValue]:
