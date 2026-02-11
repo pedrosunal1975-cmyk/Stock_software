@@ -281,6 +281,10 @@ class ConceptBuilder:
         level = fact.get('level') or fact.get('depth') or 0
         parent = fact.get('parent_concept') or fact.get('parent') or ''
 
+        # "root:" prefix = mapper-generated section headers, not XBRL facts
+        # Mark as abstract so rejection rules filter them out
+        is_abstract = (prefix == 'root')
+
         return ConceptMetadata(
             qname=concept_name,
             local_name=local_name,
@@ -288,7 +292,7 @@ class ConceptBuilder:
             labels=labels,
             balance_type=balance_type,
             period_type=period_type,
-            is_abstract=False,  # Facts are never abstract
+            is_abstract=is_abstract,
             presentation_level=level,
             presentation_parent=parent,
         )

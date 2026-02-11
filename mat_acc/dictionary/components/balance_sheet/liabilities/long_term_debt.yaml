@@ -121,6 +121,12 @@ scoring:
     - condition: "Is finance lease only"
       pattern: "name~financeleaseliabiility"
 
+    # Reject rate/percentage concepts (want amount, not interest rate)
+    - condition: "Is interest rate"
+      pattern: "name~interestrate"
+    - condition: "Is weighted average"
+      pattern: "name~weightedaverage"
+
     # Reject disclosure items
     - condition: "Is text block"
       pattern: "name~textblock"

@@ -471,11 +471,13 @@ class MatchingCoordinator:
                 local_name_patterns.extend(rule.patterns)
 
         # Get characteristic filters
+        # BalanceType.NONE means "no balance type" - skip filtering
         balance_type = None
         period_type = None
 
-        if component.characteristics.balance_type:
-            balance_type = component.characteristics.balance_type.value
+        bt = component.characteristics.balance_type
+        if bt and bt.value != 'none':
+            balance_type = bt.value
 
         if component.characteristics.period_type:
             period_type = component.characteristics.period_type.value
