@@ -289,6 +289,8 @@ class RatioCalculator:
         self.logger = get_process_logger('ratio_calculator')
         self.diagnostics = diagnostics
         self._coordinator: Optional[MatchingCoordinator] = None
+        self._last_resolution = None
+        self._last_concept_index: Optional[ConceptIndex] = None
 
     def _get_coordinator(self) -> MatchingCoordinator:
         """Get or create matching coordinator."""
@@ -327,7 +329,10 @@ class RatioCalculator:
 
         # CRITICAL: Populate values from source files
         if value_lookup:
-            self._populate_values(component_matches, value_lookup)
+            self._populate_values(
+                component_matches, value_lookup,
+                self._last_resolution, concept_index,
+            )
             self.logger.info(
                 f"Populated values for {sum(1 for m in component_matches if m.value is not None)} "
                 f"of {sum(1 for m in component_matches if m.matched)} matched components"
@@ -350,16 +355,23 @@ class RatioCalculator:
         self,
         matches: List['ComponentMatch'],
         value_lookup: FactValueLookup,
+        resolution=None,
+        concept_index: Optional[ConceptIndex] = None,
     ) -> None:
         """
         Populate values for matched components from source files.
 
-        Two passes: atomic values from source files, then composite
-        values computed from already-populated atomic values.
+        Four passes:
+        1. Atomic values from source files
+        2. Alternative recovery: try alternative matches for unvalued
+        3. Composite values from populated atomics
+        4. Fallback formula for remaining unvalued atomics
 
         Args:
             matches: List of ComponentMatch with matched_concept set
             value_lookup: FactValueLookup with loaded values
+            resolution: ResolutionMap with alternatives per component
+            concept_index: ConceptIndex for label lookup
         """
         match_lookup = {m.component_name: m for m in matches}
 
@@ -374,7 +386,17 @@ class RatioCalculator:
             if value is not None:
                 match.value = value
 
-        # Pass 2: compute composite values from atomic values
+        # Pass 2: alternative recovery for unvalued atomic matches
+        # When the best-scoring concept has no reported value,
+        # try alternative concepts from the scoring pipeline.
+        # This handles cases where a concept exists in hierarchy
+        # but not in reported facts (common across all filings).
+        if resolution:
+            self._try_alternative_values(
+                matches, value_lookup, resolution, concept_index,
+            )
+
+        # Pass 3: compute composite values from atomic values
         for match in matches:
             if not match.matched or not match.matched_concept:
                 continue
@@ -386,7 +408,7 @@ class RatioCalculator:
                 formula, match_lookup
             )
 
-        # Pass 3: fallback formula for atomic matches with no value
+        # Pass 4: fallback formula for atomic matches with no value
         # If atomic match found a concept but no value exists for it,
         # try computing from the component's composite formula instead
         for match in matches:
@@ -400,6 +422,69 @@ class RatioCalculator:
             )
             if computed is not None:
                 match.value = computed
+
+    def _try_alternative_values(
+        self,
+        matches: List['ComponentMatch'],
+        value_lookup: FactValueLookup,
+        resolution,
+        concept_index: Optional[ConceptIndex] = None,
+    ) -> None:
+        """
+        Try alternative concept matches for unvalued components.
+
+        When the primary match has no value in reported facts, iterate
+        through alternative matches (ranked by score) and use the first
+        one that has a reported value.
+
+        This is principle-based: any filing can have concepts in its
+        presentation structure that lack reported fact values, while
+        a lower-scoring alternative actually carries the data.
+
+        Args:
+            matches: Component matches to check
+            value_lookup: For looking up values
+            resolution: ResolutionMap with alternatives
+            concept_index: For updating labels
+        """
+        for match in matches:
+            if match.value is not None:
+                continue
+            if not match.matched:
+                continue
+            if match.matched_concept.startswith('COMPOSITE:'):
+                continue
+
+            # Get the full match result with alternatives
+            match_result = resolution.matches.get(match.component_name)
+            if not match_result or not match_result.alternatives:
+                continue
+
+            for alt in match_result.alternatives:
+                if not alt.concept:
+                    continue
+                value = value_lookup.get_value(alt.concept)
+                if value is not None:
+                    old_concept = match.matched_concept
+                    match.matched_concept = alt.concept
+                    match.confidence = float(alt.total_score)
+                    match.value = value
+                    # Update label from concept index
+                    if concept_index:
+                        alt_meta = concept_index.get_concept(
+                            alt.concept
+                        )
+                        if alt_meta:
+                            match.label = (
+                                alt_meta.get_label('standard')
+                                or alt_meta.get_label('taxonomy')
+                            )
+                    self.logger.info(
+                        f"[ALT RECOVERY] {match.component_name}: "
+                        f"{old_concept} (no value) -> "
+                        f"{alt.concept} (value={value:,.0f})"
+                    )
+                    break
 
     def _evaluate_formula(
         self,
@@ -479,6 +564,10 @@ class RatioCalculator:
             concept_index=concept_index,
             filing_id="current",
         )
+
+        # Store for value population (alternative recovery)
+        self._last_resolution = resolution
+        self._last_concept_index = concept_index
 
         # Convert resolution map to ComponentMatch list
         for component_id in components:
