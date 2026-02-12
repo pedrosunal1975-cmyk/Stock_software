@@ -508,6 +508,10 @@ class MatchingCoordinator:
                 local_lower = concept.local_name.lower()
                 if any(excl in local_lower for excl in universal_exclude):
                     continue
+                # Exclude mapper hierarchy labels (root: prefix)
+                # These are section headers, not XBRL taxonomy concepts
+                if concept.prefix == 'root':
+                    continue
                 candidates.append(concept)
 
         return candidates
