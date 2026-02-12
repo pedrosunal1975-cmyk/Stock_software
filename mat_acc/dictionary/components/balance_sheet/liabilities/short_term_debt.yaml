@@ -34,6 +34,7 @@ matching_rules:
         - "Current Portion of Long-term Debt"
         - "Current Maturities of Long-term Debt"
         - "Long-term Debt, Current Maturities"
+        - "Commercial Paper"
       match_type: exact
       case_sensitive: false
       weight: 18
@@ -46,6 +47,7 @@ matching_rules:
         - "current maturities"
         - "short-term borrowings"
         - "debt, current"
+        - "commercial paper"
       match_type: contains
       case_sensitive: false
       weight: 12
@@ -55,6 +57,7 @@ matching_rules:
         - "ShortTermBorrowings"
         - "ShortTermDebt"
         - "DebtCurrent"
+        - "CommercialPaper"
       match_type: exact
       weight: 15
 

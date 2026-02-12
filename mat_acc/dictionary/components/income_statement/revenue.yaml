@@ -112,6 +112,30 @@ scoring:
     - condition: "Is other revenue only"
       pattern: "label~other revenue"
 
+    # Reject liability/deferred concepts (e.g. ContractWithCustomerLiability)
+    - condition: "Is liability concept"
+      pattern: "name~liability"
+    - condition: "Is deferred revenue"
+      pattern: "name~deferred"
+
+    # Reject cost/expense items that contain 'revenue' in name
+    - condition: "Is cost of revenue"
+      pattern: "name~costof"
+
+    # Reject segment/geographic breakdowns (want total revenue)
+    - condition: "Is segment"
+      pattern: "name~segment"
+    - condition: "Is geographic"
+      pattern: "name~geographical"
+
+    # Reject disclosure items
+    - condition: "Is text block"
+      pattern: "name~textblock"
+    - condition: "Is schedule"
+      pattern: "name~schedule"
+    - condition: "Is table"
+      pattern: "name~table"
+
 composition:
   is_composite: false
 
