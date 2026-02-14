@@ -187,15 +187,16 @@ class ContextFilter:
                 duration_ends.append(ctx.end_date)
 
         # Latest instant = balance sheet date
+        # Apply post-filing heuristic (shares outstanding may have later date)
         if instant_dates:
-            # Filter out future dates (shares outstanding often has future date)
             sorted_dates = sorted(set(instant_dates), reverse=True)
             self._primary_instant = self._pick_reporting_date(sorted_dates)
 
         # Latest duration end = income statement period end
+        # No post-filing heuristic: duration gaps are naturally large (annual)
         if duration_ends:
             sorted_ends = sorted(set(duration_ends), reverse=True)
-            self._primary_duration_end = self._pick_reporting_date(sorted_ends)
+            self._primary_duration_end = sorted_ends[0]
 
         self.logger.info(
             f"Primary periods: instant={self._primary_instant}, "

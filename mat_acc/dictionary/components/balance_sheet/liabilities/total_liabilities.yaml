@@ -104,12 +104,18 @@ scoring:
       pattern: "name~accountspayable"
     - condition: "Is accrued item"
       pattern: "name~accrued"
-    - condition: "Is deferred item"
-      pattern: "name~deferredtax"
+    - condition: "Is deferred item (child, not total)"
+      pattern: "name~deferred"
     - condition: "Is notes payable"
       pattern: "name~notespayable"
-    # NOTE: "debt" reject removed - too broad, blocks legitimate
-    # concepts. Low-scoring debt items filtered by min_score instead.
+    - condition: "Is pension/benefit liability"
+      pattern: "name~pension"
+    - condition: "Is derivative liability"
+      pattern: "name~derivative"
+    - condition: "Is operating lease liability"
+      pattern: "name~operatinglease"
+    - condition: "Is finance lease liability"
+      pattern: "name~financelease"
 
     # Reject disclosure items
     - condition: "Is text block"
