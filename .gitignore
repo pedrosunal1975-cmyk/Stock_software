@@ -10,3 +10,6 @@ albertson_xbrl_filings/
 plug_mapped_statements/
 plug_parsed_json/
 plug_xbrl_filings/
+
+# map_pro software (separate project, not part of mat_acc)
+map_pro/
