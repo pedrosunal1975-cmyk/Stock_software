@@ -289,16 +289,27 @@ class RatioCheckOrchestrator:
             parsed_values=parsed_values,
         )
 
+        # Get sign-only corrections (scale diffs are expected)
         corrections = self._fact_reconciler.get_corrections(results)
-        critical = sum(1 for r in results if r.severity == 'critical')
-        print(f"  MIU Layer 2: {critical} critical discrepancies found")
+        summary = self._fact_reconciler.get_summary(results)
 
-        # Apply corrections to value lookup
-        corrected = value_lookup.apply_corrections(corrections)
-        if corrected > 0:
-            print(f"  MIU: Applied {corrected} mathematical corrections")
+        print(
+            f"  MIU Layer 2: {summary['sign_corrections']} sign corrections, "
+            f"{summary['scale_diffs']} scale diffs (expected), "
+            f"{summary['value_matches']} matched"
+        )
 
-        return corrected
+        # Apply sign corrections to value lookup
+        if corrections:
+            corrected = value_lookup.apply_corrections(corrections)
+            print(f"  MIU: Applied {corrected} sign corrections to values")
+            # Log sample corrections for visibility
+            for concept, val in list(corrections.items())[:3]:
+                local = concept.split(':')[-1] if ':' in concept else concept
+                print(f"    - {local}: corrected to {val:,.0f}")
+            return corrected
+
+        return 0
 
     def _run_identity_checks(self, result) -> None:
         """

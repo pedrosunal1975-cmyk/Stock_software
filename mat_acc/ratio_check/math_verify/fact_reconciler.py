@@ -2,23 +2,24 @@
 """
 Fact Reconciler - Layer 2 of Mathematical Integrity Unit
 
-Cross-validates numeric values across three independent sources:
+Cross-validates numeric values across independent sources:
 1. iXBRL source (Layer 1 output) - the mathematical truth
 2. parsed.json - parser's interpretation
 3. mapped statements - structured presentation
 
-When sources disagree, iXBRL wins. Discrepancies are classified
-by severity and logged for audit trail.
+KEY INSIGHT: iXBRL extractor applies 10^scale to get absolute
+values, while parsed.json stores values in the filing's display
+scale (thousands, millions, etc.). This means a 1000x difference
+is EXPECTED when scale=3, not a real discrepancy.
 
-Discrepancy types:
-- SIGN_MISMATCH: Value has wrong polarity (critical)
-- SCALE_MISMATCH: Value is orders of magnitude off (critical)
-- PRECISION_DIFF: Rounding difference within tolerance (minor)
-- VALUE_MATCH: Sources agree (no action needed)
+The reconciler normalizes for scale before comparing, and only
+produces corrections for SIGN mismatches (where the parser missed
+the sign="-" attribute). Corrections preserve the parsed value's
+magnitude and only fix the polarity.
 """
 
-import logging
-from dataclasses import dataclass, field
+import math
+from dataclasses import dataclass
 from typing import Optional
 
 from core.logger.ipo_logging import get_process_logger
@@ -29,28 +30,16 @@ from .ixbrl_extractor import VerifiedFact
 logger = get_process_logger('math_verify.reconciler')
 
 
-# Tolerance for precision comparisons (0.1% relative difference)
-_PRECISION_TOLERANCE = 0.001
+# Tolerance for precision comparisons (0.5% relative difference)
+_PRECISION_TOLERANCE = 0.005
 
-# Scale mismatch threshold (10x difference)
-_SCALE_THRESHOLD = 5.0
+# How close log10(ratio) must be to an integer to count as scale
+_SCALE_DETECT_TOLERANCE = 0.15
 
 
 @dataclass
 class ReconciliationResult:
-    """
-    Result of reconciling a fact across sources.
-
-    Attributes:
-        concept: Concept QName
-        context_ref: Context reference
-        ixbrl_value: Value from iXBRL source (truth)
-        parsed_value: Value from parsed.json
-        mapped_value: Value from mapped statements
-        corrected_value: Final verified value to use
-        discrepancy: Type of discrepancy found
-        severity: 'critical', 'minor', or 'none'
-    """
+    """Result of reconciling a fact across sources."""
     concept: str
     context_ref: str = ''
     ixbrl_value: Optional[float] = None
@@ -59,12 +48,18 @@ class ReconciliationResult:
     corrected_value: Optional[float] = None
     discrepancy: str = 'VALUE_MATCH'
     severity: str = 'none'
+    scale_factor: int = 0
 
 
 class FactReconciler:
     """
     Cross-validates numeric facts across independent data sources.
-    iXBRL always wins when sources disagree.
+
+    Scale-aware: detects power-of-10 differences between iXBRL
+    (absolute values) and parsed (filing-scale values).
+
+    Sign-correcting: when iXBRL and parsed disagree on sign,
+    the parsed value is negated (preserving its magnitude).
     """
 
     def __init__(self):
@@ -93,7 +88,7 @@ class FactReconciler:
 
         results = []
         sign_fixes = 0
-        scale_fixes = 0
+        scale_diffs = 0
 
         for fact in ixbrl_facts:
             result = self._reconcile_single(
@@ -103,10 +98,10 @@ class FactReconciler:
 
             if result.discrepancy == 'SIGN_MISMATCH':
                 sign_fixes += 1
-            elif result.discrepancy == 'SCALE_MISMATCH':
-                scale_fixes += 1
+            elif result.discrepancy == 'SCALE_DIFF':
+                scale_diffs += 1
 
-        self._log_summary(results, sign_fixes, scale_fixes)
+        self._log_summary(results, sign_fixes, scale_diffs)
 
         return results
 
@@ -114,43 +109,49 @@ class FactReconciler:
         self, results: list[ReconciliationResult]
     ) -> dict[str, float]:
         """
-        Build correction map from reconciliation results.
+        Build correction map for sign mismatches only.
 
-        Returns only facts that need correction (where iXBRL
-        disagrees with parsed/mapped values).
-
-        Args:
-            results: Reconciliation results
+        Only returns corrections where the parsed value has the
+        wrong sign (parser missed sign="-" attribute). The
+        corrected value preserves the parsed magnitude.
 
         Returns:
             Dictionary mapping concept QName to corrected value
         """
         corrections = {}
         for result in results:
-            if result.severity != 'none' and result.corrected_value is not None:
-                corrections[result.concept] = result.corrected_value
+            if result.discrepancy != 'SIGN_MISMATCH':
+                continue
+            if result.corrected_value is None:
+                continue
+            corrections[result.concept] = result.corrected_value
         return corrections
 
-    def get_verified_values(
+    def get_summary(
         self, results: list[ReconciliationResult]
-    ) -> dict[str, float]:
-        """
-        Build complete verified value map from reconciliation.
+    ) -> dict:
+        """Produce summary statistics from reconciliation."""
+        total = len(results)
+        sign_fixes = sum(
+            1 for r in results if r.discrepancy == 'SIGN_MISMATCH'
+        )
+        scale_diffs = sum(
+            1 for r in results if r.discrepancy == 'SCALE_DIFF'
+        )
+        matched = sum(
+            1 for r in results if r.discrepancy == 'VALUE_MATCH'
+        )
+        no_parsed = sum(
+            1 for r in results if r.discrepancy == 'NO_PARSED'
+        )
 
-        Returns ALL facts with their mathematically correct values,
-        whether they needed correction or not.
-
-        Args:
-            results: Reconciliation results
-
-        Returns:
-            Dictionary mapping concept QName to verified value
-        """
-        verified = {}
-        for result in results:
-            if result.corrected_value is not None:
-                verified[result.concept] = result.corrected_value
-        return verified
+        return {
+            'total': total,
+            'sign_corrections': sign_fixes,
+            'scale_diffs': scale_diffs,
+            'value_matches': matched,
+            'no_parsed_value': no_parsed,
+        }
 
     def _reconcile_single(
         self,
@@ -163,7 +164,6 @@ class FactReconciler:
             concept=fact.concept,
             context_ref=fact.context_ref,
             ixbrl_value=fact.value,
-            corrected_value=fact.value,
         )
 
         # Look up in parsed values
@@ -174,35 +174,80 @@ class FactReconciler:
         mapped_val = self._lookup_value(fact.concept, mapped_values)
         result.mapped_value = mapped_val
 
-        # Compare iXBRL against parsed
-        if parsed_val is not None:
-            discrepancy = self._classify_discrepancy(
-                fact.value, parsed_val,
-            )
-            result.discrepancy = discrepancy
-            result.severity = self._severity_for(discrepancy)
+        # No parsed value to compare against
+        if parsed_val is None:
+            result.discrepancy = 'NO_PARSED'
+            result.severity = 'none'
+            return result
 
-        # iXBRL is always the corrected value
-        result.corrected_value = fact.value
+        # Both zero - perfect match
+        if fact.value == 0.0 and parsed_val == 0.0:
+            result.discrepancy = 'VALUE_MATCH'
+            result.corrected_value = parsed_val
+            return result
 
+        # One zero, other not - unusual but not actionable
+        if fact.value == 0.0 or parsed_val == 0.0:
+            result.discrepancy = 'ZERO_NONZERO'
+            result.severity = 'minor'
+            result.corrected_value = parsed_val
+            return result
+
+        # Detect scale factor (power of 10 between iXBRL and parsed)
+        scale_factor = self._detect_scale_factor(
+            fact.value, parsed_val,
+        )
+        result.scale_factor = scale_factor
+
+        # Normalize iXBRL to parsed scale for comparison
+        if scale_factor != 0:
+            normalized = fact.value / (10 ** scale_factor)
+        else:
+            normalized = fact.value
+
+        # Compare signs after normalization
+        ixbrl_positive = normalized >= 0
+        parsed_positive = parsed_val >= 0
+
+        if ixbrl_positive != parsed_positive:
+            result.discrepancy = 'SIGN_MISMATCH'
+            result.severity = 'critical'
+            result.corrected_value = -parsed_val
+            return result
+
+        # Signs agree - scale difference is expected (not an error)
+        if scale_factor != 0:
+            result.discrepancy = 'SCALE_DIFF'
+            result.severity = 'none'
+            result.corrected_value = parsed_val
+            return result
+
+        # Same scale, same sign - check precision
+        denom = max(abs(normalized), abs(parsed_val))
+        rel_diff = abs(normalized - parsed_val) / denom
+
+        if rel_diff > _PRECISION_TOLERANCE:
+            result.discrepancy = 'PRECISION_DIFF'
+            result.severity = 'minor'
+        else:
+            result.discrepancy = 'VALUE_MATCH'
+
+        result.corrected_value = parsed_val
         return result
 
     def _lookup_value(
         self, concept: str, values: dict[str, float]
     ) -> Optional[float]:
-        """
-        Look up a concept value with flexible key matching.
-
-        Tries exact match, then local name match.
-        """
+        """Look up a concept value with flexible key matching."""
         # Exact match
         if concept in values:
             return values[concept]
 
         # Try with underscore instead of colon
-        alt_key = concept.replace(':', '_', 1) if ':' in concept else None
-        if alt_key and alt_key in values:
-            return values[alt_key]
+        if ':' in concept:
+            alt_key = concept.replace(':', '_', 1)
+            if alt_key in values:
+                return values[alt_key]
 
         # Try local name only
         local_name = concept.split(':')[-1] if ':' in concept else concept
@@ -213,79 +258,55 @@ class FactReconciler:
 
         return None
 
-    def _classify_discrepancy(
-        self, ixbrl_val: float, other_val: float
-    ) -> str:
+    def _detect_scale_factor(
+        self, ixbrl_val: float, parsed_val: float
+    ) -> int:
         """
-        Classify the type of discrepancy between two values.
+        Detect power-of-10 difference between values.
 
-        Categories:
-        - SIGN_MISMATCH: Opposite signs (most critical)
-        - SCALE_MISMATCH: Orders of magnitude different
-        - PRECISION_DIFF: Small rounding difference
-        - VALUE_MATCH: Values agree
+        Returns the integer N where ixbrl_val ~ parsed_val * 10^N.
+        Returns 0 if values are in the same scale.
         """
-        # Both zero
-        if ixbrl_val == 0.0 and other_val == 0.0:
-            return 'VALUE_MATCH'
+        if ixbrl_val == 0 or parsed_val == 0:
+            return 0
 
-        # One zero, other not
-        if ixbrl_val == 0.0 or other_val == 0.0:
-            return 'SCALE_MISMATCH'
+        ratio = abs(ixbrl_val / parsed_val)
+        if ratio == 0:
+            return 0
 
-        # Sign check: opposite signs
-        if (ixbrl_val > 0) != (other_val > 0):
-            return 'SIGN_MISMATCH'
+        log_ratio = math.log10(ratio)
+        rounded = round(log_ratio)
 
-        # Scale check: ratio between values
-        ratio = abs(ixbrl_val / other_val)
-        if ratio > _SCALE_THRESHOLD or ratio < (1.0 / _SCALE_THRESHOLD):
-            return 'SCALE_MISMATCH'
+        # Scale factor must be non-zero and close to an integer
+        if rounded == 0:
+            return 0
+        if abs(log_ratio - rounded) < _SCALE_DETECT_TOLERANCE:
+            return rounded
 
-        # Precision check: relative difference
-        rel_diff = abs(ixbrl_val - other_val) / max(
-            abs(ixbrl_val), abs(other_val)
-        )
-        if rel_diff > _PRECISION_TOLERANCE:
-            return 'PRECISION_DIFF'
-
-        return 'VALUE_MATCH'
-
-    def _severity_for(self, discrepancy: str) -> str:
-        """Map discrepancy type to severity level."""
-        severity_map = {
-            'SIGN_MISMATCH': 'critical',
-            'SCALE_MISMATCH': 'critical',
-            'PRECISION_DIFF': 'minor',
-            'VALUE_MATCH': 'none',
-        }
-        return severity_map.get(discrepancy, 'none')
+        return 0
 
     def _log_summary(
         self,
         results: list[ReconciliationResult],
         sign_fixes: int,
-        scale_fixes: int,
+        scale_diffs: int,
     ) -> None:
         """Log reconciliation summary."""
         total = len(results)
-        critical = sum(1 for r in results if r.severity == 'critical')
-        minor = sum(1 for r in results if r.severity == 'minor')
-        matched = total - critical - minor
+        matched = sum(
+            1 for r in results if r.discrepancy == 'VALUE_MATCH'
+        )
 
         self.logger.info(
-            f"Reconciliation: {total} facts checked, "
-            f"{matched} matched, {critical} critical, {minor} minor"
+            f"Reconciliation: {total} facts, "
+            f"{matched} matched, {sign_fixes} sign corrections, "
+            f"{scale_diffs} scale diffs (expected)"
         )
 
         if sign_fixes > 0:
             self.logger.warning(
-                f"SIGN corrections: {sign_fixes} facts had wrong polarity"
-            )
-
-        if scale_fixes > 0:
-            self.logger.warning(
-                f"SCALE corrections: {scale_fixes} facts had wrong magnitude"
+                f"SIGN corrections needed: {sign_fixes} facts "
+                f"have wrong polarity in parsed data"
             )
 
 

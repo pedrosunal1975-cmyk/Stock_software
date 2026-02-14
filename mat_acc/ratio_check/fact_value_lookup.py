@@ -434,6 +434,8 @@ class FactValueLookup:
             Number of values corrected
         """
         corrected = 0
+        not_found = 0
+        no_primary = 0
 
         for concept, correct_value in corrections.items():
             values = self._value_index.get(concept)
@@ -453,9 +455,14 @@ class FactValueLookup:
                         break
 
             if not values:
+                not_found += 1
+                self.logger.debug(
+                    f"MIU: concept not in value index: {concept}"
+                )
                 continue
 
             # Correct primary-period, primary-context values
+            applied = False
             for fact_val in values:
                 if not fact_val.is_primary:
                     continue
@@ -468,11 +475,19 @@ class FactValueLookup:
                     )
                     fact_val.value = correct_value
                     corrected += 1
+                    applied = True
                     break
+
+            if not applied:
+                no_primary += 1
 
         if corrected > 0:
             self.logger.info(
-                f"Applied {corrected} mathematical corrections"
+                f"Applied {corrected} sign corrections"
+            )
+        if not_found > 0:
+            self.logger.debug(
+                f"MIU: {not_found} concepts not in value index"
             )
 
         return corrected
