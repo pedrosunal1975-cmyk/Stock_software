@@ -518,7 +518,7 @@ class MatchingCoordinator:
         # These patterns indicate non-value concepts (text blocks, disclosures)
         # that should never match monetary components
         universal_exclude = [
-            'textblock', 'table', 'schedule',
+            'textblock', 'schedule',
             'explanatory', 'disclosure', 'policy',
             'axis', 'member', 'domain',
         ]
@@ -563,14 +563,14 @@ class MatchingCoordinator:
                 found = True
                 if concept.qname not in candidate_set:
                     candidate_set.add(concept.qname)
-                    self.logger.info(
+                    self.logger.debug(
                         f"  [FORCED] '{concept.qname}' added "
                         f"(local_name={concept.local_name}, "
                         f"balance={concept.balance_type}, "
                         f"period={concept.period_type})"
                     )
                 else:
-                    self.logger.info(
+                    self.logger.debug(
                         f"  [ALREADY] '{concept.qname}' already "
                         f"in candidates"
                     )
