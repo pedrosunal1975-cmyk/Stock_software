@@ -497,6 +497,7 @@ class MatchingCoordinator:
         # pruning; exact local_name_rules name specific concepts
         # the dictionary considers valid - they must reach scoring.
         candidate_set = set(candidate_qnames)
+        initial_count = len(candidate_set)
         if component.matching_rules.local_name_rules:
             for rule in component.matching_rules.local_name_rules:
                 if rule.match_type != MatchType.EXACT:
@@ -505,6 +506,12 @@ class MatchingCoordinator:
                     self._ensure_exact_candidate(
                         pattern, concept_index, candidate_set,
                     )
+        added = len(candidate_set) - initial_count
+        if added > 0:
+            self.logger.info(
+                f"  [FORCE-INCLUDE] Added {added} exact "
+                f"local_name concepts for {component.component_id}"
+            )
         candidate_qnames = list(candidate_set)
 
         # Convert to concept metadata objects and apply universal filters
@@ -550,14 +557,28 @@ class MatchingCoordinator:
             candidate_set: Mutable set of candidate QNames
         """
         pattern_lower = local_name_pattern.lower()
+        found = False
         for concept in concept_index.get_all_concepts():
             if concept.local_name.lower() == pattern_lower:
+                found = True
                 if concept.qname not in candidate_set:
                     candidate_set.add(concept.qname)
-                    self.logger.debug(
-                        f"Forced candidate: {concept.qname} "
-                        f"(exact local_name match)"
+                    self.logger.info(
+                        f"  [FORCED] '{concept.qname}' added "
+                        f"(local_name={concept.local_name}, "
+                        f"balance={concept.balance_type}, "
+                        f"period={concept.period_type})"
                     )
+                else:
+                    self.logger.info(
+                        f"  [ALREADY] '{concept.qname}' already "
+                        f"in candidates"
+                    )
+        if not found:
+            self.logger.warning(
+                f"  [NOT IN INDEX] No concept with "
+                f"local_name='{local_name_pattern}'"
+            )
 
     def _log_candidate_diagnostics(
         self,
