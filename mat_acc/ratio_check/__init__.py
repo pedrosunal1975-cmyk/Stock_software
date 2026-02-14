@@ -36,8 +36,12 @@ from .fact_value_lookup import FactValueLookup, FactValue
 from .math_verify import (
     IXBRLExtractor,
     VerifiedFact,
+    ContextFilter,
+    ContextInfo,
     FactReconciler,
     ReconciliationResult,
+    SignAnalyzer,
+    SignCheck,
     IdentityValidator,
     IdentityCheck,
 )
@@ -63,8 +67,12 @@ __all__ = [
     # Mathematical Integrity Unit
     'IXBRLExtractor',
     'VerifiedFact',
+    'ContextFilter',
+    'ContextInfo',
     'FactReconciler',
     'ReconciliationResult',
+    'SignAnalyzer',
+    'SignCheck',
     'IdentityValidator',
     'IdentityCheck',
     # Database operations

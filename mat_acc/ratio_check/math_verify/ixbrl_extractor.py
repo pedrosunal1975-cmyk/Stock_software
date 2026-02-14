@@ -22,6 +22,7 @@ from pathlib import Path
 from typing import Optional
 
 from core.logger.ipo_logging import get_process_logger
+from .context_filter import ContextFilter
 
 
 logger = get_process_logger('math_verify.extractor')
@@ -62,6 +63,7 @@ class IXBRLExtractor:
     def __init__(self):
         """Initialize iXBRL extractor."""
         self.logger = get_process_logger('math_verify.extractor')
+        self._context_filter = ContextFilter()
 
     def extract(self, filing_path: Path) -> list[VerifiedFact]:
         """Extract all numeric facts from an iXBRL file."""
@@ -73,16 +75,34 @@ class IXBRLExtractor:
         if not content:
             return []
 
-        facts = self._extract_nonfraction_facts(content)
+        # Parse context definitions for filtering
+        self._context_filter.parse_contexts(content)
+
+        # Extract all facts
+        all_facts = self._extract_nonfraction_facts(content)
+
+        # Filter to primary current-period facts only
+        primary_facts = self._filter_primary(all_facts)
 
         self.logger.info(
-            f"Extracted {len(facts)} numeric facts from {filing_path.name}"
+            f"Extracted {len(all_facts)} total, "
+            f"{len(primary_facts)} primary current-period facts "
+            f"from {filing_path.name}"
         )
 
-        return facts
+        return primary_facts
+
+    def extract_all(self, filing_path: Path) -> list[VerifiedFact]:
+        """Extract ALL facts without filtering (for full reconciliation)."""
+        if not filing_path or not filing_path.exists():
+            return []
+        content = self._read_filing(filing_path)
+        if not content:
+            return []
+        return self._extract_nonfraction_facts(content)
 
     def extract_from_directory(self, filing_dir: Path) -> list[VerifiedFact]:
-        """Find iXBRL file in directory and extract numeric facts."""
+        """Find iXBRL file in directory and extract primary facts."""
         ixbrl_file = self._find_ixbrl_file(filing_dir)
         if not ixbrl_file:
             self.logger.warning(f"No iXBRL file found in {filing_dir}")
@@ -90,6 +110,18 @@ class IXBRLExtractor:
 
         self.logger.info(f"Found iXBRL file: {ixbrl_file.name}")
         return self.extract(ixbrl_file)
+
+    def get_context_filter(self) -> ContextFilter:
+        """Get the context filter (populated after extract)."""
+        return self._context_filter
+
+    def _filter_primary(self, facts: list[VerifiedFact]) -> list[VerifiedFact]:
+        """Filter facts to primary context, current period only."""
+        primary = []
+        for fact in facts:
+            if self._context_filter.is_primary_current(fact.context_ref):
+                primary.append(fact)
+        return primary
 
     def build_lookup(
         self, facts: list[VerifiedFact]
@@ -114,13 +146,7 @@ class IXBRLExtractor:
         return ''
 
     def _find_ixbrl_file(self, filing_dir: Path) -> Optional[Path]:
-        """
-        Find the main iXBRL file in a filing directory.
-
-        Strategy: Find the largest .htm/.html file containing
-        ix:nonFraction tags. The main filing is typically the
-        largest HTML file.
-        """
+        """Find the main iXBRL file (largest .htm with ix:nonFraction tags)."""
         if not filing_dir.is_dir():
             return None
 
@@ -147,12 +173,7 @@ class IXBRLExtractor:
         return htm_files[0] if htm_files else None
 
     def _extract_nonfraction_facts(self, content: str) -> list[VerifiedFact]:
-        """
-        Extract all ix:nonFraction facts from iXBRL content.
-
-        Each tag is parsed for its attributes and inner text,
-        then the true numeric value is computed mathematically.
-        """
+        """Extract all ix:nonFraction facts and compute true values."""
         facts = []
         sign_count = 0
 

@@ -47,7 +47,9 @@ from .concept_builder import ConceptBuilder
 from .ratio_calculator import RatioCalculator, AnalysisResult
 from .debug_reporter import DebugReporter, ComponentDebugInfo
 from .fact_value_lookup import FactValueLookup
-from .math_verify import IXBRLExtractor, FactReconciler, IdentityValidator
+from .math_verify import (
+    IXBRLExtractor, FactReconciler, IdentityValidator, SignAnalyzer,
+)
 
 
 # Use IPO-aware logger (PROCESS layer for calculation/matching work)
@@ -97,6 +99,7 @@ class RatioCheckOrchestrator:
         # Mathematical Integrity Unit components
         self._ixbrl_extractor = IXBRLExtractor()
         self._fact_reconciler = FactReconciler()
+        self._sign_analyzer = SignAnalyzer()
         self._identity_validator = IdentityValidator()
 
     def run(self) -> None:
@@ -260,7 +263,18 @@ class RatioCheckOrchestrator:
             self.logger.warning("MIU: No facts extracted from iXBRL")
             return 0
 
-        print(f"  MIU Layer 1: Extracted {len(ixbrl_facts)} numeric facts from iXBRL")
+        print(f"  MIU Layer 1: Extracted {len(ixbrl_facts)} primary facts from iXBRL")
+
+        # Sign validation on extracted facts
+        sign_checks = self._sign_analyzer.analyze(ixbrl_facts)
+        sign_summary = self._sign_analyzer.summarize(sign_checks)
+        if sign_summary['anomalies'] > 0:
+            print(f"  MIU Sign Check: {sign_summary['anomalies']} anomalies detected")
+            for concept, value, note in sign_summary['anomaly_concepts'][:3]:
+                local = concept.split(':')[-1] if ':' in concept else concept
+                print(f"    - {local}: {value:,.0f} ({note})")
+        else:
+            print(f"  MIU Sign Check: {sign_summary['consistent']} facts consistent")
 
         # Build parsed values map for reconciliation
         parsed_values = {}
