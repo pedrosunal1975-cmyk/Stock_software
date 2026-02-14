@@ -328,6 +328,35 @@ class FactValueLookup:
                 return parts[0] + ':' + parts[1]
         return None
 
+    def _find_best_fact(
+        self, values: List[FactValue]
+    ) -> Optional[FactValue]:
+        """
+        Find the best fact to use or correct.
+
+        Uses soft filtering (same as get_value):
+        1. Try primary period first, fall through if no match
+        2. Prefer primary context (no dimensions)
+        3. Return first match or None
+        """
+        candidates = list(values)
+
+        # Soft period filter: prefer primary period, fall through
+        if self._primary_period:
+            period_match = [
+                v for v in candidates
+                if v.period_end == self._primary_period
+            ]
+            if period_match:
+                candidates = period_match
+
+        # Prefer primary context (no dimensions)
+        primary_ctx = [v for v in candidates if v.is_primary]
+        if primary_ctx:
+            candidates = primary_ctx
+
+        return candidates[0] if candidates else None
+
     def apply_corrections(
         self,
         corrections: Dict[str, float],
@@ -377,25 +406,21 @@ class FactValueLookup:
                 )
                 continue
 
-            # Correct primary-period, primary-context values
-            applied = False
-            for fact_val in values:
-                if not fact_val.is_primary:
-                    continue
-                if self._primary_period and fact_val.period_end != self._primary_period:
-                    continue
-                if fact_val.value != correct_value:
-                    self.logger.info(
-                        f"MIU correction: {concept} "
-                        f"{fact_val.value:,.0f} -> {correct_value:,.0f}"
-                    )
-                    fact_val.value = correct_value
-                    corrected += 1
-                    applied = True
-                    break
+            # Find the best fact to correct using soft filtering
+            # (same logic as get_value: try primary period, fall through)
+            target = self._find_best_fact(values)
 
-            if not applied:
+            if target is None:
                 no_primary += 1
+                continue
+
+            if target.value != correct_value:
+                self.logger.info(
+                    f"MIU correction: {concept} "
+                    f"{target.value:,.0f} -> {correct_value:,.0f}"
+                )
+                target.value = correct_value
+                corrected += 1
 
         if corrected > 0:
             self.logger.info(
