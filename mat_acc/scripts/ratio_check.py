@@ -1,4 +1,4 @@
-# Path: mat_acc_files/scripts/ratio_check.py
+# Path: mat_acc/scripts/ratio_check.py
 """
 Ratio Check Script
 

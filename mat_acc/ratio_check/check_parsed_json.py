@@ -1,4 +1,4 @@
-# Path: mat_acc_files/ratio_check/check_parsed_json.py
+# Path: mat_acc/ratio_check/check_parsed_json.py
 """
 Quick diagnostic: Check what's inside parsed.json files.
 

@@ -1,4 +1,4 @@
-# Path: mat_acc_files/scripts/test_matching_engine.py
+# Path: mat_acc/scripts/test_matching_engine.py
 """
 Test Script for Dynamic Concept Matching Engine
 

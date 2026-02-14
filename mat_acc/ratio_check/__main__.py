@@ -1,4 +1,4 @@
-# Path: mat_acc_files/ratio_check/__main__.py
+# Path: mat_acc/ratio_check/__main__.py
 """
 Module entry point for ratio_check.
 

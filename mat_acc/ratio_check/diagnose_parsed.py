@@ -1,4 +1,4 @@
-# Path: mat_acc_files/ratio_check/diagnose_parsed.py
+# Path: mat_acc/ratio_check/diagnose_parsed.py
 """
 Diagnostic script: Why is parsed.json not being found?
 

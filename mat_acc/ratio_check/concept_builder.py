@@ -1,4 +1,4 @@
-# Path: mat_acc_files/ratio_check/concept_builder.py
+# Path: mat_acc/ratio_check/concept_builder.py
 """
 Concept Builder
 

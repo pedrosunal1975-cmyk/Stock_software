@@ -103,10 +103,9 @@ scoring:
   reject_if:
     - condition: "Is abstract concept"
       pattern: "abstract=true"
-    - condition: "Is non-controlling interest only"
-      pattern: "name~noncontrolling"
-    - condition: "Is minority interest"
-      pattern: "name~minority"
+    # NOTE: NoncontrollingInterest rejected by min_score (no label/name match)
+    # Do NOT reject "noncontrolling" substring - it blocks the valid concept
+    # StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest
     - condition: "Is common stock only"
       pattern: "name~commonstock"
     - condition: "Is retained earnings only"

@@ -1,4 +1,4 @@
-# Path: mat_acc_files/ratio_check/database_checker.py
+# Path: mat_acc/ratio_check/database_checker.py
 """
 Database Checker
 

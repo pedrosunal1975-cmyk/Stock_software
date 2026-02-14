@@ -1,4 +1,4 @@
-# Path: mat_acc_files/ratio_check/data_preparer.py
+# Path: mat_acc/ratio_check/data_preparer.py
 """
 Data Preparer
 

@@ -1,4 +1,4 @@
-# Path: mat_acc_files/ratio_check/ratio_check.py
+# Path: mat_acc/ratio_check/ratio_check.py
 """
 Ratio Check - Main Orchestrator
 
@@ -277,9 +277,21 @@ class RatioCheckOrchestrator:
             print(f"  MIU Sign Check: {sign_summary['consistent']} facts consistent")
 
         # Build loaded values map for reconciliation against iXBRL truth
+        # Use iXBRL fact period to get same-period values from lookup
+        ctx_filter = self._ixbrl_extractor.get_context_filter()
         loaded_values = {}
         for fact in ixbrl_facts:
-            existing = value_lookup.get_value(fact.concept)
+            # Resolve period from iXBRL context for period-aware lookup
+            period_end = None
+            ctx = ctx_filter.get_context(fact.context_ref)
+            if ctx:
+                if ctx.period_type == 'instant':
+                    period_end = ctx.instant_date
+                elif ctx.period_type == 'duration':
+                    period_end = ctx.end_date
+            existing = value_lookup.get_value(
+                fact.concept, period_end=period_end,
+            )
             if existing is not None:
                 loaded_values[fact.concept] = existing
 

@@ -133,6 +133,10 @@ class ContextFilter:
         """Get the primary income statement end date."""
         return self._primary_duration_end
 
+    def get_context(self, context_ref: str) -> Optional[ContextInfo]:
+        """Get context info by reference ID."""
+        return self._contexts.get(context_ref)
+
     def get_primary_context_ids(self) -> list[str]:
         """Get all primary current-period context IDs."""
         return [
@@ -202,20 +206,33 @@ class ContextFilter:
         """
         Pick the actual reporting date from sorted dates.
 
-        Some filings include future dates (e.g., shares outstanding
-        as of a date after filing). We want the fiscal year-end.
-        If there are multiple dates, prefer the second-latest
-        if the latest looks like a post-filing date.
+        Some filings include post-filing dates (e.g., shares outstanding
+        as of a date after fiscal year-end). We want the fiscal year-end.
+        If the gap between top two dates is large (>45 days), the latest
+        is likely a post-filing date - use the second-latest instead.
         """
         if not sorted_dates:
             return ''
         if len(sorted_dates) == 1:
             return sorted_dates[0]
 
-        # If the gap between top two dates is very small (< 90 days),
-        # the latest is likely the fiscal year-end.
-        # If the gap is large, the latest might be a post-filing date.
-        # In practice, the top 1-2 dates are usually the right ones.
+        try:
+            latest = sorted_dates[0]
+            second = sorted_dates[1]
+            # Parse ISO dates: YYYY-MM-DD
+            ly, lm, ld = int(latest[:4]), int(latest[5:7]), int(latest[8:10])
+            sy, sm, sd = int(second[:4]), int(second[5:7]), int(second[8:10])
+            # Approximate day difference
+            gap = (ly * 365 + lm * 30 + ld) - (sy * 365 + sm * 30 + sd)
+            if gap > 45:
+                self.logger.info(
+                    f"Skipping post-filing date {latest}, "
+                    f"using fiscal year-end {second}"
+                )
+                return second
+        except (ValueError, IndexError):
+            pass
+
         return sorted_dates[0]
 
 

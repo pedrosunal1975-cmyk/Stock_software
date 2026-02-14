@@ -96,8 +96,8 @@ scoring:
       pattern: "name~liabilitiescurrent"
     - condition: "Is noncurrent liabilities only"
       pattern: "name~liabilitiesnoncurrent"
-    - condition: "Is noncurrent liabilities (IFRS naming)"
-      pattern: "name~noncurrentliabilit"
+    - condition: "Is noncurrent liabilities only (IFRS naming)"
+      pattern: "name~noncurrentliabilities"
 
     # Reject specific liability types (children, not the total)
     - condition: "Is accounts payable"
@@ -105,11 +105,11 @@ scoring:
     - condition: "Is accrued item"
       pattern: "name~accrued"
     - condition: "Is deferred item"
-      pattern: "name~deferred"
-    - condition: "Is debt item"
-      pattern: "name~debt"
+      pattern: "name~deferredtax"
     - condition: "Is notes payable"
       pattern: "name~notespayable"
+    # NOTE: "debt" reject removed - too broad, blocks legitimate
+    # concepts. Low-scoring debt items filtered by min_score instead.
 
     # Reject disclosure items
     - condition: "Is text block"
