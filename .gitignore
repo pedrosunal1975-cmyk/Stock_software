@@ -2,3 +2,11 @@ __pycache__/
 *.pyc
 *.pyo
 .env
+
+# Company data files (live on /mnt/map_pro/, not in git)
+albertson_mapped_statements/
+albertson_parsed_json/
+albertson_xbrl_filings/
+plug_mapped_statements/
+plug_parsed_json/
+plug_xbrl_filings/
