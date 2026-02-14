@@ -52,6 +52,17 @@ matching_rules:
       match_type: contains
       weight: 8
 
+    # Prefer total equity INCLUDING NCI over parent-only equity.
+    # This is the correct concept for balance sheet identity (A=L+E).
+    # Without this, parent-only StockholdersEquity wins on label scoring
+    # because its shorter label matches exact patterns better.
+    - patterns:
+        - "including portion attributable to noncontrolling"
+        - "including noncontrolling"
+      match_type: contains
+      case_sensitive: false
+      weight: 20
+
   local_name_rules:
     # TOTAL equity (including NCI) gets higher weight - this is the
     # correct concept for A=L+E identity. Without this preference,
@@ -129,8 +140,6 @@ scoring:
       pattern: "name~textblock"
     - condition: "Is schedule"
       pattern: "name~schedule"
-    - condition: "Is table"
-      pattern: "name~table"
 
 composition:
   is_composite: false

@@ -123,8 +123,6 @@ scoring:
       pattern: "name~textblock"
     - condition: "Is schedule"
       pattern: "name~schedule"
-    - condition: "Is table"
-      pattern: "name~table"
 
 composition:
   is_composite: true

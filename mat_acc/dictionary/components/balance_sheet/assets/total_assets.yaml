@@ -138,8 +138,6 @@ scoring:
       pattern: "name~schedule"
     - condition: "Is text block"
       pattern: "name~textblock"
-    - condition: "Is table"
-      pattern: "name~table"
     - condition: "Is acquired assets"
       pattern: "name~acquired"
 

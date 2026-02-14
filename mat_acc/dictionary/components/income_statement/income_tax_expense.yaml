@@ -141,8 +141,6 @@ scoring:
       pattern: "name~textblock"
     - condition: "Is schedule"
       pattern: "name~schedule"
-    - condition: "Is table"
-      pattern: "name~table"
     - condition: "Is reconciliation"
       pattern: "name~reconciliation"
 
