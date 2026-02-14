@@ -242,7 +242,7 @@ class RatioCheckOrchestrator:
 
     def _run_math_verify(
         self, xbrl_dir: Path, value_lookup: FactValueLookup,
-    ) -> int:
+    ) -> tuple[int, list]:
         """
         Run Mathematical Integrity Unit on loaded values.
 
@@ -255,13 +255,13 @@ class RatioCheckOrchestrator:
             value_lookup: Loaded value lookup to correct
 
         Returns:
-            Number of corrections applied
+            Tuple of (corrections_applied, ixbrl_facts)
         """
         # Layer 1: Extract mathematically correct values from iXBRL
         ixbrl_facts = self._ixbrl_extractor.extract_from_directory(xbrl_dir)
         if not ixbrl_facts:
             self.logger.warning("MIU: No facts extracted from iXBRL")
-            return 0
+            return 0, []
 
         print(f"  MIU Layer 1: Extracted {len(ixbrl_facts)} primary facts from iXBRL")
 
@@ -319,9 +319,9 @@ class RatioCheckOrchestrator:
             for concept, val in list(corrections.items())[:3]:
                 local = concept.split(':')[-1] if ':' in concept else concept
                 print(f"    - {local}: corrected to {val:,.0f}")
-            return corrected
+            return corrected, ixbrl_facts
 
-        return 0
+        return 0, ixbrl_facts
 
     def _run_identity_checks(self, result) -> None:
         """
@@ -419,10 +419,11 @@ class RatioCheckOrchestrator:
 
         # MATHEMATICAL INTEGRITY UNIT: Verify and correct values
         xbrl_dir = self._find_xbrl_filing(selection)
+        ixbrl_facts = []
         if xbrl_dir:
             sources_used.append("iXBRL source")
             print("\n  Running Mathematical Integrity Unit...")
-            self._run_math_verify(xbrl_dir, value_lookup)
+            _, ixbrl_facts = self._run_math_verify(xbrl_dir, value_lookup)
             self.debug_reporter.mark_stage('math_verified')
         else:
             print("\n  [NOTE] iXBRL source not available - skipping MIU")
@@ -435,6 +436,15 @@ class RatioCheckOrchestrator:
             parsed_entry=parsed_entry,
             use_database=True,
         )
+
+        # Supplement with concepts from iXBRL (catches concepts the
+        # mapper missed but that have reported values in the filing)
+        if ixbrl_facts:
+            supplemented = self.concept_builder.supplement_from_ixbrl(
+                ixbrl_facts, concept_index,
+            )
+            if supplemented:
+                print(f"  Supplemented {supplemented} concepts from iXBRL")
 
         concept_count = len(concept_index)
         self.debug_reporter.set_metrics(concept_count=concept_count)

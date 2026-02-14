@@ -764,6 +764,46 @@ class ConceptBuilder:
 
         return None
 
+    def supplement_from_ixbrl(
+        self,
+        ixbrl_facts: list,
+        concept_index: ConceptIndex,
+    ) -> int:
+        """
+        Supplement concept index with concepts from iXBRL facts.
+
+        Ensures ALL concepts with reported values in the filing
+        are available as matching candidates, even if the mapper
+        didn't include them in its output.
+
+        Args:
+            ixbrl_facts: List of VerifiedFact from iXBRL extraction
+            concept_index: Existing concept index to supplement
+
+        Returns:
+            Number of concepts added
+        """
+        added = 0
+        for fact in ixbrl_facts:
+            qname = fact.concept
+            if qname in concept_index:
+                continue
+            prefix, local_name = self._parse_qname(qname)
+            label = self._local_name_to_label(local_name)
+            balance_type = self._infer_balance_type(local_name, {})
+            period_type = self._infer_period_type(local_name, {})
+            concept = ConceptMetadata(
+                qname=qname,
+                local_name=local_name,
+                prefix=prefix,
+                labels={'standard': label} if label else {},
+                balance_type=balance_type,
+                period_type=period_type,
+            )
+            concept_index.add_concept(concept)
+            added += 1
+        return added
+
     def build_empty_index(self) -> ConceptIndex:
         """Create an empty concept index."""
         return ConceptIndex()

@@ -106,10 +106,17 @@ scoring:
       pattern: "name~discontinued"
     - condition: "Is comprehensive income"
       pattern: "name~comprehensive"
-    - condition: "Is attributable to parent"
-      pattern: "name~attributable"
     - condition: "Is segment"
       pattern: "name~segment"
+
+    # Reject share-count concepts that contain "EarningsPerShare" in name
+    # e.g., AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareAmount
+    - condition: "Is antidilutive securities count"
+      pattern: "name~antidilutive"
+    - condition: "Is shares used in computation"
+      pattern: "name~sharesusedincalculation"
+    - condition: "Is incremental shares"
+      pattern: "name~incrementalshares"
 
     # Reject disclosure items
     - condition: "Is text block"
