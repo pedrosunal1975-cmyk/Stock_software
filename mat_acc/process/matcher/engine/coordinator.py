@@ -14,7 +14,7 @@ from typing import Optional, Any
 from core.logger.ipo_logging import get_process_logger
 
 from .component_loader import ComponentLoader
-from ..models.component_definition import ComponentDefinition, RejectionCondition
+from ..models.component_definition import ComponentDefinition, RejectionCondition, MatchType
 from ..models.concept_metadata import ConceptMetadata, ConceptIndex
 from ..models.match_result import MatchResult, ScoredMatch, Confidence
 from ..models.resolution_map import ResolutionMap, CompositeResolution
@@ -492,6 +492,21 @@ class MatchingCoordinator:
             max_candidates=100
         )
 
+        # Ensure explicitly-named concepts are always candidates.
+        # Pre-filters (balance_type, period_type) are for broad
+        # pruning; exact local_name_rules name specific concepts
+        # the dictionary considers valid - they must reach scoring.
+        candidate_set = set(candidate_qnames)
+        if component.matching_rules.local_name_rules:
+            for rule in component.matching_rules.local_name_rules:
+                if rule.match_type != MatchType.EXACT:
+                    continue
+                for pattern in rule.patterns:
+                    self._ensure_exact_candidate(
+                        pattern, concept_index, candidate_set,
+                    )
+        candidate_qnames = list(candidate_set)
+
         # Convert to concept metadata objects and apply universal filters
         # These patterns indicate non-value concepts (text blocks, disclosures)
         # that should never match monetary components
@@ -515,6 +530,34 @@ class MatchingCoordinator:
                 candidates.append(concept)
 
         return candidates
+
+    def _ensure_exact_candidate(
+        self,
+        local_name_pattern: str,
+        concept_index: ConceptIndex,
+        candidate_set: set[str],
+    ) -> None:
+        """
+        Ensure a concept named by exact local_name rule is a candidate.
+
+        Searches the full index for any concept whose local_name
+        matches the pattern exactly (case-insensitive). Adds to
+        candidate_set if found but missing.
+
+        Args:
+            local_name_pattern: Exact local name to find
+            concept_index: Full concept index
+            candidate_set: Mutable set of candidate QNames
+        """
+        pattern_lower = local_name_pattern.lower()
+        for concept in concept_index.get_all_concepts():
+            if concept.local_name.lower() == pattern_lower:
+                if concept.qname not in candidate_set:
+                    candidate_set.add(concept.qname)
+                    self.logger.debug(
+                        f"Forced candidate: {concept.qname} "
+                        f"(exact local_name match)"
+                    )
 
     def _log_candidate_diagnostics(
         self,
