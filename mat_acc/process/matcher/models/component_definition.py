@@ -198,8 +198,8 @@ class LocalNameRule(BaseModel):
         description="Whether matching is case-sensitive"
     )
     weight: int = Field(
-        ge=1, le=15,
-        description="Score contribution if matched (1-15)"
+        ge=1, le=20,
+        description="Score contribution if matched (1-20)"
     )
 
 
