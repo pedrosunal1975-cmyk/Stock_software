@@ -34,6 +34,7 @@ from core.logger.ipo_logging import (
 from loaders import (
     MappedDataLoader,
     ParsedDataLoader,
+    XBRLDataLoader,
     MappedFilingEntry,
     ParsedFilingEntry,
 )
@@ -46,6 +47,7 @@ from .concept_builder import ConceptBuilder
 from .ratio_calculator import RatioCalculator, AnalysisResult
 from .debug_reporter import DebugReporter, ComponentDebugInfo
 from .fact_value_lookup import FactValueLookup
+from .math_verify import IXBRLExtractor, FactReconciler, IdentityValidator
 
 
 # Use IPO-aware logger (PROCESS layer for calculation/matching work)
@@ -90,6 +92,12 @@ class RatioCheckOrchestrator:
 
         # Loaders for source discovery (engine's responsibility)
         self._parsed_loader = ParsedDataLoader(self.config)
+        self._xbrl_loader = self._init_xbrl_loader()
+
+        # Mathematical Integrity Unit components
+        self._ixbrl_extractor = IXBRLExtractor()
+        self._fact_reconciler = FactReconciler()
+        self._identity_validator = IdentityValidator()
 
     def run(self) -> None:
         """
@@ -197,6 +205,117 @@ class RatioCheckOrchestrator:
         print(f"  Market: {selection.market.upper()} | Form: {selection.form} | Date: {selection.date}")
         print("-" * 70)
 
+    def _init_xbrl_loader(self) -> Optional[XBRLDataLoader]:
+        """Initialize XBRL loader if configured."""
+        try:
+            return XBRLDataLoader(self.config)
+        except (ValueError, KeyError):
+            self.logger.debug("XBRL loader not available (path not configured)")
+            return None
+
+    def _find_xbrl_filing(self, selection: FilingSelection) -> Optional[Path]:
+        """
+        Find XBRL filing directory for a selection.
+
+        Args:
+            selection: Selected filing
+
+        Returns:
+            Path to filing directory or None
+        """
+        if not self._xbrl_loader:
+            return None
+
+        try:
+            return self._xbrl_loader.find_filing_for_company(
+                market=selection.market,
+                company=selection.company,
+                form=selection.form,
+                date=selection.date,
+            )
+        except Exception as e:
+            self.logger.debug(f"XBRL filing not found: {e}")
+            return None
+
+    def _run_math_verify(
+        self, xbrl_dir: Path, value_lookup: FactValueLookup,
+    ) -> int:
+        """
+        Run Mathematical Integrity Unit on loaded values.
+
+        Layer 1: Extract numeric truth from iXBRL source
+        Layer 2: Reconcile against parsed/mapped values
+        Layer 3: (Identity validation runs after matching)
+
+        Args:
+            xbrl_dir: Path to XBRL filing directory
+            value_lookup: Loaded value lookup to correct
+
+        Returns:
+            Number of corrections applied
+        """
+        # Layer 1: Extract mathematically correct values from iXBRL
+        ixbrl_facts = self._ixbrl_extractor.extract_from_directory(xbrl_dir)
+        if not ixbrl_facts:
+            self.logger.warning("MIU: No facts extracted from iXBRL")
+            return 0
+
+        print(f"  MIU Layer 1: Extracted {len(ixbrl_facts)} numeric facts from iXBRL")
+
+        # Build parsed values map for reconciliation
+        parsed_values = {}
+        for fact in ixbrl_facts:
+            existing = value_lookup.get_value(fact.concept)
+            if existing is not None:
+                parsed_values[fact.concept] = existing
+
+        # Layer 2: Reconcile iXBRL against parsed values
+        results = self._fact_reconciler.reconcile(
+            ixbrl_facts=ixbrl_facts,
+            parsed_values=parsed_values,
+        )
+
+        corrections = self._fact_reconciler.get_corrections(results)
+        critical = sum(1 for r in results if r.severity == 'critical')
+        print(f"  MIU Layer 2: {critical} critical discrepancies found")
+
+        # Apply corrections to value lookup
+        corrected = value_lookup.apply_corrections(corrections)
+        if corrected > 0:
+            print(f"  MIU: Applied {corrected} mathematical corrections")
+
+        return corrected
+
+    def _run_identity_checks(self, result) -> None:
+        """
+        Run Layer 3 identity validation after matching.
+
+        Args:
+            result: AnalysisResult with populated component values
+        """
+        # Build component value map from matched components
+        values = {}
+        for match in result.component_matches:
+            if match.value is not None:
+                values[match.component_name] = match.value
+
+        checks = self._identity_validator.validate(values)
+
+        # Display results
+        print("\n  MIU Layer 3: Mathematical Identity Checks")
+        print("  " + "-" * 50)
+        for check in checks:
+            if check.skipped:
+                continue
+            status = '[OK]' if check.passed else '[FAIL]'
+            print(f"    {status} {check.identity}")
+            if not check.passed and check.lhs_value is not None:
+                print(
+                    f"          LHS: {check.lhs_value:,.0f}  "
+                    f"RHS: {check.rhs_value:,.0f}  "
+                    f"diff: {check.difference:,.0f}"
+                )
+
     def _find_parsed_entry(self, selection: FilingSelection) -> Optional[ParsedFilingEntry]:
         """
         Find parsed filing for a selection.
@@ -261,6 +380,16 @@ class RatioCheckOrchestrator:
         print(f"  Primary period: {value_summary.get('primary_period', 'N/A')}")
         print(f"  Total values: {value_summary.get('total_values', 0)}")
 
+        # MATHEMATICAL INTEGRITY UNIT: Verify and correct values
+        xbrl_dir = self._find_xbrl_filing(selection)
+        if xbrl_dir:
+            sources_used.append("iXBRL source")
+            print("\n  Running Mathematical Integrity Unit...")
+            self._run_math_verify(xbrl_dir, value_lookup)
+            self.debug_reporter.mark_stage('math_verified')
+        else:
+            print("\n  [NOTE] iXBRL source not available - skipping MIU")
+
         print("\n  Building concept index...")
 
         # Build concept index from available sources
@@ -300,6 +429,10 @@ class RatioCheckOrchestrator:
         )
 
         self.debug_reporter.mark_stage('matching_complete')
+
+        # MIU Layer 3: Mathematical identity validation
+        if result:
+            self._run_identity_checks(result)
 
         # Capture component debug info for unmatched components
         if result:

@@ -412,6 +412,71 @@ class FactValueLookup:
                 return parts[0] + ':' + parts[1]
         return None
 
+    def apply_corrections(
+        self,
+        corrections: Dict[str, float],
+    ) -> int:
+        """
+        Apply mathematical corrections from the MIU.
+
+        Overrides values in the index for concepts where the
+        Mathematical Integrity Unit detected discrepancies
+        (e.g., wrong sign, wrong scale).
+
+        Only corrects the primary-period, primary-context value
+        for each concept. Does not touch dimensional or
+        historical values.
+
+        Args:
+            corrections: concept QName -> corrected value
+
+        Returns:
+            Number of values corrected
+        """
+        corrected = 0
+
+        for concept, correct_value in corrections.items():
+            values = self._value_index.get(concept)
+
+            if not values:
+                # Try alternate key formats
+                alt_key = self._alternate_qname(concept)
+                if alt_key:
+                    values = self._value_index.get(alt_key)
+
+            if not values:
+                # Try local name match
+                local_name = self._extract_local_name(concept)
+                for key in self._value_index:
+                    if self._extract_local_name(key) == local_name:
+                        values = self._value_index[key]
+                        break
+
+            if not values:
+                continue
+
+            # Correct primary-period, primary-context values
+            for fact_val in values:
+                if not fact_val.is_primary:
+                    continue
+                if self._primary_period and fact_val.period_end != self._primary_period:
+                    continue
+                if fact_val.value != correct_value:
+                    self.logger.info(
+                        f"MIU correction: {concept} "
+                        f"{fact_val.value:,.0f} -> {correct_value:,.0f}"
+                    )
+                    fact_val.value = correct_value
+                    corrected += 1
+                    break
+
+        if corrected > 0:
+            self.logger.info(
+                f"Applied {corrected} mathematical corrections"
+            )
+
+        return corrected
+
     def get_all_values(self, concept: str) -> List[FactValue]:
         """
         Get all values for a concept.

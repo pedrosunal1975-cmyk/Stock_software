@@ -14,6 +14,7 @@ Architecture:
     ratio_engine.py       - Ratio computation from matched components
     value_populator.py    - 4-pass value population pipeline
     fact_value_lookup.py  - Retrieves actual values from source files
+    math_verify/          - Mathematical Integrity Unit (sign, scale, identity)
     database_checker.py   - Check/populate HierarchyNode data
     data_preparer.py      - Run enrichment scripts if needed
     debug_reporter.py     - Debug status reporting for process tracking
@@ -32,6 +33,14 @@ from .ratio_calculator import RatioCalculator
 from .ratio_check import RatioCheckOrchestrator, main
 from .debug_reporter import DebugReporter, ComponentDebugInfo, ProcessState
 from .fact_value_lookup import FactValueLookup, FactValue
+from .math_verify import (
+    IXBRLExtractor,
+    VerifiedFact,
+    FactReconciler,
+    ReconciliationResult,
+    IdentityValidator,
+    IdentityCheck,
+)
 
 
 __all__ = [
@@ -51,6 +60,13 @@ __all__ = [
     # Value lookup
     'FactValueLookup',
     'FactValue',
+    # Mathematical Integrity Unit
+    'IXBRLExtractor',
+    'VerifiedFact',
+    'FactReconciler',
+    'ReconciliationResult',
+    'IdentityValidator',
+    'IdentityCheck',
     # Database operations
     'DatabaseChecker',
     # Data preparation
