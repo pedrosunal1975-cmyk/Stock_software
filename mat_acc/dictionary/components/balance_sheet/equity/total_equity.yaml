@@ -53,9 +53,18 @@ matching_rules:
       weight: 8
 
   local_name_rules:
+    # TOTAL equity (including NCI) gets higher weight - this is the
+    # correct concept for A=L+E identity. Without this preference,
+    # StockholdersEquity (parent-only, excluding NCI) ties and wins
+    # the tiebreaker, causing A=L+E to fail by the NCI amount.
+    - patterns:
+        - "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest"
+      match_type: exact
+      weight: 20
+
+    # Parent-only equity and IFRS equivalents
     - patterns:
         - "StockholdersEquity"
-        - "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest"
         - "Equity"
         - "EquityAttributableToOwnersOfParent"
       match_type: exact
