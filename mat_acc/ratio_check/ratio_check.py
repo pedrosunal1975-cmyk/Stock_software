@@ -276,17 +276,17 @@ class RatioCheckOrchestrator:
         else:
             print(f"  MIU Sign Check: {sign_summary['consistent']} facts consistent")
 
-        # Build parsed values map for reconciliation
-        parsed_values = {}
+        # Build loaded values map for reconciliation against iXBRL truth
+        loaded_values = {}
         for fact in ixbrl_facts:
             existing = value_lookup.get_value(fact.concept)
             if existing is not None:
-                parsed_values[fact.concept] = existing
+                loaded_values[fact.concept] = existing
 
-        # Layer 2: Reconcile iXBRL against parsed values
+        # Layer 2: Reconcile iXBRL against loaded values
         results = self._fact_reconciler.reconcile(
             ixbrl_facts=ixbrl_facts,
-            parsed_values=parsed_values,
+            parsed_values=loaded_values,
         )
 
         # Get sign-only corrections (scale diffs are expected)
@@ -388,17 +388,17 @@ class RatioCheckOrchestrator:
 
         sources_used = ["mapped statements"]
         if parsed_entry:
-            sources_used.append("parsed.json")
+            sources_used.append("parsed.json (concepts only)")
 
         self.debug_reporter.mark_stage('sources_verified')
         print(f"  Using: {', '.join(sources_used)}")
 
-        # CRITICAL: Create value lookup from source files
-        print("\n  Loading fact values from sources...")
+        # CRITICAL: Create value lookup from mapped statements
+        # (Values come from mapped statements only; MIU corrects signs from iXBRL)
+        print("\n  Loading fact values from mapped statements...")
         value_lookup = FactValueLookup(self.config)
         value_count = value_lookup.load_from_filing(
             mapped_entry=mapped_entry,
-            parsed_entry=parsed_entry,
         )
         print(f"  Loaded values for {value_count} concepts")
         value_summary = value_lookup.get_value_summary()

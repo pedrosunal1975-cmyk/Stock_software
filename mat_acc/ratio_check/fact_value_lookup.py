@@ -1,13 +1,12 @@
-# Path: mat_acc_files/ratio_check/fact_value_lookup.py
+# Path: mat_acc/ratio_check/fact_value_lookup.py
 """
 Fact Value Lookup
 
 Retrieves actual numeric values for matched concepts from source files.
 This is the MISSING LINK between concept matching and ratio calculation.
 
-Sources (in priority order):
-1. Mapped statements - preferred (company's declared presentation)
-2. Parsed.json facts - comprehensive (all reported facts)
+Value source: Mapped statements (company's declared presentation).
+Sign corrections: Applied by MIU from iXBRL source truth.
 
 The loaders provide paths, this module reads actual values.
 """
@@ -26,15 +25,10 @@ from core.logger.ipo_logging import get_process_logger
 # Import loaders and readers
 from loaders import (
     MappedDataLoader,
-    ParsedDataLoader,
     MappedFilingEntry,
-    ParsedFilingEntry,
     MappedReader,
-    ParsedReader,
     MappedStatements,
-    ParsedFiling,
     StatementFact,
-    ParsedFact,
 )
 
 
@@ -53,7 +47,7 @@ class FactValue:
         period_start: Period start date (for duration)
         dimensions: Dimensional context
         unit: Unit of measurement
-        source: Source of value ('mapped' or 'parsed')
+        source: Source of value ('mapped')
         is_primary: True if this is the primary (non-dimensional) value
     """
     concept: str
@@ -68,20 +62,18 @@ class FactValue:
 
 class FactValueLookup:
     """
-    Looks up fact values from source files.
-
-    This class bridges the gap between concept matching and ratio calculation
-    by reading actual values from parsed.json and mapped statements.
+    Looks up fact values from mapped statement files.
 
     Strategy:
-    1. Load facts from both mapped and parsed sources
+    1. Load facts from mapped statements (single clean source)
     2. Build lookup index by concept QName
-    3. For each concept, prefer: primary context (no dimensions), latest period
-    4. Return numeric values for ratio calculations
+    3. MIU applies sign corrections from iXBRL source truth
+    4. For each concept, prefer: primary context, latest period
+    5. Return numeric values for ratio calculations
 
     Example:
         lookup = FactValueLookup(config)
-        lookup.load_from_filing(mapped_entry, parsed_entry)
+        lookup.load_from_filing(mapped_entry)
 
         # Get value for a matched concept
         value = lookup.get_value('us-gaap:Assets')
@@ -99,9 +91,8 @@ class FactValueLookup:
         self.config = config
         self.logger = get_process_logger('fact_value_lookup')
 
-        # Readers for loading content
+        # Reader for loading content
         self._mapped_reader = MappedReader()
-        self._parsed_reader = ParsedReader()
 
         # Value index: concept QName -> list of FactValue
         self._value_index: Dict[str, List[FactValue]] = {}
@@ -113,14 +104,12 @@ class FactValueLookup:
     def load_from_filing(
         self,
         mapped_entry: MappedFilingEntry,
-        parsed_entry: Optional[ParsedFilingEntry] = None,
     ) -> int:
         """
-        Load fact values from filing sources.
+        Load fact values from mapped statement files.
 
         Args:
             mapped_entry: Mapped filing entry (required)
-            parsed_entry: Parsed filing entry (optional, recommended)
 
         Returns:
             Number of concepts with values loaded
@@ -128,16 +117,13 @@ class FactValueLookup:
         self._value_index.clear()
         self._available_periods = []
 
-        # 1. Load from parsed.json first (comprehensive source)
-        if parsed_entry:
-            parsed_count = self._load_from_parsed(parsed_entry)
-            self.logger.info(f"Loaded {parsed_count} fact values from parsed.json")
-
-        # 2. Load from mapped statements (may override/supplement)
+        # Load from mapped statements (single clean source)
         mapped_count = self._load_from_mapped(mapped_entry)
-        self.logger.info(f"Loaded {mapped_count} fact values from mapped statements")
+        self.logger.info(
+            f"Loaded {mapped_count} fact values from mapped statements"
+        )
 
-        # 3. Determine primary period
+        # Determine primary period
         self._determine_primary_period()
 
         total_concepts = len(self._value_index)
@@ -147,76 +133,6 @@ class FactValueLookup:
         )
 
         return total_concepts
-
-    def _load_from_parsed(self, parsed_entry: ParsedFilingEntry) -> int:
-        """Load values from parsed.json."""
-        count = 0
-
-        try:
-            parsed = self._parsed_reader.read_parsed_filing(parsed_entry)
-            if not parsed:
-                return 0
-
-            # Track periods
-            for ctx in parsed.contexts.values():
-                if ctx.period_end:
-                    if ctx.period_end not in self._available_periods:
-                        self._available_periods.append(ctx.period_end)
-
-            # Process facts
-            for fact in parsed.facts:
-                if self._add_fact_from_parsed(fact, parsed):
-                    count += 1
-
-        except Exception as e:
-            self.logger.warning(f"Error loading from parsed.json: {e}")
-
-        return count
-
-    def _add_fact_from_parsed(
-        self,
-        fact: ParsedFact,
-        parsed: ParsedFiling
-    ) -> bool:
-        """Add a single fact from parsed.json."""
-        # Get numeric value
-        value = self._parse_numeric_value(fact.value)
-        if value is None:
-            return False
-
-        # Get period info from context
-        period_end = fact.period_end
-        period_start = fact.period_start
-        dimensions = fact.dimensions or {}
-
-        if fact.context_ref and not period_end:
-            ctx = parsed.contexts.get(fact.context_ref)
-            if ctx:
-                period_end = ctx.period_end
-                period_start = ctx.period_start
-                if not dimensions:
-                    dimensions = ctx.dimensions or {}
-
-        # Determine if primary (no dimensional qualifiers)
-        is_primary = len(dimensions) == 0
-
-        fact_value = FactValue(
-            concept=fact.concept,
-            value=value,
-            period_end=period_end,
-            period_start=period_start,
-            dimensions=dimensions,
-            unit=fact.unit,
-            source='parsed',
-            is_primary=is_primary,
-        )
-
-        # Add to index
-        if fact.concept not in self._value_index:
-            self._value_index[fact.concept] = []
-        self._value_index[fact.concept].append(fact_value)
-
-        return True
 
     def _load_from_mapped(self, mapped_entry: MappedFilingEntry) -> int:
         """Load values from mapped statements."""
@@ -272,7 +188,7 @@ class FactValueLookup:
         if fact.period_end and fact.period_end not in self._available_periods:
             self._available_periods.append(fact.period_end)
 
-        # Add to index (mapped values supplement parsed)
+        # Add to index
         if fact.concept not in self._value_index:
             self._value_index[fact.concept] = []
 
@@ -420,8 +336,8 @@ class FactValueLookup:
         Apply mathematical corrections from the MIU.
 
         Overrides values in the index for concepts where the
-        Mathematical Integrity Unit detected discrepancies
-        (e.g., wrong sign, wrong scale).
+        Mathematical Integrity Unit detected sign discrepancies
+        between iXBRL source and mapped statement values.
 
         Only corrects the primary-period, primary-context value
         for each concept. Does not touch dimensional or
@@ -493,15 +409,7 @@ class FactValueLookup:
         return corrected
 
     def get_all_values(self, concept: str) -> List[FactValue]:
-        """
-        Get all values for a concept.
-
-        Args:
-            concept: Concept QName
-
-        Returns:
-            List of FactValue objects
-        """
+        """Get all values for a concept."""
         return self._value_index.get(concept, [])
 
     def get_primary_period(self) -> Optional[str]:
