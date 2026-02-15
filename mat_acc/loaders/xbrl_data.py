@@ -24,7 +24,7 @@ from typing import Optional
 
 from .constants import (
     get_form_variations,
-    normalize_name,
+    names_match_flexible,
     MAX_DIRECTORY_DEPTH,
 )
 
@@ -211,18 +211,14 @@ class XBRLDataLoader:
         company: str
     ) -> Optional[Path]:
         """Find company directory by searching recursively."""
-        company_normalized = normalize_name(company)
-
         if search_base.exists():
             for item in search_base.iterdir():
                 if item.is_dir():
-                    item_normalized = normalize_name(item.name)
-                    if item_normalized == company_normalized or company.lower() in item.name.lower():
+                    if names_match_flexible(company, item.name):
                         return item
 
         for item in self._recursive_discover_dirs(search_base, 0, 5):
-            item_normalized = normalize_name(item.name)
-            if item_normalized == company_normalized or company.lower() in item.name.lower():
+            if names_match_flexible(company, item.name):
                 return item
 
         return None
