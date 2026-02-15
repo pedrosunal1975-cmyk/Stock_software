@@ -34,8 +34,8 @@ RATIO_BOUNDS = [
     ('interest_expense', 'long_term_debt', 0.001, 0.30),
     # depreciation should be meaningful vs total_assets
     ('depreciation_amortization', 'total_assets', 0.001, 0.50),
-    # operating_income should be bounded vs revenue
-    ('operating_income', 'revenue', 0.001, 2.0),
+    # operating_income vs revenue (generous: losses can exceed rev)
+    ('operating_income', 'revenue', 0.001, 5.0),
     # net_income magnitude vs revenue (generous: losses can exceed)
     ('net_income', 'revenue', 0.0001, 5.0),
     # income_tax vs income_before_tax (0% to 200% for loss years)
@@ -46,6 +46,11 @@ RATIO_BOUNDS = [
 ]
 
 # Subset rules: component X must be <= component Y
+# ONLY include relationships that are ALWAYS true regardless of
+# profitability or capital structure. Excluded:
+#   COGS vs revenue: negative gross margin is legitimate
+#   operating_income vs revenue: operating losses can exceed revenue
+#   total_liabilities vs total_assets: negative equity is real
 SUBSET_RULES = [
     ('current_assets', 'total_assets'),
     ('current_liabilities', 'total_liabilities'),
@@ -56,10 +61,6 @@ SUBSET_RULES = [
     ('long_term_debt', 'total_liabilities'),
     ('short_term_debt', 'current_liabilities'),
     ('gross_profit', 'revenue'),
-    ('cost_of_goods_sold', 'revenue'),
-    ('operating_income', 'revenue'),
-    ('total_equity', 'total_assets'),
-    ('total_liabilities', 'total_assets'),
     ('interest_expense', 'total_liabilities'),
     ('income_tax_expense', 'revenue'),
 ]
