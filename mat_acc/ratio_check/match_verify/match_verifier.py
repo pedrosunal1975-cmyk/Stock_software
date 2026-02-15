@@ -52,9 +52,7 @@ class MatchVerifier:
         if not all_flags:
             self.logger.info("PMFV: all matches verified OK")
             return matches
-        self.logger.info(
-            f"PMFV: {len(all_flags)} matches flagged for review"
-        )
+        self.logger.info(f"PMFV: {len(all_flags)} flagged for review")
         match_lookup = {m.component_name: m for m in matches}
         changed = self._promote_alternatives(
             all_flags, match_lookup, resolution,
@@ -62,11 +60,9 @@ class MatchVerifier:
         )
         if changed:
             self._recheck_plausibility(matches, changed)
-        count = len(self._corrections)
-        self.logger.info(
-            f"PMFV: {count} corrections applied"
-            if count else "PMFV: no corrections needed"
-        )
+        n = len(self._corrections)
+        msg = f"PMFV: {n} corrections applied" if n else "PMFV: no corrections needed"
+        self.logger.info(msg)
         return matches
 
     def get_corrections(self) -> list[dict]:
@@ -184,8 +180,11 @@ class MatchVerifier:
                 concept_index.find_by_local_name(pattern)
             )
         candidates.discard(old)
+        ranked = self._rank_fallback_candidates(
+            candidates, value_lookup,
+        )
         tried = 0
-        for qname in sorted(candidates):
+        for qname, _score in ranked:
             if tried >= MAX_FALLBACK:
                 break
             tried += 1
@@ -199,6 +198,16 @@ class MatchVerifier:
             f"(checked {tried} fallback candidates)"
         )
         return False
+
+    def _rank_fallback_candidates(self, candidates, value_lookup):
+        """Rank fallback candidates: concepts with values first."""
+        scored = []
+        for qname in candidates:
+            val = value_lookup.get_value(qname)
+            has_value = 1 if val is not None else 0
+            scored.append((qname, has_value))
+        scored.sort(key=lambda x: (-x[1], x[0]))
+        return scored
 
     def _check_and_promote(
         self, comp_id, current, qname, score,
@@ -238,18 +247,17 @@ class MatchVerifier:
                 concept.get_label('standard')
                 or concept.get_label('taxonomy')
             )
-        old_short = (old_concept or '?').split(':')[-1]
-        new_short = (new_qname or '?').split(':')[-1]
         self._corrections.append({
             'component': match.component_name,
             'old_concept': old_concept, 'old_value': old_value,
             'new_concept': new_qname, 'new_value': new_value,
         })
-        fmt_old = f"{old_value:,.0f}" if old_value else '?'
-        fmt_new = f"{new_value:,.0f}"
+        old_s = (old_concept or '?').split(':')[-1]
+        new_s = (new_qname or '?').split(':')[-1]
+        fmt_o = f"{old_value:,.0f}" if old_value else '?'
         self.logger.info(
             f"  PMFV PROMOTED: {match.component_name}: "
-            f"{old_short} ({fmt_old}) -> {new_short} ({fmt_new})"
+            f"{old_s} ({fmt_o}) -> {new_s} ({new_value:,.0f})"
         )
 
     def _recheck_plausibility(self, matches, changed):
@@ -278,18 +286,15 @@ class MatchVerifier:
             for m in match_lookup.values() if m.matched
         }
 
-    def _get_local_name(self, concept_qname, concept_index):
+    def _get_local_name(self, qname, concept_index):
         """Extract local name from a concept qname."""
-        concept = concept_index.get_concept(concept_qname)
+        concept = concept_index.get_concept(qname)
         if concept and concept.local_name:
             return concept.local_name
-        if ':' in concept_qname:
-            return concept_qname.split(':')[-1]
-        if '_' in concept_qname:
-            parts = concept_qname.split('_', 1)
-            if len(parts) == 2:
-                return parts[1]
-        return concept_qname
+        if ':' in qname:
+            return qname.split(':')[-1]
+        parts = qname.split('_', 1)
+        return parts[1] if len(parts) == 2 else qname
 
 
 __all__ = ['MatchVerifier']

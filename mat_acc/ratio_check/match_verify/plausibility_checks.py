@@ -32,6 +32,17 @@ RATIO_BOUNDS = [
     # interest_expense should be plausible vs long_term_debt
     # Implied rate: 0.1% to 30% (very generous bounds)
     ('interest_expense', 'long_term_debt', 0.001, 0.30),
+    # depreciation should be meaningful vs total_assets
+    ('depreciation_amortization', 'total_assets', 0.001, 0.50),
+    # operating_income should be bounded vs revenue
+    ('operating_income', 'revenue', 0.001, 2.0),
+    # net_income magnitude vs revenue (generous: losses can exceed)
+    ('net_income', 'revenue', 0.0001, 5.0),
+    # income_tax vs income_before_tax (0% to 200% for loss years)
+    ('income_tax_expense', 'income_before_tax', 0.0, 2.0),
+    # EPS sanity: vs net_income/shares (checked via magnitude)
+    # earnings_per_share should be tiny vs revenue
+    ('earnings_per_share', 'revenue', 0.0, 0.01),
 ]
 
 # Subset rules: component X must be <= component Y
@@ -41,6 +52,16 @@ SUBSET_RULES = [
     ('cash_and_equivalents', 'current_assets'),
     ('inventory', 'current_assets'),
     ('accounts_receivable', 'current_assets'),
+    ('accounts_payable', 'current_liabilities'),
+    ('long_term_debt', 'total_liabilities'),
+    ('short_term_debt', 'current_liabilities'),
+    ('gross_profit', 'revenue'),
+    ('cost_of_goods_sold', 'revenue'),
+    ('operating_income', 'revenue'),
+    ('total_equity', 'total_assets'),
+    ('total_liabilities', 'total_assets'),
+    ('interest_expense', 'total_liabilities'),
+    ('income_tax_expense', 'revenue'),
 ]
 
 # Sign expectations: some components should normally have

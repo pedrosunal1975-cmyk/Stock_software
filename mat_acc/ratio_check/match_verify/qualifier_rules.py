@@ -109,11 +109,10 @@ def check_qualifier(
         if not result['valid']:
             return result
 
-    # Check supplemental markers
-    if component_id in CASH_FLOW_COMPONENTS:
-        result = _check_supplemental(component_id, name_lower)
-        if not result['valid']:
-            return result
+    # Check supplemental markers (all components, not just cash flow)
+    result = _check_supplemental(component_id, name_lower)
+    if not result['valid']:
+        return result
 
     # Check period type alignment
     period_result = _check_period_alignment(
