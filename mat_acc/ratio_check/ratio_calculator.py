@@ -6,6 +6,7 @@ Orchestrates the matching engine and ratio calculation pipeline.
 Delegates to specialized modules:
 - ratio_models: Data classes
 - value_populator: 4-pass value population
+- match_verify: Post-Match Financial Verification (PMFV)
 - ratio_engine: Ratio computation
 - ratio_definitions: Standard ratio list
 - industry_detector: Auto-detect industry from filing concepts
@@ -27,6 +28,7 @@ from .ratio_engine import calculate_ratios
 from .ratio_definitions import STANDARD_RATIOS
 from .industry_detector import IndustryDetector
 from .industry_registry import IndustryRegistry
+from .match_verify import MatchVerifier
 
 
 logger = get_process_logger('ratio_calculator')
@@ -68,6 +70,7 @@ class RatioCalculator:
         self._last_resolution = None
         self._last_concept_index: Optional[ConceptIndex] = None
         self._value_populator = ValuePopulator()
+        self._match_verifier = MatchVerifier()
         self._industry_detector = IndustryDetector()
         self._industry_registry = IndustryRegistry()
         self._detected_industry: str = 'general'
@@ -120,6 +123,12 @@ class RatioCalculator:
             matched = sum(1 for m in component_matches if m.matched)
             self.logger.info(
                 f"Populated values for {valued} of {matched} matched"
+            )
+
+            # Post-Match Financial Verification (PMFV)
+            self._match_verifier.verify(
+                component_matches, self._last_resolution,
+                concept_index, value_lookup,
             )
         else:
             self.logger.warning("No value_lookup - ratios will lack values")
@@ -296,9 +305,27 @@ class RatioCalculator:
             print(f"  Industry: {industry_name}")
         print("=" * 70)
 
+        self._display_pmfv_corrections()
         self._display_components(result.component_matches)
         self._display_ratios(result.ratios)
         self._display_summary(result.summary)
+
+    def _display_pmfv_corrections(self) -> None:
+        """Display PMFV corrections if any were made."""
+        corrections = self._match_verifier.get_corrections()
+        if not corrections:
+            return
+        print("\n  POST-MATCH VERIFICATION:")
+        print("-" * 70)
+        for c in corrections:
+            old_name = c['old_concept'].split(':')[-1][:30]
+            new_name = c['new_concept'].split(':')[-1][:30]
+            old_v = f"{c['old_value']:,.0f}" if c['old_value'] else '?'
+            new_v = f"{c['new_value']:,.0f}" if c['new_value'] else '?'
+            print(
+                f"    [FIX] {c['component']:22s} "
+                f"{old_name} ({old_v}) -> {new_name} ({new_v})"
+            )
 
     def _display_components(self, matches: List[ComponentMatch]) -> None:
         """Display component matching section."""

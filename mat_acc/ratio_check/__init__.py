@@ -14,6 +14,7 @@ Architecture:
     ratio_engine.py       - Ratio computation from matched components
     value_populator.py    - 4-pass value population pipeline
     fact_value_lookup.py  - Retrieves actual values from source files
+    match_verify/         - Post-Match Financial Verification (PMFV)
     math_verify/          - Mathematical Integrity Unit (sign, scale, identity)
     database_checker.py   - Check/populate HierarchyNode data
     data_preparer.py      - Run enrichment scripts if needed
@@ -32,6 +33,7 @@ from .ratio_models import ComponentMatch, RatioResult, AnalysisResult
 from .ratio_calculator import RatioCalculator
 from .industry_detector import IndustryDetector
 from .industry_registry import IndustryRegistry
+from .match_verify import MatchVerifier
 from .ratio_check import RatioCheckOrchestrator, main
 from .debug_reporter import DebugReporter, ComponentDebugInfo, ProcessState
 from .fact_value_lookup import FactValueLookup, FactValue
@@ -80,6 +82,8 @@ __all__ = [
     # Industry detection
     'IndustryDetector',
     'IndustryRegistry',
+    # Match verification (PMFV)
+    'MatchVerifier',
     # Database operations
     'DatabaseChecker',
     # Data preparation
