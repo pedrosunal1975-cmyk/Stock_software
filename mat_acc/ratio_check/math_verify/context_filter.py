@@ -171,9 +171,10 @@ class ContextFilter:
         """
         Determine the current reporting period from primary contexts.
 
-        Strategy: Find the latest instant date and latest duration
-        end date among primary contexts. The longest duration ending
-        on the latest date is the annual period.
+        Strategy:
+        1. Duration end: latest end date (always reliable for annual filings)
+        2. Instant date: latest date that is <= duration end
+           (filters out post-fiscal-year shares outstanding dates)
         """
         instant_dates = []
         duration_ends = []
@@ -186,54 +187,58 @@ class ContextFilter:
             elif ctx.period_type == 'duration':
                 duration_ends.append(ctx.end_date)
 
-        # Latest instant = balance sheet date
-        # Apply post-filing heuristic (shares outstanding may have later date)
-        if instant_dates:
-            sorted_dates = sorted(set(instant_dates), reverse=True)
-            self._primary_instant = self._pick_reporting_date(sorted_dates)
-
-        # Latest duration end = income statement period end
-        # No post-filing heuristic: duration gaps are naturally large (annual)
+        # Latest duration end = income statement period end (reliable anchor)
         if duration_ends:
             sorted_ends = sorted(set(duration_ends), reverse=True)
             self._primary_duration_end = sorted_ends[0]
+
+        # Latest instant = balance sheet date
+        # Use duration end as anchor to filter post-fiscal-year dates
+        if instant_dates:
+            sorted_dates = sorted(set(instant_dates), reverse=True)
+            self._primary_instant = self._pick_reporting_date(
+                sorted_dates, self._primary_duration_end,
+            )
 
         self.logger.info(
             f"Primary periods: instant={self._primary_instant}, "
             f"duration_end={self._primary_duration_end}"
         )
 
-    def _pick_reporting_date(self, sorted_dates: list[str]) -> str:
+    def _pick_reporting_date(
+        self, sorted_dates: list[str], duration_end: str,
+    ) -> str:
         """
-        Pick the actual reporting date from sorted dates.
+        Pick the balance sheet date from sorted instant dates.
 
-        Some filings include post-filing dates (e.g., shares outstanding
-        as of a date after fiscal year-end). We want the fiscal year-end.
-        If the gap between top two dates is large (>45 days), the latest
-        is likely a post-filing date - use the second-latest instead.
+        Uses the duration end date as anchor. Any instant date after
+        the duration end is a post-fiscal-year date (e.g., shares
+        outstanding as of a date between fiscal year-end and filing).
+
+        Args:
+            sorted_dates: Instant dates sorted descending
+            duration_end: Latest duration end date (fiscal year-end)
+
+        Returns:
+            Best instant date for balance sheet facts
         """
         if not sorted_dates:
             return ''
         if len(sorted_dates) == 1:
             return sorted_dates[0]
 
-        try:
-            latest = sorted_dates[0]
-            second = sorted_dates[1]
-            # Parse ISO dates: YYYY-MM-DD
-            ly, lm, ld = int(latest[:4]), int(latest[5:7]), int(latest[8:10])
-            sy, sm, sd = int(second[:4]), int(second[5:7]), int(second[8:10])
-            # Approximate day difference
-            gap = (ly * 365 + lm * 30 + ld) - (sy * 365 + sm * 30 + sd)
-            if gap > 45:
-                self.logger.info(
-                    f"Skipping post-filing date {latest}, "
-                    f"using fiscal year-end {second}"
-                )
-                return second
-        except (ValueError, IndexError):
-            pass
+        # If we have a duration end, filter out post-fiscal dates
+        if duration_end:
+            fiscal = [d for d in sorted_dates if d <= duration_end]
+            if fiscal:
+                if fiscal[0] != sorted_dates[0]:
+                    self.logger.info(
+                        f"Skipping post-filing date {sorted_dates[0]}, "
+                        f"using fiscal year-end {fiscal[0]}"
+                    )
+                return fiscal[0]
 
+        # Fallback: no duration anchor, return latest
         return sorted_dates[0]
 
 
