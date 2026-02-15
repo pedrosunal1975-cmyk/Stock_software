@@ -67,6 +67,7 @@ class RatioCalculator:
         self.logger = get_process_logger('ratio_calculator')
         self.diagnostics = diagnostics
         self._coordinator: Optional[MatchingCoordinator] = None
+        self._coordinator_market: Optional[str] = None
         self._last_resolution = None
         self._last_concept_index: Optional[ConceptIndex] = None
         self._value_populator = ValuePopulator()
@@ -75,12 +76,19 @@ class RatioCalculator:
         self._industry_registry = IndustryRegistry()
         self._detected_industry: str = 'general'
 
-    def _get_coordinator(self) -> MatchingCoordinator:
-        """Get or create matching coordinator."""
-        if self._coordinator is None:
+    def _get_coordinator(
+        self, market: Optional[str] = None
+    ) -> MatchingCoordinator:
+        """Get or create matching coordinator for market."""
+        if (
+            self._coordinator is None
+            or market != self._coordinator_market
+        ):
             self._coordinator = MatchingCoordinator(
-                diagnostics=self.diagnostics
+                diagnostics=self.diagnostics,
+                market=market,
             )
+            self._coordinator_market = market
         return self._coordinator
 
     def analyze(
@@ -106,6 +114,9 @@ class RatioCalculator:
             form=selection.form,
             date=selection.date,
         )
+
+        # Set market for dictionary overlay selection
+        self._current_market = selection.market
 
         # Detect industry from filing concepts
         self._detected_industry = self._industry_detector.detect(
@@ -160,7 +171,8 @@ class RatioCalculator:
         Returns:
             List of ComponentMatch results
         """
-        coordinator = self._get_coordinator()
+        market = getattr(self, '_current_market', None)
+        coordinator = self._get_coordinator(market)
         matches = []
 
         components = coordinator.get_all_components()

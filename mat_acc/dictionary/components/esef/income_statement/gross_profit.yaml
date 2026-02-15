@@ -1,0 +1,11 @@
+# ESEF overlay: gross_profit
+# Only fields that differ from base definition
+component_id: gross_profit
+matching_rules:
+  local_name_rules:
+    - patterns:
+        - "GrossProfit"
+      match_type: exact
+      weight: 15
+scoring:
+  min_score: 15

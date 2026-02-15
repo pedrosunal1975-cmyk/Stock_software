@@ -1,0 +1,24 @@
+# ESEF overlay: accounts_receivable
+# Only fields that differ from base definition
+component_id: accounts_receivable
+matching_rules:
+  local_name_rules:
+    - patterns:
+        - "TradeAndOtherCurrentReceivables"
+        - "TradeReceivables"
+      match_type: exact
+      weight: 15
+    - patterns:
+        - "TradeReceivable"
+        - "CurrentTradeReceivables"
+      match_type: contains
+      weight: 10
+  label_rules:
+    - patterns:
+        - "Trade and Other Current Receivables"
+        - "Trade Receivables"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+scoring:
+  min_score: 15

@@ -1,0 +1,11 @@
+# ESEF overlay: current_assets
+# Only fields that differ from base definition
+component_id: current_assets
+matching_rules:
+  local_name_rules:
+    - patterns:
+        - "CurrentAssets"
+      match_type: exact
+      weight: 15
+scoring:
+  min_score: 18

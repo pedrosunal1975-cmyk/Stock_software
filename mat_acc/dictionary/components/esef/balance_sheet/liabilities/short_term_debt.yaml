@@ -1,0 +1,17 @@
+# ESEF overlay: short_term_debt
+# Only fields that differ from base definition
+component_id: short_term_debt
+matching_rules:
+  local_name_rules:
+    - patterns:
+        - "ShorttermBorrowings"
+        - "CurrentBorrowings"
+      match_type: exact
+      weight: 15
+    - patterns:
+        - "ShorttermBorrowing"
+        - "CurrentBorrowing"
+      match_type: contains
+      weight: 10
+scoring:
+  min_score: 15

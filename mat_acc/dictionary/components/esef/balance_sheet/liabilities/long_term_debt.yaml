@@ -1,0 +1,17 @@
+# ESEF overlay: long_term_debt
+# Only fields that differ from base definition
+component_id: long_term_debt
+matching_rules:
+  local_name_rules:
+    - patterns:
+        - "LongtermBorrowings"
+        - "NoncurrentBorrowings"
+      match_type: exact
+      weight: 15
+    - patterns:
+        - "LongtermBorrowing"
+        - "NoncurrentBorrowing"
+      match_type: contains
+      weight: 10
+scoring:
+  min_score: 15

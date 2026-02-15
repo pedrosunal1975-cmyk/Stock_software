@@ -1,0 +1,23 @@
+# ESEF overlay: income_tax_expense
+# Only fields that differ from base definition
+component_id: income_tax_expense
+matching_rules:
+  local_name_rules:
+    - patterns:
+        - "IncomeTaxExpenseContinuingOperations"
+      match_type: exact
+      weight: 15
+    - patterns:
+        - "IncomeTaxExpense"
+        - "TaxExpense"
+      match_type: contains
+      weight: 10
+  label_rules:
+    - patterns:
+        - "Income Tax Expense"
+        - "Tax Expense"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+scoring:
+  min_score: 15

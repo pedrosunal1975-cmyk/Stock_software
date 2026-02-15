@@ -56,22 +56,34 @@ class MatchingCoordinator:
         # Returns: "us-gaap:AssetsCurrent"
     """
 
-    def __init__(self, dictionary_path: Optional[Path] = None, diagnostics: bool = True):
+    def __init__(
+        self,
+        dictionary_path: Optional[Path] = None,
+        diagnostics: bool = True,
+        market: Optional[str] = None,
+    ):
         """
         Initialize matching coordinator.
 
         Args:
             dictionary_path: Path to dictionary directory.
                            Defaults to mat_acc_files/dictionary/
-            diagnostics: Enable detailed diagnostic logging (default True)
+            diagnostics: Enable detailed diagnostic logging
+            market: Market identifier for dictionary overlays
+                   (e.g. 'sec', 'esef'). None uses base only.
         """
         self.logger = get_process_logger('matcher.coordinator')
         self.diagnostics = diagnostics
-        self._match_diagnostics: dict[str, dict] = {}  # Store diagnostics per component
+        self._match_diagnostics: dict[str, dict] = {}
 
-        # Load component definitions
+        # Load component definitions (market-aware)
         self.component_loader = ComponentLoader(dictionary_path)
-        self.components = self.component_loader.load_all()
+        if market:
+            self.components = self.component_loader.load_for_market(
+                market
+            )
+        else:
+            self.components = self.component_loader.load_all()
 
         self.logger.info(
             f"Loaded {len(self.components)} component definitions"

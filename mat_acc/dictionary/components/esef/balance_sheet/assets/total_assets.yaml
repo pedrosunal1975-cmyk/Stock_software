@@ -1,0 +1,16 @@
+# ESEF overlay: total_assets
+# Only fields that differ from base definition
+component_id: total_assets
+matching_rules:
+  local_name_rules:
+    - patterns:
+        - "Assets"
+        - "NoncurrentAssetsAndCurrentAssets"
+      match_type: exact
+      weight: 15
+    - patterns:
+        - "TotalAssets"
+      match_type: contains
+      weight: 10
+scoring:
+  min_score: 15

@@ -230,15 +230,22 @@ class XBRLDataLoader:
         date: str = None
     ) -> Optional[Path]:
         """Find filing directory within company directory."""
+        # For 'ALL' form type (ESEF), skip form-based dir search
+        is_all_form = any(
+            v.lower() == 'all' for v in form_variations
+        )
+
         form_dirs = []
-
-        for dir_path in self._recursive_discover_dirs(company_dir, 0, 10):
-            dir_name_lower = dir_path.name.lower()
-
-            for form_var in form_variations:
-                if form_var.lower() in dir_name_lower or dir_name_lower in form_var.lower():
-                    form_dirs.append(dir_path)
-                    break
+        if not is_all_form:
+            for dir_path in self._recursive_discover_dirs(
+                company_dir, 0, 10
+            ):
+                dir_name_lower = dir_path.name.lower()
+                for form_var in form_variations:
+                    fv = form_var.lower()
+                    if fv in dir_name_lower or dir_name_lower in fv:
+                        form_dirs.append(dir_path)
+                        break
 
         if not form_dirs:
             return self._find_latest_filing_dir(company_dir, date)
@@ -287,12 +294,17 @@ class XBRLDataLoader:
         return candidates[0]
 
     def _is_filing_directory(self, directory: Path) -> bool:
-        """Check if a directory appears to be an XBRL filing directory."""
+        """Check if a directory appears to be an XBRL filing directory.
+
+        Recognises both SEC filings (.xsd + linkbase XML) and
+        ESEF filings (.xhtml inline XBRL).
+        """
         if not directory.is_dir():
             return False
 
         has_xsd = False
         has_linkbase = False
+        has_ixbrl = False
 
         try:
             for file_path in directory.iterdir():
@@ -303,10 +315,16 @@ class XBRLDataLoader:
 
                 if name_lower.endswith('.xsd'):
                     has_xsd = True
-                elif '_cal.xml' in name_lower or '_pre.xml' in name_lower or '_def.xml' in name_lower:
+                elif (
+                    '_cal.xml' in name_lower
+                    or '_pre.xml' in name_lower
+                    or '_def.xml' in name_lower
+                ):
                     has_linkbase = True
+                elif name_lower.endswith('.xhtml'):
+                    has_ixbrl = True
 
-                if has_xsd or has_linkbase:
+                if has_xsd or has_linkbase or has_ixbrl:
                     return True
 
         except PermissionError:

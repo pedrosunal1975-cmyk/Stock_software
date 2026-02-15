@@ -1,0 +1,16 @@
+# ESEF overlay: current_liabilities
+# Only fields that differ from base definition
+component_id: current_liabilities
+matching_rules:
+  local_name_rules:
+    - patterns:
+        - "CurrentLiabilities"
+      match_type: exact
+      weight: 15
+    - patterns:
+        - "CurrentLiabilities"
+        - "LiabilitiesCurrent"
+      match_type: contains
+      weight: 10
+scoring:
+  min_score: 15

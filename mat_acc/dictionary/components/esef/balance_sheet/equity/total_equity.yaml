@@ -1,0 +1,17 @@
+# ESEF overlay: total_equity
+# Only fields that differ from base definition
+component_id: total_equity
+matching_rules:
+  local_name_rules:
+    - patterns:
+        - "Equity"
+        - "EquityAttributableToOwnersOfParent"
+      match_type: exact
+      weight: 15
+    - patterns:
+        - "Equity"
+        - "ShareholdersEquity"
+      match_type: contains
+      weight: 10
+scoring:
+  min_score: 15

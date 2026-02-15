@@ -1,0 +1,26 @@
+# ESEF overlay: shares_outstanding
+# Only fields that differ from base definition
+component_id: shares_outstanding
+matching_rules:
+  local_name_rules:
+    - patterns:
+        - "OrdinarySharesIssued"
+        - "NumberOfSharesIssued"
+        - "WeightedAverageShares"
+      match_type: exact
+      weight: 15
+    - patterns:
+        - "SharesIssued"
+        - "OrdinaryShares"
+        - "SharesOutstanding"
+      match_type: contains
+      weight: 10
+  label_rules:
+    - patterns:
+        - "Ordinary Shares Issued"
+        - "Number of Shares Issued"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+scoring:
+  min_score: 15

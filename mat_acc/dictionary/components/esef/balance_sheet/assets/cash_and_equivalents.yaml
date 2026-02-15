@@ -1,0 +1,16 @@
+# ESEF overlay: cash_and_equivalents
+# Only fields that differ from base definition
+component_id: cash_and_equivalents
+matching_rules:
+  local_name_rules:
+    - patterns:
+        - "CashAndCashEquivalents"
+      match_type: exact
+      weight: 15
+    - patterns:
+        - "CashAndBankBalances"
+        - "CashAndCashEquivalent"
+      match_type: contains
+      weight: 10
+scoring:
+  min_score: 15

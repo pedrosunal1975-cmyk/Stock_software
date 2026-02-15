@@ -1,0 +1,24 @@
+# ESEF overlay: earnings_per_share
+# Only fields that differ from base definition
+component_id: earnings_per_share
+matching_rules:
+  local_name_rules:
+    - patterns:
+        - "BasicEarningsLossPerShare"
+        - "DilutedEarningsLossPerShare"
+      match_type: exact
+      weight: 15
+    - patterns:
+        - "EarningsPerShare"
+        - "EarningsLossPerShare"
+      match_type: contains
+      weight: 10
+  label_rules:
+    - patterns:
+        - "Basic Earnings Per Share"
+        - "Basic Earnings (Loss) Per Share"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+scoring:
+  min_score: 15

@@ -1,0 +1,16 @@
+# ESEF overlay: operating_cash_flow
+# Only fields that differ from base definition
+component_id: operating_cash_flow
+matching_rules:
+  local_name_rules:
+    - patterns:
+        - "CashFlowsFromUsedInOperatingActivities"
+      match_type: exact
+      weight: 15
+    - patterns:
+        - "CashFlowsFromOperating"
+        - "OperatingActivities"
+      match_type: contains
+      weight: 10
+scoring:
+  min_score: 15

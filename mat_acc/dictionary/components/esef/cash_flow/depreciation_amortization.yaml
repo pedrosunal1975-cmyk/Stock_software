@@ -1,0 +1,17 @@
+# ESEF overlay: depreciation_amortization
+# Only fields that differ from base definition
+component_id: depreciation_amortization
+matching_rules:
+  local_name_rules:
+    - patterns:
+        - "DepreciationAndAmortisationExpense"
+        - "AdjustmentsForDepreciationAndAmortisationExpense"
+      match_type: exact
+      weight: 15
+    - patterns:
+        - "DepreciationAndAmortisation"
+        - "DepreciationExpense"
+      match_type: contains
+      weight: 10
+scoring:
+  min_score: 15

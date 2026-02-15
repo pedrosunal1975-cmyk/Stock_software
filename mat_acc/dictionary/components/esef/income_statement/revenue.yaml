@@ -1,0 +1,19 @@
+# ESEF overlay: revenue
+# Only fields that differ from base definition
+component_id: revenue
+matching_rules:
+  local_name_rules:
+    - patterns:
+        - "Revenue"
+        - "Turnover"
+      match_type: exact
+      weight: 15
+  label_rules:
+    - patterns:
+        - "Revenue"
+        - "Turnover"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+scoring:
+  min_score: 15

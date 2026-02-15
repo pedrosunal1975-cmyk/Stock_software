@@ -1,0 +1,16 @@
+# ESEF overlay: inventory
+# Only fields that differ from base definition
+component_id: inventory
+matching_rules:
+  local_name_rules:
+    - patterns:
+        - "Inventories"
+        - "CurrentInventories"
+      match_type: exact
+      weight: 15
+    - patterns:
+        - "Inventories"
+      match_type: contains
+      weight: 10
+scoring:
+  min_score: 15

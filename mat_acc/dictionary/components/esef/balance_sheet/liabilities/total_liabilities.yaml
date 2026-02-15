@@ -1,0 +1,22 @@
+# ESEF overlay: total_liabilities
+# Only fields that differ from base definition
+component_id: total_liabilities
+matching_rules:
+  local_name_rules:
+    - patterns:
+        - "Liabilities"
+      match_type: exact
+      weight: 15
+    - patterns:
+        - "TotalLiabilities"
+      match_type: contains
+      weight: 10
+scoring:
+  min_score: 15
+  reject_if:
+    - condition: "Is net assets"
+      pattern: "name~netassets"
+    - condition: "Is insurance contracts"
+      pattern: "name~insurancecontracts"
+    - condition: "Is current assets liabilities"
+      pattern: "name~currentassetsliabilities"
