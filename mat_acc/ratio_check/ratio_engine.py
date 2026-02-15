@@ -20,22 +20,28 @@ logger = get_process_logger('ratio_engine')
 
 def calculate_ratios(
     component_matches: List[ComponentMatch],
+    ratio_list: Optional[List[Dict[str, Any]]] = None,
 ) -> List[RatioResult]:
     """
-    Calculate all standard financial ratios from matched components.
+    Calculate financial ratios from matched components.
 
     Args:
         component_matches: List of matched components with values
+        ratio_list: Optional filtered list of ratio definitions.
+                    If None, uses STANDARD_RATIOS (backward compatible).
 
     Returns:
         List of RatioResult
     """
+    if ratio_list is None:
+        ratio_list = STANDARD_RATIOS
+
     matched_lookup: Dict[str, ComponentMatch] = {
         m.component_name: m for m in component_matches if m.matched
     }
 
     ratios = []
-    for ratio_def in STANDARD_RATIOS:
+    for ratio_def in ratio_list:
         ratio = _calculate_single_ratio(ratio_def, matched_lookup)
         ratios.append(ratio)
 

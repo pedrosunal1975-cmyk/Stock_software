@@ -30,6 +30,8 @@ from .filing_menu import FilingMenu, FilingSelection
 from .concept_builder import ConceptBuilder
 from .ratio_models import ComponentMatch, RatioResult, AnalysisResult
 from .ratio_calculator import RatioCalculator
+from .industry_detector import IndustryDetector
+from .industry_registry import IndustryRegistry
 from .ratio_check import RatioCheckOrchestrator, main
 from .debug_reporter import DebugReporter, ComponentDebugInfo, ProcessState
 from .fact_value_lookup import FactValueLookup, FactValue
@@ -75,6 +77,9 @@ __all__ = [
     'SignCheck',
     'IdentityValidator',
     'IdentityCheck',
+    # Industry detection
+    'IndustryDetector',
+    'IndustryRegistry',
     # Database operations
     'DatabaseChecker',
     # Data preparation

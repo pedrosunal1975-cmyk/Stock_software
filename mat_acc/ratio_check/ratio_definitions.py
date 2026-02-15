@@ -5,6 +5,9 @@ Ratio Definitions
 Standard financial ratio definitions used for analysis.
 Each ratio specifies numerator/denominator component IDs
 that match dictionary/components/ definitions.
+
+The ratio_id field enables filtering by the industry registry
+(skip_ratios uses these IDs).
 """
 
 # Standard financial ratios organized by category
@@ -13,6 +16,7 @@ STANDARD_RATIOS = [
     # LIQUIDITY RATIOS - Measure ability to meet short-term obligations
     # =================================================================
     {
+        'ratio_id': 'current_ratio',
         'name': 'Current Ratio',
         'category': 'liquidity',
         'formula': 'Current Assets / Current Liabilities',
@@ -20,6 +24,7 @@ STANDARD_RATIOS = [
         'denominator': 'current_liabilities',
     },
     {
+        'ratio_id': 'quick_ratio',
         'name': 'Quick Ratio',
         'category': 'liquidity',
         'formula': '(Current Assets - Inventory) / Current Liabilities',
@@ -27,6 +32,7 @@ STANDARD_RATIOS = [
         'denominator': 'current_liabilities',
     },
     {
+        'ratio_id': 'cash_ratio',
         'name': 'Cash Ratio',
         'category': 'liquidity',
         'formula': 'Cash and Equivalents / Current Liabilities',
@@ -37,6 +43,7 @@ STANDARD_RATIOS = [
     # LEVERAGE RATIOS - Measure financial leverage and debt capacity
     # =================================================================
     {
+        'ratio_id': 'debt_to_equity',
         'name': 'Debt to Equity',
         'category': 'leverage',
         'formula': 'Total Liabilities / Total Equity',
@@ -44,6 +51,7 @@ STANDARD_RATIOS = [
         'denominator': 'total_equity',
     },
     {
+        'ratio_id': 'debt_ratio',
         'name': 'Debt Ratio',
         'category': 'leverage',
         'formula': 'Total Liabilities / Total Assets',
@@ -51,6 +59,7 @@ STANDARD_RATIOS = [
         'denominator': 'total_assets',
     },
     {
+        'ratio_id': 'equity_multiplier',
         'name': 'Equity Multiplier',
         'category': 'leverage',
         'formula': 'Total Assets / Total Equity',
@@ -58,6 +67,7 @@ STANDARD_RATIOS = [
         'denominator': 'total_equity',
     },
     {
+        'ratio_id': 'interest_coverage',
         'name': 'Interest Coverage',
         'category': 'leverage',
         'formula': 'Operating Income / Interest Expense',
@@ -68,6 +78,7 @@ STANDARD_RATIOS = [
     # PROFITABILITY RATIOS - Measure ability to generate profits
     # =================================================================
     {
+        'ratio_id': 'gross_margin',
         'name': 'Gross Margin',
         'category': 'profitability',
         'formula': 'Gross Profit / Revenue',
@@ -75,6 +86,7 @@ STANDARD_RATIOS = [
         'denominator': 'revenue',
     },
     {
+        'ratio_id': 'operating_margin',
         'name': 'Operating Margin',
         'category': 'profitability',
         'formula': 'Operating Income / Revenue',
@@ -82,6 +94,7 @@ STANDARD_RATIOS = [
         'denominator': 'revenue',
     },
     {
+        'ratio_id': 'net_profit_margin',
         'name': 'Net Profit Margin',
         'category': 'profitability',
         'formula': 'Net Income / Revenue',
@@ -89,6 +102,7 @@ STANDARD_RATIOS = [
         'denominator': 'revenue',
     },
     {
+        'ratio_id': 'return_on_assets',
         'name': 'Return on Assets',
         'category': 'profitability',
         'formula': 'Net Income / Total Assets',
@@ -96,6 +110,7 @@ STANDARD_RATIOS = [
         'denominator': 'total_assets',
     },
     {
+        'ratio_id': 'return_on_equity',
         'name': 'Return on Equity',
         'category': 'profitability',
         'formula': 'Net Income / Total Equity',
@@ -103,6 +118,7 @@ STANDARD_RATIOS = [
         'denominator': 'total_equity',
     },
     {
+        'ratio_id': 'ebitda_margin',
         'name': 'EBITDA Margin',
         'category': 'profitability',
         'formula': 'EBITDA / Revenue',
@@ -113,6 +129,7 @@ STANDARD_RATIOS = [
     # EFFICIENCY RATIOS - Measure asset utilization
     # =================================================================
     {
+        'ratio_id': 'asset_turnover',
         'name': 'Asset Turnover',
         'category': 'efficiency',
         'formula': 'Revenue / Total Assets',
@@ -120,6 +137,7 @@ STANDARD_RATIOS = [
         'denominator': 'total_assets',
     },
     {
+        'ratio_id': 'inventory_turnover',
         'name': 'Inventory Turnover',
         'category': 'efficiency',
         'formula': 'Cost of Goods Sold / Inventory',
@@ -127,6 +145,7 @@ STANDARD_RATIOS = [
         'denominator': 'inventory',
     },
     {
+        'ratio_id': 'receivables_turnover',
         'name': 'Receivables Turnover',
         'category': 'efficiency',
         'formula': 'Revenue / Accounts Receivable',
@@ -134,6 +153,7 @@ STANDARD_RATIOS = [
         'denominator': 'accounts_receivable',
     },
     {
+        'ratio_id': 'payables_turnover',
         'name': 'Payables Turnover',
         'category': 'efficiency',
         'formula': 'Cost of Goods Sold / Accounts Payable',
@@ -143,4 +163,8 @@ STANDARD_RATIOS = [
 ]
 
 
-__all__ = ['STANDARD_RATIOS']
+# Lookup by ratio_id for filtering
+RATIO_BY_ID = {r['ratio_id']: r for r in STANDARD_RATIOS}
+
+
+__all__ = ['STANDARD_RATIOS', 'RATIO_BY_ID']

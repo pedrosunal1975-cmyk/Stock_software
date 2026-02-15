@@ -8,6 +8,8 @@ Delegates to specialized modules:
 - value_populator: 4-pass value population
 - ratio_engine: Ratio computation
 - ratio_definitions: Standard ratio list
+- industry_detector: Auto-detect industry from filing concepts
+- industry_registry: Industry-specific ratio model configs
 """
 
 from typing import Optional, Dict, List, Any
@@ -22,6 +24,9 @@ from .fact_value_lookup import FactValueLookup
 from .ratio_models import ComponentMatch, RatioResult, AnalysisResult
 from .value_populator import ValuePopulator
 from .ratio_engine import calculate_ratios
+from .ratio_definitions import STANDARD_RATIOS
+from .industry_detector import IndustryDetector
+from .industry_registry import IndustryRegistry
 
 
 logger = get_process_logger('ratio_calculator')
@@ -63,6 +68,9 @@ class RatioCalculator:
         self._last_resolution = None
         self._last_concept_index: Optional[ConceptIndex] = None
         self._value_populator = ValuePopulator()
+        self._industry_detector = IndustryDetector()
+        self._industry_registry = IndustryRegistry()
+        self._detected_industry: str = 'general'
 
     def _get_coordinator(self) -> MatchingCoordinator:
         """Get or create matching coordinator."""
@@ -96,6 +104,11 @@ class RatioCalculator:
             date=selection.date,
         )
 
+        # Detect industry from filing concepts
+        self._detected_industry = self._industry_detector.detect(
+            concept_index,
+        )
+
         component_matches = self.match_components(concept_index)
 
         if value_lookup:
@@ -111,10 +124,13 @@ class RatioCalculator:
         else:
             self.logger.warning("No value_lookup - ratios will lack values")
 
+        # Build filtered ratio list for this industry
+        ratio_list = self._build_ratio_list(self._detected_industry)
+
         result.component_matches = component_matches
-        result.ratios = calculate_ratios(component_matches)
+        result.ratios = calculate_ratios(component_matches, ratio_list)
         result.summary = self._build_summary(
-            component_matches, result.ratios
+            component_matches, result.ratios,
         )
 
         return result
@@ -202,6 +218,41 @@ class RatioCalculator:
 
         return match
 
+    def _build_ratio_list(self, industry: str) -> list[dict]:
+        """
+        Build filtered ratio list for the detected industry.
+
+        Takes standard ratios, removes skipped ones, adds extras.
+
+        Args:
+            industry: Detected industry type
+
+        Returns:
+            List of ratio definitions to calculate
+        """
+        skip_ids = set(
+            self._industry_registry.get_skip_ratio_ids(industry)
+        )
+        extras = self._industry_registry.get_extra_ratios(industry)
+
+        # Filter standard ratios
+        filtered = [
+            r for r in STANDARD_RATIOS
+            if r.get('ratio_id') not in skip_ids
+        ]
+
+        # Add industry-specific ratios
+        filtered.extend(extras)
+
+        skipped = len(STANDARD_RATIOS) - (len(filtered) - len(extras))
+        if skipped > 0:
+            self.logger.info(
+                f"Industry '{industry}': skipped {skipped} ratios, "
+                f"added {len(extras)} extras"
+            )
+
+        return filtered
+
     def _build_summary(
         self,
         component_matches: List[ComponentMatch],
@@ -212,12 +263,26 @@ class RatioCalculator:
         matched = sum(1 for m in component_matches if m.matched)
         valid = sum(1 for r in ratios if r.valid)
 
+        # Classify unmatched as "not applicable" if zero candidates
+        not_applicable = sum(
+            1 for m in component_matches
+            if not m.matched and m.confidence == 0
+        )
+
+        applicable = total - not_applicable
+        industry = self._detected_industry
+        display_name = self._industry_registry.get_display_name(industry)
+
         return {
             'total_components': total,
             'matched_components': matched,
-            'match_rate': matched / total if total > 0 else 0,
+            'match_rate': matched / applicable if applicable > 0 else 0,
+            'applicable_components': applicable,
+            'not_applicable': not_applicable,
             'total_ratios': len(ratios),
             'valid_ratios': valid,
+            'industry': industry,
+            'industry_display': display_name,
         }
 
     def display_results(self, result: AnalysisResult) -> None:
@@ -226,6 +291,9 @@ class RatioCalculator:
         print("=" * 70)
         print(f"  RATIO ANALYSIS: {result.company}")
         print(f"  {result.market.upper()} | {result.form} | {result.date}")
+        industry_name = result.summary.get('industry_display', '')
+        if industry_name:
+            print(f"  Industry: {industry_name}")
         print("=" * 70)
 
         self._display_components(result.component_matches)
@@ -282,13 +350,19 @@ class RatioCalculator:
                     print(f"    [--] {r.ratio_name:25s} - {r.error}")
 
     def _display_summary(self, s: Dict[str, Any]) -> None:
-        """Display summary section."""
+        """Display summary section with industry-aware counts."""
         print("\n  SUMMARY:")
         print("-" * 70)
-        mc, tc = s.get('matched_components', 0), s.get('total_components', 0)
+        mc = s.get('matched_components', 0)
+        ac = s.get('applicable_components', s.get('total_components', 0))
+        na = s.get('not_applicable', 0)
         mr = s.get('match_rate', 0)
-        print(f"    Components: {mc}/{tc} matched ({mr*100:.1f}%)")
-        print(f"    Ratios: {s.get('valid_ratios', 0)}/{s.get('total_ratios', 0)} calculated")
+        print(f"    Components: {mc}/{ac} matched ({mr*100:.1f}%)")
+        if na > 0:
+            print(f"    Not applicable: {na} (no matching concept in filing)")
+        vr = s.get('valid_ratios', 0)
+        tr = s.get('total_ratios', 0)
+        print(f"    Ratios: {vr}/{tr} calculated")
         print("\n" + "=" * 70)
 
 

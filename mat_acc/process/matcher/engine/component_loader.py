@@ -364,6 +364,45 @@ class ComponentLoader:
             return value
         return enum_class(value)
 
+    def load_industry(self, industry: str) -> dict[str, ComponentDefinition]:
+        """
+        Load industry-specific component definitions.
+
+        Industry components live under components/<industry>/
+        (e.g., components/banking/). These are also included
+        in load_all() via rglob, but this method allows loading
+        only the industry-specific subset.
+
+        Args:
+            industry: Industry type (banking, insurance, reit)
+
+        Returns:
+            Dictionary mapping component_id to ComponentDefinition
+        """
+        industry_path = self.components_path / industry
+        if not industry_path.exists():
+            self.logger.info(f"No industry components for: {industry}")
+            return {}
+
+        components = {}
+        yaml_files = list(industry_path.rglob('*.yaml'))
+        yaml_files.extend(industry_path.rglob('*.yml'))
+
+        for yaml_file in yaml_files:
+            try:
+                component = self.load_file(yaml_file)
+                if component:
+                    components[component.component_id] = component
+            except Exception as e:
+                self.logger.error(
+                    f"Failed to load {yaml_file}: {e}"
+                )
+
+        self.logger.info(
+            f"Loaded {len(components)} {industry} components"
+        )
+        return components
+
     def get_component(self, component_id: str) -> Optional[ComponentDefinition]:
         """
         Get a specific component by ID.
