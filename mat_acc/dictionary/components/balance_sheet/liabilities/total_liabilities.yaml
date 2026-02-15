@@ -138,6 +138,16 @@ scoring:
       pattern: "name~tradepayable"
     - condition: "Is trade and other payable"
       pattern: "name~tradeandother"
+    - condition: "Is tax liability"
+      pattern: "name~taxliabilit"
+    - condition: "Is provisions item"
+      pattern: "name~provisions"
+    - condition: "Is payables item"
+      pattern: "name~payables"
+    - condition: "Is borrowings item"
+      pattern: "name~borrowings"
+    - condition: "Is deposits item"
+      pattern: "name~deposits"
 
     # Reject cash flow adjustment concepts
     - condition: "Is cash flow adjustment"
