@@ -49,6 +49,8 @@ matching_rules:
     - patterns:
         - "CashAndCashEquivalentsAtCarryingValue"
         - "CashCashEquivalentsAndShortTermInvestments"
+        - "CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents"
+        - "CashAndCashEquivalents"
       match_type: exact
       weight: 15
 
