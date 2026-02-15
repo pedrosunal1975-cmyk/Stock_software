@@ -45,6 +45,7 @@ matching_rules:
   local_name_rules:
     - patterns:
         - "Assets"
+        - "NoncurrentAssetsAndCurrentAssets"
       match_type: exact
       weight: 15
 

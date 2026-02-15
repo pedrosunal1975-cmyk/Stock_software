@@ -94,6 +94,8 @@ scoring:
       pattern: "name~liabilitiesandequity"
     - condition: "Is net assets (equity, not liabilities)"
       pattern: "name~netassets"
+    - condition: "Is insurance contracts"
+      pattern: "name~insurancecontracts"
     - condition: "Is current liabilities only"
       pattern: "name~liabilitiescurrent"
     - condition: "Is noncurrent liabilities only"

@@ -46,6 +46,7 @@ matching_rules:
         - "DepreciationAndAmortization"
         - "DepreciationDepletionAndAmortization"
         - "DepreciationAndAmortisationExpense"
+        - "AdjustmentsForDepreciationAndAmortisationExpense"
       match_type: exact
       weight: 15
 
