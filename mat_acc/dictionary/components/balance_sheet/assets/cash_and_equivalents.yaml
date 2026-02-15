@@ -54,6 +54,7 @@ matching_rules:
 
     - patterns:
         - "CashAndCashEquivalent"
+        - "CashCashEquivalent"
         - "CashAndBankBalances"
       match_type: contains
       weight: 10

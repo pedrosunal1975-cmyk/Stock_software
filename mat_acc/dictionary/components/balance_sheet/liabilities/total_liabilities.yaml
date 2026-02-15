@@ -110,6 +110,8 @@ scoring:
       pattern: "name~notespayable"
     - condition: "Is pension/benefit liability"
       pattern: "name~pension"
+    - condition: "Is defined benefit plan item"
+      pattern: "name~benefitplan"
     - condition: "Is derivative liability"
       pattern: "name~derivative"
     - condition: "Is operating lease liability"

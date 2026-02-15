@@ -60,6 +60,7 @@ class ScoreAggregator:
         """
         total_score = 0
         rule_scores = []
+        has_exact_local_name = False
 
         for evaluator_type, result in evaluation_results.items():
             if result.score > 0:
@@ -69,6 +70,18 @@ class ScoreAggregator:
                     score=result.score,
                     details={'matched_rules': result.matched_rules},
                 ))
+                if evaluator_type == 'local_name':
+                    for mr in result.matched_rules:
+                        if mr.get('match_type') == 'exact':
+                            has_exact_local_name = True
+
+        # Exact local_name match = dictionary explicitly names this
+        # concept. Guarantee it clears min_score regardless of
+        # whether hierarchy/calculation evaluators fired (they
+        # depend on linkbase richness which varies by taxonomy).
+        min_score = component.scoring.min_score
+        if has_exact_local_name and total_score < min_score:
+            total_score = min_score
 
         # Calculate confidence
         confidence = self.confidence_calculator.calculate(

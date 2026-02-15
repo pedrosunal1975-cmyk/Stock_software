@@ -287,9 +287,12 @@ class MatchingCoordinator:
         below_threshold_count = 0
 
         for concept in candidates:
-            # Check rejection conditions first
+            # Check rejection conditions first, but exempt concepts
+            # explicitly named in exact local_name rules (dictionary
+            # says "this IS the concept" - rejections shouldn't override)
+            exempt = self._is_exact_name_match(concept, component)
             rejection = self._check_rejection(concept, component)
-            if rejection:
+            if rejection and not exempt:
                 rejection_count += 1
                 diag['rejections'].append({
                     'concept': concept.qname,
@@ -635,6 +638,28 @@ class MatchingCoordinator:
                     self.logger.info(
                         f"  [EXPECTED FOUND] '{in_candidates[0].qname}' is in candidates"
                     )
+
+    def _is_exact_name_match(
+        self,
+        concept: ConceptMetadata,
+        component: ComponentDefinition
+    ) -> bool:
+        """Check if concept matches any local_name rule.
+
+        When a concept matches a local_name pattern from the
+        dictionary, the dictionary considers it a valid candidate.
+        Rejection rules (substring-based) should not override
+        the dictionary's explicit judgement.
+        """
+        if not component.matching_rules.local_name_rules:
+            return False
+        name = concept.local_name
+        evaluator = self.evaluators['local_name']
+        result = evaluator.evaluate(
+            concept=concept,
+            rules=component.matching_rules.local_name_rules
+        )
+        return result.score > 0
 
     def _check_rejection(
         self,
