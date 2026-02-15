@@ -124,6 +124,8 @@ scoring:
       pattern: "name~operatinglease"
     - condition: "Is finance lease liability"
       pattern: "name~financelease"
+    - condition: "Is lease liability (generic)"
+      pattern: "name~leaseliabilities"
 
     # Reject cash flow adjustment concepts
     - condition: "Is cash flow adjustment"

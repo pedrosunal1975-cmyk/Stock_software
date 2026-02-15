@@ -151,7 +151,7 @@ class IXBRLExtractor:
             return None
 
         htm_files = []
-        for ext in ('*.htm', '*.html'):
+        for ext in ('*.htm', '*.html', '*.xhtml'):
             htm_files.extend(filing_dir.glob(ext))
 
         if not htm_files:

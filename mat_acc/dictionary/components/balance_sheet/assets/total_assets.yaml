@@ -147,6 +147,10 @@ scoring:
       pattern: "name~textblock"
     - condition: "Is acquired assets"
       pattern: "name~acquired"
+    - condition: "Is right-of-use assets"
+      pattern: "name~rightofuse"
+    - condition: "Is lease item"
+      pattern: "name~lease"
 
 composition:
   is_composite: false
