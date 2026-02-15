@@ -151,6 +151,14 @@ scoring:
       pattern: "name~rightofuse"
     - condition: "Is lease item"
       pattern: "name~lease"
+    - condition: "Is reinsurance asset"
+      pattern: "name~reinsurance"
+    - condition: "Is insurance item"
+      pattern: "name~insurance"
+    - condition: "Is held-for-sale item"
+      pattern: "name~heldfor"
+    - condition: "Is disposal group"
+      pattern: "name~disposalgroup"
 
 composition:
   is_composite: false

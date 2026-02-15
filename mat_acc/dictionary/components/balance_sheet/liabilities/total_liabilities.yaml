@@ -126,6 +126,18 @@ scoring:
       pattern: "name~financelease"
     - condition: "Is lease liability (generic)"
       pattern: "name~leaseliabilities"
+    - condition: "Is other-than subset"
+      pattern: "name~otherthan"
+    - condition: "Is disposal group"
+      pattern: "name~disposalgroup"
+    - condition: "Is held-for-sale item"
+      pattern: "name~heldfor"
+    - condition: "Is insurance liability"
+      pattern: "name~insurance"
+    - condition: "Is trade payable"
+      pattern: "name~tradepayable"
+    - condition: "Is trade and other payable"
+      pattern: "name~tradeandother"
 
     # Reject cash flow adjustment concepts
     - condition: "Is cash flow adjustment"

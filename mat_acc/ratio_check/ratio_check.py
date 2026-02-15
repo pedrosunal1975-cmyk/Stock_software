@@ -242,6 +242,7 @@ class RatioCheckOrchestrator:
 
     def _run_math_verify(
         self, xbrl_dir: Path, value_lookup: FactValueLookup,
+        market: str = 'sec',
     ) -> tuple[int, list]:
         """
         Run Mathematical Integrity Unit on loaded values.
@@ -253,6 +254,7 @@ class RatioCheckOrchestrator:
         Args:
             xbrl_dir: Path to XBRL filing directory
             value_lookup: Loaded value lookup to correct
+            market: Filing market (sec, esef) for convention handling
 
         Returns:
             Tuple of (corrections_applied, ixbrl_facts)
@@ -312,14 +314,21 @@ class RatioCheckOrchestrator:
         )
 
         # Apply sign corrections to value lookup
-        if corrections:
+        # ESEF mapped values use business convention (credits positive),
+        # while iXBRL uses XBRL convention (credits negative).
+        # Sign corrections only valid for SEC where conventions align.
+        if corrections and market.lower() != 'esef':
             corrected = value_lookup.apply_corrections(corrections)
             print(f"  MIU: Applied {corrected} sign corrections to values")
-            # Log sample corrections for visibility
             for concept, val in list(corrections.items())[:3]:
                 local = concept.split(':')[-1] if ':' in concept else concept
                 print(f"    - {local}: corrected to {val:,.0f}")
             return corrected, ixbrl_facts
+        elif corrections:
+            print(
+                f"  MIU: Skipped {len(corrections)} sign corrections "
+                f"(ESEF uses business convention)"
+            )
 
         return 0, ixbrl_facts
 
@@ -423,7 +432,9 @@ class RatioCheckOrchestrator:
         if xbrl_dir:
             sources_used.append("iXBRL source")
             print("\n  Running Mathematical Integrity Unit...")
-            _, ixbrl_facts = self._run_math_verify(xbrl_dir, value_lookup)
+            _, ixbrl_facts = self._run_math_verify(
+                xbrl_dir, value_lookup, market=selection.market,
+            )
             self.debug_reporter.mark_stage('math_verified')
         else:
             print("\n  [NOTE] iXBRL source not available - skipping MIU")
