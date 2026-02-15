@@ -92,6 +92,8 @@ scoring:
       pattern: "name~liabilitiesandstockholdersequity"
     - condition: "Is combined liabilities and equity (L&SE)"
       pattern: "name~liabilitiesandequity"
+    - condition: "Is net assets (equity, not liabilities)"
+      pattern: "name~netassets"
     - condition: "Is current liabilities only"
       pattern: "name~liabilitiescurrent"
     - condition: "Is noncurrent liabilities only"
@@ -118,6 +120,12 @@ scoring:
       pattern: "name~operatinglease"
     - condition: "Is finance lease liability"
       pattern: "name~financelease"
+
+    # Reject cash flow adjustment concepts
+    - condition: "Is cash flow adjustment"
+      pattern: "name~adjustmentsfor"
+    - condition: "Is increase/decrease item"
+      pattern: "name~increasedecrease"
 
     # Reject disclosure items
     - condition: "Is text block"

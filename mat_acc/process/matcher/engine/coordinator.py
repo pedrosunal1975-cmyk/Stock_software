@@ -644,22 +644,23 @@ class MatchingCoordinator:
         concept: ConceptMetadata,
         component: ComponentDefinition
     ) -> bool:
-        """Check if concept matches any local_name rule.
+        """Check if concept is explicitly named in an EXACT rule.
 
-        When a concept matches a local_name pattern from the
-        dictionary, the dictionary considers it a valid candidate.
-        Rejection rules (substring-based) should not override
-        the dictionary's explicit judgement.
+        Only EXACT match_type rules qualify. Contains/starts_with
+        patterns are too broad for rejection exemption (e.g.
+        contains 'CurrentLiabilities' would wrongly exempt
+        'NoncurrentLiabilities' from the noncurrent rejection).
         """
         if not component.matching_rules.local_name_rules:
             return False
-        name = concept.local_name
-        evaluator = self.evaluators['local_name']
-        result = evaluator.evaluate(
-            concept=concept,
-            rules=component.matching_rules.local_name_rules
-        )
-        return result.score > 0
+        name_lower = concept.local_name.lower()
+        for rule in component.matching_rules.local_name_rules:
+            if rule.match_type.value != 'exact':
+                continue
+            for pattern in rule.patterns:
+                if name_lower == pattern.lower():
+                    return True
+        return False
 
     def _check_rejection(
         self,

@@ -134,6 +134,12 @@ scoring:
       pattern: "name~derivative"
     - condition: "Is fair value"
       pattern: "name~fairvalue"
+    # Reject cash flow adjustment concepts
+    - condition: "Is cash flow adjustment"
+      pattern: "name~adjustmentsfor"
+    - condition: "Is increase/decrease item"
+      pattern: "name~increasedecrease"
+
     - condition: "Is schedule or text block"
       pattern: "name~schedule"
     - condition: "Is text block"

@@ -119,6 +119,12 @@ scoring:
     - condition: "Is noncurrent"
       pattern: "name~noncurrent"
 
+    # Reject cash flow adjustment concepts
+    - condition: "Is cash flow adjustment"
+      pattern: "name~adjustmentsfor"
+    - condition: "Is increase/decrease item"
+      pattern: "name~increasedecrease"
+
     # Reject disclosure items
     - condition: "Is text block"
       pattern: "name~textblock"

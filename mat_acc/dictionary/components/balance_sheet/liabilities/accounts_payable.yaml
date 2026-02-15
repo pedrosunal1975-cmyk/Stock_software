@@ -112,6 +112,12 @@ scoring:
     - condition: "Is taxes payable"
       pattern: "name~taxespayable"
 
+    # Reject cash flow adjustment items (not balance sheet)
+    - condition: "Is cash flow adjustment"
+      pattern: "name~adjustmentsfor"
+    - condition: "Is increase/decrease item"
+      pattern: "name~increasedecrease"
+
     # Reject disclosure items
     - condition: "Is text block"
       pattern: "name~textblock"

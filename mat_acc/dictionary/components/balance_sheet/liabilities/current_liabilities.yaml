@@ -118,6 +118,12 @@ scoring:
     - condition: "Is unearned"
       pattern: "name~unearned"
 
+    # Reject cash flow adjustment concepts
+    - condition: "Is cash flow adjustment"
+      pattern: "name~adjustmentsfor"
+    - condition: "Is increase/decrease item"
+      pattern: "name~increasedecrease"
+
     # Reject disclosure items
     - condition: "Is text block"
       pattern: "name~textblock"
