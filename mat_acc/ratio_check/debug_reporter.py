@@ -345,12 +345,15 @@ class DebugReporter:
         print()
         print("=" * 70)
 
-    def save_report(self, output_path: Optional[Path] = None) -> Path:
+    def save_report(
+        self, output_path: Optional[Path] = None, company: str = '',
+    ) -> Path:
         """
         Save debug report to JSON file.
 
         Args:
-            output_path: Optional output path. Defaults to config output_dir.
+            output_path: Optional output path. Defaults to reports_dir.
+            company: Company name for subdirectory organization.
 
         Returns:
             Path to saved report
@@ -358,8 +361,12 @@ class DebugReporter:
         import json
 
         if output_path is None:
-            output_dir = self.config.get('output_dir', Path('/tmp'))
-            output_path = output_dir / f"debug_report_{datetime.now():%Y%m%d_%H%M%S}.json"
+            reports_dir = self.config.get('reports_dir') or self.config.get('output_dir')
+            if reports_dir is None:
+                reports_dir = Path('/tmp')
+            if company:
+                reports_dir = reports_dir / company.replace(' ', '_')
+            output_path = reports_dir / f"debug_report_{datetime.now():%Y%m%d_%H%M%S}.json"
 
         output_path.parent.mkdir(parents=True, exist_ok=True)
 

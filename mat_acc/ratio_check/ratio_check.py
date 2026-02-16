@@ -96,6 +96,9 @@ class RatioCheckOrchestrator:
         self._parsed_loader = ParsedDataLoader(self.config)
         self._xbrl_loader = self._init_xbrl_loader()
 
+        # Track last analyzed company for report saving
+        self._last_company: str = ''
+
         # Mathematical Integrity Unit components
         self._ixbrl_extractor = IXBRLExtractor()
         self._fact_reconciler = FactReconciler()
@@ -123,6 +126,7 @@ class RatioCheckOrchestrator:
             return
 
         self.debug_reporter.mark_stage('filing_selected')
+        self._last_company = selection.company
 
         # Show selection
         self._print_selection(selection)
@@ -519,12 +523,17 @@ class RatioCheckOrchestrator:
         """Save results to JSON file."""
         import json
 
-        # Build output path
-        output_dir = Path(self.config.get('ratio_check_output_dir', '/tmp'))
-        output_dir.mkdir(parents=True, exist_ok=True)
+        # Build output path under reports_dir with company subdirectory
+        reports_dir = self.config.get('reports_dir')
+        if not reports_dir:
+            print("\n  [ERROR] reports_dir not configured in .env")
+            return
+
+        company_dir = reports_dir / result.company.replace(' ', '_')
+        company_dir.mkdir(parents=True, exist_ok=True)
 
         filename = f"ratio_check_{result.company}_{result.date}.json".replace(' ', '_')
-        output_path = output_dir / filename
+        output_path = company_dir / filename
 
         # Build output data
         output_data = {
@@ -633,7 +642,9 @@ def main() -> None:
 
         # Always show debug report if debug mode enabled
         if args.debug:
-            orchestrator.debug_reporter.save_report()
+            orchestrator.debug_reporter.save_report(
+                company=orchestrator._last_company,
+            )
 
     except KeyboardInterrupt:
         print("\n\n  Interrupted by user.")
