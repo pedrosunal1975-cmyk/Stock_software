@@ -50,6 +50,8 @@ from .fact_value_lookup import FactValueLookup
 from .math_verify import (
     IXBRLExtractor, FactReconciler, IdentityValidator, SignAnalyzer,
 )
+from .ratio_definitions import STANDARD_RATIOS
+from output.report_generator import ReportGenerator
 
 
 # Use IPO-aware logger (PROCESS layer for calculation/matching work)
@@ -98,6 +100,9 @@ class RatioCheckOrchestrator:
 
         # Track last analyzed company for report saving
         self._last_company: str = ''
+
+        # Output generation
+        self._report_generator = ReportGenerator(self.config)
 
         # Mathematical Integrity Unit components
         self._ixbrl_extractor = IXBRLExtractor()
@@ -520,55 +525,18 @@ class RatioCheckOrchestrator:
             pass
 
     def _save_results(self, result: AnalysisResult) -> None:
-        """Save results to JSON file."""
-        import json
+        """Save results using ReportGenerator."""
+        report = self._report_generator.generate(
+            result, ratio_definitions=STANDARD_RATIOS,
+        )
+        written = self._report_generator.write(report)
 
-        # Build output path under reports_dir with company subdirectory
-        reports_dir = self.config.get('reports_dir')
-        if not reports_dir:
-            print("\n  [ERROR] reports_dir not configured in .env")
-            return
-
-        company_dir = reports_dir / result.company.replace(' ', '_')
-        company_dir.mkdir(parents=True, exist_ok=True)
-
-        filename = f"ratio_check_{result.company}_{result.date}.json".replace(' ', '_')
-        output_path = company_dir / filename
-
-        # Build output data
-        output_data = {
-            'company': result.company,
-            'market': result.market,
-            'form': result.form,
-            'date': result.date,
-            'analysis_date': datetime.now().isoformat(),
-            'component_matches': [
-                {
-                    'component': m.component_name,
-                    'matched': m.matched,
-                    'concept': m.matched_concept,
-                    'confidence': m.confidence,
-                    'label': m.label,
-                }
-                for m in result.component_matches
-            ],
-            'ratios': [
-                {
-                    'name': r.ratio_name,
-                    'value': r.value,
-                    'valid': r.valid,
-                    'formula': r.formula,
-                    'error': r.error,
-                }
-                for r in result.ratios
-            ],
-            'summary': result.summary,
-        }
-
-        with open(output_path, 'w') as f:
-            json.dump(output_data, f, indent=2)
-
-        print(f"\n  Results saved to: {output_path}")
+        if written:
+            print("\n  Reports saved:")
+            for fmt, path in written.items():
+                print(f"    [{fmt}] {path}")
+        else:
+            print("\n  [ERROR] No reports written (check config)")
 
 
 def setup_logging(config: Optional[ConfigLoader] = None) -> None:
