@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tescoplc="http://tescoplc.com/xbrl/2024" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dtr-types="http://www.xbrl.org/dtr/type/2020-01-21" targetNamespace="http://tescoplc.com/xbrl/2024" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd" namespace="http://www.xbrl.org/2003/instance" />
+  <xs:import schemaLocation="https://www.esma.europa.eu/taxonomy/2022-03-24/esef_cor.xsd" namespace="https://www.esma.europa.eu/taxonomy/2022-03-24/esef_cor" />
+  <xs:import schemaLocation="http://www.xbrl.org/lrr/arcrole/esma-arcrole-2018-11-21.xsd" namespace="http://www.esma.europa.eu/xbrl/esef/arcrole/wider-narrower" />
+  <xs:import schemaLocation="https://www.xbrl.org/dtr/type/2020-01-21/types.xsd" namespace="http://www.xbrl.org/dtr/type/2020-01-21" />
+  <xs:import schemaLocation="http://www.xbrl.org/2005/xbrldt-2005.xsd" namespace="http://xbrl.org/2005/xbrldt" />
+  <xs:annotation>
+    <xs:appinfo>
+      <link:linkbaseRef xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="2138002P5RNKC5W2JZ46-2025-02-22_lab-en.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:type="simple" />
+      <link:linkbaseRef xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="2138002P5RNKC5W2JZ46-2025-02-22_def.xml" xlink:role="http://www.xbrl.org/2003/role/definitionLinkbaseRef" xlink:type="simple" />
+      <link:linkbaseRef xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="2138002P5RNKC5W2JZ46-2025-02-22_pre.xml" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef" xlink:type="simple" />
+      <link:linkbaseRef xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="2138002P5RNKC5W2JZ46-2025-02-22_cal.xml" xlink:role="http://www.xbrl.org/2003/role/calculationLinkbaseRef" xlink:type="simple" />
+      <link:linkbaseRef xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="https://www.esma.europa.eu/taxonomy/2022-03-24/esef_cor-lab-en.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:type="simple" />
+      <link:linkbaseRef xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="https://www.esma.europa.eu/taxonomy/2022-03-24/esef_cor-gen-en.xml" xlink:type="simple" />
+      <link:roleType id="ProfitOrLoss" roleURI="http://tescoplc.com/xbrl/2024/roles/ProfitOrLoss">
+        <link:definition>01 - Profit or loss</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:labelLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ProfitOrLoss1" roleURI="http://tescoplc.com/xbrl/2024/roles/ProfitOrLoss1">
+        <link:definition>02 - Profit or loss_1</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:labelLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="StatementOfComprehensiveIncome" roleURI="http://tescoplc.com/xbrl/2024/roles/StatementOfComprehensiveIncome">
+        <link:definition>03 - Statement of comprehensive income</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:labelLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="StatementOfComprehensiveIncome1" roleURI="http://tescoplc.com/xbrl/2024/roles/StatementOfComprehensiveIncome1">
+        <link:definition>04 - Statement of comprehensive income_1</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:labelLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="StatementOfFinancialPosition" roleURI="http://tescoplc.com/xbrl/2024/roles/StatementOfFinancialPosition">
+        <link:definition>05 - Statement of financial position</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:labelLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="NotesAndMandatoryItems" roleURI="http://tescoplc.com/xbrl/2024/roles/NotesAndMandatoryItems">
+        <link:definition>06 - Notes and Mandatory Items</link:definition>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:labelLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="StatementOfChangesInEquity" roleURI="http://tescoplc.com/xbrl/2024/roles/StatementOfChangesInEquity">
+        <link:definition>07 - Statement of changes in equity</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:labelLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="StatementOfCashFlows" roleURI="http://tescoplc.com/xbrl/2024/roles/StatementOfCashFlows">
+        <link:definition>08 - Statement of cash flows</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:labelLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="Anchoring" roleURI="http://tescoplc.com/xbrl/2024/roles/Anchoring">
+        <link:definition>99 - Groups all anchored elements</link:definition>
+        <link:usedOn>link:definitionLink</link:usedOn>
+        <link:usedOn>link:labelLink</link:usedOn>
+      </link:roleType>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element id="tescoplc_GroupIncomeStatementAxis" xbrli:periodType="duration" abstract="true" name="GroupIncomeStatementAxis" nillable="true" xmlns:q1="http://xbrl.org/2005/xbrldt" substitutionGroup="q1:dimensionItem" type="xbrli:stringItemType" />
+  <xs:element id="tescoplc_BeforeAdjustingItemsMember" xbrli:periodType="duration" abstract="true" name="BeforeAdjustingItemsMember" nillable="true" substitutionGroup="xbrli:item" type="dtr-types:domainItemType" />
+  <xs:element id="tescoplc_AdjustingItemsMember" xbrli:periodType="duration" abstract="true" name="AdjustingItemsMember" nillable="true" substitutionGroup="xbrli:item" type="dtr-types:domainItemType" />
+  <xs:element id="tescoplc_TotalMember" xbrli:periodType="duration" abstract="true" name="TotalMember" nillable="true" substitutionGroup="xbrli:item" type="dtr-types:domainItemType" />
+  <xs:element id="tescoplc_ProfitOrLossTable" xbrli:periodType="duration" abstract="true" name="ProfitOrLossTable" nillable="true" xmlns:q2="http://xbrl.org/2005/xbrldt" substitutionGroup="q2:hypercubeItem" type="xbrli:stringItemType" />
+  <xs:element id="tescoplc_ProfitOrLossLineItems" xbrli:periodType="duration" abstract="true" name="ProfitOrLossLineItems" nillable="true" substitutionGroup="xbrli:item" type="xbrli:stringItemType" />
+  <xs:element id="tescoplc_RevenueFromSaleOfGoodsAndServices" xbrli:balance="credit" xbrli:periodType="duration" name="RevenueFromSaleOfGoodsAndServices" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" />
+  <xs:element id="tescoplc_NetFairValueGainsLossesOnInventoryCashFlowHedges" xbrli:balance="credit" xbrli:periodType="duration" name="NetFairValueGainsLossesOnInventoryCashFlowHedges" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" />
+  <xs:element id="tescoplc_OtherInvestmentsCurrent" xbrli:balance="debit" xbrli:periodType="instant" name="OtherInvestmentsCurrent" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" />
+  <xs:element id="tescoplc_CurrentDepositsFromBanks" xbrli:balance="credit" xbrli:periodType="instant" name="CurrentDepositsFromBanks" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" />
+  <xs:element id="tescoplc_NonCurrentDepositsFromBanks" xbrli:balance="credit" xbrli:periodType="instant" name="NonCurrentDepositsFromBanks" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" />
+  <xs:element id="tescoplc_ChangeInFairValueOfFinancialAssetsAtFairValueThroughOtherComprehensiveIncome" xbrli:balance="credit" xbrli:periodType="duration" name="ChangeInFairValueOfFinancialAssetsAtFairValueThroughOtherComprehensiveIncome" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" />
+  <xs:element id="tescoplc_GainsLossesOnCashFlowHedges" xbrli:balance="credit" xbrli:periodType="duration" name="GainsLossesOnCashFlowHedges" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" />
+  <xs:element id="tescoplc_TransferFromTranslationReserveToRetainedEarnings" xbrli:balance="credit" xbrli:periodType="duration" name="TransferFromTranslationReserveToRetainedEarnings" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" />
+  <xs:element id="tescoplc_TotalInventoryCashFlowHedgeMovements" xbrli:balance="debit" xbrli:periodType="duration" name="TotalInventoryCashFlowHedgeMovements" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" />
+  <xs:element id="tescoplc_OwnSharesPurchasedForCancellation" xbrli:balance="debit" xbrli:periodType="duration" name="OwnSharesPurchasedForCancellation" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" />
+  <xs:element id="tescoplc_OwnSharesPurchasedForShareSchemes" xbrli:balance="debit" xbrli:periodType="duration" name="OwnSharesPurchasedForShareSchemes" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" />
+  <xs:element id="tescoplc_TransferFromHedgingReserveToRetainedEarnings" xbrli:balance="credit" xbrli:periodType="duration" name="TransferFromHedgingReserveToRetainedEarnings" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" />
+  <xs:element id="tescoplc_StatementOfCashFlowsTable" xbrli:periodType="duration" abstract="true" name="StatementOfCashFlowsTable" nillable="true" xmlns:q3="http://xbrl.org/2005/xbrldt" substitutionGroup="q3:hypercubeItem" type="xbrli:stringItemType" />
+  <xs:element id="tescoplc_StatementOfCashFlowsLineItems" xbrli:periodType="duration" abstract="true" name="StatementOfCashFlowsLineItems" nillable="true" substitutionGroup="xbrli:item" type="xbrli:stringItemType" />
+  <xs:element id="tescoplc_AdjustmentsForProfitLossArisingOnSaleOfPropertyPlantAndEquipmentInvestmentPropertyIntangibleAssetsAndAssetsClassifiedAsHeldForSaleAndEarlyTerminationOfLeases" xbrli:balance="credit" xbrli:periodType="duration" name="AdjustmentsForProfitLossArisingOnSaleOfPropertyPlantAndEquipmentInvestmentPropertyIntangibleAssetsAndAssetsClassifiedAsHeldForSaleAndEarlyTerminationOfLeases" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" />
+  <xs:element id="tescoplc_AdjustmentsForProfitLossArisingOnSaleOfJointVenturesAndAssociates" xbrli:balance="credit" xbrli:periodType="duration" name="AdjustmentsForProfitLossArisingOnSaleOfJointVenturesAndAssociates" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" />
+  <xs:element id="tescoplc_AdjustmentsForProfitLossArisingOnSaleOfSubsidiariesAndBusinesses" xbrli:balance="credit" xbrli:periodType="duration" name="AdjustmentsForProfitLossArisingOnSaleOfSubsidiariesAndBusinesses" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" />
+  <xs:element id="tescoplc_AdjustmentsForNetImpairmentLossReversalOnPropertyPlantAndEquipmentRightOfUseAssetsIntangibleAssetsAndInvestmentProperty" xbrli:balance="debit" xbrli:periodType="duration" name="AdjustmentsForNetImpairmentLossReversalOnPropertyPlantAndEquipmentRightOfUseAssetsIntangibleAssetsAndInvestmentProperty" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" />
+  <xs:element id="tescoplc_AdjustmentsForImpairmentLossOnOtherInvestments" xbrli:balance="debit" xbrli:periodType="duration" name="AdjustmentsForImpairmentLossOnOtherInvestments" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" />
+  <xs:element id="tescoplc_AdjustmentsForNetRemeasurementLossOfNonCurrentAssetsHeldForSale" xbrli:balance="debit" xbrli:periodType="duration" name="AdjustmentsForNetRemeasurementLossOfNonCurrentAssetsHeldForSale" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" />
+  <xs:element id="tescoplc_AdjustmentsForIncreaseDecreaseInTradeAndOtherReceivablesAndReinsuranceAssets" xbrli:balance="debit" xbrli:periodType="duration" name="AdjustmentsForIncreaseDecreaseInTradeAndOtherReceivablesAndReinsuranceAssets" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" />
+  <xs:element id="tescoplc_AdjustmentsForIncreaseDecreaseInTradeAndOtherPayablesAndInsuranceLiabilities" xbrli:balance="debit" xbrli:periodType="duration" name="AdjustmentsForIncreaseDecreaseInTradeAndOtherPayablesAndInsuranceLiabilities" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" />
+  <xs:element id="tescoplc_AdjustmentsForIncreaseDecreaseInDepositsFromCentralBank" xbrli:balance="debit" xbrli:periodType="duration" name="AdjustmentsForIncreaseDecreaseInDepositsFromCentralBank" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" />
+  <xs:element id="tescoplc_AdjustmentsForIncreaseDecreaseInWorkingCapitalOfTheBankingOperationsDisposalGroup" xbrli:balance="debit" xbrli:periodType="duration" name="AdjustmentsForIncreaseDecreaseInWorkingCapitalOfTheBankingOperationsDisposalGroup" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" />
+  <xs:element id="tescoplc_ProceedsFromSaleOfPropertyPlantAndEquipmentInvestmentPropertyIntangibleAssetsAndAssetsClassifiedAsHeldForSale" xbrli:balance="debit" xbrli:periodType="duration" name="ProceedsFromSaleOfPropertyPlantAndEquipmentInvestmentPropertyIntangibleAssetsAndAssetsClassifiedAsHeldForSale" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" />
+  <xs:element id="tescoplc_PurchaseOfPropertyPlantAndEquipmentAndInvestmentPropertyClassifiedAsInvestingActivities" xbrli:balance="credit" xbrli:periodType="duration" name="PurchaseOfPropertyPlantAndEquipmentAndInvestmentPropertyClassifiedAsInvestingActivities" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" />
+  <xs:element id="tescoplc_DisposalOfBankingOperationsNetOfCashDisposedClassifiedAsInvestingActivities" xbrli:balance="debit" xbrli:periodType="duration" name="DisposalOfBankingOperationsNetOfCashDisposedClassifiedAsInvestingActivities" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" />
+  <xs:element id="tescoplc_CashInflowsFromMaturingShortTermInvestmentsDepositsClassifiedAsInvestingActivities" xbrli:balance="debit" xbrli:periodType="duration" name="CashInflowsFromMaturingShortTermInvestmentsDepositsClassifiedAsInvestingActivities" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" />
+  <xs:element id="tescoplc_CashOutflowsOnInvestingInShortTermInvestmentsDepositsClassifiedAsInvestingActivities" xbrli:balance="credit" xbrli:periodType="duration" name="CashOutflowsOnInvestingInShortTermInvestmentsDepositsClassifiedAsInvestingActivities" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" />
+  <xs:element id="tescoplc_InvestmentsInProceedsFromOtherShortTermInvestmentsClassifiedAsInvestingActivities" xbrli:balance="debit" xbrli:periodType="duration" name="InvestmentsInProceedsFromOtherShortTermInvestmentsClassifiedAsInvestingActivities" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" />
+  <xs:element id="tescoplc_OwnSharesPurchasedForCancellationClassifiedAsFinancingActivities" xbrli:balance="credit" xbrli:periodType="duration" name="OwnSharesPurchasedForCancellationClassifiedAsFinancingActivities" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" />
+  <xs:element id="tescoplc_OwnSharesPurchasedForShareSchemesNetOfCashReceivedFromEmployeesClassifiedAsFinancingActivities" xbrli:balance="credit" xbrli:periodType="duration" name="OwnSharesPurchasedForShareSchemesNetOfCashReceivedFromEmployeesClassifiedAsFinancingActivities" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" />
+  <xs:element id="tescoplc_RepaymentOfCapitalElementOfObligationsUnderLeasesClassifiedAsFinancingActivities" xbrli:balance="credit" xbrli:periodType="duration" name="RepaymentOfCapitalElementOfObligationsUnderLeasesClassifiedAsFinancingActivities" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" />
+  <xs:element id="tescoplc_CashOutflowsExceedingTheIncrementalIncreaseInAssetsInAPropertyBuybackClassifiedAsFinancingActivities" xbrli:balance="credit" xbrli:periodType="duration" name="CashOutflowsExceedingTheIncrementalIncreaseInAssetsInAPropertyBuybackClassifiedAsFinancingActivities" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" />
+  <xs:element id="tescoplc_CashInflowsFromDerivativeFinancialInstrumentsClassifiedAsFinancingActivities" xbrli:balance="debit" xbrli:periodType="duration" name="CashInflowsFromDerivativeFinancialInstrumentsClassifiedAsFinancingActivities" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" />
+  <xs:element id="tescoplc_CashOutflowsFromDerivativeFinancialInstrumentsClassifiedAsFinancingActivities" xbrli:balance="credit" xbrli:periodType="duration" name="CashOutflowsFromDerivativeFinancialInstrumentsClassifiedAsFinancingActivities" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" />
+  <xs:element id="tescoplc_CashAndCashEquivalentsIncludingCashHeldInTheDisposalGroupAtTheBeginningOfTheYear" xbrli:balance="debit" xbrli:periodType="instant" name="CashAndCashEquivalentsIncludingCashHeldInTheDisposalGroupAtTheBeginningOfTheYear" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" />
+  <xs:element id="tescoplc_CashAndCashEquivalentsIncludingCashHeldInTheDisposalGroupAtTheEndOfTheYear" xbrli:balance="debit" xbrli:periodType="instant" name="CashAndCashEquivalentsIncludingCashHeldInTheDisposalGroupAtTheEndOfTheYear" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" />
+  <xs:element id="tescoplc_DescriptionOfAccountingPolicyForCommercialIncome" xbrli:periodType="duration" name="DescriptionOfAccountingPolicyForCommercialIncome" nillable="true" substitutionGroup="xbrli:item" type="dtr-types:textBlockItemType" />
+  <xs:element id="tescoplc_DescriptionOfAccountingPolicyForSupplierFinancingArrangements" xbrli:periodType="duration" name="DescriptionOfAccountingPolicyForSupplierFinancingArrangements" nillable="true" substitutionGroup="xbrli:item" type="dtr-types:textBlockItemType" />
+  <xs:element id="tescoplc_DescriptionOfAccountingPolicyForAlternativePerformanceMeasuresAPMs" xbrli:periodType="duration" name="DescriptionOfAccountingPolicyForAlternativePerformanceMeasuresAPMs" nillable="true" substitutionGroup="xbrli:item" type="dtr-types:textBlockItemType" />
+  <xs:element id="tescoplc_DisclosureOfAdjustingItems" xbrli:periodType="duration" name="DisclosureOfAdjustingItems" nillable="true" substitutionGroup="xbrli:item" type="dtr-types:textBlockItemType" />
+  <xs:element id="tescoplc_DisclosureOfCommercialIncome" xbrli:periodType="duration" name="DisclosureOfCommercialIncome" nillable="true" substitutionGroup="xbrli:item" type="dtr-types:textBlockItemType" />
+</xs:schema>
