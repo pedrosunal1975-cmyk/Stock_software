@@ -1,0 +1,178 @@
+concept,value,display_value,formatted_value,context_ref,unit_ref,decimals,scaling_factor,level,parent_concept,order,period_type,period_start,period_end,dimensions,sign,scale,format,is_nil,fact_id
+ifrs-full_OtherComprehensiveIncomeBeforeTaxGainsLossesFromInvestmentsInEquityInstruments,4,4000000,"4,000,000",c-1,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,0,instant,,,,,,,,fact-117
+ifrs-full_OtherComprehensiveIncomeBeforeTaxGainsLossesFromInvestmentsInEquityInstruments,-,-,-,c-6,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,0,instant,,,,,,,,fact-118
+ifrs-full_OtherComprehensiveIncomeBeforeTaxGainsLossesOnRemeasurementsOfDefinedBenefitPlans,387,387000000,"387,000,000",c-1,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,1,instant,,,,,,,,fact-119
+ifrs-full_OtherComprehensiveIncomeBeforeTaxGainsLossesOnRemeasurementsOfDefinedBenefitPlans,251,251000000,"251,000,000",c-6,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,1,instant,,,,,,,,fact-120
+ifrs-full_OtherComprehensiveIncomeBeforeTaxGainsLossesOnRemeasurementsOfDefinedBenefitPlans,-,-,-,c-15,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,1,instant,,,,,,,,fact-292
+ifrs-full_OtherComprehensiveIncomeBeforeTaxGainsLossesOnRemeasurementsOfDefinedBenefitPlans,-,-,-,c-16,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,1,instant,,,,,,,,fact-293
+ifrs-full_OtherComprehensiveIncomeBeforeTaxGainsLossesOnRemeasurementsOfDefinedBenefitPlans,-,-,-,c-17,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,1,instant,,,,,,,,fact-294
+ifrs-full_OtherComprehensiveIncomeBeforeTaxGainsLossesOnRemeasurementsOfDefinedBenefitPlans,387,387000000,"387,000,000",c-18,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,1,instant,,,,,,,,fact-295
+ifrs-full_OtherComprehensiveIncomeBeforeTaxGainsLossesOnRemeasurementsOfDefinedBenefitPlans,3 87,3 87,3 87,c-19,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,1,instant,,,,,,,,fact-296
+ifrs-full_OtherComprehensiveIncomeBeforeTaxGainsLossesOnRemeasurementsOfDefinedBenefitPlans,-,-,-,c-20,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,1,instant,,,,,,,,fact-297
+ifrs-full_OtherComprehensiveIncomeBeforeTaxGainsLossesOnRemeasurementsOfDefinedBenefitPlans,387,387000000,"387,000,000",c-1,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,1,instant,,,,,,,,fact-298
+ifrs-full_OtherComprehensiveIncomeBeforeTaxGainsLossesOnRemeasurementsOfDefinedBenefitPlans,-,-,-,c-34,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,1,instant,,,,,,,,fact-453
+ifrs-full_OtherComprehensiveIncomeBeforeTaxGainsLossesOnRemeasurementsOfDefinedBenefitPlans,-,-,-,c-35,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,1,instant,,,,,,,,fact-454
+ifrs-full_OtherComprehensiveIncomeBeforeTaxGainsLossesOnRemeasurementsOfDefinedBenefitPlans,-,-,-,c-36,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,1,instant,,,,,,,,fact-455
+ifrs-full_OtherComprehensiveIncomeBeforeTaxGainsLossesOnRemeasurementsOfDefinedBenefitPlans,251,251000000,"251,000,000",c-37,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,1,instant,,,,,,,,fact-456
+ifrs-full_OtherComprehensiveIncomeBeforeTaxGainsLossesOnRemeasurementsOfDefinedBenefitPlans,251,251000000,"251,000,000",c-38,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,1,instant,,,,,,,,fact-457
+ifrs-full_OtherComprehensiveIncomeBeforeTaxGainsLossesOnRemeasurementsOfDefinedBenefitPlans,-,-,-,c-39,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,1,instant,,,,,,,,fact-458
+ifrs-full_OtherComprehensiveIncomeBeforeTaxGainsLossesOnRemeasurementsOfDefinedBenefitPlans,251,251000000,"251,000,000",c-6,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,1,instant,,,,,,,,fact-459
+ifrs-full_InsuranceFinanceIncomeExpensesFromInsuranceContractsIssuedExcludedFromProfitOrLossThatWillBeReclassifiedToProfitOrLossBeforeTax,-,-,-,c-1,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,10,instant,,,,,,,,fact-137
+ifrs-full_InsuranceFinanceIncomeExpensesFromInsuranceContractsIssuedExcludedFromProfitOrLossThatWillBeReclassifiedToProfitOrLossBeforeTax,4,4000000,"4,000,000",c-6,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,10,instant,,,,,,,,fact-138
+ifrs-full_InsuranceFinanceIncomeExpensesFromInsuranceContractsIssuedExcludedFromProfitOrLossThatWillBeReclassifiedToProfitOrLossBeforeTax,-,-,-,c-34,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,10,instant,,,,,,,,fact-474
+ifrs-full_InsuranceFinanceIncomeExpensesFromInsuranceContractsIssuedExcludedFromProfitOrLossThatWillBeReclassifiedToProfitOrLossBeforeTax,-,-,-,c-35,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,10,instant,,,,,,,,fact-475
+ifrs-full_InsuranceFinanceIncomeExpensesFromInsuranceContractsIssuedExcludedFromProfitOrLossThatWillBeReclassifiedToProfitOrLossBeforeTax,4,4000000,"4,000,000",c-36,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,10,instant,,,,,,,,fact-476
+ifrs-full_InsuranceFinanceIncomeExpensesFromInsuranceContractsIssuedExcludedFromProfitOrLossThatWillBeReclassifiedToProfitOrLossBeforeTax,-,-,-,c-37,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,10,instant,,,,,,,,fact-477
+ifrs-full_InsuranceFinanceIncomeExpensesFromInsuranceContractsIssuedExcludedFromProfitOrLossThatWillBeReclassifiedToProfitOrLossBeforeTax,4,4000000,"4,000,000",c-38,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,10,instant,,,,,,,,fact-478
+ifrs-full_InsuranceFinanceIncomeExpensesFromInsuranceContractsIssuedExcludedFromProfitOrLossThatWillBeReclassifiedToProfitOrLossBeforeTax,-,-,-,c-39,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,10,instant,,,,,,,,fact-479
+ifrs-full_InsuranceFinanceIncomeExpensesFromInsuranceContractsIssuedExcludedFromProfitOrLossThatWillBeReclassifiedToProfitOrLossBeforeTax,4,4000000,"4,000,000",c-6,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,10,instant,,,,,,,,fact-480
+ifrs-full_FinanceIncomeExpensesFromReinsuranceContractsHeldExcludedFromProfitOrLossBeforeTax,1,1000000,"1,000,000",c-1,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,11,instant,,,,,,,,fact-139
+ifrs-full_FinanceIncomeExpensesFromReinsuranceContractsHeldExcludedFromProfitOrLossBeforeTax,1,1000000,"1,000,000",c-6,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,11,instant,,,,,,,,fact-140
+ifrs-full_FinanceIncomeExpensesFromReinsuranceContractsHeldExcludedFromProfitOrLossBeforeTax,-,-,-,c-15,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,11,instant,,,,,,,,fact-313
+ifrs-full_FinanceIncomeExpensesFromReinsuranceContractsHeldExcludedFromProfitOrLossBeforeTax,-,-,-,c-16,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,11,instant,,,,,,,,fact-314
+ifrs-full_FinanceIncomeExpensesFromReinsuranceContractsHeldExcludedFromProfitOrLossBeforeTax,1,1000000,"1,000,000",c-17,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,11,instant,,,,,,,,fact-315
+ifrs-full_FinanceIncomeExpensesFromReinsuranceContractsHeldExcludedFromProfitOrLossBeforeTax,-,-,-,c-18,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,11,instant,,,,,,,,fact-316
+ifrs-full_FinanceIncomeExpensesFromReinsuranceContractsHeldExcludedFromProfitOrLossBeforeTax,1,1000000,"1,000,000",c-19,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,11,instant,,,,,,,,fact-317
+ifrs-full_FinanceIncomeExpensesFromReinsuranceContractsHeldExcludedFromProfitOrLossBeforeTax,-,-,-,c-20,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,11,instant,,,,,,,,fact-318
+ifrs-full_FinanceIncomeExpensesFromReinsuranceContractsHeldExcludedFromProfitOrLossBeforeTax,1,1000000,"1,000,000",c-1,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,11,instant,,,,,,,,fact-319
+ifrs-full_FinanceIncomeExpensesFromReinsuranceContractsHeldExcludedFromProfitOrLossBeforeTax,-,-,-,c-34,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,11,instant,,,,,,,,fact-481
+ifrs-full_FinanceIncomeExpensesFromReinsuranceContractsHeldExcludedFromProfitOrLossBeforeTax,-,-,-,c-35,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,11,instant,,,,,,,,fact-482
+ifrs-full_FinanceIncomeExpensesFromReinsuranceContractsHeldExcludedFromProfitOrLossBeforeTax,1,1000000,"1,000,000",c-36,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,11,instant,,,,,,,,fact-483
+ifrs-full_FinanceIncomeExpensesFromReinsuranceContractsHeldExcludedFromProfitOrLossBeforeTax,-,-,-,c-37,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,11,instant,,,,,,,,fact-484
+ifrs-full_FinanceIncomeExpensesFromReinsuranceContractsHeldExcludedFromProfitOrLossBeforeTax,1,1000000,"1,000,000",c-38,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,11,instant,,,,,,,,fact-485
+ifrs-full_FinanceIncomeExpensesFromReinsuranceContractsHeldExcludedFromProfitOrLossBeforeTax,-,-,-,c-39,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,11,instant,,,,,,,,fact-486
+ifrs-full_FinanceIncomeExpensesFromReinsuranceContractsHeldExcludedFromProfitOrLossBeforeTax,1,1000000,"1,000,000",c-6,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,11,instant,,,,,,,,fact-487
+ifrs-full_IncomeTaxRelatingToComponentsOfOtherComprehensiveIncomeThatWillBeReclassifiedToProfitOrLoss,6,6000000,"6,000,000",c-1,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,12,instant,,,,,,,,fact-141
+ifrs-full_IncomeTaxRelatingToComponentsOfOtherComprehensiveIncomeThatWillBeReclassifiedToProfitOrLoss,6,6000000,"6,000,000",c-6,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,12,instant,,,,,,,,fact-142
+ifrs-full_OtherComprehensiveIncomeThatWillBeReclassifiedToProfitOrLossNetOfTax,73,73000000,"73,000,000",c-1,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,13,instant,,,,,,,,fact-143
+ifrs-full_OtherComprehensiveIncomeThatWillBeReclassifiedToProfitOrLossNetOfTax,1 40,1 40,1 40,c-6,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,13,instant,,,,,,,,fact-144
+ifrs-full_OtherComprehensiveIncome,230,230000000,"230,000,000",c-1,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,14,instant,,,,,,,,fact-145
+ifrs-full_OtherComprehensiveIncome,367,367000000,"367,000,000",c-6,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,14,instant,,,,,,,,fact-146
+ifrs-full_OtherComprehensiveIncome,-,-,-,c-15,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,14,instant,,,,,,,,fact-327
+ifrs-full_OtherComprehensiveIncome,-,-,-,c-16,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,14,instant,,,,,,,,fact-328
+ifrs-full_OtherComprehensiveIncome,77,77000000,"77,000,000",c-17,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,14,instant,,,,,,,,fact-329
+ifrs-full_OtherComprehensiveIncome,309,309000000,"309,000,000",c-18,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,14,instant,,,,,,,,fact-330
+ifrs-full_OtherComprehensiveIncome,232,232000000,"232,000,000",c-19,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,14,instant,,,,,,,,fact-331
+ifrs-full_OtherComprehensiveIncome,2,2000000,"2,000,000",c-20,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,14,instant,,,,,,,,fact-332
+ifrs-full_OtherComprehensiveIncome,230,230000000,"230,000,000",c-1,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,14,instant,,,,,,,,fact-333
+ifrs-full_OtherComprehensiveIncome,-,-,-,c-34,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,14,instant,,,,,,,,fact-495
+ifrs-full_OtherComprehensiveIncome,-,-,-,c-35,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,14,instant,,,,,,,,fact-496
+ifrs-full_OtherComprehensiveIncome,19 3,19 3,19 3,c-36,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,14,instant,,,,,,,,fact-497
+ifrs-full_OtherComprehensiveIncome,175,175000000,"175,000,000",c-37,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,14,instant,,,,,,,,fact-498
+ifrs-full_OtherComprehensiveIncome,36 8,36 8,36 8,c-38,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,14,instant,,,,,,,,fact-499
+ifrs-full_OtherComprehensiveIncome,1,1000000,"1,000,000",c-39,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,14,instant,,,,,,,,fact-500
+ifrs-full_OtherComprehensiveIncome,36 7,36 7,36 7,c-6,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,14,instant,,,,,,,,fact-501
+ifrs-full_ProfitLoss,1989,1989000000,"1,989,000,000",c-2,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,15,instant,,,,,,,,fact-103
+ifrs-full_ProfitLoss,359,359000000,"359,000,000",c-3,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,15,instant,,,,,,,,fact-104
+ifrs-full_ProfitLoss,16 30,16 30,16 30,c-1,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,15,instant,,,,,,,,fact-105
+ifrs-full_ProfitLoss,1  74 0,1  74 0,1  74 0,c-4,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,15,instant,,,,,,,,fact-106
+ifrs-full_ProfitLoss,548,548000000,"548,000,000",c-5,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,15,instant,,,,,,,,fact-107
+ifrs-full_ProfitLoss,1 1 9 2,1 1 9 2,1 1 9 2,c-6,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,15,instant,,,,,,,,fact-108
+ifrs-full_ProfitLoss,1989,1989000000,"1,989,000,000",c-2,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,15,instant,,,,,,,,fact-715
+ifrs-full_ProfitLoss,359,359000000,"359,000,000",c-3,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,15,instant,,,,,,,,fact-716
+ifrs-full_ProfitLoss,16 30,16 30,16 30,c-1,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,15,instant,,,,,,,,fact-717
+ifrs-full_ProfitLoss,1  74 0,1  74 0,1  74 0,c-4,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,15,instant,,,,,,,,fact-718
+ifrs-full_ProfitLoss,548,548000000,"548,000,000",c-5,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,15,instant,,,,,,,,fact-719
+ifrs-full_ProfitLoss,1 1 9 2,1 1 9 2,1 1 9 2,c-6,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,15,instant,,,,,,,,fact-720
+ifrs-full_ProfitLoss,16 30,16 30,16 30,c-1,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,15,instant,,,,,,,,fact-147
+ifrs-full_ProfitLoss,1 19 2,1 19 2,1 19 2,c-6,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,15,instant,,,,,,,,fact-148
+ifrs-full_ProfitLoss,-,-,-,c-15,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,15,instant,,,,,,,,fact-264
+ifrs-full_ProfitLoss,-,-,-,c-16,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,15,instant,,,,,,,,fact-265
+ifrs-full_ProfitLoss,-,-,-,c-17,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,15,instant,,,,,,,,fact-266
+ifrs-full_ProfitLoss,1626,1626000000,"1,626,000,000",c-18,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,15,instant,,,,,,,,fact-267
+ifrs-full_ProfitLoss,1626,1626000000,"1,626,000,000",c-19,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,15,instant,,,,,,,,fact-268
+ifrs-full_ProfitLoss,4,4000000,"4,000,000",c-20,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,15,instant,,,,,,,,fact-269
+ifrs-full_ProfitLoss,1 630,1 630,1 630,c-1,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,15,instant,,,,,,,,fact-270
+ifrs-full_ProfitLoss,-,-,-,c-34,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,15,instant,,,,,,,,fact-425
+ifrs-full_ProfitLoss,-,-,-,c-35,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,15,instant,,,,,,,,fact-426
+ifrs-full_ProfitLoss,-,-,-,c-36,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,15,instant,,,,,,,,fact-427
+ifrs-full_ProfitLoss,1 188,1 188,1 188,c-37,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,15,instant,,,,,,,,fact-428
+ifrs-full_ProfitLoss,1 188,1 188,1 188,c-38,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,15,instant,,,,,,,,fact-429
+ifrs-full_ProfitLoss,4,4000000,"4,000,000",c-39,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,15,instant,,,,,,,,fact-430
+ifrs-full_ProfitLoss,1 1 9 2,1 1 9 2,1 1 9 2,c-6,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,15,instant,,,,,,,,fact-431
+ifrs-full_ComprehensiveIncome,1860,1860000000,"1,860,000,000",c-1,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,16,instant,,,,,,,,fact-149
+ifrs-full_ComprehensiveIncome,825,825000000,"825,000,000",c-6,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,16,instant,,,,,,,,fact-150
+ifrs-full_ComprehensiveIncome,1860,1860000000,"1,860,000,000",c-1,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,16,instant,,,,,,,,fact-725
+ifrs-full_ComprehensiveIncome,825,825000000,"825,000,000",c-6,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,16,instant,,,,,,,,fact-726
+ifrs-full_ComprehensiveIncome,-,-,-,c-15,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,16,instant,,,,,,,,fact-334
+ifrs-full_ComprehensiveIncome,-,-,-,c-16,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,16,instant,,,,,,,,fact-335
+ifrs-full_ComprehensiveIncome,77,77000000,"77,000,000",c-17,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,16,instant,,,,,,,,fact-336
+ifrs-full_ComprehensiveIncome,1 935,1 935,1 935,c-18,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,16,instant,,,,,,,,fact-337
+ifrs-full_ComprehensiveIncome,1858,1858000000,"1,858,000,000",c-19,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,16,instant,,,,,,,,fact-338
+ifrs-full_ComprehensiveIncome,2,2000000,"2,000,000",c-20,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,16,instant,,,,,,,,fact-339
+ifrs-full_ComprehensiveIncome,1 860,1 860,1 860,c-1,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,16,instant,,,,,,,,fact-340
+ifrs-full_ComprehensiveIncome,-,-,-,c-34,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,16,instant,,,,,,,,fact-502
+ifrs-full_ComprehensiveIncome,-,-,-,c-35,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,16,instant,,,,,,,,fact-503
+ifrs-full_ComprehensiveIncome,19 3,19 3,19 3,c-36,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,16,instant,,,,,,,,fact-504
+ifrs-full_ComprehensiveIncome,1 013,1 013,1 013,c-37,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,16,instant,,,,,,,,fact-505
+ifrs-full_ComprehensiveIncome,82 0,82 0,82 0,c-38,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,16,instant,,,,,,,,fact-506
+ifrs-full_ComprehensiveIncome,5,5000000,"5,000,000",c-39,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,16,instant,,,,,,,,fact-507
+ifrs-full_ComprehensiveIncome,825,825000000,"825,000,000",c-6,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,16,instant,,,,,,,,fact-508
+ifrs-full_ComprehensiveIncomeAttributableToOwnersOfParent,1858,1858000000,"1,858,000,000",c-1,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,17,instant,,,,,,,,fact-721
+ifrs-full_ComprehensiveIncomeAttributableToOwnersOfParent,820,820000000,"820,000,000",c-6,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,17,instant,,,,,,,,fact-722
+ifrs-full_ComprehensiveIncomeAttributableToOwnersOfParent,1858,1858000000,"1,858,000,000",c-1,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,17,instant,,,,,,,,fact-155
+ifrs-full_ComprehensiveIncomeAttributableToOwnersOfParent,82 0,82 0,82 0,c-6,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,17,instant,,,,,,,,fact-156
+ifrs-full_ComprehensiveIncomeAttributableToNoncontrollingInterests,2,2000000,"2,000,000",c-1,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,18,instant,,,,,,,,fact-723
+ifrs-full_ComprehensiveIncomeAttributableToNoncontrollingInterests,5,5000000,"5,000,000",c-6,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,18,instant,,,,,,,,fact-724
+ifrs-full_ComprehensiveIncomeFromContinuingOperationsAttributableToOwnersOfParent,1832,1832000000,"1,832,000,000",c-1,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,19,instant,,,,,,,,fact-151
+ifrs-full_ComprehensiveIncomeFromContinuingOperationsAttributableToOwnersOfParent,1392,1392000000,"1,392,000,000",c-6,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,19,instant,,,,,,,,fact-152
+tescoplc_NetFairValueGainsLossesOnInventoryCashFlowHedges,7,7000000,"7,000,000",c-1,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,2,instant,,,,,,,,fact-121
+tescoplc_NetFairValueGainsLossesOnInventoryCashFlowHedges,38,38000000,"38,000,000",c-6,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,2,instant,,,,,,,,fact-122
+ifrs-full_ComprehensiveIncomeFromDiscontinuedOperationsAttributableToOwnersOfParent,26,26000000,"26,000,000",c-1,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,20,instant,,,,,,,,fact-153
+ifrs-full_ComprehensiveIncomeFromDiscontinuedOperationsAttributableToOwnersOfParent,5 72,5 72,5 72,c-6,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,20,instant,,,,,,,,fact-154
+ifrs-full_IncomeTaxRelatingToComponentsOfOtherComprehensiveIncomeThatWillNotBeReclassifiedToProfitOrLoss,95,95000000,"95,000,000",c-1,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,3,instant,,,,,,,,fact-123
+ifrs-full_IncomeTaxRelatingToComponentsOfOtherComprehensiveIncomeThatWillNotBeReclassifiedToProfitOrLoss,62,62000000,"62,000,000",c-6,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,3,instant,,,,,,,,fact-124
+ifrs-full_OtherComprehensiveIncomeThatWillNotBeReclassifiedToProfitOrLossNetOfTax,303,303000000,"303,000,000",c-1,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,4,instant,,,,,,,,fact-125
+ifrs-full_OtherComprehensiveIncomeThatWillNotBeReclassifiedToProfitOrLossNetOfTax,227,227000000,"227,000,000",c-6,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,4,instant,,,,,,,,fact-126
+ifrs-full_GainsLossesOnFinancialAssetsMeasuredAtFairValueThroughOtherComprehensiveIncomeBeforeTax,14,14000000,"14,000,000",c-1,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,5,instant,,,,,,,,fact-127
+ifrs-full_GainsLossesOnFinancialAssetsMeasuredAtFairValueThroughOtherComprehensiveIncomeBeforeTax,16,16000000,"16,000,000",c-6,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,5,instant,,,,,,,,fact-128
+ifrs-full_OtherComprehensiveIncomeBeforeTaxExchangeDifferencesOnTranslation,89,89000000,"89,000,000",c-1,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,6,instant,,,,,,,,fact-129
+ifrs-full_OtherComprehensiveIncomeBeforeTaxExchangeDifferencesOnTranslation,157,157000000,"157,000,000",c-6,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,6,instant,,,,,,,,fact-130
+ifrs-full_OtherComprehensiveIncomeBeforeTaxExchangeDifferencesOnTranslation,-,-,-,c-15,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,6,instant,,,,,,,,fact-271
+ifrs-full_OtherComprehensiveIncomeBeforeTaxExchangeDifferencesOnTranslation,-,-,-,c-16,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,6,instant,,,,,,,,fact-272
+ifrs-full_OtherComprehensiveIncomeBeforeTaxExchangeDifferencesOnTranslation,89,89000000,"89,000,000",c-17,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,6,instant,,,,,,,,fact-273
+ifrs-full_OtherComprehensiveIncomeBeforeTaxExchangeDifferencesOnTranslation,-,-,-,c-18,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,6,instant,,,,,,,,fact-274
+ifrs-full_OtherComprehensiveIncomeBeforeTaxExchangeDifferencesOnTranslation,89,89000000,"89,000,000",c-19,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,6,instant,,,,,,,,fact-275
+ifrs-full_OtherComprehensiveIncomeBeforeTaxExchangeDifferencesOnTranslation,-,-,-,c-20,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,6,instant,,,,,,,,fact-276
+ifrs-full_OtherComprehensiveIncomeBeforeTaxExchangeDifferencesOnTranslation,89,89000000,"89,000,000",c-1,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,6,instant,,,,,,,,fact-277
+ifrs-full_OtherComprehensiveIncomeBeforeTaxExchangeDifferencesOnTranslation,-,-,-,c-34,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,6,instant,,,,,,,,fact-432
+ifrs-full_OtherComprehensiveIncomeBeforeTaxExchangeDifferencesOnTranslation,-,-,-,c-35,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,6,instant,,,,,,,,fact-433
+ifrs-full_OtherComprehensiveIncomeBeforeTaxExchangeDifferencesOnTranslation,1 57,1 57,1 57,c-36,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,6,instant,,,,,,,,fact-434
+ifrs-full_OtherComprehensiveIncomeBeforeTaxExchangeDifferencesOnTranslation,-,-,-,c-37,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,6,instant,,,,,,,,fact-435
+ifrs-full_OtherComprehensiveIncomeBeforeTaxExchangeDifferencesOnTranslation,1 57,1 57,1 57,c-38,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,6,instant,,,,,,,,fact-436
+ifrs-full_OtherComprehensiveIncomeBeforeTaxExchangeDifferencesOnTranslation,-,-,-,c-39,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,6,instant,,,,,,,,fact-437
+ifrs-full_OtherComprehensiveIncomeBeforeTaxExchangeDifferencesOnTranslation,1 57,1 57,1 57,c-6,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,6,instant,,,,,,,,fact-438
+ifrs-full_OtherComprehensiveIncomeBeforeTaxHedgesOfNetInvestmentsInForeignOperations,33,33000000,"33,000,000",c-1,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,7,instant,,,,,,,,fact-131
+ifrs-full_OtherComprehensiveIncomeBeforeTaxHedgesOfNetInvestmentsInForeignOperations,41,41000000,"41,000,000",c-6,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,7,instant,,,,,,,,fact-132
+ifrs-full_OtherComprehensiveIncomeBeforeTaxHedgesOfNetInvestmentsInForeignOperations,-,-,-,c-15,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,7,instant,,,,,,,,fact-278
+ifrs-full_OtherComprehensiveIncomeBeforeTaxHedgesOfNetInvestmentsInForeignOperations,-,-,-,c-16,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,7,instant,,,,,,,,fact-279
+ifrs-full_OtherComprehensiveIncomeBeforeTaxHedgesOfNetInvestmentsInForeignOperations,33,33000000,"33,000,000",c-17,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,7,instant,,,,,,,,fact-280
+ifrs-full_OtherComprehensiveIncomeBeforeTaxHedgesOfNetInvestmentsInForeignOperations,-,-,-,c-18,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,7,instant,,,,,,,,fact-281
+ifrs-full_OtherComprehensiveIncomeBeforeTaxHedgesOfNetInvestmentsInForeignOperations,33,33000000,"33,000,000",c-19,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,7,instant,,,,,,,,fact-282
+ifrs-full_OtherComprehensiveIncomeBeforeTaxHedgesOfNetInvestmentsInForeignOperations,-,-,-,c-20,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,7,instant,,,,,,,,fact-283
+ifrs-full_OtherComprehensiveIncomeBeforeTaxHedgesOfNetInvestmentsInForeignOperations,33,33000000,"33,000,000",c-1,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,7,instant,,,,,,,,fact-284
+ifrs-full_OtherComprehensiveIncomeBeforeTaxHedgesOfNetInvestmentsInForeignOperations,-,-,-,c-34,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,7,instant,,,,,,,,fact-439
+ifrs-full_OtherComprehensiveIncomeBeforeTaxHedgesOfNetInvestmentsInForeignOperations,-,-,-,c-35,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,7,instant,,,,,,,,fact-440
+ifrs-full_OtherComprehensiveIncomeBeforeTaxHedgesOfNetInvestmentsInForeignOperations,41,41000000,"41,000,000",c-36,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,7,instant,,,,,,,,fact-441
+ifrs-full_OtherComprehensiveIncomeBeforeTaxHedgesOfNetInvestmentsInForeignOperations,-,-,-,c-37,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,7,instant,,,,,,,,fact-442
+ifrs-full_OtherComprehensiveIncomeBeforeTaxHedgesOfNetInvestmentsInForeignOperations,41,41000000,"41,000,000",c-38,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,7,instant,,,,,,,,fact-443
+ifrs-full_OtherComprehensiveIncomeBeforeTaxHedgesOfNetInvestmentsInForeignOperations,-,-,-,c-39,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,7,instant,,,,,,,,fact-444
+ifrs-full_OtherComprehensiveIncomeBeforeTaxHedgesOfNetInvestmentsInForeignOperations,41,41000000,"41,000,000",c-6,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,7,instant,,,,,,,,fact-445
+ifrs-full_GainsLossesOnCashFlowHedgesBeforeTax,33,33000000,"33,000,000",c-1,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,8,instant,,,,,,,,fact-133
+ifrs-full_GainsLossesOnCashFlowHedgesBeforeTax,25,25000000,"25,000,000",c-6,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,8,instant,,,,,,,,fact-134
+ifrs-full_ReclassificationAdjustmentsOnCashFlowHedgesBeforeTax,71,71000000,"71,000,000",c-1,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,9,instant,,,,,,,,fact-135
+ifrs-full_ReclassificationAdjustmentsOnCashFlowHedgesBeforeTax,5 6,5 6,5 6,c-6,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,9,instant,,,,,,,,fact-136
+ifrs-full_ReclassificationAdjustmentsOnCashFlowHedgesBeforeTax,-,-,-,c-15,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,9,instant,,,,,,,,fact-306
+ifrs-full_ReclassificationAdjustmentsOnCashFlowHedgesBeforeTax,-,-,-,c-16,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,9,instant,,,,,,,,fact-307
+ifrs-full_ReclassificationAdjustmentsOnCashFlowHedgesBeforeTax,69,69000000,"69,000,000",c-17,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,9,instant,,,,,,,,fact-308
+ifrs-full_ReclassificationAdjustmentsOnCashFlowHedgesBeforeTax,-,-,-,c-18,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,9,instant,,,,,,,,fact-309
+ifrs-full_ReclassificationAdjustmentsOnCashFlowHedgesBeforeTax,69,69000000,"69,000,000",c-19,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,9,instant,,,,,,,,fact-310
+ifrs-full_ReclassificationAdjustmentsOnCashFlowHedgesBeforeTax,2,2000000,"2,000,000",c-20,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,9,instant,,,,,,,,fact-311
+ifrs-full_ReclassificationAdjustmentsOnCashFlowHedgesBeforeTax,71,71000000,"71,000,000",c-1,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,9,instant,,,,,,,,fact-312
+ifrs-full_ReclassificationAdjustmentsOnCashFlowHedgesBeforeTax,-,-,-,c-34,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,9,instant,,,,,,,,fact-467
+ifrs-full_ReclassificationAdjustmentsOnCashFlowHedgesBeforeTax,-,-,-,c-35,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,9,instant,,,,,,,,fact-468
+ifrs-full_ReclassificationAdjustmentsOnCashFlowHedgesBeforeTax,56,56000000,"56,000,000",c-36,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,9,instant,,,,,,,,fact-469
+ifrs-full_ReclassificationAdjustmentsOnCashFlowHedgesBeforeTax,-,-,-,c-37,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,9,instant,,,,,,,,fact-470
+ifrs-full_ReclassificationAdjustmentsOnCashFlowHedgesBeforeTax,56,56000000,"56,000,000",c-38,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,9,instant,,,,,,,,fact-471
+ifrs-full_ReclassificationAdjustmentsOnCashFlowHedgesBeforeTax,-,-,-,c-39,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,9,instant,,,,,,,,fact-472
+ifrs-full_ReclassificationAdjustmentsOnCashFlowHedgesBeforeTax,56,56000000,"56,000,000",c-6,u-1,-6,1000000,1,ifrs-full_StatementOfComprehensiveIncomeAbstract,9,instant,,,,,,,,fact-473

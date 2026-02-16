@@ -1,0 +1,197 @@
+{
+  "generated_at": "2026-02-02T00:51:51.278829",
+  "filing_info": {
+    "entity_name": "Unknown",
+    "filing_type": "ALL",
+    "period_end": null
+  },
+  "summary": {
+    "total_networks": 6,
+    "core_statements": 6,
+    "detail_schedules": 0,
+    "tables": 0,
+    "policies": 0,
+    "documents": 0,
+    "other": 0,
+    "by_category": {
+      "CORE_STATEMENT": 6
+    },
+    "by_statement_type": {
+      "OTHER": 2,
+      "INCOME_STATEMENT": 1,
+      "BALANCE_SHEET": 1,
+      "EQUITY": 1,
+      "CASH_FLOW": 1
+    },
+    "by_confidence": {
+      "LOW": 6
+    }
+  },
+  "core_statements": [
+    {
+      "filename": "core_statements/statementoffinancialposition.json",
+      "role_uri": "http://tescoplc.com/xbrl/2024/roles/StatementOfFinancialPosition",
+      "role_definition": null,
+      "statement_type": "BALANCE_SHEET",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/statementofcomprehensiveincome.json",
+      "role_uri": "http://tescoplc.com/xbrl/2024/roles/StatementOfComprehensiveIncome",
+      "role_definition": null,
+      "statement_type": "INCOME_STATEMENT",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/statementofcashflows.json",
+      "role_uri": "http://tescoplc.com/xbrl/2024/roles/StatementOfCashFlows",
+      "role_definition": null,
+      "statement_type": "CASH_FLOW",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/statementofchangesinequity.json",
+      "role_uri": "http://tescoplc.com/xbrl/2024/roles/StatementOfChangesInEquity",
+      "role_definition": null,
+      "statement_type": "EQUITY",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/profitorloss.json",
+      "role_uri": "http://tescoplc.com/xbrl/2024/roles/ProfitOrLoss",
+      "role_definition": null,
+      "statement_type": "OTHER",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/notesandmandatoryitems.json",
+      "role_uri": "http://tescoplc.com/xbrl/2024/roles/NotesAndMandatoryItems",
+      "role_definition": null,
+      "statement_type": "OTHER",
+      "confidence": "LOW"
+    }
+  ],
+  "details_by_type": {
+    "BALANCE_SHEET": [],
+    "INCOME_STATEMENT": [],
+    "CASH_FLOW": [],
+    "EQUITY": [],
+    "OTHER": []
+  },
+  "all_networks_by_category": {
+    "CORE_STATEMENT": [
+      {
+        "filename": "core_statements/profitorloss.json",
+        "role_uri": "http://tescoplc.com/xbrl/2024/roles/ProfitOrLoss",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/statementofcomprehensiveincome.json",
+        "role_uri": "http://tescoplc.com/xbrl/2024/roles/StatementOfComprehensiveIncome",
+        "role_definition": null,
+        "statement_type": "INCOME_STATEMENT",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/statementoffinancialposition.json",
+        "role_uri": "http://tescoplc.com/xbrl/2024/roles/StatementOfFinancialPosition",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/notesandmandatoryitems.json",
+        "role_uri": "http://tescoplc.com/xbrl/2024/roles/NotesAndMandatoryItems",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/statementofchangesinequity.json",
+        "role_uri": "http://tescoplc.com/xbrl/2024/roles/StatementOfChangesInEquity",
+        "role_definition": null,
+        "statement_type": "EQUITY",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/statementofcashflows.json",
+        "role_uri": "http://tescoplc.com/xbrl/2024/roles/StatementOfCashFlows",
+        "role_definition": null,
+        "statement_type": "CASH_FLOW",
+        "confidence": "LOW"
+      }
+    ],
+    "DETAIL": [],
+    "TABLE": [],
+    "POLICY": [],
+    "PARENTHETICAL": [],
+    "DOCUMENT": [],
+    "UNKNOWN": []
+  },
+  "network_index": {
+    "core_statements/profitorloss.json": {
+      "role_uri": "http://tescoplc.com/xbrl/2024/roles/ProfitOrLoss",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "OTHER",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": []
+    },
+    "core_statements/statementofcomprehensiveincome.json": {
+      "role_uri": "http://tescoplc.com/xbrl/2024/roles/StatementOfComprehensiveIncome",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "INCOME_STATEMENT",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Income"
+      ]
+    },
+    "core_statements/statementoffinancialposition.json": {
+      "role_uri": "http://tescoplc.com/xbrl/2024/roles/StatementOfFinancialPosition",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "FinancialPosition"
+      ]
+    },
+    "core_statements/notesandmandatoryitems.json": {
+      "role_uri": "http://tescoplc.com/xbrl/2024/roles/NotesAndMandatoryItems",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "OTHER",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": []
+    },
+    "core_statements/statementofchangesinequity.json": {
+      "role_uri": "http://tescoplc.com/xbrl/2024/roles/StatementOfChangesInEquity",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "EQUITY",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Equity"
+      ]
+    },
+    "core_statements/statementofcashflows.json": {
+      "role_uri": "http://tescoplc.com/xbrl/2024/roles/StatementOfCashFlows",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "CASH_FLOW",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "CashFlow"
+      ]
+    }
+  }
+}

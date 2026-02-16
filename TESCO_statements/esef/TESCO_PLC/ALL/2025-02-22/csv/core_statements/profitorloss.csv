@@ -1,0 +1,149 @@
+concept,value,display_value,formatted_value,context_ref,unit_ref,decimals,scaling_factor,level,parent_concept,order,period_type,period_start,period_end,dimensions,sign,scale,format,is_nil,fact_id
+tescoplc_RevenueFromSaleOfGoodsAndServices,6 91 9 1,6 91 9 1,6 91 9 1,c-2,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,0,instant,,,,,,,,fact-7
+tescoplc_RevenueFromSaleOfGoodsAndServices,-,-,-,c-3,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,0,instant,,,,,,,,fact-8
+tescoplc_RevenueFromSaleOfGoodsAndServices,6 91 9 1,6 91 9 1,6 91 9 1,c-1,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,0,instant,,,,,,,,fact-9
+tescoplc_RevenueFromSaleOfGoodsAndServices,67 673,67 673,67 673,c-4,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,0,instant,,,,,,,,fact-10
+tescoplc_RevenueFromSaleOfGoodsAndServices,-,-,-,c-5,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,0,instant,,,,,,,,fact-11
+tescoplc_RevenueFromSaleOfGoodsAndServices,67 673,67 673,67 673,c-6,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,0,instant,,,,,,,,fact-12
+ifrs-full_InsuranceRevenue,7 25,7 25,7 25,c-2,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,1,instant,,,,,,,,fact-13
+ifrs-full_InsuranceRevenue,-,-,-,c-3,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,1,instant,,,,,,,,fact-14
+ifrs-full_InsuranceRevenue,725,725000000,"725,000,000",c-1,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,1,instant,,,,,,,,fact-15
+ifrs-full_InsuranceRevenue,51 4,51 4,51 4,c-4,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,1,instant,,,,,,,,fact-16
+ifrs-full_InsuranceRevenue,-,-,-,c-5,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,1,instant,,,,,,,,fact-17
+ifrs-full_InsuranceRevenue,514,514000000,"514,000,000",c-6,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,1,instant,,,,,,,,fact-18
+ifrs-full_FinanceIncome,25 4,25 4,25 4,c-2,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,10,instant,,,,,,,,fact-67
+ifrs-full_FinanceIncome,-,-,-,c-3,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,10,instant,,,,,,,,fact-68
+ifrs-full_FinanceIncome,25 4,25 4,25 4,c-1,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,10,instant,,,,,,,,fact-69
+ifrs-full_FinanceIncome,26 7,26 7,26 7,c-4,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,10,instant,,,,,,,,fact-70
+ifrs-full_FinanceIncome,-,-,-,c-5,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,10,instant,,,,,,,,fact-71
+ifrs-full_FinanceIncome,267,267000000,"267,000,000",c-6,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,10,instant,,,,,,,,fact-72
+ifrs-full_FinanceCosts,79 0,79 0,79 0,c-2,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,11,instant,,,,,,,,fact-73
+ifrs-full_FinanceCosts,44,44000000,"44,000,000",c-3,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,11,instant,,,,,,,,fact-74
+ifrs-full_FinanceCosts,7 46,7 46,7 46,c-1,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,11,instant,,,,,,,,fact-75
+ifrs-full_FinanceCosts,825,825000000,"825,000,000",c-4,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,11,instant,,,,,,,,fact-76
+ifrs-full_FinanceCosts,20,20000000,"20,000,000",c-5,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,11,instant,,,,,,,,fact-77
+ifrs-full_FinanceCosts,8 05,8 05,8 05,c-6,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,11,instant,,,,,,,,fact-78
+ifrs-full_ProfitLossBeforeTax,2588,2588000000,"2,588,000,000",c-2,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,12,instant,,,,,,,,fact-79
+ifrs-full_ProfitLossBeforeTax,373,373000000,"373,000,000",c-3,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,12,instant,,,,,,,,fact-80
+ifrs-full_ProfitLossBeforeTax,2 21 5,2 21 5,2 21 5,c-1,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,12,instant,,,,,,,,fact-81
+ifrs-full_ProfitLossBeforeTax,2 27 7,2 27 7,2 27 7,c-4,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,12,instant,,,,,,,,fact-82
+ifrs-full_ProfitLossBeforeTax,12,12000000,"12,000,000",c-5,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,12,instant,,,,,,,,fact-83
+ifrs-full_ProfitLossBeforeTax,2 289,2 289,2 289,c-6,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,12,instant,,,,,,,,fact-84
+ifrs-full_IncomeTaxExpenseContinuingOperations,69 0,69 0,69 0,c-2,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,13,instant,,,,,,,,fact-85
+ifrs-full_IncomeTaxExpenseContinuingOperations,79,79000000,"79,000,000",c-3,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,13,instant,,,,,,,,fact-86
+ifrs-full_IncomeTaxExpenseContinuingOperations,611,611000000,"611,000,000",c-1,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,13,instant,,,,,,,,fact-87
+ifrs-full_IncomeTaxExpenseContinuingOperations,593,593000000,"593,000,000",c-4,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,13,instant,,,,,,,,fact-88
+ifrs-full_IncomeTaxExpenseContinuingOperations,68,68000000,"68,000,000",c-5,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,13,instant,,,,,,,,fact-89
+ifrs-full_IncomeTaxExpenseContinuingOperations,525,525000000,"525,000,000",c-6,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,13,instant,,,,,,,,fact-90
+ifrs-full_ProfitLossFromContinuingOperations,1 898,1 898,1 898,c-2,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,14,instant,,,,,,,,fact-91
+ifrs-full_ProfitLossFromContinuingOperations,294,294000000,"294,000,000",c-3,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,14,instant,,,,,,,,fact-92
+ifrs-full_ProfitLossFromContinuingOperations,160 4,160 4,160 4,c-1,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,14,instant,,,,,,,,fact-93
+ifrs-full_ProfitLossFromContinuingOperations,1 684,1 684,1 684,c-4,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,14,instant,,,,,,,,fact-94
+ifrs-full_ProfitLossFromContinuingOperations,80,80000000,"80,000,000",c-5,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,14,instant,,,,,,,,fact-95
+ifrs-full_ProfitLossFromContinuingOperations,1764,1764000000,"1,764,000,000",c-6,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,14,instant,,,,,,,,fact-96
+ifrs-full_ProfitLossFromDiscontinuedOperations,91,91000000,"91,000,000",c-2,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,15,instant,,,,,,,,fact-97
+ifrs-full_ProfitLossFromDiscontinuedOperations,6 5,6 5,6 5,c-3,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,15,instant,,,,,,,,fact-98
+ifrs-full_ProfitLossFromDiscontinuedOperations,26,26000000,"26,000,000",c-1,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,15,instant,,,,,,,,fact-99
+ifrs-full_ProfitLossFromDiscontinuedOperations,56,56000000,"56,000,000",c-4,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,15,instant,,,,,,,,fact-100
+ifrs-full_ProfitLossFromDiscontinuedOperations,628,628000000,"628,000,000",c-5,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,15,instant,,,,,,,,fact-101
+ifrs-full_ProfitLossFromDiscontinuedOperations,572,572000000,"572,000,000",c-6,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,15,instant,,,,,,,,fact-102
+ifrs-full_ProfitLoss,1989,1989000000,"1,989,000,000",c-2,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,16,instant,,,,,,,,fact-103
+ifrs-full_ProfitLoss,359,359000000,"359,000,000",c-3,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,16,instant,,,,,,,,fact-104
+ifrs-full_ProfitLoss,16 30,16 30,16 30,c-1,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,16,instant,,,,,,,,fact-105
+ifrs-full_ProfitLoss,1  74 0,1  74 0,1  74 0,c-4,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,16,instant,,,,,,,,fact-106
+ifrs-full_ProfitLoss,548,548000000,"548,000,000",c-5,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,16,instant,,,,,,,,fact-107
+ifrs-full_ProfitLoss,1 1 9 2,1 1 9 2,1 1 9 2,c-6,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,16,instant,,,,,,,,fact-108
+ifrs-full_ProfitLoss,1989,1989000000,"1,989,000,000",c-2,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,16,instant,,,,,,,,fact-715
+ifrs-full_ProfitLoss,359,359000000,"359,000,000",c-3,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,16,instant,,,,,,,,fact-716
+ifrs-full_ProfitLoss,16 30,16 30,16 30,c-1,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,16,instant,,,,,,,,fact-717
+ifrs-full_ProfitLoss,1  74 0,1  74 0,1  74 0,c-4,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,16,instant,,,,,,,,fact-718
+ifrs-full_ProfitLoss,548,548000000,"548,000,000",c-5,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,16,instant,,,,,,,,fact-719
+ifrs-full_ProfitLoss,1 1 9 2,1 1 9 2,1 1 9 2,c-6,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,16,instant,,,,,,,,fact-720
+ifrs-full_ProfitLoss,16 30,16 30,16 30,c-1,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,16,instant,,,,,,,,fact-147
+ifrs-full_ProfitLoss,1 19 2,1 19 2,1 19 2,c-6,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,16,instant,,,,,,,,fact-148
+ifrs-full_ProfitLoss,-,-,-,c-15,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,16,instant,,,,,,,,fact-264
+ifrs-full_ProfitLoss,-,-,-,c-16,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,16,instant,,,,,,,,fact-265
+ifrs-full_ProfitLoss,-,-,-,c-17,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,16,instant,,,,,,,,fact-266
+ifrs-full_ProfitLoss,1626,1626000000,"1,626,000,000",c-18,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,16,instant,,,,,,,,fact-267
+ifrs-full_ProfitLoss,1626,1626000000,"1,626,000,000",c-19,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,16,instant,,,,,,,,fact-268
+ifrs-full_ProfitLoss,4,4000000,"4,000,000",c-20,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,16,instant,,,,,,,,fact-269
+ifrs-full_ProfitLoss,1 630,1 630,1 630,c-1,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,16,instant,,,,,,,,fact-270
+ifrs-full_ProfitLoss,-,-,-,c-34,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,16,instant,,,,,,,,fact-425
+ifrs-full_ProfitLoss,-,-,-,c-35,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,16,instant,,,,,,,,fact-426
+ifrs-full_ProfitLoss,-,-,-,c-36,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,16,instant,,,,,,,,fact-427
+ifrs-full_ProfitLoss,1 188,1 188,1 188,c-37,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,16,instant,,,,,,,,fact-428
+ifrs-full_ProfitLoss,1 188,1 188,1 188,c-38,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,16,instant,,,,,,,,fact-429
+ifrs-full_ProfitLoss,4,4000000,"4,000,000",c-39,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,16,instant,,,,,,,,fact-430
+ifrs-full_ProfitLoss,1 1 9 2,1 1 9 2,1 1 9 2,c-6,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,16,instant,,,,,,,,fact-431
+ifrs-full_ProfitLossAttributableToOwnersOfParent,1985,1985000000,"1,985,000,000",c-2,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,17,instant,,,,,,,,fact-703
+ifrs-full_ProfitLossAttributableToOwnersOfParent,3 59,3 59,3 59,c-3,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,17,instant,,,,,,,,fact-704
+ifrs-full_ProfitLossAttributableToOwnersOfParent,1 626,1 626,1 626,c-1,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,17,instant,,,,,,,,fact-705
+ifrs-full_ProfitLossAttributableToOwnersOfParent,1736,1736000000,"1,736,000,000",c-4,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,17,instant,,,,,,,,fact-706
+ifrs-full_ProfitLossAttributableToOwnersOfParent,5 48,5 48,5 48,c-5,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,17,instant,,,,,,,,fact-707
+ifrs-full_ProfitLossAttributableToOwnersOfParent,1 1 8 8,1 1 8 8,1 1 8 8,c-6,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,17,instant,,,,,,,,fact-708
+ifrs-full_ProfitLossAttributableToNoncontrollingInterests,4,4000000,"4,000,000",c-2,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,18,instant,,,,,,,,fact-709
+ifrs-full_ProfitLossAttributableToNoncontrollingInterests,-,-,-,c-3,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,18,instant,,,,,,,,fact-710
+ifrs-full_ProfitLossAttributableToNoncontrollingInterests,4,4000000,"4,000,000",c-1,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,18,instant,,,,,,,,fact-711
+ifrs-full_ProfitLossAttributableToNoncontrollingInterests,4,4000000,"4,000,000",c-4,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,18,instant,,,,,,,,fact-712
+ifrs-full_ProfitLossAttributableToNoncontrollingInterests,-,-,-,c-5,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,18,instant,,,,,,,,fact-713
+ifrs-full_ProfitLossAttributableToNoncontrollingInterests,4,4000000,"4,000,000",c-6,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,18,instant,,,,,,,,fact-714
+ifrs-full_BasicEarningsLossPerShare,23.7 9,23.7 9,23.7 9,c-1,u-2,4,0.0001,2,tescoplc_ProfitOrLossLineItems,19,instant,,,,,,,,fact-109
+ifrs-full_BasicEarningsLossPerShare,1 6 . 74,1 6 . 74,1 6 . 74,c-6,u-2,4,0.0001,2,tescoplc_ProfitOrLossLineItems,19,instant,,,,,,,,fact-110
+ifrs-full_Revenue,6 991 6,6 991 6,6 991 6,c-2,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,2,instant,,,,,,,,fact-19
+ifrs-full_Revenue,-,-,-,c-3,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,2,instant,,,,,,,,fact-20
+ifrs-full_Revenue,69 916,69 916,69 916,c-1,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,2,instant,,,,,,,,fact-21
+ifrs-full_Revenue,6 8 1 8 7,6 8 1 8 7,6 8 1 8 7,c-4,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,2,instant,,,,,,,,fact-22
+ifrs-full_Revenue,-,-,-,c-5,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,2,instant,,,,,,,,fact-23
+ifrs-full_Revenue,6 8 1 8 7,6 8 1 8 7,6 8 1 8 7,c-6,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,2,instant,,,,,,,,fact-24
+ifrs-full_DilutedEarningsLossPerShare,23 .51,23 .51,23 .51,c-1,u-2,4,0.0001,2,tescoplc_ProfitOrLossLineItems,20,instant,,,,,,,,fact-111
+ifrs-full_DilutedEarningsLossPerShare,16.5 6,16.5 6,16.5 6,c-6,u-2,4,0.0001,2,tescoplc_ProfitOrLossLineItems,20,instant,,,,,,,,fact-112
+ifrs-full_BasicEarningsLossPerShareFromContinuingOperations,23 .41,23 .41,23 .41,c-1,u-2,4,0.0001,2,tescoplc_ProfitOrLossLineItems,21,instant,,,,,,,,fact-113
+ifrs-full_BasicEarningsLossPerShareFromContinuingOperations,24. 8 0,24. 8 0,24. 8 0,c-6,u-2,4,0.0001,2,tescoplc_ProfitOrLossLineItems,21,instant,,,,,,,,fact-114
+ifrs-full_DilutedEarningsLossPerShareFromContinuingOperations,2 3.1 3,2 3.1 3,2 3.1 3,c-1,u-2,4,0.0001,2,tescoplc_ProfitOrLossLineItems,22,instant,,,,,,,,fact-115
+ifrs-full_DilutedEarningsLossPerShareFromContinuingOperations,24. 5 3,24. 5 3,24. 5 3,c-6,u-2,4,0.0001,2,tescoplc_ProfitOrLossLineItems,22,instant,,,,,,,,fact-116
+ifrs-full_CostOfSales,63 886,63 886,63 886,c-2,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,3,instant,,,,,,,,fact-25
+ifrs-full_CostOfSales,31 9,31 9,31 9,c-3,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,3,instant,,,,,,,,fact-26
+ifrs-full_CostOfSales,6 4205,6 4205,6 4205,c-1,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,3,instant,,,,,,,,fact-27
+ifrs-full_CostOfSales,62 832,62 832,62 832,c-4,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,3,instant,,,,,,,,fact-28
+ifrs-full_CostOfSales,4,4000000,"4,000,000",c-5,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,3,instant,,,,,,,,fact-29
+ifrs-full_CostOfSales,6 283 6,6 283 6,6 283 6,c-6,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,3,instant,,,,,,,,fact-30
+ifrs-full_InsuranceServiceExpensesFromInsuranceContractsIssued,598,598000000,"598,000,000",c-2,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,4,instant,,,,,,,,fact-31
+ifrs-full_InsuranceServiceExpensesFromInsuranceContractsIssued,-,-,-,c-3,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,4,instant,,,,,,,,fact-32
+ifrs-full_InsuranceServiceExpensesFromInsuranceContractsIssued,598,598000000,"598,000,000",c-1,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,4,instant,,,,,,,,fact-33
+ifrs-full_InsuranceServiceExpensesFromInsuranceContractsIssued,45 4,45 4,45 4,c-4,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,4,instant,,,,,,,,fact-34
+ifrs-full_InsuranceServiceExpensesFromInsuranceContractsIssued,-,-,-,c-5,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,4,instant,,,,,,,,fact-35
+ifrs-full_InsuranceServiceExpensesFromInsuranceContractsIssued,45 4,45 4,45 4,c-6,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,4,instant,,,,,,,,fact-36
+ifrs-full_IncomeExpensesFromReinsuranceContractsHeldOtherThanFinanceIncomeExpenses,62,62000000,"62,000,000",c-2,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,5,instant,,,,,,,,fact-37
+ifrs-full_IncomeExpensesFromReinsuranceContractsHeldOtherThanFinanceIncomeExpenses,-,-,-,c-3,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,5,instant,,,,,,,,fact-38
+ifrs-full_IncomeExpensesFromReinsuranceContractsHeldOtherThanFinanceIncomeExpenses,62,62000000,"62,000,000",c-1,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,5,instant,,,,,,,,fact-39
+ifrs-full_IncomeExpensesFromReinsuranceContractsHeldOtherThanFinanceIncomeExpenses,48,48000000,"48,000,000",c-4,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,5,instant,,,,,,,,fact-40
+ifrs-full_IncomeExpensesFromReinsuranceContractsHeldOtherThanFinanceIncomeExpenses,-,-,-,c-5,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,5,instant,,,,,,,,fact-41
+ifrs-full_IncomeExpensesFromReinsuranceContractsHeldOtherThanFinanceIncomeExpenses,48,48000000,"48,000,000",c-6,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,5,instant,,,,,,,,fact-42
+ifrs-full_GrossProfit,5 370,5 370,5 370,c-2,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,6,instant,,,,,,,,fact-43
+ifrs-full_GrossProfit,31 9,31 9,31 9,c-3,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,6,instant,,,,,,,,fact-44
+ifrs-full_GrossProfit,5 051,5 051,5 051,c-1,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,6,instant,,,,,,,,fact-45
+ifrs-full_GrossProfit,4853,4853000000,"4,853,000,000",c-4,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,6,instant,,,,,,,,fact-46
+ifrs-full_GrossProfit,4,4000000,"4,000,000",c-5,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,6,instant,,,,,,,,fact-47
+ifrs-full_GrossProfit,4 849,4 849,4 849,c-6,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,6,instant,,,,,,,,fact-48
+ifrs-full_AdministrativeExpense,2 242,2 242,2 242,c-2,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,7,instant,,,,,,,,fact-49
+ifrs-full_AdministrativeExpense,9 8,9 8,9 8,c-3,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,7,instant,,,,,,,,fact-50
+ifrs-full_AdministrativeExpense,23 40,23 40,23 40,c-1,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,7,instant,,,,,,,,fact-51
+ifrs-full_AdministrativeExpense,2 024,2 024,2 024,c-4,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,7,instant,,,,,,,,fact-52
+ifrs-full_AdministrativeExpense,4,4000000,"4,000,000",c-5,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,7,instant,,,,,,,,fact-53
+ifrs-full_AdministrativeExpense,2028,2028000000,"2,028,000,000",c-6,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,7,instant,,,,,,,,fact-54
+ifrs-full_ProfitLossFromOperatingActivities,3 1 28,3 1 28,3 1 28,c-2,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,8,instant,,,,,,,,fact-55
+ifrs-full_ProfitLossFromOperatingActivities,417,417000000,"417,000,000",c-3,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,8,instant,,,,,,,,fact-56
+ifrs-full_ProfitLossFromOperatingActivities,27 11,27 11,27 11,c-1,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,8,instant,,,,,,,,fact-57
+ifrs-full_ProfitLossFromOperatingActivities,2 829,2 829,2 829,c-4,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,8,instant,,,,,,,,fact-58
+ifrs-full_ProfitLossFromOperatingActivities,8,8000000,"8,000,000",c-5,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,8,instant,,,,,,,,fact-59
+ifrs-full_ProfitLossFromOperatingActivities,2 821,2 821,2 821,c-6,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,8,instant,,,,,,,,fact-60
+ifrs-full_ProfitLossFromOperatingActivities,2 711,2 711,2 711,c-1,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,8,instant,,,,,,,,fact-586
+ifrs-full_ProfitLossFromOperatingActivities,2 821,2 821,2 821,c-6,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,8,instant,,,,,,,,fact-587
+ifrs-full_ProfitLossFromOperatingActivities,35,35000000,"35,000,000",c-40,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,8,instant,,,,,,,,fact-588
+ifrs-full_ProfitLossFromOperatingActivities,659,659000000,"659,000,000",c-41,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,8,instant,,,,,,,,fact-589
+ifrs-full_ShareOfProfitLossOfAssociatesAndJointVenturesAccountedForUsingEquityMethod,4,4000000,"4,000,000",c-2,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,9,instant,,,,,,,,fact-61
+ifrs-full_ShareOfProfitLossOfAssociatesAndJointVenturesAccountedForUsingEquityMethod,-,-,-,c-3,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,9,instant,,,,,,,,fact-62
+ifrs-full_ShareOfProfitLossOfAssociatesAndJointVenturesAccountedForUsingEquityMethod,4,4000000,"4,000,000",c-1,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,9,instant,,,,,,,,fact-63
+ifrs-full_ShareOfProfitLossOfAssociatesAndJointVenturesAccountedForUsingEquityMethod,6,6000000,"6,000,000",c-4,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,9,instant,,,,,,,,fact-64
+ifrs-full_ShareOfProfitLossOfAssociatesAndJointVenturesAccountedForUsingEquityMethod,-,-,-,c-5,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,9,instant,,,,,,,,fact-65
+ifrs-full_ShareOfProfitLossOfAssociatesAndJointVenturesAccountedForUsingEquityMethod,6,6000000,"6,000,000",c-6,u-1,-6,1000000,2,tescoplc_ProfitOrLossLineItems,9,instant,,,,,,,,fact-66

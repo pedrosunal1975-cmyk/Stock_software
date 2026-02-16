@@ -1,0 +1,123 @@
+concept,value,display_value,formatted_value,context_ref,unit_ref,decimals,scaling_factor,level,parent_concept,order,period_type,period_start,period_end,dimensions,sign,scale,format,is_nil,fact_id
+ifrs-full_ProfitLossFromOperatingActivities,3 1 28,3 1 28,3 1 28,c-2,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,0,instant,,,,,,,,fact-55
+ifrs-full_ProfitLossFromOperatingActivities,417,417000000,"417,000,000",c-3,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,0,instant,,,,,,,,fact-56
+ifrs-full_ProfitLossFromOperatingActivities,27 11,27 11,27 11,c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,0,instant,,,,,,,,fact-57
+ifrs-full_ProfitLossFromOperatingActivities,2 829,2 829,2 829,c-4,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,0,instant,,,,,,,,fact-58
+ifrs-full_ProfitLossFromOperatingActivities,8,8000000,"8,000,000",c-5,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,0,instant,,,,,,,,fact-59
+ifrs-full_ProfitLossFromOperatingActivities,2 821,2 821,2 821,c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,0,instant,,,,,,,,fact-60
+ifrs-full_ProfitLossFromOperatingActivities,2 711,2 711,2 711,c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,0,instant,,,,,,,,fact-586
+ifrs-full_ProfitLossFromOperatingActivities,2 821,2 821,2 821,c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,0,instant,,,,,,,,fact-587
+ifrs-full_ProfitLossFromOperatingActivities,35,35000000,"35,000,000",c-40,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,0,instant,,,,,,,,fact-588
+ifrs-full_ProfitLossFromOperatingActivities,659,659000000,"659,000,000",c-41,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,0,instant,,,,,,,,fact-589
+ifrs-full_AdjustmentsForDepreciationAndAmortisationExpense,17 75,17 75,17 75,c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,1,instant,,,,,,,,fact-590
+ifrs-full_AdjustmentsForDepreciationAndAmortisationExpense,1 723,1 723,1 723,c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,1,instant,,,,,,,,fact-591
+ifrs-full_AdjustmentsForFairValueGainsLosses,9,9000000,"9,000,000",c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,10,instant,,,,,,,,fact-608
+ifrs-full_AdjustmentsForFairValueGainsLosses,71,71000000,"71,000,000",c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,10,instant,,,,,,,,fact-609
+ifrs-full_AdjustmentsForDecreaseIncreaseInInventories,141,141000000,"141,000,000",c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,11,instant,,,,,,,,fact-610
+ifrs-full_AdjustmentsForDecreaseIncreaseInInventories,1 50,1 50,1 50,c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,11,instant,,,,,,,,fact-611
+tescoplc_AdjustmentsForIncreaseDecreaseInTradeAndOtherReceivablesAndReinsuranceAssets,5,5000000,"5,000,000",c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,12,instant,,,,,,,,fact-612
+tescoplc_AdjustmentsForIncreaseDecreaseInTradeAndOtherReceivablesAndReinsuranceAssets,129,129000000,"129,000,000",c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,12,instant,,,,,,,,fact-613
+tescoplc_AdjustmentsForIncreaseDecreaseInTradeAndOtherPayablesAndInsuranceLiabilities,15 8,15 8,15 8,c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,13,instant,,,,,,,,fact-614
+tescoplc_AdjustmentsForIncreaseDecreaseInTradeAndOtherPayablesAndInsuranceLiabilities,698,698000000,"698,000,000",c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,13,instant,,,,,,,,fact-615
+ifrs-full_AdjustmentsForProvisions,1 0,1 0,1 0,c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,14,instant,,,,,,,,fact-616
+ifrs-full_AdjustmentsForProvisions,77,77000000,"77,000,000",c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,14,instant,,,,,,,,fact-617
+tescoplc_AdjustmentsForIncreaseDecreaseInDepositsFromCentralBank,9 08,9 08,9 08,c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,15,instant,,,,,,,,fact-618
+tescoplc_AdjustmentsForIncreaseDecreaseInDepositsFromCentralBank,72,72000000,"72,000,000",c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,15,instant,,,,,,,,fact-619
+tescoplc_AdjustmentsForIncreaseDecreaseInWorkingCapitalOfTheBankingOperationsDisposalGroup,53,53000000,"53,000,000",c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,16,instant,,,,,,,,fact-620
+tescoplc_AdjustmentsForIncreaseDecreaseInWorkingCapitalOfTheBankingOperationsDisposalGroup,7,7000000,"7,000,000",c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,16,instant,,,,,,,,fact-621
+ifrs-full_IncreaseDecreaseInWorkingCapital,853,853000000,"853,000,000",c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,17,instant,,,,,,,,fact-622
+ifrs-full_IncreaseDecreaseInWorkingCapital,26 3,26 3,26 3,c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,17,instant,,,,,,,,fact-623
+ifrs-full_CashFlowsFromUsedInOperations,40 57,40 57,40 57,c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,18,instant,,,,,,,,fact-624
+ifrs-full_CashFlowsFromUsedInOperations,4886,4886000000,"4,886,000,000",c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,18,instant,,,,,,,,fact-625
+ifrs-full_InterestPaidClassifiedAsOperatingActivities,76 9,76 9,76 9,c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,19,instant,,,,,,,,fact-626
+ifrs-full_InterestPaidClassifiedAsOperatingActivities,824,824000000,"824,000,000",c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,19,instant,,,,,,,,fact-627
+tescoplc_AdjustmentsForProfitLossArisingOnSaleOfPropertyPlantAndEquipmentInvestmentPropertyIntangibleAssetsAndAssetsClassifiedAsHeldForSaleAndEarlyTerminationOfLeases,1,1000000,"1,000,000",c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,2,instant,,,,,,,,fact-592
+tescoplc_AdjustmentsForProfitLossArisingOnSaleOfPropertyPlantAndEquipmentInvestmentPropertyIntangibleAssetsAndAssetsClassifiedAsHeldForSaleAndEarlyTerminationOfLeases,53,53000000,"53,000,000",c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,2,instant,,,,,,,,fact-593
+ifrs-full_IncomeTaxesPaidRefundClassifiedAsOperatingActivities,36 6,36 6,36 6,c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,20,instant,,,,,,,,fact-628
+ifrs-full_IncomeTaxesPaidRefundClassifiedAsOperatingActivities,223,223000000,"223,000,000",c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,20,instant,,,,,,,,fact-629
+ifrs-full_CashFlowsFromUsedInOperatingActivities,2 922,2 922,2 922,c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,21,instant,,,,,,,,fact-630
+ifrs-full_CashFlowsFromUsedInOperatingActivities,38 39,38 39,38 39,c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,21,instant,,,,,,,,fact-631
+tescoplc_ProceedsFromSaleOfPropertyPlantAndEquipmentInvestmentPropertyIntangibleAssetsAndAssetsClassifiedAsHeldForSale,137,137000000,"137,000,000",c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,22,instant,,,,,,,,fact-632
+tescoplc_ProceedsFromSaleOfPropertyPlantAndEquipmentInvestmentPropertyIntangibleAssetsAndAssetsClassifiedAsHeldForSale,55,55000000,"55,000,000",c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,22,instant,,,,,,,,fact-633
+tescoplc_PurchaseOfPropertyPlantAndEquipmentAndInvestmentPropertyClassifiedAsInvestingActivities,1  247,1  247,1  247,c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,23,instant,,,,,,,,fact-634
+tescoplc_PurchaseOfPropertyPlantAndEquipmentAndInvestmentPropertyClassifiedAsInvestingActivities,1 10 8,1 10 8,1 10 8,c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,23,instant,,,,,,,,fact-635
+ifrs-full_PurchaseOfIntangibleAssetsClassifiedAsInvestingActivities,292,292000000,"292,000,000",c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,24,instant,,,,,,,,fact-636
+ifrs-full_PurchaseOfIntangibleAssetsClassifiedAsInvestingActivities,278,278000000,"278,000,000",c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,24,instant,,,,,,,,fact-637
+ifrs-full_CashFlowsFromLosingControlOfSubsidiariesOrOtherBusinessesClassifiedAsInvestingActivities,-,-,-,c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,25,instant,,,,,,,,fact-638
+ifrs-full_CashFlowsFromLosingControlOfSubsidiariesOrOtherBusinessesClassifiedAsInvestingActivities,15,15000000,"15,000,000",c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,25,instant,,,,,,,,fact-639
+tescoplc_DisposalOfBankingOperationsNetOfCashDisposedClassifiedAsInvestingActivities,157,157000000,"157,000,000",c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,26,instant,,,,,,,,fact-640
+tescoplc_DisposalOfBankingOperationsNetOfCashDisposedClassifiedAsInvestingActivities,-,-,-,c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,26,instant,,,,,,,,fact-641
+ifrs-full_CashFlowsUsedInObtainingControlOfSubsidiariesOrOtherBusinessesClassifiedAsInvestingActivities,46,46000000,"46,000,000",c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,27,instant,,,,,,,,fact-642
+ifrs-full_CashFlowsUsedInObtainingControlOfSubsidiariesOrOtherBusinessesClassifiedAsInvestingActivities,17,17000000,"17,000,000",c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,27,instant,,,,,,,,fact-643
+ifrs-full_ProceedsFromSalesOfInvestmentsAccountedForUsingEquityMethod,-,-,-,c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,28,instant,,,,,,,,fact-644
+ifrs-full_ProceedsFromSalesOfInvestmentsAccountedForUsingEquityMethod,9,9000000,"9,000,000",c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,28,instant,,,,,,,,fact-645
+ifrs-full_CashAdvancesAndLoansMadeToRelatedParties,1,1000000,"1,000,000",c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,29,instant,,,,,,,,fact-646
+ifrs-full_CashAdvancesAndLoansMadeToRelatedParties,6 1,6 1,6 1,c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,29,instant,,,,,,,,fact-647
+tescoplc_AdjustmentsForProfitLossArisingOnSaleOfJointVenturesAndAssociates,-,-,-,c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,3,instant,,,,,,,,fact-594
+tescoplc_AdjustmentsForProfitLossArisingOnSaleOfJointVenturesAndAssociates,9,9000000,"9,000,000",c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,3,instant,,,,,,,,fact-595
+ifrs-full_PurchaseOfInterestsInInvestmentsAccountedForUsingEquityMethod,15,15000000,"15,000,000",c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,30,instant,,,,,,,,fact-648
+ifrs-full_PurchaseOfInterestsInInvestmentsAccountedForUsingEquityMethod,9,9000000,"9,000,000",c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,30,instant,,,,,,,,fact-649
+ifrs-full_DividendsReceivedFromInvestmentsAccountedForUsingEquityMethodClassifiedAsInvestingActivities,2,2000000,"2,000,000",c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,31,instant,,,,,,,,fact-650
+ifrs-full_DividendsReceivedFromInvestmentsAccountedForUsingEquityMethodClassifiedAsInvestingActivities,9,9000000,"9,000,000",c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,31,instant,,,,,,,,fact-651
+tescoplc_CashInflowsFromMaturingShortTermInvestmentsDepositsClassifiedAsInvestingActivities,191 0,191 0,191 0,c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,32,instant,,,,,,,,fact-652
+tescoplc_CashInflowsFromMaturingShortTermInvestmentsDepositsClassifiedAsInvestingActivities,19 00,19 00,19 00,c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,32,instant,,,,,,,,fact-653
+tescoplc_CashOutflowsOnInvestingInShortTermInvestmentsDepositsClassifiedAsInvestingActivities,17 71,17 71,17 71,c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,33,instant,,,,,,,,fact-654
+tescoplc_CashOutflowsOnInvestingInShortTermInvestmentsDepositsClassifiedAsInvestingActivities,24 32,24 32,24 32,c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,33,instant,,,,,,,,fact-655
+tescoplc_InvestmentsInProceedsFromOtherShortTermInvestmentsClassifiedAsInvestingActivities,23 4,23 4,23 4,c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,34,instant,,,,,,,,fact-656
+tescoplc_InvestmentsInProceedsFromOtherShortTermInvestmentsClassifiedAsInvestingActivities,25,25000000,"25,000,000",c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,34,instant,,,,,,,,fact-657
+ifrs-full_ProceedsFromSalesOfInvestmentsOtherThanInvestmentsAccountedForUsingEquityMethod,966,966000000,"966,000,000",c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,35,instant,,,,,,,,fact-658
+ifrs-full_ProceedsFromSalesOfInvestmentsOtherThanInvestmentsAccountedForUsingEquityMethod,3 52,3 52,3 52,c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,35,instant,,,,,,,,fact-659
+ifrs-full_PurchaseOfInvestmentsOtherThanInvestmentsAccountedForUsingEquityMethod,290,290000000,"290,000,000",c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,36,instant,,,,,,,,fact-660
+ifrs-full_PurchaseOfInvestmentsOtherThanInvestmentsAccountedForUsingEquityMethod,39 0,39 0,39 0,c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,36,instant,,,,,,,,fact-661
+ifrs-full_InterestReceivedClassifiedAsInvestingActivities,255,255000000,"255,000,000",c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,37,instant,,,,,,,,fact-662
+ifrs-full_InterestReceivedClassifiedAsInvestingActivities,249,249000000,"249,000,000",c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,37,instant,,,,,,,,fact-663
+ifrs-full_CashReceiptsFromFutureContractsForwardContractsOptionContractsAndSwapContractsClassifiedAsInvestingActivities,29,29000000,"29,000,000",c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,38,instant,,,,,,,,fact-664
+ifrs-full_CashReceiptsFromFutureContractsForwardContractsOptionContractsAndSwapContractsClassifiedAsInvestingActivities,5,5000000,"5,000,000",c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,38,instant,,,,,,,,fact-665
+ifrs-full_CashPaymentsForFutureContractsForwardContractsOptionContractsAndSwapContractsClassifiedAsInvestingActivities,1,1000000,"1,000,000",c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,39,instant,,,,,,,,fact-666
+ifrs-full_CashPaymentsForFutureContractsForwardContractsOptionContractsAndSwapContractsClassifiedAsInvestingActivities,24,24000000,"24,000,000",c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,39,instant,,,,,,,,fact-667
+tescoplc_AdjustmentsForProfitLossArisingOnSaleOfSubsidiariesAndBusinesses,-,-,-,c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,4,instant,,,,,,,,fact-596
+tescoplc_AdjustmentsForProfitLossArisingOnSaleOfSubsidiariesAndBusinesses,12,12000000,"12,000,000",c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,4,instant,,,,,,,,fact-597
+ifrs-full_CashFlowsFromUsedInInvestingActivities,4 41,4 41,4 41,c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,40,instant,,,,,,,,fact-668
+ifrs-full_CashFlowsFromUsedInInvestingActivities,1 70 0,1 70 0,1 70 0,c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,40,instant,,,,,,,,fact-669
+tescoplc_OwnSharesPurchasedForCancellationClassifiedAsFinancingActivities,10 16,10 16,10 16,c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,41,instant,,,,,,,,fact-670
+tescoplc_OwnSharesPurchasedForCancellationClassifiedAsFinancingActivities,7 52,7 52,7 52,c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,41,instant,,,,,,,,fact-671
+tescoplc_OwnSharesPurchasedForShareSchemesNetOfCashReceivedFromEmployeesClassifiedAsFinancingActivities,5 4,5 4,5 4,c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,42,instant,,,,,,,,fact-672
+tescoplc_OwnSharesPurchasedForShareSchemesNetOfCashReceivedFromEmployeesClassifiedAsFinancingActivities,93,93000000,"93,000,000",c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,42,instant,,,,,,,,fact-673
+tescoplc_RepaymentOfCapitalElementOfObligationsUnderLeasesClassifiedAsFinancingActivities,6 02,6 02,6 02,c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,43,instant,,,,,,,,fact-674
+tescoplc_RepaymentOfCapitalElementOfObligationsUnderLeasesClassifiedAsFinancingActivities,6 27,6 27,6 27,c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,43,instant,,,,,,,,fact-675
+tescoplc_CashOutflowsExceedingTheIncrementalIncreaseInAssetsInAPropertyBuybackClassifiedAsFinancingActivities,92,92000000,"92,000,000",c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,44,instant,,,,,,,,fact-676
+tescoplc_CashOutflowsExceedingTheIncrementalIncreaseInAssetsInAPropertyBuybackClassifiedAsFinancingActivities,62,62000000,"62,000,000",c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,44,instant,,,,,,,,fact-677
+ifrs-full_ProceedsFromBorrowingsClassifiedAsFinancingActivities,462,462000000,"462,000,000",c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,45,instant,,,,,,,,fact-678
+ifrs-full_ProceedsFromBorrowingsClassifiedAsFinancingActivities,1 232,1 232,1 232,c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,45,instant,,,,,,,,fact-679
+ifrs-full_RepaymentsOfBorrowingsClassifiedAsFinancingActivities,809,809000000,"809,000,000",c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,46,instant,,,,,,,,fact-680
+ifrs-full_RepaymentsOfBorrowingsClassifiedAsFinancingActivities,7 75,7 75,7 75,c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,46,instant,,,,,,,,fact-681
+tescoplc_CashInflowsFromDerivativeFinancialInstrumentsClassifiedAsFinancingActivities,485,485000000,"485,000,000",c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,47,instant,,,,,,,,fact-682
+tescoplc_CashInflowsFromDerivativeFinancialInstrumentsClassifiedAsFinancingActivities,98,98000000,"98,000,000",c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,47,instant,,,,,,,,fact-683
+tescoplc_CashOutflowsFromDerivativeFinancialInstrumentsClassifiedAsFinancingActivities,45 3,45 3,45 3,c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,48,instant,,,,,,,,fact-684
+tescoplc_CashOutflowsFromDerivativeFinancialInstrumentsClassifiedAsFinancingActivities,102,102000000,"102,000,000",c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,48,instant,,,,,,,,fact-685
+ifrs-full_DividendsPaidToEquityHoldersOfParentClassifiedAsFinancingActivities,86 4,86 4,86 4,c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,49,instant,,,,,,,,fact-686
+ifrs-full_DividendsPaidToEquityHoldersOfParentClassifiedAsFinancingActivities,778,778000000,"778,000,000",c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,49,instant,,,,,,,,fact-687
+tescoplc_AdjustmentsForNetImpairmentLossReversalOnPropertyPlantAndEquipmentRightOfUseAssetsIntangibleAssetsAndInvestmentProperty,29 8,29 8,29 8,c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,5,instant,,,,,,,,fact-598
+tescoplc_AdjustmentsForNetImpairmentLossReversalOnPropertyPlantAndEquipmentRightOfUseAssetsIntangibleAssetsAndInvestmentProperty,28,28000000,"28,000,000",c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,5,instant,,,,,,,,fact-599
+ifrs-full_CashFlowsFromUsedInFinancingActivities,2943,2943000000,"2,943,000,000",c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,50,instant,,,,,,,,fact-688
+ifrs-full_CashFlowsFromUsedInFinancingActivities,1859,1859000000,"1,859,000,000",c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,50,instant,,,,,,,,fact-689
+ifrs-full_IncreaseDecreaseInCashAndCashEquivalentsBeforeEffectOfExchangeRateChanges,462,462000000,"462,000,000",c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,51,instant,,,,,,,,fact-690
+ifrs-full_IncreaseDecreaseInCashAndCashEquivalentsBeforeEffectOfExchangeRateChanges,280,280000000,"280,000,000",c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,51,instant,,,,,,,,fact-691
+tescoplc_CashAndCashEquivalentsIncludingCashHeldInTheDisposalGroupAtTheBeginningOfTheYear,18 74,18 74,18 74,c-8,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,52,instant,,2024-02-24,,,,,,fact-692
+tescoplc_CashAndCashEquivalentsIncludingCashHeldInTheDisposalGroupAtTheBeginningOfTheYear,1565,1565000000,"1,565,000,000",c-33,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,52,instant,,2023-02-25,,,,,,fact-693
+ifrs-full_EffectOfExchangeRateChangesOnCashAndCashEquivalents,13,13000000,"13,000,000",c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,53,instant,,,,,,,,fact-694
+ifrs-full_EffectOfExchangeRateChangesOnCashAndCashEquivalents,29,29000000,"29,000,000",c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,53,instant,,,,,,,,fact-695
+tescoplc_CashAndCashEquivalentsIncludingCashHeldInTheDisposalGroupAtTheEndOfTheYear,1399,1399000000,"1,399,000,000",c-7,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,54,instant,,2025-02-22,,,,,,fact-696
+tescoplc_CashAndCashEquivalentsIncludingCashHeldInTheDisposalGroupAtTheEndOfTheYear,1  8 74,1  8 74,1  8 74,c-8,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,54,instant,,2024-02-24,,,,,,fact-697
+ifrs-full_CashAndCashEquivalentsClassifiedAsPartOfDisposalGroupHeldForSale,-,-,-,c-7,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,55,instant,,2025-02-22,,,,,,fact-698
+ifrs-full_CashAndCashEquivalentsClassifiedAsPartOfDisposalGroupHeldForSale,346,346000000,"346,000,000",c-8,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,55,instant,,2024-02-24,,,,,,fact-699
+ifrs-full_CashAndCashEquivalentsIfDifferentFromStatementOfFinancialPosition,1399,1399000000,"1,399,000,000",c-7,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,56,instant,,2025-02-22,,,,,,fact-700
+ifrs-full_CashAndCashEquivalentsIfDifferentFromStatementOfFinancialPosition,1 52 8,1 52 8,1 52 8,c-8,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,56,instant,,2024-02-24,,,,,,fact-701
+tescoplc_AdjustmentsForImpairmentLossOnOtherInvestments,10,10000000,"10,000,000",c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,6,instant,,,,,,,,fact-600
+tescoplc_AdjustmentsForImpairmentLossOnOtherInvestments,-,-,-,c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,6,instant,,,,,,,,fact-601
+tescoplc_AdjustmentsForNetRemeasurementLossOfNonCurrentAssetsHeldForSale,64,64000000,"64,000,000",c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,7,instant,,,,,,,,fact-602
+tescoplc_AdjustmentsForNetRemeasurementLossOfNonCurrentAssetsHeldForSale,720,720000000,"720,000,000",c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,7,instant,,,,,,,,fact-603
+ifrs-full_AdjustmentsForIncreaseDecreaseInEmployeeBenefitLiabilities,30,30000000,"30,000,000",c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,8,instant,,,,,,,,fact-604
+ifrs-full_AdjustmentsForIncreaseDecreaseInEmployeeBenefitLiabilities,29,29000000,"29,000,000",c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,8,instant,,,,,,,,fact-605
+ifrs-full_AdjustmentsForSharebasedPayments,37,37000000,"37,000,000",c-1,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,9,instant,,,,,,,,fact-606
+ifrs-full_AdjustmentsForSharebasedPayments,78,78000000,"78,000,000",c-6,u-1,-6,1000000,2,tescoplc_StatementOfCashFlowsLineItems,9,instant,,,,,,,,fact-607
