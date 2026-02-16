@@ -1,0 +1,143 @@
+# Component Definition: Noncurrent Liabilities
+# Total of all long-term liabilities
+
+component_id: noncurrent_liabilities
+display_name: "Noncurrent Liabilities"
+description: "Total of all noncurrent (long-term) liabilities. Used as building block for total_liabilities composite in IFRS filings."
+
+category: balance_sheet
+subcategory: liabilities
+
+characteristics:
+  balance_type: credit
+  period_type: instant
+  is_monetary: true
+  is_abstract: false
+  data_type: monetary
+
+matching_rules:
+  label_rules:
+    - patterns:
+        - "Noncurrent Liabilities"
+        - "Non-Current Liabilities"
+        - "Total Non-Current Liabilities"
+        - "Total Noncurrent Liabilities"
+        - "Liabilities, Noncurrent"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+
+    - patterns:
+        - "noncurrent liabilities"
+        - "non-current liabilities"
+        - "long-term liabilities"
+        - "non current liabilities"
+      match_type: contains
+      case_sensitive: false
+      weight: 12
+
+  local_name_rules:
+    - patterns:
+        - "NoncurrentLiabilities"
+        - "LiabilitiesNoncurrent"
+      match_type: exact
+      weight: 15
+
+    - patterns:
+        - "NoncurrentLiabilities"
+        - "LiabilitiesNoncurrent"
+      match_type: contains
+      weight: 10
+
+  hierarchy_rules:
+    - rule_type: parent_matches
+      pattern: "*LiabilitiesAndEquity*"
+      weight: 6
+
+    - rule_type: has_siblings
+      pattern: "*Current*"
+      weight: 4
+
+  calculation_rules:
+    - rule_type: has_children
+      patterns:
+        - "*LongTerm*"
+        - "*Borrowings*"
+        - "*Provisions*"
+        - "*DeferredTax*"
+      min_matches: 1
+      weight: 8
+
+    - rule_type: contributes_to
+      pattern: "*Liabilities"
+      weight: 5
+
+  definition_rules:
+    - keywords:
+        - "noncurrent"
+        - "long-term"
+        - "obligation"
+      all_required: false
+      weight: 4
+
+scoring:
+  min_score: 20
+  confidence_levels:
+    high: 35
+    medium: 27
+    low: 20
+  tiebreaker: highest_in_hierarchy
+  reject_if:
+    - condition: "Is abstract concept"
+      pattern: "abstract=true"
+    - condition: "Is current liabilities"
+      pattern: "name~currentliabilities"
+    - condition: "Is combined liabilities and equity"
+      pattern: "name~liabilitiesandequity"
+    - condition: "Is combined liabilities and equity (SE)"
+      pattern: "name~liabilitiesandstockholdersequity"
+
+    # Reject individual liability items
+    - condition: "Is borrowings"
+      pattern: "name~borrowings"
+    - condition: "Is provisions"
+      pattern: "name~provisions"
+    - condition: "Is deferred"
+      pattern: "name~deferred"
+    - condition: "Is pension/benefit"
+      pattern: "name~pension"
+    - condition: "Is defined benefit"
+      pattern: "name~benefitplan"
+    - condition: "Is lease item"
+      pattern: "name~lease"
+    - condition: "Is trade payable"
+      pattern: "name~tradepayable"
+    - condition: "Is derivative"
+      pattern: "name~derivative"
+    - condition: "Is insurance"
+      pattern: "name~insurance"
+    - condition: "Is tax liability"
+      pattern: "name~taxliabilit"
+    - condition: "Is retirement benefit"
+      pattern: "name~retirementbenefit"
+
+    # Reject cash flow items
+    - condition: "Is cash flow adjustment"
+      pattern: "name~adjustmentsfor"
+    - condition: "Is increase/decrease item"
+      pattern: "name~increasedecrease"
+
+    # Reject disclosure items
+    - condition: "Is text block"
+      pattern: "name~textblock"
+    - condition: "Is schedule"
+      pattern: "name~schedule"
+
+composition:
+  is_composite: false
+
+validation:
+  expected_sign: positive
+  relationships:
+    - other: total_liabilities
+      relation: less_than

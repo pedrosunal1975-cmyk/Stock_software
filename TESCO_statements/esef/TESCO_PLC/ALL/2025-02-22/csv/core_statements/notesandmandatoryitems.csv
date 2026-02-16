@@ -1,0 +1,165 @@
+concept,value,display_value,formatted_value,context_ref,unit_ref,decimals,scaling_factor,level,parent_concept,order,period_type,period_start,period_end,dimensions,sign,scale,format,is_nil,fact_id
+ifrs-full_DisclosureOfAuthorisationOfFinancialStatementsExplanatory,The n Ken,The n Ken,The n Ken,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-1
+ifrs-full_DisclosureOfMaterialAccountingPolicyInformationExplanatory,"Note 1 Accounting policies, judgements an General information","Note 1 Accounting policies, judgements an General information","Note 1 Accounting policies, judgements an General information",c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-727
+ifrs-full_DisclosureOfGeneralInformationAboutFinancialStatementsExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-862
+ifrs-full_NameOfReportingEntityOrOtherMeansOfIdentification,T,T,T,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-2
+ifrs-full_LegalFormOfEntity,public,public,public,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-3
+ifrs-full_CountryOfIncorporation,E,E,E,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-4
+ifrs-full_DomicileOfEntity,Wales,Wales,Wales,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-702
+ifrs-full_AddressOfRegisteredOfficeOfEntity,T,T,T,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-5
+ifrs-full_DescriptionOfNatureOfEntitysOperationsAndPrincipalActivities,The m and rel,The m and rel,The m and rel,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-6
+ifrs-full_DisclosureOfBasisOfPreparationOfFinancialStatementsExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-728
+ifrs-full_StatementOfIFRSCompliance,The c IFR,The c IFR,The c IFR,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-777
+ifrs-full_DescriptionOfAccountingPolicyForFunctionalCurrencyExplanatory,The consoli round,The consoli round,The consoli round,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-820
+ifrs-full_DisclosureOfGoingConcernExplanatory,The D the C,The D the C,The D the C,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-778
+ifrs-full_DisclosureOfChangesInAccountingPoliciesAccountingEstimatesAndErrorsExplanatory,Stand not h,Stand not h,Stand not h,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-863
+ifrs-full_DescriptionOfInitialApplicationOfStandardsOrInterpretations,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-821
+ifrs-full_DisclosureOfChangesInAccountingPoliciesExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-878
+ifrs-full_DescriptionOfExpectedImpactOfInitialApplicationOfNewStandardsOrInterpretations,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-849
+ifrs-full_DescriptionOfAccountingPolicyForDiscontinuedOperationsExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-779
+ifrs-full_DescriptionOfAccountingPolicyForNoncurrentAssetsOrDisposalGroupsClassifiedAsHeldForSaleAndDiscontinuedOperationsExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-864
+ifrs-full_DescriptionOfAccountingPolicyForSegmentReportingExplanatory,Segmental reporting Following t,Segmental reporting Following t,Segmental reporting Following t,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-865
+ifrs-full_DisclosureOfBasisOfConsolidationExplanatory,Basis o The consol,Basis o The consol,Basis o The consol,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-729
+ifrs-full_DescriptionOfAccountingPolicyForRecognitionOfRevenue,Reve Revenue is in,Reve Revenue is in,Reve Revenue is in,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-730
+ifrs-full_DescriptionOfAccountingPolicyForCustomerLoyaltyProgrammesExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-780
+ifrs-full_DescriptionOfAccountingPolicyForFeeAndCommissionIncomeAndExpenseExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-781
+tescoplc_DescriptionOfAccountingPolicyForCommercialIncome,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-731
+ifrs-full_DescriptionOfAccountingPolicyForFinanceIncomeAndCostsExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-732
+ifrs-full_DescriptionOfAccountingPolicyForBorrowingCostsExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-822
+ifrs-full_DescriptionOfAccountingPolicyForFinanceCostsExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-850
+ifrs-full_DescriptionOfAccountingPolicyForBusinessCombinationsExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-782
+ifrs-full_DescriptionOfAccountingPolicyForGoodwillExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-823
+ifrs-full_DescriptionOfAccountingPolicyForBusinessCombinationsAndGoodwillExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-733
+ifrs-full_DescriptionOfAccountingPolicyForIntangibleAssetsOtherThanGoodwillExplanatory,Intangible assets,Intangible assets,Intangible assets,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-734
+ifrs-full_DescriptionOfAccountingPolicyForIntangibleAssetsAndGoodwillExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-824
+ifrs-full_DescriptionOfAccountingPolicyForResearchAndDevelopmentExpenseExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-866
+ifrs-full_DescriptionOfAccountingPolicyForPropertyPlantAndEquipmentExplanatory,Pro Prop,Pro Prop,Pro Prop,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-735
+ifrs-full_DescriptionOfAccountingPolicyForDepreciationExpenseExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-783
+ifrs-full_DescriptionOfAccountingPolicyForImpairmentOfNonfinancialAssetsExplanatory,Impairment of Go,Impairment of Go,Impairment of Go,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-736
+ifrs-full_DescriptionOfAccountingPolicyForImpairmentOfAssetsExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-851
+ifrs-full_DescriptionOfAccountingPolicyForMeasuringInventories,Invent Inv,Invent Inv,Invent Inv,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-737
+ifrs-full_DescriptionOfAccountingPolicyToDetermineComponentsOfCashAndCashEquivalents,Ca Cas,Ca Cas,Ca Cas,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-738
+ifrs-full_DescriptionOfAccountingPolicyForNoncurrentAssetsOrDisposalGroupsClassifiedAsHeldForSaleExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-873
+ifrs-full_DescriptionOfAccountingPolicyForLeasesExplanatory,Leases The G,Leases The G,Leases The G,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-739
+ifrs-full_DescriptionOfAccountingPolicyForCashFlowsExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-784
+ifrs-full_DescriptionOfAccountingPolicyForEmployeeBenefitsExplanatory,Post For,Post For,Post For,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-740
+ifrs-full_DescriptionOfAccountingPolicyForIncomeTaxExplanatory,T The tax expense,T The tax expense,T The tax expense,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-743
+ifrs-full_DescriptionOfAccountingPolicyForDeferredIncomeTaxExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-786
+ifrs-full_DescriptionOfAccountingPolicyForForeignCurrencyTranslationExplanatory,Foreig At e,Foreig At e,Foreig At e,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-741
+ifrs-full_DescriptionOfAccountingPolicyForFinancialInstrumentsExplanatory,Financia Finan,Financia Finan,Financia Finan,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-742
+ifrs-full_DescriptionOfAccountingPolicyForFinancialAssetsExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-825
+ifrs-full_DescriptionOfAccountingPolicyForTradeAndOtherReceivablesExplanatory,T T,T T,T T,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-785
+ifrs-full_DescriptionOfAccountingPolicyForInvestmentsOtherThanInvestmentsAccountedForUsingEquityMethodExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-787
+ifrs-full_DescriptionOfAccountingPolicyForFinancialInstrumentsAtFairValueThroughProfitOrLossExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-867
+ifrs-full_DescriptionOfAccountingPolicyForImpairmentOfFinancialAssetsExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-874
+ifrs-full_DescriptionOfAccountingPolicyForBorrowingsExplanatory,Borrowings Bor,Borrowings Bor,Borrowings Bor,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-789
+ifrs-full_DescriptionOfAccountingPolicyForFinancialLiabilitiesExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-826
+ifrs-full_DescriptionOfAccountingPolicyForTradeAndOtherPayablesExplanatory,T T,T T,T T,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-788
+ifrs-full_DescriptionOfAccountingPolicyForIssuedCapitalExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-852
+ifrs-full_DescriptionOfAccountingPolicyForDerivativeFinancialInstrumentsAndHedgingExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-790
+ifrs-full_DescriptionOfAccountingPolicyForHedgingExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-827
+ifrs-full_DescriptionOfAccountingPolicyForDerivativeFinancialInstrumentsExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-853
+ifrs-full_DescriptionOfAccountingPolicyForOffsettingOfFinancialInstrumentsExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-791
+ifrs-full_DescriptionOfAccountingPolicyForProvisionsExplanatory,Provisions  Provisio,Provisions  Provisio,Provisions  Provisio,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-744
+tescoplc_DescriptionOfAccountingPolicyForSupplierFinancingArrangements,Suppl Management r,Suppl Management r,Suppl Management r,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-745
+ifrs-full_DescriptionOfAccountingPolicyForInsuranceContracts,Insurance  Classification of insurance contracts,Insurance  Classification of insurance contracts,Insurance  Classification of insurance contracts,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-746
+ifrs-full_DescriptionOfAccountingPolicyForDeferredAcquisitionCostsArisingFromInsuranceContractsExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-828
+ifrs-full_DescriptionOfAccountingPolicyForReinsuranceExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-792
+ifrs-full_DescriptionOfAccountingPolicyForDerecognitionOfFinancialInstrumentsExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-829
+tescoplc_DescriptionOfAccountingPolicyForAlternativePerformanceMeasuresAPMs,Alte In the re,Alte In the re,Alte In the re,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-747
+ifrs-full_DisclosureOfAccountingJudgementsAndEstimatesExplanatory,Jud The prepara,Jud The prepara,Jud The prepara,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-748
+ifrs-full_DescriptionOfAccountingPolicyForInvestmentsInJointVentures,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-868
+ifrs-full_DescriptionOfAccountingPolicyForInvestmentInAssociates,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-882
+ifrs-full_DescriptionOfAccountingPolicyForInvestmentInAssociatesAndJointVenturesExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-883
+ifrs-full_DescriptionOfAccountingPolicyForExceptionalItemsExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-830
+ifrs-full_ExplanationOfAssumptionAboutFutureWithSignificantRiskOfResultingInMaterialAdjustments,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-793
+ifrs-full_DisclosureOfAssetsAndLiabilitiesWithSignificantRiskOfMaterialAdjustmentExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-831
+ifrs-full_DisclosureOfEntitysReportableSegmentsExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-749
+ifrs-full_DisclosureOfReclassificationsOrChangesInPresentationExplanatory,Note 2 Segme The Group,Note 2 Segme The Group,Note 2 Segme The Group,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-854
+ifrs-full_DisclosureOfProfitLossFromOperatingActivitiesExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-875
+ifrs-full_DisclosureOfRevenueExplanatory,Income stat The s,Income stat The s,Income stat The s,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-794
+ifrs-full_DisclosureOfDepreciationAndAmortisationExpenseExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-795
+ifrs-full_DisclosureOfGeneralAndAdministrativeExpenseExplanatory,Note 4 Opera Audit,Note 4 Opera Audit,Note 4 Opera Audit,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-855
+ifrs-full_DisclosureOfAuditorsRemunerationExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-796
+ifrs-full_DisclosureOfInformationAboutEmployeesExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-797
+ifrs-full_DisclosureOfEmployeeBenefitsExplanatory,Employment co,Employment co,Employment co,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-832
+tescoplc_DisclosureOfAdjustingItems,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-750
+ifrs-full_DisclosureOfCashFlowStatementExplanatory,Gro The t,Gro The t,Gro The t,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-879
+ifrs-full_DisclosureOfFinanceIncomeExpenseExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-751
+ifrs-full_DisclosureOfFinanceIncomeExplanatory,Note 6 Finance income a,Note 6 Finance income a,Note 6 Finance income a,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-798
+ifrs-full_DisclosureOfFinanceCostExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-833
+ifrs-full_DisclosureOfInterestExpenseExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-856
+ifrs-full_DisclosureOfInterestIncomeExpenseExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-869
+ifrs-full_DisclosureOfInterestIncomeExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-876
+ifrs-full_DisclosureOfIncomeTaxExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-752
+ifrs-full_DisclosureOfDeferredTaxesExplanatory,Defe The foll,Defe The foll,Defe The foll,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-799
+ifrs-full_DisclosureOfNoncurrentAssetsHeldForSaleAndDiscontinuedOperationsExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-753
+ifrs-full_DisclosureOfNoncurrentAssetsOrDisposalGroupsClassifiedAsHeldForSaleExplanatory,Note 8 Discontinued ope The foll,Note 8 Discontinued ope The foll,Note 8 Discontinued ope The foll,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-800
+ifrs-full_DisclosureOfDiscontinuedOperationsExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-834
+ifrs-full_DisclosureOfDividendsExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-754
+ifrs-full_DividendsRecognisedAsDistributionsToOwnersPerShare,12.5 0,12.5 0,12.5 0,c-1,u-2,4,0.0001,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-838
+ifrs-full_DividendsRecognisedAsDistributionsToOwnersPerShare,10.9 0,10.9 0,10.9 0,c-6,u-2,4,0.0001,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-835
+ifrs-full_DividendsProposedOrDeclaredBeforeFinancialStatementsAuthorisedForIssueButNotRecognisedAsDistributionToOwnersPerShare,9.4 5,9.4 5,9.4 5,c-1,u-2,4,0.0001,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-839
+ifrs-full_DividendsProposedOrDeclaredBeforeFinancialStatementsAuthorisedForIssueButNotRecognisedAsDistributionToOwnersPerShare,8.25,0.000825,0,c-6,u-2,4,0.0001,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-836
+ifrs-full_DisclosureOfEarningsPerShareExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-755
+ifrs-full_DividendsProposedOrDeclaredBeforeFinancialStatementsAuthorisedForIssueButNotRecognisedAsDistributionToOwners,637,637000000,"637,000,000",c-1,u-1,-6,1000000,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-840
+ifrs-full_DividendsProposedOrDeclaredBeforeFinancialStatementsAuthorisedForIssueButNotRecognisedAsDistributionToOwners,581,581000000,"581,000,000",c-6,u-1,-6,1000000,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-837
+ifrs-full_DisclosureOfIntangibleAssetsAndGoodwillExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-756
+ifrs-full_DisclosureOfGoodwillExplanatory,Note 1,Note 1,Note 1,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-801
+ifrs-full_DisclosureOfIntangibleAssetsExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-841
+ifrs-full_DisclosureOfPropertyPlantAndEquipmentExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-757
+ifrs-full_DisclosureOfLeasesExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-758
+ifrs-full_DisclosureOfInvestmentsAccountedForUsingEquityMethodExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-759
+ifrs-full_DisclosureOfInterestsInOtherEntitiesExplanatory,Note 1 The G,Note 1 The G,Note 1 The G,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-857
+ifrs-full_DisclosureOfSignificantInvestmentsInSubsidiariesExplanatory,Subsidiar The a,Subsidiar The a,Subsidiar The a,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-802
+ifrs-full_DisclosureOfJointVenturesExplanatory,Intere Prin,Intere Prin,Intere Prin,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-842
+ifrs-full_DisclosureOfSignificantInvestmentsInAssociatesExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-880
+ifrs-full_DisclosureOfImpairmentOfAssetsExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-760
+ifrs-full_DisclosureOfInvestmentsOtherThanInvestmentsAccountedForUsingEquityMethodExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-761
+ifrs-full_DisclosureOfDebtSecuritiesExplanatory,Note 2,Note 2,Note 2,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-803
+ifrs-full_DisclosureOfInventoriesExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-762
+ifrs-full_DisclosureOfTradeAndOtherReceivablesExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-763
+ifrs-full_DisclosureOfPrepaymentsAndOtherAssetsExplanatory,Note 18 T,Note 18 T,Note 18 T,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-804
+ifrs-full_DisclosureOfAllowanceForCreditLossesExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-877
+ifrs-full_DisclosureOfCashAndCashEquivalentsExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-764
+ifrs-full_DisclosureOfRestrictedCashAndCashEquivalentsExplanatory,Cas unclaimed,Cas unclaimed,Cas unclaimed,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-805
+ifrs-full_DisclosureOfTradeAndOtherPayablesExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-765
+ifrs-full_DisclosureOfAccruedExpensesAndOtherLiabilitiesExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-806
+tescoplc_DisclosureOfCommercialIncome,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-766
+ifrs-full_DisclosureOfBorrowingsExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-767
+ifrs-full_DisclosureOfProvisionsExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-768
+ifrs-full_DisclosureOfOtherProvisionsContingentLiabilitiesAndContingentAssetsExplanatory,Note 23 P,Note 23 P,Note 23 P,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-843
+ifrs-full_DisclosureOfInsuranceContractsExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-769
+ifrs-full_DisclosureOfInsurancePremiumRevenueExplanatory,Insurance rev,Insurance rev,Insurance rev,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-807
+ifrs-full_DisclosureOfClaimsAndBenefitsPaidExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-844
+ifrs-full_DisclosureOfAnalysisOfInsuranceRevenueExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-858
+ifrs-full_DisclosureOfReinsuranceExplanatory,Insurance contract liabili The b,Insurance contract liabili The b,Insurance contract liabili The b,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-808
+ifrs-full_DisclosureOfDepositsFromBanksExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-770
+ifrs-full_DisclosureOfFinancialInstrumentsExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-771
+ifrs-full_DisclosureOfFairValueMeasurementExplanatory,Note 26 Financial instruments The G,Note 26 Financial instruments The G,Note 26 Financial instruments The G,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-845
+ifrs-full_DisclosureOfFinancialInstrumentsDesignatedAtFairValueThroughProfitOrLossExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-859
+ifrs-full_DisclosureOfFinancialInstrumentsAtFairValueThroughProfitOrLossExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-881
+ifrs-full_DisclosureOfFairValueOfFinancialInstrumentsExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-809
+ifrs-full_DescriptionOfAccountingPolicyForFairValueMeasurementExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-870
+ifrs-full_DisclosureOfRepurchaseAndReverseRepurchaseAgreementsExplanatory,Offs The f,Offs The f,Offs The f,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-846
+ifrs-full_DisclosureOfCollateralExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-860
+ifrs-full_DisclosureOfFinancialRiskManagementExplanatory,The t,The t,The t,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-772
+ifrs-full_DisclosureOfMarketRiskExplanatory,a) Ma Foreign e,a) Ma Foreign e,a) Ma Foreign e,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-871
+ifrs-full_SensitivityAnalysisForEachTypeOfMarketRisk,Sen The im,Sen The im,Sen The im,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-810
+ifrs-full_DisclosureOfDerivativeFinancialInstrumentsExplanatory,Derivatives and hedging exposures  De,Derivatives and hedging exposures  De,Derivatives and hedging exposures  De,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-811
+ifrs-full_DisclosureOfCreditRiskExplanatory,(b) Cre,(b) Cre,(b) Cre,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-812
+ifrs-full_DisclosureOfLiquidityRiskExplanatory,(c) Liquid,(c) Liquid,(c) Liquid,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-813
+ifrs-full_DisclosureOfInsuranceRiskExplanatory,d) Ins,d) Ins,d) Ins,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-814
+ifrs-full_DisclosureOfObjectivesPoliciesAndProcessesForManagingCapitalExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-815
+ifrs-full_DisclosureOfSharebasedPaymentArrangementsExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-773
+ifrs-full_DisclosureOfShareCapitalReservesAndOtherEquityInterestExplanatory,Note 30 Share capita Sha,Note 30 Share capita Sha,Note 30 Share capita Sha,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-774
+ifrs-full_DisclosureOfIssuedCapitalExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-816
+ifrs-full_DisclosureOfTreasurySharesExplanatory,Ot The t,Ot The t,Ot The t,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-847
+ifrs-full_DisclosureOfReservesAndOtherEquityInterestExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-861
+ifrs-full_DescriptionOfAccountingPolicyForTreasurySharesExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-872
+ifrs-full_DisclosureOfRelatedPartyExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-775
+ifrs-full_DisclosureOfInformationAboutKeyManagementPersonnelExplanatory,T Mem,T Mem,T Mem,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-817
+ifrs-full_DisclosureOfCommitmentsAndContingentLiabilitiesExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-776
+ifrs-full_DisclosureOfCommitmentsExplanatory,Capital commitments At 22 F,Capital commitments At 22 F,Capital commitments At 22 F,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-818
+ifrs-full_DisclosureOfContingentLiabilitiesExplanatory,Conting As p,Conting As p,Conting As p,c-1,,,1,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-819
+ifrs-full_DisclosureOfEventsAfterReportingPeriodExplanatory,,,,c-1,,,,1,esef_cor_NotesAccountingPoliciesAndMandatoryTags,1,instant,,,,,,,,fact-848

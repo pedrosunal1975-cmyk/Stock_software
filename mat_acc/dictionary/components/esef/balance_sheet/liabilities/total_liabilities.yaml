@@ -1,5 +1,8 @@
 # ESEF overlay: total_liabilities
-# Only fields that differ from base definition
+# IFRS filings often lack ifrs-full:Liabilities aggregate concept.
+# Primary composite: current_liabilities + noncurrent_liabilities
+# (both resolve atomically - no dependency chain)
+# Fallback: total_assets - total_equity (accounting identity)
 component_id: total_liabilities
 matching_rules:
   local_name_rules:
@@ -20,3 +23,14 @@ scoring:
       pattern: "name~insurancecontracts"
     - condition: "Is current assets liabilities"
       pattern: "name~currentassetsliabilities"
+composition:
+  is_composite: true
+  components:
+    - current_liabilities
+    - noncurrent_liabilities
+  formula: "current_liabilities + noncurrent_liabilities"
+  alternatives:
+    - components:
+        - total_assets
+        - total_equity
+      formula: "total_assets - total_equity"

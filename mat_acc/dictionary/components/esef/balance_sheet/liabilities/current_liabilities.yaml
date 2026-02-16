@@ -1,10 +1,15 @@
 # ESEF overlay: current_liabilities
-# Only fields that differ from base definition
+# IFRS taxonomy uses varying names for current liabilities:
+# - ifrs-full:CurrentLiabilities (standard)
+# - ifrs-full:CurrentLiabilitiesOtherThanLiabilitiesIncluded
+#   InDisposalGroupsClassifiedAsHeldForSale (common variant)
+# Both are valid total current liabilities across ESEF filers.
 component_id: current_liabilities
 matching_rules:
   local_name_rules:
     - patterns:
         - "CurrentLiabilities"
+        - "CurrentLiabilitiesOtherThanLiabilitiesIncludedInDisposalGroupsClassifiedAsHeldForSale"
       match_type: exact
       weight: 15
     - patterns:

@@ -1,0 +1,143 @@
+# Component Definition: Noncurrent Assets
+# Total of all long-term assets (property, intangibles, investments, etc.)
+
+component_id: noncurrent_assets
+display_name: "Noncurrent Assets"
+description: "Total of all noncurrent (long-term) assets. Used as building block for total_assets composite in IFRS filings."
+
+category: balance_sheet
+subcategory: assets
+
+characteristics:
+  balance_type: debit
+  period_type: instant
+  is_monetary: true
+  is_abstract: false
+  data_type: monetary
+
+matching_rules:
+  label_rules:
+    - patterns:
+        - "Noncurrent Assets"
+        - "Non-Current Assets"
+        - "Total Non-Current Assets"
+        - "Total Noncurrent Assets"
+        - "Assets, Noncurrent"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+
+    - patterns:
+        - "noncurrent assets"
+        - "non-current assets"
+        - "long-term assets"
+        - "non current assets"
+      match_type: contains
+      case_sensitive: false
+      weight: 12
+
+  local_name_rules:
+    - patterns:
+        - "NoncurrentAssets"
+        - "AssetsNoncurrent"
+      match_type: exact
+      weight: 15
+
+    - patterns:
+        - "NoncurrentAssets"
+        - "AssetsNoncurrent"
+      match_type: contains
+      weight: 10
+
+  hierarchy_rules:
+    - rule_type: parent_matches
+      pattern: "*Assets*Abstract*"
+      weight: 6
+
+    - rule_type: has_siblings
+      pattern: "*Current*"
+      weight: 4
+
+  calculation_rules:
+    - rule_type: has_children
+      patterns:
+        - "*Property*"
+        - "*Intangible*"
+        - "*Goodwill*"
+        - "*Investment*"
+      min_matches: 2
+      weight: 10
+
+    - rule_type: contributes_to
+      pattern: "*Assets"
+      weight: 5
+
+  definition_rules:
+    - keywords:
+        - "noncurrent"
+        - "long-term"
+        - "fixed"
+      all_required: false
+      weight: 4
+
+scoring:
+  min_score: 20
+  confidence_levels:
+    high: 35
+    medium: 27
+    low: 20
+  tiebreaker: highest_in_hierarchy
+  reject_if:
+    - condition: "Is abstract concept"
+      pattern: "abstract=true"
+    - condition: "Is current assets"
+      pattern: "name~currentassets"
+
+    # Reject individual noncurrent asset items
+    - condition: "Is property/plant/equipment"
+      pattern: "name~property"
+    - condition: "Is intangible"
+      pattern: "name~intangible"
+    - condition: "Is goodwill"
+      pattern: "name~goodwill"
+    - condition: "Is investment"
+      pattern: "name~investment"
+    - condition: "Is deferred"
+      pattern: "name~deferred"
+    - condition: "Is right-of-use"
+      pattern: "name~rightofuse"
+    - condition: "Is tax related"
+      pattern: "name~tax"
+    - condition: "Is receivable"
+      pattern: "name~receivable"
+    - condition: "Is derivative"
+      pattern: "name~derivative"
+    - condition: "Is fair value"
+      pattern: "name~fairvalue"
+    - condition: "Is biological"
+      pattern: "name~biological"
+    - condition: "Is retirement benefit"
+      pattern: "name~retirementbenefit"
+    - condition: "Is pension"
+      pattern: "name~pension"
+
+    # Reject cash flow items
+    - condition: "Is cash flow adjustment"
+      pattern: "name~adjustmentsfor"
+    - condition: "Is increase/decrease item"
+      pattern: "name~increasedecrease"
+
+    # Reject disclosure items
+    - condition: "Is text block"
+      pattern: "name~textblock"
+    - condition: "Is schedule"
+      pattern: "name~schedule"
+
+composition:
+  is_composite: false
+
+validation:
+  expected_sign: positive
+  relationships:
+    - other: total_assets
+      relation: less_than

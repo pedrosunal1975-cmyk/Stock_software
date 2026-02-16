@@ -1,0 +1,364 @@
+concept,value,display_value,formatted_value,context_ref,unit_ref,decimals,scaling_factor,level,parent_concept,order,period_type,period_start,period_end,dimensions,sign,scale,format,is_nil,fact_id
+ifrs-full_ProfitLoss,1989,1989000000,"1,989,000,000",c-2,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,1,instant,,,,,,,,fact-103
+ifrs-full_ProfitLoss,359,359000000,"359,000,000",c-3,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,1,instant,,,,,,,,fact-104
+ifrs-full_ProfitLoss,16 30,16 30,16 30,c-1,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,1,instant,,,,,,,,fact-105
+ifrs-full_ProfitLoss,1  74 0,1  74 0,1  74 0,c-4,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,1,instant,,,,,,,,fact-106
+ifrs-full_ProfitLoss,548,548000000,"548,000,000",c-5,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,1,instant,,,,,,,,fact-107
+ifrs-full_ProfitLoss,1 1 9 2,1 1 9 2,1 1 9 2,c-6,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,1,instant,,,,,,,,fact-108
+ifrs-full_ProfitLoss,1989,1989000000,"1,989,000,000",c-2,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,1,instant,,,,,,,,fact-715
+ifrs-full_ProfitLoss,359,359000000,"359,000,000",c-3,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,1,instant,,,,,,,,fact-716
+ifrs-full_ProfitLoss,16 30,16 30,16 30,c-1,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,1,instant,,,,,,,,fact-717
+ifrs-full_ProfitLoss,1  74 0,1  74 0,1  74 0,c-4,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,1,instant,,,,,,,,fact-718
+ifrs-full_ProfitLoss,548,548000000,"548,000,000",c-5,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,1,instant,,,,,,,,fact-719
+ifrs-full_ProfitLoss,1 1 9 2,1 1 9 2,1 1 9 2,c-6,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,1,instant,,,,,,,,fact-720
+ifrs-full_ProfitLoss,16 30,16 30,16 30,c-1,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,1,instant,,,,,,,,fact-147
+ifrs-full_ProfitLoss,1 19 2,1 19 2,1 19 2,c-6,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,1,instant,,,,,,,,fact-148
+ifrs-full_ProfitLoss,-,-,-,c-15,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,1,instant,,,,,,,,fact-264
+ifrs-full_ProfitLoss,-,-,-,c-16,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,1,instant,,,,,,,,fact-265
+ifrs-full_ProfitLoss,-,-,-,c-17,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,1,instant,,,,,,,,fact-266
+ifrs-full_ProfitLoss,1626,1626000000,"1,626,000,000",c-18,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,1,instant,,,,,,,,fact-267
+ifrs-full_ProfitLoss,1626,1626000000,"1,626,000,000",c-19,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,1,instant,,,,,,,,fact-268
+ifrs-full_ProfitLoss,4,4000000,"4,000,000",c-20,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,1,instant,,,,,,,,fact-269
+ifrs-full_ProfitLoss,1 630,1 630,1 630,c-1,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,1,instant,,,,,,,,fact-270
+ifrs-full_ProfitLoss,-,-,-,c-34,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,1,instant,,,,,,,,fact-425
+ifrs-full_ProfitLoss,-,-,-,c-35,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,1,instant,,,,,,,,fact-426
+ifrs-full_ProfitLoss,-,-,-,c-36,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,1,instant,,,,,,,,fact-427
+ifrs-full_ProfitLoss,1 188,1 188,1 188,c-37,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,1,instant,,,,,,,,fact-428
+ifrs-full_ProfitLoss,1 188,1 188,1 188,c-38,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,1,instant,,,,,,,,fact-429
+ifrs-full_ProfitLoss,4,4000000,"4,000,000",c-39,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,1,instant,,,,,,,,fact-430
+ifrs-full_ProfitLoss,1 1 9 2,1 1 9 2,1 1 9 2,c-6,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,1,instant,,,,,,,,fact-431
+ifrs-full_IncomeTaxRelatingToComponentsOfOtherComprehensiveIncome,-,-,-,c-15,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,10,instant,,,,,,,,fact-320
+ifrs-full_IncomeTaxRelatingToComponentsOfOtherComprehensiveIncome,-,-,-,c-16,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,10,instant,,,,,,,,fact-321
+ifrs-full_IncomeTaxRelatingToComponentsOfOtherComprehensiveIncome,7,7000000,"7,000,000",c-17,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,10,instant,,,,,,,,fact-322
+ifrs-full_IncomeTaxRelatingToComponentsOfOtherComprehensiveIncome,96,96000000,"96,000,000",c-18,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,10,instant,,,,,,,,fact-323
+ifrs-full_IncomeTaxRelatingToComponentsOfOtherComprehensiveIncome,89,89000000,"89,000,000",c-19,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,10,instant,,,,,,,,fact-324
+ifrs-full_IncomeTaxRelatingToComponentsOfOtherComprehensiveIncome,-,-,-,c-20,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,10,instant,,,,,,,,fact-325
+ifrs-full_IncomeTaxRelatingToComponentsOfOtherComprehensiveIncome,89,89000000,"89,000,000",c-1,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,10,instant,,,,,,,,fact-326
+ifrs-full_IncomeTaxRelatingToComponentsOfOtherComprehensiveIncome,-,-,-,c-34,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,10,instant,,,,,,,,fact-488
+ifrs-full_IncomeTaxRelatingToComponentsOfOtherComprehensiveIncome,-,-,-,c-35,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,10,instant,,,,,,,,fact-489
+ifrs-full_IncomeTaxRelatingToComponentsOfOtherComprehensiveIncome,4,4000000,"4,000,000",c-36,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,10,instant,,,,,,,,fact-490
+ifrs-full_IncomeTaxRelatingToComponentsOfOtherComprehensiveIncome,60,60000000,"60,000,000",c-37,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,10,instant,,,,,,,,fact-491
+ifrs-full_IncomeTaxRelatingToComponentsOfOtherComprehensiveIncome,56,56000000,"56,000,000",c-38,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,10,instant,,,,,,,,fact-492
+ifrs-full_IncomeTaxRelatingToComponentsOfOtherComprehensiveIncome,-,-,-,c-39,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,10,instant,,,,,,,,fact-493
+ifrs-full_IncomeTaxRelatingToComponentsOfOtherComprehensiveIncome,56,56000000,"56,000,000",c-6,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,10,instant,,,,,,,,fact-494
+ifrs-full_OtherComprehensiveIncome,230,230000000,"230,000,000",c-1,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,11,instant,,,,,,,,fact-145
+ifrs-full_OtherComprehensiveIncome,367,367000000,"367,000,000",c-6,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,11,instant,,,,,,,,fact-146
+ifrs-full_OtherComprehensiveIncome,-,-,-,c-15,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,11,instant,,,,,,,,fact-327
+ifrs-full_OtherComprehensiveIncome,-,-,-,c-16,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,11,instant,,,,,,,,fact-328
+ifrs-full_OtherComprehensiveIncome,77,77000000,"77,000,000",c-17,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,11,instant,,,,,,,,fact-329
+ifrs-full_OtherComprehensiveIncome,309,309000000,"309,000,000",c-18,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,11,instant,,,,,,,,fact-330
+ifrs-full_OtherComprehensiveIncome,232,232000000,"232,000,000",c-19,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,11,instant,,,,,,,,fact-331
+ifrs-full_OtherComprehensiveIncome,2,2000000,"2,000,000",c-20,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,11,instant,,,,,,,,fact-332
+ifrs-full_OtherComprehensiveIncome,230,230000000,"230,000,000",c-1,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,11,instant,,,,,,,,fact-333
+ifrs-full_OtherComprehensiveIncome,-,-,-,c-34,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,11,instant,,,,,,,,fact-495
+ifrs-full_OtherComprehensiveIncome,-,-,-,c-35,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,11,instant,,,,,,,,fact-496
+ifrs-full_OtherComprehensiveIncome,19 3,19 3,19 3,c-36,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,11,instant,,,,,,,,fact-497
+ifrs-full_OtherComprehensiveIncome,175,175000000,"175,000,000",c-37,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,11,instant,,,,,,,,fact-498
+ifrs-full_OtherComprehensiveIncome,36 8,36 8,36 8,c-38,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,11,instant,,,,,,,,fact-499
+ifrs-full_OtherComprehensiveIncome,1,1000000,"1,000,000",c-39,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,11,instant,,,,,,,,fact-500
+ifrs-full_OtherComprehensiveIncome,36 7,36 7,36 7,c-6,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,11,instant,,,,,,,,fact-501
+ifrs-full_ComprehensiveIncome,1860,1860000000,"1,860,000,000",c-1,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,12,instant,,,,,,,,fact-149
+ifrs-full_ComprehensiveIncome,825,825000000,"825,000,000",c-6,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,12,instant,,,,,,,,fact-150
+ifrs-full_ComprehensiveIncome,1860,1860000000,"1,860,000,000",c-1,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,12,instant,,,,,,,,fact-725
+ifrs-full_ComprehensiveIncome,825,825000000,"825,000,000",c-6,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,12,instant,,,,,,,,fact-726
+ifrs-full_ComprehensiveIncome,-,-,-,c-15,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,12,instant,,,,,,,,fact-334
+ifrs-full_ComprehensiveIncome,-,-,-,c-16,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,12,instant,,,,,,,,fact-335
+ifrs-full_ComprehensiveIncome,77,77000000,"77,000,000",c-17,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,12,instant,,,,,,,,fact-336
+ifrs-full_ComprehensiveIncome,1 935,1 935,1 935,c-18,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,12,instant,,,,,,,,fact-337
+ifrs-full_ComprehensiveIncome,1858,1858000000,"1,858,000,000",c-19,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,12,instant,,,,,,,,fact-338
+ifrs-full_ComprehensiveIncome,2,2000000,"2,000,000",c-20,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,12,instant,,,,,,,,fact-339
+ifrs-full_ComprehensiveIncome,1 860,1 860,1 860,c-1,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,12,instant,,,,,,,,fact-340
+ifrs-full_ComprehensiveIncome,-,-,-,c-34,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,12,instant,,,,,,,,fact-502
+ifrs-full_ComprehensiveIncome,-,-,-,c-35,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,12,instant,,,,,,,,fact-503
+ifrs-full_ComprehensiveIncome,19 3,19 3,19 3,c-36,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,12,instant,,,,,,,,fact-504
+ifrs-full_ComprehensiveIncome,1 013,1 013,1 013,c-37,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,12,instant,,,,,,,,fact-505
+ifrs-full_ComprehensiveIncome,82 0,82 0,82 0,c-38,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,12,instant,,,,,,,,fact-506
+ifrs-full_ComprehensiveIncome,5,5000000,"5,000,000",c-39,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,12,instant,,,,,,,,fact-507
+ifrs-full_ComprehensiveIncome,825,825000000,"825,000,000",c-6,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,12,instant,,,,,,,,fact-508
+tescoplc_TransferFromTranslationReserveToRetainedEarnings,-,-,-,c-15,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,13,instant,,,,,,,,fact-341
+tescoplc_TransferFromTranslationReserveToRetainedEarnings,-,-,-,c-16,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,13,instant,,,,,,,,fact-342
+tescoplc_TransferFromTranslationReserveToRetainedEarnings,36,36000000,"36,000,000",c-17,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,13,instant,,,,,,,,fact-343
+tescoplc_TransferFromTranslationReserveToRetainedEarnings,36,36000000,"36,000,000",c-18,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,13,instant,,,,,,,,fact-344
+tescoplc_TransferFromTranslationReserveToRetainedEarnings,-,-,-,c-19,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,13,instant,,,,,,,,fact-345
+tescoplc_TransferFromTranslationReserveToRetainedEarnings,-,-,-,c-20,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,13,instant,,,,,,,,fact-346
+tescoplc_TransferFromTranslationReserveToRetainedEarnings,-,-,-,c-1,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,13,instant,,,,,,,,fact-347
+tescoplc_TransferFromHedgingReserveToRetainedEarnings,-,-,-,c-34,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,14,instant,,,,,,,,fact-509
+tescoplc_TransferFromHedgingReserveToRetainedEarnings,-,-,-,c-35,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,14,instant,,,,,,,,fact-510
+tescoplc_TransferFromHedgingReserveToRetainedEarnings,44,44000000,"44,000,000",c-36,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,14,instant,,,,,,,,fact-511
+tescoplc_TransferFromHedgingReserveToRetainedEarnings,44,44000000,"44,000,000",c-37,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,14,instant,,,,,,,,fact-512
+tescoplc_TransferFromHedgingReserveToRetainedEarnings,-,-,-,c-38,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,14,instant,,,,,,,,fact-513
+tescoplc_TransferFromHedgingReserveToRetainedEarnings,-,-,-,c-39,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,14,instant,,,,,,,,fact-514
+tescoplc_TransferFromHedgingReserveToRetainedEarnings,-,-,-,c-6,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,14,instant,,,,,,,,fact-515
+ifrs-full_AmountRemovedFromReserveOfCashFlowHedgesAndIncludedInInitialCostOrOtherCarryingAmountOfNonfinancialAssetLiabilityOrFirmCommitmentForWhichFairValueHedgeAccountingIsApplied,-,-,-,c-15,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,15,instant,,,,,,,,fact-348
+ifrs-full_AmountRemovedFromReserveOfCashFlowHedgesAndIncludedInInitialCostOrOtherCarryingAmountOfNonfinancialAssetLiabilityOrFirmCommitmentForWhichFairValueHedgeAccountingIsApplied,-,-,-,c-16,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,15,instant,,,,,,,,fact-349
+ifrs-full_AmountRemovedFromReserveOfCashFlowHedgesAndIncludedInInitialCostOrOtherCarryingAmountOfNonfinancialAssetLiabilityOrFirmCommitmentForWhichFairValueHedgeAccountingIsApplied,4,4000000,"4,000,000",c-17,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,15,instant,,,,,,,,fact-350
+ifrs-full_AmountRemovedFromReserveOfCashFlowHedgesAndIncludedInInitialCostOrOtherCarryingAmountOfNonfinancialAssetLiabilityOrFirmCommitmentForWhichFairValueHedgeAccountingIsApplied,-,-,-,c-18,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,15,instant,,,,,,,,fact-351
+ifrs-full_AmountRemovedFromReserveOfCashFlowHedgesAndIncludedInInitialCostOrOtherCarryingAmountOfNonfinancialAssetLiabilityOrFirmCommitmentForWhichFairValueHedgeAccountingIsApplied,4,4000000,"4,000,000",c-19,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,15,instant,,,,,,,,fact-352
+ifrs-full_AmountRemovedFromReserveOfCashFlowHedgesAndIncludedInInitialCostOrOtherCarryingAmountOfNonfinancialAssetLiabilityOrFirmCommitmentForWhichFairValueHedgeAccountingIsApplied,-,-,-,c-20,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,15,instant,,,,,,,,fact-353
+ifrs-full_AmountRemovedFromReserveOfCashFlowHedgesAndIncludedInInitialCostOrOtherCarryingAmountOfNonfinancialAssetLiabilityOrFirmCommitmentForWhichFairValueHedgeAccountingIsApplied,4,4000000,"4,000,000",c-1,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,15,instant,,,,,,,,fact-354
+ifrs-full_AmountRemovedFromReserveOfCashFlowHedgesAndIncludedInInitialCostOrOtherCarryingAmountOfNonfinancialAssetLiabilityOrFirmCommitmentForWhichFairValueHedgeAccountingIsApplied,-,-,-,c-34,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,15,instant,,,,,,,,fact-516
+ifrs-full_AmountRemovedFromReserveOfCashFlowHedgesAndIncludedInInitialCostOrOtherCarryingAmountOfNonfinancialAssetLiabilityOrFirmCommitmentForWhichFairValueHedgeAccountingIsApplied,-,-,-,c-35,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,15,instant,,,,,,,,fact-517
+ifrs-full_AmountRemovedFromReserveOfCashFlowHedgesAndIncludedInInitialCostOrOtherCarryingAmountOfNonfinancialAssetLiabilityOrFirmCommitmentForWhichFairValueHedgeAccountingIsApplied,79,79000000,"79,000,000",c-36,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,15,instant,,,,,,,,fact-518
+ifrs-full_AmountRemovedFromReserveOfCashFlowHedgesAndIncludedInInitialCostOrOtherCarryingAmountOfNonfinancialAssetLiabilityOrFirmCommitmentForWhichFairValueHedgeAccountingIsApplied,-,-,-,c-37,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,15,instant,,,,,,,,fact-519
+ifrs-full_AmountRemovedFromReserveOfCashFlowHedgesAndIncludedInInitialCostOrOtherCarryingAmountOfNonfinancialAssetLiabilityOrFirmCommitmentForWhichFairValueHedgeAccountingIsApplied,79,79000000,"79,000,000",c-38,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,15,instant,,,,,,,,fact-520
+ifrs-full_AmountRemovedFromReserveOfCashFlowHedgesAndIncludedInInitialCostOrOtherCarryingAmountOfNonfinancialAssetLiabilityOrFirmCommitmentForWhichFairValueHedgeAccountingIsApplied,-,-,-,c-39,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,15,instant,,,,,,,,fact-521
+ifrs-full_AmountRemovedFromReserveOfCashFlowHedgesAndIncludedInInitialCostOrOtherCarryingAmountOfNonfinancialAssetLiabilityOrFirmCommitmentForWhichFairValueHedgeAccountingIsApplied,79,79000000,"79,000,000",c-6,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,15,instant,,,,,,,,fact-522
+tescoplc_TotalInventoryCashFlowHedgeMovements,-,-,-,c-15,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,16,instant,,,,,,,,fact-355
+tescoplc_TotalInventoryCashFlowHedgeMovements,-,-,-,c-16,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,16,instant,,,,,,,,fact-356
+tescoplc_TotalInventoryCashFlowHedgeMovements,4,4000000,"4,000,000",c-17,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,16,instant,,,,,,,,fact-357
+tescoplc_TotalInventoryCashFlowHedgeMovements,-,-,-,c-18,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,16,instant,,,,,,,,fact-358
+tescoplc_TotalInventoryCashFlowHedgeMovements,4,4000000,"4,000,000",c-19,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,16,instant,,,,,,,,fact-359
+tescoplc_TotalInventoryCashFlowHedgeMovements,-,-,-,c-20,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,16,instant,,,,,,,,fact-360
+tescoplc_TotalInventoryCashFlowHedgeMovements,4,4000000,"4,000,000",c-1,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,16,instant,,,,,,,,fact-361
+tescoplc_TotalInventoryCashFlowHedgeMovements,-,-,-,c-34,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,16,instant,,,,,,,,fact-523
+tescoplc_TotalInventoryCashFlowHedgeMovements,-,-,-,c-35,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,16,instant,,,,,,,,fact-524
+tescoplc_TotalInventoryCashFlowHedgeMovements,79,79000000,"79,000,000",c-36,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,16,instant,,,,,,,,fact-525
+tescoplc_TotalInventoryCashFlowHedgeMovements,-,-,-,c-37,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,16,instant,,,,,,,,fact-526
+tescoplc_TotalInventoryCashFlowHedgeMovements,79,79000000,"79,000,000",c-38,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,16,instant,,,,,,,,fact-527
+tescoplc_TotalInventoryCashFlowHedgeMovements,-,-,-,c-39,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,16,instant,,,,,,,,fact-528
+tescoplc_TotalInventoryCashFlowHedgeMovements,79,79000000,"79,000,000",c-6,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,16,instant,,,,,,,,fact-529
+tescoplc_OwnSharesPurchasedForCancellation,-,-,-,c-15,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,17,instant,,,,,,,,fact-362
+tescoplc_OwnSharesPurchasedForCancellation,-,-,-,c-16,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,17,instant,,,,,,,,fact-363
+tescoplc_OwnSharesPurchasedForCancellation,10 16,10 16,10 16,c-17,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,17,instant,,,,,,,,fact-364
+tescoplc_OwnSharesPurchasedForCancellation,-,-,-,c-18,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,17,instant,,,,,,,,fact-365
+tescoplc_OwnSharesPurchasedForCancellation,10 16,10 16,10 16,c-19,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,17,instant,,,,,,,,fact-366
+tescoplc_OwnSharesPurchasedForCancellation,-,-,-,c-20,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,17,instant,,,,,,,,fact-367
+tescoplc_OwnSharesPurchasedForCancellation,10 16,10 16,10 16,c-1,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,17,instant,,,,,,,,fact-368
+tescoplc_OwnSharesPurchasedForCancellation,-,-,-,c-34,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,17,instant,,,,,,,,fact-530
+tescoplc_OwnSharesPurchasedForCancellation,-,-,-,c-35,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,17,instant,,,,,,,,fact-531
+tescoplc_OwnSharesPurchasedForCancellation,752,752000000,"752,000,000",c-36,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,17,instant,,,,,,,,fact-532
+tescoplc_OwnSharesPurchasedForCancellation,-,-,-,c-37,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,17,instant,,,,,,,,fact-533
+tescoplc_OwnSharesPurchasedForCancellation,752,752000000,"752,000,000",c-38,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,17,instant,,,,,,,,fact-534
+tescoplc_OwnSharesPurchasedForCancellation,-,-,-,c-39,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,17,instant,,,,,,,,fact-535
+tescoplc_OwnSharesPurchasedForCancellation,752,752000000,"752,000,000",c-6,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,17,instant,,,,,,,,fact-536
+ifrs-full_CancellationOfTreasuryShares,1 9,1 9,1 9,c-15,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,18,instant,,,,,,,,fact-369
+ifrs-full_CancellationOfTreasuryShares,-,-,-,c-16,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,18,instant,,,,,,,,fact-370
+ifrs-full_CancellationOfTreasuryShares,10 35,10 35,10 35,c-17,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,18,instant,,,,,,,,fact-371
+ifrs-full_CancellationOfTreasuryShares,1 016,1 016,1 016,c-18,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,18,instant,,,,,,,,fact-372
+ifrs-full_CancellationOfTreasuryShares,-,-,-,c-19,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,18,instant,,,,,,,,fact-373
+ifrs-full_CancellationOfTreasuryShares,-,-,-,c-20,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,18,instant,,,,,,,,fact-374
+ifrs-full_CancellationOfTreasuryShares,-,-,-,c-1,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,18,instant,,,,,,,,fact-375
+ifrs-full_CancellationOfTreasuryShares,1 8,1 8,1 8,c-34,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,18,instant,,,,,,,,fact-537
+ifrs-full_CancellationOfTreasuryShares,-,-,-,c-35,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,18,instant,,,,,,,,fact-538
+ifrs-full_CancellationOfTreasuryShares,770,770000000,"770,000,000",c-36,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,18,instant,,,,,,,,fact-539
+ifrs-full_CancellationOfTreasuryShares,752,752000000,"752,000,000",c-37,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,18,instant,,,,,,,,fact-540
+ifrs-full_CancellationOfTreasuryShares,-,-,-,c-38,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,18,instant,,,,,,,,fact-541
+ifrs-full_CancellationOfTreasuryShares,-,-,-,c-39,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,18,instant,,,,,,,,fact-542
+ifrs-full_CancellationOfTreasuryShares,-,-,-,c-6,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,18,instant,,,,,,,,fact-543
+tescoplc_OwnSharesPurchasedForShareSchemes,-,-,-,c-15,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,19,instant,,,,,,,,fact-376
+tescoplc_OwnSharesPurchasedForShareSchemes,-,-,-,c-16,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,19,instant,,,,,,,,fact-377
+tescoplc_OwnSharesPurchasedForShareSchemes,204,204000000,"204,000,000",c-17,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,19,instant,,,,,,,,fact-378
+tescoplc_OwnSharesPurchasedForShareSchemes,-,-,-,c-18,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,19,instant,,,,,,,,fact-379
+tescoplc_OwnSharesPurchasedForShareSchemes,204,204000000,"204,000,000",c-19,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,19,instant,,,,,,,,fact-380
+tescoplc_OwnSharesPurchasedForShareSchemes,-,-,-,c-20,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,19,instant,,,,,,,,fact-381
+tescoplc_OwnSharesPurchasedForShareSchemes,204,204000000,"204,000,000",c-1,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,19,instant,,,,,,,,fact-382
+tescoplc_OwnSharesPurchasedForShareSchemes,-,-,-,c-34,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,19,instant,,,,,,,,fact-544
+tescoplc_OwnSharesPurchasedForShareSchemes,-,-,-,c-35,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,19,instant,,,,,,,,fact-545
+tescoplc_OwnSharesPurchasedForShareSchemes,140,140000000,"140,000,000",c-36,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,19,instant,,,,,,,,fact-546
+tescoplc_OwnSharesPurchasedForShareSchemes,-,-,-,c-37,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,19,instant,,,,,,,,fact-547
+tescoplc_OwnSharesPurchasedForShareSchemes,140,140000000,"140,000,000",c-38,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,19,instant,,,,,,,,fact-548
+tescoplc_OwnSharesPurchasedForShareSchemes,-,-,-,c-39,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,19,instant,,,,,,,,fact-549
+tescoplc_OwnSharesPurchasedForShareSchemes,140,140000000,"140,000,000",c-6,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,19,instant,,,,,,,,fact-550
+ifrs-full_OtherComprehensiveIncomeBeforeTaxExchangeDifferencesOnTranslation,89,89000000,"89,000,000",c-1,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,2,instant,,,,,,,,fact-129
+ifrs-full_OtherComprehensiveIncomeBeforeTaxExchangeDifferencesOnTranslation,157,157000000,"157,000,000",c-6,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,2,instant,,,,,,,,fact-130
+ifrs-full_OtherComprehensiveIncomeBeforeTaxExchangeDifferencesOnTranslation,-,-,-,c-15,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,2,instant,,,,,,,,fact-271
+ifrs-full_OtherComprehensiveIncomeBeforeTaxExchangeDifferencesOnTranslation,-,-,-,c-16,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,2,instant,,,,,,,,fact-272
+ifrs-full_OtherComprehensiveIncomeBeforeTaxExchangeDifferencesOnTranslation,89,89000000,"89,000,000",c-17,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,2,instant,,,,,,,,fact-273
+ifrs-full_OtherComprehensiveIncomeBeforeTaxExchangeDifferencesOnTranslation,-,-,-,c-18,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,2,instant,,,,,,,,fact-274
+ifrs-full_OtherComprehensiveIncomeBeforeTaxExchangeDifferencesOnTranslation,89,89000000,"89,000,000",c-19,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,2,instant,,,,,,,,fact-275
+ifrs-full_OtherComprehensiveIncomeBeforeTaxExchangeDifferencesOnTranslation,-,-,-,c-20,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,2,instant,,,,,,,,fact-276
+ifrs-full_OtherComprehensiveIncomeBeforeTaxExchangeDifferencesOnTranslation,89,89000000,"89,000,000",c-1,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,2,instant,,,,,,,,fact-277
+ifrs-full_OtherComprehensiveIncomeBeforeTaxExchangeDifferencesOnTranslation,-,-,-,c-34,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,2,instant,,,,,,,,fact-432
+ifrs-full_OtherComprehensiveIncomeBeforeTaxExchangeDifferencesOnTranslation,-,-,-,c-35,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,2,instant,,,,,,,,fact-433
+ifrs-full_OtherComprehensiveIncomeBeforeTaxExchangeDifferencesOnTranslation,1 57,1 57,1 57,c-36,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,2,instant,,,,,,,,fact-434
+ifrs-full_OtherComprehensiveIncomeBeforeTaxExchangeDifferencesOnTranslation,-,-,-,c-37,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,2,instant,,,,,,,,fact-435
+ifrs-full_OtherComprehensiveIncomeBeforeTaxExchangeDifferencesOnTranslation,1 57,1 57,1 57,c-38,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,2,instant,,,,,,,,fact-436
+ifrs-full_OtherComprehensiveIncomeBeforeTaxExchangeDifferencesOnTranslation,-,-,-,c-39,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,2,instant,,,,,,,,fact-437
+ifrs-full_OtherComprehensiveIncomeBeforeTaxExchangeDifferencesOnTranslation,1 57,1 57,1 57,c-6,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,2,instant,,,,,,,,fact-438
+ifrs-full_IncreaseDecreaseThroughSharebasedPaymentTransactions,-,-,-,c-15,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,20,instant,,,,,,,,fact-383
+ifrs-full_IncreaseDecreaseThroughSharebasedPaymentTransactions,-,-,-,c-16,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,20,instant,,,,,,,,fact-384
+ifrs-full_IncreaseDecreaseThroughSharebasedPaymentTransactions,239,239000000,"239,000,000",c-17,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,20,instant,,,,,,,,fact-385
+ifrs-full_IncreaseDecreaseThroughSharebasedPaymentTransactions,4 9,4 9,4 9,c-18,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,20,instant,,,,,,,,fact-386
+ifrs-full_IncreaseDecreaseThroughSharebasedPaymentTransactions,190,190000000,"190,000,000",c-19,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,20,instant,,,,,,,,fact-387
+ifrs-full_IncreaseDecreaseThroughSharebasedPaymentTransactions,-,-,-,c-20,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,20,instant,,,,,,,,fact-388
+ifrs-full_IncreaseDecreaseThroughSharebasedPaymentTransactions,190,190000000,"190,000,000",c-1,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,20,instant,,,,,,,,fact-389
+ifrs-full_IncreaseDecreaseThroughSharebasedPaymentTransactions,-,-,-,c-34,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,20,instant,,,,,,,,fact-551
+ifrs-full_IncreaseDecreaseThroughSharebasedPaymentTransactions,-,-,-,c-35,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,20,instant,,,,,,,,fact-552
+ifrs-full_IncreaseDecreaseThroughSharebasedPaymentTransactions,184,184000000,"184,000,000",c-36,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,20,instant,,,,,,,,fact-553
+ifrs-full_IncreaseDecreaseThroughSharebasedPaymentTransactions,11,11000000,"11,000,000",c-37,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,20,instant,,,,,,,,fact-554
+ifrs-full_IncreaseDecreaseThroughSharebasedPaymentTransactions,195,195000000,"195,000,000",c-38,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,20,instant,,,,,,,,fact-555
+ifrs-full_IncreaseDecreaseThroughSharebasedPaymentTransactions,-,-,-,c-39,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,20,instant,,,,,,,,fact-556
+ifrs-full_IncreaseDecreaseThroughSharebasedPaymentTransactions,195,195000000,"195,000,000",c-6,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,20,instant,,,,,,,,fact-557
+ifrs-full_DividendsPaid,-,-,-,c-15,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,21,instant,,,,,,,,fact-390
+ifrs-full_DividendsPaid,-,-,-,c-16,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,21,instant,,,,,,,,fact-391
+ifrs-full_DividendsPaid,-,-,-,c-17,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,21,instant,,,,,,,,fact-392
+ifrs-full_DividendsPaid,86 5,86 5,86 5,c-18,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,21,instant,,,,,,,,fact-393
+ifrs-full_DividendsPaid,8 65,8 65,8 65,c-19,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,21,instant,,,,,,,,fact-394
+ifrs-full_DividendsPaid,-,-,-,c-20,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,21,instant,,,,,,,,fact-395
+ifrs-full_DividendsPaid,86 5,86 5,86 5,c-1,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,21,instant,,,,,,,,fact-396
+ifrs-full_DividendsPaid,-,-,-,c-34,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,21,instant,,,,,,,,fact-558
+ifrs-full_DividendsPaid,-,-,-,c-35,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,21,instant,,,,,,,,fact-559
+ifrs-full_DividendsPaid,-,-,-,c-36,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,21,instant,,,,,,,,fact-560
+ifrs-full_DividendsPaid,777,777000000,"777,000,000",c-37,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,21,instant,,,,,,,,fact-561
+ifrs-full_DividendsPaid,777,777000000,"777,000,000",c-38,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,21,instant,,,,,,,,fact-562
+ifrs-full_DividendsPaid,-,-,-,c-39,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,21,instant,,,,,,,,fact-563
+ifrs-full_DividendsPaid,777,777000000,"777,000,000",c-6,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,21,instant,,,,,,,,fact-564
+ifrs-full_DecreaseIncreaseThroughTaxOnSharebasedPaymentTransactions,-,-,-,c-15,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,22,instant,,,,,,,,fact-397
+ifrs-full_DecreaseIncreaseThroughTaxOnSharebasedPaymentTransactions,-,-,-,c-16,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,22,instant,,,,,,,,fact-398
+ifrs-full_DecreaseIncreaseThroughTaxOnSharebasedPaymentTransactions,-,-,-,c-17,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,22,instant,,,,,,,,fact-399
+ifrs-full_DecreaseIncreaseThroughTaxOnSharebasedPaymentTransactions,36,36000000,"36,000,000",c-18,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,22,instant,,,,,,,,fact-400
+ifrs-full_DecreaseIncreaseThroughTaxOnSharebasedPaymentTransactions,36,36000000,"36,000,000",c-19,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,22,instant,,,,,,,,fact-401
+ifrs-full_DecreaseIncreaseThroughTaxOnSharebasedPaymentTransactions,-,-,-,c-20,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,22,instant,,,,,,,,fact-402
+ifrs-full_DecreaseIncreaseThroughTaxOnSharebasedPaymentTransactions,36,36000000,"36,000,000",c-1,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,22,instant,,,,,,,,fact-403
+ifrs-full_DecreaseIncreaseThroughTaxOnSharebasedPaymentTransactions,-,-,-,c-34,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,22,instant,,,,,,,,fact-565
+ifrs-full_DecreaseIncreaseThroughTaxOnSharebasedPaymentTransactions,-,-,-,c-35,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,22,instant,,,,,,,,fact-566
+ifrs-full_DecreaseIncreaseThroughTaxOnSharebasedPaymentTransactions,-,-,-,c-36,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,22,instant,,,,,,,,fact-567
+ifrs-full_DecreaseIncreaseThroughTaxOnSharebasedPaymentTransactions,10,10000000,"10,000,000",c-37,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,22,instant,,,,,,,,fact-568
+ifrs-full_DecreaseIncreaseThroughTaxOnSharebasedPaymentTransactions,10,10000000,"10,000,000",c-38,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,22,instant,,,,,,,,fact-569
+ifrs-full_DecreaseIncreaseThroughTaxOnSharebasedPaymentTransactions,-,-,-,c-39,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,22,instant,,,,,,,,fact-570
+ifrs-full_DecreaseIncreaseThroughTaxOnSharebasedPaymentTransactions,10,10000000,"10,000,000",c-6,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,22,instant,,,,,,,,fact-571
+ifrs-full_IncreaseDecreaseThroughTransactionsWithOwners,19,19000000,"19,000,000",c-15,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,23,instant,,,,,,,,fact-404
+ifrs-full_IncreaseDecreaseThroughTransactionsWithOwners,-,-,-,c-16,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,23,instant,,,,,,,,fact-405
+ifrs-full_IncreaseDecreaseThroughTransactionsWithOwners,54,54000000,"54,000,000",c-17,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,23,instant,,,,,,,,fact-406
+ifrs-full_IncreaseDecreaseThroughTransactionsWithOwners,1 8 94,1 8 94,1 8 94,c-18,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,23,instant,,,,,,,,fact-407
+ifrs-full_IncreaseDecreaseThroughTransactionsWithOwners,1859,1859000000,"1,859,000,000",c-19,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,23,instant,,,,,,,,fact-408
+ifrs-full_IncreaseDecreaseThroughTransactionsWithOwners,-,-,-,c-20,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,23,instant,,,,,,,,fact-409
+ifrs-full_IncreaseDecreaseThroughTransactionsWithOwners,1859,1859000000,"1,859,000,000",c-1,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,23,instant,,,,,,,,fact-410
+ifrs-full_IncreaseDecreaseThroughTransactionsWithOwners,1 8,1 8,1 8,c-34,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,23,instant,,,,,,,,fact-572
+ifrs-full_IncreaseDecreaseThroughTransactionsWithOwners,-,-,-,c-35,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,23,instant,,,,,,,,fact-573
+ifrs-full_IncreaseDecreaseThroughTransactionsWithOwners,62,62000000,"62,000,000",c-36,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,23,instant,,,,,,,,fact-574
+ifrs-full_IncreaseDecreaseThroughTransactionsWithOwners,1508,1508000000,"1,508,000,000",c-37,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,23,instant,,,,,,,,fact-575
+ifrs-full_IncreaseDecreaseThroughTransactionsWithOwners,1 4 64,1 4 64,1 4 64,c-38,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,23,instant,,,,,,,,fact-576
+ifrs-full_IncreaseDecreaseThroughTransactionsWithOwners,-,-,-,c-39,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,23,instant,,,,,,,,fact-577
+ifrs-full_IncreaseDecreaseThroughTransactionsWithOwners,1 46 4,1 46 4,1 46 4,c-6,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,23,instant,,,,,,,,fact-578
+ifrs-full_Equity,11662,11662000000,"11,662,000,000",c-7,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,24,instant,,2025-02-22,,,,,,fact-255
+ifrs-full_Equity,11 665,11 665,11 665,c-8,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,24,instant,,2024-02-24,,,,,,fact-256
+ifrs-full_Equity,445,445000000,"445,000,000",c-9,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,24,instant,,2024-02-24,,,,,,fact-257
+ifrs-full_Equity,5 1 6 5,5 1 6 5,5 1 6 5,c-10,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,24,instant,,2024-02-24,,,,,,fact-258
+ifrs-full_Equity,3 13 1,3 13 1,3 13 1,c-11,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,24,instant,,2024-02-24,,,,,,fact-259
+ifrs-full_Equity,2930,2930000000,"2,930,000,000",c-12,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,24,instant,,2024-02-24,,,,,,fact-260
+ifrs-full_Equity,1167 1,1167 1,1167 1,c-13,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,24,instant,,2024-02-24,,,,,,fact-261
+ifrs-full_Equity,6,6000000,"6,000,000",c-14,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,24,instant,,2024-02-24,,,,,,fact-262
+ifrs-full_Equity,116 65,116 65,116 65,c-8,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,24,instant,,2024-02-24,,,,,,fact-263
+ifrs-full_Equity,426,426000000,"426,000,000",c-21,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,24,instant,,2025-02-22,,,,,,fact-411
+ifrs-full_Equity,5 1 6 5,5 1 6 5,5 1 6 5,c-22,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,24,instant,,2025-02-22,,,,,,fact-412
+ifrs-full_Equity,3 1 40,3 1 40,3 1 40,c-23,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,24,instant,,2025-02-22,,,,,,fact-413
+ifrs-full_Equity,29 35,29 35,29 35,c-24,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,24,instant,,2025-02-22,,,,,,fact-414
+ifrs-full_Equity,11 666,11 666,11 666,c-25,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,24,instant,,2025-02-22,,,,,,fact-415
+ifrs-full_Equity,4,4000000,"4,000,000",c-26,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,24,instant,,2025-02-22,,,,,,fact-416
+ifrs-full_Equity,11662,11662000000,"11,662,000,000",c-7,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,24,instant,,2025-02-22,,,,,,fact-417
+ifrs-full_Equity,463,463000000,"463,000,000",c-27,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,24,instant,,2023-02-25,,,,,,fact-418
+ifrs-full_Equity,5 1 6 5,5 1 6 5,5 1 6 5,c-28,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,24,instant,,2023-02-25,,,,,,fact-419
+ifrs-full_Equity,3 1 3 9,3 1 3 9,3 1 3 9,c-29,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,24,instant,,2023-02-25,,,,,,fact-420
+ifrs-full_Equity,346 9,346 9,346 9,c-30,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,24,instant,,2023-02-25,,,,,,fact-421
+ifrs-full_Equity,12 236,12 236,12 236,c-31,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,24,instant,,2023-02-25,,,,,,fact-422
+ifrs-full_Equity,11,11000000,"11,000,000",c-32,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,24,instant,,2023-02-25,,,,,,fact-423
+ifrs-full_Equity,12 225,12 225,12 225,c-33,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,24,instant,,2023-02-25,,,,,,fact-424
+ifrs-full_Equity,445,445000000,"445,000,000",c-9,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,24,instant,,2024-02-24,,,,,,fact-579
+ifrs-full_Equity,5 1 6 5,5 1 6 5,5 1 6 5,c-10,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,24,instant,,2024-02-24,,,,,,fact-580
+ifrs-full_Equity,3 13 1,3 13 1,3 13 1,c-11,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,24,instant,,2024-02-24,,,,,,fact-581
+ifrs-full_Equity,2930,2930000000,"2,930,000,000",c-12,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,24,instant,,2024-02-24,,,,,,fact-582
+ifrs-full_Equity,1167 1,1167 1,1167 1,c-13,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,24,instant,,2024-02-24,,,,,,fact-583
+ifrs-full_Equity,6,6000000,"6,000,000",c-14,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,24,instant,,2024-02-24,,,,,,fact-584
+ifrs-full_Equity,116 65,116 65,116 65,c-8,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,24,instant,,2024-02-24,,,,,,fact-585
+ifrs-full_OtherComprehensiveIncomeBeforeTaxHedgesOfNetInvestmentsInForeignOperations,33,33000000,"33,000,000",c-1,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,3,instant,,,,,,,,fact-131
+ifrs-full_OtherComprehensiveIncomeBeforeTaxHedgesOfNetInvestmentsInForeignOperations,41,41000000,"41,000,000",c-6,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,3,instant,,,,,,,,fact-132
+ifrs-full_OtherComprehensiveIncomeBeforeTaxHedgesOfNetInvestmentsInForeignOperations,-,-,-,c-15,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,3,instant,,,,,,,,fact-278
+ifrs-full_OtherComprehensiveIncomeBeforeTaxHedgesOfNetInvestmentsInForeignOperations,-,-,-,c-16,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,3,instant,,,,,,,,fact-279
+ifrs-full_OtherComprehensiveIncomeBeforeTaxHedgesOfNetInvestmentsInForeignOperations,33,33000000,"33,000,000",c-17,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,3,instant,,,,,,,,fact-280
+ifrs-full_OtherComprehensiveIncomeBeforeTaxHedgesOfNetInvestmentsInForeignOperations,-,-,-,c-18,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,3,instant,,,,,,,,fact-281
+ifrs-full_OtherComprehensiveIncomeBeforeTaxHedgesOfNetInvestmentsInForeignOperations,33,33000000,"33,000,000",c-19,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,3,instant,,,,,,,,fact-282
+ifrs-full_OtherComprehensiveIncomeBeforeTaxHedgesOfNetInvestmentsInForeignOperations,-,-,-,c-20,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,3,instant,,,,,,,,fact-283
+ifrs-full_OtherComprehensiveIncomeBeforeTaxHedgesOfNetInvestmentsInForeignOperations,33,33000000,"33,000,000",c-1,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,3,instant,,,,,,,,fact-284
+ifrs-full_OtherComprehensiveIncomeBeforeTaxHedgesOfNetInvestmentsInForeignOperations,-,-,-,c-34,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,3,instant,,,,,,,,fact-439
+ifrs-full_OtherComprehensiveIncomeBeforeTaxHedgesOfNetInvestmentsInForeignOperations,-,-,-,c-35,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,3,instant,,,,,,,,fact-440
+ifrs-full_OtherComprehensiveIncomeBeforeTaxHedgesOfNetInvestmentsInForeignOperations,41,41000000,"41,000,000",c-36,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,3,instant,,,,,,,,fact-441
+ifrs-full_OtherComprehensiveIncomeBeforeTaxHedgesOfNetInvestmentsInForeignOperations,-,-,-,c-37,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,3,instant,,,,,,,,fact-442
+ifrs-full_OtherComprehensiveIncomeBeforeTaxHedgesOfNetInvestmentsInForeignOperations,41,41000000,"41,000,000",c-38,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,3,instant,,,,,,,,fact-443
+ifrs-full_OtherComprehensiveIncomeBeforeTaxHedgesOfNetInvestmentsInForeignOperations,-,-,-,c-39,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,3,instant,,,,,,,,fact-444
+ifrs-full_OtherComprehensiveIncomeBeforeTaxHedgesOfNetInvestmentsInForeignOperations,41,41000000,"41,000,000",c-6,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,3,instant,,,,,,,,fact-445
+tescoplc_ChangeInFairValueOfFinancialAssetsAtFairValueThroughOtherComprehensiveIncome,-,-,-,c-15,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,4,instant,,,,,,,,fact-285
+tescoplc_ChangeInFairValueOfFinancialAssetsAtFairValueThroughOtherComprehensiveIncome,-,-,-,c-16,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,4,instant,,,,,,,,fact-286
+tescoplc_ChangeInFairValueOfFinancialAssetsAtFairValueThroughOtherComprehensiveIncome,-,-,-,c-17,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,4,instant,,,,,,,,fact-287
+tescoplc_ChangeInFairValueOfFinancialAssetsAtFairValueThroughOtherComprehensiveIncome,18,18000000,"18,000,000",c-18,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,4,instant,,,,,,,,fact-288
+tescoplc_ChangeInFairValueOfFinancialAssetsAtFairValueThroughOtherComprehensiveIncome,18,18000000,"18,000,000",c-19,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,4,instant,,,,,,,,fact-289
+tescoplc_ChangeInFairValueOfFinancialAssetsAtFairValueThroughOtherComprehensiveIncome,-,-,-,c-20,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,4,instant,,,,,,,,fact-290
+tescoplc_ChangeInFairValueOfFinancialAssetsAtFairValueThroughOtherComprehensiveIncome,18,18000000,"18,000,000",c-1,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,4,instant,,,,,,,,fact-291
+tescoplc_ChangeInFairValueOfFinancialAssetsAtFairValueThroughOtherComprehensiveIncome,-,-,-,c-34,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,4,instant,,,,,,,,fact-446
+tescoplc_ChangeInFairValueOfFinancialAssetsAtFairValueThroughOtherComprehensiveIncome,-,-,-,c-35,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,4,instant,,,,,,,,fact-447
+tescoplc_ChangeInFairValueOfFinancialAssetsAtFairValueThroughOtherComprehensiveIncome,-,-,-,c-36,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,4,instant,,,,,,,,fact-448
+tescoplc_ChangeInFairValueOfFinancialAssetsAtFairValueThroughOtherComprehensiveIncome,16,16000000,"16,000,000",c-37,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,4,instant,,,,,,,,fact-449
+tescoplc_ChangeInFairValueOfFinancialAssetsAtFairValueThroughOtherComprehensiveIncome,16,16000000,"16,000,000",c-38,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,4,instant,,,,,,,,fact-450
+tescoplc_ChangeInFairValueOfFinancialAssetsAtFairValueThroughOtherComprehensiveIncome,-,-,-,c-39,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,4,instant,,,,,,,,fact-451
+tescoplc_ChangeInFairValueOfFinancialAssetsAtFairValueThroughOtherComprehensiveIncome,16,16000000,"16,000,000",c-6,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,4,instant,,,,,,,,fact-452
+ifrs-full_OtherComprehensiveIncomeBeforeTaxGainsLossesOnRemeasurementsOfDefinedBenefitPlans,387,387000000,"387,000,000",c-1,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,5,instant,,,,,,,,fact-119
+ifrs-full_OtherComprehensiveIncomeBeforeTaxGainsLossesOnRemeasurementsOfDefinedBenefitPlans,251,251000000,"251,000,000",c-6,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,5,instant,,,,,,,,fact-120
+ifrs-full_OtherComprehensiveIncomeBeforeTaxGainsLossesOnRemeasurementsOfDefinedBenefitPlans,-,-,-,c-15,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,5,instant,,,,,,,,fact-292
+ifrs-full_OtherComprehensiveIncomeBeforeTaxGainsLossesOnRemeasurementsOfDefinedBenefitPlans,-,-,-,c-16,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,5,instant,,,,,,,,fact-293
+ifrs-full_OtherComprehensiveIncomeBeforeTaxGainsLossesOnRemeasurementsOfDefinedBenefitPlans,-,-,-,c-17,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,5,instant,,,,,,,,fact-294
+ifrs-full_OtherComprehensiveIncomeBeforeTaxGainsLossesOnRemeasurementsOfDefinedBenefitPlans,387,387000000,"387,000,000",c-18,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,5,instant,,,,,,,,fact-295
+ifrs-full_OtherComprehensiveIncomeBeforeTaxGainsLossesOnRemeasurementsOfDefinedBenefitPlans,3 87,3 87,3 87,c-19,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,5,instant,,,,,,,,fact-296
+ifrs-full_OtherComprehensiveIncomeBeforeTaxGainsLossesOnRemeasurementsOfDefinedBenefitPlans,-,-,-,c-20,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,5,instant,,,,,,,,fact-297
+ifrs-full_OtherComprehensiveIncomeBeforeTaxGainsLossesOnRemeasurementsOfDefinedBenefitPlans,387,387000000,"387,000,000",c-1,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,5,instant,,,,,,,,fact-298
+ifrs-full_OtherComprehensiveIncomeBeforeTaxGainsLossesOnRemeasurementsOfDefinedBenefitPlans,-,-,-,c-34,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,5,instant,,,,,,,,fact-453
+ifrs-full_OtherComprehensiveIncomeBeforeTaxGainsLossesOnRemeasurementsOfDefinedBenefitPlans,-,-,-,c-35,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,5,instant,,,,,,,,fact-454
+ifrs-full_OtherComprehensiveIncomeBeforeTaxGainsLossesOnRemeasurementsOfDefinedBenefitPlans,-,-,-,c-36,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,5,instant,,,,,,,,fact-455
+ifrs-full_OtherComprehensiveIncomeBeforeTaxGainsLossesOnRemeasurementsOfDefinedBenefitPlans,251,251000000,"251,000,000",c-37,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,5,instant,,,,,,,,fact-456
+ifrs-full_OtherComprehensiveIncomeBeforeTaxGainsLossesOnRemeasurementsOfDefinedBenefitPlans,251,251000000,"251,000,000",c-38,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,5,instant,,,,,,,,fact-457
+ifrs-full_OtherComprehensiveIncomeBeforeTaxGainsLossesOnRemeasurementsOfDefinedBenefitPlans,-,-,-,c-39,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,5,instant,,,,,,,,fact-458
+ifrs-full_OtherComprehensiveIncomeBeforeTaxGainsLossesOnRemeasurementsOfDefinedBenefitPlans,251,251000000,"251,000,000",c-6,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,5,instant,,,,,,,,fact-459
+tescoplc_GainsLossesOnCashFlowHedges,-,-,-,c-15,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,6,instant,,,,,,,,fact-299
+tescoplc_GainsLossesOnCashFlowHedges,-,-,-,c-16,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,6,instant,,,,,,,,fact-300
+tescoplc_GainsLossesOnCashFlowHedges,40,40000000,"40,000,000",c-17,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,6,instant,,,,,,,,fact-301
+tescoplc_GainsLossesOnCashFlowHedges,-,-,-,c-18,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,6,instant,,,,,,,,fact-302
+tescoplc_GainsLossesOnCashFlowHedges,40,40000000,"40,000,000",c-19,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,6,instant,,,,,,,,fact-303
+tescoplc_GainsLossesOnCashFlowHedges,-,-,-,c-20,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,6,instant,,,,,,,,fact-304
+tescoplc_GainsLossesOnCashFlowHedges,40,40000000,"40,000,000",c-1,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,6,instant,,,,,,,,fact-305
+tescoplc_GainsLossesOnCashFlowHedges,-,-,-,c-34,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,6,instant,,,,,,,,fact-460
+tescoplc_GainsLossesOnCashFlowHedges,-,-,-,c-35,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,6,instant,,,,,,,,fact-461
+tescoplc_GainsLossesOnCashFlowHedges,1 4,1 4,1 4,c-36,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,6,instant,,,,,,,,fact-462
+tescoplc_GainsLossesOnCashFlowHedges,-,-,-,c-37,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,6,instant,,,,,,,,fact-463
+tescoplc_GainsLossesOnCashFlowHedges,1 4,1 4,1 4,c-38,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,6,instant,,,,,,,,fact-464
+tescoplc_GainsLossesOnCashFlowHedges,1,1000000,"1,000,000",c-39,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,6,instant,,,,,,,,fact-465
+tescoplc_GainsLossesOnCashFlowHedges,1 3,1 3,1 3,c-6,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,6,instant,,,,,,,,fact-466
+ifrs-full_ReclassificationAdjustmentsOnCashFlowHedgesBeforeTax,71,71000000,"71,000,000",c-1,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,7,instant,,,,,,,,fact-135
+ifrs-full_ReclassificationAdjustmentsOnCashFlowHedgesBeforeTax,5 6,5 6,5 6,c-6,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,7,instant,,,,,,,,fact-136
+ifrs-full_ReclassificationAdjustmentsOnCashFlowHedgesBeforeTax,-,-,-,c-15,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,7,instant,,,,,,,,fact-306
+ifrs-full_ReclassificationAdjustmentsOnCashFlowHedgesBeforeTax,-,-,-,c-16,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,7,instant,,,,,,,,fact-307
+ifrs-full_ReclassificationAdjustmentsOnCashFlowHedgesBeforeTax,69,69000000,"69,000,000",c-17,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,7,instant,,,,,,,,fact-308
+ifrs-full_ReclassificationAdjustmentsOnCashFlowHedgesBeforeTax,-,-,-,c-18,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,7,instant,,,,,,,,fact-309
+ifrs-full_ReclassificationAdjustmentsOnCashFlowHedgesBeforeTax,69,69000000,"69,000,000",c-19,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,7,instant,,,,,,,,fact-310
+ifrs-full_ReclassificationAdjustmentsOnCashFlowHedgesBeforeTax,2,2000000,"2,000,000",c-20,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,7,instant,,,,,,,,fact-311
+ifrs-full_ReclassificationAdjustmentsOnCashFlowHedgesBeforeTax,71,71000000,"71,000,000",c-1,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,7,instant,,,,,,,,fact-312
+ifrs-full_ReclassificationAdjustmentsOnCashFlowHedgesBeforeTax,-,-,-,c-34,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,7,instant,,,,,,,,fact-467
+ifrs-full_ReclassificationAdjustmentsOnCashFlowHedgesBeforeTax,-,-,-,c-35,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,7,instant,,,,,,,,fact-468
+ifrs-full_ReclassificationAdjustmentsOnCashFlowHedgesBeforeTax,56,56000000,"56,000,000",c-36,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,7,instant,,,,,,,,fact-469
+ifrs-full_ReclassificationAdjustmentsOnCashFlowHedgesBeforeTax,-,-,-,c-37,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,7,instant,,,,,,,,fact-470
+ifrs-full_ReclassificationAdjustmentsOnCashFlowHedgesBeforeTax,56,56000000,"56,000,000",c-38,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,7,instant,,,,,,,,fact-471
+ifrs-full_ReclassificationAdjustmentsOnCashFlowHedgesBeforeTax,-,-,-,c-39,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,7,instant,,,,,,,,fact-472
+ifrs-full_ReclassificationAdjustmentsOnCashFlowHedgesBeforeTax,56,56000000,"56,000,000",c-6,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,7,instant,,,,,,,,fact-473
+ifrs-full_InsuranceFinanceIncomeExpensesFromInsuranceContractsIssuedExcludedFromProfitOrLossThatWillBeReclassifiedToProfitOrLossBeforeTax,-,-,-,c-1,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,8,instant,,,,,,,,fact-137
+ifrs-full_InsuranceFinanceIncomeExpensesFromInsuranceContractsIssuedExcludedFromProfitOrLossThatWillBeReclassifiedToProfitOrLossBeforeTax,4,4000000,"4,000,000",c-6,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,8,instant,,,,,,,,fact-138
+ifrs-full_InsuranceFinanceIncomeExpensesFromInsuranceContractsIssuedExcludedFromProfitOrLossThatWillBeReclassifiedToProfitOrLossBeforeTax,-,-,-,c-34,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,8,instant,,,,,,,,fact-474
+ifrs-full_InsuranceFinanceIncomeExpensesFromInsuranceContractsIssuedExcludedFromProfitOrLossThatWillBeReclassifiedToProfitOrLossBeforeTax,-,-,-,c-35,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,8,instant,,,,,,,,fact-475
+ifrs-full_InsuranceFinanceIncomeExpensesFromInsuranceContractsIssuedExcludedFromProfitOrLossThatWillBeReclassifiedToProfitOrLossBeforeTax,4,4000000,"4,000,000",c-36,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,8,instant,,,,,,,,fact-476
+ifrs-full_InsuranceFinanceIncomeExpensesFromInsuranceContractsIssuedExcludedFromProfitOrLossThatWillBeReclassifiedToProfitOrLossBeforeTax,-,-,-,c-37,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,8,instant,,,,,,,,fact-477
+ifrs-full_InsuranceFinanceIncomeExpensesFromInsuranceContractsIssuedExcludedFromProfitOrLossThatWillBeReclassifiedToProfitOrLossBeforeTax,4,4000000,"4,000,000",c-38,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,8,instant,,,,,,,,fact-478
+ifrs-full_InsuranceFinanceIncomeExpensesFromInsuranceContractsIssuedExcludedFromProfitOrLossThatWillBeReclassifiedToProfitOrLossBeforeTax,-,-,-,c-39,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,8,instant,,,,,,,,fact-479
+ifrs-full_InsuranceFinanceIncomeExpensesFromInsuranceContractsIssuedExcludedFromProfitOrLossThatWillBeReclassifiedToProfitOrLossBeforeTax,4,4000000,"4,000,000",c-6,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,8,instant,,,,,,,,fact-480
+ifrs-full_FinanceIncomeExpensesFromReinsuranceContractsHeldExcludedFromProfitOrLossBeforeTax,1,1000000,"1,000,000",c-1,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,9,instant,,,,,,,,fact-139
+ifrs-full_FinanceIncomeExpensesFromReinsuranceContractsHeldExcludedFromProfitOrLossBeforeTax,1,1000000,"1,000,000",c-6,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,9,instant,,,,,,,,fact-140
+ifrs-full_FinanceIncomeExpensesFromReinsuranceContractsHeldExcludedFromProfitOrLossBeforeTax,-,-,-,c-15,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,9,instant,,,,,,,,fact-313
+ifrs-full_FinanceIncomeExpensesFromReinsuranceContractsHeldExcludedFromProfitOrLossBeforeTax,-,-,-,c-16,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,9,instant,,,,,,,,fact-314
+ifrs-full_FinanceIncomeExpensesFromReinsuranceContractsHeldExcludedFromProfitOrLossBeforeTax,1,1000000,"1,000,000",c-17,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,9,instant,,,,,,,,fact-315
+ifrs-full_FinanceIncomeExpensesFromReinsuranceContractsHeldExcludedFromProfitOrLossBeforeTax,-,-,-,c-18,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,9,instant,,,,,,,,fact-316
+ifrs-full_FinanceIncomeExpensesFromReinsuranceContractsHeldExcludedFromProfitOrLossBeforeTax,1,1000000,"1,000,000",c-19,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,9,instant,,,,,,,,fact-317
+ifrs-full_FinanceIncomeExpensesFromReinsuranceContractsHeldExcludedFromProfitOrLossBeforeTax,-,-,-,c-20,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,9,instant,,,,,,,,fact-318
+ifrs-full_FinanceIncomeExpensesFromReinsuranceContractsHeldExcludedFromProfitOrLossBeforeTax,1,1000000,"1,000,000",c-1,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,9,instant,,,,,,,,fact-319
+ifrs-full_FinanceIncomeExpensesFromReinsuranceContractsHeldExcludedFromProfitOrLossBeforeTax,-,-,-,c-34,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,9,instant,,,,,,,,fact-481
+ifrs-full_FinanceIncomeExpensesFromReinsuranceContractsHeldExcludedFromProfitOrLossBeforeTax,-,-,-,c-35,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,9,instant,,,,,,,,fact-482
+ifrs-full_FinanceIncomeExpensesFromReinsuranceContractsHeldExcludedFromProfitOrLossBeforeTax,1,1000000,"1,000,000",c-36,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,9,instant,,,,,,,,fact-483
+ifrs-full_FinanceIncomeExpensesFromReinsuranceContractsHeldExcludedFromProfitOrLossBeforeTax,-,-,-,c-37,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,9,instant,,,,,,,,fact-484
+ifrs-full_FinanceIncomeExpensesFromReinsuranceContractsHeldExcludedFromProfitOrLossBeforeTax,1,1000000,"1,000,000",c-38,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,9,instant,,,,,,,,fact-485
+ifrs-full_FinanceIncomeExpensesFromReinsuranceContractsHeldExcludedFromProfitOrLossBeforeTax,-,-,-,c-39,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,9,instant,,,,,,,,fact-486
+ifrs-full_FinanceIncomeExpensesFromReinsuranceContractsHeldExcludedFromProfitOrLossBeforeTax,1,1000000,"1,000,000",c-6,u-1,-6,1000000,2,ifrs-full_StatementOfChangesInEquityLineItems,9,instant,,,,,,,,fact-487

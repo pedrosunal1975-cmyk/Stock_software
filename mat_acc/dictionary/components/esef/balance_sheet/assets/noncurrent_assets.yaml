@@ -1,0 +1,11 @@
+# ESEF overlay: noncurrent_assets
+# IFRS uses NoncurrentAssets as standard concept name
+component_id: noncurrent_assets
+matching_rules:
+  local_name_rules:
+    - patterns:
+        - "NoncurrentAssets"
+      match_type: exact
+      weight: 15
+scoring:
+  min_score: 15

@@ -1,5 +1,7 @@
 # ESEF overlay: total_assets
-# Only fields that differ from base definition
+# IFRS filings often lack ifrs-full:Assets aggregate concept.
+# Many ESEF filers only report NoncurrentAssets + CurrentAssets.
+# This overlay adds composite resolution as fallback.
 component_id: total_assets
 matching_rules:
   local_name_rules:
@@ -14,3 +16,9 @@ matching_rules:
       weight: 10
 scoring:
   min_score: 15
+composition:
+  is_composite: true
+  components:
+    - current_assets
+    - noncurrent_assets
+  formula: "current_assets + noncurrent_assets"
