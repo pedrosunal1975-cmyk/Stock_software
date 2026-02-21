@@ -1,0 +1,40 @@
+# Formula Definition: DuPont ROE (5-Factor Decomposition)
+# Full decomposition of return on equity into five drivers
+
+ratio_id: dupont_roe
+display_name: "DuPont ROE (5-Factor)"
+description: "Five-factor decomposition: Tax Burden x Interest Burden x Operating Margin x Asset Turnover x Equity Multiplier. Reveals WHICH lever drives returns."
+
+category: dupont
+importance: fundamental
+
+formula:
+  expression: "(net_income / income_before_tax) * (income_before_tax / operating_income) * (operating_income / revenue) * (revenue / total_assets) * (total_assets / total_equity)"
+  components:
+    - net_income
+    - income_before_tax
+    - operating_income
+    - revenue
+    - total_assets
+    - total_equity
+  notes: "Should equal Net Income / Total Equity (standard ROE). Decomposition reveals the source of returns."
+
+interpretation:
+  healthy_range:
+    min: 0.10
+    max: 0.25
+  warning_below: 0.05
+  warning_above: 0.40
+  direction: higher_is_better
+
+applicability:
+  statement_type: cross_statement
+  industry_specific: false
+
+relationships:
+  related_to: [return_on_equity, tax_burden, interest_burden, operating_margin, asset_turnover, equity_multiplier]
+
+references:
+  - "Penman - Financial Statement Analysis, Ch. 12"
+  - "CFA Institute - DuPont Analysis (3 and 5 Factor)"
+  - "Palepu/Healy - Business Analysis and Valuation, Ch. 9"

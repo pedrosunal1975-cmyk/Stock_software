@@ -1,0 +1,117 @@
+# Component Definition: Retained Earnings
+# Accumulated undistributed profits
+
+component_id: retained_earnings
+display_name: "Retained Earnings"
+description: "Cumulative net income retained in the business, not distributed as dividends."
+
+category: balance_sheet
+subcategory: equity
+
+characteristics:
+  balance_type: credit
+  period_type: instant
+  is_monetary: true
+  is_abstract: false
+  data_type: monetary
+
+matching_rules:
+  label_rules:
+    # Highest priority: Exact matches
+    - patterns:
+        - "Retained Earnings"
+        - "Retained Earnings (Accumulated Deficit)"
+        - "Accumulated Deficit"
+        - "Retained Profit"
+        - "Retained Profit (Accumulated Losses)"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+
+    # High weight for contains patterns
+    - patterns:
+        - "retained earnings"
+        - "accumulated deficit"
+        - "retained profit"
+        - "accumulated losses"
+        - "retained surplus"
+      match_type: contains
+      case_sensitive: false
+      weight: 12
+
+  local_name_rules:
+    - patterns:
+        - "RetainedEarningsAccumulatedDeficit"
+      match_type: exact
+      weight: 15
+
+    - patterns:
+        - "RetainedEarnings"
+        - "AccumulatedDeficit"
+        - "RetainedProfit"
+      match_type: contains
+      weight: 10
+
+  hierarchy_rules:
+    # Should be child of total equity
+    - rule_type: depth_level
+      pattern: "2-4"
+      weight: 4
+
+    # Should be sibling of common stock, APIC
+    - rule_type: has_siblings
+      pattern: "*CommonStock*"
+      weight: 5
+
+  calculation_rules:
+    # Should contribute to total equity
+    - rule_type: contributes_to
+      pattern: "*StockholdersEquity*"
+      weight: 6
+
+  definition_rules:
+    - keywords:
+        - "retained"
+        - "accumulated"
+        - "undistributed"
+        - "earnings"
+      all_required: false
+      weight: 4
+
+scoring:
+  min_score: 18
+  confidence_levels:
+    high: 32
+    medium: 25
+    low: 18
+  tiebreaker: highest_in_hierarchy
+  reject_if:
+    - condition: "Is abstract concept"
+      pattern: "abstract=true"
+    - condition: "Is total equity"
+      pattern: "name~stockholdersequity"
+    - condition: "Is common stock"
+      pattern: "name~commonstock"
+    - condition: "Is additional paid-in"
+      pattern: "name~additionalpaidin"
+    - condition: "Is treasury stock"
+      pattern: "name~treasury"
+    - condition: "Is accumulated OCI"
+      pattern: "name~accumulatedothercomprehensive"
+
+    # Reject disclosure items
+    - condition: "Is text block"
+      pattern: "name~textblock"
+    - condition: "Is schedule"
+      pattern: "name~schedule"
+
+composition:
+  is_composite: false
+
+validation:
+  expected_sign: either  # Can be negative (accumulated deficit)
+  relationships:
+    - other: total_equity
+      relation: component_of
+  required_for:
+    - altman_z_score

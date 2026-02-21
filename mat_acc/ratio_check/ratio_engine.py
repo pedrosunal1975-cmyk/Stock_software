@@ -53,6 +53,37 @@ def _calculate_single_ratio(
     matched_lookup: Dict[str, ComponentMatch],
 ) -> RatioResult:
     """Calculate a single ratio from its definition."""
+    calc_type = ratio_def.get('calculation_type', 'division')
+    if calc_type != 'division':
+        return _dispatch_composite(
+            calc_type, ratio_def, matched_lookup,
+        )
+    return _calculate_division(ratio_def, matched_lookup)
+
+
+def _dispatch_composite(
+    calc_type: str,
+    ratio_def: Dict[str, Any],
+    matched_lookup: Dict[str, ComponentMatch],
+) -> RatioResult:
+    """Dispatch to composite calculator by type."""
+    from .ratio_composites import COMPOSITE_CALCULATORS
+    calculator = COMPOSITE_CALCULATORS.get(calc_type)
+    if calculator is None:
+        ratio = RatioResult(
+            ratio_name=ratio_def['name'],
+            formula=ratio_def['formula'],
+        )
+        ratio.error = f"Unknown calculation_type: {calc_type}"
+        return ratio
+    return calculator(ratio_def, matched_lookup)
+
+
+def _calculate_division(
+    ratio_def: Dict[str, Any],
+    matched_lookup: Dict[str, ComponentMatch],
+) -> RatioResult:
+    """Standard numerator / denominator calculation."""
     ratio = RatioResult(
         ratio_name=ratio_def['name'],
         formula=ratio_def['formula'],

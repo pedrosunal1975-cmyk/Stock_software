@@ -1,0 +1,34 @@
+# Formula Definition: SG&A to Revenue
+# Administrative cost burden
+
+ratio_id: sga_to_revenue
+display_name: "SG&A to Revenue"
+description: "Selling, general and administrative expenses as a proportion of revenue. Measures administrative overhead efficiency."
+
+category: operating_leverage
+importance: fundamental
+
+formula:
+  expression: "selling_general_admin / revenue"
+  components:
+    - selling_general_admin
+    - revenue
+
+interpretation:
+  healthy_range:
+    min: 0.10
+    max: 0.35
+  warning_above: 0.50
+  direction: lower_is_better
+
+applicability:
+  statement_type: income_statement
+  industry_specific: true
+  notes: "Service companies naturally higher (30-50%). Manufacturing lower (15-25%). Rising SG&A/Revenue over time is a warning sign."
+
+relationships:
+  related_to: [operating_expense_ratio, operating_margin]
+
+references:
+  - "CFA Institute - Financial Analysis Techniques"
+  - "Palepu/Healy - Business Analysis and Valuation, Ch. 9"

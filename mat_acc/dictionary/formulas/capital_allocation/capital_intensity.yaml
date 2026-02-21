@@ -1,0 +1,34 @@
+# Formula Definition: Capital Intensity
+# Measures how asset-heavy the business model is
+
+ratio_id: capital_intensity
+display_name: "Capital Intensity"
+description: "Total assets required per dollar of revenue. Higher values indicate capital-heavy business models. Inverse of asset turnover."
+
+category: capital_allocation
+importance: fundamental
+
+formula:
+  expression: "total_assets / revenue"
+  components:
+    - total_assets
+    - revenue
+
+interpretation:
+  healthy_range:
+    min: 0.5
+    max: 3.0
+  warning_above: 4.0
+  direction: lower_is_better
+
+applicability:
+  statement_type: cross_statement
+  industry_specific: true
+  notes: "A hauler at 2.0 is normal. A tech company at 2.0 is a warning. Must interpret relative to industry."
+
+relationships:
+  related_to: [asset_turnover, r_and_d_intensity]
+
+references:
+  - "Damodaran - Capital Expenditure by Sector dataset"
+  - "CFA Institute - Financial Analysis Techniques"

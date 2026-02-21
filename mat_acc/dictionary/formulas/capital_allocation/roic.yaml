@@ -1,0 +1,40 @@
+# Formula Definition: Return on Invested Capital
+# Measures value creation from deployed capital
+
+ratio_id: roic
+display_name: "Return on Invested Capital"
+description: "After-tax operating profit relative to capital invested. The single best measure of whether management creates or destroys value. Compare to WACC."
+
+category: capital_allocation
+importance: fundamental
+
+formula:
+  expression: "nopat / invested_capital"
+  components:
+    - operating_income
+    - income_tax_expense
+    - income_before_tax
+    - total_equity
+    - total_debt
+    - cash_and_equivalents
+  notes: "NOPAT = Operating Income * (1 - Effective Tax Rate). Invested Capital = Equity + Debt - Cash."
+
+interpretation:
+  healthy_range:
+    min: 0.08
+    max: 0.25
+  warning_below: 0.04
+  direction: higher_is_better
+
+applicability:
+  statement_type: cross_statement
+  industry_specific: true
+  notes: "Capital-intensive industries have naturally lower ROIC. Compare to industry peers, not absolute thresholds."
+
+relationships:
+  related_to: [return_on_assets, return_on_equity, capital_intensity]
+
+references:
+  - "Damodaran - Investment Valuation, Ch. 22"
+  - "Penman - Financial Statement Analysis, Ch. 12"
+  - "CFA Institute - Return on Invested Capital"

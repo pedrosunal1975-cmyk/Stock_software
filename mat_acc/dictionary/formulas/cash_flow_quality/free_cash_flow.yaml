@@ -1,0 +1,34 @@
+# Formula Definition: Free Cash Flow
+# Cash available after maintaining capital assets
+
+ratio_id: free_cash_flow
+display_name: "Free Cash Flow"
+description: "Operating cash flow minus capital expenditures. The cash truly available to the firm after maintaining its asset base."
+
+category: cash_flow_quality
+importance: fundamental
+
+formula:
+  expression: "operating_cash_flow - capital_expenditures"
+  components:
+    - operating_cash_flow
+    - capital_expenditures
+
+interpretation:
+  healthy_range:
+    min: 0
+    max: null
+  warning_below: 0
+  direction: higher_is_better
+
+applicability:
+  statement_type: cash_flow
+  industry_specific: true
+  notes: "Capital-intensive industries (utilities, transport) naturally have lower FCF. Negative FCF during growth phases may be acceptable."
+
+relationships:
+  related_to: [cash_conversion_ratio, capex_to_cfo]
+
+references:
+  - "Damodaran - Investment Valuation, Ch. 12"
+  - "Penman - Financial Statement Analysis, Ch. 4"

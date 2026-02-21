@@ -1,0 +1,111 @@
+# Component Definition: Research and Development Expense
+# R&D spending for the period
+
+component_id: r_and_d_expense
+display_name: "Research and Development Expense"
+description: "Costs incurred for research and development activities during the period."
+
+category: income_statement
+subcategory: expense
+
+characteristics:
+  balance_type: debit
+  period_type: duration
+  is_monetary: true
+  is_abstract: false
+  data_type: monetary
+
+matching_rules:
+  label_rules:
+    # Highest priority: Exact matches
+    - patterns:
+        - "Research and Development Expense"
+        - "Research and Development"
+        - "Research and Development Costs"
+        - "R&D Expense"
+        - "Research & Development"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+
+    # High weight for contains patterns
+    - patterns:
+        - "research and development"
+        - "research & development"
+        - "r&d expense"
+        - "development costs"
+        - "research costs"
+      match_type: contains
+      case_sensitive: false
+      weight: 12
+
+  local_name_rules:
+    - patterns:
+        - "ResearchAndDevelopmentExpense"
+      match_type: exact
+      weight: 15
+
+    - patterns:
+        - "ResearchAndDevelopment"
+        - "ResearchDevelopment"
+      match_type: contains
+      weight: 10
+
+  hierarchy_rules:
+    # Should be within operating expenses
+    - rule_type: depth_level
+      pattern: "4-7"
+      weight: 4
+
+  calculation_rules:
+    # Should contribute to operating expenses
+    - rule_type: contributes_to
+      pattern: "*OperatingExpenses*"
+      weight: 6
+
+    # Should be sibling of SGA
+    - rule_type: has_siblings
+      pattern: "*SellingGeneral*"
+      weight: 5
+
+  definition_rules:
+    - keywords:
+        - "research"
+        - "development"
+        - "innovation"
+        - "R&D"
+      all_required: false
+      weight: 4
+
+scoring:
+  min_score: 18
+  confidence_levels:
+    high: 32
+    medium: 25
+    low: 18
+  tiebreaker: highest_in_hierarchy
+  reject_if:
+    - condition: "Is abstract concept"
+      pattern: "abstract=true"
+    - condition: "Is amortization of R&D"
+      pattern: "name~amortization"
+    - condition: "Is capitalized R&D"
+      pattern: "name~capitalized"
+    - condition: "Is acquired R&D"
+      pattern: "name~acquired"
+    - condition: "Is in-process R&D"
+      pattern: "name~inprocess"
+
+    # Reject disclosure items
+    - condition: "Is text block"
+      pattern: "name~textblock"
+    - condition: "Is schedule"
+      pattern: "name~schedule"
+
+composition:
+  is_composite: false
+
+validation:
+  expected_sign: positive
+  required_for:
+    - r_and_d_intensity

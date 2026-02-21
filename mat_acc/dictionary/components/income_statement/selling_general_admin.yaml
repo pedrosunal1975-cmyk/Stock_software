@@ -1,0 +1,117 @@
+# Component Definition: Selling, General and Administrative Expense
+# SG&A operating expense
+
+component_id: selling_general_admin
+display_name: "Selling, General and Administrative Expense"
+description: "Combined selling, general and administrative expenses for the period."
+
+category: income_statement
+subcategory: expense
+
+characteristics:
+  balance_type: debit
+  period_type: duration
+  is_monetary: true
+  is_abstract: false
+  data_type: monetary
+
+matching_rules:
+  label_rules:
+    # Highest priority: Exact matches
+    - patterns:
+        - "Selling, General and Administrative Expense"
+        - "Selling, General and Administrative"
+        - "Selling, General & Administrative"
+        - "SG&A"
+        - "General and Administrative Expense"
+        - "General and Administrative"
+        - "Selling and Administrative Expenses"
+        - "Administrative Expenses"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+
+    # High weight for contains patterns
+    - patterns:
+        - "selling, general and administrative"
+        - "selling general and administrative"
+        - "general and administrative"
+        - "administrative expense"
+        - "selling and marketing"
+      match_type: contains
+      case_sensitive: false
+      weight: 12
+
+  local_name_rules:
+    - patterns:
+        - "SellingGeneralAndAdministrativeExpense"
+      match_type: exact
+      weight: 15
+
+    - patterns:
+        - "SellingGeneralAndAdministrative"
+        - "GeneralAndAdministrative"
+        - "SellingAndMarketing"
+      match_type: contains
+      weight: 10
+
+  hierarchy_rules:
+    # Should be within operating expenses
+    - rule_type: depth_level
+      pattern: "4-7"
+      weight: 4
+
+  calculation_rules:
+    # Should contribute to operating expenses
+    - rule_type: contributes_to
+      pattern: "*OperatingExpenses*"
+      weight: 6
+
+    # Should be sibling of R&D
+    - rule_type: has_siblings
+      pattern: "*Research*"
+      weight: 4
+
+  definition_rules:
+    - keywords:
+        - "selling"
+        - "general"
+        - "administrative"
+        - "marketing"
+        - "overhead"
+      all_required: false
+      weight: 4
+
+scoring:
+  min_score: 18
+  confidence_levels:
+    high: 32
+    medium: 25
+    low: 18
+  tiebreaker: highest_in_hierarchy
+  reject_if:
+    - condition: "Is abstract concept"
+      pattern: "abstract=true"
+    - condition: "Is depreciation sub-item"
+      pattern: "name~depreciation"
+    - condition: "Is stock compensation sub-item"
+      pattern: "name~stockbasedcompensation"
+    - condition: "Is restructuring"
+      pattern: "name~restructuring"
+    - condition: "Is segment"
+      pattern: "name~segment"
+
+    # Reject disclosure items
+    - condition: "Is text block"
+      pattern: "name~textblock"
+    - condition: "Is schedule"
+      pattern: "name~schedule"
+
+composition:
+  is_composite: false
+
+validation:
+  expected_sign: positive
+  required_for:
+    - sga_to_revenue
+    - operating_expense_ratio

@@ -1,0 +1,137 @@
+# Component Definition: Property, Plant and Equipment
+# Net PP&E (tangible fixed assets)
+
+component_id: property_plant_equipment
+display_name: "Property, Plant and Equipment"
+description: "Net book value of tangible long-lived assets used in operations."
+
+category: balance_sheet
+subcategory: assets
+
+characteristics:
+  balance_type: debit
+  period_type: instant
+  is_monetary: true
+  is_abstract: false
+  data_type: monetary
+
+matching_rules:
+  label_rules:
+    # Highest priority: Exact matches
+    - patterns:
+        - "Property, Plant and Equipment, Net"
+        - "Property and Equipment, Net"
+        - "Property, Plant and Equipment"
+        - "Net Property, Plant and Equipment"
+        - "Total Property, Plant and Equipment"
+        - "Fixed Assets"
+        - "Tangible Assets"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+
+    # High weight for contains patterns
+    - patterns:
+        - "property, plant and equipment"
+        - "property and equipment"
+        - "property plant equipment"
+        - "fixed assets"
+        - "tangible assets"
+        - "plant and machinery"
+      match_type: contains
+      case_sensitive: false
+      weight: 12
+
+  local_name_rules:
+    - patterns:
+        - "PropertyPlantAndEquipmentNet"
+      match_type: exact
+      weight: 15
+
+    - patterns:
+        - "PropertyPlantAndEquipment"
+        - "PropertyAndEquipment"
+        - "PropertyPlantEquipment"
+        - "TangibleFixedAssets"
+      match_type: contains
+      weight: 10
+
+  hierarchy_rules:
+    # Should be within noncurrent assets
+    - rule_type: depth_level
+      pattern: "2-4"
+      weight: 4
+
+    # Should be sibling of intangibles, goodwill
+    - rule_type: has_siblings
+      pattern: "*Goodwill*"
+      weight: 4
+
+  calculation_rules:
+    # Should contribute to total assets
+    - rule_type: contributes_to
+      pattern: "*Assets*"
+      weight: 5
+
+    # May have land, buildings, equipment as children
+    - rule_type: has_children
+      patterns:
+        - "*Land*"
+        - "*Buildings*"
+        - "*Equipment*"
+        - "*Machinery*"
+      min_matches: 0
+      weight: 6
+
+  definition_rules:
+    - keywords:
+        - "property"
+        - "plant"
+        - "equipment"
+        - "tangible"
+        - "fixed assets"
+      all_required: false
+      weight: 4
+
+scoring:
+  min_score: 18
+  confidence_levels:
+    high: 32
+    medium: 25
+    low: 18
+  tiebreaker: highest_in_hierarchy
+  reject_if:
+    - condition: "Is abstract concept"
+      pattern: "abstract=true"
+    - condition: "Is gross (not net)"
+      pattern: "name~gross"
+    - condition: "Is accumulated depreciation"
+      pattern: "name~accumulateddepreciation"
+    - condition: "Is land only"
+      pattern: "name~landonly"
+    - condition: "Is building only"
+      pattern: "name~buildingonly"
+    - condition: "Is construction in progress"
+      pattern: "name~constructioninprogress"
+    - condition: "Is leasehold improvement"
+      pattern: "name~leaseholdimprovement"
+    - condition: "Is right-of-use asset"
+      pattern: "name~rightofuse"
+
+    # Reject disclosure items
+    - condition: "Is text block"
+      pattern: "name~textblock"
+    - condition: "Is schedule"
+      pattern: "name~schedule"
+
+composition:
+  is_composite: false
+
+validation:
+  expected_sign: positive
+  relationships:
+    - other: total_assets
+      relation: less_than
+  required_for:
+    - altman_z_score
+    - capital_intensity

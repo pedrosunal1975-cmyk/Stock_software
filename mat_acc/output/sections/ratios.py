@@ -17,12 +17,19 @@ from .base_section import BaseSection
 # Category display names and order
 CATEGORY_ORDER = [
     'liquidity', 'leverage', 'profitability', 'efficiency',
+    'cash_flow_quality', 'capital_allocation', 'dupont',
+    'distress', 'operating_leverage',
 ]
 CATEGORY_TITLES = {
     'liquidity': 'Liquidity Ratios',
     'leverage': 'Leverage Ratios',
     'profitability': 'Profitability Ratios',
     'efficiency': 'Efficiency Ratios',
+    'cash_flow_quality': 'Cash Flow Quality',
+    'capital_allocation': 'Capital Allocation',
+    'dupont': 'DuPont Decomposition',
+    'distress': 'Financial Distress',
+    'operating_leverage': 'Operating Leverage',
 }
 
 

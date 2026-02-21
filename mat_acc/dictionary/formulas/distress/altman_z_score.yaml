@@ -1,0 +1,44 @@
+# Formula Definition: Altman Z-Score
+# Bankruptcy prediction model
+
+ratio_id: altman_z_score
+display_name: "Altman Z-Score"
+description: "Weighted composite of 5 financial ratios predicting bankruptcy risk. Developed by Edward Altman (1968). Approximately 80-90% accurate one year before bankruptcy."
+
+category: distress
+importance: fundamental
+
+formula:
+  expression: "1.2*(working_capital/total_assets) + 1.4*(retained_earnings/total_assets) + 3.3*(operating_income/total_assets) + 0.6*(market_cap/total_liabilities) + 1.0*(revenue/total_assets)"
+  components:
+    - current_assets
+    - current_liabilities
+    - retained_earnings
+    - total_assets
+    - operating_income
+    - total_liabilities
+    - revenue
+  notes: "Working Capital = Current Assets - Current Liabilities. Market Cap component uses Total Equity as proxy when market data unavailable."
+
+interpretation:
+  zones:
+    safe:
+      min: 3.0
+      description: "Safe zone - low bankruptcy risk"
+    grey:
+      min: 1.8
+      max: 3.0
+      description: "Grey zone - moderate risk, further analysis needed"
+    distress:
+      max: 1.8
+      description: "Distress zone - high bankruptcy risk"
+
+applicability:
+  statement_type: cross_statement
+  industry_specific: true
+  notes: "Not designed for financial institutions or very asset-light businesses. For private companies, use book value of equity instead of market cap."
+
+references:
+  - "Altman, E. (1968). Financial Ratios, Discriminant Analysis and the Prediction of Corporate Bankruptcy. Journal of Finance"
+  - "Penman - Financial Statement Analysis, Ch. 18"
+  - "CFA Institute - Credit Analysis"

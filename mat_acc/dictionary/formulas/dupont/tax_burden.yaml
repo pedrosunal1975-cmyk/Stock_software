@@ -1,0 +1,36 @@
+# Formula Definition: Tax Burden (DuPont Factor)
+# What fraction of pretax profit survives taxation
+
+ratio_id: tax_burden
+display_name: "Tax Burden"
+description: "Net income divided by pretax income. Shows what proportion of earnings survive taxation. A value of 0.75 means 25% effective tax rate."
+
+category: dupont
+importance: fundamental
+
+formula:
+  expression: "net_income / income_before_tax"
+  components:
+    - net_income
+    - income_before_tax
+
+interpretation:
+  healthy_range:
+    min: 0.60
+    max: 0.85
+  warning_below: 0.50
+  warning_above: 1.0
+  direction: higher_is_better
+
+applicability:
+  statement_type: income_statement
+  industry_specific: false
+  notes: "Above 1.0 indicates tax benefits exceeding income (unusual). Below 0.5 suggests very high effective tax rate."
+
+relationships:
+  related_to: [interest_burden, dupont_roe]
+  decomposition: "ROE = Tax Burden x Interest Burden x Operating Margin x Asset Turnover x Equity Multiplier"
+
+references:
+  - "Penman - Financial Statement Analysis, Ch. 12"
+  - "CFA Institute - DuPont Analysis"

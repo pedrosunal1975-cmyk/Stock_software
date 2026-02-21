@@ -1,0 +1,35 @@
+# Formula Definition: Operating Expense Ratio
+# Total operating cost structure visibility
+
+ratio_id: operating_expense_ratio
+display_name: "Operating Expense Ratio"
+description: "Total operating expenses relative to revenue. The complement of operating margin, showing cost structure from the expense side."
+
+category: operating_leverage
+importance: fundamental
+
+formula:
+  expression: "(revenue - operating_income) / revenue"
+  components:
+    - revenue
+    - operating_income
+  notes: "Operating Expenses = Revenue - Operating Income. This avoids needing a separate operating_expenses component."
+
+interpretation:
+  healthy_range:
+    min: 0.60
+    max: 0.90
+  warning_above: 0.95
+  direction: lower_is_better
+
+applicability:
+  statement_type: income_statement
+  industry_specific: true
+  notes: "Complement of operating margin. If operating margin is 15%, this is 85%. Useful for cost structure decomposition."
+
+relationships:
+  related_to: [operating_margin, sga_to_revenue, gross_margin]
+
+references:
+  - "CFA Institute - Common-Size Analysis"
+  - "Penman - Financial Statement Analysis, Ch. 10"

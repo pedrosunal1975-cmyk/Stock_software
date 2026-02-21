@@ -1,0 +1,36 @@
+# Formula Definition: Sloan Accrual Ratio
+# Earnings quality indicator based on accrual vs cash
+
+ratio_id: sloan_accrual_ratio
+display_name: "Sloan Accrual Ratio"
+description: "Measures the gap between reported earnings and cash earnings. High positive accruals suggest lower earnings quality. Based on Sloan (1996) research."
+
+category: cash_flow_quality
+importance: fundamental
+
+formula:
+  expression: "(net_income - operating_cash_flow) / total_assets"
+  components:
+    - net_income
+    - operating_cash_flow
+    - total_assets
+
+interpretation:
+  healthy_range:
+    min: -0.10
+    max: 0.10
+  warning_below: -0.25
+  warning_above: 0.25
+  direction: lower_is_better
+
+applicability:
+  statement_type: cross_statement
+  industry_specific: false
+  notes: "Safe zone -10% to +10%. Warning zone 10-25%. Danger zone beyond 25%. Negative values indicate high cash quality."
+
+relationships:
+  related_to: [cash_conversion_ratio]
+
+references:
+  - "Sloan, R. (1996). Do Stock Prices Fully Reflect Information in Accruals? The Accounting Review"
+  - "Penman - Financial Statement Analysis, Ch. 18"
