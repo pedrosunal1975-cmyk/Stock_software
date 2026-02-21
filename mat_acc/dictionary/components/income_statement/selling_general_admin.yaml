@@ -61,16 +61,16 @@ matching_rules:
       pattern: "4-7"
       weight: 4
 
+    # Should be sibling of R&D
+    - rule_type: has_siblings
+      pattern: "*Research*"
+      weight: 4
+
   calculation_rules:
     # Should contribute to operating expenses
     - rule_type: contributes_to
       pattern: "*OperatingExpenses*"
       weight: 6
-
-    # Should be sibling of R&D
-    - rule_type: has_siblings
-      pattern: "*Research*"
-      weight: 4
 
   definition_rules:
     - keywords:

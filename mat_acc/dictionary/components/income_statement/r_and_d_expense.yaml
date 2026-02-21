@@ -57,16 +57,16 @@ matching_rules:
       pattern: "4-7"
       weight: 4
 
+    # Should be sibling of SGA
+    - rule_type: has_siblings
+      pattern: "*SellingGeneral*"
+      weight: 5
+
   calculation_rules:
     # Should contribute to operating expenses
     - rule_type: contributes_to
       pattern: "*OperatingExpenses*"
       weight: 6
-
-    # Should be sibling of SGA
-    - rule_type: has_siblings
-      pattern: "*SellingGeneral*"
-      weight: 5
 
   definition_rules:
     - keywords:

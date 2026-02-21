@@ -112,6 +112,6 @@ validation:
   expected_sign: either  # Can be negative (accumulated deficit)
   relationships:
     - other: total_equity
-      relation: component_of
+      relation: less_than
   required_for:
     - altman_z_score
