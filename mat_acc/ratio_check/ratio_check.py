@@ -375,22 +375,28 @@ class RatioCheckOrchestrator:
         """
         Run scale normalization on calculated ratios.
 
-        Reads scale/unit from iXBRL facts, detects cross-type
-        mismatches, and produces annotations without modifying
-        original ratio values.
+        Uses ALL extracted iXBRL facts (not just primary-filtered)
+        for scale metadata lookup, since scale attributes are the
+        same regardless of context period.
 
         Args:
             result: AnalysisResult with populated ratios
-            ixbrl_facts: VerifiedFact list from iXBRL extraction
+            ixbrl_facts: Primary VerifiedFact list (fallback)
 
         Returns:
             Dict of ratio_name -> ScaleAnnotation
         """
         from .scale_normalizer import ScaleNormalizer
+
+        # Use ALL extracted facts for scale metadata (primary filter
+        # may exclude DEI/share concepts with different contexts)
+        all_facts = self._ixbrl_extractor.get_all_extracted()
+        scale_facts = all_facts if all_facts else ixbrl_facts
+
         normalizer = ScaleNormalizer()
         annotations = normalizer.normalize(
             result.ratios, result.component_matches,
-            ixbrl_facts, STANDARD_RATIOS,
+            scale_facts, STANDARD_RATIOS,
         )
         if annotations:
             print(

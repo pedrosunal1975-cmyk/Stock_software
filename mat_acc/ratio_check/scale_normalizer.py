@@ -80,9 +80,14 @@ class ScaleNormalizer:
             that needed normalization)
         """
         if not ixbrl_facts:
+            logger.info("No iXBRL facts available for normalization")
             return {}
 
         fact_lookup = self._build_fact_lookup(ixbrl_facts)
+        logger.info(
+            f"Scale lookup: {len(fact_lookup)} unique concepts "
+            f"from {len(ixbrl_facts)} facts"
+        )
         match_lookup = {
             m.component_name: m
             for m in component_matches if m.matched
@@ -144,6 +149,15 @@ class ScaleNormalizer:
             den_def, match_lookup, fact_lookup,
         )
         if not num_info or not den_info:
+            missing = []
+            if not num_info:
+                missing.append(f"numerator({num_def})")
+            if not den_info:
+                missing.append(f"denominator({den_def})")
+            logger.debug(
+                f"Skip {ratio.ratio_name}: no iXBRL scale for "
+                f"{', '.join(missing)}"
+            )
             return None
 
         scale_diff = num_info['scale'] - den_info['scale']

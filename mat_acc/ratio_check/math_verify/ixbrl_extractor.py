@@ -64,6 +64,7 @@ class IXBRLExtractor:
         """Initialize iXBRL extractor."""
         self.logger = get_process_logger('math_verify.extractor')
         self._context_filter = ContextFilter()
+        self._all_facts: list[VerifiedFact] = []
 
     def extract(self, filing_path: Path) -> list[VerifiedFact]:
         """Extract all numeric facts from an iXBRL file."""
@@ -78,8 +79,9 @@ class IXBRLExtractor:
         # Parse context definitions for filtering
         self._context_filter.parse_contexts(content)
 
-        # Extract all facts
+        # Extract all facts (cache for metadata consumers)
         all_facts = self._extract_nonfraction_facts(content)
+        self._all_facts = all_facts
 
         # Filter to primary current-period facts only
         primary_facts = self._filter_primary(all_facts)
@@ -114,6 +116,10 @@ class IXBRLExtractor:
     def get_context_filter(self) -> ContextFilter:
         """Get the context filter (populated after extract)."""
         return self._context_filter
+
+    def get_all_extracted(self) -> list[VerifiedFact]:
+        """Get ALL extracted facts (unfiltered). For metadata-only use."""
+        return self._all_facts
 
     def _filter_primary(self, facts: list[VerifiedFact]) -> list[VerifiedFact]:
         """Filter facts to primary context, current period only."""
