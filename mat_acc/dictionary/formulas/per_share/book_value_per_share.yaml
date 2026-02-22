@@ -1,0 +1,30 @@
+# Formula Definition: Book Value per Share
+# Equity per outstanding share
+
+ratio_id: book_value_per_share
+display_name: "Book Value per Share"
+description: "Total equity divided by shares outstanding. Represents the accounting value per share."
+
+category: per_share
+importance: fundamental
+
+formula:
+  expression: "total_equity / shares_outstanding"
+  components:
+    - total_equity
+    - shares_outstanding
+
+interpretation:
+  direction: higher_is_better
+  context: "Compare to market price for Price-to-Book ratio. Negative book value indicates accumulated losses exceed paid-in capital."
+
+applicability:
+  statement_type: balance_sheet
+  notes: "Can be negative for companies with large accumulated deficits (e.g., Apple)."
+
+relationships:
+  related_to: [return_on_equity, earnings_per_share]
+
+references:
+  - "Penman - Financial Statement Analysis, Ch. 5"
+  - "CFA Institute - Equity Investments"

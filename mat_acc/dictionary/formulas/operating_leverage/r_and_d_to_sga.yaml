@@ -1,0 +1,30 @@
+# Formula Definition: R&D to SG&A
+# Innovation spending relative to overhead
+
+ratio_id: r_and_d_to_sga
+display_name: "R&D to SG&A"
+description: "R&D expense relative to SG&A. Shows balance between innovation investment and sales/admin overhead."
+
+category: operating_leverage
+importance: supplementary
+
+formula:
+  expression: "r_and_d_expense / selling_general_admin"
+  components:
+    - r_and_d_expense
+    - selling_general_admin
+
+interpretation:
+  direction: neutral
+  context: "High ratio = innovation-focused. Low ratio = sales/distribution-focused. Neither is inherently better."
+
+applicability:
+  statement_type: income_statement
+  industry_specific: true
+  notes: "Only applicable to companies reporting both R&D and SG&A separately."
+
+relationships:
+  related_to: [r_and_d_intensity, sga_to_revenue]
+
+references:
+  - "Palepu/Healy - Business Analysis and Valuation, Ch. 6"

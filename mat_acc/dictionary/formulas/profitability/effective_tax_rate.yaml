@@ -1,0 +1,33 @@
+# Formula Definition: Effective Tax Rate
+# Actual tax burden on earnings
+
+ratio_id: effective_tax_rate
+display_name: "Effective Tax Rate"
+description: "Actual tax expense as percentage of pre-tax income. Reveals true tax burden vs statutory rate."
+
+category: profitability
+importance: fundamental
+
+formula:
+  expression: "income_tax_expense / income_before_tax"
+  components:
+    - income_tax_expense
+    - income_before_tax
+
+interpretation:
+  healthy_range:
+    min: 0.15
+    max: 0.30
+  direction: neutral
+  context: "Compare to statutory rate (21% US federal). Lower may indicate tax planning; higher may indicate foreign operations or one-time charges."
+
+applicability:
+  statement_type: income_statement
+  notes: "Can be volatile due to one-time items, tax credits, or international operations."
+
+relationships:
+  related_to: [tax_burden, dupont_roe]
+
+references:
+  - "Penman - Financial Statement Analysis, Ch. 7"
+  - "CFA Institute - Financial Reporting and Analysis"

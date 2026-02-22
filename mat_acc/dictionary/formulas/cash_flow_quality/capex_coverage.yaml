@@ -1,0 +1,33 @@
+# Formula Definition: CapEx Coverage
+# How many times operating cash flow covers capital expenditures
+
+ratio_id: capex_coverage
+display_name: "CapEx Coverage"
+description: "Operating cash flow divided by capital expenditures. Shows if operations generate enough cash to fund reinvestment."
+
+category: cash_flow_quality
+importance: supplementary
+
+formula:
+  expression: "operating_cash_flow / capital_expenditures"
+  components:
+    - operating_cash_flow
+    - capital_expenditures
+
+interpretation:
+  healthy_range:
+    min: 1.5
+    max: 5.0
+  warning_below: 1.0
+  direction: higher_is_better
+  context: "Below 1.0 means external financing needed for capital spending."
+
+applicability:
+  statement_type: cash_flow
+  notes: "Growth companies may intentionally run below 1.0 during expansion."
+
+relationships:
+  related_to: [free_cash_flow, capex_to_revenue]
+
+references:
+  - "Damodaran - Investment Valuation, Ch. 12"

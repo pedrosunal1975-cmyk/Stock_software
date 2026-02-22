@@ -1,0 +1,33 @@
+# Formula Definition: CapEx to Revenue
+# Capital investment intensity
+
+ratio_id: capex_to_revenue
+display_name: "CapEx to Revenue"
+description: "Capital expenditures as percentage of revenue. Shows reinvestment intensity relative to sales."
+
+category: capital_allocation
+importance: supplementary
+
+formula:
+  expression: "capital_expenditures / revenue"
+  components:
+    - capital_expenditures
+    - revenue
+
+interpretation:
+  healthy_range:
+    min: 0.03
+    max: 0.15
+  direction: neutral
+  context: "High CapEx/Revenue can mean growth investment or capital-intensive business model."
+
+applicability:
+  statement_type: both
+  industry_specific: true
+  notes: "Tech/software typically 3-8%, manufacturing 8-15%, utilities 15-25%."
+
+relationships:
+  related_to: [capital_intensity, fixed_asset_turnover]
+
+references:
+  - "Damodaran - Corporate Finance, Ch. 11"

@@ -1,0 +1,32 @@
+# Formula Definition: Fixed Asset Turnover
+# Revenue generation efficiency from fixed assets
+
+ratio_id: fixed_asset_turnover
+display_name: "Fixed Asset Turnover"
+description: "Revenue generated per dollar of property, plant and equipment. Measures fixed asset utilization."
+
+category: capital_allocation
+importance: fundamental
+
+formula:
+  expression: "revenue / property_plant_equipment"
+  components:
+    - revenue
+    - property_plant_equipment
+
+interpretation:
+  healthy_range:
+    min: 2.0
+    max: 10.0
+  direction: higher_is_better
+
+applicability:
+  statement_type: both
+  industry_specific: true
+  notes: "Asset-light businesses (software) have very high ratios. Heavy industry has lower ratios."
+
+relationships:
+  related_to: [asset_turnover, capital_intensity]
+
+references:
+  - "Penman - Financial Statement Analysis, Ch. 9"

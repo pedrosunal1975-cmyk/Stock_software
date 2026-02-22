@@ -1,0 +1,33 @@
+# Formula Definition: Cash Flow to Debt
+# Debt repayment capacity from operations
+
+ratio_id: cash_flow_to_debt
+display_name: "Cash Flow to Debt"
+description: "Operating cash flow relative to total liabilities. Measures ability to service debt from operations."
+
+category: cash_flow_quality
+importance: fundamental
+
+formula:
+  expression: "operating_cash_flow / total_liabilities"
+  components:
+    - operating_cash_flow
+    - total_liabilities
+
+interpretation:
+  healthy_range:
+    min: 0.20
+    max: 0.60
+  warning_below: 0.10
+  direction: higher_is_better
+
+applicability:
+  statement_type: both
+  notes: "Key credit analysis metric. Higher ratio indicates stronger debt coverage."
+
+relationships:
+  related_to: [debt_to_ebitda, interest_coverage]
+
+references:
+  - "Palepu/Healy - Business Analysis and Valuation, Ch. 5"
+  - "S&P Credit Rating Methodology"

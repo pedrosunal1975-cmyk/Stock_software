@@ -18,7 +18,7 @@ from .base_section import BaseSection
 CATEGORY_ORDER = [
     'liquidity', 'leverage', 'profitability', 'efficiency',
     'cash_flow_quality', 'capital_allocation', 'dupont',
-    'distress', 'operating_leverage',
+    'distress', 'operating_leverage', 'per_share',
 ]
 CATEGORY_TITLES = {
     'liquidity': 'Liquidity Ratios',
@@ -30,6 +30,7 @@ CATEGORY_TITLES = {
     'dupont': 'DuPont Decomposition',
     'distress': 'Financial Distress',
     'operating_leverage': 'Operating Leverage',
+    'per_share': 'Per Share Metrics',
 }
 
 

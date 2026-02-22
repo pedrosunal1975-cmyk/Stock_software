@@ -10,8 +10,8 @@ The ratio_id field enables filtering by the industry registry
 (skip_ratios uses these IDs).
 """
 
-# Standard financial ratios organized by category
-STANDARD_RATIOS = [
+# Core financial ratios organized by category
+_BASE_RATIOS = [
     # =================================================================
     # LIQUIDITY RATIOS - Measure ability to meet short-term obligations
     # =================================================================
@@ -287,6 +287,10 @@ STANDARD_RATIOS = [
     },
 ]
 
+# Extended ratios (additional categories and calculations)
+from .ratio_defs_extended import EXTENDED_RATIOS
+
+STANDARD_RATIOS = _BASE_RATIOS + EXTENDED_RATIOS
 
 # Lookup by ratio_id for filtering
 RATIO_BY_ID = {r['ratio_id']: r for r in STANDARD_RATIOS}

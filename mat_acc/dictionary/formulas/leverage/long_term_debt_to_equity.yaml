@@ -1,0 +1,33 @@
+# Formula Definition: Long-term Debt to Equity
+# Measures long-term leverage specifically
+
+ratio_id: long_term_debt_to_equity
+display_name: "Long-term Debt to Equity"
+description: "Long-term debt relative to equity. Isolates permanent leverage from short-term borrowings."
+
+category: leverage
+importance: supplementary
+
+formula:
+  expression: "long_term_debt / total_equity"
+  components:
+    - long_term_debt
+    - total_equity
+
+interpretation:
+  healthy_range:
+    min: 0.5
+    max: 2.0
+  warning_above: 3.0
+  direction: lower_is_better
+
+applicability:
+  statement_type: balance_sheet
+  industry_specific: true
+  notes: "Capital-intensive industries naturally carry more long-term debt."
+
+relationships:
+  related_to: [debt_to_equity, debt_ratio]
+
+references:
+  - "Palepu/Healy - Business Analysis and Valuation, Ch. 5"

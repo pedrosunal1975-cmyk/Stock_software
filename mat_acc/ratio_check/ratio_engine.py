@@ -113,10 +113,13 @@ def _calculate_division(
     ratio.denominator = den_result['formula']
     ratio.denominator_value = den_result['value']
 
-    # Calculate ratio
+    # Calculate ratio (with optional scale_factor for Days ratios)
     if ratio.numerator_value is not None and ratio.denominator_value is not None:
         if ratio.denominator_value != 0:
-            ratio.value = ratio.numerator_value / ratio.denominator_value
+            scale = ratio_def.get('scale_factor', 1.0)
+            ratio.value = (
+                ratio.numerator_value / ratio.denominator_value
+            ) * scale
             ratio.valid = True
         else:
             ratio.error = "Division by zero"

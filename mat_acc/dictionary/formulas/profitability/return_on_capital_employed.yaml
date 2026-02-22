@@ -1,0 +1,34 @@
+# Formula Definition: Return on Capital Employed (ROCE)
+# Operating return on long-term capital
+
+ratio_id: return_on_capital_employed
+display_name: "Return on Capital Employed"
+description: "Operating income relative to capital employed (total assets minus current liabilities). Measures efficiency of long-term capital."
+
+category: profitability
+importance: fundamental
+
+formula:
+  expression: "operating_income / (total_assets - current_liabilities)"
+  components:
+    - operating_income
+    - total_assets
+    - current_liabilities
+
+interpretation:
+  healthy_range:
+    min: 0.10
+    max: 0.30
+  warning_below: 0.05
+  direction: higher_is_better
+
+applicability:
+  statement_type: both
+  notes: "Preferred over ROA for comparing companies with different working capital structures."
+
+relationships:
+  related_to: [return_on_assets, roic]
+
+references:
+  - "Penman - Financial Statement Analysis, Ch. 12"
+  - "CFA Institute - Equity Investments"

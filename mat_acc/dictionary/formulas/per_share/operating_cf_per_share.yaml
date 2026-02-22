@@ -1,0 +1,30 @@
+# Formula Definition: Operating Cash Flow per Share
+# Cash generation per share
+
+ratio_id: operating_cf_per_share
+display_name: "Operating Cash Flow per Share"
+description: "Operating cash flow divided by shares outstanding. Cash-based alternative to EPS."
+
+category: per_share
+importance: supplementary
+
+formula:
+  expression: "operating_cash_flow / shares_outstanding"
+  components:
+    - operating_cash_flow
+    - shares_outstanding
+
+interpretation:
+  direction: higher_is_better
+  context: "Less susceptible to accounting manipulation than EPS. Compare to EPS for earnings quality signal."
+
+applicability:
+  statement_type: both
+  notes: "Should generally track EPS over time. Persistent divergence is a warning signal."
+
+relationships:
+  related_to: [earnings_per_share, cash_conversion_ratio]
+
+references:
+  - "Penman - Financial Statement Analysis, Ch. 4"
+  - "Sloan (1996) - Do Stock Prices Fully Reflect Information in Accruals?"

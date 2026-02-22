@@ -225,12 +225,60 @@ def calculate_altman_z(
     return ratio
 
 
+def calculate_ccc(
+    ratio_def: Dict[str, Any],
+    matched_lookup: Dict[str, ComponentMatch],
+) -> RatioResult:
+    """
+    Cash Conversion Cycle.
+
+    CCC = DIO + DSO - DPO
+    DIO = (Inventory / COGS) * 365
+    DSO = (Accounts Receivable / Revenue) * 365
+    DPO = (Accounts Payable / COGS) * 365
+    """
+    ratio = RatioResult(
+        ratio_name=ratio_def['name'],
+        formula=ratio_def['formula'],
+    )
+    needed = [
+        'inventory', 'cost_of_goods_sold',
+        'accounts_receivable', 'revenue', 'accounts_payable',
+    ]
+    missing = _missing_components(needed, matched_lookup)
+    if missing:
+        ratio.error = f"Missing: {', '.join(missing)}"
+        return ratio
+
+    inv = _get_value('inventory', matched_lookup)
+    cogs = _get_value('cost_of_goods_sold', matched_lookup)
+    ar = _get_value('accounts_receivable', matched_lookup)
+    rev = _get_value('revenue', matched_lookup)
+    ap = _get_value('accounts_payable', matched_lookup)
+
+    if cogs == 0 or rev == 0:
+        ratio.error = "COGS or Revenue is zero"
+        return ratio
+
+    dio = (inv / cogs) * 365
+    dso = (ar / rev) * 365
+    dpo = (ap / cogs) * 365
+    ccc = dio + dso - dpo
+
+    ratio.numerator = f"DIO={dio:.1f} + DSO={dso:.1f}"
+    ratio.denominator = f"DPO={dpo:.1f}"
+    ratio.value = ccc
+    ratio.valid = True
+    return ratio
+
+
 # Registry mapping calculation_type -> calculator function
 COMPOSITE_CALCULATORS: Dict[str, Callable] = {
     'absolute': calculate_absolute,
     'roic': calculate_roic,
     'dupont': calculate_dupont,
     'altman_z': calculate_altman_z,
+    'cash_conversion_cycle': calculate_ccc,
 }
 
 
