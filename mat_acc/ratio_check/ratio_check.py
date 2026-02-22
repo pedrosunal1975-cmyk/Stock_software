@@ -371,6 +371,39 @@ class RatioCheckOrchestrator:
                     f"diff: {check.difference:,.0f}"
                 )
 
+    def _run_scale_normalization(self, result, ixbrl_facts) -> dict:
+        """
+        Run scale normalization on calculated ratios.
+
+        Reads scale/unit from iXBRL facts, detects cross-type
+        mismatches, and produces annotations without modifying
+        original ratio values.
+
+        Args:
+            result: AnalysisResult with populated ratios
+            ixbrl_facts: VerifiedFact list from iXBRL extraction
+
+        Returns:
+            Dict of ratio_name -> ScaleAnnotation
+        """
+        from .scale_normalizer import ScaleNormalizer
+        normalizer = ScaleNormalizer()
+        annotations = normalizer.normalize(
+            result.ratios, result.component_matches,
+            ixbrl_facts, STANDARD_RATIOS,
+        )
+        if annotations:
+            print(
+                f"\n  Scale Normalizer: {len(annotations)} "
+                f"ratios normalized from iXBRL scale metadata"
+            )
+            for name, ann in annotations.items():
+                print(
+                    f"    {name}: {ann.raw_value:.4f} "
+                    f"-> {ann.normalized_value:.4f} ({ann.explanation})"
+                )
+        return annotations
+
     def _find_parsed_entry(self, selection: FilingSelection) -> Optional[ParsedFilingEntry]:
         """
         Find parsed filing for a selection.
@@ -500,6 +533,12 @@ class RatioCheckOrchestrator:
         # MIU Layer 3: Mathematical identity validation
         if result:
             self._run_identity_checks(result)
+
+        # Scale normalization (post-processing, read-learn-apply)
+        if result and ixbrl_facts:
+            result.normalizations = self._run_scale_normalization(
+                result, ixbrl_facts,
+            )
 
         # Capture component debug info for unmatched components
         if result:

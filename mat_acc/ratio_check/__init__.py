@@ -14,6 +14,7 @@ Architecture:
     ratio_engine.py       - Ratio computation from matched components
     value_populator.py    - 4-pass value population pipeline
     fact_value_lookup.py  - Retrieves actual values from source files
+    scale_normalizer.py   - Post-processing scale normalization (read-learn-apply)
     match_verify/         - Post-Match Financial Verification (PMFV)
     math_verify/          - Mathematical Integrity Unit (sign, scale, identity)
     database_checker.py   - Check/populate HierarchyNode data
@@ -35,6 +36,7 @@ from .industry_detector import IndustryDetector
 from .industry_registry import IndustryRegistry
 from .match_verify import MatchVerifier
 from .ratio_check import RatioCheckOrchestrator, main
+from .scale_normalizer import ScaleNormalizer, ScaleAnnotation
 from .debug_reporter import DebugReporter, ComponentDebugInfo, ProcessState
 from .fact_value_lookup import FactValueLookup, FactValue
 from .math_verify import (
@@ -82,6 +84,9 @@ __all__ = [
     # Industry detection
     'IndustryDetector',
     'IndustryRegistry',
+    # Scale normalization
+    'ScaleNormalizer',
+    'ScaleAnnotation',
     # Match verification (PMFV)
     'MatchVerifier',
     # Database operations

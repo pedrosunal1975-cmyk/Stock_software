@@ -75,6 +75,7 @@ class AnalysisResult:
         component_matches: Matched components
         ratios: Calculated ratios
         summary: Summary statistics
+        normalizations: Scale normalization annotations (post-processing)
     """
     company: str
     market: str
@@ -83,6 +84,7 @@ class AnalysisResult:
     component_matches: List[ComponentMatch] = field(default_factory=list)
     ratios: List[RatioResult] = field(default_factory=list)
     summary: Dict[str, Any] = field(default_factory=dict)
+    normalizations: Dict[str, Any] = field(default_factory=dict)
 
 
 __all__ = ['ComponentMatch', 'RatioResult', 'AnalysisResult']

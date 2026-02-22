@@ -319,7 +319,7 @@ class RatioCalculator:
 
         self._display_pmfv_corrections()
         self._display_components(result.component_matches)
-        self._display_ratios(result.ratios)
+        self._display_ratios(result.ratios, result.normalizations)
         self._display_summary(result.summary)
 
     def _display_pmfv_corrections(self) -> None:
@@ -367,10 +367,14 @@ class RatioCalculator:
             if len(unmatched) > 10:
                 print(f"    ... and {len(unmatched) - 10} more")
 
-    def _display_ratios(self, ratios: List[RatioResult]) -> None:
-        """Display financial ratios section."""
+    def _display_ratios(
+        self, ratios: List[RatioResult],
+        normalizations: Optional[Dict] = None,
+    ) -> None:
+        """Display financial ratios section with normalization."""
         print("\n  FINANCIAL RATIOS:")
         print("-" * 70)
+        norms = normalizations or {}
 
         for r in ratios:
             if r.valid:
@@ -379,6 +383,13 @@ class RatioCalculator:
                 den = f"{r.denominator_value:,.0f}" if r.denominator_value else "N/A"
                 print(f"         {r.formula}")
                 print(f"         ({num} / {den})")
+                ann = norms.get(r.ratio_name)
+                if ann:
+                    print(
+                        f"         >> Normalized:"
+                        f" {ann.normalized_value:10.4f}"
+                        f"  ({ann.explanation})"
+                    )
             elif r.error:
                 if r.numerator_value is not None or r.denominator_value is not None:
                     num = f"{r.numerator_value:,.0f}" if r.numerator_value else "[missing]"
