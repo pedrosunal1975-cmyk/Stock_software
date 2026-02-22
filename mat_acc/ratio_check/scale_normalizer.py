@@ -118,11 +118,21 @@ class ScaleNormalizer:
     def _build_fact_lookup(
         self, facts: list,
     ) -> Dict[str, Any]:
-        """Build concept QName -> first VerifiedFact lookup."""
+        """
+        Build concept QName -> first VerifiedFact lookup.
+
+        Indexes both colon and underscore QName formats since
+        iXBRL uses colons (us-gaap:Concept) while the concept
+        index may use underscores (us-gaap_Concept).
+        """
         lookup: Dict[str, Any] = {}
         for fact in facts:
             if fact.concept not in lookup:
                 lookup[fact.concept] = fact
+            # Also index underscore format for concept_index compat
+            alt = fact.concept.replace(':', '_', 1)
+            if alt != fact.concept and alt not in lookup:
+                lookup[alt] = fact
         return lookup
 
     def _check_ratio(
