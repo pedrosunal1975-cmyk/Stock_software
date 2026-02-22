@@ -14,7 +14,7 @@ The loaders provide paths, this module reads actual values.
 import logging
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Optional, Dict, List, Any, Union
+from typing import Optional, Dict, List, Any, Tuple, Union
 from decimal import Decimal
 
 from config_loader import ConfigLoader
@@ -101,6 +101,10 @@ class FactValueLookup:
         self._available_periods: List[str] = []
         self._primary_period: Optional[str] = None
 
+        # Normalized index: (namespace, local_name) -> original key
+        # Enables namespace-aware lookup across all QName formats
+        self._normalized_index: Dict[Tuple[str, str], str] = {}
+
     def load_from_filing(
         self,
         mapped_entry: MappedFilingEntry,
@@ -115,6 +119,7 @@ class FactValueLookup:
             Number of concepts with values loaded
         """
         self._value_index.clear()
+        self._normalized_index.clear()
         self._available_periods = []
 
         # Load from mapped statements (single clean source)
@@ -202,6 +207,12 @@ class FactValueLookup:
 
         if not is_duplicate:
             self._value_index[fact.concept].append(fact_value)
+            # Build normalized index for namespace-aware lookup
+            ns, local = self._parse_qname(fact.concept)
+            if local:
+                norm_key = (ns.lower(), local)
+                if norm_key not in self._normalized_index:
+                    self._normalized_index[norm_key] = fact.concept
             return True
 
         return False
@@ -269,22 +280,7 @@ class FactValueLookup:
         Returns:
             Numeric value or None if not found
         """
-        values = self._value_index.get(concept)
-
-        if not values:
-            # Try alternate qname format (colon <-> underscore)
-            alt_key = self._alternate_qname(concept)
-            if alt_key:
-                values = self._value_index.get(alt_key)
-
-        if not values:
-            # Fallback: search by local name only
-            local_name = self._extract_local_name(concept)
-            for key in self._value_index:
-                key_local = self._extract_local_name(key)
-                if key_local == local_name:
-                    values = self._value_index[key]
-                    break
+        values = self._find_values(concept)
 
         if not values:
             return None
@@ -308,16 +304,6 @@ class FactValueLookup:
 
         return None
 
-    def _extract_local_name(self, qname: str) -> str:
-        """Extract local name from any qname format."""
-        if ':' in qname:
-            return qname.split(':')[-1]
-        if '_' in qname:
-            parts = qname.rsplit('_', 1)
-            if len(parts) == 2 and parts[1] and parts[1][0].isupper():
-                return parts[1]
-        return qname
-
     def _alternate_qname(self, qname: str) -> Optional[str]:
         """Try alternate qname format (colon <-> underscore)."""
         if ':' in qname:
@@ -326,6 +312,112 @@ class FactValueLookup:
             parts = qname.rsplit('_', 1)
             if len(parts) == 2 and parts[1] and parts[1][0].isupper():
                 return parts[0] + ':' + parts[1]
+        return None
+
+    def _parse_qname(self, qname_str: str) -> Tuple[str, str]:
+        """
+        Parse QName into (namespace, local_name) tuple.
+
+        Handles all XBRL QName formats universally:
+        1. Clark notation: {http://fasb.org/us-gaap/2024}Assets
+        2. Prefix format: us-gaap:Assets (iXBRL standard)
+        3. Underscore format: us-gaap_Assets (concept index)
+        4. Simple name: Assets (no namespace)
+
+        Works for any taxonomy: US-GAAP, IFRS, ESEF, company extensions.
+        """
+        if not qname_str:
+            return ('', '')
+
+        s = str(qname_str).strip()
+
+        # Format 1: Clark notation {namespace-uri}LocalName
+        if s.startswith('{'):
+            parts = s.split('}', 1)
+            if len(parts) == 2:
+                return (parts[0][1:], parts[1])
+
+        # Format 2: Prefix:LocalName (standard QName)
+        if ':' in s:
+            ns, local = s.split(':', 1)
+            return (ns, local)
+
+        # Format 3: Prefix_LocalName (uppercase start = namespace boundary)
+        if '_' in s:
+            parts = s.rsplit('_', 1)
+            if len(parts) == 2 and parts[1] and parts[1][0].isupper():
+                return (parts[0], parts[1])
+
+        # Format 4: Simple name (no namespace)
+        return ('', s)
+
+    def _find_values(self, concept: str) -> Optional[List[FactValue]]:
+        """
+        Find values using multi-tier namespace-aware lookup.
+
+        Tier 1: Exact QName string match
+        Tier 2: Alternate separator format (colon <-> underscore)
+        Tier 3: Namespace-aware normalized match (prevents
+                 cross-namespace pollution)
+        """
+        # Tier 1: Exact match
+        values = self._value_index.get(concept)
+        if values:
+            return values
+
+        # Tier 2: Alternate format (colon <-> underscore)
+        alt_key = self._alternate_qname(concept)
+        if alt_key:
+            values = self._value_index.get(alt_key)
+            if values:
+                return values
+
+        # Tier 3: Namespace-aware normalized match
+        return self._lookup_normalized(concept)
+
+    def _lookup_normalized(
+        self, concept: str,
+    ) -> Optional[List[FactValue]]:
+        """
+        Namespace-aware normalized QName lookup.
+
+        If query has a namespace: requires exact namespace match.
+        If query has no namespace: matches only if unambiguous
+        (exactly one namespace contains this local name).
+        Never silently returns a value from a different namespace.
+        """
+        ns, local = self._parse_qname(concept)
+        if not local:
+            return None
+
+        if ns:
+            # Query has namespace - require exact namespace match
+            norm_key = (ns.lower(), local)
+            orig_key = self._normalized_index.get(norm_key)
+            if orig_key:
+                return self._value_index.get(orig_key)
+            return None
+
+        # No namespace in query - find by local name
+        matches = [
+            orig_key
+            for (idx_ns, idx_local), orig_key
+            in self._normalized_index.items()
+            if idx_local == local
+        ]
+
+        if len(matches) == 1:
+            self.logger.debug(
+                f"Inferred namespace for '{concept}': {matches[0]}"
+            )
+            return self._value_index.get(matches[0])
+
+        if len(matches) > 1:
+            self.logger.warning(
+                f"Ambiguous concept '{concept}': found in "
+                f"{len(matches)} namespaces, skipping"
+            )
+
         return None
 
     def _find_best_fact(
@@ -383,21 +475,7 @@ class FactValueLookup:
         no_primary = 0
 
         for concept, correct_value in corrections.items():
-            values = self._value_index.get(concept)
-
-            if not values:
-                # Try alternate key formats
-                alt_key = self._alternate_qname(concept)
-                if alt_key:
-                    values = self._value_index.get(alt_key)
-
-            if not values:
-                # Try local name match
-                local_name = self._extract_local_name(concept)
-                for key in self._value_index:
-                    if self._extract_local_name(key) == local_name:
-                        values = self._value_index[key]
-                        break
+            values = self._find_values(concept)
 
             if not values:
                 not_found += 1
