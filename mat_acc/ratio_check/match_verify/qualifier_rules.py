@@ -38,12 +38,17 @@ CURRENT_COMPONENTS = {
 }
 
 # Concept name fragments that indicate supplemental/disclosure
-# items, NOT primary statement line items
+# items or discontinued operations - NOT primary statement items.
+# DisposalGroup/DiscontinuedOperation concepts represent assets
+# and liabilities of operations being sold/wound down, which must
+# never be promoted as replacements for continuing operations.
 SUPPLEMENTAL_MARKERS = [
     'incurredbutnotyetpaid',
     'supplementalschedule',
     'supplementaldisclosure',
     'paidduringperiod',
+    'disposalgroup',
+    'discontinuedoperation',
 ]
 
 # Components that should come from specific statement types.

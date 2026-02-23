@@ -36,6 +36,7 @@ matching_rules:
         - "receivables, net"
         - "receivables net"
         - "receivables from customers"
+        - "notes and loans receivable"
       match_type: contains
       case_sensitive: false
       weight: 12
@@ -51,6 +52,7 @@ matching_rules:
     - patterns:
         - "AccountsReceivableNetCurrent"
         - "AccountsReceivableNet"
+        - "AccountsNotesAndLoansReceivableNetCurrent"
         - "ReceivablesNetCurrent"
         - "TradeAndOtherCurrentReceivables"
       match_type: exact
@@ -63,6 +65,7 @@ matching_rules:
         - "TradeAndOtherReceivables"
         - "TradeReceivablesAndContract"
         - "CurrentTradeReceivables"
+        - "NotesAndLoansReceivableNet"
       match_type: contains
       weight: 10
 

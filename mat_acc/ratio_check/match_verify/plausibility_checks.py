@@ -29,9 +29,12 @@ RATIO_BOUNDS = [
     ('short_term_debt', 'current_liabilities', 0.005, None),
     # capex should be meaningful vs total_assets
     ('capital_expenditures', 'total_assets', 0.001, 0.80),
-    # interest_expense should be plausible vs long_term_debt
-    # Implied rate: 0.1% to 30% (very generous bounds)
-    ('interest_expense', 'long_term_debt', 0.001, 0.30),
+    # NOTE: interest_expense vs long_term_debt REMOVED - interest
+    # comes from ALL debt sources (short-term revolving, credit
+    # lines, etc.), not just long-term. Companies with mostly
+    # short-term borrowings trigger false positives that cascade
+    # into harmful corrections. The subset rule at line 64
+    # (interest_expense <= total_liabilities) is sufficient.
     # depreciation should be meaningful vs total_assets
     ('depreciation_amortization', 'total_assets', 0.001, 0.50),
     # operating_income vs revenue (generous: losses can exceed rev)
