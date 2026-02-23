@@ -117,6 +117,8 @@ class FactValueLookup:
         # Track available periods for filtering
         self._available_periods: List[str] = []
         self._primary_period: Optional[str] = None
+        # Periods that have duration facts (fiscal year-end, not filing date)
+        self._duration_periods: set = set()
 
         # Normalized index: (namespace, local_name) -> original key
         # Enables namespace-aware lookup across all QName formats
@@ -138,6 +140,7 @@ class FactValueLookup:
         self._value_index.clear()
         self._normalized_index.clear()
         self._available_periods = []
+        self._duration_periods = set()
 
         # Load from mapped statements (single clean source)
         mapped_count = self._load_from_mapped(mapped_entry)
@@ -260,6 +263,9 @@ class FactValueLookup:
         # Track period
         if fact.period_end and fact.period_end not in self._available_periods:
             self._available_periods.append(fact.period_end)
+        # Duration facts mark fiscal year-end (not filing date)
+        if fact.period_start and fact.period_end:
+            self._duration_periods.add(fact.period_end)
 
         # Add to index
         if fact.concept not in self._value_index:
@@ -317,12 +323,26 @@ class FactValueLookup:
         return None
 
     def _determine_primary_period(self) -> None:
-        """Determine the primary (most recent) period."""
+        """Determine the primary (most recent) period.
+
+        Filing dates only appear as instant contexts (no duration
+        facts). Fiscal year-end always has duration facts (IS, CF).
+        Prefer the latest period with duration facts to avoid
+        selecting a filing date as primary period.
+        """
         if not self._available_periods:
             self._primary_period = None
             return
 
-        # Sort periods descending (most recent first)
+        # Prefer latest period with duration facts (fiscal year-end)
+        if self._duration_periods:
+            sorted_duration = sorted(
+                self._duration_periods, reverse=True,
+            )
+            self._primary_period = sorted_duration[0]
+            return
+
+        # Fallback: latest period overall
         sorted_periods = sorted(self._available_periods, reverse=True)
         self._primary_period = sorted_periods[0]
 

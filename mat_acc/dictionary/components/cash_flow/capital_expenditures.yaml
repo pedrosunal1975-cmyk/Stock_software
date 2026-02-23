@@ -23,6 +23,7 @@ matching_rules:
         - "Payments for Property, Plant and Equipment"
         - "Purchases of Property, Plant and Equipment"
         - "Payments to Acquire Property, Plant, and Equipment"
+        - "Payments to Acquire Productive Assets"
         - "Purchase of Fixed Assets"
         - "Capital Spending"
         - "CapEx"
@@ -54,6 +55,7 @@ matching_rules:
   local_name_rules:
     - patterns:
         - "PaymentsToAcquirePropertyPlantAndEquipment"
+        - "PaymentsToAcquireProductiveAssets"
         - "CapitalExpendituresIncurredButNotYetPaid"
         - "PurchaseOfPropertyPlantAndEquipment"
       match_type: exact
@@ -63,7 +65,6 @@ matching_rules:
         - "PaymentsToAcquireProperty"
         - "CapitalExpenditure"
         - "PurchaseOfPropertyPlant"
-        - "PaymentsToAcquireProductiveAssets"
         - "AdditionsToPropertyPlant"
         - "PurchasesOfPropertyPlantAndEquipment"
         - "AcquisitionOfPropertyPlant"

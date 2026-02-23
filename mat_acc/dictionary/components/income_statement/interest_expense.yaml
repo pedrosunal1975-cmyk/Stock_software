@@ -21,6 +21,8 @@ matching_rules:
     - patterns:
         - "Interest Expense"
         - "Interest Expense, Net"
+        - "Interest Income (Expense), Net"
+        - "Interest Income (Expense), Nonoperating, Net"
         - "Interest Costs"
         - "Finance Costs"
         - "Interest Paid"
@@ -31,6 +33,7 @@ matching_rules:
     # High weight for contains patterns
     - patterns:
         - "interest expense"
+        - "interest income (expense)"
         - "interest cost"
         - "finance cost"
         - "borrowing cost"
@@ -51,6 +54,7 @@ matching_rules:
         - "InterestExpense"
         - "InterestExpenseDebt"
         - "InterestIncomeExpenseNet"
+        - "InterestIncomeExpenseNonoperatingNet"
         - "InterestExpenseNonoperating"
         - "FinanceCosts"
       match_type: exact
