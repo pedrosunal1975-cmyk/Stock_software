@@ -5,7 +5,8 @@ Ratio Calculator
 Orchestrates the matching engine and ratio calculation pipeline.
 Delegates to specialized modules:
 - ratio_models: Data classes
-- value_populator: 4-pass value population
+- value_populator: 6-pass value population
+- calc_discovery: Dynamic formulas from calculation linkbase
 - match_verify: Post-Match Financial Verification (PMFV)
 - ratio_engine: Ratio computation
 - ratio_definitions: Standard ratio list
@@ -72,6 +73,7 @@ class RatioCalculator:
         self, selection: FilingSelection,
         concept_index: ConceptIndex,
         value_lookup: Optional[FactValueLookup] = None,
+        calc_networks: Optional[list] = None,
     ) -> AnalysisResult:
         """Run complete analysis on a filing."""
         result = AnalysisResult(
@@ -90,6 +92,13 @@ class RatioCalculator:
         )
 
         component_matches = self.match_components(concept_index)
+
+        # Calculation Discovery: enhance matches using
+        # company-declared formulas from calculation linkbase
+        if calc_networks:
+            self._run_calc_discovery(
+                calc_networks, component_matches, concept_index,
+            )
 
         if value_lookup:
             self._value_populator.populate(
@@ -252,6 +261,21 @@ class RatioCalculator:
             'industry': industry,
             'industry_display': display_name,
         }
+
+    def _run_calc_discovery(
+        self, calc_networks, matches, concept_index,
+    ) -> None:
+        """Use company's calculation linkbase to enhance matches."""
+        from .calc_discovery import extract_formulas, enhance_matches
+        formulas = extract_formulas(calc_networks)
+        if formulas:
+            enhanced = enhance_matches(
+                formulas, matches, concept_index,
+            )
+            if enhanced:
+                self.logger.info(
+                    f"Calc discovery: {enhanced} enhancements"
+                )
 
     def display_results(self, result: AnalysisResult) -> None:
         """Display analysis results to console."""

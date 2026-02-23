@@ -3,12 +3,8 @@
 Ratio Check - Main Orchestrator
 
 Coordinates the ratio analysis pipeline:
-1. Load fact values from mapped statements
-2. Run Mathematical Integrity Unit (sign verification)
-3. Build enriched concept index
-4. Run matching engine and calculate ratios
-
-Source discovery is handled internally - user just selects a filing.
+1. Load fact values   2. MIU sign verification
+3. Build concept index 4. Calc discovery + matching + ratios
 """
 
 from typing import Optional
@@ -128,21 +124,15 @@ class RatioCheckOrchestrator:
         form: str, date: str,
     ) -> Optional[AnalysisResult]:
         """Run analysis non-interactively."""
-        loader = MappedDataLoader(self.config)
-        mapped = loader.find_mapped_filing(
+        mapped = MappedDataLoader(self.config).find_mapped_filing(
             market, company, form, date,
         )
         if not mapped:
-            self.logger.error(
-                f"Filing not found: "
-                f"{company}/{market}/{form}/{date}"
-            )
+            self.logger.error(f"Filing not found: {company}/{form}/{date}")
             return None
-
         selection = FilingSelection(
-            index=0, company=mapped.company,
-            market=mapped.market, form=mapped.form,
-            date=mapped.date, mapped_entry=mapped,
+            index=0, company=mapped.company, market=mapped.market,
+            form=mapped.form, date=mapped.date, mapped_entry=mapped,
         )
         return self._run_analysis(selection)
 
@@ -255,12 +245,16 @@ class RatioCheckOrchestrator:
         self.debug_reporter.mark_stage('concepts_built')
         print(f"  Built index with {len(concept_index)} concepts")
 
+        # Read calculation linkbase for formula discovery
+        calc_networks = self._read_calc_linkbase(xbrl_dir)
+
         # Run matching and ratio calculation
         print("\n  Running matching engine...")
         result = self.ratio_calculator.analyze(
             selection=selection,
             concept_index=concept_index,
             value_lookup=value_lookup,
+            calc_networks=calc_networks,
         )
         self.debug_reporter.mark_stage('matching_complete')
 
@@ -283,6 +277,17 @@ class RatioCheckOrchestrator:
         if result:
             self._track_unmatched(result.component_matches)
         return result
+
+    def _read_calc_linkbase(self, xbrl_dir):
+        """Read calculation linkbase from XBRL filing."""
+        if not xbrl_dir:
+            return []
+        from loaders.xbrl_reader import XBRLReader
+        networks = XBRLReader().read_calculation_linkbase(xbrl_dir)
+        if networks:
+            arcs = sum(len(n.arcs) for n in networks)
+            print(f"\n  Loaded {arcs} calc relationships")
+        return networks
 
     def _track_unmatched(self, matches) -> None:
         """Record unmatched components for debug reporting."""
