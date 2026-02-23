@@ -2,13 +2,14 @@
 """
 Value Populator
 
-Populates numeric values for matched components using a 6-pass strategy:
+Populates numeric values for matched components using a 7-pass strategy:
 1. Atomic values from core financial statements only
 2. Composite values from populated atomics (formula computation)
 3. Fallback formula for remaining unvalued atomics
 4. Alternative recovery with quality threshold (core statements only)
 5. Supplementary recovery from detail/disclosure schedules
 6. Recompute composites/fallback after all values loaded
+7. Sign enforcement from component expected_sign definitions
 
 Composites and fallback formulas fire BEFORE alternatives so that
 computed values (e.g. total_assets - current_assets) take priority
@@ -45,13 +46,14 @@ class ValuePopulator:
         """
         Populate values for matched components.
 
-        Six-pass strategy with source priority:
+        Seven-pass strategy with source priority:
         Pass 1 - Atomic lookup from core statements only
         Pass 2 - Composite formula computation
         Pass 3 - Fallback formula for remaining unvalued
         Pass 4 - Alternative recovery with quality threshold
         Pass 5 - Supplementary recovery from detail schedules
         Pass 6 - Recompute composites/fallback with all values
+        Pass 7 - Sign enforcement from expected_sign definitions
 
         Composites and fallback formulas fire BEFORE alternatives
         so computed values take priority over weak alt matches.
@@ -79,6 +81,34 @@ class ValuePopulator:
 
         self._pass_supplementary(matches, value_lookup)
         self._pass_recompute(matches, match_lookup)
+        self._pass_sign_enforce(matches)
+
+    def _pass_sign_enforce(
+        self, matches: List[ComponentMatch],
+    ) -> None:
+        """Enforce expected_sign from component definitions.
+
+        Components declaring expected_sign=positive get abs() applied.
+        Activates sign infrastructure from YAML definitions. Fixes
+        MIU-corrected values (e.g. InterestIncomeExpenseNet stored
+        as negative P&L impact, but needed as positive expense).
+        """
+        corrected = 0
+        for match in matches:
+            if match.value is None or not match.expected_sign:
+                continue
+            if match.expected_sign == 'positive' and match.value < 0:
+                self.logger.info(
+                    f"[SIGN] {match.component_name}: "
+                    f"{match.value:,.0f} -> {abs(match.value):,.0f}"
+                )
+                match.value = abs(match.value)
+                corrected += 1
+        if corrected:
+            self.logger.info(
+                f"[SIGN] Enforced expected_sign for "
+                f"{corrected} components"
+            )
 
     def _pass_atomic(
         self,

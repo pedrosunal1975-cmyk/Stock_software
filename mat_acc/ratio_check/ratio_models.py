@@ -33,6 +33,7 @@ class ComponentMatch:
     label: Optional[str] = None
     rule_breakdown: Dict[str, float] = field(default_factory=dict)
     fallback_formula: Optional[str] = None
+    expected_sign: Optional[str] = None
 
 
 @dataclass

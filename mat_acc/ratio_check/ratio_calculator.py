@@ -236,6 +236,9 @@ class RatioCalculator:
         comp_def = components.get(component_id)
         if comp_def and comp_def.composition.formula:
             match.fallback_formula = comp_def.composition.formula
+        if comp_def and hasattr(comp_def, 'validation'):
+            sign = comp_def.validation.expected_sign
+            match.expected_sign = sign.value if sign else None
 
         return match
 
