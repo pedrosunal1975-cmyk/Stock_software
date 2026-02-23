@@ -1,0 +1,96 @@
+# Component Definition: Intangible Assets
+# Non-physical identifiable assets (patents, trademarks, etc.)
+
+component_id: intangible_assets
+display_name: "Intangible Assets"
+description: "Non-physical identifiable assets excluding goodwill: patents, trademarks, licenses."
+
+category: balance_sheet
+subcategory: assets
+
+characteristics:
+  balance_type: debit
+  period_type: instant
+  is_monetary: true
+  is_abstract: false
+  data_type: monetary
+
+matching_rules:
+  label_rules:
+    - patterns:
+        - "Intangible Assets, Net"
+        - "Intangible Assets"
+        - "Other Intangible Assets"
+        - "Other Intangible Assets, Net"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+
+    - patterns:
+        - "intangible assets"
+        - "intangible assets, net"
+      match_type: contains
+      case_sensitive: false
+      weight: 12
+
+  local_name_rules:
+    - patterns:
+        - "IntangibleAssetsNetExcludingGoodwill"
+        - "OtherIntangibleAssetsNet"
+      match_type: exact
+      weight: 15
+
+    - patterns:
+        - "IntangibleAssets"
+        - "OtherIntangible"
+      match_type: contains
+      weight: 10
+
+  hierarchy_rules:
+    - rule_type: depth_level
+      pattern: "2-4"
+      weight: 4
+
+  calculation_rules:
+    - rule_type: contributes_to
+      pattern: "*Assets*"
+      weight: 6
+
+  definition_rules:
+    - keywords:
+        - "intangible"
+        - "patent"
+        - "trademark"
+        - "license"
+      all_required: false
+      weight: 4
+
+scoring:
+  min_score: 18
+  confidence_levels:
+    high: 32
+    medium: 25
+    low: 18
+  tiebreaker: highest_in_hierarchy
+  reject_if:
+    - condition: "Is abstract concept"
+      pattern: "abstract=true"
+    - condition: "Is goodwill"
+      pattern: "name~goodwill"
+    - condition: "Is amortization"
+      pattern: "name~amortization"
+    - condition: "Is impairment"
+      pattern: "name~impairment"
+    - condition: "Is text block"
+      pattern: "name~textblock"
+    - condition: "Is schedule"
+      pattern: "name~schedule"
+
+composition:
+  is_composite: false
+
+validation:
+  expected_sign: positive
+  relationships:
+    - other: total_assets
+      relation: less_than

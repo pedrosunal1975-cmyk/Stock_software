@@ -21,7 +21,7 @@ from process.matcher.models.concept_metadata import ConceptIndex
 from ..ratio_models import ComponentMatch
 from ..fact_value_lookup import FactValueLookup
 from .qualifier_rules import check_qualifier
-from .plausibility_checks import check_plausibility
+from .plausibility_checks import check_plausibility, check_statement_type
 from .fallback_patterns import FALLBACK_PATTERNS
 
 
@@ -71,24 +71,27 @@ class MatchVerifier:
         return list(self._corrections)
 
     def _run_qualifier_checks(self, matches, concept_index):
-        """Run qualifier checks on all matched components."""
+        """Run qualifier and statement-type checks."""
         flags = {}
         for match in matches:
             if not match.matched or match.matched_concept is None:
                 continue
             if match.confidence >= 100:
                 continue
-            local = self._get_local_name(
-                match.matched_concept, concept_index,
-            )
+            concept = concept_index.get_concept(match.matched_concept)
+            local = (concept.local_name if concept
+                     else get_local_name(match.matched_concept))
             if not local:
                 continue
             result = check_qualifier(match.component_name, local)
             if not result['valid']:
                 flags[match.component_name] = result['reason']
-                self.logger.info(
-                    f"  PMFV qualifier: {result['reason']}"
-                )
+                self.logger.info(f"  PMFV qualifier: {result['reason']}")
+            pt = concept.period_type if concept else None
+            st = check_statement_type(match.component_name, pt)
+            if not st['valid']:
+                flags[match.component_name] = st['reason']
+                self.logger.info(f"  PMFV statement: {st['reason']}")
         return flags
 
     def _run_plausibility_checks(self, matches):
@@ -169,9 +172,7 @@ class MatchVerifier:
         """Scan concept index for valid replacements."""
         patterns = FALLBACK_PATTERNS.get(comp_id)
         if not patterns:
-            self.logger.info(
-                f"  PMFV: {comp_id} - no fallback patterns"
-            )
+            self.logger.info(f"  PMFV: {comp_id} - no fallback patterns")
             return False
         old = current.matched_concept
         vals = self._collect_values(match_lookup)
@@ -194,10 +195,7 @@ class MatchVerifier:
                 concept_index, value_lookup, vals,
             ):
                 return True
-        self.logger.info(
-            f"  PMFV: {comp_id} - no valid alternative "
-            f"(checked {tried} fallback candidates)"
-        )
+        self.logger.info(f"  PMFV: {comp_id} - no valid alt ({tried} checked)")
         return False
 
     def _rank_fallback_candidates(self, candidates, value_lookup):
@@ -215,10 +213,14 @@ class MatchVerifier:
         concept_index, value_lookup, all_vals,
     ):
         """Check one candidate and promote if valid."""
-        local = self._get_local_name(qname, concept_index)
+        concept = concept_index.get_concept(qname)
+        local = concept.local_name if concept else get_local_name(qname)
         if not local:
             return False
         if not check_qualifier(comp_id, local)['valid']:
+            return False
+        pt = concept.period_type if concept else None
+        if not check_statement_type(comp_id, pt)['valid']:
             return False
         val = value_lookup.get_value(qname)
         if val is None:
@@ -286,13 +288,6 @@ class MatchVerifier:
             m.component_name: m.value
             for m in match_lookup.values() if m.matched
         }
-
-    def _get_local_name(self, qname, concept_index):
-        """Extract local name from a concept qname."""
-        concept = concept_index.get_concept(qname)
-        if concept and concept.local_name:
-            return concept.local_name
-        return get_local_name(qname)
 
 
 __all__ = ['MatchVerifier']

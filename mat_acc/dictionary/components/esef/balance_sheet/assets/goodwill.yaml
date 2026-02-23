@@ -1,0 +1,17 @@
+# ESEF overlay: goodwill
+# IFRS uses Goodwill
+component_id: goodwill
+matching_rules:
+  local_name_rules:
+    - patterns:
+        - "Goodwill"
+      match_type: exact
+      weight: 15
+  label_rules:
+    - patterns:
+        - "Goodwill"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+scoring:
+  min_score: 18

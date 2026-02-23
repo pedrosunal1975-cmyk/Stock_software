@@ -47,30 +47,7 @@ class ValuePopulator:
         resolution=None,
         concept_index: Optional[ConceptIndex] = None,
     ) -> None:
-        """
-        Populate values for matched components.
-
-        Six-pass strategy with source priority:
-        Pass 1 - Atomic lookup from core statements only
-        Pass 2 - Composite formula computation
-        Pass 3 - Fallback formula for remaining unvalued
-        Pass 4 - Alternative recovery with quality threshold
-        Pass 5 - Supplementary recovery from detail schedules
-        Pass 6 - Recompute composites/fallback with all values
-
-        Signs preserved as-is from source (MIU is authority).
-        Composites and fallback formulas fire BEFORE alternatives
-        so computed values take priority over weak alt matches.
-        Pass 6 catches composites whose dependencies were only
-        available from supplementary sources (e.g. interest_expense
-        in detail schedules blocks EBITDA computation in Pass 2).
-
-        Args:
-            matches: ComponentMatch list with matched_concept set
-            value_lookup: FactValueLookup with loaded values
-            resolution: ResolutionMap with alternatives per component
-            concept_index: ConceptIndex for label lookup
-        """
+        """Populate values via 6-pass strategy (see module docstring)."""
         match_lookup = {m.component_name: m for m in matches}
 
         self._pass_atomic(matches, value_lookup, core_only=True)
@@ -258,13 +235,27 @@ class ValuePopulator:
         matches: List[ComponentMatch],
         match_lookup: Dict[str, ComponentMatch],
     ) -> None:
-        """Pass 6: recompute composites/fallback after all values.
+        """Pass 6: iterative recompute of composites/fallback.
 
-        Composites that failed in Pass 2 because dependencies had
-        no value yet (e.g. interest_expense only in supplementary)
-        can now compute with all values populated.
+        Runs up to 3 iterations to resolve formula chains where
+        one composite depends on another composite's result
+        (e.g. EBITDA depends on operating_income composite).
         """
-        recomputed = 0
+        total = 0
+        for _iteration in range(3):
+            round_n = self._recompute_round(matches, match_lookup)
+            total += round_n
+            if round_n == 0:
+                break
+        if total:
+            self.logger.info(
+                f"[RECOMPUTE] {total} composites/fallback "
+                f"computed after all values loaded"
+            )
+
+    def _recompute_round(self, matches, match_lookup) -> int:
+        """Single recompute iteration over unvalued matches."""
+        count = 0
         for match in matches:
             if match.value is not None:
                 continue
@@ -272,24 +263,19 @@ class ValuePopulator:
                 continue
             if match.matched_concept.startswith('COMPOSITE:'):
                 formula = match.matched_concept.replace(
-                    'COMPOSITE:', ''
+                    'COMPOSITE:', '',
                 )
                 val = evaluate_formula(formula, match_lookup)
-                if val is not None:
-                    match.value = val
-                    recomputed += 1
             elif match.fallback_formula:
                 val = evaluate_formula(
-                    match.fallback_formula, match_lookup
+                    match.fallback_formula, match_lookup,
                 )
-                if val is not None:
-                    match.value = val
-                    recomputed += 1
-        if recomputed:
-            self.logger.info(
-                f"[RECOMPUTE] {recomputed} composites/fallback "
-                f"computed after all values loaded"
-            )
+            else:
+                continue
+            if val is not None:
+                match.value = val
+                count += 1
+        return count
 
 
 __all__ = ['ValuePopulator', 'evaluate_formula']

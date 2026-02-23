@@ -14,24 +14,15 @@ from ..evaluators.base_evaluator import EvaluationResult
 from .confidence import ConfidenceCalculator
 
 
+_BALANCE_TYPE_BONUS = 5
+
+
 class ScoreAggregator:
     """
     Aggregates scores from multiple evaluators.
 
     Takes evaluation results from all evaluators and combines them
     into a final ScoredMatch with total score and breakdown.
-
-    Example:
-        aggregator = ScoreAggregator()
-        scored_match = aggregator.aggregate(
-            concept_qname="us-gaap:AssetsCurrent",
-            evaluation_results={
-                'label': label_result,
-                'hierarchy': hierarchy_result,
-                'calculation': calculation_result,
-            },
-            component=component_definition
-        )
     """
 
     def __init__(self):
@@ -44,7 +35,8 @@ class ScoreAggregator:
         concept_qname: str,
         evaluation_results: dict[str, EvaluationResult],
         component: ComponentDefinition,
-        rejection_reason: Optional[str] = None
+        rejection_reason: Optional[str] = None,
+        concept_balance_type: Optional[str] = None,
     ) -> ScoredMatch:
         """
         Aggregate evaluation results into a scored match.
@@ -52,8 +44,9 @@ class ScoreAggregator:
         Args:
             concept_qname: QName of the concept being scored
             evaluation_results: Results from each evaluator
-            component: Component definition (for max score calculation)
+            component: Component definition (for scoring config)
             rejection_reason: If concept was rejected, the reason
+            concept_balance_type: Concept's balance type (debit/credit)
 
         Returns:
             ScoredMatch with total score and breakdown
@@ -75,10 +68,20 @@ class ScoreAggregator:
                         if mr.get('match_type') == 'exact':
                             has_exact_local_name = True
 
+        # Balance type domain bonus: reward concepts whose debit/credit
+        # aligns with the component's expected balance type.
+        bt = component.characteristics.balance_type
+        if concept_balance_type and bt and bt.value != 'none':
+            if concept_balance_type == bt.value:
+                total_score += _BALANCE_TYPE_BONUS
+                rule_scores.append(RuleScore(
+                    rule_type='balance_type',
+                    score=_BALANCE_TYPE_BONUS,
+                    details={'matched': concept_balance_type},
+                ))
+
         # Exact local_name match = dictionary explicitly names this
-        # concept. Guarantee it clears min_score regardless of
-        # whether hierarchy/calculation evaluators fired (they
-        # depend on linkbase richness which varies by taxonomy).
+        # concept. Guarantee it clears min_score.
         min_score = component.scoring.min_score
         if has_exact_local_name and total_score < min_score:
             total_score = min_score

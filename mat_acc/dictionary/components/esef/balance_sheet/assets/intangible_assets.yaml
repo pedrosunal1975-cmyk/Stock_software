@@ -1,0 +1,29 @@
+# ESEF overlay: intangible_assets
+# IFRS uses IntangibleAssetsOtherThanGoodwill
+component_id: intangible_assets
+matching_rules:
+  local_name_rules:
+    - patterns:
+        - "IntangibleAssetsOtherThanGoodwill"
+        - "OtherIntangibleAssets"
+      match_type: exact
+      weight: 15
+    - patterns:
+        - "IntangibleAssets"
+      match_type: contains
+      weight: 10
+  label_rules:
+    - patterns:
+        - "Intangible Assets Other Than Goodwill"
+        - "Intangible Assets"
+        - "Other Intangible Assets"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+    - patterns:
+        - "intangible assets"
+      match_type: contains
+      case_sensitive: false
+      weight: 12
+scoring:
+  min_score: 18

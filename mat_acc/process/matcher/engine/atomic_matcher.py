@@ -206,6 +206,7 @@ class AtomicMatcher:
             concept_qname=concept.qname,
             evaluation_results=results,
             component=component,
+            concept_balance_type=concept.balance_type,
         )
 
     def _handle_no_match(self, cid, n_cands, rej_count, diag, comp):

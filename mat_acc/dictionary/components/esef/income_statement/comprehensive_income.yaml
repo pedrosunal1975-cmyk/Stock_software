@@ -1,0 +1,29 @@
+# ESEF overlay: comprehensive_income
+# IFRS uses ComprehensiveIncome
+component_id: comprehensive_income
+matching_rules:
+  local_name_rules:
+    - patterns:
+        - "ComprehensiveIncome"
+      match_type: exact
+      weight: 15
+    - patterns:
+        - "ComprehensiveIncome"
+        - "TotalComprehensiveIncome"
+      match_type: contains
+      weight: 10
+  label_rules:
+    - patterns:
+        - "Total Comprehensive Income"
+        - "Comprehensive Income"
+        - "Comprehensive Income (Loss)"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+    - patterns:
+        - "comprehensive income"
+      match_type: contains
+      case_sensitive: false
+      weight: 12
+scoring:
+  min_score: 18

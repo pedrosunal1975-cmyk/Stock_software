@@ -1,0 +1,31 @@
+# ESEF overlay: dividends_paid
+# IFRS uses DividendsPaidClassifiedAsFinancingActivities
+component_id: dividends_paid
+matching_rules:
+  local_name_rules:
+    - patterns:
+        - "DividendsPaidClassifiedAsFinancingActivities"
+        - "PaymentsOfDividends"
+      match_type: exact
+      weight: 15
+    - patterns:
+        - "DividendsPaid"
+        - "PaymentsOfDividends"
+      match_type: contains
+      weight: 10
+  label_rules:
+    - patterns:
+        - "Dividends Paid"
+        - "Dividends Paid, Classified as Financing Activities"
+        - "Payment of Dividends"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+    - patterns:
+        - "dividends paid"
+        - "payment of dividends"
+      match_type: contains
+      case_sensitive: false
+      weight: 12
+scoring:
+  min_score: 18

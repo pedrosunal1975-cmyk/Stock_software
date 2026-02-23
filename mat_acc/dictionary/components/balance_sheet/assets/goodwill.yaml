@@ -1,0 +1,89 @@
+# Component Definition: Goodwill
+# Intangible asset from business acquisitions
+
+component_id: goodwill
+display_name: "Goodwill"
+description: "Premium paid above fair value of net assets in acquisitions."
+
+category: balance_sheet
+subcategory: assets
+
+characteristics:
+  balance_type: debit
+  period_type: instant
+  is_monetary: true
+  is_abstract: false
+  data_type: monetary
+
+matching_rules:
+  label_rules:
+    - patterns:
+        - "Goodwill"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+
+    - patterns:
+        - "goodwill"
+      match_type: contains
+      case_sensitive: false
+      weight: 12
+
+  local_name_rules:
+    - patterns:
+        - "Goodwill"
+      match_type: exact
+      weight: 15
+
+    - patterns:
+        - "Goodwill"
+      match_type: contains
+      weight: 10
+
+  hierarchy_rules:
+    - rule_type: depth_level
+      pattern: "2-4"
+      weight: 4
+
+  calculation_rules:
+    - rule_type: contributes_to
+      pattern: "*Assets*"
+      weight: 6
+
+  definition_rules:
+    - keywords:
+        - "goodwill"
+        - "acquisition"
+        - "premium"
+      all_required: false
+      weight: 4
+
+scoring:
+  min_score: 18
+  confidence_levels:
+    high: 32
+    medium: 25
+    low: 18
+  tiebreaker: highest_in_hierarchy
+  reject_if:
+    - condition: "Is abstract concept"
+      pattern: "abstract=true"
+    - condition: "Is impairment"
+      pattern: "name~impairment"
+    - condition: "Is amortization"
+      pattern: "name~amortization"
+    - condition: "Is text block"
+      pattern: "name~textblock"
+    - condition: "Is schedule"
+      pattern: "name~schedule"
+    - condition: "Is goodwill and intangibles combined"
+      pattern: "name~intangible"
+
+composition:
+  is_composite: false
+
+validation:
+  expected_sign: positive
+  relationships:
+    - other: total_assets
+      relation: less_than

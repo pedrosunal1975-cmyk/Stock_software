@@ -1,0 +1,95 @@
+# Component Definition: Other Income/Expense
+# Non-operating income and expense, net
+
+component_id: other_income_expense
+display_name: "Other Income/Expense, Net"
+description: "Non-operating income and expense items, net. Includes gains/losses, FX, etc."
+
+category: income_statement
+subcategory: non_operating
+
+characteristics:
+  balance_type: credit
+  period_type: duration
+  is_monetary: true
+  is_abstract: false
+  data_type: monetary
+
+matching_rules:
+  label_rules:
+    - patterns:
+        - "Other Income (Expense), Net"
+        - "Other Income and Expenses"
+        - "Other Nonoperating Income (Expense)"
+        - "Non-Operating Income (Expense)"
+        - "Other Income"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+
+    - patterns:
+        - "other income"
+        - "other expense"
+        - "nonoperating income"
+        - "non-operating income"
+      match_type: contains
+      case_sensitive: false
+      weight: 12
+
+  local_name_rules:
+    - patterns:
+        - "NonoperatingIncomeExpense"
+        - "OtherNonoperatingIncomeExpense"
+      match_type: exact
+      weight: 15
+
+    - patterns:
+        - "NonoperatingIncome"
+        - "OtherNonoperating"
+        - "OtherIncomeExpense"
+      match_type: contains
+      weight: 10
+
+  hierarchy_rules:
+    - rule_type: depth_level
+      pattern: "2-4"
+      weight: 4
+
+  definition_rules:
+    - keywords:
+        - "other"
+        - "nonoperating"
+        - "non-operating"
+        - "gain"
+        - "loss"
+      all_required: false
+      weight: 4
+
+scoring:
+  min_score: 18
+  confidence_levels:
+    high: 32
+    medium: 25
+    low: 18
+  tiebreaker: highest_in_hierarchy
+  reject_if:
+    - condition: "Is abstract concept"
+      pattern: "abstract=true"
+    - condition: "Is interest expense"
+      pattern: "name~interest"
+    - condition: "Is tax related"
+      pattern: "name~tax"
+    - condition: "Is operating income"
+      pattern: "name~operatingincome"
+    - condition: "Is text block"
+      pattern: "name~textblock"
+    - condition: "Is schedule"
+      pattern: "name~schedule"
+    - condition: "Is comprehensive income"
+      pattern: "name~comprehensive"
+
+composition:
+  is_composite: false
+
+validation:
+  expected_sign: either

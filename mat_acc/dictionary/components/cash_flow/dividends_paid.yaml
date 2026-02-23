@@ -1,0 +1,95 @@
+# Component Definition: Dividends Paid
+# Cash distributed to shareholders
+
+component_id: dividends_paid
+display_name: "Dividends Paid"
+description: "Cash dividends paid to shareholders. Financing activity."
+
+category: cash_flow
+subcategory: financing
+
+characteristics:
+  balance_type: debit
+  period_type: duration
+  is_monetary: true
+  is_abstract: false
+  data_type: monetary
+
+matching_rules:
+  label_rules:
+    - patterns:
+        - "Dividends Paid"
+        - "Payment of Dividends"
+        - "Dividends, Common Stock, Cash"
+        - "Payments of Dividends"
+        - "Dividends Paid to Shareholders"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+
+    - patterns:
+        - "dividends paid"
+        - "payment of dividends"
+        - "cash dividends"
+        - "dividend payments"
+      match_type: contains
+      case_sensitive: false
+      weight: 12
+
+  local_name_rules:
+    - patterns:
+        - "PaymentsOfDividendsCommonStock"
+        - "PaymentsOfDividends"
+        - "DividendsPaidClassifiedAsFinancingActivities"
+      match_type: exact
+      weight: 15
+
+    - patterns:
+        - "PaymentsOfDividends"
+        - "DividendsPaid"
+        - "DividendsCommonStock"
+      match_type: contains
+      weight: 10
+
+  hierarchy_rules:
+    - rule_type: depth_level
+      pattern: "2-4"
+      weight: 4
+
+  definition_rules:
+    - keywords:
+        - "dividend"
+        - "distribution"
+        - "shareholder"
+        - "financing"
+      all_required: false
+      weight: 4
+
+scoring:
+  min_score: 18
+  confidence_levels:
+    high: 32
+    medium: 25
+    low: 18
+  tiebreaker: highest_in_hierarchy
+  reject_if:
+    - condition: "Is abstract concept"
+      pattern: "abstract=true"
+    - condition: "Is preferred stock"
+      pattern: "name~preferred"
+    - condition: "Is minority/noncontrolling"
+      pattern: "name~noncontrolling"
+    - condition: "Is dividend receivable"
+      pattern: "name~receivable"
+    - condition: "Is dividend income"
+      pattern: "name~income"
+    - condition: "Is text block"
+      pattern: "name~textblock"
+    - condition: "Is per share"
+      pattern: "name~pershare"
+
+composition:
+  is_composite: false
+
+validation:
+  expected_sign: either

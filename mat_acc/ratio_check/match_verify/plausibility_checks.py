@@ -194,8 +194,55 @@ def _check_subset(
     return {'valid': True, 'reason': None}
 
 
+# Expected period_type per component (instant = balance sheet)
+_INSTANT_COMPONENTS = {
+    'total_assets', 'current_assets', 'noncurrent_assets',
+    'cash_and_equivalents', 'accounts_receivable', 'inventory',
+    'property_plant_equipment', 'goodwill', 'intangible_assets',
+    'total_liabilities', 'current_liabilities',
+    'noncurrent_liabilities', 'long_term_debt', 'short_term_debt',
+    'total_debt', 'accounts_payable', 'total_equity',
+    'retained_earnings',
+}
+
+
+def check_statement_type(
+    component_id: str, period_type: Optional[str],
+) -> dict:
+    """
+    Verify matched concept's period_type matches component.
+
+    Balance sheet components expect instant; income/cash flow
+    expect duration. Prevents cross-statement contamination.
+    """
+    if not period_type:
+        return {'valid': True, 'reason': None}
+
+    expect_instant = component_id in _INSTANT_COMPONENTS
+    is_instant = period_type == 'instant'
+
+    if expect_instant and not is_instant:
+        return {
+            'valid': False,
+            'reason': (
+                f"'{component_id}' is balance sheet (instant) "
+                f"but matched concept is {period_type}"
+            ),
+        }
+    if not expect_instant and is_instant:
+        return {
+            'valid': False,
+            'reason': (
+                f"'{component_id}' is income/cash flow (duration) "
+                f"but matched concept is {period_type}"
+            ),
+        }
+    return {'valid': True, 'reason': None}
+
+
 __all__ = [
     'check_plausibility',
+    'check_statement_type',
     'RATIO_BOUNDS',
     'SUBSET_RULES',
 ]

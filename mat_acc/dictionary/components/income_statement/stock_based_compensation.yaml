@@ -1,0 +1,88 @@
+# Component Definition: Stock-Based Compensation
+# Non-cash expense for equity awards to employees
+
+component_id: stock_based_compensation
+display_name: "Stock-Based Compensation"
+description: "Non-cash expense for equity awards (options, RSUs, etc.) granted to employees."
+
+category: income_statement
+subcategory: operating
+
+characteristics:
+  balance_type: debit
+  period_type: duration
+  is_monetary: true
+  is_abstract: false
+  data_type: monetary
+
+matching_rules:
+  label_rules:
+    - patterns:
+        - "Stock-Based Compensation"
+        - "Share-Based Compensation"
+        - "Share-Based Payment Expense"
+        - "Stock Compensation Expense"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+
+    - patterns:
+        - "stock-based compensation"
+        - "share-based compensation"
+        - "share-based payment"
+        - "stock compensation"
+      match_type: contains
+      case_sensitive: false
+      weight: 12
+
+  local_name_rules:
+    - patterns:
+        - "ShareBasedCompensation"
+        - "AllocatedShareBasedCompensationExpense"
+      match_type: exact
+      weight: 15
+
+    - patterns:
+        - "ShareBasedCompensation"
+        - "StockBasedCompensation"
+        - "SharebasedPayment"
+      match_type: contains
+      weight: 10
+
+  hierarchy_rules:
+    - rule_type: depth_level
+      pattern: "2-5"
+      weight: 3
+
+  definition_rules:
+    - keywords:
+        - "stock"
+        - "share"
+        - "compensation"
+        - "equity award"
+        - "option"
+      all_required: false
+      weight: 4
+
+scoring:
+  min_score: 18
+  confidence_levels:
+    high: 32
+    medium: 25
+    low: 18
+  tiebreaker: highest_in_hierarchy
+  reject_if:
+    - condition: "Is abstract concept"
+      pattern: "abstract=true"
+    - condition: "Is text block"
+      pattern: "name~textblock"
+    - condition: "Is schedule"
+      pattern: "name~schedule"
+    - condition: "Is capitalized amount"
+      pattern: "name~capitalized"
+
+composition:
+  is_composite: false
+
+validation:
+  expected_sign: positive
