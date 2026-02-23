@@ -2,18 +2,19 @@
 """
 Value Populator
 
-Populates numeric values for matched components using a 5-pass strategy:
+Populates numeric values for matched components using a 6-pass strategy:
 1. Atomic values from core financial statements only
 2. Composite values from populated atomics (formula computation)
 3. Fallback formula for remaining unvalued atomics
 4. Alternative recovery with quality threshold (core statements only)
 5. Supplementary recovery from detail/disclosure schedules
+6. Recompute composites/fallback after all values loaded
 
 Composites and fallback formulas fire BEFORE alternatives so that
 computed values (e.g. total_assets - current_assets) take priority
 over low-confidence alternative matches from the candidate list.
-Alternatives require a minimum quality score to prevent garbage
-matches from contaminating the value pipeline.
+Pass 6 recomputes any composites that failed in Pass 2 because
+their dependencies were only available from supplementary sources.
 """
 
 from typing import Optional, Dict, List, Any
@@ -44,15 +45,19 @@ class ValuePopulator:
         """
         Populate values for matched components.
 
-        Five-pass strategy with source priority:
+        Six-pass strategy with source priority:
         Pass 1 - Atomic lookup from core statements only
         Pass 2 - Composite formula computation
         Pass 3 - Fallback formula for remaining unvalued
         Pass 4 - Alternative recovery with quality threshold
         Pass 5 - Supplementary recovery from detail schedules
+        Pass 6 - Recompute composites/fallback with all values
 
         Composites and fallback formulas fire BEFORE alternatives
         so computed values take priority over weak alt matches.
+        Pass 6 catches composites whose dependencies were only
+        available from supplementary sources (e.g. interest_expense
+        in detail schedules blocks EBITDA computation in Pass 2).
 
         Args:
             matches: ComponentMatch list with matched_concept set
@@ -73,6 +78,7 @@ class ValuePopulator:
             )
 
         self._pass_supplementary(matches, value_lookup)
+        self._pass_recompute(matches, match_lookup)
 
     def _pass_atomic(
         self,
@@ -239,6 +245,44 @@ class ValuePopulator:
             self.logger.info(
                 f"[SUPPLEMENTARY] Recovered {recovered} values "
                 f"from detail/disclosure schedules"
+            )
+
+    def _pass_recompute(
+        self,
+        matches: List[ComponentMatch],
+        match_lookup: Dict[str, ComponentMatch],
+    ) -> None:
+        """Pass 6: recompute composites/fallback after all values.
+
+        Composites that failed in Pass 2 because dependencies had
+        no value yet (e.g. interest_expense only in supplementary)
+        can now compute with all values populated.
+        """
+        recomputed = 0
+        for match in matches:
+            if match.value is not None:
+                continue
+            if not match.matched or not match.matched_concept:
+                continue
+            if match.matched_concept.startswith('COMPOSITE:'):
+                formula = match.matched_concept.replace(
+                    'COMPOSITE:', ''
+                )
+                val = evaluate_formula(formula, match_lookup)
+                if val is not None:
+                    match.value = val
+                    recomputed += 1
+            elif match.fallback_formula:
+                val = evaluate_formula(
+                    match.fallback_formula, match_lookup
+                )
+                if val is not None:
+                    match.value = val
+                    recomputed += 1
+        if recomputed:
+            self.logger.info(
+                f"[RECOMPUTE] {recomputed} composites/fallback "
+                f"computed after all values loaded"
             )
 
 

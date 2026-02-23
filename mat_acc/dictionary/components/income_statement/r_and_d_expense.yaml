@@ -42,6 +42,7 @@ matching_rules:
   local_name_rules:
     - patterns:
         - "ResearchAndDevelopmentExpense"
+        - "ResearchAndDevelopmentExpenseExcludingAcquiredInProcessCost"
       match_type: exact
       weight: 15
 

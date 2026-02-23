@@ -34,11 +34,12 @@ from ..scoring import ScoreAggregator, Tiebreaker
 # ops is NOT continuing ops). Applied as a central score penalty,
 # eliminating the need for per-YAML reject_if rules.
 _NEGATING_QUALIFIERS = [
-    'discontinued',    # DiscontinuedOperations - not continuing ops
-    'disposalgroup',   # DisposalGroupAssets - not core assets
-    'usefullife',      # PPEUsefulLife (years, not monetary value)
-    'heldforsale',     # HeldForSale - reclassified out of core
-    'antidilutive',    # AntidilutiveSecurities (share counts)
+    'discontinued',              # DiscontinuedOperations
+    'disposalgroup',             # DisposalGroupAssets
+    'usefullife',                # PPEUsefulLife (years, not value)
+    'heldforsale',               # HeldForSale - reclassified
+    'antidilutive',              # AntidilutiveSecurities
+    'incometaxreconciliation',   # Tax rate adjustments, not expense
 ]
 
 _QUALIFIER_PENALTY = 25  # Score reduction per negating qualifier
