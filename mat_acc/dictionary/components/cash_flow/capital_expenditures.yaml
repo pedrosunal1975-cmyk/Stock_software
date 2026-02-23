@@ -34,9 +34,11 @@ matching_rules:
     # High weight for contains patterns
     - patterns:
         - "capital expenditure"
+        - "capital improvement"
         - "purchase of property"
         - "payments for property"
         - "acquire property plant"
+        - "acquire other property plant"
         - "fixed assets"
         - "capex"
       match_type: contains
@@ -55,7 +57,9 @@ matching_rules:
   local_name_rules:
     - patterns:
         - "PaymentsToAcquirePropertyPlantAndEquipment"
+        - "PaymentsToAcquireOtherPropertyPlantAndEquipment"
         - "PaymentsToAcquireProductiveAssets"
+        - "PaymentsForCapitalImprovements"
         - "CapitalExpendituresIncurredButNotYetPaid"
         - "PurchaseOfPropertyPlantAndEquipment"
       match_type: exact
@@ -63,7 +67,9 @@ matching_rules:
 
     - patterns:
         - "PaymentsToAcquireProperty"
+        - "AcquireOtherProperty"
         - "CapitalExpenditure"
+        - "CapitalImprovement"
         - "PurchaseOfPropertyPlant"
         - "AdditionsToPropertyPlant"
         - "PurchasesOfPropertyPlantAndEquipment"
