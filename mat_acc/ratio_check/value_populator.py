@@ -4,15 +4,16 @@ Value Populator
 
 Populates numeric values for matched components using a 5-pass strategy:
 1. Atomic values from core financial statements only
-2. Alternative recovery from core statements for unvalued atomics
-3. Composite values from populated atomics (formula computation)
-4. Fallback formula for remaining unvalued atomics
+2. Composite values from populated atomics (formula computation)
+3. Fallback formula for remaining unvalued atomics
+4. Alternative recovery with quality threshold (core statements only)
 5. Supplementary recovery from detail/disclosure schedules
 
-Core statements (identified by XBRL taxonomy roots) are trusted over
-detail/disclosure schedules. Composites and fallback formulas take
-priority over supplementary atomic values to prevent contamination
-from segment disclosures, geographic breakdowns, etc.
+Composites and fallback formulas fire BEFORE alternatives so that
+computed values (e.g. total_assets - current_assets) take priority
+over low-confidence alternative matches from the candidate list.
+Alternatives require a minimum quality score to prevent garbage
+matches from contaminating the value pipeline.
 """
 
 from typing import Optional, Dict, List, Any
@@ -45,10 +46,13 @@ class ValuePopulator:
 
         Five-pass strategy with source priority:
         Pass 1 - Atomic lookup from core statements only
-        Pass 2 - Alternative recovery from core statements
-        Pass 3 - Composite formula computation
-        Pass 4 - Fallback formula for remaining unvalued
+        Pass 2 - Composite formula computation
+        Pass 3 - Fallback formula for remaining unvalued
+        Pass 4 - Alternative recovery with quality threshold
         Pass 5 - Supplementary recovery from detail schedules
+
+        Composites and fallback formulas fire BEFORE alternatives
+        so computed values take priority over weak alt matches.
 
         Args:
             matches: ComponentMatch list with matched_concept set
@@ -59,6 +63,8 @@ class ValuePopulator:
         match_lookup = {m.component_name: m for m in matches}
 
         self._pass_atomic(matches, value_lookup, core_only=True)
+        self._pass_composites(matches, match_lookup)
+        self._pass_fallback(matches, match_lookup)
 
         if resolution:
             self._pass_alternatives(
@@ -66,8 +72,6 @@ class ValuePopulator:
                 core_only=True,
             )
 
-        self._pass_composites(matches, match_lookup)
-        self._pass_fallback(matches, match_lookup)
         self._pass_supplementary(matches, value_lookup)
 
     def _pass_atomic(
@@ -97,15 +101,16 @@ class ValuePopulator:
         core_only: bool = False,
     ) -> None:
         """
-        Pass 2: try alternative matches for unvalued components.
+        Pass 4: try alternative matches for unvalued components.
 
         When the primary match has no value in reported facts,
         iterate through alternative matches (ranked by score)
         and use the first one that has a reported value.
 
-        This is principle-based: any filing can have concepts in its
-        presentation structure that lack reported fact values, while
-        a lower-scoring alternative actually carries the data.
+        Alternatives must meet a quality threshold relative to the
+        primary match score. This prevents garbage low-score matches
+        from contaminating values when composites/fallback formulas
+        have already been tried.
         """
         for match in matches:
             if match.value is not None:
@@ -123,6 +128,7 @@ class ValuePopulator:
                 match, match_result.alternatives,
                 value_lookup, concept_index,
                 core_only=core_only,
+                primary_score=match_result.total_score,
             )
 
     def _try_alternatives(
@@ -132,10 +138,25 @@ class ValuePopulator:
         value_lookup: FactValueLookup,
         concept_index: Optional[ConceptIndex],
         core_only: bool = False,
+        primary_score: int = 0,
     ) -> None:
-        """Try each alternative until one has a value."""
+        """Try each alternative that meets quality threshold.
+
+        Alternatives must score at least 50% of the primary match
+        score (minimum 15 absolute) to prevent weak matches from
+        contaminating values.
+        """
+        min_alt_score = max(15, primary_score * 0.5)
+
         for alt in alternatives:
             if not alt.concept:
+                continue
+            if alt.total_score < min_alt_score:
+                self.logger.debug(
+                    f"[ALT SKIP] {match.component_name}: "
+                    f"{alt.concept} score={alt.total_score} < "
+                    f"min={min_alt_score:.0f}"
+                )
                 continue
             value = value_lookup.get_value(
                 alt.concept, core_only=core_only,
@@ -155,7 +176,8 @@ class ValuePopulator:
                 self.logger.info(
                     f"[ALT RECOVERY] {match.component_name}: "
                     f"{old_concept} (no value) -> "
-                    f"{alt.concept} (value={value:,.0f})"
+                    f"{alt.concept} (value={value:,.0f}, "
+                    f"score={alt.total_score})"
                 )
                 break
 
@@ -164,7 +186,7 @@ class ValuePopulator:
         matches: List[ComponentMatch],
         match_lookup: Dict[str, ComponentMatch],
     ) -> None:
-        """Pass 3: compute composite values from atomic values."""
+        """Pass 2: compute composite values from atomic values."""
         for match in matches:
             if not match.matched or not match.matched_concept:
                 continue
@@ -178,7 +200,7 @@ class ValuePopulator:
         matches: List[ComponentMatch],
         match_lookup: Dict[str, ComponentMatch],
     ) -> None:
-        """Pass 4: fallback formula for atomic matches with no value."""
+        """Pass 3: fallback formula for atomic matches with no value."""
         for match in matches:
             if match.value is not None:
                 continue

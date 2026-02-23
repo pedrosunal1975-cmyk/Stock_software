@@ -28,6 +28,22 @@ from ..evaluators import (
 from ..scoring import ScoreAggregator, Tiebreaker
 
 
+# Universal negating qualifiers. A concept containing any of these
+# in its local_name is semantically different from what a component
+# typically wants (e.g. PPEUsefulLife is NOT PPE value, Discontinued
+# ops is NOT continuing ops). Applied as a central score penalty,
+# eliminating the need for per-YAML reject_if rules.
+_NEGATING_QUALIFIERS = [
+    'discontinued',    # DiscontinuedOperations - not continuing ops
+    'disposalgroup',   # DisposalGroupAssets - not core assets
+    'usefullife',      # PPEUsefulLife (years, not monetary value)
+    'heldforsale',     # HeldForSale - reclassified out of core
+    'antidilutive',    # AntidilutiveSecurities (share counts)
+]
+
+_QUALIFIER_PENALTY = 25  # Score reduction per negating qualifier
+
+
 class MatchingCoordinator:
     """
     Main orchestrator for dynamic concept matching.
@@ -368,6 +384,19 @@ class MatchingCoordinator:
                 component=component
             )
 
+            # Apply universal qualifier penalty
+            penalty = self._qualifier_penalty(concept)
+            if penalty > 0:
+                scored_match.total_score = max(
+                    0, scored_match.total_score - penalty
+                )
+                if self.diagnostics:
+                    self.logger.debug(
+                        f"  [PENALTY] {concept.qname}: "
+                        f"-{penalty} (qualifier), "
+                        f"score={scored_match.total_score}"
+                    )
+
             # Check minimum score
             min_score = component.scoring.min_score
             if scored_match.total_score >= min_score:
@@ -548,6 +577,9 @@ class MatchingCoordinator:
                 # Exclude mapper hierarchy labels (root: prefix)
                 # These are section headers, not XBRL taxonomy concepts
                 if concept.prefix == 'root':
+                    continue
+                # Data type validation: reject KNOWN incompatible types
+                if not self._is_type_compatible(concept, component):
                     continue
                 candidates.append(concept)
 
@@ -732,6 +764,63 @@ class MatchingCoordinator:
                 return True
 
         return False
+
+    def _qualifier_penalty(
+        self, concept: ConceptMetadata
+    ) -> int:
+        """Score penalty for negating qualifiers in concept name.
+
+        Central mechanism replacing per-YAML reject_if rules.
+        Concepts with negating qualifiers (Discontinued, UsefulLife,
+        etc.) get a score reduction, pushing them below threshold
+        unless other signals are very strong.
+        """
+        local_lower = concept.local_name.lower()
+        for qualifier in _NEGATING_QUALIFIERS:
+            if qualifier in local_lower:
+                return _QUALIFIER_PENALTY
+        return 0
+
+    def _is_type_compatible(
+        self,
+        concept: ConceptMetadata,
+        component: 'ComponentDefinition',
+    ) -> bool:
+        """Check concept data type against component expectation.
+
+        Permissive: unknown types pass through. Only rejects
+        concepts with KNOWN incompatible types (e.g. shares-count
+        concept for a monetary component).
+        """
+        if not concept.data_type:
+            return True
+        expected = component.characteristics.data_type
+        if not expected:
+            return True
+        concept_cat = self._infer_data_category(concept.data_type)
+        if not concept_cat:
+            return True
+        expected_val = expected.value
+        return concept_cat == expected_val
+
+    @staticmethod
+    def _infer_data_category(unit_str: str) -> Optional[str]:
+        """Map XBRL unit string to DataType category.
+
+        iso4217:USD -> monetary, xbrli:shares -> shares,
+        xbrli:pure -> pure, USD/shares -> per_share.
+        Returns None for unrecognized units.
+        """
+        lower = unit_str.lower()
+        if '/' in lower:
+            return 'per_share'
+        if 'iso4217' in lower:
+            return 'monetary'
+        if 'shares' in lower:
+            return 'shares'
+        if 'pure' in lower:
+            return 'pure'
+        return None
 
     def _resolve_composite(
         self,
