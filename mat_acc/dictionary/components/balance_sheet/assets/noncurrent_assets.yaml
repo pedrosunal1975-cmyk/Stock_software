@@ -135,6 +135,7 @@ scoring:
 
 composition:
   is_composite: false
+  formula: "total_assets - current_assets"
 
 validation:
   expected_sign: positive

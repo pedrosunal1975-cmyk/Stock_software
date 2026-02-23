@@ -74,6 +74,7 @@ class FactValue:
     unit: Optional[str] = None
     source: str = ''
     is_primary: bool = True
+    from_core_statement: bool = True
 
 
 class FactValueLookup:
@@ -206,13 +207,17 @@ class FactValueLookup:
             # Load primary statements first (values take priority)
             for stmt in primary:
                 for fact in stmt.facts:
-                    if self._add_fact_from_mapped(fact, stmt.name):
+                    if self._add_fact_from_mapped(
+                        fact, stmt.name, is_core=True,
+                    ):
                         count += 1
 
             # Load supplementary (fill gaps only)
             for stmt in supplementary:
                 for fact in stmt.facts:
-                    if self._add_fact_from_mapped(fact, stmt.name):
+                    if self._add_fact_from_mapped(
+                        fact, stmt.name, is_core=False,
+                    ):
                         count += 1
 
         except Exception as e:
@@ -223,7 +228,8 @@ class FactValueLookup:
     def _add_fact_from_mapped(
         self,
         fact: StatementFact,
-        statement_name: str
+        statement_name: str,
+        is_core: bool = True,
     ) -> bool:
         """Add a single fact from mapped statement."""
         # Skip abstract items
@@ -248,6 +254,7 @@ class FactValueLookup:
             unit=fact.unit,
             source='mapped',
             is_primary=is_primary,
+            from_core_statement=is_core,
         )
 
         # Track period
@@ -324,6 +331,7 @@ class FactValueLookup:
         concept: str,
         period_end: Optional[str] = None,
         prefer_primary: bool = True,
+        core_only: bool = False,
     ) -> Optional[float]:
         """
         Get the value for a concept.
@@ -332,11 +340,13 @@ class FactValueLookup:
         1. If period specified, use that period
         2. Otherwise, use primary period (most recent)
         3. Prefer primary context (no dimensions) over dimensional
+        4. If core_only, only return values from primary statements
 
         Args:
             concept: Concept QName (e.g., 'us-gaap:Assets')
             period_end: Specific period to retrieve (default: primary period)
             prefer_primary: Prefer non-dimensional values (default: True)
+            core_only: Only return values from primary financial statements
 
         Returns:
             Numeric value or None if not found
@@ -345,6 +355,12 @@ class FactValueLookup:
 
         if not values:
             return None
+
+        # Filter to core statement values only
+        if core_only:
+            values = [v for v in values if v.from_core_statement]
+            if not values:
+                return None
 
         # Filter by period
         target_period = period_end or self._primary_period

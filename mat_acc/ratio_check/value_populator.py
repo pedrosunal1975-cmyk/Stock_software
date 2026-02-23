@@ -2,14 +2,17 @@
 """
 Value Populator
 
-Populates numeric values for matched components using a 4-pass strategy:
-1. Atomic values from source files (direct lookup)
-2. Alternative recovery (try alternative matches for unvalued)
+Populates numeric values for matched components using a 5-pass strategy:
+1. Atomic values from core financial statements only
+2. Alternative recovery from core statements for unvalued atomics
 3. Composite values from populated atomics (formula computation)
 4. Fallback formula for remaining unvalued atomics
+5. Supplementary recovery from detail/disclosure schedules
 
-This module bridges matching (concept identification) and calculation
-(ratio computation) by ensuring matched concepts have actual values.
+Core statements (identified by XBRL taxonomy roots) are trusted over
+detail/disclosure schedules. Composites and fallback formulas take
+priority over supplementary atomic values to prevent contamination
+from segment disclosures, geographic breakdowns, etc.
 """
 
 from typing import Optional, Dict, List, Any
@@ -40,11 +43,12 @@ class ValuePopulator:
         """
         Populate values for matched components.
 
-        Four-pass strategy ensures maximum value coverage:
-        Pass 1 - Atomic lookup from source files
-        Pass 2 - Alternative recovery for unvalued atomics
+        Five-pass strategy with source priority:
+        Pass 1 - Atomic lookup from core statements only
+        Pass 2 - Alternative recovery from core statements
         Pass 3 - Composite formula computation
         Pass 4 - Fallback formula for remaining unvalued
+        Pass 5 - Supplementary recovery from detail schedules
 
         Args:
             matches: ComponentMatch list with matched_concept set
@@ -54,20 +58,23 @@ class ValuePopulator:
         """
         match_lookup = {m.component_name: m for m in matches}
 
-        self._pass_atomic(matches, value_lookup)
+        self._pass_atomic(matches, value_lookup, core_only=True)
 
         if resolution:
             self._pass_alternatives(
                 matches, value_lookup, resolution, concept_index,
+                core_only=True,
             )
 
         self._pass_composites(matches, match_lookup)
         self._pass_fallback(matches, match_lookup)
+        self._pass_supplementary(matches, value_lookup)
 
     def _pass_atomic(
         self,
         matches: List[ComponentMatch],
         value_lookup: FactValueLookup,
+        core_only: bool = False,
     ) -> None:
         """Pass 1: populate atomic values from source files."""
         for match in matches:
@@ -75,7 +82,9 @@ class ValuePopulator:
                 continue
             if match.matched_concept.startswith('COMPOSITE:'):
                 continue
-            value = value_lookup.get_value(match.matched_concept)
+            value = value_lookup.get_value(
+                match.matched_concept, core_only=core_only,
+            )
             if value is not None:
                 match.value = value
 
@@ -85,6 +94,7 @@ class ValuePopulator:
         value_lookup: FactValueLookup,
         resolution,
         concept_index: Optional[ConceptIndex] = None,
+        core_only: bool = False,
     ) -> None:
         """
         Pass 2: try alternative matches for unvalued components.
@@ -112,6 +122,7 @@ class ValuePopulator:
             self._try_alternatives(
                 match, match_result.alternatives,
                 value_lookup, concept_index,
+                core_only=core_only,
             )
 
     def _try_alternatives(
@@ -120,12 +131,15 @@ class ValuePopulator:
         alternatives,
         value_lookup: FactValueLookup,
         concept_index: Optional[ConceptIndex],
+        core_only: bool = False,
     ) -> None:
         """Try each alternative until one has a value."""
         for alt in alternatives:
             if not alt.concept:
                 continue
-            value = value_lookup.get_value(alt.concept)
+            value = value_lookup.get_value(
+                alt.concept, core_only=core_only,
+            )
             if value is not None:
                 old_concept = match.matched_concept
                 match.matched_concept = alt.concept
@@ -175,6 +189,35 @@ class ValuePopulator:
             )
             if computed is not None:
                 match.value = computed
+
+    def _pass_supplementary(
+        self,
+        matches: List[ComponentMatch],
+        value_lookup: FactValueLookup,
+    ) -> None:
+        """Pass 5: supplementary recovery from detail schedules.
+
+        For components still without values after core lookups,
+        composites, and fallback formulas, try detail/disclosure
+        schedule values as last resort.
+        """
+        recovered = 0
+        for match in matches:
+            if match.value is not None:
+                continue
+            if not match.matched or not match.matched_concept:
+                continue
+            if match.matched_concept.startswith('COMPOSITE:'):
+                continue
+            value = value_lookup.get_value(match.matched_concept)
+            if value is not None:
+                match.value = value
+                recovered += 1
+        if recovered:
+            self.logger.info(
+                f"[SUPPLEMENTARY] Recovered {recovered} values "
+                f"from detail/disclosure schedules"
+            )
 
 
 def evaluate_formula(
