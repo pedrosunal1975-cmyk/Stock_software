@@ -1,4 +1,4 @@
-# Path: mat_acc/ratio_check/ratio_composites.py
+# Path: mat_acc/ratio_check/calculation/ratio_composites.py
 """
 Composite Ratio Calculators
 
@@ -11,7 +11,7 @@ Each calculator returns a RatioResult matching the standard interface.
 
 from typing import Any, Callable, Dict, Optional
 
-from .ratio_models import ComponentMatch, RatioResult
+from ..ratio_models import ComponentMatch, RatioResult
 
 
 def _get_value(

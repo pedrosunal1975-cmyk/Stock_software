@@ -20,14 +20,14 @@ from core.logger.ipo_logging import get_process_logger
 
 from process.matcher import MatchingCoordinator, ConceptIndex
 
-from .filing_menu import FilingSelection
+from .input.filing_menu import FilingSelection
 from .fact_value_lookup import FactValueLookup
 from .ratio_models import ComponentMatch, RatioResult, AnalysisResult
-from .value_populator import ValuePopulator
-from .ratio_engine import calculate_ratios
-from .ratio_definitions import STANDARD_RATIOS
-from .industry_detector import IndustryDetector
-from .industry_registry import IndustryRegistry
+from .values.value_populator import ValuePopulator
+from .calculation.ratio_engine import calculate_ratios
+from .calculation.ratio_definitions import STANDARD_RATIOS
+from .industry.detector import IndustryDetector
+from .industry.registry import IndustryRegistry
 from .match_verify import MatchVerifier
 
 

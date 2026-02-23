@@ -1,4 +1,4 @@
-# Path: mat_acc/ratio_check/ratio_engine.py
+# Path: mat_acc/ratio_check/calculation/ratio_engine.py
 """
 Ratio Engine
 
@@ -11,7 +11,7 @@ from typing import Dict, List, Any, Optional
 
 from core.logger.ipo_logging import get_process_logger
 
-from .ratio_models import ComponentMatch, RatioResult
+from ..ratio_models import ComponentMatch, RatioResult
 from .ratio_definitions import STANDARD_RATIOS
 
 

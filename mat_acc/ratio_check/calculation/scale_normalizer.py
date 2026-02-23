@@ -1,4 +1,4 @@
-# Path: mat_acc/ratio_check/scale_normalizer.py
+# Path: mat_acc/ratio_check/calculation/scale_normalizer.py
 """
 Scale Normalizer - Post-processing normalization engine
 
@@ -20,7 +20,7 @@ from typing import Dict, List, Any, Optional
 
 from core.logger.ipo_logging import get_process_logger
 
-from .ratio_models import ComponentMatch, RatioResult
+from ..ratio_models import ComponentMatch, RatioResult
 
 
 logger = get_process_logger('scale_normalizer')

@@ -1,4 +1,4 @@
-# Path: mat_acc/ratio_check/value_populator.py
+# Path: mat_acc/ratio_check/values/value_populator.py
 """
 Value Populator
 
@@ -23,8 +23,8 @@ from typing import Optional, Dict, List, Any
 from core.logger.ipo_logging import get_process_logger
 from process.matcher.models.concept_metadata import ConceptIndex
 
-from .ratio_models import ComponentMatch
-from .fact_value_lookup import FactValueLookup
+from ..ratio_models import ComponentMatch
+from ..fact_value_lookup import FactValueLookup
 
 
 logger = get_process_logger('value_populator')

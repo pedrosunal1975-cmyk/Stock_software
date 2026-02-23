@@ -1,4 +1,4 @@
-# Path: mat_acc/ratio_check/ratio_definitions.py
+# Path: mat_acc/ratio_check/calculation/ratio_definitions.py
 """
 Ratio Definitions
 

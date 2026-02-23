@@ -1,4 +1,4 @@
-# Path: mat_acc/ratio_check/source_checker.py
+# Path: mat_acc/ratio_check/input/source_checker.py
 """
 Source Checker
 

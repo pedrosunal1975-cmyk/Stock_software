@@ -1,4 +1,4 @@
-# Path: mat_acc/ratio_check/industry_detector.py
+# Path: mat_acc/ratio_check/industry/detector.py
 """
 Industry Detector
 

@@ -2,42 +2,45 @@
 """
 Ratio Check Module
 
-Orchestrates financial ratio calculation using the Dynamic Concept Matching Engine.
+Orchestrates financial ratio calculation using the Dynamic Concept
+Matching Engine.
 
-Architecture:
-    ratio_check.py        - Main orchestrator and CLI entry point
-    filing_menu.py        - Clean CLI menu for company selection
-    concept_builder.py    - Build ConceptMetadata from source files
-    ratio_calculator.py   - Run matcher engine and calculate ratios
-    ratio_models.py       - Data classes (ComponentMatch, RatioResult, etc.)
-    ratio_definitions.py  - Standard financial ratio definitions
-    ratio_engine.py       - Ratio computation from matched components
-    value_populator.py    - 4-pass value population pipeline
-    fact_value_lookup.py  - Retrieves actual values from source files
-    scale_normalizer.py   - Post-processing scale normalization (read-learn-apply)
-    match_verify/         - Post-Match Financial Verification (PMFV)
-    math_verify/          - Mathematical Integrity Unit (sign, scale, identity)
-    database_checker.py   - Check/populate HierarchyNode data
-    data_preparer.py      - Run enrichment scripts if needed
-    debug_reporter.py     - Debug status reporting for process tracking
+Subpackages:
+    input/          - Filing selection, source verification
+    values/         - Fact lookup, value population pipeline
+    calculation/    - Ratio engine, definitions, scale normalization
+    industry/       - Industry detection and classification
+    support/        - Database ops, data prep, debug reporting
+    diagnostics/    - Parsed data inspection tools
+    math_verify/    - Mathematical Integrity Unit (MIU)
+    match_verify/   - Post-Match Financial Verification (PMFV)
+
+Root modules:
+    ratio_check.py      - Main orchestrator and CLI entry point
+    ratio_calculator.py  - Matching coordination
+    concept_builder.py   - Build ConceptMetadata from sources
+    fact_value_lookup.py - Value retrieval from mapped statements
+    ratio_models.py      - Data classes
 
 Usage:
     cd mat_acc
     python -m ratio_check
 """
 
-from .database_checker import DatabaseChecker
-from .data_preparer import DataPreparer
-from .filing_menu import FilingMenu, FilingSelection
+from .support.database_checker import DatabaseChecker
+from .support.data_preparer import DataPreparer
+from .input.filing_menu import FilingMenu, FilingSelection
 from .concept_builder import ConceptBuilder
 from .ratio_models import ComponentMatch, RatioResult, AnalysisResult
 from .ratio_calculator import RatioCalculator
-from .industry_detector import IndustryDetector
-from .industry_registry import IndustryRegistry
+from .industry.detector import IndustryDetector
+from .industry.registry import IndustryRegistry
 from .match_verify import MatchVerifier
 from .ratio_check import RatioCheckOrchestrator, main
-from .scale_normalizer import ScaleNormalizer, ScaleAnnotation
-from .debug_reporter import DebugReporter, ComponentDebugInfo, ProcessState
+from .calculation.scale_normalizer import ScaleNormalizer, ScaleAnnotation
+from .support.debug_reporter import (
+    DebugReporter, ComponentDebugInfo, ProcessState,
+)
 from .fact_value_lookup import FactValueLookup, FactValue
 from .math_verify import (
     IXBRLExtractor,

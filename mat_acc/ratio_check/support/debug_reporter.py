@@ -1,4 +1,4 @@
-# Path: mat_acc/ratio_check/debug_reporter.py
+# Path: mat_acc/ratio_check/support/debug_reporter.py
 """
 Debug Reporter
 

@@ -40,17 +40,17 @@ from loaders import (
 )
 
 # Import module components
-from .database_checker import DatabaseChecker
-from .data_preparer import DataPreparer
-from .filing_menu import FilingMenu, FilingSelection
+from .support.database_checker import DatabaseChecker
+from .support.data_preparer import DataPreparer
+from .input.filing_menu import FilingMenu, FilingSelection
 from .concept_builder import ConceptBuilder
 from .ratio_calculator import RatioCalculator, AnalysisResult
-from .debug_reporter import DebugReporter, ComponentDebugInfo
+from .support.debug_reporter import DebugReporter, ComponentDebugInfo
 from .fact_value_lookup import FactValueLookup
 from .math_verify import (
     IXBRLExtractor, FactReconciler, IdentityValidator, SignAnalyzer,
 )
-from .ratio_definitions import STANDARD_RATIOS
+from .calculation.ratio_definitions import STANDARD_RATIOS
 from output.report_generator import ReportGenerator
 
 

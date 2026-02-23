@@ -1,4 +1,4 @@
-# Path: mat_acc/ratio_check/industry_registry.py
+# Path: mat_acc/ratio_check/industry/registry.py
 """
 Industry Registry
 
