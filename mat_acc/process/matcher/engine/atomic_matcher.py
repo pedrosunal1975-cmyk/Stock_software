@@ -108,6 +108,7 @@ class AtomicMatcher:
 
         return self._select_best(
             cid, scored, concept_index, diag,
+            component.scoring.tiebreaker,
         )
 
     def _init_diagnostics(self, comp):
@@ -222,14 +223,14 @@ class AtomicMatcher:
         self._match_diagnostics[cid] = diag
         return MatchResult.no_match(cid, reason)
 
-    def _select_best(self, cid, scored_matches, ci, diag):
+    def _select_best(self, cid, scored_matches, ci, diag, strategy=None):
         """Select best match from scored candidates."""
         scored_matches.sort(key=lambda m: m.total_score, reverse=True)
         top = scored_matches[0].total_score
         ties = [m for m in scored_matches if m.total_score == top]
         if len(ties) > 1:
             best, _ = self.tiebreaker.resolve(
-                matches=ties, strategy=None, concept_index=ci,
+                matches=ties, strategy=strategy, concept_index=ci,
             )
             alts = [m for m in ties if m.concept != best.concept]
         else:

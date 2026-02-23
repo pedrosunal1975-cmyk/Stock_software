@@ -39,7 +39,7 @@ class Tiebreaker:
     def resolve(
         self,
         matches: list[ScoredMatch],
-        strategy: TiebreakerType,
+        strategy: Optional[TiebreakerType] = None,
         concept_index: Optional[ConceptIndex] = None
     ) -> tuple[ScoredMatch, str]:
         """
@@ -47,7 +47,7 @@ class Tiebreaker:
 
         Args:
             matches: List of equally-scored matches
-            strategy: Tiebreaker strategy to use
+            strategy: Tiebreaker strategy (default: highest_in_hierarchy)
             concept_index: Index for looking up concept metadata
 
         Returns:
@@ -58,6 +58,9 @@ class Tiebreaker:
 
         if len(matches) == 0:
             raise ValueError("No matches to resolve")
+
+        if strategy is None:
+            strategy = TiebreakerType.HIGHEST_IN_HIERARCHY
 
         self.logger.debug(
             f"Resolving tie between {len(matches)} matches "
