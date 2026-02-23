@@ -121,6 +121,10 @@ scoring:
     - condition: "Is pension"
       pattern: "name~pension"
 
+    # Reject catch-all line items (not the aggregate total)
+    - condition: "Is other assets line item"
+      pattern: "name~otherassets"
+
     # Reject cash flow items
     - condition: "Is cash flow adjustment"
       pattern: "name~adjustmentsfor"

@@ -120,6 +120,10 @@ scoring:
       pattern: "name~operatinglease"
     - condition: "Is finance lease only"
       pattern: "name~financeleaseliabiility"
+    - condition: "Is current debt classification"
+      pattern: "name~debtcurrent"
+    - condition: "Is current obligations"
+      pattern: "name~obligationscurrent"
 
     # Reject rate/percentage concepts (want amount, not interest rate)
     - condition: "Is interest rate"

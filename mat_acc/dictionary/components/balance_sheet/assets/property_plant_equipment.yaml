@@ -45,6 +45,7 @@ matching_rules:
   local_name_rules:
     - patterns:
         - "PropertyPlantAndEquipmentNet"
+        - "PropertyPlantAndEquipmentAndFinanceLeaseRightOfUseAssetAfterAccumulatedDepreciationAndAmortization"
       match_type: exact
       weight: 15
 
@@ -117,6 +118,8 @@ scoring:
       pattern: "name~leaseholdimprovement"
     - condition: "Is right-of-use asset"
       pattern: "name~rightofuse"
+    - condition: "Is useful life disclosure"
+      pattern: "name~usefullife"
 
     # Reject disclosure items
     - condition: "Is text block"

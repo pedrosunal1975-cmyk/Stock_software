@@ -101,6 +101,8 @@ scoring:
       pattern: "name~workingcapital"
     - condition: "Is individual adjustment"
       pattern: "name~adjustments"
+    - condition: "Is discontinued operations"
+      pattern: "name~discontinued"
 
     # Reject disclosure items
     - condition: "Is text block"
