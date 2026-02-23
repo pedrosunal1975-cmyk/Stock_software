@@ -35,34 +35,11 @@ logger = get_process_logger('ratio_calculator')
 
 
 class RatioCalculator:
-    """
-    Calculates financial ratios using the matching engine.
+    """Calculates financial ratios using the matching engine."""
 
-    Workflow:
-    1. Load component definitions from dictionary
-    2. Match components against filing concepts
-    3. Extract values for matched components
-    4. Calculate financial ratios
-
-    Example:
-        calculator = RatioCalculator(config)
-        result = calculator.analyze(
-            selection=filing_selection,
-            concept_index=enriched_concepts,
-        )
-        for ratio in result.ratios:
-            if ratio.valid:
-                print(f"{ratio.ratio_name}: {ratio.value:.2f}")
-    """
-
-    def __init__(self, config: ConfigLoader, diagnostics: bool = True):
-        """
-        Initialize ratio calculator.
-
-        Args:
-            config: ConfigLoader instance
-            diagnostics: Enable detailed diagnostic output
-        """
+    def __init__(
+        self, config: ConfigLoader, diagnostics: bool = True,
+    ):
         self.config = config
         self.logger = get_process_logger('ratio_calculator')
         self.diagnostics = diagnostics
@@ -92,22 +69,11 @@ class RatioCalculator:
         return self._coordinator
 
     def analyze(
-        self,
-        selection: FilingSelection,
+        self, selection: FilingSelection,
         concept_index: ConceptIndex,
         value_lookup: Optional[FactValueLookup] = None,
     ) -> AnalysisResult:
-        """
-        Run complete analysis on a filing.
-
-        Args:
-            selection: Selected filing
-            concept_index: Enriched concept index
-            value_lookup: FactValueLookup for retrieving actual values
-
-        Returns:
-            AnalysisResult with matches and ratios
-        """
+        """Run complete analysis on a filing."""
         result = AnalysisResult(
             company=selection.company,
             market=selection.market,
@@ -156,21 +122,9 @@ class RatioCalculator:
         return result
 
     def match_components(
-        self,
-        concept_index: ConceptIndex,
+        self, concept_index: ConceptIndex,
     ) -> List[ComponentMatch]:
-        """
-        Match all components against concepts using hybrid resolution.
-
-        Uses resolve_all() which tries atomic matching first for ALL
-        components, then formula computation for unresolved composites.
-
-        Args:
-            concept_index: Index of concepts to match against
-
-        Returns:
-            List of ComponentMatch results
-        """
+        """Match all components using hybrid resolution."""
         market = getattr(self, '_current_market', None)
         coordinator = self._get_coordinator(market)
         matches = []
@@ -243,17 +197,7 @@ class RatioCalculator:
         return match
 
     def _build_ratio_list(self, industry: str) -> list[dict]:
-        """
-        Build filtered ratio list for the detected industry.
-
-        Takes standard ratios, removes skipped ones, adds extras.
-
-        Args:
-            industry: Detected industry type
-
-        Returns:
-            List of ratio definitions to calculate
-        """
+        """Build filtered ratio list for the detected industry."""
         skip_ids = set(
             self._industry_registry.get_skip_ratio_ids(industry)
         )
@@ -311,112 +255,9 @@ class RatioCalculator:
 
     def display_results(self, result: AnalysisResult) -> None:
         """Display analysis results to console."""
-        print()
-        print("=" * 70)
-        print(f"  RATIO ANALYSIS: {result.company}")
-        print(f"  {result.market.upper()} | {result.form} | {result.date}")
-        industry_name = result.summary.get('industry_display', '')
-        if industry_name:
-            print(f"  Industry: {industry_name}")
-        print("=" * 70)
-
-        self._display_pmfv_corrections()
-        self._display_components(result.component_matches)
-        self._display_ratios(result.ratios, result.normalizations)
-        self._display_summary(result.summary)
-
-    def _display_pmfv_corrections(self) -> None:
-        """Display PMFV corrections if any were made."""
+        from .calculation.result_display import display_results
         corrections = self._match_verifier.get_corrections()
-        if not corrections:
-            return
-        print("\n  POST-MATCH VERIFICATION:")
-        print("-" * 70)
-        for c in corrections:
-            old_name = c['old_concept'].split(':')[-1][:30]
-            new_name = c['new_concept'].split(':')[-1][:30]
-            old_v = f"{c['old_value']:,.0f}" if c['old_value'] else '?'
-            new_v = f"{c['new_value']:,.0f}" if c['new_value'] else '?'
-            print(
-                f"    [FIX] {c['component']:22s} "
-                f"{old_name} ({old_v}) -> {new_name} ({new_v})"
-            )
-
-    def _display_components(self, matches: List[ComponentMatch]) -> None:
-        """Display component matching section."""
-        print("\n  COMPONENT MATCHING:")
-        print("-" * 70)
-
-        matched = [m for m in matches if m.matched]
-        unmatched = [m for m in matches if not m.matched]
-
-        if matched:
-            print(f"\n  Matched ({len(matched)}):")
-            for m in matched:
-                conf = f"{m.confidence:.2f}" if m.confidence else "N/A"
-                label = m.label[:35] if m.label else ''
-                if not label and m.matched_concept:
-                    label = m.matched_concept[:35]
-                if m.value is not None:
-                    val = f"{m.value:>15,.0f}"
-                else:
-                    val = f"{'[no value]':>15}"
-                print(f"    [OK] {m.component_name:22s} -> {label:35s} {val} ({conf})")
-
-        if unmatched:
-            print(f"\n  Unmatched ({len(unmatched)}):")
-            for m in unmatched[:10]:
-                print(f"    [--] {m.component_name}")
-            if len(unmatched) > 10:
-                print(f"    ... and {len(unmatched) - 10} more")
-
-    def _display_ratios(
-        self, ratios: List[RatioResult],
-        normalizations: Optional[Dict] = None,
-    ) -> None:
-        """Display financial ratios section with normalization."""
-        print("\n  FINANCIAL RATIOS:")
-        print("-" * 70)
-        norms = normalizations or {}
-
-        for r in ratios:
-            if r.valid:
-                print(f"    [OK] {r.ratio_name:25s} = {r.value:10.4f}")
-                num = f"{r.numerator_value:,.0f}" if r.numerator_value else "N/A"
-                den = f"{r.denominator_value:,.0f}" if r.denominator_value else "N/A"
-                print(f"         {r.formula}")
-                print(f"         ({num} / {den})")
-                ann = norms.get(r.ratio_name)
-                if ann:
-                    print(
-                        f"         >> Normalized:"
-                        f" {ann.normalized_value:10.4f}"
-                        f"  ({ann.explanation})"
-                    )
-            elif r.error:
-                if r.numerator_value is not None or r.denominator_value is not None:
-                    num = f"{r.numerator_value:,.0f}" if r.numerator_value else "[missing]"
-                    den = f"{r.denominator_value:,.0f}" if r.denominator_value else "[missing]"
-                    print(f"    [--] {r.ratio_name:25s} - {r.error}")
-                    print(f"         Values: {num} / {den}")
-                else:
-                    print(f"    [--] {r.ratio_name:25s} - {r.error}")
-
-    def _display_summary(self, s: Dict[str, Any]) -> None:
-        """Display summary section with industry-aware counts."""
-        print("\n  SUMMARY:")
-        print("-" * 70)
-        mc = s.get('matched_components', 0)
-        ac = s.get('applicable_components', s.get('total_components', 0))
-        na = s.get('not_applicable', 0)
-        mr = s.get('match_rate', 0)
-        print(f"    Components: {mc}/{ac} matched ({mr*100:.1f}%)")
-        if na > 0:
-            print(f"    Not applicable: {na} (no matching concept in filing)")
-        vr = s.get('valid_ratios', 0)
-        tr = s.get('total_ratios', 0)
-        print(f"    Ratios: {vr}/{tr} calculated")
-        print("\n" + "=" * 70)
+        display_results(result, corrections)
 
 
 __all__ = ['RatioCalculator', 'ComponentMatch', 'RatioResult', 'AnalysisResult']
