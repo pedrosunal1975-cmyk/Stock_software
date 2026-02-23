@@ -2,11 +2,11 @@
 """
 Matching Engine Core
 
-Core components of the matching engine:
 - MatchingCoordinator: Main orchestrator
+- AtomicMatcher: Core matching engine
 - ComponentLoader: Loads component definitions from YAML
-- ConceptIndexer: Builds indexes for fast lookup
-- ResolutionCache: Caches resolution results
+- component_parser: YAML parsing functions
+- candidate_filter: Candidate selection and filtering
 """
 
 from .component_loader import ComponentLoader
