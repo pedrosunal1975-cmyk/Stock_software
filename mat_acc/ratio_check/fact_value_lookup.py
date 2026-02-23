@@ -2,71 +2,35 @@
 """
 Fact Value Lookup
 
-Retrieves actual numeric values for matched concepts from source files.
-This is the MISSING LINK between concept matching and ratio calculation.
+Retrieves actual numeric values for matched concepts from
+source files. The MISSING LINK between concept matching and
+ratio calculation.
 
 Value source: Mapped statements (company's declared presentation).
 Sign corrections: Applied by MIU from iXBRL source truth.
-
-The loaders provide paths, this module reads actual values.
+Loading logic: Delegated to values/fact_loading.py.
 """
-
-import logging
 from dataclasses import dataclass, field
-from pathlib import Path
-from typing import Optional, Dict, List, Any, Tuple, Union
-from decimal import Decimal
+from typing import Optional, Dict, List, Any, Tuple
 
 from config_loader import ConfigLoader
-
-# Import IPO logging
 from core.logger.ipo_logging import get_process_logger
 from core.qname import parse_qname, alternate_qname
 
-# Import loaders and readers
-from loaders import (
-    MappedDataLoader,
-    MappedFilingEntry,
-    MappedReader,
-    MappedStatements,
-    StatementFact,
+from loaders import MappedFilingEntry, MappedReader
+
+from .values.fact_loading import (
+    load_from_mapped,
+    determine_primary_period,
 )
 
 
 logger = get_process_logger('fact_value_lookup')
 
 
-# XBRL taxonomy-defined root concepts for primary financial statements.
-# These are intrinsic to FASB (US-GAAP) and IASB (IFRS) taxonomies.
-# Used to distinguish core statements from detail/disclosure schedules.
-_PRIMARY_STATEMENT_ROOTS = {
-    # US-GAAP (FASB taxonomy)
-    'StatementOfFinancialPositionAbstract',
-    'IncomeStatementAbstract',
-    'StatementOfIncomeAndComprehensiveIncomeAbstract',
-    'StatementOfCashFlowsAbstract',
-    'StatementOfStockholdersEquityAbstract',
-    # IFRS (IASB taxonomy)
-    'StatementOfChangesInEquityAbstract',
-    'StatementOfComprehensiveIncomeAbstract',
-}
-
-
 @dataclass
 class FactValue:
-    """
-    A fact value with its context.
-
-    Attributes:
-        concept: Concept QName
-        value: Numeric value
-        period_end: Period end date
-        period_start: Period start date (for duration)
-        dimensions: Dimensional context
-        unit: Unit of measurement
-        source: Source of value ('mapped')
-        is_primary: True if this is the primary (non-dimensional) value
-    """
+    """A fact value with its context."""
     concept: str
     value: float
     period_end: Optional[str] = None
@@ -88,264 +52,47 @@ class FactValueLookup:
     3. MIU applies sign corrections from iXBRL source truth
     4. For each concept, prefer: primary context, latest period
     5. Return numeric values for ratio calculations
-
-    Example:
-        lookup = FactValueLookup(config)
-        lookup.load_from_filing(mapped_entry)
-
-        # Get value for a matched concept
-        value = lookup.get_value('us-gaap:Assets')
-        if value is not None:
-            print(f"Assets: {value:,.0f}")
     """
 
     def __init__(self, config: ConfigLoader):
-        """
-        Initialize fact value lookup.
-
-        Args:
-            config: ConfigLoader instance
-        """
         self.config = config
         self.logger = get_process_logger('fact_value_lookup')
-
-        # Reader for loading content
         self._mapped_reader = MappedReader()
-
-        # Value index: concept QName -> list of FactValue
         self._value_index: Dict[str, List[FactValue]] = {}
-
-        # Track available periods for filtering
         self._available_periods: List[str] = []
         self._primary_period: Optional[str] = None
-        # Periods that have duration facts (fiscal year-end, not filing date)
         self._duration_periods: set = set()
-
-        # Normalized index: (namespace, local_name) -> original key
-        # Enables namespace-aware lookup across all QName formats
         self._normalized_index: Dict[Tuple[str, str], str] = {}
 
     def load_from_filing(
-        self,
-        mapped_entry: MappedFilingEntry,
+        self, mapped_entry: MappedFilingEntry,
     ) -> int:
-        """
-        Load fact values from mapped statement files.
-
-        Args:
-            mapped_entry: Mapped filing entry (required)
-
-        Returns:
-            Number of concepts with values loaded
-        """
+        """Load fact values from mapped statement files."""
         self._value_index.clear()
         self._normalized_index.clear()
         self._available_periods = []
         self._duration_periods = set()
 
-        # Load from mapped statements (single clean source)
-        mapped_count = self._load_from_mapped(mapped_entry)
+        mapped_count = load_from_mapped(
+            self._mapped_reader, mapped_entry,
+            self._value_index, self._normalized_index,
+            self._available_periods, self._duration_periods,
+            self.logger,
+        )
         self.logger.info(
-            f"Loaded {mapped_count} fact values from mapped statements"
+            f"Loaded {mapped_count} fact values from mapped"
         )
 
-        # Determine primary period
-        self._determine_primary_period()
+        self._primary_period = determine_primary_period(
+            self._available_periods, self._duration_periods,
+        )
 
-        total_concepts = len(self._value_index)
+        total = len(self._value_index)
         self.logger.info(
-            f"Total: {total_concepts} concepts with values, "
+            f"Total: {total} concepts with values, "
             f"primary period: {self._primary_period}"
         )
-
-        return total_concepts
-
-    def _is_primary_statement(self, stmt) -> bool:
-        """Check if statement is a primary financial statement.
-
-        Uses XBRL taxonomy-defined root abstract concepts from
-        hierarchy.roots (intrinsic to the filing data). Works for
-        any taxonomy: US-GAAP, IFRS, ESEF.
-        """
-        metadata = getattr(stmt, 'metadata', None)
-        if not isinstance(metadata, dict):
-            return False
-        hierarchy = metadata.get('hierarchy', {})
-        if not isinstance(hierarchy, dict):
-            return False
-        roots = hierarchy.get('roots', [])
-        for root in roots:
-            _, local_name = parse_qname(str(root))
-            if local_name in _PRIMARY_STATEMENT_ROOTS:
-                return True
-        return False
-
-    def _load_from_mapped(self, mapped_entry: MappedFilingEntry) -> int:
-        """Load values from mapped statements.
-
-        Two-tier loading: primary financial statements load first
-        so their values take priority (first-occurrence-wins).
-        Supplementary statements fill remaining gaps only.
-        """
-        count = 0
-
-        try:
-            statements = self._mapped_reader.read_statements(mapped_entry)
-            if not statements:
-                return 0
-
-            # Classify statements by source priority
-            primary = []
-            supplementary = []
-            for stmt in statements.statements:
-                if self._is_primary_statement(stmt):
-                    primary.append(stmt)
-                else:
-                    supplementary.append(stmt)
-
-            self.logger.info(
-                f"Statement priority: {len(primary)} primary, "
-                f"{len(supplementary)} supplementary"
-            )
-
-            # Load primary statements first (values take priority)
-            for stmt in primary:
-                for fact in stmt.facts:
-                    if self._add_fact_from_mapped(
-                        fact, stmt.name, is_core=True,
-                    ):
-                        count += 1
-
-            # Load supplementary (fill gaps only)
-            for stmt in supplementary:
-                for fact in stmt.facts:
-                    if self._add_fact_from_mapped(
-                        fact, stmt.name, is_core=False,
-                    ):
-                        count += 1
-
-        except Exception as e:
-            self.logger.warning(f"Error loading from mapped statements: {e}")
-
-        return count
-
-    def _add_fact_from_mapped(
-        self,
-        fact: StatementFact,
-        statement_name: str,
-        is_core: bool = True,
-    ) -> bool:
-        """Add a single fact from mapped statement."""
-        # Skip abstract items
-        if fact.is_abstract:
-            return False
-
-        # Get numeric value
-        value = self._parse_numeric_value(fact.value)
-        if value is None:
-            return False
-
-        # Determine if primary (no dimensional qualifiers)
-        dimensions = fact.dimensions or {}
-        is_primary = len(dimensions) == 0
-
-        fact_value = FactValue(
-            concept=fact.concept,
-            value=value,
-            period_end=fact.period_end,
-            period_start=fact.period_start,
-            dimensions=dimensions,
-            unit=fact.unit,
-            source='mapped',
-            is_primary=is_primary,
-            from_core_statement=is_core,
-        )
-
-        # Track period
-        if fact.period_end and fact.period_end not in self._available_periods:
-            self._available_periods.append(fact.period_end)
-        # Duration facts mark fiscal year-end (not filing date)
-        if fact.period_start and fact.period_end:
-            self._duration_periods.add(fact.period_end)
-
-        # Add to index
-        if fact.concept not in self._value_index:
-            self._value_index[fact.concept] = []
-
-        # Check if we already have this exact value
-        existing = self._value_index[fact.concept]
-        is_duplicate = any(
-            v.period_end == fact_value.period_end and
-            v.dimensions == fact_value.dimensions
-            for v in existing
-        )
-
-        if not is_duplicate:
-            self._value_index[fact.concept].append(fact_value)
-            # Build normalized index for namespace-aware lookup
-            ns, local = parse_qname(fact.concept)
-            if local:
-                norm_key = (ns.lower(), local)
-                if norm_key not in self._normalized_index:
-                    self._normalized_index[norm_key] = fact.concept
-            return True
-
-        return False
-
-    def _parse_numeric_value(self, value: Any) -> Optional[float]:
-        """Parse a value to numeric, handling various formats."""
-        if value is None:
-            return None
-
-        if isinstance(value, (int, float)):
-            return float(value)
-
-        if isinstance(value, Decimal):
-            return float(value)
-
-        if isinstance(value, str):
-            # Remove formatting
-            cleaned = value.strip()
-            if not cleaned:
-                return None
-
-            # Handle negative in parentheses
-            if cleaned.startswith('(') and cleaned.endswith(')'):
-                cleaned = '-' + cleaned[1:-1]
-
-            # Remove currency symbols and commas
-            cleaned = cleaned.replace('$', '').replace(',', '').replace(' ', '')
-
-            try:
-                return float(cleaned)
-            except ValueError:
-                return None
-
-        return None
-
-    def _determine_primary_period(self) -> None:
-        """Determine the primary (most recent) period.
-
-        Filing dates only appear as instant contexts (no duration
-        facts). Fiscal year-end always has duration facts (IS, CF).
-        Prefer the latest period with duration facts to avoid
-        selecting a filing date as primary period.
-        """
-        if not self._available_periods:
-            self._primary_period = None
-            return
-
-        # Prefer latest period with duration facts (fiscal year-end)
-        if self._duration_periods:
-            sorted_duration = sorted(
-                self._duration_periods, reverse=True,
-            )
-            self._primary_period = sorted_duration[0]
-            return
-
-        # Fallback: latest period overall
-        sorted_periods = sorted(self._available_periods, reverse=True)
-        self._primary_period = sorted_periods[0]
+        return total
 
     def get_value(
         self,
@@ -360,96 +107,66 @@ class FactValueLookup:
         Strategy:
         1. If period specified, use that period
         2. Otherwise, use primary period (most recent)
-        3. Prefer primary context (no dimensions) over dimensional
-        4. If core_only, only return values from primary statements
-
-        Args:
-            concept: Concept QName (e.g., 'us-gaap:Assets')
-            period_end: Specific period to retrieve (default: primary period)
-            prefer_primary: Prefer non-dimensional values (default: True)
-            core_only: Only return values from primary financial statements
-
-        Returns:
-            Numeric value or None if not found
+        3. Prefer primary context (no dimensions)
+        4. If core_only, only return from primary statements
         """
         values = self._find_values(concept)
-
         if not values:
             return None
 
-        # Filter to core statement values only
         if core_only:
             values = [v for v in values if v.from_core_statement]
             if not values:
                 return None
 
-        # Filter by period
         target_period = period_end or self._primary_period
         if target_period:
-            period_values = [v for v in values if v.period_end == target_period]
-            if period_values:
-                values = period_values
+            period_vals = [
+                v for v in values
+                if v.period_end == target_period
+            ]
+            if period_vals:
+                values = period_vals
 
-        # Prefer primary context
         if prefer_primary:
-            primary_values = [v for v in values if v.is_primary]
-            if primary_values:
-                values = primary_values
+            primary_vals = [v for v in values if v.is_primary]
+            if primary_vals:
+                values = primary_vals
 
-        # Return first matching value
-        if values:
-            return values[0].value
+        return values[0].value if values else None
 
-        return None
-
-    def _find_values(self, concept: str) -> Optional[List[FactValue]]:
-        """
-        Find values using multi-tier namespace-aware lookup.
-
-        Tier 1: Exact QName string match
-        Tier 2: Alternate separator format (colon <-> underscore)
-        Tier 3: Namespace-aware normalized match (prevents
-                 cross-namespace pollution)
-        """
+    def _find_values(
+        self, concept: str,
+    ) -> Optional[List[FactValue]]:
+        """Multi-tier namespace-aware value lookup."""
         # Tier 1: Exact match
         values = self._value_index.get(concept)
         if values:
             return values
-
         # Tier 2: Alternate format (colon <-> underscore)
         alt_key = alternate_qname(concept)
         if alt_key:
             values = self._value_index.get(alt_key)
             if values:
                 return values
-
         # Tier 3: Namespace-aware normalized match
         return self._lookup_normalized(concept)
 
     def _lookup_normalized(
         self, concept: str,
     ) -> Optional[List[FactValue]]:
-        """
-        Namespace-aware normalized QName lookup.
-
-        If query has a namespace: requires exact namespace match.
-        If query has no namespace: matches only if unambiguous
-        (exactly one namespace contains this local name).
-        Never silently returns a value from a different namespace.
-        """
+        """Namespace-aware normalized QName lookup."""
         ns, local = parse_qname(concept)
         if not local:
             return None
 
         if ns:
-            # Query has namespace - require exact namespace match
             norm_key = (ns.lower(), local)
             orig_key = self._normalized_index.get(norm_key)
             if orig_key:
                 return self._value_index.get(orig_key)
             return None
 
-        # No namespace in query - find by local name
         matches = [
             orig_key
             for (idx_ns, idx_local), orig_key
@@ -459,7 +176,8 @@ class FactValueLookup:
 
         if len(matches) == 1:
             self.logger.debug(
-                f"Inferred namespace for '{concept}': {matches[0]}"
+                f"Inferred namespace for '{concept}': "
+                f"{matches[0]}"
             )
             return self._value_index.get(matches[0])
 
@@ -468,23 +186,13 @@ class FactValueLookup:
                 f"Ambiguous concept '{concept}': found in "
                 f"{len(matches)} namespaces, skipping"
             )
-
         return None
 
     def _find_best_fact(
-        self, values: List[FactValue]
+        self, values: List[FactValue],
     ) -> Optional[FactValue]:
-        """
-        Find the best fact to use or correct.
-
-        Uses soft filtering (same as get_value):
-        1. Try primary period first, fall through if no match
-        2. Prefer primary context (no dimensions)
-        3. Return first match or None
-        """
+        """Find best fact for correction (soft filter)."""
         candidates = list(values)
-
-        # Soft period filter: prefer primary period, fall through
         if self._primary_period:
             period_match = [
                 v for v in candidates
@@ -492,74 +200,35 @@ class FactValueLookup:
             ]
             if period_match:
                 candidates = period_match
-
-        # Prefer primary context (no dimensions)
         primary_ctx = [v for v in candidates if v.is_primary]
         if primary_ctx:
             candidates = primary_ctx
-
         return candidates[0] if candidates else None
 
     def apply_corrections(
-        self,
-        corrections: Dict[str, float],
+        self, corrections: Dict[str, float],
     ) -> int:
-        """
-        Apply mathematical corrections from the MIU.
-
-        Overrides values in the index for concepts where the
-        Mathematical Integrity Unit detected sign discrepancies
-        between iXBRL source and mapped statement values.
-
-        Only corrects the primary-period, primary-context value
-        for each concept. Does not touch dimensional or
-        historical values.
-
-        Args:
-            corrections: concept QName -> corrected value
-
-        Returns:
-            Number of values corrected
-        """
+        """Apply MIU sign corrections to the value index."""
         corrected = 0
-        not_found = 0
-        no_primary = 0
-
         for concept, correct_value in corrections.items():
             values = self._find_values(concept)
-
             if not values:
-                not_found += 1
-                self.logger.debug(
-                    f"MIU: concept not in value index: {concept}"
-                )
                 continue
-
-            # Find the best fact to correct using soft filtering
-            # (same logic as get_value: try primary period, fall through)
             target = self._find_best_fact(values)
-
             if target is None:
-                no_primary += 1
                 continue
-
             if target.value != correct_value:
                 self.logger.info(
                     f"MIU correction: {concept} "
-                    f"{target.value:,.0f} -> {correct_value:,.0f}"
+                    f"{target.value:,.0f} -> "
+                    f"{correct_value:,.0f}"
                 )
                 target.value = correct_value
                 corrected += 1
-
         if corrected > 0:
             self.logger.info(
-                f"Applied {corrected} sign corrections"
+                f"Applied {corrected} sign corrections",
             )
-        if not_found > 0:
-            self.logger.debug(
-                f"MIU: {not_found} concepts not in value index"
-            )
-
         return corrected
 
     def get_all_values(self, concept: str) -> List[FactValue]:
@@ -580,16 +249,20 @@ class FactValueLookup:
 
     def has_value(self, concept: str) -> bool:
         """Check if a concept has any value."""
-        return concept in self._value_index or self.get_value(concept) is not None
+        return (
+            concept in self._value_index
+            or self.get_value(concept) is not None
+        )
 
     def get_value_summary(self) -> Dict[str, Any]:
         """Get summary of loaded values."""
-        total_values = sum(len(v) for v in self._value_index.values())
+        total_values = sum(
+            len(v) for v in self._value_index.values()
+        )
         primary_count = sum(
             1 for values in self._value_index.values()
             for v in values if v.is_primary
         )
-
         return {
             'concepts_with_values': len(self._value_index),
             'total_values': total_values,
