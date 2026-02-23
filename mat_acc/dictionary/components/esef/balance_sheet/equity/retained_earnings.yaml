@@ -1,0 +1,36 @@
+# ESEF overlay: retained_earnings
+# IFRS uses RetainedEarnings
+component_id: retained_earnings
+matching_rules:
+  local_name_rules:
+    - patterns:
+        - "RetainedEarnings"
+      match_type: exact
+      weight: 15
+    - patterns:
+        - "RetainedEarnings"
+        - "AccumulatedDeficit"
+        - "RetainedProfit"
+        - "AccumulatedLosses"
+      match_type: contains
+      weight: 10
+  label_rules:
+    - patterns:
+        - "Retained Earnings"
+        - "Retained Earnings (Accumulated Deficit)"
+        - "Retained Profit"
+        - "Retained Profit (Accumulated Losses)"
+        - "Accumulated Deficit"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+    - patterns:
+        - "retained earnings"
+        - "accumulated deficit"
+        - "retained profit"
+        - "accumulated losses"
+      match_type: contains
+      case_sensitive: false
+      weight: 12
+scoring:
+  min_score: 15

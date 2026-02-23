@@ -1,0 +1,38 @@
+# ESEF overlay: total_debt
+# IFRS typically uses Borrowings or FinancialLiabilities
+# No single standard IFRS concept for "total debt"
+component_id: total_debt
+matching_rules:
+  local_name_rules:
+    - patterns:
+        - "Borrowings"
+        - "FinancialLiabilities"
+      match_type: exact
+      weight: 12
+    - patterns:
+        - "Borrowings"
+        - "LoansAndBorrowings"
+        - "DebtInstruments"
+        - "FinancialLiabilities"
+      match_type: contains
+      weight: 8
+  label_rules:
+    - patterns:
+        - "Borrowings"
+        - "Total Borrowings"
+        - "Loans and Borrowings"
+        - "Financial Liabilities"
+        - "Total Debt"
+      match_type: exact
+      case_sensitive: false
+      weight: 18
+    - patterns:
+        - "borrowings"
+        - "loans and borrowings"
+        - "financial liabilities"
+        - "debt instrument"
+      match_type: contains
+      case_sensitive: false
+      weight: 10
+scoring:
+  min_score: 15

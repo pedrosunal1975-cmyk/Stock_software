@@ -1,0 +1,37 @@
+# ESEF overlay: selling_general_admin
+# IFRS uses SellingGeneralAndAdministrativeExpense or
+# separate DistributionCosts + AdministrativeExpense
+component_id: selling_general_admin
+matching_rules:
+  local_name_rules:
+    - patterns:
+        - "SellingGeneralAndAdministrativeExpense"
+      match_type: exact
+      weight: 15
+    - patterns:
+        - "SellingGeneral"
+        - "AdministrativeExpense"
+        - "DistributionCosts"
+        - "GeneralAndAdministrative"
+      match_type: contains
+      weight: 10
+  label_rules:
+    - patterns:
+        - "Selling, General and Administrative"
+        - "Administrative Expense"
+        - "Administrative Expenses"
+        - "Distribution Costs"
+        - "Selling and Distribution"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+    - patterns:
+        - "selling, general"
+        - "administrative expense"
+        - "distribution cost"
+        - "general and administrative"
+      match_type: contains
+      case_sensitive: false
+      weight: 12
+scoring:
+  min_score: 15

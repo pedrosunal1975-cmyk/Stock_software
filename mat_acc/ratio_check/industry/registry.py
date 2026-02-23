@@ -188,6 +188,32 @@ INDUSTRY_MODELS = {
             },
         ],
     },
+    'technology': {
+        'display_name': 'Technology',
+        'skip_ratios': [],
+        'extra_components': [],
+        'extra_ratios': [],
+    },
+    'healthcare': {
+        'display_name': 'Healthcare / Pharma',
+        'skip_ratios': [],
+        'extra_components': [],
+        'extra_ratios': [],
+    },
+    'energy': {
+        'display_name': 'Energy / Utilities',
+        'skip_ratios': [
+            'inventory_turnover',
+        ],
+        'extra_components': [],
+        'extra_ratios': [],
+    },
+    'consumer': {
+        'display_name': 'Consumer Goods / Retail',
+        'skip_ratios': [],
+        'extra_components': [],
+        'extra_ratios': [],
+    },
 }
 
 

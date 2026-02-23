@@ -18,14 +18,13 @@ the sign="-" attribute). Corrections preserve the parsed value's
 magnitude and only fix the polarity.
 """
 
-import math
 from dataclasses import dataclass
 from typing import Optional
 
 from core.logger.ipo_logging import get_process_logger
-from core.qname import parse_qname
 
 from .ixbrl_extractor import VerifiedFact
+from .reconcile_utils import lookup_value, detect_scale_factor
 
 
 logger = get_process_logger('math_verify.reconciler')
@@ -33,9 +32,6 @@ logger = get_process_logger('math_verify.reconciler')
 
 # Tolerance for precision comparisons (0.5% relative difference)
 _PRECISION_TOLERANCE = 0.005
-
-# How close log10(ratio) must be to an integer to count as scale
-_SCALE_DETECT_TOLERANCE = 0.15
 
 
 @dataclass
@@ -168,11 +164,11 @@ class FactReconciler:
         )
 
         # Look up in parsed values
-        parsed_val = self._lookup_value(fact.concept, parsed_values)
+        parsed_val = lookup_value(fact.concept, parsed_values)
         result.parsed_value = parsed_val
 
         # Look up in mapped values
-        mapped_val = self._lookup_value(fact.concept, mapped_values)
+        mapped_val = lookup_value(fact.concept, mapped_values)
         result.mapped_value = mapped_val
 
         # No parsed value to compare against
@@ -195,7 +191,7 @@ class FactReconciler:
             return result
 
         # Detect scale factor (power of 10 between iXBRL and parsed)
-        scale_factor = self._detect_scale_factor(
+        scale_factor = detect_scale_factor(
             fact.value, parsed_val,
         )
         result.scale_factor = scale_factor
@@ -235,87 +231,6 @@ class FactReconciler:
 
         result.corrected_value = parsed_val
         return result
-
-    def _lookup_value(
-        self, concept: str, values: dict[str, float]
-    ) -> Optional[float]:
-        """
-        Look up a concept value with namespace-aware key matching.
-
-        Tier 1: Exact match
-        Tier 2: Alternate separator (colon <-> underscore)
-        Tier 3: Namespace-aware normalized match
-            - If query has namespace: require namespace match
-            - If no namespace: match only if unambiguous
-        Never returns a value from a different namespace.
-        """
-        # Tier 1: Exact match
-        if concept in values:
-            return values[concept]
-
-        # Tier 2: Alternate separator (colon <-> underscore)
-        if ':' in concept:
-            alt_key = concept.replace(':', '_', 1)
-            if alt_key in values:
-                return values[alt_key]
-        elif '_' in concept:
-            parts = concept.rsplit('_', 1)
-            if len(parts) == 2 and parts[1] and parts[1][0].isupper():
-                alt_key = parts[0] + ':' + parts[1]
-                if alt_key in values:
-                    return values[alt_key]
-
-        # Tier 3: Namespace-aware normalized match
-        ns, local = parse_qname(concept)
-        if not local:
-            return None
-
-        if ns:
-            # Query has namespace - require exact namespace match
-            for key, val in values.items():
-                k_ns, k_local = parse_qname(key)
-                if k_local == local and k_ns.lower() == ns.lower():
-                    return val
-            return None
-
-        # No namespace - match only if unambiguous (1 match)
-        matches = []
-        for key, val in values.items():
-            k_ns, k_local = parse_qname(key)
-            if k_local == local:
-                matches.append(val)
-
-        if len(matches) == 1:
-            return matches[0]
-
-        return None
-
-    def _detect_scale_factor(
-        self, ixbrl_val: float, parsed_val: float
-    ) -> int:
-        """
-        Detect power-of-10 difference between values.
-
-        Returns the integer N where ixbrl_val ~ parsed_val * 10^N.
-        Returns 0 if values are in the same scale.
-        """
-        if ixbrl_val == 0 or parsed_val == 0:
-            return 0
-
-        ratio = abs(ixbrl_val / parsed_val)
-        if ratio == 0:
-            return 0
-
-        log_ratio = math.log10(ratio)
-        rounded = round(log_ratio)
-
-        # Scale factor must be non-zero and close to an integer
-        if rounded == 0:
-            return 0
-        if abs(log_ratio - rounded) < _SCALE_DETECT_TOLERANCE:
-            return rounded
-
-        return 0
 
     def _log_summary(
         self,

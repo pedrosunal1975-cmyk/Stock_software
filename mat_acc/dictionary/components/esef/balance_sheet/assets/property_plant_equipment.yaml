@@ -1,0 +1,33 @@
+# ESEF overlay: property_plant_equipment
+# IFRS uses PropertyPlantAndEquipment
+component_id: property_plant_equipment
+matching_rules:
+  local_name_rules:
+    - patterns:
+        - "PropertyPlantAndEquipment"
+      match_type: exact
+      weight: 15
+    - patterns:
+        - "PropertyPlant"
+        - "TangibleAssets"
+        - "FixedAssets"
+      match_type: contains
+      weight: 10
+  label_rules:
+    - patterns:
+        - "Property, Plant and Equipment"
+        - "Tangible Assets"
+        - "Fixed Assets"
+        - "Property, Plant & Equipment"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+    - patterns:
+        - "property, plant"
+        - "tangible assets"
+        - "fixed assets"
+      match_type: contains
+      case_sensitive: false
+      weight: 12
+scoring:
+  min_score: 15

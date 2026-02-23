@@ -60,6 +60,8 @@ class IdentityValidator:
         checks = [
             self._check_balance_sheet(values),
             self._check_gross_profit(values),
+            self._check_net_income(values),
+            self._check_ebitda(values),
             self._check_subset(values, 'current_assets', 'total_assets'),
             self._check_subset(values, 'current_liabilities', 'total_liabilities'),
             self._check_assets_positive(values),
@@ -106,6 +108,52 @@ class IdentityValidator:
 
         check.lhs_value = r - c
         check.rhs_value = gp
+        return self._evaluate_equality(check)
+
+    def _check_net_income(self, values: dict) -> IdentityCheck:
+        """Check: Income Before Tax - Tax = Net Income."""
+        ibt = values.get('income_before_tax')
+        tax = values.get('income_tax_expense')
+        ni = values.get('net_income')
+
+        check = IdentityCheck(
+            identity='IBT - Tax = Net Income',
+            lhs_label='Income Before Tax - Tax',
+            rhs_label='Net Income',
+        )
+        if ibt is None or tax is None or ni is None:
+            check.skipped = True
+            check.skip_reason = self._missing(
+                values, 'income_before_tax',
+                'income_tax_expense', 'net_income',
+            )
+            return check
+
+        check.lhs_value = ibt - tax
+        check.rhs_value = ni
+        return self._evaluate_equality(check)
+
+    def _check_ebitda(self, values: dict) -> IdentityCheck:
+        """Check: Operating Income + D&A = EBITDA."""
+        oi = values.get('operating_income')
+        da = values.get('depreciation_amortization')
+        ebitda = values.get('ebitda')
+
+        check = IdentityCheck(
+            identity='OpIncome + D&A = EBITDA',
+            lhs_label='Operating Income + D&A',
+            rhs_label='EBITDA',
+        )
+        if oi is None or da is None or ebitda is None:
+            check.skipped = True
+            check.skip_reason = self._missing(
+                values, 'operating_income',
+                'depreciation_amortization', 'ebitda',
+            )
+            return check
+
+        check.lhs_value = oi + da
+        check.rhs_value = ebitda
         return self._evaluate_equality(check)
 
     def _check_subset(self, values: dict, part_key: str, whole_key: str) -> IdentityCheck:

@@ -1,0 +1,31 @@
+# ESEF overlay: r_and_d_expense
+# IFRS uses ResearchAndDevelopmentExpense
+component_id: r_and_d_expense
+matching_rules:
+  local_name_rules:
+    - patterns:
+        - "ResearchAndDevelopmentExpense"
+      match_type: exact
+      weight: 15
+    - patterns:
+        - "ResearchAndDevelopment"
+        - "ResearchExpense"
+        - "DevelopmentExpense"
+      match_type: contains
+      weight: 10
+  label_rules:
+    - patterns:
+        - "Research and Development Expense"
+        - "Research and Development"
+        - "R&D Expense"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+    - patterns:
+        - "research and development"
+        - "research expense"
+      match_type: contains
+      case_sensitive: false
+      weight: 12
+scoring:
+  min_score: 15

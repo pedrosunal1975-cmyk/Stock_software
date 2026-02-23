@@ -1,0 +1,27 @@
+# ESEF overlay: ebitda
+# IFRS does not define EBITDA as a standard line item.
+# Companies report it as non-GAAP or via adjusted measures.
+component_id: ebitda
+matching_rules:
+  local_name_rules:
+    - patterns:
+        - "AdjustedEBITDA"
+        - "EarningsBeforeInterestTaxDepreciationAmortisation"
+      match_type: contains
+      weight: 12
+  label_rules:
+    - patterns:
+        - "EBITDA"
+        - "Earnings Before Interest, Taxes, Depreciation and Amortisation"
+        - "Adjusted EBITDA"
+      match_type: exact
+      case_sensitive: false
+      weight: 20
+    - patterns:
+        - "ebitda"
+        - "earnings before interest"
+      match_type: contains
+      case_sensitive: false
+      weight: 12
+scoring:
+  min_score: 18

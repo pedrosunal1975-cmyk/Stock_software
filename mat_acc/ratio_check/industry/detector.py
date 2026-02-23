@@ -67,6 +67,68 @@ INDUSTRY_SIGNALS = {
         ],
         'threshold': 3,
     },
+    'technology': {
+        'strong': [
+            'CapitalizedContractCostNet',
+            'DeferredRevenueCurrent',
+            'ContractWithCustomerLiability',
+            'CapitalizedComputerSoftwareNet',
+        ],
+        'moderate': [
+            'ResearchAndDevelopmentExpense',
+            'SubscriptionRevenue',
+            'CloudServiceRevenue',
+            'CostOfGoodsAndServicesSoldDepreciation',
+        ],
+        'threshold': 3,
+    },
+    'healthcare': {
+        'strong': [
+            'HealthCareOrganizationRevenue',
+            'PatientServiceRevenue',
+            'PharmacyRevenue',
+            'MedicalCostRatio',
+            'ClinicalTrialExpense',
+        ],
+        'moderate': [
+            'ResearchAndDevelopmentExpenseSoftware',
+            'DrugExclusivityPeriod',
+            'PatentExpirationPeriod',
+            'MalpracticeLossContingency',
+        ],
+        'threshold': 3,
+    },
+    'energy': {
+        'strong': [
+            'RevenueFromContractWithCustomerExcluding',
+            'ElectricUtilityRevenue',
+            'NaturalGasProductionRevenue',
+            'OilAndGasProperty',
+            'ProvedDevelopedReserves',
+        ],
+        'moderate': [
+            'CrudeOilAndNaturalGasLiquids',
+            'ExplorationExpense',
+            'PipelineRevenue',
+            'RegulatoryAssets',
+        ],
+        'threshold': 3,
+    },
+    'consumer': {
+        'strong': [
+            'RetailRelatedInventory',
+            'SameStoreSales',
+            'NumberOfStores',
+            'FranchiseRevenue',
+        ],
+        'moderate': [
+            'AdvertisingExpense',
+            'StoreCosts',
+            'ConsumerProductsSegment',
+            'LoyaltyProgramObligation',
+        ],
+        'threshold': 3,
+    },
 }
 
 # Concepts that indicate a general/industrial company.
@@ -96,6 +158,7 @@ class IndustryDetector:
         """Initialize detector."""
         self.logger = get_process_logger('industry_detector')
         self._signals_found: dict[str, list[str]] = {}
+        self._confidence: float = 0.0
 
     def detect(self, concept_index) -> str:
         """
@@ -125,14 +188,20 @@ class IndustryDetector:
                 )
 
         if not candidates:
+            self._confidence = 1.0
             self._log_result('general', 0)
             return 'general'
 
         # Best = highest adjusted score, then most strong signals
         candidates.sort(key=lambda c: (c[0], c[1]), reverse=True)
         best = candidates[0]
+        self._confidence = self._calc_confidence(best, candidates)
         self._log_result(best[2], best[0])
         return best[2]
+
+    def get_confidence(self) -> float:
+        """Return confidence of last detection (0.0 - 1.0)."""
+        return self._confidence
 
     def get_signals_found(self) -> dict[str, list[str]]:
         """Return matched signals per industry for diagnostics."""
@@ -180,16 +249,38 @@ class IndustryDetector:
 
         return score, strong_count, matched
 
+    def _calc_confidence(self, best, candidates) -> float:
+        """Compute confidence score for the winning industry."""
+        score = best[0]
+        threshold = INDUSTRY_SIGNALS[best[2]]['threshold']
+        max_possible = (
+            len(INDUSTRY_SIGNALS[best[2]]['strong']) * 2
+            + len(INDUSTRY_SIGNALS[best[2]]['moderate'])
+        )
+        if max_possible == 0:
+            return 0.5
+        raw = score / max_possible
+        # Penalize if second-place is close
+        if len(candidates) >= 2:
+            gap = score - candidates[1][0]
+            if gap <= 1:
+                raw *= 0.7
+        return min(1.0, max(0.0, raw))
+
     def _log_result(self, industry: str, score: int) -> None:
         """Log the detection result."""
+        pct = f"{self._confidence:.0%}"
         if industry == 'general':
-            self.logger.info("Industry detected: general (no signals)")
+            self.logger.info(
+                "Industry detected: general (no signals)"
+            )
         else:
             signals = self._signals_found.get(industry, [])
             names = ', '.join(signals[:5])
             self.logger.info(
                 f"Industry detected: {industry} "
-                f"(score={score}, signals: {names})"
+                f"(score={score}, confidence={pct}, "
+                f"signals: {names})"
             )
 
 

@@ -28,6 +28,7 @@ from process.matcher.models.concept_metadata import ConceptIndex
 
 from ..ratio_models import ComponentMatch
 from ..fact_value_lookup import FactValueLookup
+from .formula_eval import evaluate_formula
 
 
 logger = get_process_logger('value_populator')
@@ -289,53 +290,6 @@ class ValuePopulator:
                 f"[RECOMPUTE] {recomputed} composites/fallback "
                 f"computed after all values loaded"
             )
-
-
-def evaluate_formula(
-    formula: str,
-    match_lookup: Dict[str, ComponentMatch],
-) -> Optional[float]:
-    """
-    Evaluate a simple arithmetic formula using component values.
-
-    Handles: a + b, a - b, a / b, a + b + c + d
-
-    Args:
-        formula: Formula string (e.g., "total_assets - total_equity")
-        match_lookup: Component name to ComponentMatch mapping
-
-    Returns:
-        Computed value or None if any component missing
-    """
-    tokens = formula.replace('+', ' + ').replace(
-        '-', ' - '
-    ).replace('/', ' / ').split()
-
-    result = None
-    operator = '+'
-
-    for token in tokens:
-        if token in ('+', '-', '/'):
-            operator = token
-            continue
-
-        component = match_lookup.get(token)
-        if not component or component.value is None:
-            return None
-
-        val = component.value
-        if result is None:
-            result = val if operator == '+' else -val
-        elif operator == '+':
-            result += val
-        elif operator == '-':
-            result -= val
-        elif operator == '/' and val != 0:
-            result /= val
-        else:
-            return None
-
-    return result
 
 
 __all__ = ['ValuePopulator', 'evaluate_formula']
