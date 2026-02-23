@@ -35,6 +35,22 @@ from loaders import (
 logger = get_process_logger('fact_value_lookup')
 
 
+# XBRL taxonomy-defined root concepts for primary financial statements.
+# These are intrinsic to FASB (US-GAAP) and IASB (IFRS) taxonomies.
+# Used to distinguish core statements from detail/disclosure schedules.
+_PRIMARY_STATEMENT_ROOTS = {
+    # US-GAAP (FASB taxonomy)
+    'StatementOfFinancialPositionAbstract',
+    'IncomeStatementAbstract',
+    'StatementOfIncomeAndComprehensiveIncomeAbstract',
+    'StatementOfCashFlowsAbstract',
+    'StatementOfStockholdersEquityAbstract',
+    # IFRS (IASB taxonomy)
+    'StatementOfChangesInEquityAbstract',
+    'StatementOfComprehensiveIncomeAbstract',
+}
+
+
 @dataclass
 class FactValue:
     """
@@ -139,8 +155,33 @@ class FactValueLookup:
 
         return total_concepts
 
+    def _is_primary_statement(self, stmt) -> bool:
+        """Check if statement is a primary financial statement.
+
+        Uses XBRL taxonomy-defined root abstract concepts from
+        hierarchy.roots (intrinsic to the filing data). Works for
+        any taxonomy: US-GAAP, IFRS, ESEF.
+        """
+        metadata = getattr(stmt, 'metadata', None)
+        if not isinstance(metadata, dict):
+            return False
+        hierarchy = metadata.get('hierarchy', {})
+        if not isinstance(hierarchy, dict):
+            return False
+        roots = hierarchy.get('roots', [])
+        for root in roots:
+            _, local_name = self._parse_qname(str(root))
+            if local_name in _PRIMARY_STATEMENT_ROOTS:
+                return True
+        return False
+
     def _load_from_mapped(self, mapped_entry: MappedFilingEntry) -> int:
-        """Load values from mapped statements."""
+        """Load values from mapped statements.
+
+        Two-tier loading: primary financial statements load first
+        so their values take priority (first-occurrence-wins).
+        Supplementary statements fill remaining gaps only.
+        """
         count = 0
 
         try:
@@ -148,8 +189,28 @@ class FactValueLookup:
             if not statements:
                 return 0
 
-            # Process all statements
+            # Classify statements by source priority
+            primary = []
+            supplementary = []
             for stmt in statements.statements:
+                if self._is_primary_statement(stmt):
+                    primary.append(stmt)
+                else:
+                    supplementary.append(stmt)
+
+            self.logger.info(
+                f"Statement priority: {len(primary)} primary, "
+                f"{len(supplementary)} supplementary"
+            )
+
+            # Load primary statements first (values take priority)
+            for stmt in primary:
+                for fact in stmt.facts:
+                    if self._add_fact_from_mapped(fact, stmt.name):
+                        count += 1
+
+            # Load supplementary (fill gaps only)
+            for stmt in supplementary:
                 for fact in stmt.facts:
                     if self._add_fact_from_mapped(fact, stmt.name):
                         count += 1
