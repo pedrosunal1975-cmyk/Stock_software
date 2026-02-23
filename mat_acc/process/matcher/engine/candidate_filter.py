@@ -83,6 +83,10 @@ def get_candidates(
         concept = concept_index.get_concept(qname)
         if not concept:
             continue
+        # Structural exclusion (definition linkbase arcroles)
+        if concept.is_dimensional:
+            continue
+        # Name-based exclusion (fallback for missing linkbase)
         local_lower = concept.local_name.lower()
         if any(
             excl in local_lower

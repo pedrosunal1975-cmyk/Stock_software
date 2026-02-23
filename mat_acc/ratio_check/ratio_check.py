@@ -181,32 +181,21 @@ class RatioCheckOrchestrator:
             self.logger.error("No mapped entry available")
             return None
 
-        print("\n  Loading sources...")
         parsed_entry = self._find_parsed_entry(selection)
-        sources = ["mapped statements"]
-        if parsed_entry:
-            sources.append("parsed.json (concepts only)")
+        src = "mapped + parsed" if parsed_entry else "mapped"
+        print(f"\n  Sources: {src}")
         self.debug_reporter.mark_stage('sources_verified')
-        print(f"  Using: {', '.join(sources)}")
 
         # Load values from mapped statements
-        print("\n  Loading fact values...")
         value_lookup = FactValueLookup(self.config)
-        value_count = value_lookup.load_from_filing(
-            mapped_entry=mapped_entry,
-        )
+        vc = value_lookup.load_from_filing(mapped_entry=mapped_entry)
         vs = value_lookup.get_value_summary()
-        print(f"  Loaded {value_count} concepts")
-        print(
-            f"  Primary period: "
-            f"{vs.get('primary_period', 'N/A')}"
-        )
+        print(f"\n  Loaded {vc} values, period: {vs.get('primary_period', 'N/A')}")
 
         # MIU: Verify and correct values
         xbrl_dir = self._find_xbrl_filing(selection)
         ixbrl_facts = []
         if xbrl_dir:
-            sources.append("iXBRL source")
             print("\n  Running Mathematical Integrity Unit...")
             _, ixbrl_facts = run_math_verify(
                 self._ixbrl_extractor,
@@ -217,10 +206,7 @@ class RatioCheckOrchestrator:
             )
             self.debug_reporter.mark_stage('math_verified')
         else:
-            print(
-                "\n  [NOTE] iXBRL not available "
-                "- skipping MIU"
-            )
+            print("\n  [NOTE] iXBRL not available - skipping MIU")
 
         # Build concept index
         print("\n  Building concept index...")
@@ -230,14 +216,9 @@ class RatioCheckOrchestrator:
             use_database=True,
         )
         if ixbrl_facts:
-            added = self.concept_builder.supplement_from_ixbrl(
-                ixbrl_facts, concept_index,
-            )
+            added = self.concept_builder.supplement_from_ixbrl(ixbrl_facts, concept_index)
             if added:
-                print(
-                    f"  Supplemented {added} concepts "
-                    f"from iXBRL"
-                )
+                print(f"  Supplemented {added} concepts from iXBRL")
 
         self.debug_reporter.set_metrics(
             concept_count=len(concept_index),
@@ -245,8 +226,16 @@ class RatioCheckOrchestrator:
         self.debug_reporter.mark_stage('concepts_built')
         print(f"  Built index with {len(concept_index)} concepts")
 
-        # Read calculation linkbase for formula discovery
-        calc_networks = self._read_calc_linkbase(xbrl_dir)
+        # Read linkbases for calc discovery + dimensional awareness
+        calc_networks, def_networks = self._read_linkbases(xbrl_dir)
+
+        # Tag dimensional concepts (axes, members, domains)
+        if def_networks:
+            from .dim_awareness import extract_dimensions, tag_concepts
+            dim_idx = extract_dimensions(def_networks)
+            tagged = tag_concepts(dim_idx, concept_index)
+            if tagged:
+                print(f"  Tagged {tagged} dimensional concepts")
 
         # Run matching and ratio calculation
         print("\n  Running matching engine...")
@@ -278,16 +267,21 @@ class RatioCheckOrchestrator:
             self._track_unmatched(result.component_matches)
         return result
 
-    def _read_calc_linkbase(self, xbrl_dir):
-        """Read calculation linkbase from XBRL filing."""
+    def _read_linkbases(self, xbrl_dir):
+        """Read calc + definition linkbases from XBRL filing."""
         if not xbrl_dir:
-            return []
+            return [], []
         from loaders.xbrl_reader import XBRLReader
-        networks = XBRLReader().read_calculation_linkbase(xbrl_dir)
-        if networks:
-            arcs = sum(len(n.arcs) for n in networks)
+        reader = XBRLReader()
+        calc = reader.read_calculation_linkbase(xbrl_dir)
+        defn = reader.read_definition_linkbase(xbrl_dir)
+        if calc:
+            arcs = sum(len(n.arcs) for n in calc)
             print(f"\n  Loaded {arcs} calc relationships")
-        return networks
+        if defn:
+            arcs = sum(len(n.arcs) for n in defn)
+            print(f"  Loaded {arcs} definition relationships")
+        return calc, defn
 
     def _track_unmatched(self, matches) -> None:
         """Record unmatched components for debug reporting."""

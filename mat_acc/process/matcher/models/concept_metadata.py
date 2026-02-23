@@ -52,6 +52,7 @@ class ConceptMetadata:
     balance_type: Optional[str] = None  # "debit", "credit", or None
     period_type: Optional[str] = None   # "instant" or "duration"
     is_abstract: bool = False
+    is_dimensional: bool = False  # axis, member, domain, hypercube
     data_type: Optional[str] = None
 
     # References (list of {standard, section, paragraph})
@@ -100,6 +101,7 @@ class ConceptMetadata:
             'balance_type': self.balance_type,
             'period_type': self.period_type,
             'is_abstract': self.is_abstract,
+            'is_dimensional': self.is_dimensional,
             'data_type': self.data_type,
             'references': self.references,
             'presentation_parent': self.presentation_parent,
