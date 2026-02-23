@@ -4,73 +4,38 @@ Matching Coordinator
 
 The main orchestrator for dynamic concept matching.
 This is the primary entry point for the matching engine.
+
+Delegates atomic matching to AtomicMatcher, composite
+resolution handled internally.
 """
 
-import logging
 from pathlib import Path
-from typing import Optional, Any
+from typing import Optional
 
-# Import IPO logging (PROCESS layer for matching engine)
 from core.logger.ipo_logging import get_process_logger
 
 from .component_loader import ComponentLoader
-from ..models.component_definition import ComponentDefinition, RejectionCondition, MatchType
+from .atomic_matcher import AtomicMatcher
+from ..models.component_definition import ComponentDefinition
 from ..models.concept_metadata import ConceptMetadata, ConceptIndex
-from ..models.match_result import MatchResult, ScoredMatch, Confidence
-from ..models.resolution_map import ResolutionMap, CompositeResolution
+from ..models.match_result import MatchResult
+from ..models.resolution_map import (
+    ResolutionMap, CompositeResolution,
+)
 from ..evaluators import (
-    LabelEvaluator,
-    HierarchyEvaluator,
-    CalculationEvaluator,
-    DefinitionEvaluator,
+    LabelEvaluator, HierarchyEvaluator,
+    CalculationEvaluator, DefinitionEvaluator,
     LocalNameEvaluator,
 )
 from ..scoring import ScoreAggregator, Tiebreaker
-
-
-# Universal negating qualifiers. A concept containing any of these
-# in its local_name is semantically different from what a component
-# typically wants (e.g. PPEUsefulLife is NOT PPE value, Discontinued
-# ops is NOT continuing ops). Applied as a central score penalty,
-# eliminating the need for per-YAML reject_if rules.
-_NEGATING_QUALIFIERS = [
-    'discontinued',              # DiscontinuedOperations
-    'disposalgroup',             # DisposalGroupAssets
-    'usefullife',                # PPEUsefulLife (years, not value)
-    'heldforsale',               # HeldForSale - reclassified
-    'antidilutive',              # AntidilutiveSecurities
-    'incometaxreconciliation',   # Tax rate adjustments, not expense
-]
-
-_QUALIFIER_PENALTY = 25  # Score reduction per negating qualifier
 
 
 class MatchingCoordinator:
     """
     Main orchestrator for dynamic concept matching.
 
-    The MatchingCoordinator:
-    1. Loads component definitions from the dictionary
-    2. Indexes filing concepts for fast lookup
-    3. Evaluates matching rules for each component
-    4. Scores and selects the best matches
-    5. Produces a ResolutionMap for value extraction
-
-    Example:
-        coordinator = MatchingCoordinator()
-
-        # Build concept index from filing data
-        concept_index = coordinator.build_index(concepts)
-
-        # Resolve all components
-        resolution = coordinator.resolve_all(
-            concept_index=concept_index,
-            required_components=['current_assets', 'current_liabilities']
-        )
-
-        # Get matched concept
-        concept = resolution.get_concept('current_assets')
-        # Returns: "us-gaap:AssetsCurrent"
+    Phase 1: Atomic matching (all components with rules)
+    Phase 2: Formula computation (unresolved composites)
     """
 
     def __init__(
@@ -79,35 +44,30 @@ class MatchingCoordinator:
         diagnostics: bool = True,
         market: Optional[str] = None,
     ):
-        """
-        Initialize matching coordinator.
-
-        Args:
-            dictionary_path: Path to dictionary directory.
-                           Defaults to mat_acc_files/dictionary/
-            diagnostics: Enable detailed diagnostic logging
-            market: Market identifier for dictionary overlays
-                   (e.g. 'sec', 'esef'). None uses base only.
-        """
-        self.logger = get_process_logger('matcher.coordinator')
+        """Initialize matching coordinator."""
+        self.logger = get_process_logger(
+            'matcher.coordinator',
+        )
         self.diagnostics = diagnostics
-        self._match_diagnostics: dict[str, dict] = {}
 
         # Load component definitions (market-aware)
-        self.component_loader = ComponentLoader(dictionary_path)
+        self.component_loader = ComponentLoader(
+            dictionary_path,
+        )
         if market:
-            self.components = self.component_loader.load_for_market(
-                market
+            self.components = (
+                self.component_loader.load_for_market(market)
             )
         else:
             self.components = self.component_loader.load_all()
 
         self.logger.info(
-            f"Loaded {len(self.components)} component definitions"
+            f"Loaded {len(self.components)} "
+            f"component definitions"
         )
 
         # Initialize evaluators
-        self.evaluators = {
+        evaluators = {
             'label': LabelEvaluator(),
             'local_name': LocalNameEvaluator(),
             'hierarchy': HierarchyEvaluator(),
@@ -115,736 +75,118 @@ class MatchingCoordinator:
             'definition': DefinitionEvaluator(),
         }
 
-        # Initialize scoring components
-        self.score_aggregator = ScoreAggregator()
-        self.tiebreaker = Tiebreaker()
+        # Create atomic matcher with shared components
+        self._matcher = AtomicMatcher(
+            evaluators=evaluators,
+            score_aggregator=ScoreAggregator(),
+            tiebreaker=Tiebreaker(),
+            components=self.components,
+            diagnostics=diagnostics,
+        )
 
     def build_index(
-        self,
-        concepts: list[ConceptMetadata]
+        self, concepts: list[ConceptMetadata],
     ) -> ConceptIndex:
-        """
-        Build a concept index from a list of concepts.
-
-        Args:
-            concepts: List of concept metadata objects
-
-        Returns:
-            ConceptIndex for fast lookup
-        """
+        """Build a concept index from a list of concepts."""
         index = ConceptIndex()
-
         for concept in concepts:
             index.add_concept(concept)
-
-        self.logger.info(f"Built index with {len(index)} concepts")
+        self.logger.info(
+            f"Built index with {len(index)} concepts",
+        )
         return index
 
     def resolve_all(
-        self,
-        concept_index: ConceptIndex,
+        self, concept_index: ConceptIndex,
         filing_id: str = "unknown",
-        required_components: Optional[list[str]] = None
+        required_components: Optional[list[str]] = None,
     ) -> ResolutionMap:
-        """
-        Resolve all components for a filing.
-
-        Args:
-            concept_index: Index of concepts from the filing
-            filing_id: Identifier for the filing
-            required_components: Optional list of component IDs to resolve.
-                               If None, resolves all components.
-
-        Returns:
-            ResolutionMap with matched concepts
-        """
+        """Resolve all components for a filing."""
         resolution = ResolutionMap(filing_id=filing_id)
 
-        # Determine which components to resolve
         if required_components:
-            components_to_resolve = {
+            to_resolve = {
                 cid: self.components[cid]
                 for cid in required_components
                 if cid in self.components
             }
         else:
-            components_to_resolve = self.components
+            to_resolve = self.components
 
         self.logger.info(
-            f"Resolving {len(components_to_resolve)} components for {filing_id}"
+            f"Resolving {len(to_resolve)} components "
+            f"for {filing_id}"
         )
 
-        # Phase 1: Try atomic matching for ALL components with rules
-        # This includes composites - they may match directly (e.g.,
-        # us-gaap:GrossProfit) which is more reliable than computing
-        for component_id, component in components_to_resolve.items():
+        # Phase 1: Atomic matching for components with rules
+        for cid, comp in to_resolve.items():
             has_rules = (
-                component.matching_rules.label_rules
-                or component.matching_rules.local_name_rules
+                comp.matching_rules.label_rules
+                or comp.matching_rules.local_name_rules
             )
             if not has_rules:
                 continue
-
-            result = self._match_component(component, concept_index)
-            resolution.add_match(component_id, result)
-
-        # Phase 2: Formula computation for unresolved components
-        # Any component with a formula (composite or atomic with
-        # fallback) gets a chance at computation from resolved parts
-        for component_id, component in components_to_resolve.items():
-            if not component.composition.formula:
-                continue
-            if resolution.is_resolved(component_id):
-                continue  # Already matched atomically
-
-            composite_result = self._resolve_composite(
-                component, resolution
+            result = self._matcher.match(
+                comp, concept_index,
             )
-            resolution.add_composite(component_id, composite_result)
+            resolution.add_match(cid, result)
 
-        # Log summary
+        # Phase 2: Formula fallback for unresolved
+        for cid, comp in to_resolve.items():
+            if not comp.composition.formula:
+                continue
+            if resolution.is_resolved(cid):
+                continue
+            composite = self._resolve_composite(
+                comp, resolution,
+            )
+            resolution.add_composite(cid, composite)
+
         self.logger.info(
-            f"Resolution complete: {len(resolution.resolved)}/{len(components_to_resolve)} "
-            f"resolved, {resolution.high_confidence_rate:.1f}% high confidence"
+            f"Resolution complete: "
+            f"{len(resolution.resolved)}/"
+            f"{len(to_resolve)} resolved, "
+            f"{resolution.high_confidence_rate:.1f}% "
+            f"high confidence"
         )
-
         return resolution
 
     def resolve_component(
-        self,
-        component_id: str,
-        concept_index: ConceptIndex
+        self, component_id: str,
+        concept_index: ConceptIndex,
     ) -> MatchResult:
-        """
-        Resolve a single component.
-
-        Args:
-            component_id: Component to resolve
-            concept_index: Index of concepts
-
-        Returns:
-            MatchResult for the component
-        """
+        """Resolve a single component."""
         if component_id not in self.components:
             return MatchResult.no_match(
                 component_id,
-                f"Unknown component: {component_id}"
+                f"Unknown component: {component_id}",
             )
 
         component = self.components[component_id]
-
         if component.is_composite:
-            # For composites, we need a full resolution map
             self.logger.warning(
-                f"resolve_component called for composite {component_id}; "
-                f"use resolve_all for composites"
+                f"resolve_component called for composite "
+                f"{component_id}; use resolve_all"
             )
             return MatchResult.no_match(
                 component_id,
-                "Composite components require full resolution"
+                "Composite needs full resolution",
             )
 
-        return self._match_component(component, concept_index)
-
-    def _match_component(
-        self,
-        component: ComponentDefinition,
-        concept_index: ConceptIndex
-    ) -> MatchResult:
-        """
-        Match a single atomic component.
-
-        Args:
-            component: Component definition
-            concept_index: Concept index
-
-        Returns:
-            MatchResult
-        """
-        component_id = component.component_id
-
-        # Initialize diagnostics for this component
-        diag = {
-            'component_id': component_id,
-            'search_patterns': [],
-            'filters': {},
-            'candidates_found': 0,
-            'rejections': [],
-            'below_threshold': [],
-            'passed_threshold': [],
-            'failure_reason': None,
-        }
-
-        # Extract search criteria for diagnostics
-        if component.matching_rules.label_rules:
-            for rule in component.matching_rules.label_rules:
-                diag['search_patterns'].extend(rule.patterns)
-
-        if component.characteristics.balance_type:
-            diag['filters']['balance_type'] = component.characteristics.balance_type.value
-        if component.characteristics.period_type:
-            diag['filters']['period_type'] = component.characteristics.period_type.value
-
-        # Get candidate concepts
-        candidates = self._get_candidates(component, concept_index)
-        diag['candidates_found'] = len(candidates)
-
-        # Diagnostic: Check for expected concepts and why they might be missing
-        if self.diagnostics:
-            self._log_candidate_diagnostics(
-                component_id, candidates, concept_index, diag['search_patterns']
-            )
-
-        if not candidates:
-            diag['failure_reason'] = 'NO_CANDIDATES'
-            self._match_diagnostics[component_id] = diag
-
-            self.logger.info(
-                f"[MATCH FAIL] {component_id}: No candidates found. "
-                f"Searched for patterns={diag['search_patterns']}, "
-                f"filters={diag['filters']}"
-            )
-            return MatchResult.no_match(component_id, "No candidates found")
-
-        self.logger.info(
-            f"[MATCH] {component_id}: Evaluating {len(candidates)} candidates"
+        return self._matcher.match(
+            component, concept_index,
         )
-
-        # Evaluate each candidate
-        scored_matches = []
-        rejection_count = 0
-        below_threshold_count = 0
-
-        for concept in candidates:
-            # Check rejection conditions first, but exempt concepts
-            # explicitly named in exact local_name rules (dictionary
-            # says "this IS the concept" - rejections shouldn't override)
-            exempt = self._is_exact_name_match(concept, component)
-            rejection = self._check_rejection(concept, component)
-            if rejection and not exempt:
-                rejection_count += 1
-                diag['rejections'].append({
-                    'concept': concept.qname,
-                    'reason': rejection
-                })
-                if self.diagnostics and rejection_count <= 3:
-                    self.logger.debug(
-                        f"  [REJECTED] {concept.qname}: {rejection}"
-                    )
-                continue
-
-            # Evaluate all rules
-            evaluation_results = {}
-
-            # Label rules
-            if component.matching_rules.label_rules:
-                result = self.evaluators['label'].evaluate(
-                    concept=concept,
-                    rules=component.matching_rules.label_rules
-                )
-                evaluation_results['label'] = result
-
-            # Local name rules
-            if component.matching_rules.local_name_rules:
-                result = self.evaluators['local_name'].evaluate(
-                    concept=concept,
-                    rules=component.matching_rules.local_name_rules
-                )
-                evaluation_results['local_name'] = result
-
-            # Hierarchy rules
-            if component.matching_rules.hierarchy_rules:
-                result = self.evaluators['hierarchy'].evaluate(
-                    concept=concept,
-                    rules=component.matching_rules.hierarchy_rules,
-                    context={'concept_index': concept_index}
-                )
-                evaluation_results['hierarchy'] = result
-
-            # Calculation rules
-            if component.matching_rules.calculation_rules:
-                result = self.evaluators['calculation'].evaluate(
-                    concept=concept,
-                    rules=component.matching_rules.calculation_rules,
-                    context={'concept_index': concept_index}
-                )
-                evaluation_results['calculation'] = result
-
-            # Definition rules
-            if component.matching_rules.definition_rules:
-                result = self.evaluators['definition'].evaluate(
-                    concept=concept,
-                    rules=component.matching_rules.definition_rules
-                )
-                evaluation_results['definition'] = result
-
-            # Aggregate scores
-            scored_match = self.score_aggregator.aggregate(
-                concept_qname=concept.qname,
-                evaluation_results=evaluation_results,
-                component=component
-            )
-
-            # Apply universal qualifier penalty
-            penalty = self._qualifier_penalty(concept)
-            if penalty > 0:
-                scored_match.total_score = max(
-                    0, scored_match.total_score - penalty
-                )
-                if self.diagnostics:
-                    self.logger.debug(
-                        f"  [PENALTY] {concept.qname}: "
-                        f"-{penalty} (qualifier), "
-                        f"score={scored_match.total_score}"
-                    )
-
-            # Check minimum score
-            min_score = component.scoring.min_score
-            if scored_match.total_score >= min_score:
-                scored_matches.append(scored_match)
-                diag['passed_threshold'].append({
-                    'concept': concept.qname,
-                    'score': scored_match.total_score,
-                })
-            else:
-                below_threshold_count += 1
-                diag['below_threshold'].append({
-                    'concept': concept.qname,
-                    'score': scored_match.total_score,
-                    'min_required': min_score,
-                })
-
-        # Log diagnostic summary
-        if self.diagnostics:
-            self.logger.info(
-                f"  [CANDIDATES] {component_id}: "
-                f"{len(candidates)} found, "
-                f"{rejection_count} rejected, "
-                f"{below_threshold_count} below threshold, "
-                f"{len(scored_matches)} passed"
-            )
-
-        # Handle results
-        if not scored_matches:
-            if rejection_count == len(candidates):
-                diag['failure_reason'] = 'ALL_REJECTED'
-                reason = f"All {len(candidates)} candidates rejected"
-            else:
-                diag['failure_reason'] = 'BELOW_THRESHOLD'
-                reason = f"No candidates met min score ({component.scoring.min_score})"
-
-                # Show top failing candidates
-                if diag['below_threshold']:
-                    top_failures = sorted(
-                        diag['below_threshold'],
-                        key=lambda x: x['score'],
-                        reverse=True
-                    )[:3]
-                    for f in top_failures:
-                        self.logger.info(
-                            f"  [NEAR MISS] {f['concept']}: "
-                            f"score={f['score']:.2f} (needs {f['min_required']})"
-                        )
-
-            self._match_diagnostics[component_id] = diag
-            return MatchResult.no_match(component_id, reason)
-
-        # Sort by score (descending)
-        scored_matches.sort(key=lambda m: m.total_score, reverse=True)
-
-        # Check for ties
-        top_score = scored_matches[0].total_score
-        ties = [m for m in scored_matches if m.total_score == top_score]
-
-        if len(ties) > 1:
-            # Apply tiebreaker
-            best_match, tiebreaker_used = self.tiebreaker.resolve(
-                matches=ties,
-                strategy=component.scoring.tiebreaker,
-                concept_index=concept_index
-            )
-            alternatives = [m for m in ties if m.concept != best_match.concept]
-        else:
-            best_match = scored_matches[0]
-            tiebreaker_used = None
-            alternatives = scored_matches[1:5]  # Keep top 5 alternatives
-
-        # Log successful match
-        diag['failure_reason'] = None
-        diag['matched_concept'] = best_match.concept
-        diag['matched_score'] = best_match.total_score
-        self._match_diagnostics[component_id] = diag
-
-        self.logger.info(
-            f"  [MATCHED] {component_id} -> {best_match.concept} "
-            f"(score={best_match.total_score:.2f})"
-        )
-
-        return MatchResult.from_scored_match(
-            component_id=component_id,
-            match=best_match,
-            alternatives=alternatives,
-            tiebreaker_used=tiebreaker_used
-        )
-
-    def _get_candidates(
-        self,
-        component: ComponentDefinition,
-        concept_index: ConceptIndex
-    ) -> list[ConceptMetadata]:
-        """
-        Get candidate concepts for matching.
-
-        Uses the concept index for fast pre-filtering.
-
-        Args:
-            component: Component definition
-            concept_index: Concept index
-
-        Returns:
-            List of candidate concepts
-        """
-        # Extract search terms from label rules
-        label_patterns = []
-        for rule in component.matching_rules.label_rules:
-            label_patterns.extend(rule.patterns)
-
-        # Extract local name patterns for candidate search
-        local_name_patterns = []
-        if component.matching_rules.local_name_rules:
-            for rule in component.matching_rules.local_name_rules:
-                local_name_patterns.extend(rule.patterns)
-
-        # Get characteristic filters
-        # BalanceType.NONE means "no balance type" - skip filtering
-        balance_type = None
-        period_type = None
-
-        bt = component.characteristics.balance_type
-        if bt and bt.value != 'none':
-            balance_type = bt.value
-
-        if component.characteristics.period_type:
-            period_type = component.characteristics.period_type.value
-
-        # Query index (labels + local names)
-        candidate_qnames = concept_index.get_candidates(
-            label_patterns=label_patterns,
-            local_name_patterns=local_name_patterns,
-            balance_type=balance_type,
-            period_type=period_type,
-            exclude_abstract=not component.characteristics.is_abstract,
-            max_candidates=100
-        )
-
-        # Ensure explicitly-named concepts are always candidates.
-        # Pre-filters (balance_type, period_type) are for broad
-        # pruning; exact local_name_rules name specific concepts
-        # the dictionary considers valid - they must reach scoring.
-        candidate_set = set(candidate_qnames)
-        initial_count = len(candidate_set)
-        if component.matching_rules.local_name_rules:
-            for rule in component.matching_rules.local_name_rules:
-                if rule.match_type != MatchType.EXACT:
-                    continue
-                for pattern in rule.patterns:
-                    self._ensure_exact_candidate(
-                        pattern, concept_index, candidate_set,
-                    )
-        added = len(candidate_set) - initial_count
-        if added > 0:
-            self.logger.info(
-                f"  [FORCE-INCLUDE] Added {added} exact "
-                f"local_name concepts for {component.component_id}"
-            )
-        candidate_qnames = list(candidate_set)
-
-        # Convert to concept metadata objects and apply universal filters
-        # These patterns indicate non-value concepts (text blocks, disclosures)
-        # that should never match monetary components
-        universal_exclude = [
-            'textblock', 'schedule',
-            'explanatory', 'disclosure', 'policy',
-            'axis', 'member', 'domain',
-        ]
-
-        candidates = []
-        for qname in candidate_qnames:
-            concept = concept_index.get_concept(qname)
-            if concept:
-                local_lower = concept.local_name.lower()
-                if any(excl in local_lower for excl in universal_exclude):
-                    continue
-                # Exclude mapper hierarchy labels (root: prefix)
-                # These are section headers, not XBRL taxonomy concepts
-                if concept.prefix == 'root':
-                    continue
-                # Data type validation: reject KNOWN incompatible types
-                if not self._is_type_compatible(concept, component):
-                    continue
-                candidates.append(concept)
-
-        return candidates
-
-    def _ensure_exact_candidate(
-        self,
-        local_name_pattern: str,
-        concept_index: ConceptIndex,
-        candidate_set: set[str],
-    ) -> None:
-        """
-        Ensure a concept named by exact local_name rule is a candidate.
-
-        Searches the full index for any concept whose local_name
-        matches the pattern exactly (case-insensitive). Adds to
-        candidate_set if found but missing.
-
-        Args:
-            local_name_pattern: Exact local name to find
-            concept_index: Full concept index
-            candidate_set: Mutable set of candidate QNames
-        """
-        pattern_lower = local_name_pattern.lower()
-        found = False
-        for concept in concept_index.get_all_concepts():
-            if concept.local_name.lower() == pattern_lower:
-                found = True
-                if concept.qname not in candidate_set:
-                    candidate_set.add(concept.qname)
-                    self.logger.debug(
-                        f"  [FORCED] '{concept.qname}' added "
-                        f"(local_name={concept.local_name}, "
-                        f"balance={concept.balance_type}, "
-                        f"period={concept.period_type})"
-                    )
-                else:
-                    self.logger.debug(
-                        f"  [ALREADY] '{concept.qname}' already "
-                        f"in candidates"
-                    )
-        if not found:
-            self.logger.warning(
-                f"  [NOT IN INDEX] No concept with "
-                f"local_name='{local_name_pattern}'"
-            )
-
-    def _log_candidate_diagnostics(
-        self,
-        component_id: str,
-        candidates: list[ConceptMetadata],
-        concept_index: ConceptIndex,
-        search_patterns: list[str]
-    ) -> None:
-        """
-        Log diagnostic info about candidate selection.
-
-        Shows:
-        - Sample of candidate QNames
-        - Check if expected concepts exist but are missing from candidates
-        - Sample labels from candidates
-        """
-        if not candidates:
-            return
-
-        # Sample candidate QNames
-        sample = [c.qname for c in candidates[:5]]
-        self.logger.info(f"  [CANDIDATES SAMPLE] {sample}")
-
-        # Build expected patterns from component's own local_name rules
-        # instead of hardcoding US-GAAP names
-        expected_patterns = []
-        component = self.components.get(component_id)
-        if component and component.matching_rules.local_name_rules:
-            for rule in component.matching_rules.local_name_rules:
-                if rule.match_type == 'exact':
-                    expected_patterns.extend(rule.patterns[:3])
-        candidate_qnames = {c.qname for c in candidates}
-        all_concepts = concept_index.get_all_concepts()
-
-        for pattern in expected_patterns:
-            # Find concepts matching this pattern in the FULL index
-            matching = [c for c in all_concepts
-                       if pattern.lower() in c.local_name.lower()]
-
-            if matching:
-                # Check if any of them are in our candidates
-                in_candidates = [c for c in matching if c.qname in candidate_qnames]
-
-                if not in_candidates:
-                    # Expected concept exists but NOT in candidates
-                    best_match = matching[0]
-                    labels = list(best_match.labels.values())[:2] if best_match.labels else ['(no labels)']
-                    self.logger.warning(
-                        f"  [MISSING FROM CANDIDATES] '{best_match.qname}' "
-                        f"(local_name: {best_match.local_name}, labels: {labels})"
-                    )
-                else:
-                    # It's in candidates - will be evaluated
-                    self.logger.info(
-                        f"  [EXPECTED FOUND] '{in_candidates[0].qname}' is in candidates"
-                    )
-
-    def _is_exact_name_match(
-        self,
-        concept: ConceptMetadata,
-        component: ComponentDefinition
-    ) -> bool:
-        """Check if concept is explicitly named in an EXACT rule.
-
-        Only EXACT match_type rules qualify. Contains/starts_with
-        patterns are too broad for rejection exemption (e.g.
-        contains 'CurrentLiabilities' would wrongly exempt
-        'NoncurrentLiabilities' from the noncurrent rejection).
-        """
-        if not component.matching_rules.local_name_rules:
-            return False
-        name_lower = concept.local_name.lower()
-        for rule in component.matching_rules.local_name_rules:
-            if rule.match_type.value != 'exact':
-                continue
-            for pattern in rule.patterns:
-                if name_lower == pattern.lower():
-                    return True
-        return False
-
-    def _check_rejection(
-        self,
-        concept: ConceptMetadata,
-        component: ComponentDefinition
-    ) -> Optional[str]:
-        """
-        Check if concept should be rejected.
-
-        Args:
-            concept: Concept to check
-            component: Component with rejection conditions
-
-        Returns:
-            Rejection reason or None if not rejected
-        """
-        for condition in component.scoring.reject_if:
-            if self._matches_rejection(concept, condition):
-                return condition.condition
-
-        return None
-
-    def _matches_rejection(
-        self,
-        concept: ConceptMetadata,
-        condition: RejectionCondition
-    ) -> bool:
-        """
-        Check if concept matches a rejection condition.
-
-        Supported patterns:
-        - "abstract=true": Concept is abstract
-        - "label~keyword": Label contains keyword
-        - "name~pattern": Local name contains pattern
-
-        Args:
-            concept: Concept to check
-            condition: Rejection condition
-
-        Returns:
-            True if concept should be rejected
-        """
-        pattern = condition.pattern
-
-        if pattern == "abstract=true":
-            return concept.is_abstract
-
-        if pattern.startswith("label~"):
-            keyword = pattern[6:]  # Remove "label~"
-            for label in concept.get_all_labels():
-                if keyword.lower() in label.lower():
-                    return True
-
-        if pattern.startswith("name~"):
-            keyword = pattern[5:]  # Remove "name~"
-            if keyword.lower() in concept.local_name.lower():
-                return True
-
-        return False
-
-    def _qualifier_penalty(
-        self, concept: ConceptMetadata
-    ) -> int:
-        """Score penalty for negating qualifiers in concept name.
-
-        Central mechanism replacing per-YAML reject_if rules.
-        Concepts with negating qualifiers (Discontinued, UsefulLife,
-        etc.) get a score reduction, pushing them below threshold
-        unless other signals are very strong.
-        """
-        local_lower = concept.local_name.lower()
-        for qualifier in _NEGATING_QUALIFIERS:
-            if qualifier in local_lower:
-                return _QUALIFIER_PENALTY
-        return 0
-
-    def _is_type_compatible(
-        self,
-        concept: ConceptMetadata,
-        component: 'ComponentDefinition',
-    ) -> bool:
-        """Check concept data type against component expectation.
-
-        Permissive: unknown types pass through. Only rejects
-        concepts with KNOWN incompatible types (e.g. shares-count
-        concept for a monetary component).
-        """
-        if not concept.data_type:
-            return True
-        expected = component.characteristics.data_type
-        if not expected:
-            return True
-        concept_cat = self._infer_data_category(concept.data_type)
-        if not concept_cat:
-            return True
-        expected_val = expected.value
-        return concept_cat == expected_val
-
-    @staticmethod
-    def _infer_data_category(unit_str: str) -> Optional[str]:
-        """Map XBRL unit string to DataType category.
-
-        iso4217:USD -> monetary, xbrli:shares -> shares,
-        xbrli:pure -> pure, USD/shares -> per_share.
-        Returns None for unrecognized units.
-        """
-        lower = unit_str.lower()
-        if '/' in lower:
-            return 'per_share'
-        if 'iso4217' in lower:
-            return 'monetary'
-        if 'shares' in lower:
-            return 'shares'
-        if 'pure' in lower:
-            return 'pure'
-        return None
 
     def _resolve_composite(
-        self,
-        component: ComponentDefinition,
-        resolution: ResolutionMap
+        self, component: ComponentDefinition,
+        resolution: ResolutionMap,
     ) -> CompositeResolution:
-        """
-        Resolve a composite component.
-
-        Args:
-            component: Composite component definition
-            resolution: Current resolution map with atomic matches
-
-        Returns:
-            CompositeResolution
-        """
-        component_id = component.component_id
+        """Resolve a composite via formula computation."""
+        cid = component.component_id
         composition = component.composition
 
-        # Check primary formula
         missing = []
         component_concepts = {}
-
         for child_id in composition.components:
             if resolution.is_resolved(child_id):
                 concept = resolution.get_concept(child_id)
@@ -854,19 +196,17 @@ class MatchingCoordinator:
                 missing.append(child_id)
 
         if not missing:
-            # Primary formula satisfied
             return CompositeResolution(
-                component_id=component_id,
+                component_id=cid,
                 resolved=True,
                 formula=composition.formula,
-                component_concepts=component_concepts
+                component_concepts=component_concepts,
             )
 
         # Try alternatives
         for alt in composition.alternatives:
             alt_missing = []
             alt_concepts = {}
-
             for child_id in alt.components:
                 if resolution.is_resolved(child_id):
                     concept = resolution.get_concept(child_id)
@@ -876,28 +216,30 @@ class MatchingCoordinator:
                     alt_missing.append(child_id)
 
             if not alt_missing:
-                # Alternative satisfied
                 return CompositeResolution(
-                    component_id=component_id,
+                    component_id=cid,
                     resolved=True,
                     formula=alt.formula,
-                    component_concepts=alt_concepts
+                    component_concepts=alt_concepts,
                 )
 
-        # No formula satisfied
         return CompositeResolution(
-            component_id=component_id,
+            component_id=cid,
             resolved=False,
             formula=composition.formula,
             component_concepts=component_concepts,
-            missing_components=missing
+            missing_components=missing,
         )
 
-    def get_component(self, component_id: str) -> Optional[ComponentDefinition]:
+    def get_component(
+        self, component_id: str,
+    ) -> Optional[ComponentDefinition]:
         """Get a component definition by ID."""
         return self.components.get(component_id)
 
-    def get_all_components(self) -> dict[str, ComponentDefinition]:
+    def get_all_components(
+        self,
+    ) -> dict[str, ComponentDefinition]:
         """Get all loaded component definitions."""
         return self.components.copy()
 
@@ -905,58 +247,18 @@ class MatchingCoordinator:
         """Reload component definitions from disk."""
         self.component_loader.clear_cache()
         self.components = self.component_loader.load_all()
-        self.logger.info(f"Reloaded {len(self.components)} components")
+        self._matcher.components = self.components
+        self.logger.info(
+            f"Reloaded {len(self.components)} components",
+        )
 
     def get_match_diagnostics(self) -> dict[str, dict]:
-        """
-        Get detailed diagnostics for all match attempts.
-
-        Returns:
-            Dictionary mapping component_id to diagnostic info including:
-            - search_patterns: Patterns used to find candidates
-            - filters: Balance/period type filters applied
-            - candidates_found: Number of candidates found
-            - rejections: List of rejected candidates with reasons
-            - below_threshold: Candidates that scored below minimum
-            - passed_threshold: Candidates that passed
-            - failure_reason: Why matching failed (if it did)
-            - matched_concept: The matched concept (if successful)
-            - matched_score: The match score (if successful)
-        """
-        return self._match_diagnostics.copy()
+        """Get diagnostics for all match attempts."""
+        return self._matcher.get_match_diagnostics()
 
     def print_diagnostics_summary(self) -> None:
-        """Print a human-readable summary of match diagnostics."""
-        print("\n" + "=" * 70)
-        print("  MATCHING ENGINE DIAGNOSTICS")
-        print("=" * 70)
-
-        for comp_id, diag in self._match_diagnostics.items():
-            if diag.get('matched_concept'):
-                status = "[OK]"
-                detail = f"-> {diag['matched_concept']} (score={diag['matched_score']:.2f})"
-            else:
-                status = "[--]"
-                reason = diag.get('failure_reason', 'UNKNOWN')
-                if reason == 'NO_CANDIDATES':
-                    detail = f"No candidates. Patterns: {diag['search_patterns']}"
-                elif reason == 'ALL_REJECTED':
-                    detail = f"All {len(diag['rejections'])} candidates rejected"
-                elif reason == 'BELOW_THRESHOLD':
-                    if diag['below_threshold']:
-                        best = max(diag['below_threshold'], key=lambda x: x['score'])
-                        detail = (
-                            f"Best score={best['score']:.2f} "
-                            f"(needs {best['min_required']})"
-                        )
-                    else:
-                        detail = "Below threshold"
-                else:
-                    detail = reason
-
-            print(f"  {status} {comp_id:30s} {detail}")
-
-        print("=" * 70 + "\n")
+        """Print human-readable match diagnostics."""
+        self._matcher.print_diagnostics_summary()
 
 
 __all__ = ['MatchingCoordinator']
