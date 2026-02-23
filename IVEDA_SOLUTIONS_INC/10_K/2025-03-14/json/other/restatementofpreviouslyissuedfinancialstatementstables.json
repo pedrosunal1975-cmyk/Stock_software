@@ -1,0 +1,71 @@
+{
+  "role_uri": "http://iveda.com/role/RestatementOfPreviouslyIssuedFinancialStatementsTables",
+  "role_definition": null,
+  "statement_type": "OTHER",
+  "classification": {
+    "category": "TABLE",
+    "statement_type": "OTHER",
+    "is_primary": false,
+    "confidence": "LOW",
+    "matched_patterns": [
+      "Tables"
+    ],
+    "structural_signals": {},
+    "source": "structural_analysis",
+    "taxonomy_source": "fallback_pattern",
+    "fallback_used": true
+  },
+  "hierarchy": {
+    "roots": [
+      "us-gaap_AccountingChangesAndErrorCorrectionsAbstract"
+    ],
+    "children": {
+      "us-gaap_AccountingChangesAndErrorCorrectionsAbstract": [
+        "us-gaap_ScheduleOfErrorCorrectionsAndPriorPeriodAdjustmentsTextBlock",
+        "us-gaap_StatementOfFinancialPositionAbstract",
+        "us-gaap_IncomeStatementAbstract",
+        "us-gaap_StatementOfStockholdersEquityAbstract",
+        "us-gaap_StatementOfCashFlowsAbstract"
+      ]
+    },
+    "parents": {
+      "us-gaap_ScheduleOfErrorCorrectionsAndPriorPeriodAdjustmentsTextBlock": "us-gaap_AccountingChangesAndErrorCorrectionsAbstract",
+      "us-gaap_StatementOfFinancialPositionAbstract": "us-gaap_AccountingChangesAndErrorCorrectionsAbstract",
+      "us-gaap_IncomeStatementAbstract": "us-gaap_AccountingChangesAndErrorCorrectionsAbstract",
+      "us-gaap_StatementOfStockholdersEquityAbstract": "us-gaap_AccountingChangesAndErrorCorrectionsAbstract",
+      "us-gaap_StatementOfCashFlowsAbstract": "us-gaap_AccountingChangesAndErrorCorrectionsAbstract"
+    },
+    "order": {
+      "us-gaap_ScheduleOfErrorCorrectionsAndPriorPeriodAdjustmentsTextBlock": "0",
+      "us-gaap_StatementOfFinancialPositionAbstract": "10",
+      "us-gaap_IncomeStatementAbstract": "20",
+      "us-gaap_StatementOfStockholdersEquityAbstract": "30",
+      "us-gaap_StatementOfCashFlowsAbstract": "40"
+    }
+  },
+  "facts": [
+    {
+      "concept": "us-gaap_ScheduleOfErrorCorrectionsAndPriorPeriodAdjustmentsTextBlock",
+      "value": "",
+      "context_ref": "From2024-01-01to2024-12-31",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 1,
+      "order": "0",
+      "parent_concept": "us-gaap_AccountingChangesAndErrorCorrectionsAbstract",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact001230",
+      "display_value": null,
+      "formatted_value": null,
+      "scaling_factor": null
+    }
+  ]
+}

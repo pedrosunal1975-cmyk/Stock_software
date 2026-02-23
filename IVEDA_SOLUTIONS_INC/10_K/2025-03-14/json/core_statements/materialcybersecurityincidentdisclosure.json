@@ -1,0 +1,53 @@
+{
+  "role_uri": "http://xbrl.sec.gov/cyd/role/MaterialCybersecurityIncidentDisclosure",
+  "role_definition": null,
+  "statement_type": "OTHER",
+  "classification": {
+    "category": "CORE_STATEMENT",
+    "statement_type": "OTHER",
+    "is_primary": true,
+    "confidence": "LOW",
+    "matched_patterns": [],
+    "structural_signals": {
+      "fact_count": 0,
+      "fact_count_pass": false,
+      "max_depth": 2,
+      "depth_pass": true,
+      "root_count": 1,
+      "root_count_pass": true,
+      "structure_score": "2/3"
+    },
+    "source": "structural_analysis",
+    "taxonomy_source": "fallback_pattern",
+    "fallback_used": true
+  },
+  "hierarchy": {
+    "roots": [
+      "cyd_MaterialCybersecurityIncidentAbstract"
+    ],
+    "children": {
+      "cyd_MaterialCybersecurityIncidentAbstract": [
+        "cyd_MaterialCybersecurityIncidentNatureTextBlock",
+        "cyd_MaterialCybersecurityIncidentScopeTextBlock",
+        "cyd_MaterialCybersecurityIncidentTimingTextBlock",
+        "cyd_MaterialCybersecurityIncidentMaterialImpactOrReasonablyLikelyMaterialImpactTextBlock",
+        "cyd_MaterialCybersecurityIncidentInformationNotAvailableOrUndeterminedTextBlock"
+      ]
+    },
+    "parents": {
+      "cyd_MaterialCybersecurityIncidentNatureTextBlock": "cyd_MaterialCybersecurityIncidentAbstract",
+      "cyd_MaterialCybersecurityIncidentScopeTextBlock": "cyd_MaterialCybersecurityIncidentAbstract",
+      "cyd_MaterialCybersecurityIncidentTimingTextBlock": "cyd_MaterialCybersecurityIncidentAbstract",
+      "cyd_MaterialCybersecurityIncidentMaterialImpactOrReasonablyLikelyMaterialImpactTextBlock": "cyd_MaterialCybersecurityIncidentAbstract",
+      "cyd_MaterialCybersecurityIncidentInformationNotAvailableOrUndeterminedTextBlock": "cyd_MaterialCybersecurityIncidentAbstract"
+    },
+    "order": {
+      "cyd_MaterialCybersecurityIncidentNatureTextBlock": "0",
+      "cyd_MaterialCybersecurityIncidentScopeTextBlock": "10",
+      "cyd_MaterialCybersecurityIncidentTimingTextBlock": "20",
+      "cyd_MaterialCybersecurityIncidentMaterialImpactOrReasonablyLikelyMaterialImpactTextBlock": "30",
+      "cyd_MaterialCybersecurityIncidentInformationNotAvailableOrUndeterminedTextBlock": "40"
+    }
+  },
+  "facts": []
+}

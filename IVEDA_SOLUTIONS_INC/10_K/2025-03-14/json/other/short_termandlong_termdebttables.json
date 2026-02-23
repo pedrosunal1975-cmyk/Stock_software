@@ -1,0 +1,112 @@
+{
+  "role_uri": "http://iveda.com/role/Short-termAndLong-termDebtTables",
+  "role_definition": null,
+  "statement_type": "BALANCE_SHEET",
+  "classification": {
+    "category": "TABLE",
+    "statement_type": "BALANCE_SHEET",
+    "is_primary": false,
+    "confidence": "LOW",
+    "matched_patterns": [
+      "Tables",
+      "Debt"
+    ],
+    "structural_signals": {},
+    "source": "structural_analysis",
+    "taxonomy_source": "fallback_pattern",
+    "fallback_used": true
+  },
+  "hierarchy": {
+    "roots": [
+      "us-gaap_DebtDisclosureAbstract"
+    ],
+    "children": {
+      "us-gaap_DebtDisclosureAbstract": [
+        "us-gaap_ScheduleOfShortTermDebtTextBlock",
+        "us-gaap_ScheduleOfDebtInstrumentsTextBlock",
+        "srt_ContractualObligationFiscalYearMaturityScheduleTableTextBlock"
+      ]
+    },
+    "parents": {
+      "us-gaap_ScheduleOfShortTermDebtTextBlock": "us-gaap_DebtDisclosureAbstract",
+      "us-gaap_ScheduleOfDebtInstrumentsTextBlock": "us-gaap_DebtDisclosureAbstract",
+      "srt_ContractualObligationFiscalYearMaturityScheduleTableTextBlock": "us-gaap_DebtDisclosureAbstract"
+    },
+    "order": {
+      "us-gaap_ScheduleOfShortTermDebtTextBlock": "0",
+      "us-gaap_ScheduleOfDebtInstrumentsTextBlock": "10",
+      "srt_ContractualObligationFiscalYearMaturityScheduleTableTextBlock": "20"
+    }
+  },
+  "facts": [
+    {
+      "concept": "us-gaap_ScheduleOfShortTermDebtTextBlock",
+      "value": "",
+      "context_ref": "From2024-01-01to2024-12-31",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 1,
+      "order": "0",
+      "parent_concept": "us-gaap_DebtDisclosureAbstract",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact000661",
+      "display_value": null,
+      "formatted_value": null,
+      "scaling_factor": null
+    },
+    {
+      "concept": "us-gaap_ScheduleOfDebtInstrumentsTextBlock",
+      "value": "",
+      "context_ref": "From2024-01-01to2024-12-31",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 1,
+      "order": "10",
+      "parent_concept": "us-gaap_DebtDisclosureAbstract",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact000702",
+      "display_value": null,
+      "formatted_value": null,
+      "scaling_factor": null
+    },
+    {
+      "concept": "srt_ContractualObligationFiscalYearMaturityScheduleTableTextBlock",
+      "value": "",
+      "context_ref": "From2024-01-01to2024-12-31",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 1,
+      "order": "20",
+      "parent_concept": "us-gaap_DebtDisclosureAbstract",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact000724",
+      "display_value": null,
+      "formatted_value": null,
+      "scaling_factor": null
+    }
+  ]
+}

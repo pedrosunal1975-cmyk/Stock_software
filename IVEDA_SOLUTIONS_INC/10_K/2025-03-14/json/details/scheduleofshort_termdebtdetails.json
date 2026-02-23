@@ -1,0 +1,308 @@
+{
+  "role_uri": "http://iveda.com/role/ScheduleOfShort-termDebtDetails",
+  "role_definition": null,
+  "statement_type": "BALANCE_SHEET",
+  "classification": {
+    "category": "DETAIL",
+    "statement_type": "BALANCE_SHEET",
+    "is_primary": false,
+    "confidence": "LOW",
+    "matched_patterns": [
+      "Details",
+      "Debt"
+    ],
+    "structural_signals": {},
+    "source": "structural_analysis",
+    "taxonomy_source": "fallback_pattern",
+    "fallback_used": true
+  },
+  "hierarchy": {
+    "roots": [
+      "us-gaap_DebtDisclosureAbstract"
+    ],
+    "children": {
+      "us-gaap_DebtDisclosureAbstract": [
+        "us-gaap_ScheduleOfDefinedBenefitPlansDisclosuresTable"
+      ],
+      "us-gaap_ScheduleOfDefinedBenefitPlansDisclosuresTable": [
+        "us-gaap_DefinedBenefitPlanDisclosureLineItems",
+        "us-gaap_RelatedPartyTransactionsByRelatedPartyAxis"
+      ],
+      "us-gaap_RelatedPartyTransactionsByRelatedPartyAxis": [
+        "us-gaap_RelatedPartyDomain"
+      ],
+      "us-gaap_RelatedPartyDomain": [
+        "IVDA_ShanghaiBankMember",
+        "IVDA_HuaNamBankMember",
+        "IVDA_ChangHwaBankMember"
+      ],
+      "us-gaap_DefinedBenefitPlanDisclosureLineItems": [
+        "us-gaap_ShortTermBorrowings"
+      ]
+    },
+    "parents": {
+      "us-gaap_ScheduleOfDefinedBenefitPlansDisclosuresTable": "us-gaap_DebtDisclosureAbstract",
+      "us-gaap_DefinedBenefitPlanDisclosureLineItems": "us-gaap_ScheduleOfDefinedBenefitPlansDisclosuresTable",
+      "us-gaap_RelatedPartyTransactionsByRelatedPartyAxis": "us-gaap_ScheduleOfDefinedBenefitPlansDisclosuresTable",
+      "us-gaap_RelatedPartyDomain": "us-gaap_RelatedPartyTransactionsByRelatedPartyAxis",
+      "IVDA_ShanghaiBankMember": "us-gaap_RelatedPartyDomain",
+      "IVDA_HuaNamBankMember": "us-gaap_RelatedPartyDomain",
+      "IVDA_ChangHwaBankMember": "us-gaap_RelatedPartyDomain",
+      "us-gaap_ShortTermBorrowings": "us-gaap_DefinedBenefitPlanDisclosureLineItems"
+    },
+    "order": {
+      "us-gaap_ScheduleOfDefinedBenefitPlansDisclosuresTable": "100",
+      "us-gaap_DefinedBenefitPlanDisclosureLineItems": "200",
+      "us-gaap_RelatedPartyTransactionsByRelatedPartyAxis": "10",
+      "us-gaap_RelatedPartyDomain": "0",
+      "IVDA_ShanghaiBankMember": "10",
+      "IVDA_HuaNamBankMember": "30",
+      "IVDA_ChangHwaBankMember": "50",
+      "us-gaap_ShortTermBorrowings": "0"
+    }
+  },
+  "facts": [
+    {
+      "concept": "us-gaap_ShortTermBorrowings",
+      "value": "427025",
+      "context_ref": "AsOf2024-12-31",
+      "unit_ref": "USD",
+      "decimals": "0",
+      "level": 3,
+      "order": "0",
+      "parent_concept": "us-gaap_DefinedBenefitPlanDisclosureLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2024-12-31",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact000111",
+      "display_value": "427025",
+      "formatted_value": "$427,025",
+      "scaling_factor": 1
+    },
+    {
+      "concept": "us-gaap_ShortTermBorrowings",
+      "value": "348771",
+      "context_ref": "AsOf2023-12-31",
+      "unit_ref": "USD",
+      "decimals": "0",
+      "level": 3,
+      "order": "0",
+      "parent_concept": "us-gaap_DefinedBenefitPlanDisclosureLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2023-12-31",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact000112",
+      "display_value": "348771",
+      "formatted_value": "$348,771",
+      "scaling_factor": 1
+    },
+    {
+      "concept": "us-gaap_ShortTermBorrowings",
+      "value": "183011",
+      "context_ref": "AsOf2024-12-31_custom_ShanghaiBankMember",
+      "unit_ref": "USD",
+      "decimals": "0",
+      "level": 3,
+      "order": "0",
+      "parent_concept": "us-gaap_DefinedBenefitPlanDisclosureLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2024-12-31",
+      "dimensions": {
+        "us-gaap:RelatedPartyTransactionsByRelatedPartyAxis": "IVDA:ShanghaiBankMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact000675",
+      "display_value": "183011",
+      "formatted_value": "$183,011",
+      "scaling_factor": 1
+    },
+    {
+      "concept": "us-gaap_ShortTermBorrowings",
+      "value": "88032",
+      "context_ref": "AsOf2023-12-31_custom_ShanghaiBankMember",
+      "unit_ref": "USD",
+      "decimals": "0",
+      "level": 3,
+      "order": "0",
+      "parent_concept": "us-gaap_DefinedBenefitPlanDisclosureLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2023-12-31",
+      "dimensions": {
+        "us-gaap:RelatedPartyTransactionsByRelatedPartyAxis": "IVDA:ShanghaiBankMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact000677",
+      "display_value": "88032",
+      "formatted_value": "$88,032",
+      "scaling_factor": 1
+    },
+    {
+      "concept": "us-gaap_ShortTermBorrowings",
+      "value": "91505",
+      "context_ref": "AsOf2024-12-31_custom_HuaNamBankMember",
+      "unit_ref": "USD",
+      "decimals": "0",
+      "level": 3,
+      "order": "0",
+      "parent_concept": "us-gaap_DefinedBenefitPlanDisclosureLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2024-12-31",
+      "dimensions": {
+        "us-gaap:RelatedPartyTransactionsByRelatedPartyAxis": "IVDA:HuaNamBankMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact000687",
+      "display_value": "91505",
+      "formatted_value": "$91,505",
+      "scaling_factor": 1
+    },
+    {
+      "concept": "us-gaap_ShortTermBorrowings",
+      "value": "97777",
+      "context_ref": "AsOf2023-12-31_custom_HuaNamBankMember",
+      "unit_ref": "USD",
+      "decimals": "0",
+      "level": 3,
+      "order": "0",
+      "parent_concept": "us-gaap_DefinedBenefitPlanDisclosureLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2023-12-31",
+      "dimensions": {
+        "us-gaap:RelatedPartyTransactionsByRelatedPartyAxis": "IVDA:HuaNamBankMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact000689",
+      "display_value": "97777",
+      "formatted_value": "$97,777",
+      "scaling_factor": 1
+    },
+    {
+      "concept": "us-gaap_ShortTermBorrowings",
+      "value": "152509",
+      "context_ref": "AsOf2024-12-31_custom_ChangHwaBankMember",
+      "unit_ref": "USD",
+      "decimals": "0",
+      "level": 3,
+      "order": "0",
+      "parent_concept": "us-gaap_DefinedBenefitPlanDisclosureLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2024-12-31",
+      "dimensions": {
+        "us-gaap:RelatedPartyTransactionsByRelatedPartyAxis": "IVDA:ChangHwaBankMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact000694",
+      "display_value": "152509",
+      "formatted_value": "$152,509",
+      "scaling_factor": 1
+    },
+    {
+      "concept": "us-gaap_ShortTermBorrowings",
+      "value": "162962",
+      "context_ref": "AsOf2023-12-31_custom_ChangHwaBankMember",
+      "unit_ref": "USD",
+      "decimals": "0",
+      "level": 3,
+      "order": "0",
+      "parent_concept": "us-gaap_DefinedBenefitPlanDisclosureLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2023-12-31",
+      "dimensions": {
+        "us-gaap:RelatedPartyTransactionsByRelatedPartyAxis": "IVDA:ChangHwaBankMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact000696",
+      "display_value": "162962",
+      "formatted_value": "$162,962",
+      "scaling_factor": 1
+    },
+    {
+      "concept": "us-gaap_ShortTermBorrowings",
+      "value": "427025",
+      "context_ref": "AsOf2024-12-31",
+      "unit_ref": "USD",
+      "decimals": "0",
+      "level": 3,
+      "order": "0",
+      "parent_concept": "us-gaap_DefinedBenefitPlanDisclosureLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2024-12-31",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact000698",
+      "display_value": "427025",
+      "formatted_value": "$427,025",
+      "scaling_factor": 1
+    },
+    {
+      "concept": "us-gaap_ShortTermBorrowings",
+      "value": "348771",
+      "context_ref": "AsOf2023-12-31",
+      "unit_ref": "USD",
+      "decimals": "0",
+      "level": 3,
+      "order": "0",
+      "parent_concept": "us-gaap_DefinedBenefitPlanDisclosureLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2023-12-31",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact000700",
+      "display_value": "348771",
+      "formatted_value": "$348,771",
+      "scaling_factor": 1
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "role_uri": "http://iveda.com/role/ContingentLiabilitiesDetailsNarrative",
+  "role_definition": null,
+  "statement_type": "OTHER",
+  "classification": {
+    "category": "DETAIL",
+    "statement_type": "OTHER",
+    "is_primary": false,
+    "confidence": "LOW",
+    "matched_patterns": [
+      "Details"
+    ],
+    "structural_signals": {},
+    "source": "structural_analysis",
+    "taxonomy_source": "fallback_pattern",
+    "fallback_used": true
+  },
+  "hierarchy": {
+    "roots": [
+      "us-gaap_CommitmentsAndContingenciesDisclosureAbstract"
+    ],
+    "children": {
+      "us-gaap_CommitmentsAndContingenciesDisclosureAbstract": [
+        "us-gaap_StatementTable"
+      ],
+      "us-gaap_StatementTable": [
+        "us-gaap_StatementLineItems",
+        "dei_LegalEntityAxis"
+      ],
+      "dei_LegalEntityAxis": [
+        "dei_EntityDomain"
+      ],
+      "dei_EntityDomain": [
+        "IVDA_AegisCapitalCorpMember",
+        "IVDA_MegasysMember"
+      ],
+      "us-gaap_StatementLineItems": [
+        "us-gaap_LossContingencyNameOfPlaintiff",
+        "us-gaap_ConcentrationRiskCreditRiskFinancialInstrumentMaximumExposure"
+      ]
+    },
+    "parents": {
+      "us-gaap_StatementTable": "us-gaap_CommitmentsAndContingenciesDisclosureAbstract",
+      "us-gaap_StatementLineItems": "us-gaap_StatementTable",
+      "dei_LegalEntityAxis": "us-gaap_StatementTable",
+      "dei_EntityDomain": "dei_LegalEntityAxis",
+      "IVDA_AegisCapitalCorpMember": "dei_EntityDomain",
+      "IVDA_MegasysMember": "dei_EntityDomain",
+      "us-gaap_LossContingencyNameOfPlaintiff": "us-gaap_StatementLineItems",
+      "us-gaap_ConcentrationRiskCreditRiskFinancialInstrumentMaximumExposure": "us-gaap_StatementLineItems"
+    },
+    "order": {
+      "us-gaap_StatementTable": "100",
+      "us-gaap_StatementLineItems": "200",
+      "dei_LegalEntityAxis": "10",
+      "dei_EntityDomain": "0",
+      "IVDA_AegisCapitalCorpMember": "10",
+      "IVDA_MegasysMember": "20",
+      "us-gaap_LossContingencyNameOfPlaintiff": "0",
+      "us-gaap_ConcentrationRiskCreditRiskFinancialInstrumentMaximumExposure": "10"
+    }
+  },
+  "facts": [
+    {
+      "concept": "us-gaap_LossContingencyNameOfPlaintiff",
+      "value": "the Company alleging that it had breached the provisions of a\nPlacement Agency Agreement (PPA) dated June 24, 2024 and that the Company was required to pay the plaintiff placement agent fees as\na result of the Company’s September 4, 2024 direct offering of $2.15 million with H. C. Wainwright. The Company rejects\nthe Plaintiff’s claims that it is due the 7% plus expenses in the PPA and asserts that the PAA had been terminated on August\n15, 2024 due to the plaintiff’s non-performance and that the plaintiff is not entitled to any fees in the offering since it\nraised none of the funds in the offering. The action is currently in the discovery stage and the Company intends to vigorously\ndefend the action.",
+      "context_ref": "From2024-09-132024-09-13_custom_AegisCapitalCorpMember",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 3,
+      "order": "0",
+      "parent_concept": "us-gaap_StatementLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-09-13",
+      "period_end": "2024-09-13",
+      "dimensions": {
+        "dei:LegalEntityAxis": "IVDA:AegisCapitalCorpMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact001049",
+      "display_value": "the Company alleging that it had breached the provisions of a\nPlacement Agency Agreement (PPA) dated June 24, 2024 and that the Company was required to pay the plaintiff placement agent fees as\na result of the Company’s September 4, 2024 direct offering of $2.15 million with H. C. Wainwright. The Company rejects\nthe Plaintiff’s claims that it is due the 7% plus expenses in the PPA and asserts that the PAA had been terminated on August\n15, 2024 due to the plaintiff’s non-performance and that the plaintiff is not entitled to any fees in the offering since it\nraised none of the funds in the offering. The action is currently in the discovery stage and the Company intends to vigorously\ndefend the action.",
+      "formatted_value": "the Company alleging that it had breached the provisions of a\nPlacement Agency Agreement (PPA) dated June 24, 2024 and that the Company was required to pay the plaintiff placement agent fees as\na result of the Company’s September 4, 2024 direct offering of $2.15 million with H. C. Wainwright. The Company rejects\nthe Plaintiff’s claims that it is due the 7% plus expenses in the PPA and asserts that the PAA had been terminated on August\n15, 2024 due to the plaintiff’s non-performance and that the plaintiff is not entitled to any fees in the offering since it\nraised none of the funds in the offering. The action is currently in the discovery stage and the Company intends to vigorously\ndefend the action.",
+      "scaling_factor": 1
+    },
+    {
+      "concept": "us-gaap_ConcentrationRiskCreditRiskFinancialInstrumentMaximumExposure",
+      "value": "339042",
+      "context_ref": "From2024-01-012024-12-31_custom_MegasysMember",
+      "unit_ref": "USD",
+      "decimals": "0",
+      "level": 3,
+      "order": "10",
+      "parent_concept": "us-gaap_StatementLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {
+        "dei:LegalEntityAxis": "IVDA:MegasysMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact001050",
+      "display_value": "339042",
+      "formatted_value": "$339,042",
+      "scaling_factor": 1
+    }
+  ]
+}

@@ -1,0 +1,416 @@
+{
+  "role_uri": "http://iveda.com/role/ScheduleOfShort-termDebtDetailsParenthetical",
+  "role_definition": null,
+  "statement_type": "BALANCE_SHEET",
+  "classification": {
+    "category": "PARENTHETICAL",
+    "statement_type": "BALANCE_SHEET",
+    "is_primary": false,
+    "confidence": "LOW",
+    "matched_patterns": [
+      "Parenthetical",
+      "Debt"
+    ],
+    "structural_signals": {},
+    "source": "structural_analysis",
+    "taxonomy_source": "fallback_pattern",
+    "fallback_used": true
+  },
+  "hierarchy": {
+    "roots": [
+      "us-gaap_DebtDisclosureAbstract"
+    ],
+    "children": {
+      "us-gaap_DebtDisclosureAbstract": [
+        "us-gaap_DebtInstrumentTable"
+      ],
+      "us-gaap_DebtInstrumentTable": [
+        "us-gaap_DebtInstrumentLineItems",
+        "us-gaap_RelatedPartyTransactionsByRelatedPartyAxis",
+        "srt_RangeAxis"
+      ],
+      "us-gaap_RelatedPartyTransactionsByRelatedPartyAxis": [
+        "us-gaap_RelatedPartyDomain"
+      ],
+      "us-gaap_RelatedPartyDomain": [
+        "IVDA_ShanghaiBankMember",
+        "IVDA_HuaNamBankMember",
+        "IVDA_ChangHwaBankMember"
+      ],
+      "srt_RangeAxis": [
+        "srt_RangeMember"
+      ],
+      "srt_RangeMember": [
+        "srt_MinimumMember",
+        "srt_MaximumMember"
+      ],
+      "us-gaap_DebtInstrumentLineItems": [
+        "us-gaap_DebtInstrumentInterestRateDuringPeriod",
+        "us-gaap_DebtInstrumentMaturityDateDescription"
+      ]
+    },
+    "parents": {
+      "us-gaap_DebtInstrumentTable": "us-gaap_DebtDisclosureAbstract",
+      "us-gaap_DebtInstrumentLineItems": "us-gaap_DebtInstrumentTable",
+      "us-gaap_RelatedPartyTransactionsByRelatedPartyAxis": "us-gaap_DebtInstrumentTable",
+      "us-gaap_RelatedPartyDomain": "us-gaap_RelatedPartyTransactionsByRelatedPartyAxis",
+      "IVDA_ShanghaiBankMember": "us-gaap_RelatedPartyDomain",
+      "IVDA_HuaNamBankMember": "us-gaap_RelatedPartyDomain",
+      "IVDA_ChangHwaBankMember": "us-gaap_RelatedPartyDomain",
+      "srt_RangeAxis": "us-gaap_DebtInstrumentTable",
+      "srt_RangeMember": "srt_RangeAxis",
+      "srt_MinimumMember": "srt_RangeMember",
+      "srt_MaximumMember": "srt_RangeMember",
+      "us-gaap_DebtInstrumentInterestRateDuringPeriod": "us-gaap_DebtInstrumentLineItems",
+      "us-gaap_DebtInstrumentMaturityDateDescription": "us-gaap_DebtInstrumentLineItems"
+    },
+    "order": {
+      "us-gaap_DebtInstrumentTable": "100",
+      "us-gaap_DebtInstrumentLineItems": "200",
+      "us-gaap_RelatedPartyTransactionsByRelatedPartyAxis": "10",
+      "us-gaap_RelatedPartyDomain": "0",
+      "IVDA_ShanghaiBankMember": "10",
+      "IVDA_HuaNamBankMember": "70",
+      "IVDA_ChangHwaBankMember": "90",
+      "srt_RangeAxis": "20",
+      "srt_RangeMember": "0",
+      "srt_MinimumMember": "10",
+      "srt_MaximumMember": "30",
+      "us-gaap_DebtInstrumentInterestRateDuringPeriod": "0",
+      "us-gaap_DebtInstrumentMaturityDateDescription": "10"
+    }
+  },
+  "facts": [
+    {
+      "concept": "us-gaap_DebtInstrumentInterestRateDuringPeriod",
+      "value": "",
+      "context_ref": "From2024-01-012024-12-31_custom_ShanghaiBankMember_srt_MinimumMember",
+      "unit_ref": "Pure",
+      "decimals": "INF",
+      "level": 3,
+      "order": "0",
+      "parent_concept": "us-gaap_DebtInstrumentLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {
+        "us-gaap:RelatedPartyTransactionsByRelatedPartyAxis": "IVDA:ShanghaiBankMember",
+        "srt:RangeAxis": "srt:MinimumMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact000663",
+      "display_value": null,
+      "formatted_value": null,
+      "scaling_factor": null
+    },
+    {
+      "concept": "us-gaap_DebtInstrumentInterestRateDuringPeriod",
+      "value": "3.1",
+      "context_ref": "From2023-01-012023-12-31_custom_ShanghaiBankMember_srt_MinimumMember",
+      "unit_ref": "Pure",
+      "decimals": "INF",
+      "level": 3,
+      "order": "0",
+      "parent_concept": "us-gaap_DebtInstrumentLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2023-01-01",
+      "period_end": "2023-12-31",
+      "dimensions": {
+        "us-gaap:RelatedPartyTransactionsByRelatedPartyAxis": "IVDA:ShanghaiBankMember",
+        "srt:RangeAxis": "srt:MinimumMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact000665",
+      "display_value": "3.1",
+      "formatted_value": "3",
+      "scaling_factor": 1.0
+    },
+    {
+      "concept": "us-gaap_DebtInstrumentInterestRateDuringPeriod",
+      "value": "",
+      "context_ref": "From2024-01-012024-12-31_custom_ShanghaiBankMember_srt_MaximumMember",
+      "unit_ref": "Pure",
+      "decimals": "INF",
+      "level": 3,
+      "order": "0",
+      "parent_concept": "us-gaap_DebtInstrumentLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {
+        "us-gaap:RelatedPartyTransactionsByRelatedPartyAxis": "IVDA:ShanghaiBankMember",
+        "srt:RangeAxis": "srt:MaximumMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact000667",
+      "display_value": null,
+      "formatted_value": null,
+      "scaling_factor": null
+    },
+    {
+      "concept": "us-gaap_DebtInstrumentInterestRateDuringPeriod",
+      "value": "3.2",
+      "context_ref": "From2023-01-012023-12-31_custom_ShanghaiBankMember_srt_MaximumMember",
+      "unit_ref": "Pure",
+      "decimals": "INF",
+      "level": 3,
+      "order": "0",
+      "parent_concept": "us-gaap_DebtInstrumentLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2023-01-01",
+      "period_end": "2023-12-31",
+      "dimensions": {
+        "us-gaap:RelatedPartyTransactionsByRelatedPartyAxis": "IVDA:ShanghaiBankMember",
+        "srt:RangeAxis": "srt:MaximumMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact000669",
+      "display_value": "3.2",
+      "formatted_value": "3",
+      "scaling_factor": 1.0
+    },
+    {
+      "concept": "us-gaap_DebtInstrumentInterestRateDuringPeriod",
+      "value": "",
+      "context_ref": "From2024-01-012024-12-31_custom_HuaNamBankMember",
+      "unit_ref": "Pure",
+      "decimals": "INF",
+      "level": 3,
+      "order": "0",
+      "parent_concept": "us-gaap_DebtInstrumentLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {
+        "us-gaap:RelatedPartyTransactionsByRelatedPartyAxis": "IVDA:HuaNamBankMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact000679",
+      "display_value": null,
+      "formatted_value": null,
+      "scaling_factor": null
+    },
+    {
+      "concept": "us-gaap_DebtInstrumentInterestRateDuringPeriod",
+      "value": "3.4",
+      "context_ref": "From2023-01-012023-12-31_custom_HuaNamBankMember",
+      "unit_ref": "Pure",
+      "decimals": "INF",
+      "level": 3,
+      "order": "0",
+      "parent_concept": "us-gaap_DebtInstrumentLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2023-01-01",
+      "period_end": "2023-12-31",
+      "dimensions": {
+        "us-gaap:RelatedPartyTransactionsByRelatedPartyAxis": "IVDA:HuaNamBankMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact000681",
+      "display_value": "3.4",
+      "formatted_value": "3",
+      "scaling_factor": 1.0
+    },
+    {
+      "concept": "us-gaap_DebtInstrumentInterestRateDuringPeriod",
+      "value": "3",
+      "context_ref": "From2023-01-012023-12-31_custom_ChangHwaBankMember_srt_MinimumMember",
+      "unit_ref": "Pure",
+      "decimals": "INF",
+      "level": 3,
+      "order": "0",
+      "parent_concept": "us-gaap_DebtInstrumentLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2023-01-01",
+      "period_end": "2023-12-31",
+      "dimensions": {
+        "us-gaap:RelatedPartyTransactionsByRelatedPartyAxis": "IVDA:ChangHwaBankMember",
+        "srt:RangeAxis": "srt:MinimumMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact000690",
+      "display_value": "3",
+      "formatted_value": "3",
+      "scaling_factor": 1.0
+    },
+    {
+      "concept": "us-gaap_DebtInstrumentInterestRateDuringPeriod",
+      "value": "3.3",
+      "context_ref": "From2024-01-012024-12-31_custom_ChangHwaBankMember_srt_MaximumMember",
+      "unit_ref": "Pure",
+      "decimals": "INF",
+      "level": 3,
+      "order": "0",
+      "parent_concept": "us-gaap_DebtInstrumentLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {
+        "us-gaap:RelatedPartyTransactionsByRelatedPartyAxis": "IVDA:ChangHwaBankMember",
+        "srt:RangeAxis": "srt:MaximumMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact000691",
+      "display_value": "3.3",
+      "formatted_value": "3",
+      "scaling_factor": 1.0
+    },
+    {
+      "concept": "us-gaap_DebtInstrumentMaturityDateDescription",
+      "value": "",
+      "context_ref": "From2024-01-012024-12-31_custom_ShanghaiBankMember",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 3,
+      "order": "10",
+      "parent_concept": "us-gaap_DebtInstrumentLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {
+        "us-gaap:RelatedPartyTransactionsByRelatedPartyAxis": "IVDA:ShanghaiBankMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact000671",
+      "display_value": null,
+      "formatted_value": null,
+      "scaling_factor": null
+    },
+    {
+      "concept": "us-gaap_DebtInstrumentMaturityDateDescription",
+      "value": "Due\n    originally in January 2025 and subsequently replaced with a new loan which matures January 2026.",
+      "context_ref": "From2023-01-012023-12-31_custom_ShanghaiBankMember",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 3,
+      "order": "10",
+      "parent_concept": "us-gaap_DebtInstrumentLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2023-01-01",
+      "period_end": "2023-12-31",
+      "dimensions": {
+        "us-gaap:RelatedPartyTransactionsByRelatedPartyAxis": "IVDA:ShanghaiBankMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact000673",
+      "display_value": "Due\n    originally in January 2025 and subsequently replaced with a new loan which matures January 2026.",
+      "formatted_value": "Due\n    originally in January 2025 and subsequently replaced with a new loan which matures January 2026.",
+      "scaling_factor": 1
+    },
+    {
+      "concept": "us-gaap_DebtInstrumentMaturityDateDescription",
+      "value": "",
+      "context_ref": "From2024-01-012024-12-31_custom_HuaNamBankMember",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 3,
+      "order": "10",
+      "parent_concept": "us-gaap_DebtInstrumentLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {
+        "us-gaap:RelatedPartyTransactionsByRelatedPartyAxis": "IVDA:HuaNamBankMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact000683",
+      "display_value": null,
+      "formatted_value": null,
+      "scaling_factor": null
+    },
+    {
+      "concept": "us-gaap_DebtInstrumentMaturityDateDescription",
+      "value": "Due\n    in June 2025.",
+      "context_ref": "From2023-01-012023-12-31_custom_HuaNamBankMember",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 3,
+      "order": "10",
+      "parent_concept": "us-gaap_DebtInstrumentLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2023-01-01",
+      "period_end": "2023-12-31",
+      "dimensions": {
+        "us-gaap:RelatedPartyTransactionsByRelatedPartyAxis": "IVDA:HuaNamBankMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact000685",
+      "display_value": "Due\n    in June 2025.",
+      "formatted_value": "Due\n    in June 2025.",
+      "scaling_factor": 1
+    },
+    {
+      "concept": "us-gaap_DebtInstrumentMaturityDateDescription",
+      "value": "Due\nin May 2025.",
+      "context_ref": "From2023-01-012023-12-31_custom_ChangHwaBankMember",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 3,
+      "order": "10",
+      "parent_concept": "us-gaap_DebtInstrumentLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2023-01-01",
+      "period_end": "2023-12-31",
+      "dimensions": {
+        "us-gaap:RelatedPartyTransactionsByRelatedPartyAxis": "IVDA:ChangHwaBankMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact000692",
+      "display_value": "Due\nin May 2025.",
+      "formatted_value": "Due\nin May 2025.",
+      "scaling_factor": 1
+    }
+  ]
+}

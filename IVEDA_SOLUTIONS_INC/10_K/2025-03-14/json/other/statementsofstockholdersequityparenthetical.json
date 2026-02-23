@@ -1,0 +1,60 @@
+{
+  "role_uri": "http://iveda.com/role/StatementsOfStockholdersEquityParenthetical",
+  "role_definition": null,
+  "statement_type": "EQUITY",
+  "classification": {
+    "category": "PARENTHETICAL",
+    "statement_type": "EQUITY",
+    "is_primary": false,
+    "confidence": "LOW",
+    "matched_patterns": [
+      "Parenthetical",
+      "Equity"
+    ],
+    "structural_signals": {},
+    "source": "structural_analysis",
+    "taxonomy_source": "fallback_pattern",
+    "fallback_used": true
+  },
+  "hierarchy": {
+    "roots": [
+      "us-gaap_StatementOfStockholdersEquityAbstract"
+    ],
+    "children": {
+      "us-gaap_StatementOfStockholdersEquityAbstract": [
+        "us-gaap_StockholdersEquityReverseStockSplit"
+      ]
+    },
+    "parents": {
+      "us-gaap_StockholdersEquityReverseStockSplit": "us-gaap_StatementOfStockholdersEquityAbstract"
+    },
+    "order": {
+      "us-gaap_StockholdersEquityReverseStockSplit": "0"
+    }
+  },
+  "facts": [
+    {
+      "concept": "us-gaap_StockholdersEquityReverseStockSplit",
+      "value": "1-for-8",
+      "context_ref": "From2024-09-172024-09-17",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 1,
+      "order": "0",
+      "parent_concept": "us-gaap_StatementOfStockholdersEquityAbstract",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-09-17",
+      "period_end": "2024-09-17",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact000414",
+      "display_value": "1-for-8",
+      "formatted_value": "1-for-8",
+      "scaling_factor": 1
+    }
+  ]
+}

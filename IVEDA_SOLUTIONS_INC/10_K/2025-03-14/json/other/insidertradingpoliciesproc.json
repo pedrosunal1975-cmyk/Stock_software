@@ -1,0 +1,38 @@
+{
+  "role_uri": "http://xbrl.sec.gov/ecd/role/InsiderTradingPoliciesProc",
+  "role_definition": null,
+  "statement_type": "OTHER",
+  "classification": {
+    "category": "POLICY",
+    "statement_type": "OTHER",
+    "is_primary": false,
+    "confidence": "LOW",
+    "matched_patterns": [
+      "Policies"
+    ],
+    "structural_signals": {},
+    "source": "structural_analysis",
+    "taxonomy_source": "fallback_pattern",
+    "fallback_used": true
+  },
+  "hierarchy": {
+    "roots": [
+      "ecd_InsiderTradingPoliciesProcLineItems"
+    ],
+    "children": {
+      "ecd_InsiderTradingPoliciesProcLineItems": [
+        "ecd_InsiderTrdPoliciesProcAdoptedFlag",
+        "ecd_InsiderTrdPoliciesProcNotAdoptedTextBlock"
+      ]
+    },
+    "parents": {
+      "ecd_InsiderTrdPoliciesProcAdoptedFlag": "ecd_InsiderTradingPoliciesProcLineItems",
+      "ecd_InsiderTrdPoliciesProcNotAdoptedTextBlock": "ecd_InsiderTradingPoliciesProcLineItems"
+    },
+    "order": {
+      "ecd_InsiderTrdPoliciesProcAdoptedFlag": "0",
+      "ecd_InsiderTrdPoliciesProcNotAdoptedTextBlock": "10"
+    }
+  },
+  "facts": []
+}

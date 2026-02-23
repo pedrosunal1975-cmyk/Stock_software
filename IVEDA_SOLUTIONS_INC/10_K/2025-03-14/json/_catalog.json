@@ -1,0 +1,1550 @@
+{
+  "generated_at": "2026-02-16T22:16:06.420058",
+  "filing_info": {
+    "entity_name": "Unknown",
+    "filing_type": "10-K",
+    "period_end": null
+  },
+  "summary": {
+    "total_networks": 65,
+    "core_statements": 22,
+    "detail_schedules": 27,
+    "tables": 8,
+    "policies": 3,
+    "documents": 1,
+    "other": 0,
+    "by_category": {
+      "DOCUMENT": 1,
+      "CORE_STATEMENT": 22,
+      "PARENTHETICAL": 4,
+      "POLICY": 3,
+      "TABLE": 8,
+      "DETAIL": 27
+    },
+    "by_statement_type": {
+      "OTHER": 33,
+      "BALANCE_SHEET": 15,
+      "INCOME_STATEMENT": 10,
+      "EQUITY": 5,
+      "CASH_FLOW": 2
+    },
+    "by_confidence": {
+      "LOW": 65
+    }
+  },
+  "core_statements": [
+    {
+      "filename": "core_statements/balancesheets.json",
+      "role_uri": "http://iveda.com/role/BalanceSheets",
+      "role_definition": null,
+      "statement_type": "BALANCE_SHEET",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/accountsandotherpayables.json",
+      "role_uri": "http://iveda.com/role/AccountsAndOtherPayables",
+      "role_definition": null,
+      "statement_type": "BALANCE_SHEET",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/short_termandlong_termdebt.json",
+      "role_uri": "http://iveda.com/role/Short-termAndLong-termDebt",
+      "role_definition": null,
+      "statement_type": "BALANCE_SHEET",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/statementsofoperations.json",
+      "role_uri": "http://iveda.com/role/StatementsOfOperations",
+      "role_definition": null,
+      "statement_type": "INCOME_STATEMENT",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/comprehensiveloss.json",
+      "role_uri": "http://iveda.com/role/ComprehensiveLoss",
+      "role_definition": null,
+      "statement_type": "INCOME_STATEMENT",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/incometaxes.json",
+      "role_uri": "http://iveda.com/role/IncomeTaxes",
+      "role_definition": null,
+      "statement_type": "INCOME_STATEMENT",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/earningslosspershare.json",
+      "role_uri": "http://iveda.com/role/EarningsLossPerShare",
+      "role_definition": null,
+      "statement_type": "INCOME_STATEMENT",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/statementsofcashflows.json",
+      "role_uri": "http://iveda.com/role/StatementsOfCashFlows",
+      "role_definition": null,
+      "statement_type": "CASH_FLOW",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/statementsofstockholdersequity.json",
+      "role_uri": "http://iveda.com/role/StatementsOfStockholdersEquity",
+      "role_definition": null,
+      "statement_type": "EQUITY",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/equity.json",
+      "role_uri": "http://iveda.com/role/Equity",
+      "role_definition": null,
+      "statement_type": "EQUITY",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/pvpdisclosure.json",
+      "role_uri": "http://xbrl.sec.gov/ecd/role/PvpDisclosure",
+      "role_definition": null,
+      "statement_type": "OTHER",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/errcompdisclosure.json",
+      "role_uri": "http://xbrl.sec.gov/ecd/role/ErrCompDisclosure",
+      "role_definition": null,
+      "statement_type": "OTHER",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/awardtimingdisclosure.json",
+      "role_uri": "http://xbrl.sec.gov/ecd/role/AwardTimingDisclosure",
+      "role_definition": null,
+      "statement_type": "OTHER",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/insidertradingarrangements.json",
+      "role_uri": "http://xbrl.sec.gov/ecd/role/InsiderTradingArrangements",
+      "role_definition": null,
+      "statement_type": "OTHER",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/cybersecurityriskmanagementandstrategydisclosure.json",
+      "role_uri": "http://xbrl.sec.gov/cyd/role/CybersecurityRiskManagementAndStrategyDisclosure",
+      "role_definition": null,
+      "statement_type": "OTHER",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/materialcybersecurityincidentdisclosure.json",
+      "role_uri": "http://xbrl.sec.gov/cyd/role/MaterialCybersecurityIncidentDisclosure",
+      "role_definition": null,
+      "statement_type": "OTHER",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/preferredstock.json",
+      "role_uri": "http://iveda.com/role/PreferredStock",
+      "role_definition": null,
+      "statement_type": "OTHER",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/stockoptionplanandwarrants.json",
+      "role_uri": "http://iveda.com/role/StockOptionPlanAndWarrants",
+      "role_definition": null,
+      "statement_type": "OTHER",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/contingentliabilities.json",
+      "role_uri": "http://iveda.com/role/ContingentLiabilities",
+      "role_definition": null,
+      "statement_type": "OTHER",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/segmentinformation.json",
+      "role_uri": "http://iveda.com/role/SegmentInformation",
+      "role_definition": null,
+      "statement_type": "OTHER",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/restatementofpreviouslyissuedfinancialstatements.json",
+      "role_uri": "http://iveda.com/role/RestatementOfPreviouslyIssuedFinancialStatements",
+      "role_definition": null,
+      "statement_type": "OTHER",
+      "confidence": "LOW"
+    },
+    {
+      "filename": "core_statements/subsequentevents.json",
+      "role_uri": "http://iveda.com/role/SubsequentEvents",
+      "role_definition": null,
+      "statement_type": "OTHER",
+      "confidence": "LOW"
+    }
+  ],
+  "details_by_type": {
+    "BALANCE_SHEET": [
+      {
+        "filename": "details/scheduleofaccountsandotherpayablesdetails.json",
+        "role_uri": "http://iveda.com/role/ScheduleOfAccountsAndOtherPayablesDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/scheduleofdeferredtaxassetsandliabilitiesdetails.json",
+        "role_uri": "http://iveda.com/role/ScheduleOfDeferredTaxAssetsAndLiabilitiesDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/scheduleoflong_termdebtdetails.json",
+        "role_uri": "http://iveda.com/role/ScheduleOfLong-termDebtDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/scheduleofminimumpaymentoflongtermdebtdetails.json",
+        "role_uri": "http://iveda.com/role/ScheduleOfMinimumPaymentOfLongTermDebtDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/scheduleofnetassetsliabilitiesbygeographicregionsdetails.json",
+        "role_uri": "http://iveda.com/role/ScheduleOfNetAssetsLiabilitiesByGeographicRegionsDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/scheduleofrestatementsofbalancesheetsdetails.json",
+        "role_uri": "http://iveda.com/role/ScheduleOfRestatementsOfBalanceSheetsDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/scheduleofshort_termdebtdetails.json",
+        "role_uri": "http://iveda.com/role/ScheduleOfShort-termDebtDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      }
+    ],
+    "INCOME_STATEMENT": [
+      {
+        "filename": "details/incometaxesdetailsnarrative.json",
+        "role_uri": "http://iveda.com/role/IncomeTaxesDetailsNarrative",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/scheduleofdisaggregationofrevenuedetails.json",
+        "role_uri": "http://iveda.com/role/ScheduleOfDisaggregationOfRevenueDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/scheduleofearningspersharebasicanddiluteddetails.json",
+        "role_uri": "http://iveda.com/role/ScheduleOfEarningsPerShareBasicAndDilutedDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/scheduleofrestatementsofoperationsdetails.json",
+        "role_uri": "http://iveda.com/role/ScheduleOfRestatementsOfOperationsDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      }
+    ],
+    "CASH_FLOW": [
+      {
+        "filename": "details/scheduleofrestatementsofcashflowsdetails.json",
+        "role_uri": "http://iveda.com/role/ScheduleOfRestatementsOfCashFlowsDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      }
+    ],
+    "EQUITY": [
+      {
+        "filename": "details/equitydetailsnarrative.json",
+        "role_uri": "http://iveda.com/role/EquityDetailsNarrative",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/scheduleofrestatementsofequitydetails.json",
+        "role_uri": "http://iveda.com/role/ScheduleOfRestatementsOfEquityDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      }
+    ],
+    "OTHER": [
+      {
+        "filename": "details/contingentliabilitiesdetailsnarrative.json",
+        "role_uri": "http://iveda.com/role/ContingentLiabilitiesDetailsNarrative",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/preferredstockdetailsnarrative.json",
+        "role_uri": "http://iveda.com/role/PreferredStockDetailsNarrative",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/restatementofpreviouslyissuedfinancialstatementsdetailsnarrative.json",
+        "role_uri": "http://iveda.com/role/RestatementOfPreviouslyIssuedFinancialStatementsDetailsNarrative",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/scheduleofbasicanddilutedlosspersharessecuritiesdetails.json",
+        "role_uri": "http://iveda.com/role/ScheduleOfBasicAndDilutedLossPerSharesSecuritiesDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/scheduleofeffectivetaxratedetails.json",
+        "role_uri": "http://iveda.com/role/ScheduleOfEffectiveTaxRateDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/scheduleofsegmentinformationdetails.json",
+        "role_uri": "http://iveda.com/role/ScheduleOfSegmentInformationDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/scheduleofstockoptionoutstandingandexercisableandexercisableexercisepricerangedetails.json",
+        "role_uri": "http://iveda.com/role/ScheduleOfStockOptionOutstandingAndExercisableAndExercisableExercisePriceRangeDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/scheduleofstockoptiontransactionsdetails.json",
+        "role_uri": "http://iveda.com/role/ScheduleOfStockOptionTransactionsDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/scheduleofwarranttransactionsdetails.json",
+        "role_uri": "http://iveda.com/role/ScheduleOfWarrantTransactionsDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/stockoptionplanandwarrantsdetailsnarrative.json",
+        "role_uri": "http://iveda.com/role/StockOptionPlanAndWarrantsDetailsNarrative",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/subsequenteventsdetailsnarrative.json",
+        "role_uri": "http://iveda.com/role/SubsequentEventsDetailsNarrative",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/summaryofsignificantaccountingpoliciesdetailsnarrative.json",
+        "role_uri": "http://iveda.com/role/SummaryOfSignificantAccountingPoliciesDetailsNarrative",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/summaryofwarrantsoutstandingandexercisabledetails.json",
+        "role_uri": "http://iveda.com/role/SummaryOfWarrantsOutstandingAndExercisableDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      }
+    ]
+  },
+  "all_networks_by_category": {
+    "CORE_STATEMENT": [
+      {
+        "filename": "core_statements/balancesheets.json",
+        "role_uri": "http://iveda.com/role/BalanceSheets",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/statementsofoperations.json",
+        "role_uri": "http://iveda.com/role/StatementsOfOperations",
+        "role_definition": null,
+        "statement_type": "INCOME_STATEMENT",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/comprehensiveloss.json",
+        "role_uri": "http://iveda.com/role/ComprehensiveLoss",
+        "role_definition": null,
+        "statement_type": "INCOME_STATEMENT",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/statementsofstockholdersequity.json",
+        "role_uri": "http://iveda.com/role/StatementsOfStockholdersEquity",
+        "role_definition": null,
+        "statement_type": "EQUITY",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/statementsofcashflows.json",
+        "role_uri": "http://iveda.com/role/StatementsOfCashFlows",
+        "role_definition": null,
+        "statement_type": "CASH_FLOW",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/pvpdisclosure.json",
+        "role_uri": "http://xbrl.sec.gov/ecd/role/PvpDisclosure",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/errcompdisclosure.json",
+        "role_uri": "http://xbrl.sec.gov/ecd/role/ErrCompDisclosure",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/awardtimingdisclosure.json",
+        "role_uri": "http://xbrl.sec.gov/ecd/role/AwardTimingDisclosure",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/insidertradingarrangements.json",
+        "role_uri": "http://xbrl.sec.gov/ecd/role/InsiderTradingArrangements",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/cybersecurityriskmanagementandstrategydisclosure.json",
+        "role_uri": "http://xbrl.sec.gov/cyd/role/CybersecurityRiskManagementAndStrategyDisclosure",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/materialcybersecurityincidentdisclosure.json",
+        "role_uri": "http://xbrl.sec.gov/cyd/role/MaterialCybersecurityIncidentDisclosure",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/accountsandotherpayables.json",
+        "role_uri": "http://iveda.com/role/AccountsAndOtherPayables",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/short_termandlong_termdebt.json",
+        "role_uri": "http://iveda.com/role/Short-termAndLong-termDebt",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/preferredstock.json",
+        "role_uri": "http://iveda.com/role/PreferredStock",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/equity.json",
+        "role_uri": "http://iveda.com/role/Equity",
+        "role_definition": null,
+        "statement_type": "EQUITY",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/stockoptionplanandwarrants.json",
+        "role_uri": "http://iveda.com/role/StockOptionPlanAndWarrants",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/incometaxes.json",
+        "role_uri": "http://iveda.com/role/IncomeTaxes",
+        "role_definition": null,
+        "statement_type": "INCOME_STATEMENT",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/earningslosspershare.json",
+        "role_uri": "http://iveda.com/role/EarningsLossPerShare",
+        "role_definition": null,
+        "statement_type": "INCOME_STATEMENT",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/contingentliabilities.json",
+        "role_uri": "http://iveda.com/role/ContingentLiabilities",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/segmentinformation.json",
+        "role_uri": "http://iveda.com/role/SegmentInformation",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/restatementofpreviouslyissuedfinancialstatements.json",
+        "role_uri": "http://iveda.com/role/RestatementOfPreviouslyIssuedFinancialStatements",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "core_statements/subsequentevents.json",
+        "role_uri": "http://iveda.com/role/SubsequentEvents",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      }
+    ],
+    "DETAIL": [
+      {
+        "filename": "details/scheduleofdisaggregationofrevenuedetails.json",
+        "role_uri": "http://iveda.com/role/ScheduleOfDisaggregationOfRevenueDetails",
+        "role_definition": null,
+        "statement_type": "INCOME_STATEMENT",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/summaryofsignificantaccountingpoliciesdetailsnarrative.json",
+        "role_uri": "http://iveda.com/role/SummaryOfSignificantAccountingPoliciesDetailsNarrative",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/scheduleofaccountsandotherpayablesdetails.json",
+        "role_uri": "http://iveda.com/role/ScheduleOfAccountsAndOtherPayablesDetails",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/scheduleofshort_termdebtdetails.json",
+        "role_uri": "http://iveda.com/role/ScheduleOfShort-termDebtDetails",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/scheduleoflong_termdebtdetails.json",
+        "role_uri": "http://iveda.com/role/ScheduleOfLong-termDebtDetails",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/scheduleofminimumpaymentoflongtermdebtdetails.json",
+        "role_uri": "http://iveda.com/role/ScheduleOfMinimumPaymentOfLongTermDebtDetails",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/preferredstockdetailsnarrative.json",
+        "role_uri": "http://iveda.com/role/PreferredStockDetailsNarrative",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/equitydetailsnarrative.json",
+        "role_uri": "http://iveda.com/role/EquityDetailsNarrative",
+        "role_definition": null,
+        "statement_type": "EQUITY",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/scheduleofstockoptiontransactionsdetails.json",
+        "role_uri": "http://iveda.com/role/ScheduleOfStockOptionTransactionsDetails",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/scheduleofstockoptionoutstandingandexercisableandexercisableexercisepricerangedetails.json",
+        "role_uri": "http://iveda.com/role/ScheduleOfStockOptionOutstandingAndExercisableAndExercisableExercisePriceRangeDetails",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/scheduleofwarranttransactionsdetails.json",
+        "role_uri": "http://iveda.com/role/ScheduleOfWarrantTransactionsDetails",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/summaryofwarrantsoutstandingandexercisabledetails.json",
+        "role_uri": "http://iveda.com/role/SummaryOfWarrantsOutstandingAndExercisableDetails",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/stockoptionplanandwarrantsdetailsnarrative.json",
+        "role_uri": "http://iveda.com/role/StockOptionPlanAndWarrantsDetailsNarrative",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/scheduleofeffectivetaxratedetails.json",
+        "role_uri": "http://iveda.com/role/ScheduleOfEffectiveTaxRateDetails",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/scheduleofdeferredtaxassetsandliabilitiesdetails.json",
+        "role_uri": "http://iveda.com/role/ScheduleOfDeferredTaxAssetsAndLiabilitiesDetails",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/incometaxesdetailsnarrative.json",
+        "role_uri": "http://iveda.com/role/IncomeTaxesDetailsNarrative",
+        "role_definition": null,
+        "statement_type": "INCOME_STATEMENT",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/scheduleofearningspersharebasicanddiluteddetails.json",
+        "role_uri": "http://iveda.com/role/ScheduleOfEarningsPerShareBasicAndDilutedDetails",
+        "role_definition": null,
+        "statement_type": "INCOME_STATEMENT",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/scheduleofbasicanddilutedlosspersharessecuritiesdetails.json",
+        "role_uri": "http://iveda.com/role/ScheduleOfBasicAndDilutedLossPerSharesSecuritiesDetails",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/contingentliabilitiesdetailsnarrative.json",
+        "role_uri": "http://iveda.com/role/ContingentLiabilitiesDetailsNarrative",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/scheduleofsegmentinformationdetails.json",
+        "role_uri": "http://iveda.com/role/ScheduleOfSegmentInformationDetails",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/scheduleofnetassetsliabilitiesbygeographicregionsdetails.json",
+        "role_uri": "http://iveda.com/role/ScheduleOfNetAssetsLiabilitiesByGeographicRegionsDetails",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/scheduleofrestatementsofbalancesheetsdetails.json",
+        "role_uri": "http://iveda.com/role/ScheduleOfRestatementsOfBalanceSheetsDetails",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/scheduleofrestatementsofoperationsdetails.json",
+        "role_uri": "http://iveda.com/role/ScheduleOfRestatementsOfOperationsDetails",
+        "role_definition": null,
+        "statement_type": "INCOME_STATEMENT",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/scheduleofrestatementsofequitydetails.json",
+        "role_uri": "http://iveda.com/role/ScheduleOfRestatementsOfEquityDetails",
+        "role_definition": null,
+        "statement_type": "EQUITY",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/scheduleofrestatementsofcashflowsdetails.json",
+        "role_uri": "http://iveda.com/role/ScheduleOfRestatementsOfCashFlowsDetails",
+        "role_definition": null,
+        "statement_type": "CASH_FLOW",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/restatementofpreviouslyissuedfinancialstatementsdetailsnarrative.json",
+        "role_uri": "http://iveda.com/role/RestatementOfPreviouslyIssuedFinancialStatementsDetailsNarrative",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/subsequenteventsdetailsnarrative.json",
+        "role_uri": "http://iveda.com/role/SubsequentEventsDetailsNarrative",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      }
+    ],
+    "TABLE": [
+      {
+        "filename": "other/summaryofsignificantaccountingpoliciestables.json",
+        "role_uri": "http://iveda.com/role/SummaryOfSignificantAccountingPoliciesTables",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "other/accountsandotherpayablestables.json",
+        "role_uri": "http://iveda.com/role/AccountsAndOtherPayablesTables",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "other/short_termandlong_termdebttables.json",
+        "role_uri": "http://iveda.com/role/Short-termAndLong-termDebtTables",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "other/stockoptionplanandwarrantstables.json",
+        "role_uri": "http://iveda.com/role/StockOptionPlanAndWarrantsTables",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "other/incometaxestables.json",
+        "role_uri": "http://iveda.com/role/IncomeTaxesTables",
+        "role_definition": null,
+        "statement_type": "INCOME_STATEMENT",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "other/earningslosspersharetables.json",
+        "role_uri": "http://iveda.com/role/EarningsLossPerShareTables",
+        "role_definition": null,
+        "statement_type": "INCOME_STATEMENT",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "other/segmentinformationtables.json",
+        "role_uri": "http://iveda.com/role/SegmentInformationTables",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "other/restatementofpreviouslyissuedfinancialstatementstables.json",
+        "role_uri": "http://iveda.com/role/RestatementOfPreviouslyIssuedFinancialStatementsTables",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      }
+    ],
+    "POLICY": [
+      {
+        "filename": "other/insidertradingpoliciesproc.json",
+        "role_uri": "http://xbrl.sec.gov/ecd/role/InsiderTradingPoliciesProc",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "other/summaryofsignificantaccountingpolicies.json",
+        "role_uri": "http://iveda.com/role/SummaryOfSignificantAccountingPolicies",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "other/summaryofsignificantaccountingpoliciespolicies.json",
+        "role_uri": "http://iveda.com/role/SummaryOfSignificantAccountingPoliciesPolicies",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      }
+    ],
+    "PARENTHETICAL": [
+      {
+        "filename": "other/balancesheetsparenthetical.json",
+        "role_uri": "http://iveda.com/role/BalanceSheetsParenthetical",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "other/statementsofstockholdersequityparenthetical.json",
+        "role_uri": "http://iveda.com/role/StatementsOfStockholdersEquityParenthetical",
+        "role_definition": null,
+        "statement_type": "EQUITY",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "other/scheduleofshort_termdebtdetailsparenthetical.json",
+        "role_uri": "http://iveda.com/role/ScheduleOfShort-termDebtDetailsParenthetical",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "other/scheduleoflong_termdebtdetailsparenthetical.json",
+        "role_uri": "http://iveda.com/role/ScheduleOfLong-termDebtDetailsParenthetical",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      }
+    ],
+    "DOCUMENT": [
+      {
+        "filename": "other/cover.json",
+        "role_uri": "http://iveda.com/role/Cover",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      }
+    ],
+    "UNKNOWN": []
+  },
+  "network_index": {
+    "other/cover.json": {
+      "role_uri": "http://iveda.com/role/Cover",
+      "role_definition": null,
+      "category": "DOCUMENT",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Cover"
+      ]
+    },
+    "core_statements/balancesheets.json": {
+      "role_uri": "http://iveda.com/role/BalanceSheets",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "BalanceSheet"
+      ]
+    },
+    "other/balancesheetsparenthetical.json": {
+      "role_uri": "http://iveda.com/role/BalanceSheetsParenthetical",
+      "role_definition": null,
+      "category": "PARENTHETICAL",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Parenthetical",
+        "BalanceSheet"
+      ]
+    },
+    "core_statements/statementsofoperations.json": {
+      "role_uri": "http://iveda.com/role/StatementsOfOperations",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "INCOME_STATEMENT",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Operations"
+      ]
+    },
+    "core_statements/comprehensiveloss.json": {
+      "role_uri": "http://iveda.com/role/ComprehensiveLoss",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "INCOME_STATEMENT",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Comprehensive"
+      ]
+    },
+    "core_statements/statementsofstockholdersequity.json": {
+      "role_uri": "http://iveda.com/role/StatementsOfStockholdersEquity",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "EQUITY",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Equity"
+      ]
+    },
+    "other/statementsofstockholdersequityparenthetical.json": {
+      "role_uri": "http://iveda.com/role/StatementsOfStockholdersEquityParenthetical",
+      "role_definition": null,
+      "category": "PARENTHETICAL",
+      "statement_type": "EQUITY",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Parenthetical",
+        "Equity"
+      ]
+    },
+    "core_statements/statementsofcashflows.json": {
+      "role_uri": "http://iveda.com/role/StatementsOfCashFlows",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "CASH_FLOW",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "CashFlow"
+      ]
+    },
+    "core_statements/pvpdisclosure.json": {
+      "role_uri": "http://xbrl.sec.gov/ecd/role/PvpDisclosure",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "OTHER",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": []
+    },
+    "core_statements/errcompdisclosure.json": {
+      "role_uri": "http://xbrl.sec.gov/ecd/role/ErrCompDisclosure",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "OTHER",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": []
+    },
+    "core_statements/awardtimingdisclosure.json": {
+      "role_uri": "http://xbrl.sec.gov/ecd/role/AwardTimingDisclosure",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "OTHER",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": []
+    },
+    "core_statements/insidertradingarrangements.json": {
+      "role_uri": "http://xbrl.sec.gov/ecd/role/InsiderTradingArrangements",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "OTHER",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": []
+    },
+    "other/insidertradingpoliciesproc.json": {
+      "role_uri": "http://xbrl.sec.gov/ecd/role/InsiderTradingPoliciesProc",
+      "role_definition": null,
+      "category": "POLICY",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Policies"
+      ]
+    },
+    "core_statements/cybersecurityriskmanagementandstrategydisclosure.json": {
+      "role_uri": "http://xbrl.sec.gov/cyd/role/CybersecurityRiskManagementAndStrategyDisclosure",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "OTHER",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": []
+    },
+    "core_statements/materialcybersecurityincidentdisclosure.json": {
+      "role_uri": "http://xbrl.sec.gov/cyd/role/MaterialCybersecurityIncidentDisclosure",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "OTHER",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": []
+    },
+    "other/summaryofsignificantaccountingpolicies.json": {
+      "role_uri": "http://iveda.com/role/SummaryOfSignificantAccountingPolicies",
+      "role_definition": null,
+      "category": "POLICY",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Policies"
+      ]
+    },
+    "core_statements/accountsandotherpayables.json": {
+      "role_uri": "http://iveda.com/role/AccountsAndOtherPayables",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Payable"
+      ]
+    },
+    "core_statements/short_termandlong_termdebt.json": {
+      "role_uri": "http://iveda.com/role/Short-termAndLong-termDebt",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Debt"
+      ]
+    },
+    "core_statements/preferredstock.json": {
+      "role_uri": "http://iveda.com/role/PreferredStock",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "OTHER",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": []
+    },
+    "core_statements/equity.json": {
+      "role_uri": "http://iveda.com/role/Equity",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "EQUITY",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Equity"
+      ]
+    },
+    "core_statements/stockoptionplanandwarrants.json": {
+      "role_uri": "http://iveda.com/role/StockOptionPlanAndWarrants",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "OTHER",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": []
+    },
+    "core_statements/incometaxes.json": {
+      "role_uri": "http://iveda.com/role/IncomeTaxes",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "INCOME_STATEMENT",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Income"
+      ]
+    },
+    "core_statements/earningslosspershare.json": {
+      "role_uri": "http://iveda.com/role/EarningsLossPerShare",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "INCOME_STATEMENT",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Earning"
+      ]
+    },
+    "core_statements/contingentliabilities.json": {
+      "role_uri": "http://iveda.com/role/ContingentLiabilities",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "OTHER",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": []
+    },
+    "core_statements/segmentinformation.json": {
+      "role_uri": "http://iveda.com/role/SegmentInformation",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "OTHER",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": []
+    },
+    "core_statements/restatementofpreviouslyissuedfinancialstatements.json": {
+      "role_uri": "http://iveda.com/role/RestatementOfPreviouslyIssuedFinancialStatements",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "OTHER",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": []
+    },
+    "core_statements/subsequentevents.json": {
+      "role_uri": "http://iveda.com/role/SubsequentEvents",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "OTHER",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": []
+    },
+    "other/summaryofsignificantaccountingpoliciespolicies.json": {
+      "role_uri": "http://iveda.com/role/SummaryOfSignificantAccountingPoliciesPolicies",
+      "role_definition": null,
+      "category": "POLICY",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Policies"
+      ]
+    },
+    "other/summaryofsignificantaccountingpoliciestables.json": {
+      "role_uri": "http://iveda.com/role/SummaryOfSignificantAccountingPoliciesTables",
+      "role_definition": null,
+      "category": "TABLE",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Tables"
+      ]
+    },
+    "other/accountsandotherpayablestables.json": {
+      "role_uri": "http://iveda.com/role/AccountsAndOtherPayablesTables",
+      "role_definition": null,
+      "category": "TABLE",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Tables",
+        "Payable"
+      ]
+    },
+    "other/short_termandlong_termdebttables.json": {
+      "role_uri": "http://iveda.com/role/Short-termAndLong-termDebtTables",
+      "role_definition": null,
+      "category": "TABLE",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Tables",
+        "Debt"
+      ]
+    },
+    "other/stockoptionplanandwarrantstables.json": {
+      "role_uri": "http://iveda.com/role/StockOptionPlanAndWarrantsTables",
+      "role_definition": null,
+      "category": "TABLE",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Tables"
+      ]
+    },
+    "other/incometaxestables.json": {
+      "role_uri": "http://iveda.com/role/IncomeTaxesTables",
+      "role_definition": null,
+      "category": "TABLE",
+      "statement_type": "INCOME_STATEMENT",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Tables",
+        "Income"
+      ]
+    },
+    "other/earningslosspersharetables.json": {
+      "role_uri": "http://iveda.com/role/EarningsLossPerShareTables",
+      "role_definition": null,
+      "category": "TABLE",
+      "statement_type": "INCOME_STATEMENT",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Tables",
+        "Earning"
+      ]
+    },
+    "other/segmentinformationtables.json": {
+      "role_uri": "http://iveda.com/role/SegmentInformationTables",
+      "role_definition": null,
+      "category": "TABLE",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Tables"
+      ]
+    },
+    "other/restatementofpreviouslyissuedfinancialstatementstables.json": {
+      "role_uri": "http://iveda.com/role/RestatementOfPreviouslyIssuedFinancialStatementsTables",
+      "role_definition": null,
+      "category": "TABLE",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Tables"
+      ]
+    },
+    "details/scheduleofdisaggregationofrevenuedetails.json": {
+      "role_uri": "http://iveda.com/role/ScheduleOfDisaggregationOfRevenueDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "INCOME_STATEMENT",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Revenue"
+      ]
+    },
+    "details/summaryofsignificantaccountingpoliciesdetailsnarrative.json": {
+      "role_uri": "http://iveda.com/role/SummaryOfSignificantAccountingPoliciesDetailsNarrative",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details"
+      ]
+    },
+    "details/scheduleofaccountsandotherpayablesdetails.json": {
+      "role_uri": "http://iveda.com/role/ScheduleOfAccountsAndOtherPayablesDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Payable"
+      ]
+    },
+    "other/scheduleofshort_termdebtdetailsparenthetical.json": {
+      "role_uri": "http://iveda.com/role/ScheduleOfShort-termDebtDetailsParenthetical",
+      "role_definition": null,
+      "category": "PARENTHETICAL",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Parenthetical",
+        "Debt"
+      ]
+    },
+    "details/scheduleofshort_termdebtdetails.json": {
+      "role_uri": "http://iveda.com/role/ScheduleOfShort-termDebtDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Debt"
+      ]
+    },
+    "other/scheduleoflong_termdebtdetailsparenthetical.json": {
+      "role_uri": "http://iveda.com/role/ScheduleOfLong-termDebtDetailsParenthetical",
+      "role_definition": null,
+      "category": "PARENTHETICAL",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Parenthetical",
+        "Debt"
+      ]
+    },
+    "details/scheduleoflong_termdebtdetails.json": {
+      "role_uri": "http://iveda.com/role/ScheduleOfLong-termDebtDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Debt"
+      ]
+    },
+    "details/scheduleofminimumpaymentoflongtermdebtdetails.json": {
+      "role_uri": "http://iveda.com/role/ScheduleOfMinimumPaymentOfLongTermDebtDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Debt"
+      ]
+    },
+    "details/preferredstockdetailsnarrative.json": {
+      "role_uri": "http://iveda.com/role/PreferredStockDetailsNarrative",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details"
+      ]
+    },
+    "details/equitydetailsnarrative.json": {
+      "role_uri": "http://iveda.com/role/EquityDetailsNarrative",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "EQUITY",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Equity"
+      ]
+    },
+    "details/scheduleofstockoptiontransactionsdetails.json": {
+      "role_uri": "http://iveda.com/role/ScheduleOfStockOptionTransactionsDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details"
+      ]
+    },
+    "details/scheduleofstockoptionoutstandingandexercisableandexercisableexercisepricerangedetails.json": {
+      "role_uri": "http://iveda.com/role/ScheduleOfStockOptionOutstandingAndExercisableAndExercisableExercisePriceRangeDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details"
+      ]
+    },
+    "details/scheduleofwarranttransactionsdetails.json": {
+      "role_uri": "http://iveda.com/role/ScheduleOfWarrantTransactionsDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details"
+      ]
+    },
+    "details/summaryofwarrantsoutstandingandexercisabledetails.json": {
+      "role_uri": "http://iveda.com/role/SummaryOfWarrantsOutstandingAndExercisableDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details"
+      ]
+    },
+    "details/stockoptionplanandwarrantsdetailsnarrative.json": {
+      "role_uri": "http://iveda.com/role/StockOptionPlanAndWarrantsDetailsNarrative",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details"
+      ]
+    },
+    "details/scheduleofeffectivetaxratedetails.json": {
+      "role_uri": "http://iveda.com/role/ScheduleOfEffectiveTaxRateDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details"
+      ]
+    },
+    "details/scheduleofdeferredtaxassetsandliabilitiesdetails.json": {
+      "role_uri": "http://iveda.com/role/ScheduleOfDeferredTaxAssetsAndLiabilitiesDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Asset"
+      ]
+    },
+    "details/incometaxesdetailsnarrative.json": {
+      "role_uri": "http://iveda.com/role/IncomeTaxesDetailsNarrative",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "INCOME_STATEMENT",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Income"
+      ]
+    },
+    "details/scheduleofearningspersharebasicanddiluteddetails.json": {
+      "role_uri": "http://iveda.com/role/ScheduleOfEarningsPerShareBasicAndDilutedDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "INCOME_STATEMENT",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Earning"
+      ]
+    },
+    "details/scheduleofbasicanddilutedlosspersharessecuritiesdetails.json": {
+      "role_uri": "http://iveda.com/role/ScheduleOfBasicAndDilutedLossPerSharesSecuritiesDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details"
+      ]
+    },
+    "details/contingentliabilitiesdetailsnarrative.json": {
+      "role_uri": "http://iveda.com/role/ContingentLiabilitiesDetailsNarrative",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details"
+      ]
+    },
+    "details/scheduleofsegmentinformationdetails.json": {
+      "role_uri": "http://iveda.com/role/ScheduleOfSegmentInformationDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details"
+      ]
+    },
+    "details/scheduleofnetassetsliabilitiesbygeographicregionsdetails.json": {
+      "role_uri": "http://iveda.com/role/ScheduleOfNetAssetsLiabilitiesByGeographicRegionsDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Asset"
+      ]
+    },
+    "details/scheduleofrestatementsofbalancesheetsdetails.json": {
+      "role_uri": "http://iveda.com/role/ScheduleOfRestatementsOfBalanceSheetsDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "BalanceSheet"
+      ]
+    },
+    "details/scheduleofrestatementsofoperationsdetails.json": {
+      "role_uri": "http://iveda.com/role/ScheduleOfRestatementsOfOperationsDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "INCOME_STATEMENT",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Operations"
+      ]
+    },
+    "details/scheduleofrestatementsofequitydetails.json": {
+      "role_uri": "http://iveda.com/role/ScheduleOfRestatementsOfEquityDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "EQUITY",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Equity"
+      ]
+    },
+    "details/scheduleofrestatementsofcashflowsdetails.json": {
+      "role_uri": "http://iveda.com/role/ScheduleOfRestatementsOfCashFlowsDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "CASH_FLOW",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "CashFlow"
+      ]
+    },
+    "details/restatementofpreviouslyissuedfinancialstatementsdetailsnarrative.json": {
+      "role_uri": "http://iveda.com/role/RestatementOfPreviouslyIssuedFinancialStatementsDetailsNarrative",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details"
+      ]
+    },
+    "details/subsequenteventsdetailsnarrative.json": {
+      "role_uri": "http://iveda.com/role/SubsequentEventsDetailsNarrative",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "OTHER",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details"
+      ]
+    }
+  }
+}

@@ -1,0 +1,208 @@
+{
+  "role_uri": "http://iveda.com/role/ScheduleOfBasicAndDilutedLossPerSharesSecuritiesDetails",
+  "role_definition": null,
+  "statement_type": "OTHER",
+  "classification": {
+    "category": "DETAIL",
+    "statement_type": "OTHER",
+    "is_primary": false,
+    "confidence": "LOW",
+    "matched_patterns": [
+      "Details"
+    ],
+    "structural_signals": {},
+    "source": "structural_analysis",
+    "taxonomy_source": "fallback_pattern",
+    "fallback_used": true
+  },
+  "hierarchy": {
+    "roots": [
+      "us-gaap_EarningsPerShareAbstract"
+    ],
+    "children": {
+      "us-gaap_EarningsPerShareAbstract": [
+        "us-gaap_ScheduleOfAntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareTable"
+      ],
+      "us-gaap_ScheduleOfAntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareTable": [
+        "us-gaap_AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareLineItems",
+        "us-gaap_AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareByAntidilutiveSecuritiesAxis"
+      ],
+      "us-gaap_AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareByAntidilutiveSecuritiesAxis": [
+        "us-gaap_AntidilutiveSecuritiesNameDomain"
+      ],
+      "us-gaap_AntidilutiveSecuritiesNameDomain": [
+        "us-gaap_WarrantMember",
+        "us-gaap_EmployeeStockOptionMember"
+      ],
+      "us-gaap_AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareLineItems": [
+        "us-gaap_AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareAmount"
+      ]
+    },
+    "parents": {
+      "us-gaap_ScheduleOfAntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareTable": "us-gaap_EarningsPerShareAbstract",
+      "us-gaap_AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareLineItems": "us-gaap_ScheduleOfAntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareTable",
+      "us-gaap_AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareByAntidilutiveSecuritiesAxis": "us-gaap_ScheduleOfAntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareTable",
+      "us-gaap_AntidilutiveSecuritiesNameDomain": "us-gaap_AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareByAntidilutiveSecuritiesAxis",
+      "us-gaap_WarrantMember": "us-gaap_AntidilutiveSecuritiesNameDomain",
+      "us-gaap_EmployeeStockOptionMember": "us-gaap_AntidilutiveSecuritiesNameDomain",
+      "us-gaap_AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareAmount": "us-gaap_AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareLineItems"
+    },
+    "order": {
+      "us-gaap_ScheduleOfAntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareTable": "100",
+      "us-gaap_AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareLineItems": "200",
+      "us-gaap_AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareByAntidilutiveSecuritiesAxis": "10",
+      "us-gaap_AntidilutiveSecuritiesNameDomain": "0",
+      "us-gaap_WarrantMember": "10",
+      "us-gaap_EmployeeStockOptionMember": "30",
+      "us-gaap_AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareAmount": "0"
+    }
+  },
+  "facts": [
+    {
+      "concept": "us-gaap_AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareAmount",
+      "value": "1882076",
+      "context_ref": "From2024-01-012024-12-31_us-gaap_WarrantMember17079218",
+      "unit_ref": "Shares",
+      "decimals": "INF",
+      "level": 3,
+      "order": "0",
+      "parent_concept": "us-gaap_AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {
+        "us-gaap:AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareByAntidilutiveSecuritiesAxis": "us-gaap:WarrantMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact001038",
+      "display_value": "1882076",
+      "formatted_value": "1,882,076",
+      "scaling_factor": 1.0
+    },
+    {
+      "concept": "us-gaap_AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareAmount",
+      "value": "631737",
+      "context_ref": "From2023-01-012023-12-31_us-gaap_WarrantMember",
+      "unit_ref": "Shares",
+      "decimals": "INF",
+      "level": 3,
+      "order": "0",
+      "parent_concept": "us-gaap_AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2023-01-01",
+      "period_end": "2023-12-31",
+      "dimensions": {
+        "us-gaap:AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareByAntidilutiveSecuritiesAxis": "us-gaap:WarrantMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact001039",
+      "display_value": "631737",
+      "formatted_value": "631,737",
+      "scaling_factor": 1.0
+    },
+    {
+      "concept": "us-gaap_AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareAmount",
+      "value": "217016",
+      "context_ref": "From2024-01-012024-12-31_us-gaap_EmployeeStockOptionMember",
+      "unit_ref": "Shares",
+      "decimals": "INF",
+      "level": 3,
+      "order": "0",
+      "parent_concept": "us-gaap_AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {
+        "us-gaap:AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareByAntidilutiveSecuritiesAxis": "us-gaap:EmployeeStockOptionMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact001041",
+      "display_value": "217016",
+      "formatted_value": "217,016",
+      "scaling_factor": 1.0
+    },
+    {
+      "concept": "us-gaap_AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareAmount",
+      "value": "162625",
+      "context_ref": "From2023-01-012023-12-31_us-gaap_EmployeeStockOptionMember",
+      "unit_ref": "Shares",
+      "decimals": "INF",
+      "level": 3,
+      "order": "0",
+      "parent_concept": "us-gaap_AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2023-01-01",
+      "period_end": "2023-12-31",
+      "dimensions": {
+        "us-gaap:AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareByAntidilutiveSecuritiesAxis": "us-gaap:EmployeeStockOptionMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact001042",
+      "display_value": "162625",
+      "formatted_value": "162,625",
+      "scaling_factor": 1.0
+    },
+    {
+      "concept": "us-gaap_AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareAmount",
+      "value": "2099092",
+      "context_ref": "From2024-01-01to2024-12-31",
+      "unit_ref": "Shares",
+      "decimals": "INF",
+      "level": 3,
+      "order": "0",
+      "parent_concept": "us-gaap_AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact001044",
+      "display_value": "2099092",
+      "formatted_value": "2,099,092",
+      "scaling_factor": 1.0
+    },
+    {
+      "concept": "us-gaap_AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareAmount",
+      "value": "794362",
+      "context_ref": "From2023-01-012023-12-31",
+      "unit_ref": "Shares",
+      "decimals": "INF",
+      "level": 3,
+      "order": "0",
+      "parent_concept": "us-gaap_AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2023-01-01",
+      "period_end": "2023-12-31",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact001045",
+      "display_value": "794362",
+      "formatted_value": "794,362",
+      "scaling_factor": 1.0
+    }
+  ]
+}

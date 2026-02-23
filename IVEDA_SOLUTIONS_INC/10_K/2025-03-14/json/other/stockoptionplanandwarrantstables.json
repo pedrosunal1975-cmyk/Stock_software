@@ -1,0 +1,137 @@
+{
+  "role_uri": "http://iveda.com/role/StockOptionPlanAndWarrantsTables",
+  "role_definition": null,
+  "statement_type": "OTHER",
+  "classification": {
+    "category": "TABLE",
+    "statement_type": "OTHER",
+    "is_primary": false,
+    "confidence": "LOW",
+    "matched_patterns": [
+      "Tables"
+    ],
+    "structural_signals": {},
+    "source": "structural_analysis",
+    "taxonomy_source": "fallback_pattern",
+    "fallback_used": true
+  },
+  "hierarchy": {
+    "roots": [
+      "us-gaap_DisclosureOfCompensationRelatedCostsSharebasedPaymentsAbstract"
+    ],
+    "children": {
+      "us-gaap_DisclosureOfCompensationRelatedCostsSharebasedPaymentsAbstract": [
+        "us-gaap_DisclosureOfShareBasedCompensationArrangementsByShareBasedPaymentAwardTextBlock",
+        "us-gaap_ScheduleOfShareBasedCompensationSharesAuthorizedUnderStockOptionPlansByExercisePriceRangeTextBlock",
+        "us-gaap_ScheduleOfStockholdersEquityNoteWarrantsOrRightsTextBlock",
+        "IVDA_ScheduleOfStockholdersEquityNoteWarrantsTableTextBlock"
+      ]
+    },
+    "parents": {
+      "us-gaap_DisclosureOfShareBasedCompensationArrangementsByShareBasedPaymentAwardTextBlock": "us-gaap_DisclosureOfCompensationRelatedCostsSharebasedPaymentsAbstract",
+      "us-gaap_ScheduleOfShareBasedCompensationSharesAuthorizedUnderStockOptionPlansByExercisePriceRangeTextBlock": "us-gaap_DisclosureOfCompensationRelatedCostsSharebasedPaymentsAbstract",
+      "us-gaap_ScheduleOfStockholdersEquityNoteWarrantsOrRightsTextBlock": "us-gaap_DisclosureOfCompensationRelatedCostsSharebasedPaymentsAbstract",
+      "IVDA_ScheduleOfStockholdersEquityNoteWarrantsTableTextBlock": "us-gaap_DisclosureOfCompensationRelatedCostsSharebasedPaymentsAbstract"
+    },
+    "order": {
+      "us-gaap_DisclosureOfShareBasedCompensationArrangementsByShareBasedPaymentAwardTextBlock": "0",
+      "us-gaap_ScheduleOfShareBasedCompensationSharesAuthorizedUnderStockOptionPlansByExercisePriceRangeTextBlock": "10",
+      "us-gaap_ScheduleOfStockholdersEquityNoteWarrantsOrRightsTextBlock": "20",
+      "IVDA_ScheduleOfStockholdersEquityNoteWarrantsTableTextBlock": "30"
+    }
+  },
+  "facts": [
+    {
+      "concept": "us-gaap_DisclosureOfShareBasedCompensationArrangementsByShareBasedPaymentAwardTextBlock",
+      "value": "",
+      "context_ref": "From2024-01-01to2024-12-31",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 1,
+      "order": "0",
+      "parent_concept": "us-gaap_DisclosureOfCompensationRelatedCostsSharebasedPaymentsAbstract",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact000839",
+      "display_value": null,
+      "formatted_value": null,
+      "scaling_factor": null
+    },
+    {
+      "concept": "us-gaap_ScheduleOfShareBasedCompensationSharesAuthorizedUnderStockOptionPlansByExercisePriceRangeTextBlock",
+      "value": "",
+      "context_ref": "From2024-01-01to2024-12-31",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 1,
+      "order": "10",
+      "parent_concept": "us-gaap_DisclosureOfCompensationRelatedCostsSharebasedPaymentsAbstract",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact000889",
+      "display_value": null,
+      "formatted_value": null,
+      "scaling_factor": null
+    },
+    {
+      "concept": "us-gaap_ScheduleOfStockholdersEquityNoteWarrantsOrRightsTextBlock",
+      "value": "",
+      "context_ref": "From2024-01-01to2024-12-31",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 1,
+      "order": "20",
+      "parent_concept": "us-gaap_DisclosureOfCompensationRelatedCostsSharebasedPaymentsAbstract",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact000905",
+      "display_value": null,
+      "formatted_value": null,
+      "scaling_factor": null
+    },
+    {
+      "concept": "IVDA_ScheduleOfStockholdersEquityNoteWarrantsTableTextBlock",
+      "value": "",
+      "context_ref": "From2024-01-01to2024-12-31",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 1,
+      "order": "30",
+      "parent_concept": "us-gaap_DisclosureOfCompensationRelatedCostsSharebasedPaymentsAbstract",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact000959",
+      "display_value": null,
+      "formatted_value": null,
+      "scaling_factor": null
+    }
+  ]
+}

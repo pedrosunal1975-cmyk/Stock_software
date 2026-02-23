@@ -1,0 +1,85 @@
+{
+  "role_uri": "http://iveda.com/role/SegmentInformationTables",
+  "role_definition": null,
+  "statement_type": "OTHER",
+  "classification": {
+    "category": "TABLE",
+    "statement_type": "OTHER",
+    "is_primary": false,
+    "confidence": "LOW",
+    "matched_patterns": [
+      "Tables"
+    ],
+    "structural_signals": {},
+    "source": "structural_analysis",
+    "taxonomy_source": "fallback_pattern",
+    "fallback_used": true
+  },
+  "hierarchy": {
+    "roots": [
+      "us-gaap_SegmentReportingAbstract"
+    ],
+    "children": {
+      "us-gaap_SegmentReportingAbstract": [
+        "us-gaap_ScheduleOfSegmentReportingInformationBySegmentTextBlock",
+        "IVDA_LongLivedAssetsAndLiabilitiesByGeographicAreasTableTextBlock"
+      ]
+    },
+    "parents": {
+      "us-gaap_ScheduleOfSegmentReportingInformationBySegmentTextBlock": "us-gaap_SegmentReportingAbstract",
+      "IVDA_LongLivedAssetsAndLiabilitiesByGeographicAreasTableTextBlock": "us-gaap_SegmentReportingAbstract"
+    },
+    "order": {
+      "us-gaap_ScheduleOfSegmentReportingInformationBySegmentTextBlock": "0",
+      "IVDA_LongLivedAssetsAndLiabilitiesByGeographicAreasTableTextBlock": "10"
+    }
+  },
+  "facts": [
+    {
+      "concept": "us-gaap_ScheduleOfSegmentReportingInformationBySegmentTextBlock",
+      "value": "",
+      "context_ref": "From2024-01-01to2024-12-31",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 1,
+      "order": "0",
+      "parent_concept": "us-gaap_SegmentReportingAbstract",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact001054",
+      "display_value": null,
+      "formatted_value": null,
+      "scaling_factor": null
+    },
+    {
+      "concept": "IVDA_LongLivedAssetsAndLiabilitiesByGeographicAreasTableTextBlock",
+      "value": "",
+      "context_ref": "From2024-01-01to2024-12-31",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 1,
+      "order": "10",
+      "parent_concept": "us-gaap_SegmentReportingAbstract",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact001210",
+      "display_value": null,
+      "formatted_value": null,
+      "scaling_factor": null
+    }
+  ]
+}

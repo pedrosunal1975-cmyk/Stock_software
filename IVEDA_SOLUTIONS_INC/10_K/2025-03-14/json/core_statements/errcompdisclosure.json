@@ -1,0 +1,102 @@
+{
+  "role_uri": "http://xbrl.sec.gov/ecd/role/ErrCompDisclosure",
+  "role_definition": null,
+  "statement_type": "OTHER",
+  "classification": {
+    "category": "CORE_STATEMENT",
+    "statement_type": "OTHER",
+    "is_primary": true,
+    "confidence": "LOW",
+    "matched_patterns": [],
+    "structural_signals": {
+      "fact_count": 0,
+      "fact_count_pass": false,
+      "max_depth": 4,
+      "depth_pass": true,
+      "root_count": 1,
+      "root_count_pass": true,
+      "structure_score": "2/3"
+    },
+    "source": "structural_analysis",
+    "taxonomy_source": "fallback_pattern",
+    "fallback_used": true
+  },
+  "hierarchy": {
+    "roots": [
+      "ecd_RecoveryOfErrCompDisclosureLineItems"
+    ],
+    "children": {
+      "ecd_RecoveryOfErrCompDisclosureLineItems": [
+        "ecd_ErrCompRecoveryTable",
+        "ecd_RestatementDeterminationDate"
+      ],
+      "ecd_ErrCompRecoveryTable": [
+        "ecd_RestatementDateAxis",
+        "ecd_IndividualAxis"
+      ],
+      "ecd_IndividualAxis": [
+        "ecd_AllIndividualsMember"
+      ],
+      "ecd_RestatementDeterminationDate": [
+        "ecd_AggtErrCompAmt",
+        "ecd_ForgoneRecoveryDueToViolationOfHomeCountryLawAmt",
+        "ecd_ForgoneRecoveryDueToDisqualificationOfTaxBenefitsAmt"
+      ],
+      "ecd_AggtErrCompAmt": [
+        "ecd_ErrCompAnalysisTextBlock",
+        "ecd_StkPrcOrTsrEstimationMethodTextBlock",
+        "ecd_OutstandingAggtErrCompAmt",
+        "ecd_AggtErrCompNotYetDeterminedTextBlock",
+        "ecd_ForgoneRecoveryIndName",
+        "ecd_ForgoneRecoveryDueToExpenseOfEnforcementAmt"
+      ],
+      "ecd_ForgoneRecoveryDueToDisqualificationOfTaxBenefitsAmt": [
+        "ecd_ForgoneRecoveryExplanationOfImpracticabilityTextBlock",
+        "ecd_OutstandingRecoveryIndName",
+        "ecd_OutstandingRecoveryCompAmt",
+        "ecd_RestatementDoesNotRequireRecoveryTextBlock"
+      ]
+    },
+    "parents": {
+      "ecd_ErrCompRecoveryTable": "ecd_RecoveryOfErrCompDisclosureLineItems",
+      "ecd_RestatementDateAxis": "ecd_ErrCompRecoveryTable",
+      "ecd_IndividualAxis": "ecd_ErrCompRecoveryTable",
+      "ecd_AllIndividualsMember": "ecd_IndividualAxis",
+      "ecd_RestatementDeterminationDate": "ecd_RecoveryOfErrCompDisclosureLineItems",
+      "ecd_AggtErrCompAmt": "ecd_RestatementDeterminationDate",
+      "ecd_ErrCompAnalysisTextBlock": "ecd_AggtErrCompAmt",
+      "ecd_StkPrcOrTsrEstimationMethodTextBlock": "ecd_AggtErrCompAmt",
+      "ecd_OutstandingAggtErrCompAmt": "ecd_AggtErrCompAmt",
+      "ecd_AggtErrCompNotYetDeterminedTextBlock": "ecd_AggtErrCompAmt",
+      "ecd_ForgoneRecoveryIndName": "ecd_AggtErrCompAmt",
+      "ecd_ForgoneRecoveryDueToExpenseOfEnforcementAmt": "ecd_AggtErrCompAmt",
+      "ecd_ForgoneRecoveryDueToViolationOfHomeCountryLawAmt": "ecd_RestatementDeterminationDate",
+      "ecd_ForgoneRecoveryDueToDisqualificationOfTaxBenefitsAmt": "ecd_RestatementDeterminationDate",
+      "ecd_ForgoneRecoveryExplanationOfImpracticabilityTextBlock": "ecd_ForgoneRecoveryDueToDisqualificationOfTaxBenefitsAmt",
+      "ecd_OutstandingRecoveryIndName": "ecd_ForgoneRecoveryDueToDisqualificationOfTaxBenefitsAmt",
+      "ecd_OutstandingRecoveryCompAmt": "ecd_ForgoneRecoveryDueToDisqualificationOfTaxBenefitsAmt",
+      "ecd_RestatementDoesNotRequireRecoveryTextBlock": "ecd_ForgoneRecoveryDueToDisqualificationOfTaxBenefitsAmt"
+    },
+    "order": {
+      "ecd_ErrCompRecoveryTable": "100",
+      "ecd_RestatementDateAxis": "10",
+      "ecd_IndividualAxis": "20",
+      "ecd_AllIndividualsMember": "0",
+      "ecd_RestatementDeterminationDate": "2000",
+      "ecd_AggtErrCompAmt": "2010",
+      "ecd_ErrCompAnalysisTextBlock": "2020",
+      "ecd_StkPrcOrTsrEstimationMethodTextBlock": "2030",
+      "ecd_OutstandingAggtErrCompAmt": "2040",
+      "ecd_AggtErrCompNotYetDeterminedTextBlock": "2050",
+      "ecd_ForgoneRecoveryIndName": "2060",
+      "ecd_ForgoneRecoveryDueToExpenseOfEnforcementAmt": "2070",
+      "ecd_ForgoneRecoveryDueToViolationOfHomeCountryLawAmt": "2080",
+      "ecd_ForgoneRecoveryDueToDisqualificationOfTaxBenefitsAmt": "2090",
+      "ecd_ForgoneRecoveryExplanationOfImpracticabilityTextBlock": "2100",
+      "ecd_OutstandingRecoveryIndName": "2110",
+      "ecd_OutstandingRecoveryCompAmt": "2120",
+      "ecd_RestatementDoesNotRequireRecoveryTextBlock": "2130"
+    }
+  },
+  "facts": []
+}

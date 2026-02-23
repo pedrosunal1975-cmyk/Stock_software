@@ -1,0 +1,209 @@
+{
+  "role_uri": "http://iveda.com/role/ScheduleOfNetAssetsLiabilitiesByGeographicRegionsDetails",
+  "role_definition": null,
+  "statement_type": "BALANCE_SHEET",
+  "classification": {
+    "category": "DETAIL",
+    "statement_type": "BALANCE_SHEET",
+    "is_primary": false,
+    "confidence": "LOW",
+    "matched_patterns": [
+      "Details",
+      "Asset"
+    ],
+    "structural_signals": {},
+    "source": "structural_analysis",
+    "taxonomy_source": "fallback_pattern",
+    "fallback_used": true
+  },
+  "hierarchy": {
+    "roots": [
+      "us-gaap_SegmentReportingAbstract"
+    ],
+    "children": {
+      "us-gaap_SegmentReportingAbstract": [
+        "us-gaap_ScheduleOfRevenuesFromExternalCustomersAndLongLivedAssetsTable"
+      ],
+      "us-gaap_ScheduleOfRevenuesFromExternalCustomersAndLongLivedAssetsTable": [
+        "us-gaap_RevenuesFromExternalCustomersAndLongLivedAssetsLineItems",
+        "srt_StatementGeographicalAxis"
+      ],
+      "srt_StatementGeographicalAxis": [
+        "srt_SegmentGeographicalDomain"
+      ],
+      "srt_SegmentGeographicalDomain": [
+        "country_US",
+        "IVDA_RepublicOfChinaTaiwanMember"
+      ],
+      "us-gaap_RevenuesFromExternalCustomersAndLongLivedAssetsLineItems": [
+        "us-gaap_NoncurrentAssets"
+      ]
+    },
+    "parents": {
+      "us-gaap_ScheduleOfRevenuesFromExternalCustomersAndLongLivedAssetsTable": "us-gaap_SegmentReportingAbstract",
+      "us-gaap_RevenuesFromExternalCustomersAndLongLivedAssetsLineItems": "us-gaap_ScheduleOfRevenuesFromExternalCustomersAndLongLivedAssetsTable",
+      "srt_StatementGeographicalAxis": "us-gaap_ScheduleOfRevenuesFromExternalCustomersAndLongLivedAssetsTable",
+      "srt_SegmentGeographicalDomain": "srt_StatementGeographicalAxis",
+      "country_US": "srt_SegmentGeographicalDomain",
+      "IVDA_RepublicOfChinaTaiwanMember": "srt_SegmentGeographicalDomain",
+      "us-gaap_NoncurrentAssets": "us-gaap_RevenuesFromExternalCustomersAndLongLivedAssetsLineItems"
+    },
+    "order": {
+      "us-gaap_ScheduleOfRevenuesFromExternalCustomersAndLongLivedAssetsTable": "100",
+      "us-gaap_RevenuesFromExternalCustomersAndLongLivedAssetsLineItems": "200",
+      "srt_StatementGeographicalAxis": "10",
+      "srt_SegmentGeographicalDomain": "0",
+      "country_US": "10",
+      "IVDA_RepublicOfChinaTaiwanMember": "30",
+      "us-gaap_NoncurrentAssets": "0"
+    }
+  },
+  "facts": [
+    {
+      "concept": "us-gaap_NoncurrentAssets",
+      "value": "1775554",
+      "context_ref": "AsOf2024-12-31_country_US",
+      "unit_ref": "USD",
+      "decimals": "0",
+      "level": 3,
+      "order": "0",
+      "parent_concept": "us-gaap_RevenuesFromExternalCustomersAndLongLivedAssetsLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2024-12-31",
+      "dimensions": {
+        "srt:StatementGeographicalAxis": "country:US"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact001212",
+      "display_value": "1775554",
+      "formatted_value": "$1,775,554",
+      "scaling_factor": 1
+    },
+    {
+      "concept": "us-gaap_NoncurrentAssets",
+      "value": "3741367",
+      "context_ref": "AsOf2023-12-31_country_US",
+      "unit_ref": "USD",
+      "decimals": "0",
+      "level": 3,
+      "order": "0",
+      "parent_concept": "us-gaap_RevenuesFromExternalCustomersAndLongLivedAssetsLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2023-12-31",
+      "dimensions": {
+        "srt:StatementGeographicalAxis": "country:US"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact001213",
+      "display_value": "3741367",
+      "formatted_value": "$3,741,367",
+      "scaling_factor": 1
+    },
+    {
+      "concept": "us-gaap_NoncurrentAssets",
+      "value": "729885",
+      "context_ref": "AsOf2024-12-31_custom_RepublicOfChinaTaiwanMember",
+      "unit_ref": "USD",
+      "decimals": "0",
+      "level": 3,
+      "order": "0",
+      "parent_concept": "us-gaap_RevenuesFromExternalCustomersAndLongLivedAssetsLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2024-12-31",
+      "dimensions": {
+        "srt:StatementGeographicalAxis": "IVDA:RepublicOfChinaTaiwanMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact001215",
+      "display_value": "729885",
+      "formatted_value": "$729,885",
+      "scaling_factor": 1
+    },
+    {
+      "concept": "us-gaap_NoncurrentAssets",
+      "value": "907113",
+      "context_ref": "AsOf2023-12-31_custom_RepublicOfChinaTaiwanMember",
+      "unit_ref": "USD",
+      "decimals": "0",
+      "level": 3,
+      "order": "0",
+      "parent_concept": "us-gaap_RevenuesFromExternalCustomersAndLongLivedAssetsLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2023-12-31",
+      "dimensions": {
+        "srt:StatementGeographicalAxis": "IVDA:RepublicOfChinaTaiwanMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact001216",
+      "display_value": "907113",
+      "formatted_value": "$907,113",
+      "scaling_factor": 1
+    },
+    {
+      "concept": "us-gaap_NoncurrentAssets",
+      "value": "2505439",
+      "context_ref": "AsOf2024-12-31",
+      "unit_ref": "USD",
+      "decimals": "0",
+      "level": 3,
+      "order": "0",
+      "parent_concept": "us-gaap_RevenuesFromExternalCustomersAndLongLivedAssetsLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2024-12-31",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact001218",
+      "display_value": "2505439",
+      "formatted_value": "$2,505,439",
+      "scaling_factor": 1
+    },
+    {
+      "concept": "us-gaap_NoncurrentAssets",
+      "value": "4648480",
+      "context_ref": "AsOf2023-12-31",
+      "unit_ref": "USD",
+      "decimals": "0",
+      "level": 3,
+      "order": "0",
+      "parent_concept": "us-gaap_RevenuesFromExternalCustomersAndLongLivedAssetsLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2023-12-31",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact001219",
+      "display_value": "4648480",
+      "formatted_value": "$4,648,480",
+      "scaling_factor": 1
+    }
+  ]
+}

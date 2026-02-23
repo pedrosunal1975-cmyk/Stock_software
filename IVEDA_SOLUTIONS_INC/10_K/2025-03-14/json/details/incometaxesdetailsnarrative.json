@@ -1,0 +1,180 @@
+{
+  "role_uri": "http://iveda.com/role/IncomeTaxesDetailsNarrative",
+  "role_definition": null,
+  "statement_type": "INCOME_STATEMENT",
+  "classification": {
+    "category": "DETAIL",
+    "statement_type": "INCOME_STATEMENT",
+    "is_primary": false,
+    "confidence": "LOW",
+    "matched_patterns": [
+      "Details",
+      "Income"
+    ],
+    "structural_signals": {},
+    "source": "structural_analysis",
+    "taxonomy_source": "fallback_pattern",
+    "fallback_used": true
+  },
+  "hierarchy": {
+    "roots": [
+      "us-gaap_IncomeTaxDisclosureAbstract"
+    ],
+    "children": {
+      "us-gaap_IncomeTaxDisclosureAbstract": [
+        "us-gaap_EffectiveIncomeTaxRateReconciliationTable"
+      ],
+      "us-gaap_EffectiveIncomeTaxRateReconciliationTable": [
+        "us-gaap_EffectiveIncomeTaxRateReconciliationLineItems",
+        "us-gaap_IncomeTaxAuthorityAxis",
+        "us-gaap_StatementBusinessSegmentsAxis"
+      ],
+      "us-gaap_IncomeTaxAuthorityAxis": [
+        "us-gaap_IncomeTaxAuthorityDomain"
+      ],
+      "us-gaap_IncomeTaxAuthorityDomain": [
+        "us-gaap_DomesticCountryMember",
+        "us-gaap_ForeignCountryMember"
+      ],
+      "us-gaap_StatementBusinessSegmentsAxis": [
+        "us-gaap_SegmentDomain"
+      ],
+      "us-gaap_SegmentDomain": [
+        "IVDA_UsBasedSegmentMember"
+      ],
+      "us-gaap_EffectiveIncomeTaxRateReconciliationLineItems": [
+        "us-gaap_OperatingLossCarryforwards",
+        "us-gaap_OperatingLossCarryforwardsValuationAllowance",
+        "IVDA_GovernmentCorporateTaxRate"
+      ]
+    },
+    "parents": {
+      "us-gaap_EffectiveIncomeTaxRateReconciliationTable": "us-gaap_IncomeTaxDisclosureAbstract",
+      "us-gaap_EffectiveIncomeTaxRateReconciliationLineItems": "us-gaap_EffectiveIncomeTaxRateReconciliationTable",
+      "us-gaap_IncomeTaxAuthorityAxis": "us-gaap_EffectiveIncomeTaxRateReconciliationTable",
+      "us-gaap_IncomeTaxAuthorityDomain": "us-gaap_IncomeTaxAuthorityAxis",
+      "us-gaap_DomesticCountryMember": "us-gaap_IncomeTaxAuthorityDomain",
+      "us-gaap_ForeignCountryMember": "us-gaap_IncomeTaxAuthorityDomain",
+      "us-gaap_StatementBusinessSegmentsAxis": "us-gaap_EffectiveIncomeTaxRateReconciliationTable",
+      "us-gaap_SegmentDomain": "us-gaap_StatementBusinessSegmentsAxis",
+      "IVDA_UsBasedSegmentMember": "us-gaap_SegmentDomain",
+      "us-gaap_OperatingLossCarryforwards": "us-gaap_EffectiveIncomeTaxRateReconciliationLineItems",
+      "us-gaap_OperatingLossCarryforwardsValuationAllowance": "us-gaap_EffectiveIncomeTaxRateReconciliationLineItems",
+      "IVDA_GovernmentCorporateTaxRate": "us-gaap_EffectiveIncomeTaxRateReconciliationLineItems"
+    },
+    "order": {
+      "us-gaap_EffectiveIncomeTaxRateReconciliationTable": "100",
+      "us-gaap_EffectiveIncomeTaxRateReconciliationLineItems": "200",
+      "us-gaap_IncomeTaxAuthorityAxis": "10",
+      "us-gaap_IncomeTaxAuthorityDomain": "0",
+      "us-gaap_DomesticCountryMember": "10",
+      "us-gaap_ForeignCountryMember": "20",
+      "us-gaap_StatementBusinessSegmentsAxis": "20",
+      "us-gaap_SegmentDomain": "0",
+      "IVDA_UsBasedSegmentMember": "30",
+      "us-gaap_OperatingLossCarryforwards": "0",
+      "us-gaap_OperatingLossCarryforwardsValuationAllowance": "10",
+      "IVDA_GovernmentCorporateTaxRate": "20"
+    }
+  },
+  "facts": [
+    {
+      "concept": "us-gaap_OperatingLossCarryforwards",
+      "value": "38",
+      "context_ref": "AsOf2024-12-31_us-gaap_DomesticCountryMember",
+      "unit_ref": "USD",
+      "decimals": "-6",
+      "level": 3,
+      "order": "0",
+      "parent_concept": "us-gaap_EffectiveIncomeTaxRateReconciliationLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2024-12-31",
+      "dimensions": {
+        "us-gaap:IncomeTaxAuthorityAxis": "us-gaap:DomesticCountryMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact000980",
+      "display_value": "38000000",
+      "formatted_value": "$38,000,000",
+      "scaling_factor": 1000000
+    },
+    {
+      "concept": "us-gaap_OperatingLossCarryforwards",
+      "value": "12.0",
+      "context_ref": "AsOf2024-12-31_us-gaap_ForeignCountryMember",
+      "unit_ref": "USD",
+      "decimals": "-5",
+      "level": 3,
+      "order": "0",
+      "parent_concept": "us-gaap_EffectiveIncomeTaxRateReconciliationLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2024-12-31",
+      "dimensions": {
+        "us-gaap:IncomeTaxAuthorityAxis": "us-gaap:ForeignCountryMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact000982",
+      "display_value": "1200000.0",
+      "formatted_value": "$1,200,000",
+      "scaling_factor": 100000
+    },
+    {
+      "concept": "us-gaap_OperatingLossCarryforwardsValuationAllowance",
+      "value": "0.8",
+      "context_ref": "AsOf2024-12-31_custom_UsBasedSegmentMember",
+      "unit_ref": "USD",
+      "decimals": "-5",
+      "level": 3,
+      "order": "10",
+      "parent_concept": "us-gaap_EffectiveIncomeTaxRateReconciliationLineItems",
+      "metadata": {},
+      "period_type": "instant",
+      "period_start": null,
+      "period_end": "2024-12-31",
+      "dimensions": {
+        "us-gaap:StatementBusinessSegmentsAxis": "IVDA:UsBasedSegmentMember"
+      },
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact001016",
+      "display_value": "80000.0",
+      "formatted_value": "$80,000",
+      "scaling_factor": 100000
+    },
+    {
+      "concept": "IVDA_GovernmentCorporateTaxRate",
+      "value": "Sole-Vision\nTechnologies, Inc. is a subsidiary of the Company which is operating in Taiwan as a profit-seeking enterprise. Its applicable corporate\nincome tax rate is 20%. In addition, Taiwan’s corporate tax system allows the government to levy a 10% profit retention tax on\nundistributed earnings for the prior year. This tax will not be provided if the company distributed the earnings before the ended of\nthe fiscal year",
+      "context_ref": "From2024-01-01to2024-12-31",
+      "unit_ref": null,
+      "decimals": null,
+      "level": 3,
+      "order": "20",
+      "parent_concept": "us-gaap_EffectiveIncomeTaxRateReconciliationLineItems",
+      "metadata": {},
+      "period_type": "duration",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "dimensions": {},
+      "sign": null,
+      "scale": null,
+      "format": null,
+      "is_nil": false,
+      "fact_id": "Fact001018",
+      "display_value": "Sole-Vision\nTechnologies, Inc. is a subsidiary of the Company which is operating in Taiwan as a profit-seeking enterprise. Its applicable corporate\nincome tax rate is 20%. In addition, Taiwan’s corporate tax system allows the government to levy a 10% profit retention tax on\nundistributed earnings for the prior year. This tax will not be provided if the company distributed the earnings before the ended of\nthe fiscal year",
+      "formatted_value": "Sole-Vision\nTechnologies, Inc. is a subsidiary of the Company which is operating in Taiwan as a profit-seeking enterprise. Its applicable corporate\nincome tax rate is 20%. In addition, Taiwan’s corporate tax system allows the government to levy a 10% profit retention tax on\nundistributed earnings for the prior year. This tax will not be provided if the company distributed the earnings before the ended of\nthe fiscal year",
+      "scaling_factor": 1
+    }
+  ]
+}
