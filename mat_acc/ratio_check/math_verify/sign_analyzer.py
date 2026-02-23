@@ -21,6 +21,7 @@ from dataclasses import dataclass
 from typing import Optional
 
 from core.logger.ipo_logging import get_process_logger
+from core.qname import get_local_name
 
 from .ixbrl_extractor import VerifiedFact
 
@@ -128,7 +129,7 @@ class SignAnalyzer:
 
     def _check_single(self, fact: VerifiedFact) -> Optional[SignCheck]:
         """Check sign consistency for a single fact."""
-        local_name = self._local_name(fact.concept)
+        local_name = get_local_name(fact.concept)
         if not local_name:
             return None
 
@@ -169,9 +170,6 @@ class SignAnalyzer:
         """Check if name matches any pattern in the list."""
         return any(p.search(name) for p in patterns)
 
-    def _local_name(self, concept: str) -> str:
-        """Extract local name from QName."""
-        return concept.split(':')[-1] if ':' in concept else concept
 
 
 __all__ = ['SignAnalyzer', 'SignCheck']

@@ -21,6 +21,7 @@ from config_loader import ConfigLoader
 
 # Import IPO logging (PROCESS layer for concept building work)
 from core.logger.ipo_logging import get_process_logger
+from core.qname import parse_qname
 
 # Import matcher models
 from process.matcher.models.concept_metadata import ConceptMetadata, ConceptIndex
@@ -251,7 +252,7 @@ class ConceptBuilder:
 
         # Parse qname using existing utility - handles all formats:
         # "us-gaap:Assets", "us-gaap_Assets", "{namespace}Assets"
-        prefix, local_name = self._parse_qname(concept_name)
+        prefix, local_name = parse_qname(concept_name)
 
         # Generate label from local_name (e.g., "AssetsCurrent" -> "Assets Current")
         labels = {}
@@ -296,56 +297,6 @@ class ConceptBuilder:
             presentation_level=level,
             presentation_parent=parent,
         )
-
-    def _parse_qname(self, qname_str: str) -> tuple[str, str]:
-        """
-        Parse QName string - handles MULTIPLE formats.
-
-        Mirrors the logic from mapper/components/qname_utils.py QNameUtils.parse()
-        to avoid cross-module import issues.
-
-        Supported formats:
-        1. Clark notation: {http://fasb.org/us-gaap/2024}Assets
-        2. Prefix format: us-gaap:Assets
-        3. Underscore format: us-gaap_Assets
-        4. Simple name: Assets
-
-        Args:
-            qname_str: QName in any format
-
-        Returns:
-            Tuple of (namespace, local_name)
-        """
-        if not qname_str:
-            return ('', '')
-
-        qname_str = str(qname_str).strip()
-
-        # Format 1: Clark notation {namespace}localName
-        if qname_str.startswith('{'):
-            try:
-                parts = qname_str.split('}', 1)
-                if len(parts) == 2:
-                    namespace = parts[0][1:]  # Remove leading {
-                    local_name = parts[1]
-                    return (namespace, local_name)
-            except:
-                pass
-
-        # Format 2: Prefix format namespace:localName
-        if ':' in qname_str:
-            namespace, local_name = qname_str.split(':', 1)
-            return (namespace, local_name)
-
-        # Format 3: Underscore format namespace_LocalName
-        # (LocalName typically starts with uppercase)
-        if '_' in qname_str:
-            parts = qname_str.rsplit('_', 1)
-            if len(parts) == 2 and parts[1] and parts[1][0].isupper():
-                return (parts[0], parts[1])
-
-        # Format 4: Simple name (no namespace)
-        return ('', qname_str)
 
     def _local_name_to_label(self, local_name: str) -> str:
         """
@@ -405,7 +356,7 @@ class ConceptBuilder:
             return None
 
         # Parse qname using existing utility
-        prefix, local_name = self._parse_qname(concept_name)
+        prefix, local_name = parse_qname(concept_name)
 
         # Get labels
         labels = {}
@@ -512,7 +463,7 @@ class ConceptBuilder:
             return None
 
         # Parse qname using existing utility
-        prefix, local_name = self._parse_qname(concept_name)
+        prefix, local_name = parse_qname(concept_name)
 
         labels = {}
         label = fact.get('label', '')
@@ -651,7 +602,7 @@ class ConceptBuilder:
 
         elif node.concept:
             # Create new concept from db node using existing utility
-            prefix, local_name = self._parse_qname(node.concept)
+            prefix, local_name = parse_qname(node.concept)
 
             labels = {'standard': node.label}
             if node.standard_label:
@@ -788,7 +739,7 @@ class ConceptBuilder:
             qname = fact.concept
             if qname in concept_index:
                 continue
-            prefix, local_name = self._parse_qname(qname)
+            prefix, local_name = parse_qname(qname)
             label = self._local_name_to_label(local_name)
             balance_type = self._infer_balance_type(local_name, {})
             period_type = self._infer_period_type(local_name, {})

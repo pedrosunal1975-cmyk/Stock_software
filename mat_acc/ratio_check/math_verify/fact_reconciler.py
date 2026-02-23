@@ -23,6 +23,7 @@ from dataclasses import dataclass
 from typing import Optional
 
 from core.logger.ipo_logging import get_process_logger
+from core.qname import parse_qname
 
 from .ixbrl_extractor import VerifiedFact
 
@@ -265,14 +266,14 @@ class FactReconciler:
                     return values[alt_key]
 
         # Tier 3: Namespace-aware normalized match
-        ns, local = self._parse_qname(concept)
+        ns, local = parse_qname(concept)
         if not local:
             return None
 
         if ns:
             # Query has namespace - require exact namespace match
             for key, val in values.items():
-                k_ns, k_local = self._parse_qname(key)
+                k_ns, k_local = parse_qname(key)
                 if k_local == local and k_ns.lower() == ns.lower():
                     return val
             return None
@@ -280,7 +281,7 @@ class FactReconciler:
         # No namespace - match only if unambiguous (1 match)
         matches = []
         for key, val in values.items():
-            k_ns, k_local = self._parse_qname(key)
+            k_ns, k_local = parse_qname(key)
             if k_local == local:
                 matches.append(val)
 
@@ -288,24 +289,6 @@ class FactReconciler:
             return matches[0]
 
         return None
-
-    def _parse_qname(self, qname_str: str) -> tuple[str, str]:
-        """Parse QName into (namespace, local_name) tuple."""
-        if not qname_str:
-            return ('', '')
-        s = str(qname_str).strip()
-        if s.startswith('{'):
-            parts = s.split('}', 1)
-            if len(parts) == 2:
-                return (parts[0][1:], parts[1])
-        if ':' in s:
-            ns, local = s.split(':', 1)
-            return (ns, local)
-        if '_' in s:
-            parts = s.rsplit('_', 1)
-            if len(parts) == 2 and parts[1] and parts[1][0].isupper():
-                return (parts[0], parts[1])
-        return ('', s)
 
     def _detect_scale_factor(
         self, ixbrl_val: float, parsed_val: float

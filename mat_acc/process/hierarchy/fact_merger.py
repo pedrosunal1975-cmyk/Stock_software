@@ -26,6 +26,8 @@ from pathlib import Path
 from typing import Optional, Any
 from collections import defaultdict
 
+from core.qname import get_local_name, normalize_qname
+
 
 @dataclass
 class FactInstance:
@@ -201,7 +203,7 @@ class FactMerger:
                 self._facts_by_key[concept_key].append(fact)
 
                 # Also index by local name (without prefix)
-                local_name = self._get_local_name(fact.concept)
+                local_name = get_local_name(fact.concept)
                 self._facts_by_local_name[local_name].append(fact)
 
                 self._total_facts += 1
@@ -271,39 +273,6 @@ class FactMerger:
             self.logger.warning(f"Error parsing fact: {e}")
             return None
 
-    def _normalize_concept(self, concept: str) -> str:
-        """
-        Normalize concept name for matching.
-
-        Handles different separator formats by converting to canonical form.
-        The canonical form uses colon (:) as namespace separator.
-
-        Examples:
-            ifrs-full_Assets -> ifrs-full:Assets
-            us-gaap:Revenue -> us-gaap:Revenue (unchanged)
-            tescoplc_CustomConcept -> tescoplc:CustomConcept
-        """
-        if not concept:
-            return concept
-
-        # If already has colon, it's in canonical form
-        if ':' in concept:
-            return concept
-
-        # Find the namespace separator (first underscore that separates prefix from local name)
-        # Pattern: prefix_LocalName where LocalName starts with uppercase
-        if '_' in concept:
-            idx = concept.find('_')
-            prefix = concept[:idx]
-            local_name = concept[idx + 1:]
-
-            # Validate: prefix should exist and local name should start with uppercase
-            # or prefix should contain a hyphen (like ifrs-full, us-gaap)
-            if prefix and local_name:
-                return f"{prefix}:{local_name}"
-
-        return concept
-
     def _get_concept_key(self, concept: str) -> str:
         """
         Get a normalized key for concept matching.
@@ -318,14 +287,6 @@ class FactMerger:
         key = concept.replace(':', '_').replace('-', '_').lower()
         return key
 
-    def _get_local_name(self, concept: str) -> str:
-        """Extract local name from QName (remove prefix)."""
-        # Handle both : and _ as separators
-        if ':' in concept:
-            return concept.split(':', 1)[1]
-        if '_' in concept:
-            return concept.split('_', 1)[1]
-        return concept
 
     def get_facts_for_concept(
         self,
@@ -359,7 +320,7 @@ class FactMerger:
 
         # Fallback: try local name match if no results and enabled
         if not results and include_local_name_match:
-            local_name = self._get_local_name(concept)
+            local_name = get_local_name(concept)
             if local_name in self._facts_by_local_name:
                 for fact in self._facts_by_local_name[local_name]:
                     key = (fact.concept, fact.context_ref)

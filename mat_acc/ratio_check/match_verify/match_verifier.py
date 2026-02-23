@@ -15,6 +15,7 @@ Runs AFTER value population, BEFORE ratio calculation.
 from typing import List
 
 from core.logger.ipo_logging import get_process_logger
+from core.qname import get_local_name
 from process.matcher.models.concept_metadata import ConceptIndex
 
 from ..ratio_models import ComponentMatch
@@ -291,10 +292,7 @@ class MatchVerifier:
         concept = concept_index.get_concept(qname)
         if concept and concept.local_name:
             return concept.local_name
-        if ':' in qname:
-            return qname.split(':')[-1]
-        parts = qname.split('_', 1)
-        return parts[1] if len(parts) == 2 else qname
+        return get_local_name(qname)
 
 
 __all__ = ['MatchVerifier']

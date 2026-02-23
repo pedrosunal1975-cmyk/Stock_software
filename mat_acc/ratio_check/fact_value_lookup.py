@@ -21,6 +21,7 @@ from config_loader import ConfigLoader
 
 # Import IPO logging
 from core.logger.ipo_logging import get_process_logger
+from core.qname import parse_qname, alternate_qname
 
 # Import loaders and readers
 from loaders import (
@@ -174,7 +175,7 @@ class FactValueLookup:
             return False
         roots = hierarchy.get('roots', [])
         for root in roots:
-            _, local_name = self._parse_qname(str(root))
+            _, local_name = parse_qname(str(root))
             if local_name in _PRIMARY_STATEMENT_ROOTS:
                 return True
         return False
@@ -282,7 +283,7 @@ class FactValueLookup:
         if not is_duplicate:
             self._value_index[fact.concept].append(fact_value)
             # Build normalized index for namespace-aware lookup
-            ns, local = self._parse_qname(fact.concept)
+            ns, local = parse_qname(fact.concept)
             if local:
                 norm_key = (ns.lower(), local)
                 if norm_key not in self._normalized_index:
@@ -401,53 +402,6 @@ class FactValueLookup:
 
         return None
 
-    def _alternate_qname(self, qname: str) -> Optional[str]:
-        """Try alternate qname format (colon <-> underscore)."""
-        if ':' in qname:
-            return qname.replace(':', '_', 1)
-        if '_' in qname:
-            parts = qname.rsplit('_', 1)
-            if len(parts) == 2 and parts[1] and parts[1][0].isupper():
-                return parts[0] + ':' + parts[1]
-        return None
-
-    def _parse_qname(self, qname_str: str) -> Tuple[str, str]:
-        """
-        Parse QName into (namespace, local_name) tuple.
-
-        Handles all XBRL QName formats universally:
-        1. Clark notation: {http://fasb.org/us-gaap/2024}Assets
-        2. Prefix format: us-gaap:Assets (iXBRL standard)
-        3. Underscore format: us-gaap_Assets (concept index)
-        4. Simple name: Assets (no namespace)
-
-        Works for any taxonomy: US-GAAP, IFRS, ESEF, company extensions.
-        """
-        if not qname_str:
-            return ('', '')
-
-        s = str(qname_str).strip()
-
-        # Format 1: Clark notation {namespace-uri}LocalName
-        if s.startswith('{'):
-            parts = s.split('}', 1)
-            if len(parts) == 2:
-                return (parts[0][1:], parts[1])
-
-        # Format 2: Prefix:LocalName (standard QName)
-        if ':' in s:
-            ns, local = s.split(':', 1)
-            return (ns, local)
-
-        # Format 3: Prefix_LocalName (uppercase start = namespace boundary)
-        if '_' in s:
-            parts = s.rsplit('_', 1)
-            if len(parts) == 2 and parts[1] and parts[1][0].isupper():
-                return (parts[0], parts[1])
-
-        # Format 4: Simple name (no namespace)
-        return ('', s)
-
     def _find_values(self, concept: str) -> Optional[List[FactValue]]:
         """
         Find values using multi-tier namespace-aware lookup.
@@ -463,7 +417,7 @@ class FactValueLookup:
             return values
 
         # Tier 2: Alternate format (colon <-> underscore)
-        alt_key = self._alternate_qname(concept)
+        alt_key = alternate_qname(concept)
         if alt_key:
             values = self._value_index.get(alt_key)
             if values:
@@ -483,7 +437,7 @@ class FactValueLookup:
         (exactly one namespace contains this local name).
         Never silently returns a value from a different namespace.
         """
-        ns, local = self._parse_qname(concept)
+        ns, local = parse_qname(concept)
         if not local:
             return None
 
