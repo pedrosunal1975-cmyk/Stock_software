@@ -70,9 +70,9 @@ _BASE_RATIOS = [
         'ratio_id': 'interest_coverage',
         'name': 'Interest Coverage',
         'category': 'leverage',
-        'formula': 'Operating Income / Interest Expense',
+        'formula': 'Operating Income / |Interest Expense|',
         'numerator': 'operating_income',
-        'denominator': 'interest_expense',
+        'denominator': 'abs:interest_expense',
     },
     # =================================================================
     # PROFITABILITY RATIOS - Measure ability to generate profits

@@ -155,18 +155,32 @@ def _resolve_simple(
     component_name: str,
     matched_lookup: Dict[str, ComponentMatch],
 ) -> Dict[str, Any]:
-    """Resolve a single component to its value."""
-    if component_name in matched_lookup:
-        match = matched_lookup[component_name]
+    """Resolve a single component to its value.
+
+    Supports abs: prefix for formula-convention cases where the
+    ratio needs the magnitude regardless of accounting sign
+    (e.g. abs:interest_expense in Interest Coverage ratio).
+    """
+    use_abs = False
+    lookup_name = component_name
+    if component_name.startswith('abs:'):
+        use_abs = True
+        lookup_name = component_name[4:]
+
+    if lookup_name in matched_lookup:
+        match = matched_lookup[lookup_name]
+        value = match.value
+        if use_abs and value is not None:
+            value = abs(value)
         return {
-            'value': match.value,
-            'formula': component_name,
+            'value': value,
+            'formula': lookup_name,
             'error': None,
         }
     return {
         'value': None,
-        'formula': component_name,
-        'error': f"Component '{component_name}' not matched",
+        'formula': lookup_name,
+        'error': f"Component '{lookup_name}' not matched",
     }
 
 

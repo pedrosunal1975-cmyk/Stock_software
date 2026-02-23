@@ -151,7 +151,7 @@ composition:
   is_composite: false
 
 validation:
-  expected_sign: positive  # Usually positive, can be negative for troubled companies
+  expected_sign: either  # Can be negative for companies with accumulated deficit
   required_for:
     - debt_to_equity
     - equity_ratio
