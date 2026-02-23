@@ -16,7 +16,8 @@ Subpackages:
     match_verify/   - Post-Match Financial Verification (PMFV)
 
 Root modules:
-    ratio_check.py      - Main orchestrator and CLI entry point
+    ratio_check.py       - Main orchestrator (analysis pipeline)
+    workflow.py          - CLI entry points, logging, display
     ratio_calculator.py  - Matching coordination
     concept_builder.py   - Build ConceptMetadata from sources
     fact_value_lookup.py - Value retrieval from mapped statements
@@ -36,7 +37,8 @@ from .ratio_calculator import RatioCalculator
 from .industry.detector import IndustryDetector
 from .industry.registry import IndustryRegistry
 from .match_verify import MatchVerifier
-from .ratio_check import RatioCheckOrchestrator, main
+from .ratio_check import RatioCheckOrchestrator
+from .workflow import main
 from .calculation.scale_normalizer import ScaleNormalizer, ScaleAnnotation
 from .support.debug_reporter import (
     DebugReporter, ComponentDebugInfo, ProcessState,

@@ -7,7 +7,7 @@ Allows running the module with:
     python -m ratio_check
 """
 
-from .ratio_check import main
+from .workflow import main
 
 if __name__ == '__main__':
     main()

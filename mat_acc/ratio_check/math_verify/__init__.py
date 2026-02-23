@@ -13,6 +13,7 @@ Modules:
     fact_reconciler.py    - Layer 2: Cross-source reconciliation
     sign_analyzer.py      - Sign validation: mathematical consistency
     identity_validator.py - Layer 3: Mathematical identity validation
+    miu_runner.py         - Pipeline integration functions
 """
 
 from .ixbrl_extractor import IXBRLExtractor, VerifiedFact
