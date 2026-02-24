@@ -69,6 +69,25 @@ FALLBACK_PATTERNS = {
         '*LongTermDebt*',
         '*TotalDebt*',
     ],
+    'noncurrent_assets': [
+        '*NoncurrentAssets*',
+        '*AssetsNoncurrent*',
+    ],
+    'noncurrent_liabilities': [
+        '*NoncurrentLiabilities*',
+        '*LiabilitiesNoncurrent*',
+    ],
+    'retained_earnings': [
+        '*RetainedEarnings*',
+        '*AccumulatedDeficit*',
+    ],
+    'intangible_assets': [
+        '*IntangibleAssetsOtherThanGoodwill*',
+        '*IntangibleAssetsNet*',
+    ],
+    'goodwill': [
+        '*Goodwill',
+    ],
     # --- Income statement ---
     'revenue': [
         '*Revenue*',
@@ -88,6 +107,7 @@ FALLBACK_PATTERNS = {
     'operating_income': [
         '*OperatingIncomeLoss*',
         '*OperatingProfit*',
+        '*ProfitLossFromOperatingActivities*',
     ],
     'income_before_tax': [
         '*IncomeLossFromContinuingOperationsBefore*',
@@ -130,6 +150,8 @@ FALLBACK_PATTERNS = {
         '*DepreciationAndAmortization*',
         '*DepreciationDepletionAndAmortization*',
         '*DepreciationAmortization*',
+        '*DepreciationAndAmortisationExpense*',
+        '*AdjustmentsForDepreciationAndAmortisation*',
     ],
     'operating_cash_flow': [
         '*NetCashProvidedByOperatingActivities*',
@@ -140,6 +162,7 @@ FALLBACK_PATTERNS = {
         '*PaymentsOfDividends*',
         '*DividendsPaid*',
         '*PaymentsOfOrdinaryDividends*',
+        '*DividendsPaidClassifiedAsFinancing*',
     ],
 }
 

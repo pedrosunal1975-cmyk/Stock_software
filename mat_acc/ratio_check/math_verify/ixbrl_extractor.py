@@ -160,6 +160,11 @@ class IXBRLExtractor:
         for ext in ('*.htm', '*.html', '*.xhtml'):
             htm_files.extend(filing_dir.glob(ext))
 
+        # ESEF filings may nest iXBRL in subdirectories
+        if not htm_files:
+            for ext in ('**/*.htm', '**/*.html', '**/*.xhtml'):
+                htm_files.extend(filing_dir.glob(ext))
+
         if not htm_files:
             return None
 
@@ -169,8 +174,10 @@ class IXBRLExtractor:
         # Return first file that contains iXBRL tags
         for htm_file in htm_files:
             try:
-                head = htm_file.read_text(encoding='utf-8', errors='ignore')[:5000]
-                if 'ix:nonFraction' in head or 'ix:nonfraction' in head.lower():
+                head = htm_file.read_text(
+                    encoding='utf-8', errors='ignore',
+                )[:50000]
+                if 'ix:nonfraction' in head.lower():
                     return htm_file
             except Exception:
                 continue

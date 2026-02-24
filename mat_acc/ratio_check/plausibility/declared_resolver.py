@@ -17,7 +17,11 @@ from typing import Dict, List, Optional
 # Format: declared_key -> list of concept local names to search for.
 DECLARED_RATE_CONCEPTS: Dict[str, List[str]] = {
     'effective_tax_rate': [
+        # US-GAAP
         'EffectiveIncomeTaxRateContinuingOperations',
+        # IFRS
+        'AverageEffectiveTaxRate',
+        'EffectiveTaxRate',
     ],
     'depreciation_rate': [
         'PropertyPlantAndEquipmentUsefulLife',
