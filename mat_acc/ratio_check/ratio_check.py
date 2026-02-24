@@ -175,13 +175,7 @@ class RatioCheckOrchestrator:
 
         xbrl_dir = self._find_xbrl_filing(selection)
 
-        # ESEF preprocessing: fix periods and dimensional filtering
-        if selection.market and selection.market.upper() == 'ESEF':
-            from .esef import preprocess_esef
-            pj = parsed_entry.available_files.get('json') if parsed_entry else None
-            n = preprocess_esef(value_lookup, xbrl_dir, pj)
-            if n:
-                print(f"  ESEF preprocessor: {n} facts annotated, period: {value_lookup.get_primary_period()}")
+        # MIU runs first: populates ContextFilter from iXBRL
         ixbrl_facts = []
         if xbrl_dir:
             print("\n  Running Mathematical Integrity Unit...")
@@ -195,6 +189,15 @@ class RatioCheckOrchestrator:
             self.debug_reporter.mark_stage('math_verified')
         else:
             print("\n  [NOTE] iXBRL not available - skipping MIU")
+
+        # ESEF preprocessing: uses MIU ContextFilter for periods
+        if selection.market and selection.market.upper() == 'ESEF':
+            from .esef import preprocess_esef
+            pj = parsed_entry.available_files.get('json') if parsed_entry else None
+            cf = self._ixbrl_extractor.get_context_filter() if xbrl_dir else None
+            n = preprocess_esef(value_lookup, xbrl_dir, pj, context_filter=cf)
+            if n:
+                print(f"  ESEF preprocessor: {n} facts annotated, period: {value_lookup.get_primary_period()}")
 
         # Build concept index
         print("\n  Building concept index...")

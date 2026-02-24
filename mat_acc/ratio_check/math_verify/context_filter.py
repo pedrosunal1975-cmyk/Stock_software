@@ -42,6 +42,14 @@ _END_PATTERN = re.compile(
 _SEGMENT_PATTERN = re.compile(
     r'<xbrli:segment', re.IGNORECASE,
 )
+# ESEF filings may use scenario instead of segment for dimensions
+_SCENARIO_PATTERN = re.compile(
+    r'<xbrli:scenario', re.IGNORECASE,
+)
+# Direct dimension member tags (namespace-agnostic)
+_EXPLICIT_MEMBER_PATTERN = re.compile(
+    r'<\w*:?explicitMember\b', re.IGNORECASE,
+)
 
 
 @dataclass
@@ -148,8 +156,12 @@ class ContextFilter:
         """Parse a single context definition."""
         ctx = ContextInfo(context_id=ctx_id)
 
-        # Check for dimensional segments
-        ctx.has_dimensions = bool(_SEGMENT_PATTERN.search(body))
+        # Check for dimensional segments, scenarios, or explicit members
+        ctx.has_dimensions = bool(
+            _SEGMENT_PATTERN.search(body)
+            or _SCENARIO_PATTERN.search(body)
+            or _EXPLICIT_MEMBER_PATTERN.search(body)
+        )
         ctx.is_primary = not ctx.has_dimensions
 
         # Parse period

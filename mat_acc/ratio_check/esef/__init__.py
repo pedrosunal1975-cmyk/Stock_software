@@ -2,14 +2,13 @@
 """
 ESEF Preprocessor Module
 
-Handles ESEF-specific data preparation that runs BEFORE the
-universal analysis pipeline. Fixes data quality issues in
-ESEF mapped statements without modifying SEC processing.
+Runs AFTER MIU (to reuse its ContextFilter), BEFORE matching.
+Fixes ESEF data quality issues without modifying SEC processing.
 
 Key responsibilities:
 - Context resolution (period, dimensional filtering)
 - Period annotation for facts with missing period info
-- Derived total computation (total_assets, total_liabilities)
+- Dimensional fact exclusion via is_primary flag
 """
 from .esef_preprocessor import preprocess_esef
 

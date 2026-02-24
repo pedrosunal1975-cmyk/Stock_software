@@ -1,18 +1,5 @@
 # Path: mat_acc/ratio_check/esef/context_resolver.py
-"""
-ESEF Context Resolver
-
-Resolves opaque context_ref identifiers (c-1, c-7, etc.) to
-actual period and dimensional information for ESEF filings.
-
-Two resolution strategies:
-1. iXBRL authoritative: reads xbrli:context from iXBRL HTML
-2. Heuristic fallback: infers periods from mapped data patterns
-
-ESEF mapped data often has null periods for income/cash flow
-statements. This module fixes that by reading the authoritative
-source (the iXBRL document) or inferring from available data.
-"""
+"""ESEF Context Resolver - maps context_refs to periods and dimensions."""
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Optional, Dict
@@ -46,18 +33,39 @@ def resolve_contexts(
     value_lookup: FactValueLookup,
     xbrl_dir: Optional[Path],
     parsed_json_path: Optional[Path] = None,
+    context_filter: Optional[ContextFilter] = None,
 ) -> ContextMap:
     """
     Resolve context_refs to periods and dimensions.
 
-    Three strategies in priority order:
+    Four strategies in priority order:
+    0. Pre-parsed ContextFilter from MIU (most reliable)
     1. iXBRL authoritative (reads xbrli:context from HTML)
     2. parsed.json via FactMerger (pre-parsed contexts)
     3. Heuristic from mapped data patterns (last resort)
     """
+    if context_filter:
+        ctx_map = _resolve_from_filter(context_filter)
+        if ctx_map:
+            dim_count = sum(
+                1 for c in ctx_map.values() if c.has_dimensions
+            )
+            logger.info(
+                f"Resolved {len(ctx_map)} contexts from MIU "
+                f"ContextFilter ({dim_count} dimensional)"
+            )
+            return ctx_map
+        logger.warning("MIU ContextFilter had 0 parsed contexts")
+
     ctx_map = _resolve_from_ixbrl(xbrl_dir)
     if ctx_map:
-        logger.info(f"Resolved {len(ctx_map)} contexts from iXBRL")
+        dim_count = sum(
+            1 for c in ctx_map.values() if c.has_dimensions
+        )
+        logger.info(
+            f"Resolved {len(ctx_map)} from iXBRL "
+            f"({dim_count} dimensional)"
+        )
         return ctx_map
 
     ctx_map = _resolve_from_parsed(parsed_json_path)
@@ -72,7 +80,19 @@ def resolve_contexts(
         logger.info(
             f"Resolved {len(ctx_map)} contexts via heuristic"
         )
+    else:
+        logger.error("All context resolution strategies failed")
     return ctx_map
+
+
+def _resolve_from_filter(
+    ctx_filter: ContextFilter,
+) -> ContextMap:
+    """Convert pre-parsed ContextFilter to ContextMap."""
+    parsed = ctx_filter._contexts
+    if not parsed:
+        return {}
+    return _convert_context_infos(parsed)
 
 
 def _resolve_from_ixbrl(
@@ -80,21 +100,31 @@ def _resolve_from_ixbrl(
 ) -> ContextMap:
     """Read xbrli:context definitions from iXBRL HTML."""
     if not xbrl_dir:
+        logger.debug("iXBRL strategy: no xbrl_dir provided")
         return {}
 
     ixbrl_file = _find_ixbrl_file(xbrl_dir)
     if not ixbrl_file:
+        logger.info(f"iXBRL strategy: no file found in {xbrl_dir}")
         return {}
 
+    logger.info(f"iXBRL strategy: reading {ixbrl_file.name}")
     content = _read_file(ixbrl_file)
     if not content:
+        logger.warning(f"iXBRL strategy: empty content {ixbrl_file}")
         return {}
 
     ctx_filter = ContextFilter()
     parsed = ctx_filter.parse_contexts(content)
     if not parsed:
+        logger.warning("iXBRL strategy: parse_contexts returned empty")
         return {}
 
+    return _convert_context_infos(parsed)
+
+
+def _convert_context_infos(parsed: dict) -> ContextMap:
+    """Convert ContextInfo dict to ContextMap."""
     ctx_map: ContextMap = {}
     for ctx_id, ctx_info in parsed.items():
         rc = ResolvedContext(context_id=ctx_id)
@@ -111,14 +141,7 @@ def _resolve_from_ixbrl(
 def _resolve_from_parsed(
     parsed_json_path: Optional[Path],
 ) -> ContextMap:
-    """
-    Resolve contexts from parsed.json via FactMerger.
-
-    Conservative use: only reads context METADATA (period/dimensions)
-    from parsed.json. Never reads fact values (parsed.json is known
-    to have value issues). Context definitions are structural metadata
-    and safe to use as secondary confirmation.
-    """
+    """Resolve contexts from parsed.json via FactMerger."""
     if not parsed_json_path or not parsed_json_path.exists():
         return {}
 
@@ -157,18 +180,11 @@ def _resolve_from_parsed(
 def _resolve_from_mapped(
     value_lookup: FactValueLookup,
 ) -> ContextMap:
-    """
-    Heuristic context resolution from mapped data patterns.
-
-    Strategy: facts WITH periods (balance sheet) anchor the
-    context resolution. Facts WITHOUT periods inherit the
-    primary period from the balance sheet anchor.
-    """
+    """Heuristic context resolution from mapped data patterns."""
     ctx_map: ContextMap = {}
     known_periods: Dict[str, str] = {}
     null_period_refs: set = set()
 
-    # Pass 1: collect context_refs with known periods
     for fact_list in value_lookup._value_index.values():
         for fv in fact_list:
             if not fv.context_ref:
@@ -181,48 +197,21 @@ def _resolve_from_mapped(
     if not null_period_refs:
         return {}
 
-    # Determine primary period from known periods
     primary = value_lookup.get_primary_period()
     if not primary and known_periods:
         primary = sorted(known_periods.values(), reverse=True)[0]
-
     if not primary:
-        logger.warning("ESEF heuristic: no primary period")
+        logger.warning("Heuristic: no primary period available")
         return {}
-
-    # Pass 2: for null-period contexts, assign primary period
-    # Heuristic: count facts per context to identify primary
-    ctx_fact_count: Dict[str, int] = {}
-    for fact_list in value_lookup._value_index.values():
-        for fv in fact_list:
-            ref = fv.context_ref
-            if ref and ref in null_period_refs:
-                ctx_fact_count[ref] = ctx_fact_count.get(ref, 0) + 1
-
-    # The context with most facts is likely the current-year total
-    if ctx_fact_count:
-        sorted_ctxs = sorted(
-            ctx_fact_count.items(),
-            key=lambda x: (-x[1], x[0]),
-        )
-        # Top context = current year primary
-        primary_ctx_id = sorted_ctxs[0][0]
-        logger.info(
-            f"ESEF heuristic: primary context={primary_ctx_id} "
-            f"({sorted_ctxs[0][1]} facts)"
-        )
 
     # Build resolved contexts
     for ref in known_periods:
         ctx_map[ref] = ResolvedContext(
-            context_id=ref,
-            period_end=known_periods[ref],
+            context_id=ref, period_end=known_periods[ref],
         )
-
     for ref in null_period_refs:
         ctx_map[ref] = ResolvedContext(
-            context_id=ref,
-            period_end=primary,
+            context_id=ref, period_end=primary,
         )
 
     return ctx_map
@@ -237,22 +226,31 @@ def _find_ixbrl_file(filing_dir: Path) -> Optional[Path]:
     for ext in ('*.htm', '*.html', '*.xhtml', '*.xml'):
         candidates.extend(filing_dir.glob(ext))
     if not candidates:
-        for ext in ('**/*.htm', '**/*.html', '**/*.xhtml'):
+        for ext in (
+            '**/*.htm', '**/*.html',
+            '**/*.xhtml', '**/*.xml',
+        ):
             candidates.extend(filing_dir.glob(ext))
 
-    # Filter by size (iXBRL files are large) and content
-    for f in sorted(candidates, key=lambda p: p.stat().st_size,
-                    reverse=True):
-        if f.stat().st_size < 50_000:
-            continue
+    if not candidates:
+        logger.debug(f"No HTML/XML files found in {filing_dir}")
+        return None
+
+    # Sort by size descending - main filing is usually largest
+    candidates.sort(key=lambda p: p.stat().st_size, reverse=True)
+
+    for f in candidates:
         try:
-            head = f.read_text(encoding='utf-8', errors='ignore')
-            head = head[:50_000]
+            head = f.read_text(
+                encoding='utf-8', errors='ignore',
+            )[:50_000]
             if 'ix:nonfraction' in head.lower():
                 return f
         except Exception:
             continue
-    return None
+
+    # Fallback: return largest file
+    return candidates[0] if candidates else None
 
 
 def _read_file(path: Path) -> str:
