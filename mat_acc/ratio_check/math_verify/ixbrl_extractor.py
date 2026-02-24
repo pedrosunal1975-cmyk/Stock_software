@@ -157,12 +157,15 @@ class IXBRLExtractor:
             return None
 
         htm_files = []
-        for ext in ('*.htm', '*.html', '*.xhtml'):
+        for ext in ('*.htm', '*.html', '*.xhtml', '*.xml'):
             htm_files.extend(filing_dir.glob(ext))
 
         # ESEF filings may nest iXBRL in subdirectories
         if not htm_files:
-            for ext in ('**/*.htm', '**/*.html', '**/*.xhtml'):
+            for ext in (
+                '**/*.htm', '**/*.html',
+                '**/*.xhtml', '**/*.xml',
+            ):
                 htm_files.extend(filing_dir.glob(ext))
 
         if not htm_files:
