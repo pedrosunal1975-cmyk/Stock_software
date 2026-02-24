@@ -27,7 +27,6 @@ from .calculation.ratio_definitions import STANDARD_RATIOS
 from .plausibility import PlausibilityAuditor
 from output.report_generator import ReportGenerator
 
-
 logger = get_process_logger('ratio_check')
 
 
@@ -40,9 +39,7 @@ class RatioCheckOrchestrator:
     ):
         """Initialize orchestrator."""
         self.config = config or ConfigLoader()
-        self.logger = get_process_logger(
-            'ratio_check.orchestrator',
-        )
+        self.logger = get_process_logger('ratio_check.orchestrator')
         self.debug = debug
 
         self.debug_reporter = DebugReporter(self.config)
@@ -86,19 +83,12 @@ class RatioCheckOrchestrator:
 
         result = self._run_analysis(selection)
         if result:
+            s = result.summary
             self.debug_reporter.set_metrics(
-                components_matched=result.summary.get(
-                    'matched_components', 0,
-                ),
-                components_total=result.summary.get(
-                    'total_components', 0,
-                ),
-                ratios_valid=result.summary.get(
-                    'valid_ratios', 0,
-                ),
-                ratios_total=result.summary.get(
-                    'total_ratios', 0,
-                ),
+                components_matched=s.get('matched_components', 0),
+                components_total=s.get('total_components', 0),
+                ratios_valid=s.get('valid_ratios', 0),
+                ratios_total=s.get('total_ratios', 0),
             )
             self.debug_reporter.mark_stage('ratios_calculated')
             self.ratio_calculator.display_results(result)
@@ -183,8 +173,15 @@ class RatioCheckOrchestrator:
         vs = value_lookup.get_value_summary()
         print(f"\n  Loaded {vc} values, period: {vs.get('primary_period', 'N/A')}")
 
-        # MIU: Verify and correct values
         xbrl_dir = self._find_xbrl_filing(selection)
+
+        # ESEF preprocessing: fix periods and dimensional filtering
+        if selection.market and selection.market.upper() == 'ESEF':
+            from .esef import preprocess_esef
+            pj = parsed_entry.available_files.get('json') if parsed_entry else None
+            n = preprocess_esef(value_lookup, xbrl_dir, pj)
+            if n:
+                print(f"  ESEF preprocessor: {n} facts annotated, period: {value_lookup.get_primary_period()}")
         ixbrl_facts = []
         if xbrl_dir:
             print("\n  Running Mathematical Integrity Unit...")

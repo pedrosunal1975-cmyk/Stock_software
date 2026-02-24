@@ -140,6 +140,7 @@ def _add_fact(
         source='mapped',
         is_primary=is_primary,
         from_core_statement=is_core,
+        context_ref=fact.context_id,
     )
 
     if fact.period_end:

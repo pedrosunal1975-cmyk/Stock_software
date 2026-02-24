@@ -26,4 +26,4 @@ matching_rules:
       case_sensitive: false
       weight: 12
 scoring:
-  min_score: 18
+  min_score: 15

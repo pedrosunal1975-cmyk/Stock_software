@@ -40,6 +40,7 @@ class FactValue:
     source: str = ''
     is_primary: bool = True
     from_core_statement: bool = True
+    context_ref: Optional[str] = None
 
 
 class FactValueLookup:

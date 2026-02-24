@@ -8,4 +8,4 @@ matching_rules:
       match_type: exact
       weight: 15
 scoring:
-  min_score: 18
+  min_score: 15

@@ -1,18 +1,5 @@
 # Path: mat_acc/ratio_check/math_verify/identity_validator.py
-"""
-Identity Validator - Layer 3 of Mathematical Integrity Unit
-
-Validates mathematical identities that must hold regardless of
-company, taxonomy, or accounting standard. These are AXIOMS:
-- Balance sheet: Assets = Liabilities + Equity
-- Gross profit: Revenue - COGS = Gross Profit
-- Subset: Current Assets <= Total Assets
-- Subset: Current Liabilities <= Total Liabilities
-- Sign: Total Assets > 0
-- Sign: sign(Equity) = sign(Assets - Liabilities)
-- Net income: IBT - Tax = Net Income
-- EBITDA: NI + Tax + |IE| + |D&A| = EBITDA
-"""
+"""Identity Validator - Layer 3 of MIU. Validates accounting axioms."""
 
 from dataclasses import dataclass
 from typing import Optional
@@ -42,13 +29,7 @@ class IdentityCheck:
 
 
 class IdentityValidator:
-    """
-    Validates mathematical identities on financial values.
-
-    Checks run AFTER values are loaded but BEFORE ratios
-    are calculated. If an identity fails, something upstream
-    is mathematically wrong.
-    """
+    """Validates mathematical identities on financial values."""
 
     def __init__(self, tolerance: float = _DEFAULT_TOLERANCE):
         """Initialize with relative tolerance for equality checks."""
@@ -61,6 +42,7 @@ class IdentityValidator:
         """Run all applicable identity checks on component values."""
         checks = [
             self._check_balance_sheet(values),
+            self._check_net_assets(values),
             self._check_gross_profit(values),
             self._check_net_income(values),
             self._check_ebitda(values),
@@ -90,6 +72,39 @@ class IdentityValidator:
 
         check.lhs_value = a
         check.rhs_value = l + e
+        return self._evaluate_equality(check)
+
+    def _check_net_assets(self, values: dict) -> IdentityCheck:
+        """Check: NCA+CA-CL-NCL = Equity (IFRS net-assets format)."""
+        a, l, e = (values.get(k) for k in (
+            'total_assets', 'total_liabilities', 'total_equity'))
+        check = IdentityCheck(
+            identity='Net Assets = Equity (IFRS)',
+            lhs_label='NCA + CA - CL - NCL',
+            rhs_label='Total Equity',
+        )
+        if a is not None and l is not None and e is not None:
+            check.skipped = True
+            check.skip_reason = 'A=L+E available'
+            return check
+        nca, ca, cl, ncl = (values.get(k) for k in (
+            'noncurrent_assets', 'current_assets',
+            'current_liabilities', 'noncurrent_liabilities'))
+        if e is None or nca is None or ca is None:
+            check.skipped = True
+            check.skip_reason = self._missing(
+                values, 'total_equity', 'noncurrent_assets',
+                'current_assets')
+            return check
+        if cl is None and ncl is None:
+            check.skipped = True
+            check.skip_reason = self._missing(
+                values, 'current_liabilities',
+                'noncurrent_liabilities')
+            return check
+        net = nca + ca - (cl or 0) - (ncl or 0)
+        check.lhs_value = net
+        check.rhs_value = e
         return self._evaluate_equality(check)
 
     def _check_gross_profit(self, values: dict) -> IdentityCheck:
@@ -136,12 +151,7 @@ class IdentityValidator:
         return self._evaluate_equality(check)
 
     def _check_ebitda(self, values: dict) -> IdentityCheck:
-        """Check: NI + Tax + |IE| + |D&A| = EBITDA.
-
-        Uses abs for interest and D&A (add-back components) to
-        match the composite formula. Tax keeps its sign because
-        IBT = NI + Tax is an algebraic reversal, not an add-back.
-        """
+        """Check: NI + Tax + |IE| + |D&A| = EBITDA."""
         ni = values.get('net_income')
         tax = values.get('income_tax_expense')
         ie = values.get('interest_expense')
@@ -170,21 +180,15 @@ class IdentityValidator:
 
     def _check_subset(self, values: dict, part_key: str, whole_key: str) -> IdentityCheck:
         """Check: |part| <= |whole| (subset relationship)."""
-        part = values.get(part_key)
-        whole = values.get(whole_key)
-
-        label = part_key.replace('_', ' ').title()
-        whole_label = whole_key.replace('_', ' ').title()
+        part, whole = values.get(part_key), values.get(whole_key)
+        lbl = part_key.replace('_', ' ').title()
+        wlbl = whole_key.replace('_', ' ').title()
         check = IdentityCheck(
-            identity=f'{label} <= {whole_label}',
-            lhs_label=label,
-            rhs_label=whole_label,
-        )
+            identity=f'{lbl} <= {wlbl}', lhs_label=lbl, rhs_label=wlbl)
         if part is None or whole is None:
             check.skipped = True
             check.skip_reason = self._missing(values, part_key, whole_key)
             return check
-
         check.lhs_value = abs(part)
         check.rhs_value = abs(whole)
         return self._evaluate_inequality(check)
@@ -194,15 +198,12 @@ class IdentityValidator:
         assets = values.get('total_assets')
         check = IdentityCheck(
             identity='Total Assets > 0',
-            lhs_label='Total Assets', rhs_label='0',
-        )
+            lhs_label='Total Assets', rhs_label='0')
         if assets is None:
             check.skipped = True
             check.skip_reason = 'total_assets not available'
             return check
-
-        check.lhs_value = assets
-        check.rhs_value = 0.0
+        check.lhs_value, check.rhs_value = assets, 0.0
         check.passed = assets > 0
         check.severity = 'ok' if check.passed else 'error'
         check.difference = assets
@@ -210,24 +211,22 @@ class IdentityValidator:
 
     def _check_equity_sign(self, values: dict) -> IdentityCheck:
         """Check: sign(Equity) = sign(Assets - Liabilities)."""
-        a = values.get('total_assets')
-        l = values.get('total_liabilities')
-        e = values.get('total_equity')
-
+        a, l, e = (values.get(k) for k in (
+            'total_assets', 'total_liabilities', 'total_equity'))
         check = IdentityCheck(
             identity='sign(Equity) = sign(Assets - Liabilities)',
-            lhs_label='Equity sign', rhs_label='Assets - Liabilities sign',
+            lhs_label='Equity sign',
+            rhs_label='Assets - Liabilities sign',
         )
         if a is None or l is None or e is None:
             check.skipped = True
-            check.skip_reason = self._missing(values, 'total_assets', 'total_liabilities', 'total_equity')
+            check.skip_reason = self._missing(
+                values, 'total_assets', 'total_liabilities',
+                'total_equity')
             return check
-
         implied = a - l
-        check.lhs_value = e
-        check.rhs_value = implied
+        check.lhs_value, check.rhs_value = e, implied
         check.difference = abs(e - implied)
-
         if abs(implied) < 1.0 or abs(e) < 1.0:
             check.passed = True
         else:
@@ -274,21 +273,16 @@ class IdentityValidator:
 
     def _log_results(self, checks: list[IdentityCheck]) -> None:
         """Log validation results."""
-        passed = sum(1 for c in checks if c.passed and not c.skipped)
-        failed = sum(1 for c in checks if not c.passed and not c.skipped)
-        skipped = sum(1 for c in checks if c.skipped)
-        self.logger.info(
-            f"Identity validation: {passed} passed, "
-            f"{failed} failed, {skipped} skipped"
-        )
-        for check in checks:
-            if not check.skipped and not check.passed:
+        p = sum(1 for c in checks if c.passed and not c.skipped)
+        f = sum(1 for c in checks if not c.passed and not c.skipped)
+        s = sum(1 for c in checks if c.skipped)
+        self.logger.info(f"Identity: {p} passed, {f} failed, {s} skipped")
+        for c in checks:
+            if not c.skipped and not c.passed:
                 self.logger.warning(
-                    f"IDENTITY FAILED: {check.identity} "
-                    f"(LHS={check.lhs_value:,.0f}, "
-                    f"RHS={check.rhs_value:,.0f}, "
-                    f"diff={check.difference:,.0f})"
-                )
+                    f"IDENTITY FAILED: {c.identity} "
+                    f"(LHS={c.lhs_value:,.0f}, RHS={c.rhs_value:,.0f}, "
+                    f"diff={c.difference:,.0f})")
 
 
 __all__ = ['IdentityValidator', 'IdentityCheck']
