@@ -290,47 +290,77 @@ class XBRLDataLoader:
         if not candidates:
             return None
 
+        # Prefer parent dirs over their subdirectories.
+        # ESEF packages have linkbases and iXBRL in separate
+        # subdirs - returning the package root lets both
+        # XBRLReader (rglob) and IXBRLExtractor find files.
+        candidates = self._deduplicate_nested(candidates)
+
         candidates.sort(key=lambda p: p.name, reverse=True)
         return candidates[0]
 
     def _is_filing_directory(self, directory: Path) -> bool:
         """Check if a directory appears to be an XBRL filing directory.
 
-        Recognises both SEC filings (.xsd + linkbase XML) and
-        ESEF filings (.xhtml inline XBRL).
+        Recognises SEC filings (.xsd + linkbase XML), ESEF inline
+        XBRL (.xhtml/.html/.htm), and ESEF package roots (META-INF/).
         """
         if not directory.is_dir():
             return False
 
-        has_xsd = False
-        has_linkbase = False
-        has_ixbrl = False
-
         try:
-            for file_path in directory.iterdir():
-                if not file_path.is_file():
-                    continue
-
-                name_lower = file_path.name.lower()
-
-                if name_lower.endswith('.xsd'):
-                    has_xsd = True
+            for item in directory.iterdir():
+                if item.is_file():
+                    name_lower = item.name.lower()
+                    if name_lower.endswith('.xsd'):
+                        return True
+                    if (
+                        '_cal.xml' in name_lower
+                        or '_pre.xml' in name_lower
+                        or '_def.xml' in name_lower
+                    ):
+                        return True
+                    if name_lower.endswith(
+                        ('.xhtml', '.html', '.htm'),
+                    ):
+                        return True
                 elif (
-                    '_cal.xml' in name_lower
-                    or '_pre.xml' in name_lower
-                    or '_def.xml' in name_lower
+                    item.is_dir()
+                    and item.name == 'META-INF'
                 ):
-                    has_linkbase = True
-                elif name_lower.endswith('.xhtml'):
-                    has_ixbrl = True
-
-                if has_xsd or has_linkbase or has_ixbrl:
+                    # ESEF taxonomy package root
                     return True
-
         except PermissionError:
             pass
 
         return False
+
+    def _deduplicate_nested(
+        self, candidates: list[Path],
+    ) -> list[Path]:
+        """Remove child dirs when a parent dir is also a candidate.
+
+        ESEF packages split linkbases and iXBRL across sibling
+        subdirs. When the package root is a candidate, its child
+        directories are redundant.
+        """
+        if len(candidates) <= 1:
+            return candidates
+        result = []
+        for candidate in candidates:
+            is_child = False
+            for other in candidates:
+                if candidate == other:
+                    continue
+                try:
+                    candidate.relative_to(other)
+                    is_child = True
+                    break
+                except ValueError:
+                    pass
+            if not is_child:
+                result.append(candidate)
+        return result if result else candidates
 
     def _recursive_discover(
         self,
