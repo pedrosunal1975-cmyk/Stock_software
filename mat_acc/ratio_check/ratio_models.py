@@ -34,6 +34,7 @@ class ComponentMatch:
     rule_breakdown: Dict[str, float] = field(default_factory=dict)
     fallback_formula: Optional[str] = None
     expected_sign: Optional[str] = None
+    match_quality: str = 'confident'
 
 
 @dataclass

@@ -12,10 +12,12 @@ Validates matched components using financial intelligence:
 from .match_verifier import MatchVerifier
 from .qualifier_rules import check_qualifier
 from .plausibility_checks import check_plausibility
+from .confidence_gate import assess_quality
 
 
 __all__ = [
     'MatchVerifier',
     'check_qualifier',
     'check_plausibility',
+    'assess_quality',
 ]

@@ -73,6 +73,8 @@ class ValuePopulator:
         for match in matches:
             if not match.matched or not match.matched_concept:
                 continue
+            if match.match_quality == 'uncertain':
+                continue
             if match.matched_concept.startswith('COMPOSITE:'):
                 continue
             value = value_lookup.get_value(
@@ -105,6 +107,8 @@ class ValuePopulator:
             if match.value is not None:
                 continue
             if not match.matched:
+                continue
+            if match.match_quality == 'uncertain':
                 continue
             if match.matched_concept.startswith('COMPOSITE:'):
                 continue
@@ -195,6 +199,8 @@ class ValuePopulator:
                 continue
             if not match.matched or not match.fallback_formula:
                 continue
+            if match.match_quality == 'uncertain':
+                continue
             computed = evaluate_formula(
                 match.fallback_formula, match_lookup
             )
@@ -217,6 +223,8 @@ class ValuePopulator:
             if match.value is not None:
                 continue
             if not match.matched or not match.matched_concept:
+                continue
+            if match.match_quality == 'uncertain':
                 continue
             if match.matched_concept.startswith('COMPOSITE:'):
                 continue
@@ -260,6 +268,8 @@ class ValuePopulator:
             if match.value is not None:
                 continue
             if not match.matched or not match.matched_concept:
+                continue
+            if match.match_quality == 'uncertain':
                 continue
             if match.matched_concept.startswith('COMPOSITE:'):
                 formula = match.matched_concept.replace(

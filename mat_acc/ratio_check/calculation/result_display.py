@@ -72,10 +72,18 @@ def display_components(
     matched = [m for m in matches if m.matched]
     unmatched = [m for m in matches if not m.matched]
 
-    if matched:
-        print(f"\n  Matched ({len(matched)}):")
-        for m in matched:
+    confident = [m for m in matched if m.match_quality != 'uncertain']
+    uncertain = [m for m in matched if m.match_quality == 'uncertain']
+
+    if confident:
+        print(f"\n  Matched ({len(confident)}):")
+        for m in confident:
             _print_matched_component(m)
+
+    if uncertain:
+        print(f"\n  Uncertain ({len(uncertain)}):")
+        for m in uncertain:
+            _print_uncertain_component(m)
 
     if unmatched:
         print(f"\n  Unmatched ({len(unmatched)}):")
@@ -98,6 +106,17 @@ def _print_matched_component(m: ComponentMatch) -> None:
     print(
         f"    [OK] {m.component_name:22s} -> "
         f"{label:35s} {val} ({conf})"
+    )
+
+
+def _print_uncertain_component(m: ComponentMatch) -> None:
+    """Print an uncertain match (blocked from value loading)."""
+    label = m.label[:35] if m.label else ''
+    if not label and m.matched_concept:
+        label = m.matched_concept[:35]
+    print(
+        f"    [??] {m.component_name:22s} -> "
+        f"{label:35s} [uncertain match]"
     )
 
 
@@ -170,8 +189,11 @@ def display_summary(s: Dict[str, Any]) -> None:
         s.get('total_components', 0),
     )
     na = s.get('not_applicable', 0)
+    uc = s.get('uncertain_components', 0)
     mr = s.get('match_rate', 0)
     print(f"    Components: {mc}/{ac} matched ({mr*100:.1f}%)")
+    if uc > 0:
+        print(f"    Uncertain: {uc} (value blocked)")
     if na > 0:
         print(
             f"    Not applicable: {na} "

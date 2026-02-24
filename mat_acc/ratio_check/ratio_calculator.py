@@ -2,16 +2,9 @@
 """
 Ratio Calculator
 
-Orchestrates the matching engine and ratio calculation pipeline.
-Delegates to specialized modules:
-- ratio_models: Data classes
-- value_populator: 6-pass value population
-- calc_discovery: Dynamic formulas from calculation linkbase
-- match_verify: Post-Match Financial Verification (PMFV)
-- ratio_engine: Ratio computation
-- ratio_definitions: Standard ratio list
-- industry_detector: Auto-detect industry from filing concepts
-- industry_registry: Industry-specific ratio model configs
+Orchestrates matching, value population, verification, and ratio
+calculation. Delegates to value_populator, match_verify, calc_discovery,
+ratio_engine, industry_detector, and industry_registry.
 """
 
 from typing import Optional, Dict, List, Any
@@ -30,6 +23,7 @@ from .calculation.ratio_definitions import STANDARD_RATIOS
 from .industry.detector import IndustryDetector
 from .industry.registry import IndustryRegistry
 from .match_verify import MatchVerifier
+from .match_verify.confidence_gate import assess_quality
 
 
 logger = get_process_logger('ratio_calculator')
@@ -189,12 +183,23 @@ class RatioCalculator:
                     'COMPOSITE:', ''
                 )
             else:
-                concept = concept_index.get_concept(resolved.concept)
+                concept = concept_index.get_concept(
+                    resolved.concept,
+                )
                 if concept:
                     match.label = (
                         concept.get_label('standard')
                         or concept.get_label('taxonomy')
                     )
+
+            # Confidence gate: flag uncertain matches
+            local = self._get_match_local(
+                resolved, concept_index,
+            )
+            match.match_quality = assess_quality(
+                component_id, resolved.confidence.value,
+                resolved.is_composite, local,
+            )
 
         comp_def = components.get(component_id)
         if comp_def and comp_def.composition.formula:
@@ -204,6 +209,13 @@ class RatioCalculator:
             match.expected_sign = sign.value if sign else None
 
         return match
+
+    def _get_match_local(self, resolved, concept_index):
+        """Get local name for a resolved non-composite match."""
+        if resolved.is_composite:
+            return None
+        concept = concept_index.get_concept(resolved.concept)
+        return concept.local_name if concept else None
 
     def _build_ratio_list(self, industry: str) -> list[dict]:
         """Build filtered ratio list for the detected industry."""
@@ -238,21 +250,19 @@ class RatioCalculator:
         """Build analysis summary statistics."""
         total = len(component_matches)
         matched = sum(1 for m in component_matches if m.matched)
+        uncertain = sum(1 for m in component_matches if m.match_quality == 'uncertain')
         valid = sum(1 for r in ratios if r.valid)
-
-        # Classify unmatched as "not applicable" if zero candidates
         not_applicable = sum(
             1 for m in component_matches
             if not m.matched and m.confidence == 0
         )
-
         applicable = total - not_applicable
         industry = self._detected_industry
         display_name = self._industry_registry.get_display_name(industry)
-
         return {
             'total_components': total,
             'matched_components': matched,
+            'uncertain_components': uncertain,
             'match_rate': matched / applicable if applicable > 0 else 0,
             'applicable_components': applicable,
             'not_applicable': not_applicable,
