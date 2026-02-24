@@ -15,7 +15,6 @@ Example from linkbase:
 """
 
 from dataclasses import dataclass, field
-from typing import Optional
 
 from core.logger.ipo_logging import get_process_logger
 from loaders.xbrl_reader import CalculationNetwork, CalculationArc
@@ -66,7 +65,7 @@ def extract_formulas(
         List of DeclaredFormula objects
     """
     formulas = []
-    seen_parents: set[str] = set()
+    formula_by_key: dict[str, DeclaredFormula] = {}
 
     for network in calc_networks:
         parent_groups = _group_by_parent(network.arcs)
@@ -74,18 +73,22 @@ def extract_formulas(
         for parent_concept, arcs in parent_groups.items():
             parent_local = _extract_local_name(parent_concept)
             key = parent_local.lower()
-            if key in seen_parents:
-                continue
-            seen_parents.add(key)
 
             children = _build_children(arcs)
-            if children:
-                formulas.append(DeclaredFormula(
+            if not children:
+                continue
+
+            if key in formula_by_key:
+                _merge_children(formula_by_key[key], children)
+            else:
+                formula = DeclaredFormula(
                     parent_concept=parent_concept,
                     parent_local_name=parent_local,
                     children=children,
                     role=network.role,
-                ))
+                )
+                formula_by_key[key] = formula
+                formulas.append(formula)
 
     logger.info(
         f"Extracted {len(formulas)} declared formulas "
@@ -111,6 +114,18 @@ def _build_children(
             order=arc.order,
         ))
     return children
+
+
+def _merge_children(
+    formula: DeclaredFormula,
+    new_children: list[FormulaChild],
+) -> None:
+    """Merge new children into existing formula, skip duplicates."""
+    known = {c.local_name.lower() for c in formula.children}
+    for child in new_children:
+        if child.local_name.lower() not in known:
+            formula.children.append(child)
+            known.add(child.local_name.lower())
 
 
 def _group_by_parent(

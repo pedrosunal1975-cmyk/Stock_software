@@ -1,10 +1,18 @@
 # ESEF overlay: net_income
 # Only fields that differ from base definition
+#
+# CRITICAL: ProfitLoss (total, including NCI) must score HIGHER than
+# ProfitLossAttributableToOwnersOfParent (parent-only). Without this
+# distinction, IBT-Tax=NI identity check fails by the NCI amount.
+# Same pattern as total_equity overlay.
 component_id: net_income
 matching_rules:
   local_name_rules:
     - patterns:
         - "ProfitLoss"
+      match_type: exact
+      weight: 20
+    - patterns:
         - "ProfitLossAttributableToOwnersOfParent"
       match_type: exact
       weight: 15
