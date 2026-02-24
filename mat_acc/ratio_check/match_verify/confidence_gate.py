@@ -50,20 +50,20 @@ def assess_quality(comp_id, confidence_value, is_composite, local_name):
 
 
 def _is_name_excessive(comp_id, local_name):
-    """Check if concept name has excessive qualifiers.
+    """Check if concept name is a poor semantic match.
 
     Derives an expected stem from the component_id
-    (e.g. interest_expense -> InterestExpense) and checks
-    if the concept name contains significantly more than that.
+    (e.g. interest_expense -> InterestExpense) and checks:
+    1. If stem is absent from concept name entirely (mismatch)
+    2. If concept has excessive qualifiers beyond the stem
 
     Threshold: excess characters > max(stem_length, 15).
-    This means the concept must be roughly 2x the stem length
-    to trigger, with a floor of 15 extra chars for short stems.
     """
     stem = ''.join(w.capitalize() for w in comp_id.split('_'))
     idx = local_name.lower().find(stem.lower())
     if idx == -1:
-        return False
+        # Stem completely absent: no semantic overlap
+        return True
     excess = len(local_name) - len(stem)
     return excess > max(len(stem), 15)
 

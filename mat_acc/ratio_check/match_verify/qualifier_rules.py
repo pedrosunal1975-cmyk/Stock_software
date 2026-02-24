@@ -165,15 +165,23 @@ def _check_noncurrent(component_id: str, name_lower: str) -> dict:
 def _check_supplemental(component_id: str, name_lower: str) -> dict:
     """Reject supplemental disclosure concepts for primary items."""
     for marker in SUPPLEMENTAL_MARKERS:
-        if marker in name_lower:
-            return {
-                'valid': False,
-                'reason': (
-                    f"'{component_id}' is primary item, but concept "
-                    f"is supplemental (contains '{marker}')"
-                ),
-                'penalty': 0,
-            }
+        pos = name_lower.find(marker)
+        if pos < 0:
+            continue
+        # "OtherThan" before marker means concept EXCLUDES the
+        # supplemental item (e.g., IFRS CurrentLiabilities
+        # OtherThan...DisposalGroups is the primary concept)
+        prefix = name_lower[:pos]
+        if 'otherthan' in prefix or 'exclud' in prefix:
+            continue
+        return {
+            'valid': False,
+            'reason': (
+                f"'{component_id}' is primary item, but concept "
+                f"is supplemental (contains '{marker}')"
+            ),
+            'penalty': 0,
+        }
     return {'valid': True, 'reason': None, 'penalty': 0}
 
 
