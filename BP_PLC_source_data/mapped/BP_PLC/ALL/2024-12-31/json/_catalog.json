@@ -1,0 +1,205 @@
+{
+  "generated_at": "2026-02-16T22:17:09.551457",
+  "filing_info": {
+    "entity_name": "Unknown",
+    "filing_type": "ALL",
+    "period_end": null
+  },
+  "summary": {
+    "total_networks": 6,
+    "core_statements": 1,
+    "detail_schedules": 5,
+    "tables": 0,
+    "policies": 0,
+    "documents": 0,
+    "other": 0,
+    "by_category": {
+      "DETAIL": 5,
+      "CORE_STATEMENT": 1
+    },
+    "by_statement_type": {
+      "INCOME_STATEMENT": 2,
+      "EQUITY": 1,
+      "BALANCE_SHEET": 1,
+      "CASH_FLOW": 1,
+      "OTHER": 1
+    },
+    "by_confidence": {
+      "LOW": 6
+    }
+  },
+  "core_statements": [
+    {
+      "filename": "core_statements/tagsthatmustbeappliedifcorrespondinginformationispresentinareport.json",
+      "role_uri": "http://www.bp.com/role/Tagsthatmustbeappliedifcorrespondinginformationispresentinareport",
+      "role_definition": null,
+      "statement_type": "OTHER",
+      "confidence": "LOW"
+    }
+  ],
+  "details_by_type": {
+    "BALANCE_SHEET": [
+      {
+        "filename": "details/groupbalancesheetdetails.json",
+        "role_uri": "http://www.bp.com/role/GroupbalancesheetDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      }
+    ],
+    "INCOME_STATEMENT": [
+      {
+        "filename": "details/groupincomestatementdetails.json",
+        "role_uri": "http://www.bp.com/role/GroupincomestatementDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/groupstatementofcomprehensiveincomedetails.json",
+        "role_uri": "http://www.bp.com/role/GroupstatementofcomprehensiveincomeDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      }
+    ],
+    "CASH_FLOW": [
+      {
+        "filename": "details/groupcashflowstatementdetails.json",
+        "role_uri": "http://www.bp.com/role/GroupcashflowstatementDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      }
+    ],
+    "EQUITY": [
+      {
+        "filename": "details/groupstatementofchangesinequitydetails.json",
+        "role_uri": "http://www.bp.com/role/GroupstatementofchangesinequityDetails",
+        "role_definition": null,
+        "confidence": "LOW"
+      }
+    ],
+    "OTHER": []
+  },
+  "all_networks_by_category": {
+    "CORE_STATEMENT": [
+      {
+        "filename": "core_statements/tagsthatmustbeappliedifcorrespondinginformationispresentinareport.json",
+        "role_uri": "http://www.bp.com/role/Tagsthatmustbeappliedifcorrespondinginformationispresentinareport",
+        "role_definition": null,
+        "statement_type": "OTHER",
+        "confidence": "LOW"
+      }
+    ],
+    "DETAIL": [
+      {
+        "filename": "details/groupincomestatementdetails.json",
+        "role_uri": "http://www.bp.com/role/GroupincomestatementDetails",
+        "role_definition": null,
+        "statement_type": "INCOME_STATEMENT",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/groupstatementofcomprehensiveincomedetails.json",
+        "role_uri": "http://www.bp.com/role/GroupstatementofcomprehensiveincomeDetails",
+        "role_definition": null,
+        "statement_type": "INCOME_STATEMENT",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/groupstatementofchangesinequitydetails.json",
+        "role_uri": "http://www.bp.com/role/GroupstatementofchangesinequityDetails",
+        "role_definition": null,
+        "statement_type": "EQUITY",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/groupbalancesheetdetails.json",
+        "role_uri": "http://www.bp.com/role/GroupbalancesheetDetails",
+        "role_definition": null,
+        "statement_type": "BALANCE_SHEET",
+        "confidence": "LOW"
+      },
+      {
+        "filename": "details/groupcashflowstatementdetails.json",
+        "role_uri": "http://www.bp.com/role/GroupcashflowstatementDetails",
+        "role_definition": null,
+        "statement_type": "CASH_FLOW",
+        "confidence": "LOW"
+      }
+    ],
+    "TABLE": [],
+    "POLICY": [],
+    "PARENTHETICAL": [],
+    "DOCUMENT": [],
+    "UNKNOWN": []
+  },
+  "network_index": {
+    "details/groupincomestatementdetails.json": {
+      "role_uri": "http://www.bp.com/role/GroupincomestatementDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "INCOME_STATEMENT",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Income"
+      ]
+    },
+    "details/groupstatementofcomprehensiveincomedetails.json": {
+      "role_uri": "http://www.bp.com/role/GroupstatementofcomprehensiveincomeDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "INCOME_STATEMENT",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Income"
+      ]
+    },
+    "details/groupstatementofchangesinequitydetails.json": {
+      "role_uri": "http://www.bp.com/role/GroupstatementofchangesinequityDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "EQUITY",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "Equity"
+      ]
+    },
+    "details/groupbalancesheetdetails.json": {
+      "role_uri": "http://www.bp.com/role/GroupbalancesheetDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "BALANCE_SHEET",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "BalanceSheet"
+      ]
+    },
+    "details/groupcashflowstatementdetails.json": {
+      "role_uri": "http://www.bp.com/role/GroupcashflowstatementDetails",
+      "role_definition": null,
+      "category": "DETAIL",
+      "statement_type": "CASH_FLOW",
+      "is_primary": false,
+      "confidence": "LOW",
+      "matched_patterns": [
+        "Details",
+        "CashFlow"
+      ]
+    },
+    "core_statements/tagsthatmustbeappliedifcorrespondinginformationispresentinareport.json": {
+      "role_uri": "http://www.bp.com/role/Tagsthatmustbeappliedifcorrespondinginformationispresentinareport",
+      "role_definition": null,
+      "category": "CORE_STATEMENT",
+      "statement_type": "OTHER",
+      "is_primary": true,
+      "confidence": "LOW",
+      "matched_patterns": []
+    }
+  }
+}

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--XBRL Document Created with the Workiva Platform-->
+<!--Copyright 2025 Workiva-->
+<!--r:1af2bbb0-e38f-4b0f-a0d3-9539e4836de4,g:093cf6f4-2218-4b65-9135-cf11f6f597d3-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:bpplc="http://www.bp.com/20241231" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:dtr-types="http://www.xbrl.org/dtr/type/2020-01-21" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.bp.com/20241231">
+  <xs:import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
+  <xs:import namespace="http://www.xbrl.org/2003/linkbase" schemaLocation="http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd"/>
+  <xs:import namespace="http://www.xbrl.org/dtr/type/2020-01-21" schemaLocation="https://www.xbrl.org/dtr/type/2020-01-21/types.xsd"/>
+  <xs:import namespace="https://www.esma.europa.eu/taxonomy/2022-03-24/esef_cor" schemaLocation="https://www.esma.europa.eu/taxonomy/2022-03-24/esef_cor.xsd"/>
+  <xs:annotation>
+    <xs:appinfo>
+      <link:linkbaseRef xmlns:xlink="http://www.w3.org/1999/xlink" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="https://www.esma.europa.eu/taxonomy/2022-03-24/esef_cor-lab-en.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:type="simple"/>
+      <link:linkbaseRef xmlns:xlink="http://www.w3.org/1999/xlink" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="https://www.esma.europa.eu/taxonomy/2022-03-24/esef_cor-gen-en.xml" xlink:role="http://www.xbrl.org/2003/role/linkbaseRef" xlink:type="simple"/>
+      <link:linkbaseRef xmlns:xlink="http://www.w3.org/1999/xlink" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="213800LH1BZH3DI6G760-2024-12-31_pre.xml" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef" xlink:type="simple"/>
+      <link:linkbaseRef xmlns:xlink="http://www.w3.org/1999/xlink" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="213800LH1BZH3DI6G760-2024-12-31_def.xml" xlink:role="http://www.xbrl.org/2003/role/definitionLinkbaseRef" xlink:type="simple"/>
+      <link:linkbaseRef xmlns:xlink="http://www.w3.org/1999/xlink" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="213800LH1BZH3DI6G760-2024-12-31_lab-en.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:type="simple"/>
+      <link:linkbaseRef xmlns:xlink="http://www.w3.org/1999/xlink" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="213800LH1BZH3DI6G760-2024-12-31_cal.xml" xlink:role="http://www.xbrl.org/2003/role/calculationLinkbaseRef" xlink:type="simple"/>
+      <link:roleType id="GroupincomestatementDetails" roleURI="http://www.bp.com/role/GroupincomestatementDetails">
+        <link:definition>[0000001] Group income statement (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="GroupincomestatementDetails_1" roleURI="http://www.bp.com/role/GroupincomestatementDetails_1">
+        <link:definition>[0000001] Group income statement (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="GroupstatementofcomprehensiveincomeDetails" roleURI="http://www.bp.com/role/GroupstatementofcomprehensiveincomeDetails">
+        <link:definition>[0000002] Group statement of comprehensive income (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="GroupstatementofcomprehensiveincomeDetails_1" roleURI="http://www.bp.com/role/GroupstatementofcomprehensiveincomeDetails_1">
+        <link:definition>[0000002] Group statement of comprehensive income (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="GroupstatementofchangesinequityDetails" roleURI="http://www.bp.com/role/GroupstatementofchangesinequityDetails">
+        <link:definition>[0000003] Group statement of changes in equity (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="GroupbalancesheetDetails" roleURI="http://www.bp.com/role/GroupbalancesheetDetails">
+        <link:definition>[0000004] Group balance sheet (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="GroupcashflowstatementDetails" roleURI="http://www.bp.com/role/GroupcashflowstatementDetails">
+        <link:definition>[0000005] Group cash flow statement (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="Tagsthatmustbeappliedifcorrespondinginformationispresentinareport" roleURI="http://www.bp.com/role/Tagsthatmustbeappliedifcorrespondinginformationispresentinareport">
+        <link:definition>[0000006] Tags that must be applied if corresponding information is present in a report</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="Anchoring" roleURI="http://www.bp.com/role/Anchoring">
+        <link:definition>Anchoring</link:definition>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element id="bpplc_AmericanDepositaryShareMember" abstract="true" name="AmericanDepositaryShareMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types:domainItemType"/>
+  <xs:element id="bpplc_ShareCapitalAndCapitalReservesMember" abstract="true" name="ShareCapitalAndCapitalReservesMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types:domainItemType"/>
+  <xs:element id="bpplc_FairValueReservesMember" abstract="true" name="FairValueReservesMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types:domainItemType"/>
+  <xs:element id="bpplc_HybridBondsRelatingToNonControllingInterestsMember" abstract="true" name="HybridBondsRelatingToNonControllingInterestsMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types:domainItemType"/>
+  <xs:element id="bpplc_OtherInterestRelatingToNonControllingInterestsMember" abstract="true" name="OtherInterestRelatingToNonControllingInterestsMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types:domainItemType"/>
+  <xs:element id="bpplc_CashFlowHedgesTransferredToTheBalanceSheetNetOfTax" abstract="false" name="CashFlowHedgesTransferredToTheBalanceSheetNetOfTax" nillable="true" xbrli:periodType="duration" xbrli:balance="credit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="bpplc_ShareOfEquityAccountedEntitiesChangesInEquityNetOfTax" abstract="false" name="ShareOfEquityAccountedEntitiesChangesInEquityNetOfTax" nillable="true" xbrli:periodType="duration" xbrli:balance="credit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="bpplc_IssueOfPerpetualHybridBonds" abstract="false" name="IssueOfPerpetualHybridBonds" nillable="true" xbrli:periodType="duration" xbrli:balance="credit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="bpplc_RedemptionOfPerpetualHybridBondsNetOfTax" abstract="false" name="RedemptionOfPerpetualHybridBondsNetOfTax" nillable="true" xbrli:periodType="duration" xbrli:balance="debit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="bpplc_PaymentsOnPerpetualHybridBonds" abstract="false" name="PaymentsOnPerpetualHybridBonds" nillable="true" xbrli:periodType="duration" xbrli:balance="debit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="bpplc_TransactionsInvolvingNonControllingInterestsNetOfTax" abstract="false" name="TransactionsInvolvingNonControllingInterestsNetOfTax" nillable="true" xbrli:periodType="duration" xbrli:balance="credit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="bpplc_FixedAssets" abstract="false" name="FixedAssets" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="bpplc_AdjustmentsForExplorationExpenditureWrittenOff" abstract="false" name="AdjustmentsForExplorationExpenditureWrittenOff" nillable="true" xbrli:periodType="duration" xbrli:balance="debit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="bpplc_AdjustmentsForRemeasurementsOfJointVenturesOnStepAcquisition" abstract="false" name="AdjustmentsForRemeasurementsOfJointVenturesOnStepAcquisition" nillable="true" xbrli:periodType="duration" xbrli:balance="debit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="bpplc_AdjustmentsForNetOperatingChargeForPensionsAndOtherPostretirementBenefitsLessContributionsAndBenefitPaymentsForUnfundedPlans" abstract="false" name="AdjustmentsForNetOperatingChargeForPensionsAndOtherPostretirementBenefitsLessContributionsAndBenefitPaymentsForUnfundedPlans" nillable="true" xbrli:periodType="duration" xbrli:balance="debit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="bpplc_RedemptionOfOtherEquityInstruments" abstract="false" name="RedemptionOfOtherEquityInstruments" nillable="true" xbrli:periodType="duration" xbrli:balance="debit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+</xs:schema>
