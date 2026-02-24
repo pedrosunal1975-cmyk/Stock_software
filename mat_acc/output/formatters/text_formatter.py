@@ -54,6 +54,7 @@ class TextFormatter(BaseFormatter):
             'overview': self._render_overview,
             'component_table': self._render_components,
             'ratio_group': self._render_ratio_group,
+            'plausibility_audit': self._render_plausibility,
         }
         renderer = renderers.get(
             section.section_type, self._render_generic,
@@ -142,6 +143,37 @@ class TextFormatter(BaseFormatter):
                 num_s = f"{num:,.0f}" if num is not None else '[missing]'
                 den_s = f"{den:,.0f}" if den is not None else '[missing]'
                 lines.append(f"         Values: {num_s} / {den_s}")
+
+        return lines
+
+    def _render_plausibility(
+        self, section: ReportSection,
+    ) -> list[str]:
+        """Render plausibility audit section."""
+        lines = []
+        lines.append('')
+        lines.append(f"  {section.title.upper()}:")
+        lines.append(SUB_DIVIDER)
+
+        meta = section.metadata
+        w = meta.get('warnings', 0)
+        a = meta.get('advisories', 0)
+        i = meta.get('infos', 0)
+        lines.append(
+            f"    Findings: {meta.get('total', 0)} "
+            f"({w} warning, {a} advisory, {i} info)"
+        )
+
+        for item in section.items:
+            d = item.details
+            tag = d.get('severity_tag', '[  ]')
+            src = f"[{d.get('source', 'normative')}]"
+            lines.append(
+                f"    {tag} {item.label:25s} {src}"
+            )
+            lines.append(
+                f"        {d.get('message', '')}"
+            )
 
         return lines
 

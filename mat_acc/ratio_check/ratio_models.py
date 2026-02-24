@@ -87,6 +87,7 @@ class AnalysisResult:
     ratios: List[RatioResult] = field(default_factory=list)
     summary: Dict[str, Any] = field(default_factory=dict)
     normalizations: Dict[str, Any] = field(default_factory=dict)
+    plausibility: Any = None  # PlausibilityReport (optional)
 
 
 __all__ = ['ComponentMatch', 'RatioResult', 'AnalysisResult']

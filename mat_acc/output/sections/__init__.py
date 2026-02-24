@@ -12,6 +12,7 @@ from .section_registry import SectionRegistry
 from .overview import OverviewSection
 from .components import ComponentsSection
 from .ratios import RatiosSection
+from .plausibility import PlausibilitySection
 
 __all__ = [
     'BaseSection',
@@ -19,4 +20,5 @@ __all__ = [
     'OverviewSection',
     'ComponentsSection',
     'RatiosSection',
+    'PlausibilitySection',
 ]

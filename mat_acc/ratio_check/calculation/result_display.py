@@ -4,7 +4,7 @@ Result Display
 
 Console display functions for ratio analysis results.
 Extracted from RatioCalculator to keep display logic separate
-from calculation logic.
+from calculation logic. Includes plausibility annotations.
 """
 
 from typing import Optional, Dict, List, Any
@@ -32,13 +32,30 @@ def display_results(
         print(f"  Industry: {industry_name}")
     print("=" * 70)
 
+    # Build inline annotation lookup from plausibility
+    p_index = _build_plausibility_index(result.plausibility)
+
     display_pmfv_corrections(pmfv_corrections)
-    display_components(result.component_matches)
+    display_components(result.component_matches, p_index)
     display_ratios(
         result.ratios,
         normalizations or result.normalizations,
+        p_index,
     )
-    display_summary(result.summary)
+    display_plausibility(result.plausibility)
+    display_summary(result.summary, result.plausibility)
+
+
+def _build_plausibility_index(
+    plausibility,
+) -> Dict[str, list]:
+    """Build target -> findings lookup for inline display."""
+    index: Dict[str, list] = {}
+    if not plausibility:
+        return index
+    for f in plausibility.findings:
+        index.setdefault(f.target, []).append(f)
+    return index
 
 
 def display_pmfv_corrections(corrections: list) -> None:
@@ -64,10 +81,12 @@ def display_pmfv_corrections(corrections: list) -> None:
 
 def display_components(
     matches: List[ComponentMatch],
+    p_index: Optional[Dict] = None,
 ) -> None:
     """Display component matching section."""
     print("\n  COMPONENT MATCHING:")
     print("-" * 70)
+    p_index = p_index or {}
 
     matched = [m for m in matches if m.matched]
     unmatched = [m for m in matches if not m.matched]
@@ -78,7 +97,7 @@ def display_components(
     if confident:
         print(f"\n  Matched ({len(confident)}):")
         for m in confident:
-            _print_matched_component(m)
+            _print_matched_component(m, p_index)
 
     if uncertain:
         print(f"\n  Uncertain ({len(uncertain)}):")
@@ -93,8 +112,10 @@ def display_components(
             print(f"    ... and {len(unmatched) - 10} more")
 
 
-def _print_matched_component(m: ComponentMatch) -> None:
-    """Print a single matched component line."""
+def _print_matched_component(
+    m: ComponentMatch, p_index: Dict,
+) -> None:
+    """Print a single matched component line with annotation."""
     conf = f"{m.confidence:.2f}" if m.confidence else "N/A"
     label = m.label[:35] if m.label else ''
     if not label and m.matched_concept:
@@ -107,6 +128,13 @@ def _print_matched_component(m: ComponentMatch) -> None:
         f"    [OK] {m.component_name:22s} -> "
         f"{label:35s} {val} ({conf})"
     )
+    # Inline plausibility annotation (warnings only)
+    findings = p_index.get(m.component_name, [])
+    for f in findings:
+        if f.severity.value in ('warning', 'alert'):
+            print(
+                f"         {f.severity_tag} {f.message}"
+            )
 
 
 def _print_uncertain_component(m: ComponentMatch) -> None:
@@ -123,21 +151,25 @@ def _print_uncertain_component(m: ComponentMatch) -> None:
 def display_ratios(
     ratios: List[RatioResult],
     normalizations: Optional[Dict] = None,
+    p_index: Optional[Dict] = None,
 ) -> None:
     """Display financial ratios section with normalization."""
     print("\n  FINANCIAL RATIOS:")
     print("-" * 70)
     norms = normalizations or {}
+    p_index = p_index or {}
 
     for r in ratios:
         if r.valid:
-            _print_valid_ratio(r, norms)
+            _print_valid_ratio(r, norms, p_index)
         elif r.error:
             _print_invalid_ratio(r)
 
 
-def _print_valid_ratio(r: RatioResult, norms: dict) -> None:
-    """Print a valid ratio with optional normalization."""
+def _print_valid_ratio(
+    r: RatioResult, norms: dict, p_index: Dict,
+) -> None:
+    """Print a valid ratio with optional annotations."""
     print(f"    [OK] {r.ratio_name:25s} = {r.value:10.4f}")
     num = (
         f"{r.numerator_value:,.0f}"
@@ -156,6 +188,13 @@ def _print_valid_ratio(r: RatioResult, norms: dict) -> None:
             f" {ann.normalized_value:10.4f}"
             f"  ({ann.explanation})"
         )
+    # Inline plausibility (warnings/advisories)
+    findings = p_index.get(r.ratio_name, [])
+    for f in findings:
+        if f.severity.value in ('warning', 'alert', 'advisory'):
+            print(
+                f"         {f.severity_tag} {f.message}"
+            )
 
 
 def _print_invalid_ratio(r: RatioResult) -> None:
@@ -179,7 +218,32 @@ def _print_invalid_ratio(r: RatioResult) -> None:
         print(f"    [--] {r.ratio_name:25s} - {r.error}")
 
 
-def display_summary(s: Dict[str, Any]) -> None:
+def display_plausibility(plausibility) -> None:
+    """Display plausibility audit summary section."""
+    if not plausibility or not plausibility.findings:
+        return
+
+    counts = plausibility.summary_counts
+    w = counts.get('warning', 0) + counts.get('alert', 0)
+    a = counts.get('advisory', 0)
+    i = counts.get('info', 0)
+
+    print("\n  PLAUSIBILITY AUDIT:")
+    print("-" * 70)
+    print(
+        f"    Findings: {len(plausibility.findings)} "
+        f"({w} warning, {a} advisory, {i} info)"
+    )
+
+    for f in plausibility.findings:
+        src = f"[{f.source_tag}]"
+        print(f"    {f.severity_tag} {f.target:25s} {src}")
+        print(f"        {f.message}")
+
+
+def display_summary(
+    s: Dict[str, Any], plausibility=None,
+) -> None:
     """Display summary section with industry-aware counts."""
     print("\n  SUMMARY:")
     print("-" * 70)
@@ -202,6 +266,12 @@ def display_summary(s: Dict[str, Any]) -> None:
     vr = s.get('valid_ratios', 0)
     tr = s.get('total_ratios', 0)
     print(f"    Ratios: {vr}/{tr} calculated")
+    if plausibility and plausibility.findings:
+        w = len(plausibility.warnings)
+        a = len(plausibility.advisories)
+        print(
+            f"    Plausibility: {w} warnings, {a} advisories"
+        )
     print("\n" + "=" * 70)
 
 
@@ -209,5 +279,6 @@ __all__ = [
     'display_results',
     'display_components',
     'display_ratios',
+    'display_plausibility',
     'display_summary',
 ]

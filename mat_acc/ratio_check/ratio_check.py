@@ -1,11 +1,5 @@
 # Path: mat_acc/ratio_check/ratio_check.py
-"""
-Ratio Check - Main Orchestrator
-
-Coordinates the ratio analysis pipeline:
-1. Load fact values   2. MIU sign verification
-3. Build concept index 4. Calc discovery + matching + ratios
-"""
+"""Ratio Check - Main orchestrator for the ratio analysis pipeline."""
 
 from typing import Optional
 
@@ -30,6 +24,7 @@ from .math_verify.miu_runner import (
     run_math_verify, run_identity_checks, run_scale_normalization,
 )
 from .calculation.ratio_definitions import STANDARD_RATIOS
+from .plausibility import PlausibilityAuditor
 from output.report_generator import ReportGenerator
 
 
@@ -37,12 +32,7 @@ logger = get_process_logger('ratio_check')
 
 
 class RatioCheckOrchestrator:
-    """
-    Main orchestrator for ratio analysis pipeline.
-
-    Source discovery is handled internally - the engine figures out
-    which sources are available and uses them appropriately.
-    """
+    """Main orchestrator for ratio analysis pipeline."""
 
     def __init__(
         self, config: Optional[ConfigLoader] = None,
@@ -75,6 +65,7 @@ class RatioCheckOrchestrator:
         self._fact_reconciler = FactReconciler()
         self._sign_analyzer = SignAnalyzer()
         self._identity_validator = IdentityValidator()
+        self._plausibility_auditor = PlausibilityAuditor()
 
     def run(self) -> None:
         """Run the interactive ratio analysis workflow."""
@@ -260,6 +251,15 @@ class RatioCheckOrchestrator:
                 self._ixbrl_extractor,
                 result.ratios, result.component_matches,
                 ixbrl_facts, STANDARD_RATIOS,
+            )
+
+        # Plausibility audit (interpretive layer - reads only)
+        if result:
+            result.plausibility = self._plausibility_auditor.audit(
+                result.component_matches, result.ratios,
+                market=selection.market,
+                company=selection.company,
+                ixbrl_facts=ixbrl_facts or None,
             )
 
         # Track unmatched for debug

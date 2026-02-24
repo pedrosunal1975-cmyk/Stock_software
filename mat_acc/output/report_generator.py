@@ -36,6 +36,7 @@ from .sections import (
     OverviewSection,
     ComponentsSection,
     RatiosSection,
+    PlausibilitySection,
 )
 from .formatters import (
     FormatterRegistry,
@@ -54,6 +55,7 @@ def _register_defaults() -> None:
     SectionRegistry.register(OverviewSection)
     SectionRegistry.register(ComponentsSection)
     SectionRegistry.register(RatiosSection)
+    SectionRegistry.register(PlausibilitySection)
 
     # Formatters
     FormatterRegistry.register(JsonFormatter)
