@@ -22,3 +22,7 @@ matching_rules:
       weight: 20
 scoring:
   min_score: 15
+  confidence_levels:
+    high: 18
+    medium: 15
+    low: 12

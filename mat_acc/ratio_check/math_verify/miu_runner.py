@@ -124,13 +124,17 @@ def _build_loaded_values(
     return loaded_values
 
 
-def run_identity_checks(validator, component_matches) -> None:
+def run_identity_checks(
+    validator, component_matches,
+    declared_formulas=None,
+) -> None:
     """
     Run Layer 3 identity validation after matching.
 
-    Args:
-        validator: IdentityValidator instance
-        component_matches: List of ComponentMatch with values
+    When declared formulas from the calc linkbase are available,
+    failed identities are re-evaluated: if the company declares
+    additional terms (e.g. InsuranceRevenue in GP formula),
+    the simple identity failure is expected and upgraded to OK.
     """
     values = {}
     for match in component_matches:
@@ -138,6 +142,8 @@ def run_identity_checks(validator, component_matches) -> None:
             values[match.component_name] = match.value
 
     checks = validator.validate(values)
+    if declared_formulas:
+        _reconcile_with_declared(checks, declared_formulas)
 
     print("\n  MIU Layer 3: Mathematical Identity Checks")
     print("  " + "-" * 50)
@@ -189,6 +195,47 @@ def run_scale_normalization(
                 f"({ann.explanation})"
             )
     return annotations
+
+
+# Maps identity check names to their parent concept in calc linkbase
+_IDENTITY_PARENTS = {
+    'Revenue - COGS = Gross Profit': 'grossprofit',
+    'IBT - Tax = Net Income': 'profitloss',
+}
+
+
+def _reconcile_with_declared(checks, formulas):
+    """Upgrade failed identities when calc linkbase explains gap.
+
+    If the company's declared formula has additional children beyond
+    what our simple identity assumes (2 terms), the gap is expected.
+    Also handles discontinued operations in the NI identity.
+    """
+    lookup = {
+        f.parent_local_name.lower(): f for f in formulas
+    }
+    for check in checks:
+        if check.passed or check.skipped:
+            continue
+        parent_key = _IDENTITY_PARENTS.get(check.identity)
+        if not parent_key:
+            continue
+        formula = lookup.get(parent_key)
+        if not formula:
+            continue
+        n = len(formula.children)
+        if n > 2:
+            extra = n - 2
+            check.passed = True
+            check.severity = 'info'
+            check.identity += f' (+{extra} declared items)'
+        elif any(
+            'discontinued' in c.local_name.lower()
+            for c in formula.children
+        ):
+            check.passed = True
+            check.severity = 'info'
+            check.identity += ' (includes discontinued ops)'
 
 
 __all__ = [

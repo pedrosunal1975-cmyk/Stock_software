@@ -238,11 +238,15 @@ class RatioCheckOrchestrator:
         )
         self.debug_reporter.mark_stage('matching_complete')
 
-        # MIU Layer 3: Identity validation
+        # MIU Layer 3: Identity validation (uses calc linkbase)
         if result:
+            declared = None
+            if calc_networks:
+                from .calc_discovery.formula_extractor import extract_formulas
+                declared = extract_formulas(calc_networks)
             run_identity_checks(
-                self._identity_validator,
-                result.component_matches,
+                self._identity_validator, result.component_matches,
+                declared_formulas=declared,
             )
 
         # Scale normalization
@@ -275,24 +279,21 @@ class RatioCheckOrchestrator:
         reader = XBRLReader()
         calc = reader.read_calculation_linkbase(xbrl_dir)
         defn = reader.read_definition_linkbase(xbrl_dir)
-        if calc:
-            arcs = sum(len(n.arcs) for n in calc)
-            print(f"\n  Loaded {arcs} calc relationships")
-        if defn:
-            arcs = sum(len(n.arcs) for n in defn)
-            print(f"  Loaded {arcs} definition relationships")
+        for lbl, nets in [('calc', calc), ('definition', defn)]:
+            if nets:
+                n = sum(len(net.arcs) for net in nets)
+                pfx = '\n  ' if lbl == 'calc' else '  '
+                print(f"{pfx}Loaded {n} {lbl} relationships")
         return calc, defn
 
     def _track_unmatched(self, matches) -> None:
         """Record unmatched components for debug reporting."""
-        for match in matches:
-            if not match.matched:
+        for m in matches:
+            if not m.matched:
                 self.debug_reporter.add_component_debug(
                     ComponentDebugInfo(
-                        component_id=match.component_name,
-                        matched=False, candidates_found=0,
-                    )
-                )
+                        component_id=m.component_name,
+                        matched=False, candidates_found=0))
 
 
 __all__ = ['RatioCheckOrchestrator']
