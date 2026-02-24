@@ -78,9 +78,9 @@ composition:
     - income_tax_expense
     - interest_expense
     - depreciation_amortization
-  formula: "net_income + income_tax_expense + interest_expense + depreciation_amortization"
+  formula: "net_income + income_tax_expense + abs:interest_expense + abs:depreciation_amortization"
   alternatives:
-    - formula: "operating_income + depreciation_amortization"
+    - formula: "operating_income + abs:depreciation_amortization"
       components:
         - operating_income
         - depreciation_amortization

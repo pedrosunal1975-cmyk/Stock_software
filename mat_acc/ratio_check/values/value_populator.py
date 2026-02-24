@@ -11,8 +11,8 @@ Populates numeric values for matched components using a 6-pass strategy:
 6. Recompute composites/fallback after all values loaded
 
 Signs are preserved as-is from source data (iXBRL/MIU corrections).
-Formula-convention cases (e.g. interest_expense in coverage ratios)
-are handled via abs: prefix in ratio definitions, not here.
+Sign-sensitive formulas use abs: prefix in both composite YAML
+formulas (via formula_eval) and ratio definitions (via ratio_engine).
 
 Composites and fallback formulas fire BEFORE alternatives so that
 computed values (e.g. total_assets - current_assets) take priority

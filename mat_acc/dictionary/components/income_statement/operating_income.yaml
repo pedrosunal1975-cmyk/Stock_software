@@ -135,7 +135,7 @@ composition:
   components:
     - income_before_tax
     - interest_expense
-  formula: "income_before_tax + interest_expense"
+  formula: "income_before_tax + abs:interest_expense"
 
 validation:
   expected_sign: either

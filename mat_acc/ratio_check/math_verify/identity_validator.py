@@ -11,7 +11,7 @@ company, taxonomy, or accounting standard. These are AXIOMS:
 - Sign: Total Assets > 0
 - Sign: sign(Equity) = sign(Assets - Liabilities)
 - Net income: IBT - Tax = Net Income
-- EBITDA: NI + Tax + Interest + D&A = EBITDA
+- EBITDA: NI + Tax + |IE| + |D&A| = EBITDA
 """
 
 from dataclasses import dataclass
@@ -136,11 +136,11 @@ class IdentityValidator:
         return self._evaluate_equality(check)
 
     def _check_ebitda(self, values: dict) -> IdentityCheck:
-        """Check: NI + Tax + Interest + D&A = EBITDA.
+        """Check: NI + Tax + |IE| + |D&A| = EBITDA.
 
-        Must match the composite formula used by the value populator
-        (bottom-up from net income), not the simplified OpIncome + D&A
-        which excludes non-operating items.
+        Uses abs for interest and D&A (add-back components) to
+        match the composite formula. Tax keeps its sign because
+        IBT = NI + Tax is an algebraic reversal, not an add-back.
         """
         ni = values.get('net_income')
         tax = values.get('income_tax_expense')
@@ -149,8 +149,8 @@ class IdentityValidator:
         ebitda = values.get('ebitda')
 
         check = IdentityCheck(
-            identity='NI + Tax + Interest + D&A = EBITDA',
-            lhs_label='NI + Tax + Interest + D&A',
+            identity='NI + Tax + |IE| + |D&A| = EBITDA',
+            lhs_label='NI + Tax + |IE| + |D&A|',
             rhs_label='EBITDA',
         )
         required = {
@@ -164,7 +164,7 @@ class IdentityValidator:
             check.skip_reason = f"Missing: {', '.join(missing)}"
             return check
 
-        check.lhs_value = ni + tax + ie + da
+        check.lhs_value = ni + tax + abs(ie) + abs(da)
         check.rhs_value = ebitda
         return self._evaluate_equality(check)
 
