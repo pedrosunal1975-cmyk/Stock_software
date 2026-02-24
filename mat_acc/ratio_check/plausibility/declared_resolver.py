@@ -18,8 +18,6 @@ from typing import Dict, List, Optional
 DECLARED_RATE_CONCEPTS: Dict[str, List[str]] = {
     'effective_tax_rate': [
         'EffectiveIncomeTaxRateContinuingOperations',
-        'EffectiveIncomeTaxRateReconciliationAtFederalStatutoryIncomeTaxRate',
-        'IncomeTaxReconciliationIncomeTaxExpenseBenefitAtFederalStatutoryIncomeTaxRate',
     ],
     'depreciation_rate': [
         'PropertyPlantAndEquipmentUsefulLife',
@@ -114,7 +112,12 @@ class DeclaredResolver:
         """Find the first matching declared value."""
         for name in concept_names:
             if name in fact_index:
-                return fact_index[name]
+                val = fact_index[name]
+                # Sanity: rates above 1000% (abs > 10) are likely
+                # monetary amounts misidentified as rates
+                if abs(val) > 10:
+                    continue
+                return val
         return None
 
 
