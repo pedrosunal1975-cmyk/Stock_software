@@ -1,10 +1,17 @@
 # ESEF overlay: total_equity
 # Only fields that differ from base definition
+#
+# CRITICAL: Equity (total, including NCI) must score HIGHER than
+# EquityAttributableToOwnersOfParent (parent-only). Without this
+# distinction, A=L+E identity check fails by the NCI amount.
 component_id: total_equity
 matching_rules:
   local_name_rules:
     - patterns:
         - "Equity"
+      match_type: exact
+      weight: 20
+    - patterns:
         - "EquityAttributableToOwnersOfParent"
       match_type: exact
       weight: 15

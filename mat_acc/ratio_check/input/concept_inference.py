@@ -80,10 +80,11 @@ def infer_period_type(local_name: str) -> Optional[str]:
     local_lower = local_name.lower()
 
     # Strong duration indicators - checked FIRST because cash flow
-    # action words override balance sheet nouns in compound names
+    # action words override balance sheet nouns in compound names.
+    # "cashflow" catches CashFlowsFrom... before "cash" triggers instant.
     strong_duration = [
-        'payment', 'proceeds', 'purchase', 'repayment',
-        'issuance', 'acquisition',
+        'cashflow', 'payment', 'proceeds', 'purchase',
+        'repayment', 'issuance', 'acquisition',
     ]
     for pattern in strong_duration:
         if pattern in local_lower:

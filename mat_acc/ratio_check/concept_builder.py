@@ -172,10 +172,10 @@ class ConceptBuilder:
             if metadata.get('preferred_label'):
                 labels['preferred'] = metadata['preferred_label']
 
-        period_type = fact.get('period_type')
+        period_type = infer_period_type(local_name)
         balance_type = infer_balance_type(local_name)
         if not period_type:
-            period_type = infer_period_type(local_name)
+            period_type = fact.get('period_type')
 
         level = fact.get('level') or fact.get('depth') or 0
         parent = (
@@ -201,8 +201,9 @@ class ConceptBuilder:
         self, concept: ConceptMetadata, fact: Dict[str, Any],
     ) -> None:
         """Merge additional fact data into existing concept."""
-        if not concept.period_type and fact.get('period_type'):
-            concept.period_type = fact['period_type']
+        if not concept.period_type:
+            inferred = infer_period_type(concept.local_name)
+            concept.period_type = inferred or fact.get('period_type')
         if not concept.presentation_parent:
             parent = fact.get('parent_concept')
             if parent:

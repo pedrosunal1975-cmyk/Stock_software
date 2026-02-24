@@ -225,6 +225,11 @@ class MatchVerifier:
         val = value_lookup.get_value(qname)
         if val is None:
             return False
+        # Magnitude safety: reject if value differs >50x from original
+        if current.value and val:
+            ratio = abs(val) / max(abs(current.value), 1)
+            if ratio < 0.02 or ratio > 50:
+                return False
         test = dict(all_vals)
         test[comp_id] = val
         if not check_plausibility(comp_id, val, test)['valid']:
