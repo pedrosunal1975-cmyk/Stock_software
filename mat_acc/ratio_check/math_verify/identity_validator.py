@@ -10,6 +10,8 @@ company, taxonomy, or accounting standard. These are AXIOMS:
 - Subset: Current Liabilities <= Total Liabilities
 - Sign: Total Assets > 0
 - Sign: sign(Equity) = sign(Assets - Liabilities)
+- Net income: IBT - Tax = Net Income
+- EBITDA: NI + Tax + Interest + D&A = EBITDA
 """
 
 from dataclasses import dataclass
@@ -134,25 +136,35 @@ class IdentityValidator:
         return self._evaluate_equality(check)
 
     def _check_ebitda(self, values: dict) -> IdentityCheck:
-        """Check: Operating Income + D&A = EBITDA."""
-        oi = values.get('operating_income')
+        """Check: NI + Tax + Interest + D&A = EBITDA.
+
+        Must match the composite formula used by the value populator
+        (bottom-up from net income), not the simplified OpIncome + D&A
+        which excludes non-operating items.
+        """
+        ni = values.get('net_income')
+        tax = values.get('income_tax_expense')
+        ie = values.get('interest_expense')
         da = values.get('depreciation_amortization')
         ebitda = values.get('ebitda')
 
         check = IdentityCheck(
-            identity='OpIncome + D&A = EBITDA',
-            lhs_label='Operating Income + D&A',
+            identity='NI + Tax + Interest + D&A = EBITDA',
+            lhs_label='NI + Tax + Interest + D&A',
             rhs_label='EBITDA',
         )
-        if oi is None or da is None or ebitda is None:
+        required = {
+            'net_income': ni, 'income_tax_expense': tax,
+            'interest_expense': ie,
+            'depreciation_amortization': da, 'ebitda': ebitda,
+        }
+        missing = [k for k, v in required.items() if v is None]
+        if missing:
             check.skipped = True
-            check.skip_reason = self._missing(
-                values, 'operating_income',
-                'depreciation_amortization', 'ebitda',
-            )
+            check.skip_reason = f"Missing: {', '.join(missing)}"
             return check
 
-        check.lhs_value = oi + da
+        check.lhs_value = ni + tax + ie + da
         check.rhs_value = ebitda
         return self._evaluate_equality(check)
 
