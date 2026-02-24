@@ -153,11 +153,21 @@ def _add_fact(
         value_index[fact.concept] = []
 
     existing = value_index[fact.concept]
-    is_duplicate = any(
-        v.period_end == fact_value.period_end
-        and v.dimensions == fact_value.dimensions
-        for v in existing
-    )
+    if fact_value.context_ref:
+        # Context-aware: same XBRL fact across roles shares
+        # context_ref; different contexts = different facts
+        is_duplicate = any(
+            v.period_end == fact_value.period_end
+            and v.dimensions == fact_value.dimensions
+            and v.context_ref == fact_value.context_ref
+            for v in existing
+        )
+    else:
+        is_duplicate = any(
+            v.period_end == fact_value.period_end
+            and v.dimensions == fact_value.dimensions
+            for v in existing
+        )
 
     if not is_duplicate:
         value_index[fact.concept].append(fact_value)
